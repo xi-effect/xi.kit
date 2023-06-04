@@ -1,0 +1,31 @@
+{
+  "name": "pkg.inputs.button",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup index.ts --format cjs --dts",
+    "dev": "npm run build -- --watch",
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.0",
+    "pkg.config.muidts": "*",
+    "pkg.icons": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "*",
+    "pkg.config.typescript": "*",
+    "typescript": "^4.6.4",
+    "tsup": "^6.7.0"
+  }
+}
