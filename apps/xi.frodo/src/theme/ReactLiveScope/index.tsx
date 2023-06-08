@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { Button as ButtonPkg } from 'pkg.inputs.button';
 import BrowserOnly from '@docusaurus/BrowserOnly';

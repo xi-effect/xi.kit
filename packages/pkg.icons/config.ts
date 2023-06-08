@@ -18,6 +18,7 @@ export const icons = [
   'Close',
   'Code',
   'Copy',
+  'Download',
   'Emotions',
   'Endcall',
   'Exit',
