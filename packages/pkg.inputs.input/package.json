@@ -24,5 +24,6 @@
     "pkg.config.typescript": "^0.0.3",
     "react": "^18.2.0",
     "typescript": "^4.6.4"
-  }
+  },
+  "gitHead": "031aac30177002f18392cf39abbf88fc9a403e6c"
 }
