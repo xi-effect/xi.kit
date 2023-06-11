@@ -16,3 +16,5 @@ export const Loading: FC<LoadingProps> = ({ size, ...props }) => (
 );
 
 type LoadingProps = { size: Size } & SxProps;
+
+// Тестовый коммент
