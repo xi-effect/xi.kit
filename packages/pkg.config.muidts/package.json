@@ -1,6 +1,6 @@
 {
   "name": "pkg.config.muidts",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "These are base shared `tsconfig.json`s from which all other `tsconfig.json`'s inherit from.",
   "main": "./index.d.ts",
   "scripts": {

@@ -1,6 +1,6 @@
 {
   "name": "pkg.config.typescript",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "files": [
     "base.json",
     "nextjs.json",
