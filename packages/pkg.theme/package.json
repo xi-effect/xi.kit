@@ -1,6 +1,6 @@
 {
-  "name": "pkg.theme",
-  "version": "0.0.4",
+  "name": "xipkg.theme",
+  "version": "0.0.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
