@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/config.typescript",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "files": [
     "base.json",
     "nextjs.json",
@@ -27,5 +27,5 @@
   },
   "author": "xi.effect",
   "license": "MIT",
-  "gitHead": "f176995794ce47d08f07dc09807b9af169c215fa"
+  "gitHead": "ac9de6c43c3a47666263688a24de2767638d19df"
 }
