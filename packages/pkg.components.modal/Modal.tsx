@@ -1,5 +1,5 @@
 import '@xipkg/config.muidts';
-import { Button, ButtonProps } from '@xipkg/inputs.button';
+
 import { Close } from '@xipkg/icons';
 import { FC, MouseEvent, ReactNode } from 'react';
 import {
@@ -16,6 +16,7 @@ import {
   DialogContentProps,
   DialogActionsProps,
   IconButton,
+  Button,
 } from '@mui/material';
 import { actionsStyle, contentStyle, dialogStyle, iconStyle, titleStyle } from './style';
 
@@ -32,8 +33,6 @@ export type ModalProps = {
   onConfirmButton?: (e?: MouseEvent<HTMLButtonElement>) => void;
   onCloseIcon?: (e?: MouseEvent<HTMLButtonElement>) => void;
   onClose?: (e?: any, reason?: 'backdropClick' | 'escapeKeyDown') => void;
-  cancelButtonProps?: ButtonProps;
-  confirmButtonProps?: ButtonProps;
   dialogProps?: Partial<DialogProps>;
   paperProps?: PaperProps;
   dialogTitleProps?: DialogTitleProps;
@@ -54,8 +53,6 @@ export const Modal: FC<ModalProps> = ({
   onCancelButton,
   onCloseIcon,
   onClose,
-  cancelButtonProps,
-  confirmButtonProps,
   dialogProps,
   paperProps,
   dialogTitleProps,
@@ -160,18 +157,13 @@ export const Modal: FC<ModalProps> = ({
           {dialogsActionChildren}
 
           {onCancelButton && (
-            <Button
-              onClick={onCancelButton}
-              variant="outlined"
-              color="grayscale"
-              {...cancelButtonProps}
-            >
+            <Button onClick={onCancelButton} variant="outlined">
               {cancelButtonTitle}
             </Button>
           )}
 
           {onConfirmButton && (
-            <Button onClick={onConfirmButton} color="primary" {...confirmButtonProps}>
+            <Button onClick={onConfirmButton} color="primary">
               {confirmButtonTitle}
             </Button>
           )}

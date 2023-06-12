@@ -29,7 +29,6 @@
     "@xipkg/config.muidts": "*",
     "@xipkg/config.typescript": "*",
     "@xipkg/icons": "*",
-    "@xipkg/inputs.button": "*",
     "@xipkg/inputs.checkbox": "*",
     "@xipkg/inputs.fileuploader": "*",
     "@xipkg/inputs.input": "*",

@@ -1,8 +1,0 @@
-{
-  "extends": "@xipkg/config.typescript/react-library.json",
-  "include": ["*"],
-  "exclude": ["dist", "build", "node_modules"],
-  "compilerOptions": {
-    "lib": ["DOM"]
-  }
-}

@@ -1,11 +1,106 @@
-import '@xipkg/config.muidts';
-
+import React from 'react';
 import { createTheme } from '@mui/material/styles';
 
 export const getScheme = (mode: 'light' | 'dark') =>
   createTheme({
     components: {
-      // Name of the component
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            boxShadow: 'none',
+            minWidth: 0,
+            borderRadius: '12px',
+            paddingLeft: '16px',
+            paddingRight: '16px',
+
+            '&:hover': {
+              boxShadow: 'none',
+            },
+          },
+          text: {
+            fontWeight: 500,
+            fontSize: '20px',
+            lineHeight: '28px',
+            textTransform: 'none',
+          },
+        },
+        variants: [
+          {
+            props: { color: 'primary' },
+            style: ({ theme }) => ({
+              backgroundColor: theme.palette.brand['80'],
+              color: theme.palette.petersburg['0'],
+
+              '&:hover': {
+                backgroundColor: theme.palette.brand['100'],
+                color: theme.palette.petersburg['0'],
+              },
+
+              '&:active': {
+                backgroundColor: theme.palette.brand['100'],
+                color: theme.palette.petersburg['0'],
+              },
+
+              '&:disabled': {
+                backgroundColor: theme.palette.petersburg['10'],
+                color: theme.palette.petersburg['30'],
+              },
+            }),
+          },
+          {
+            props: { size: 'large' },
+            style: {
+              fontSize: '20px',
+              lineHeight: '28px',
+              height: '56px',
+              borderRadius: '12px',
+            },
+          },
+          {
+            props: { size: 'medium' },
+            style: {
+              fontSize: '16px',
+              lineHeight: '22px',
+              height: '48px',
+              borderRadius: '8px',
+            },
+          },
+          {
+            props: { size: 'small' },
+            style: {
+              fontSize: '14px',
+              lineHeight: '20px',
+              height: '32px',
+              borderRadius: '6px',
+            },
+          },
+          {
+            props: { color: 'secondary' },
+            style: ({ theme }) => ({
+              border: '2px solid',
+              borderColor: theme.palette.petersburg['30'],
+
+              backgroundColor: theme.palette.petersburg['0'],
+              color: theme.palette.petersburg['100'],
+
+              '&:hover': {
+                backgroundColor: theme.palette.petersburg['5'],
+                color: theme.palette.petersburg['100'],
+              },
+
+              '&:active': {
+                backgroundColor: theme.palette.petersburg['5'],
+                color: theme.palette.petersburg['100'],
+              },
+
+              '&:disabled': {
+                backgroundColor: theme.palette.petersburg['10'],
+                color: theme.palette.petersburg['30'],
+              },
+            }),
+          },
+        ],
+      },
       MuiFormHelperText: {
         styleOverrides: {
           root: {
@@ -49,38 +144,6 @@ export const getScheme = (mode: 'light' | 'dark') =>
             backgroundColor: 'rgba(0, 0, 0, 0.4)',
           },
         },
-      },
-      MuiButton: {
-        styleOverrides: {
-          root: {
-            boxShadow: 'none',
-
-            '&:hover': {
-              boxShadow: 'none',
-            },
-          },
-        },
-        variants: [
-          {
-            props: { variant: 'contained' },
-            style: {},
-          },
-          {
-            props: { variant: 'outlined' },
-            style: {
-              textTransform: 'capitalize',
-              height: '64px',
-              width: '136px',
-              borderRadius: '8px',
-              color: '#445AFF',
-              border: '1px solid #445AFF',
-              fontWeight: 500,
-              fontSize: 18,
-              lineHeight: '22px',
-              backgroundColor: 'transparent',
-            },
-          },
-        ],
       },
     },
     typography: {
@@ -315,3 +378,87 @@ export const getScheme = (mode: 'light' | 'dark') =>
           }),
     },
   });
+
+type Colors = { [key in 100 | 80 | 60 | 40 | 20 | 0]: string };
+type ColorsShort = { [key in 100 | 60 | 40 | 20]: string };
+type ColorsPeterburg = {
+  [key in 100 | 90 | 80 | 70 | 60 | 50 | 40 | 30 | 20 | 10 | 5 | 0]: string;
+};
+
+declare module '@mui/material/styles' {
+  interface TypographyVariants {
+    xl: React.CSSProperties;
+    l: React.CSSProperties;
+    m: React.CSSProperties;
+    s: React.CSSProperties;
+    xs: React.CSSProperties;
+    xxs: React.CSSProperties;
+  }
+
+  // allow configuration using `createTheme`
+  interface TypographyVariantsOptions {
+    xl?: React.CSSProperties;
+    l?: React.CSSProperties;
+    m?: React.CSSProperties;
+    s?: React.CSSProperties;
+    xs?: React.CSSProperties;
+    xxs?: React.CSSProperties;
+  }
+
+  interface Palette {
+    bg: {
+      [key in 'main' | 'block']: string;
+    };
+    brand: Colors;
+    petersburg: ColorsPeterburg;
+    moscow: Colors;
+    ekaterinburg: Colors;
+    kungur: Colors;
+    arkhangelsk: ColorsShort;
+    vladivostok: ColorsShort;
+    volgograd: ColorsShort;
+    saratov: ColorsShort;
+  }
+
+  interface PaletteOptions {
+    bg: {
+      [key in 'main' | 'block']: string;
+    };
+    brand: Colors;
+    petersburg: ColorsPeterburg;
+    moscow: Colors;
+    ekaterinburg: Colors;
+    kungur: Colors;
+    arkhangelsk: ColorsShort;
+    vladivostok: ColorsShort;
+    volgograd: ColorsShort;
+    saratov: ColorsShort;
+  }
+
+  interface PaletteColor {
+    100?: string;
+    90?: string;
+    80?: string;
+    70?: string;
+    60?: string;
+    50?: string;
+    40?: string;
+    30?: string;
+    20?: string;
+    10?: string;
+    5?: string;
+    0?: string;
+  }
+}
+
+// Update the Typography's variant prop options
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    xl: true;
+    l: true;
+    m: true;
+    s: true;
+    xs: true;
+    xxs: true;
+  }
+}
