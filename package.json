@@ -5,7 +5,7 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "publish": "npx lerna publish --no-git-tag-version --no-push"
+    "publish": "npx lerna publish --no-git-tag-version"
   },
   "dependencies": {
     "react": "18.2.0",

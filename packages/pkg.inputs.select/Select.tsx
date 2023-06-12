@@ -1,7 +1,7 @@
 import { SyntheticEvent, FunctionComponent, useState } from 'react';
 import { MenuItem, Select as MuiSelect, Typography, Stack } from '@mui/material';
 import { ClickAwayListener } from '@mui/base';
-import { Arrow } from 'pkg.icons';
+import { Arrow } from '@xipkg/icons';
 import { SizesT, TypesT, ItemT, GroupT } from './types';
 import {
   selectSizes,

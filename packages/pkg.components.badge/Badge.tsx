@@ -1,4 +1,4 @@
-import 'pkg.config.muidts';
+import '@xipkg/config.muidts';
 import { Typography, TypographyProps, StackProps, SvgIconProps, Stack } from '@mui/material';
 import { FC, FunctionComponent } from 'react';
 import { getStyles } from './utils';

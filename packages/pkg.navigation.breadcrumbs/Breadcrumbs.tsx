@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { Breadcrumbs as MuiBreadcrumbs, Link } from '@mui/material';
-import { Arrow } from 'pkg.icons';
+import { Arrow } from '@xipkg/icons';
 import { breadcrumbLink, SizesT } from './types';
 import { breadcrumbSizes, separatorSizes } from './styles';
 

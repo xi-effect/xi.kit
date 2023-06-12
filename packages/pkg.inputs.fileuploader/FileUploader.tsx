@@ -1,7 +1,7 @@
-import 'pkg.config.muidts';
+import '@xipkg/config.muidts';
 import { ChangeEvent, DragEvent, FC, useRef, useState } from 'react';
 import { Button, IconButton, Stack, Typography } from '@mui/material';
-import { Download } from 'pkg.icons';
+import { Download } from '@xipkg/icons';
 import { File } from './File';
 import { FileUploaderProps } from './types';
 import {

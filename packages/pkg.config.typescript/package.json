@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/config.typescript",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "files": [
     "base.json",
     "nextjs.json",
@@ -24,5 +24,5 @@
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "08037f7daa590bfaed057028dee1fbdc3aafbebd"
+  "gitHead": "3f8c3d82a327718f169ac8e186f7724117ce9607"
 }

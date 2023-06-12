@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { IconButton, CircularProgress } from '@mui/material';
-import { Check, Close } from 'pkg.icons';
+import { Check, Close } from '@xipkg/icons';
 import { iconSizesStyle } from './styles/fileStyle';
 import { IconsProps } from './types';
 

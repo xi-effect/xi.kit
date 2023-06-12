@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/inputs.toggle",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -20,10 +20,10 @@
     "@types/node": "^17.0.12",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
+    "@xipkg/config.typescript": "^0.2.0",
+    "@xipkg/eslint-config-custom": "^0.2.0",
     "eslint": "^7.32.0",
-    "@xipkg/eslint-config-custom": "*",
-    "@xipkg/config.typescript": "*",
     "typescript": "^4.6.4"
   },
-  "gitHead": "08037f7daa590bfaed057028dee1fbdc3aafbebd"
+  "gitHead": "3f8c3d82a327718f169ac8e186f7724117ce9607"
 }

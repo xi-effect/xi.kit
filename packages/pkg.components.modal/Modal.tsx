@@ -1,6 +1,6 @@
-import 'pkg.config.muidts';
-import { Button, ButtonProps } from 'pkg.inputs.button';
-import { Close } from 'pkg.icons';
+import '@xipkg/config.muidts';
+import { Button, ButtonProps } from '@xipkg/inputs.button';
+import { Close } from '@xipkg/icons';
 import { FC, MouseEvent, ReactNode } from 'react';
 import {
   useTheme,

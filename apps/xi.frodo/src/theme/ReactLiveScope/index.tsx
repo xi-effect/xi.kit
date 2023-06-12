@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button as ButtonPkg } from 'pkg.inputs.button';
+import { Button as ButtonPkg } from '@xipkg/inputs.button';
 import BrowserOnly from '@docusaurus/BrowserOnly';
-import { getScheme } from 'pkg.theme';
+import { getScheme } from '@xipkg/theme';
 import { ThemeProvider } from '@mui/material/styles';
 
 const Button = (props) => {

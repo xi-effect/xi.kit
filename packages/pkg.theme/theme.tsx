@@ -1,4 +1,4 @@
-import 'pkg.config.muidts';
+import '@xipkg/config.muidts';
 
 import { createTheme } from '@mui/material/styles';
 

@@ -1,4 +1,4 @@
-import { File as FileIcon, Close } from 'pkg.icons';
+import { File as FileIcon, Close } from '@xipkg/icons';
 import { Box, Stack, Typography, Link } from '@mui/material';
 import Image from 'next/image';
 
