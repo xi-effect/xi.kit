@@ -1,7 +1,7 @@
 {
   "name": "@xipkg/config.muidts",
-  "version": "0.2.0",
-  "description": "These are base shared `tsconfig.json`s from which all other `tsconfig.json`'s inherit from.",
+  "version": "0.0.3",
+  "description": "",
   "main": "./index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +16,10 @@
     "react": "^18.2.0",
     "typescript": "^4.6.4"
   },
-  "author": "",
-  "license": "ISC",
-  "gitHead": "3f8c3d82a327718f169ac8e186f7724117ce9607"
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "xi.effect",
+  "license": "MIT",
+  "gitHead": "f176995794ce47d08f07dc09807b9af169c215fa"
 }

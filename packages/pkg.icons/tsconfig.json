@@ -1,5 +1,5 @@
 {
   "extends": "@xipkg/config.typescript/react-library.json",
-  "include": ["*"],
+  "include": ["*", "src/Account.tsx", "src/Activity.tsx", "src/Arrow.tsx", "src/Bold.tsx", "src/Burger.tsx", "src/Calendar.tsx", "src/Camera.tsx", "src/Chat.tsx", "src/Check.tsx", "src/Cite.tsx", "src/Clip.tsx", "src/Announce.tsx", "src/AddChannel.tsx", "src/AddCategory.tsx", "src/Add.tsx", "src/Clock.tsx", "src/Close.tsx", "src/Code.tsx", "src/Copy.tsx", "src/Download.tsx", "src/Emotions.tsx", "src/Endcall.tsx", "src/Exit.tsx", "src/External.tsx", "src/Eyeoff.tsx", "src/Eyeon.tsx", "src/File.tsx", "src/Flag.tsx", "src/Folder.tsx", "src/Food.tsx", "src/Grid.tsx", "src/H1.tsx", "src/H2.tsx", "src/H3.tsx", "src/Hand.tsx", "src/Heart.tsx", "src/Home.tsx", "src/Invite.tsx", "src/Italic.tsx", "src/Link.tsx", "src/Maximize.tsx", "src/Microphone.tsx", "src/Minus.tsx", "src/Move.tsx", "src/Movie.tsx", "src/Music.tsx", "src/Nature.tsx", "src/Notification.tsx", "src/Objects.tsx", "src/Ol.tsx", "src/Palette.tsx", "src/Photo.tsx", "src/Picture.tsx", "src/Places.tsx", "src/Play.tsx", "src/Screenshare.tsx", "src/Search.tsx", "src/Send.tsx", "src/Settings.tsx", "src/Shape.tsx", "src/Stroke.tsx", "src/Task.tsx", "src/Trash.tsx", "src/Text.tsx", "src/Ul.tsx", "src/Underline.tsx", "src/Updates.tsx", "src/Users.tsx"],
   "exclude": ["dist", "build", "node_modules"]
 }
