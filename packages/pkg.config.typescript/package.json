@@ -1,5 +1,5 @@
 {
-  "name": "xipkg.config.typescript",
+  "name": "@xipkg/config.typescript",
   "version": "0.0.1",
   "files": [
     "base.json",

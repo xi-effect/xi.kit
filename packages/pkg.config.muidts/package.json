@@ -1,5 +1,5 @@
 {
-  "name": "xipkg.config.muidts",
+  "name": "@xipkg/config.muidts",
   "version": "0.0.1",
   "description": "These are base shared `tsconfig.json`s from which all other `tsconfig.json`'s inherit from.",
   "main": "./index.d.ts",

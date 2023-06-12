@@ -1,5 +1,5 @@
 {
-  "name": "xipkg.eslint-config-custom",
+  "name": "@xipkg/eslint-config-custom",
   "version": "0.0.2",
   "main": "index.js",
   "license": "MIT",
