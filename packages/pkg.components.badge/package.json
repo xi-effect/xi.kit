@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsup index.ts --format cjs --dts",
-    "dev": "npm run build -- --watch",
+    "start": "npm run build -- --watch",
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
