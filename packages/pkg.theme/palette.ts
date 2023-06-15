@@ -2,14 +2,6 @@ import { Palette, PaletteMode } from '@mui/material';
 
 const lightMode = {
   mode: 'light' as PaletteMode,
-  primary: {
-    main: '#445AFF',
-    contrastText: '#101010',
-  },
-  secondary: {
-    main: '#FFFFFF',
-    contrastText: '#101010',
-  },
   petersburg: {
     100: '#101010',
     90: '#282828',
@@ -88,14 +80,6 @@ const lightMode = {
 
 const darkMode = {
   mode: 'dark' as PaletteMode,
-  primary: {
-    main: '#8B98F9',
-    contrastText: '#101010',
-  },
-  secondary: {
-    main: '#151515',
-    contrastText: '#E6E6E6',
-  },
   petersburg: {
     100: '#E6E6E6',
     90: '#D1D1D1',

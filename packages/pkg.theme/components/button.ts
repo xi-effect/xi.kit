@@ -1,15 +1,5 @@
 import { Theme } from '@mui/material';
 
-declare module '@mui/material/Button' {
-  interface ButtonPropsVariantsOverrides {
-    primary: string;
-    secondary: string;
-    ghost: string;
-    moscow: string;
-    ekaterinburg: string;
-  }
-}
-
 export const buttonConfig = {
   defaultProps: {
     variant: 'primary',

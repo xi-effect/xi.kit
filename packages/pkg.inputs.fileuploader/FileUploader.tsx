@@ -1,4 +1,4 @@
-import '@xipkg/config.muidts';
+import '@xipkg/theme.types';
 import { ChangeEvent, DragEvent, FC, useRef, useState } from 'react';
 import { Button, IconButton, Stack, Typography } from '@mui/material';
 import { Download } from '@xipkg/icons';

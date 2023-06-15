@@ -22,7 +22,6 @@ const clientSideEmotionCache = createEmotionCache();
 const MyApp = (props) => {
   // eslint-disable-next-line react/prop-types
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-  // @ts-ignore
   const theme = getScheme('light'); // Только светлая тема;
 
   return (

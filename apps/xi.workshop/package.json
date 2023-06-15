@@ -32,7 +32,6 @@
     "notistack": "^3.0.0-alpha.11",
     "@xipkg/components.badge": "*",
     "@xipkg/components.file": "*",
-    "@xipkg/components.modal": "*",
     "@xipkg/icons": "*",
     "@xipkg/inputs.checkbox": "*",
     "@xipkg/inputs.radio": "*",
@@ -43,6 +42,7 @@
     "@xipkg/navigation.dropdown": "*",
     "@xipkg/navigation.link": "*",
     "@xipkg/theme": "*",
+    "@xipkg/theme.types": "*",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-avatar-editor": "^13.0.0",
@@ -73,5 +73,10 @@
     "eslint-config-custom": "*",
     "@xipkg/config.typescript": "*",
     "typescript": "^4.6.4"
-  }
+  },
+  "types": "./index.d.ts",
+  "description": "First, run the development server:",
+  "main": ".eslintrc.js",
+  "author": "",
+  "license": "ISC"
 }

@@ -9,21 +9,17 @@ const nextConfig = {
     outputFileTracingRoot: path.join(__dirname, '../../'),
   },
   transpilePackages: [
+    '@xipkg/theme.types',
     '@xipkg/theme',
     '@xipkg/components.badge',
     '@xipkg/components.loading',
-    '@xipkg/components.modal',
     '@xipkg/components.file',
     '@xipkg/icons',
-    '@mui/material',
     '@xipkg/inputs.radio',
     '@xipkg/inputs.toggle',
     '@xipkg/inputs.switcher',
     '@xipkg/hooks',
   ],
-  compiler: {
-    removeConsole: process.env.NODE_ENV !== 'development',
-  },
   reactStrictMode: true,
   images: {
     domains: [

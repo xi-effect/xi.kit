@@ -7,7 +7,7 @@ type ColorsPeterburg = {
 };
 
 declare module '@mui/material/styles' {
-  interface TypographyVariants {
+  export interface TypographyVariants {
     xl: React.CSSProperties;
     l: React.CSSProperties;
     m: React.CSSProperties;
@@ -17,7 +17,7 @@ declare module '@mui/material/styles' {
   }
 
   // allow configuration using `createTheme`
-  interface TypographyVariantsOptions {
+  export interface TypographyVariantsOptions {
     xl?: React.CSSProperties;
     l?: React.CSSProperties;
     m?: React.CSSProperties;
@@ -26,7 +26,7 @@ declare module '@mui/material/styles' {
     xxs?: React.CSSProperties;
   }
 
-  interface Palette {
+  export interface Palette {
     bg: {
       [key in 'main' | 'block']: string;
     };
@@ -41,7 +41,7 @@ declare module '@mui/material/styles' {
     saratov: ColorsShort;
   }
 
-  interface PaletteOptions {
+  export interface PaletteOptions {
     bg: {
       [key in 'main' | 'block']: string;
     };
@@ -56,7 +56,7 @@ declare module '@mui/material/styles' {
     saratov: ColorsShort;
   }
 
-  interface PaletteColor {
+  export interface PaletteColor {
     100?: string;
     90?: string;
     80?: string;
@@ -74,12 +74,22 @@ declare module '@mui/material/styles' {
 
 // Update the Typography's variant prop options
 declare module '@mui/material/Typography' {
-  interface TypographyPropsVariantOverrides {
+  export interface TypographyPropsVariantOverrides {
     xl: true;
     l: true;
     m: true;
     s: true;
     xs: true;
     xxs: true;
+  }
+}
+
+declare module '@mui/material/Button' {
+  export interface ButtonPropsVariantsOverrides {
+    primary: string;
+    secondary: string;
+    ghost: string;
+    moscow: string;
+    ekaterinburg: string;
   }
 }
