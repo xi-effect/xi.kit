@@ -2,23 +2,25 @@ import { Theme } from '@mui/material';
 
 export const buttonConfig = {
   defaultProps: {
-    variant: 'primary',
+    variant: 'contained',
   },
   styleOverrides: ({ theme }: { theme: Theme }) => ({
     root: {
-      boxShadow: 'none',
+      boxShadow: 'none !important',
       minWidth: '8px',
       borderRadius: '12px',
-      paddingLeft: '16px',
-      paddingRight: '16px',
 
       '&:hover': {
-        boxShadow: 'none',
+        boxShadow: 'none !important',
+      },
+
+      '&:active': {
+        boxShadow: 'none !important',
       },
 
       '&:disabled': {
-        backgroundColor: theme.palette.petersburg['10'],
-        color: theme.palette.petersburg['30'],
+        backgroundColor: theme.palette.petersburg[10],
+        color: theme.palette.petersburg[30],
       },
     },
   }),
@@ -51,25 +53,30 @@ export const buttonConfig = {
       },
     },
     {
-      props: { variant: 'primary' },
+      props: { variant: 'contained' },
       style: ({ theme }: { theme: Theme }) => ({
-        backgroundColor: theme.palette.brand['0'],
-        color: theme.palette.petersburg['0'],
+        padding: '0px 16px 0px 16px',
+        boxShadow: 'none !important',
+        backgroundColor: theme.palette.brand[80],
+        color: theme.palette.petersburg[0],
 
         '&:hover': {
-          backgroundColor: theme.palette.brand['100'],
-          color: theme.palette.petersburg['0'],
+          boxShadow: 'none !important',
+          backgroundColor: theme.palette.brand[100],
+          color: theme.palette.petersburg[0],
         },
 
         '&:active': {
-          backgroundColor: theme.palette.brand['100'],
-          color: theme.palette.petersburg['0'],
+          boxShadow: 'none !important',
+          backgroundColor: theme.palette.brand[100],
+          color: theme.palette.petersburg[0],
         },
       }),
     },
     {
-      props: { variant: 'secondary' },
+      props: { variant: 'outlined' },
       style: ({ theme }: { theme: Theme }) => ({
+        padding: '0px 16px 0px 16px',
         border: '2px solid',
         borderColor: theme.palette.petersburg['30'],
 
@@ -77,19 +84,24 @@ export const buttonConfig = {
         color: theme.palette.petersburg['100'],
 
         '&:hover': {
+          border: '2px solid',
+          borderColor: theme.palette.petersburg['30'],
           backgroundColor: theme.palette.petersburg['5'],
           color: theme.palette.petersburg['100'],
         },
 
         '&:active': {
+          border: '2px solid',
+          borderColor: theme.palette.petersburg['30'],
           backgroundColor: theme.palette.petersburg['5'],
           color: theme.palette.petersburg['100'],
         },
       }),
     },
     {
-      props: { variant: 'ghost' },
+      props: { variant: 'text' },
       style: ({ theme }: { theme: Theme }) => ({
+        padding: '0px 16px 0px 16px',
         backgroundColor: theme.palette.petersburg['0'],
         color: theme.palette.petersburg['100'],
 
@@ -105,8 +117,9 @@ export const buttonConfig = {
       }),
     },
     {
-      props: { variant: 'moscow' },
+      props: { color: 'error' },
       style: ({ theme }: { theme: Theme }) => ({
+        padding: '0px 16px 0px 16px',
         backgroundColor: theme.palette.moscow['80'],
         color: theme.palette.petersburg['0'],
 
@@ -122,8 +135,9 @@ export const buttonConfig = {
       }),
     },
     {
-      props: { variant: 'ekaterinburg' },
+      props: { color: 'success' },
       style: ({ theme }: { theme: Theme }) => ({
+        padding: '0px 16px 0px 16px',
         backgroundColor: theme.palette.ekaterinburg['80'],
         color: theme.palette.petersburg['0'],
 
