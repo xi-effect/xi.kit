@@ -3,8 +3,9 @@ import { Theme } from '@mui/material';
 export const buttonConfig = {
   defaultProps: {
     variant: 'contained',
+    size: 'medium',
   },
-  styleOverrides: ({ theme }: { theme: Theme }) => ({
+  styleOverrides: ({ ownerState, theme }: { ownerState: any; theme: Theme }) => ({
     root: {
       boxShadow: 'none !important',
       minWidth: '8px',
@@ -32,6 +33,7 @@ export const buttonConfig = {
         lineHeight: '28px',
         height: '56px',
         borderRadius: '12px',
+        padding: '0px  16px 0px 16px',
       },
     },
     {
@@ -41,6 +43,7 @@ export const buttonConfig = {
         lineHeight: '22px',
         height: '48px',
         borderRadius: '8px',
+        padding: '0px  12px 0px 12px',
       },
     },
     {
@@ -50,12 +53,12 @@ export const buttonConfig = {
         lineHeight: '20px',
         height: '32px',
         borderRadius: '6px',
+        padding: '0px  8px 0px 8px',
       },
     },
     {
       props: { variant: 'contained' },
       style: ({ theme }: { theme: Theme }) => ({
-        padding: '0px 16px 0px 16px',
         boxShadow: 'none !important',
         backgroundColor: theme.palette.brand[80],
         color: theme.palette.petersburg[0],
@@ -76,7 +79,6 @@ export const buttonConfig = {
     {
       props: { variant: 'outlined' },
       style: ({ theme }: { theme: Theme }) => ({
-        padding: '0px 16px 0px 16px',
         border: '2px solid',
         borderColor: theme.palette.petersburg['30'],
 
@@ -101,7 +103,6 @@ export const buttonConfig = {
     {
       props: { variant: 'text' },
       style: ({ theme }: { theme: Theme }) => ({
-        padding: '0px 16px 0px 16px',
         backgroundColor: theme.palette.petersburg['0'],
         color: theme.palette.petersburg['100'],
 
@@ -119,7 +120,6 @@ export const buttonConfig = {
     {
       props: { color: 'error' },
       style: ({ theme }: { theme: Theme }) => ({
-        padding: '0px 16px 0px 16px',
         backgroundColor: theme.palette.moscow['80'],
         color: theme.palette.petersburg['0'],
 
@@ -137,7 +137,6 @@ export const buttonConfig = {
     {
       props: { color: 'success' },
       style: ({ theme }: { theme: Theme }) => ({
-        padding: '0px 16px 0px 16px',
         backgroundColor: theme.palette.ekaterinburg['80'],
         color: theme.palette.petersburg['0'],
 
