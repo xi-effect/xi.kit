@@ -1,10 +1,14 @@
 import { createTheme } from '@mui/material/styles';
 import { getPalette } from './palette';
 import { buttonConfig } from './components/button';
+import { iconConfig } from './components/icon';
 
 export const getScheme = (mode: 'light' | 'dark') =>
   createTheme({
     components: {
+      MuiSvgIcon: {
+        ...(iconConfig as any),
+      },
       MuiButton: {
         ...(buttonConfig as any),
       },

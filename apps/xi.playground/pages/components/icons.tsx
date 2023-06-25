@@ -142,6 +142,18 @@ const iconsDict = [
 const Icons = () => (
   <LayoutPages>
     <GridLayout sx={{ p: 4, maxWidth: '624px' }} container spacing={4}>
+      <Stack
+        direction="row"
+        justifyContent="flex-start"
+        alignItems="center"
+        spacing={2}
+        sx={{ width: '564px', height: '64px', mb: 4, p: 2, pl: 4 }}
+      >
+        <Add fontSize="large" />
+        <Add fontSize="inherit" />
+        <Add fontSize="medium" />
+        <Add fontSize="small" />
+      </Stack>
       {iconsDict.map((icon, index) => {
         return (
           <GridLayout key={index.toString()} item>
