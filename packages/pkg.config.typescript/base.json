@@ -16,6 +16,5 @@
     "skipLibCheck": true,
     "strict": true
   },
-  "exclude": ["node_modules", "templates"],
-  "files": ["./mui-types.d.ts"]
+  "exclude": ["node_modules", "templates"]
 }
