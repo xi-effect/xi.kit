@@ -2,5 +2,5 @@
   "extends": "@xipkg/config.typescript/react-library.json",
   "include": ["*"],
   "exclude": ["dist", "build", "node_modules"],
-  "files": ["@xipkg/theme/index.d.ts"]
+  "files": ["@xipkg/theme/dist/index.d.ts"]
 }

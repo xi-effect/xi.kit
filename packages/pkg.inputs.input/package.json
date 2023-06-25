@@ -10,20 +10,20 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.11.0",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.6",
     "react": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
-    "@types/react": "^18.0.22",
-    "@types/react-dom": "^18.0.7",
-    "@xipkg/config.typescript": "^0.0.4",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@xipkg/config.typescript": "^0.1.0",
     "@xipkg/eslint-config-custom": "^0.0.4",
     "eslint": "^7.32.0",
     "react": "^18.2.0",
-    "typescript": "^4.6.4"
+    "typescript": "^5.1.3"
   },
   "publishConfig": {
     "access": "public"

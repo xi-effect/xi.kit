@@ -26,5 +26,6 @@
     "jsxImportSource": "@emotion/react"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "templates"]
+  "exclude": ["node_modules", "templates"],
+  "files": ["./mui-types.d.ts"]
 }
