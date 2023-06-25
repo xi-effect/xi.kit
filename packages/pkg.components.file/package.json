@@ -10,17 +10,17 @@
     "test": "TIMING=1 eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.11.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.6",
     "@xipkg/icons": "^0.1.1",
     "next": "13.2.4",
     "react": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
-    "@types/react": "^18.0.22",
-    "@types/react-dom": "^18.0.7",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
     "@xipkg/config.typescript": "^0.1.1",
     "@xipkg/eslint-config-custom": "^0.1.1",
     "eslint": "^7.32.0",
