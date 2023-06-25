@@ -1,4 +1,5 @@
 import '@xipkg/theme.types';
+
 import { ChangeEvent, FC } from 'react';
 import { Switch, Stack, Typography } from '@mui/material';
 import { colorStyle, sizeStyle, stackGap, typographyVariants } from './style';

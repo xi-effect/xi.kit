@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/eslint-config-custom",
-  "version": "0.0.4",
+  "version": "0.1.1",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
@@ -24,6 +24,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "ac9de6c43c3a47666263688a24de2767638d19df",
+  "gitHead": "d20a322032165a3f6d812bab70e30fdf6b08e2eb",
   "author": "xi.effect"
 }

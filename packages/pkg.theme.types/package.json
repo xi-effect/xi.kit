@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/theme.types",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "These are base shared `tsconfig.json`s from which all other `tsconfig.json`'s inherit from.",
   "main": "./index.d.ts",
   "scripts": {
@@ -20,5 +20,6 @@
     "access": "public"
   },
   "author": "xi.effect",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "d20a322032165a3f6d812bab70e30fdf6b08e2eb"
 }
