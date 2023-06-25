@@ -1,4 +1,4 @@
-import '@xipkg/theme.types';
+import '@xipkg/theme';
 import { ToggleButtonGroup, ToggleButton, Typography } from '@mui/material';
 import { FC, MouseEvent } from 'react';
 

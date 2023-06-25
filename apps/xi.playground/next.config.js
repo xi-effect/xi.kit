@@ -9,7 +9,7 @@ const nextConfig = {
     outputFileTracingRoot: path.join(__dirname, '../../'),
   },
   transpilePackages: [
-    '@xipkg/theme.types',
+    '@xipkg/theme',
     '@xipkg/theme',
     '@xipkg/components.badge',
     '@xipkg/components.loading',

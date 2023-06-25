@@ -3,6 +3,6 @@
     "baseUrl": "."
   },
   "extends": "@xipkg/config.typescript/nextjs.json",
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "@xipkg/theme.types/index.d.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "@xipkg/theme/index.d.ts"],
   "exclude": ["node_modules", "templates"]
 }
