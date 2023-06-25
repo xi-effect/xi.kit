@@ -1,0 +1,24 @@
+{
+  "name": "@xipkg/theme.types",
+  "version": "0.1.0",
+  "description": "These are base shared `tsconfig.json`s from which all other `tsconfig.json`'s inherit from.",
+  "main": "./index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "@types/react": "^18.0.22",
+    "@types/react-dom": "^18.0.7",
+    "react": "^18.2.0",
+    "typescript": "^4.6.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "xi.effect",
+  "license": "MIT"
+}

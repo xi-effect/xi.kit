@@ -1,4 +1,5 @@
-import '@xipkg/theme';
+import '@xipkg/theme.types';
+
 import { FC, useState } from 'react';
 import { Stack, Typography } from '@mui/material';
 import Icons from './Icons';
