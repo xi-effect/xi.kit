@@ -1,6 +1,6 @@
 type Colors = { [key in 100 | 80 | 60 | 40 | 20 | 0]: string };
 type ColorsShort = { [key in 100 | 60 | 40 | 20]: string };
-type ColorsPeterburg = {
+type ColorsPetersburg = {
   [key in 100 | 90 | 80 | 70 | 60 | 50 | 40 | 30 | 20 | 10 | 5 | 0]: string;
 };
 
@@ -29,7 +29,7 @@ declare module '@mui/material/styles' {
       [key in 'main' | 'block']: string;
     };
     brand: Colors;
-    petersburg: ColorsPeterburg;
+    petersburg: ColorsPetersburg;
     moscow: Colors;
     ekaterinburg: Colors;
     kungur: Colors;
@@ -44,7 +44,7 @@ declare module '@mui/material/styles' {
       [key in 'main' | 'block']: string;
     };
     brand: Colors;
-    petersburg: ColorsPeterburg;
+    petersburg: ColorsPetersburg;
     moscow: Colors;
     ekaterinburg: Colors;
     kungur: Colors;
