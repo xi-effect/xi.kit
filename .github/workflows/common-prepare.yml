@@ -11,9 +11,6 @@ jobs:
   analyze_files:
     runs-on: ubuntu-latest
 
-    env:
-      filename: .github/workflows/generated_filters.yml
-
     outputs:
       lintable: ${{ steps.path_filter.outputs.lintable }}
       packages: ${{ steps.path_filter.outputs.packages }}
@@ -26,7 +23,7 @@ jobs:
         uses: dorny/paths-filter@v2
         id: path_filter
         with:
-          filters: .github/files.yml
+          filters: .github/filters.yml
 
   lint_and_format:
     needs: analyze_files
