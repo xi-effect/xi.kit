@@ -10,7 +10,7 @@ const nextConfig = {
   },
   transpilePackages: [
     '@xipkg/theme',
-    '@xipkg/theme',
+    '@xipkg/theme.types',
     '@xipkg/components.badge',
     '@xipkg/components.loading',
     '@xipkg/components.file',
