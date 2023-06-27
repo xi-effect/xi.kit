@@ -19,7 +19,6 @@ module.exports = {
   ignorePatterns: ['sw.js', 'workbox-*.js', 'fallback-*.js', 'templates/**/*.tsx|ts|js'],
   plugins: ['react', 'react-hooks', '@typescript-eslint'],
   rules: {
-    semi: 'off',
     '@typescript-eslint/semi': 'error',
     // NextJs specific fix: suppress errors for missing 'import React' in files for nextjs
     'react/react-in-jsx-scope': 'off',
