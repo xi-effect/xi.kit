@@ -3,8 +3,11 @@ name: Common Preparation Steps
 on:
   workflow_call:
     outputs:
+      packages:
+        description: Will be 'true' if any package files have changed
+        value: ${{ jobs.analyze_files.outputs.packages }}
       xi-frodo:
-        description: Will be 'true' xi.frodo's files have changed
+        description: Will be 'true' if xi.frodo's files have changed
         value: ${{ jobs.analyze_files.outputs.xi-frodo }}
 
 jobs:
@@ -13,6 +16,7 @@ jobs:
 
     outputs:
       lintable: ${{ steps.path_filter.outputs.lintable }}
+      packages: ${{ steps.path_filter.outputs.packages }}
       xi-frodo: ${{ steps.path_filter.outputs.xi-frodo }}
 
     steps:

@@ -6,7 +6,7 @@
 # Можно использовать все фишки YAML-я:
 #   https://ru.wikipedia.org/wiki/YAML#%D0%A1%D0%B8%D0%BD%D1%82%D0%B0%D0%BA%D1%81%D0%B8%D1%81
 
-# Имена последних объектов (xi-frodo, lintable) лучше не менять
+# Имена последних объектов (xi-frodo, packages, lintable) лучше не менять
 
 configs: &configs  # изменения тут обязательно запускают все пайплайны
   - ".github/workflows/*"
@@ -30,3 +30,7 @@ lintable:  # запускает прогон линтера
   - "**.[jt]s"
   - "**.[jt]sx"
   - "**.md"
+
+packages:  # запускает деплой packages в main-ветке (только обновлённых)
+  - *configs
+  - "packages/**"
