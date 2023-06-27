@@ -29,18 +29,5 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ],
-  "description": "This is an official starter Turborepo.",
-  "version": "1.0.0",
-  "main": ".eslintrc.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xi-effect/xi.kit.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/xi-effect/xi.kit/issues"
-  },
-  "homepage": "https://github.com/xi-effect/xi.kit#readme"
+  ]
 }

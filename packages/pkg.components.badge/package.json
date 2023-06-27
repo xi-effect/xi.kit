@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/components.badge",
-  "version": "0.3.1",
+  "version": "0.3.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -19,8 +19,8 @@
     "@types/node": "^17.0.12",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
-    "@xipkg/config.typescript": "latest",
-    "@xipkg/eslint-config-custom": "latest",
+    "@xipkg/config.typescript": "^0.3.0",
+    "@xipkg/eslint-config-custom": "^0.3.0",
     "@xipkg/theme": "latest",
     "@xipkg/theme.types": "latest",
     "eslint": "^7.32.0",
@@ -30,5 +30,6 @@
     "access": "public"
   },
   "author": "xi.effect",
-  "description": ""
+  "description": "",
+  "gitHead": "6d348afbd3da6ea4a1b79c976f5b80b0d41a6d33"
 }
