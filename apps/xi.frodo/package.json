@@ -39,7 +39,7 @@
     "@xipkg/navigation.breadcrumbs": "*",
     "@xipkg/navigation.dropdown": "*",
     "@xipkg/navigation.link": "*",
-    "@xipkg/theme": "*",
+    "@xipkg/theme.type": "*",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.11.0"
