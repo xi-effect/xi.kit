@@ -26,7 +26,7 @@
     "@xipkg/components.badge": "*",
     "@xipkg/components.file": "*",
     "@xipkg/components.modal": "*",
-    "@xipkg/theme.type": "*",
+    "@xipkg/theme.types": "*",
     "@xipkg/config.typescript": "*",
     "@xipkg/icons": "*",
     "@xipkg/inputs.checkbox": "*",
