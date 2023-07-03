@@ -115,27 +115,33 @@
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+
+    @apply disabled:bg-gray-10 disabled:text-gray-30;
   }
 
   .btn-l {
     height: 56px;
     border-radius: 12px;
 
-    @apply t-l;
+    @apply t-l px-8 pt-3 pb-[14px];
   }
 
   .btn-m {
     height: 48px;
     border-radius: 8px;
 
-    @apply t-m;
+    @apply t-m px-6 pt-3 pb-[14px];
   }
 
   .btn-s {
     height: 32px;
     border-radius: 6px;
 
-    @apply t-s;
+    @apply t-s px-4 pt-[5px] pb-[7px];
+  }
+
+  .btn-primary {
+    @apply bg-brand-80 text-brand-0 hover:bg-brand-100 active:bg-brand-100;
   }
 }
 
