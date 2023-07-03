@@ -31,9 +31,6 @@ const nextConfig = {
     outputFileTracingRoot: path.join(__dirname, '../../'),
   },
   transpilePackages: [
-    'pkg.theme',
-    'pkg.spinner',
-    'pkg.utils',
     '@xipkg/config.typescript',
     'pkg.signin.form',
     '@emotion/styled',
