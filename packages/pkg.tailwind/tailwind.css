@@ -108,6 +108,35 @@
       transform: rotate(360deg);
     }
   }
+
+  .btn {
+    display: inline-flex;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .btn-l {
+    height: 56px;
+    border-radius: 12px;
+
+    @apply t-l;
+  }
+
+  .btn-m {
+    height: 48px;
+    border-radius: 8px;
+
+    @apply t-m;
+  }
+
+  .btn-s {
+    height: 32px;
+    border-radius: 6px;
+
+    @apply t-s;
+  }
 }
 
 ::-webkit-scrollbar {

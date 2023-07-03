@@ -1,8 +1,9 @@
 {
-  "compilerOptions": {
-    "baseUrl": "."
-  },
   "extends": "@xipkg/config.typescript/nextjs.json",
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "@xipkg/theme/index.d.ts"],
-  "exclude": ["node_modules", "templates"]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "plugins": [{ "name": "next" }]
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
