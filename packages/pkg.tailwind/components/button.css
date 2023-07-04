@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    display: inline-flex;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+    @apply disabled:bg-gray-10 disabled:text-gray-30;
+  }
+
+  .btn-l {
+    height: 56px;
+    border-radius: 12px;
+
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 500;
+
+    @apply px-8 pt-3 pb-[14px];
+  }
+
+  .btn-m {
+    height: 48px;
+    border-radius: 8px;
+
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+
+    @apply px-6 pt-3 pb-[14px];
+  }
+
+  .btn-s {
+    height: 32px;
+    border-radius: 6px;
+
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+
+    @apply px-4 pt-[5px] pb-[7px];
+  }
+
+  .btn-primary {
+    @apply bg-brand-80 text-brand-0 hover:bg-brand-100 active:bg-brand-100;
+  }
+}
