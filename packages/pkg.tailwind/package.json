@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/tailwind",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Tailwind config",
   "main": "./design-system-preset.js",
   "scripts": {
@@ -15,7 +15,9 @@
     "access": "public"
   },
   "files": [
-    "./tailwind.css"
+    "./tailwind.css",
+    "./design-system-preset.js",
+    "./components/button.css"
   ],
   "author": "xi.effect",
   "license": "MIT"
