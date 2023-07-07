@@ -157,7 +157,7 @@ svg {
 
   /* background */
   --xi-bkgd-main: #EDEFFF;
-  --xi-bkgd-block #FFFFFF;
+  --xi-bkgd-block: #FFFFFF;
 
   /* moscow */
   --xi-red-0: #FCE9E9;
@@ -233,7 +233,7 @@ svg {
 
   /* background */
   --xi-bkgd-main: #EDEFFF;
-  --xi-bkgd-block #FFFFFF;
+  --xi-bkgd-block: #FFFFFF;
 
   /* moscow */
   --xi-red-0: #FCE9E9;
