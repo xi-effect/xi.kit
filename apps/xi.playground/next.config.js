@@ -1,17 +1,9 @@
-// Не поддавайтесь соблазну использовать здесь import
-const path = require('path');
-
 const plugins = [];
 
 const nextConfig = {
-  experimental: {
-    esmExternals: true,
-    outputFileTracingRoot: path.join(__dirname, '../../'),
-  },
   transpilePackages: [
     '@xipkg/tailwind',
     '@xipkg/config.typescript',
-    'pkg.signin.form',
   ],
   reactStrictMode: true,
   images: {
@@ -23,7 +15,6 @@ const nextConfig = {
       'xieffect.ru',
     ],
   },
-  output: 'standalone',
   webpack(config) {
     config.module.rules.push({
       test: /\.(woff|woff2|eot|ttf|otf)$/i,
