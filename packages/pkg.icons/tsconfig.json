@@ -93,7 +93,7 @@
     "src/Shape.tsx",
     "src/SimpleAnswer.tsx",
     "src/Sort.tsx",
-    "src/SoundOff.tsx",
+    "src/Soundoff.tsx",
     "src/SoundOn.tsx",
     "src/Speaker.tsx",
     "src/Stroke.tsx",

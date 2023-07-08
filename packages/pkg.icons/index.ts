@@ -90,7 +90,7 @@ import { Shape } from './src/Shape';
 import { SimpleAnswer } from './src/SimpleAnswer';
 import { Sort } from './src/Sort';
 import { Stroke } from './src/Stroke';
-import { SoundOff } from './src/SoundOff';
+import { Soundoff } from './src/Soundoff';
 import { SoundOn } from './src/SoundOn';
 import { Speaker } from './src/Speaker';
 import { Sun } from './src/Sun';
@@ -202,7 +202,7 @@ export {
   Shape,
   SimpleAnswer,
   Sort,
-  SoundOff,
+  Soundoff,
   SoundOn,
   Speaker,
   Sun,
