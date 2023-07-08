@@ -1,0 +1,60 @@
+name: Deploy all changed packages
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  analyze-packages:
+    runs-on: ubuntu-latest
+
+    env:
+      filename: .github/workflows/generated-filters.yml
+
+    outputs:
+      packages: ${{ steps.package_filter.outputs.changes }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - id: script
+        name: Generate package filters
+        run: ./.github/workflows/generate-package-filters.sh
+        shell: bash
+
+      - name: Filter packages
+        uses: dorny/paths-filter@v2
+        id: package_filter
+        with:
+          filters: ${{ env.filename }}
+
+  deploy-packages:
+    needs: analyze-packages
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        package: ${{ fromJSON(needs.analyze-packages.outputs.packages) }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+          cache: npm
+
+      - name: Perform clean install
+        run: npm ci
+        working-directory: packages/${{ matrix.package }}
+
+      - name: Publish the package
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        working-directory: packages/${{ matrix.package }}
+        # continue-on-error: true

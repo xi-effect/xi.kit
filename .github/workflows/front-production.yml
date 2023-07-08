@@ -1,0 +1,16 @@
+name: Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  prepare:
+    uses: ./.github/workflows/common-prepare.yml
+
+  deploy-packages:
+    needs: prepare
+    if: needs.prepare.outputs.packages == 'true'
+    uses: ./.github/workflows/packages-deploy.yml
