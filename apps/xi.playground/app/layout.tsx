@@ -1,9 +1,12 @@
 import '@xipkg/tailwind/index.css';
+import { Providers } from './providers';
 
 export default function RootLayout({ children }: any) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
