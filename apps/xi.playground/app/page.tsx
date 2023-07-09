@@ -1,4 +1,4 @@
-export default function Page() {
+export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center gap-1 p-24">
       <button type="button" className="btn btn-s">
