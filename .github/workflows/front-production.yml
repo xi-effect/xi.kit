@@ -14,3 +14,4 @@ jobs:
     needs: prepare
     if: needs.prepare.outputs.packages == 'true'
     uses: ./.github/workflows/packages-deploy.yml
+    secrets: inherit

@@ -11,9 +11,7 @@
 configs: &configs  # изменения тут обязательно запускают все пайплайны
   - ".github/workflows/*"
   - "package.json"
-  - "package-lock.json"
-  - "**/package.json"
-  - "**/package-lock.json"
+  - ".npmrc"
 
 app_common: &app_common  # тригерят все билды (и депой в main-ветке)
   - *configs
@@ -23,6 +21,8 @@ app_common: &app_common  # тригерят все билды (и депой в 
 
 lintable:  # запускает прогон линтера
   - *configs
+  - ".eslintrc.js"
+  - "prettier.config.js"
   - "**.[jt]s"
   - "**.[jt]sx"
   - "**.md"
