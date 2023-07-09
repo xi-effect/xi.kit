@@ -1,5 +1,5 @@
 {
   "extends": "@xipkg/config.typescript/react-library.json",
-  "include": ["*"],
+  "include": ["*", "../pkg.navigation.dropdown"],
   "exclude": ["dist", "build", "node_modules"]
 }
