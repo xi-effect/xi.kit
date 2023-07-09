@@ -1,4 +1,3 @@
-
 import { IconProps } from '../types';
 
 export const Exit = ({ ...props }: IconProps) => (

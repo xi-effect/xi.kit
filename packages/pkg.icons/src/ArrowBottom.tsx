@@ -1,4 +1,3 @@
-
 import { IconProps } from '../types';
 
 export const ArrowBottom = ({ ...props }: IconProps) => (

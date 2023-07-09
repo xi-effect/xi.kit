@@ -1,4 +1,3 @@
-
 import { IconProps } from '../types';
 
 export const ChevronSmallRight = ({ ...props }: IconProps) => (

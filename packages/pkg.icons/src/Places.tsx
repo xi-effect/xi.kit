@@ -1,4 +1,3 @@
-
 import { IconProps } from '../types';
 
 export const Places = ({ ...props }: IconProps) => (

@@ -1,4 +1,3 @@
-
 import { IconProps } from '../types';
 
 export const Check = ({ ...props }: IconProps) => (

@@ -10,8 +10,6 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@xipkg/icons": "^0.3.0",
-    "@xipkg/navigation.link": "^0.3.0",
     "react": "^18.2.0"
   },
   "devDependencies": {
@@ -20,7 +18,6 @@
     "@xipkg/config.typescript": "^0.3.0",
     "@xipkg/eslint-config-custom": "^0.3.0",
     "eslint": "^7.32.0",
-    "react": "^18.2.0",
     "typescript": "^4.6.4"
   },
   "publishConfig": {

@@ -1,4 +1,3 @@
-
 import { IconProps } from '../types';
 
 export const Home = ({ ...props }: IconProps) => (

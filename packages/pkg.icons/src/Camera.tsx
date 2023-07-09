@@ -1,4 +1,3 @@
-
 import { IconProps } from '../types';
 
 export const Camera = ({ ...props }: IconProps) => (
