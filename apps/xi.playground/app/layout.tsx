@@ -1,4 +1,4 @@
-import '@xipkg/tailwind/tailwind.css';
+import '@xipkg/tailwind/index.css';
 
 export default function RootLayout({ children }: any) {
   return (

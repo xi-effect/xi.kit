@@ -132,6 +132,8 @@ svg {
   pointer-events: none;
 }
 
+/* Palette */
+
 :root {
   /* petersburg */
   --xi-gray-0: #FFFFFF;
@@ -175,7 +177,7 @@ svg {
   --xi-green-80: #00A82C;
   --xi-green-100: #029127;
 
-  /* orange */
+  /* kungur */
   --xi-orange-0: #FCE8DE;
   --xi-orange-20: #F7BC9E;
   --xi-orange-40: #F49A6E;
@@ -183,25 +185,25 @@ svg {
   --xi-orange-80: #EC570E;
   --xi-orange-100: #CB4C0E;
   
-  /* yellow */
+  /* arkhangelsk */
   --xi-yellow-20: #FFF5D7;
   --xi-yellow-40: #FFEBAF;
   --xi-yellow-60: #FFE187;
   --xi-yellow-100: #FFCD37;
 
-  /* violet */
+  /* vladivostok */
   --xi-violet-20: #EFDFFB;
   --xi-violet-40: #CD9CF3;
   --xi-violet-60: #B46BED;
   --xi-violet-100: #8208E1;
 
-  /* pink */
+  /* volgograd */
   --xi-pink-20: #FBE0F8;
   --xi-pink-40: #F19DE9;
   --xi-pink-60: #EB6BDE;
   --xi-pink-100: #DD09C8;
 
-  /* cyan */
+  /* saratov */
   --xi-cyan-20: #DFF4FC;
   --xi-cyan-40: #9CDEF6;
   --xi-cyan-60: #6BCEF1;
@@ -210,76 +212,76 @@ svg {
 
 [data-theme='dark'] {
   /* petersburg */
-  --xi-gray-0: #FFFFFF;
-  --xi-gray-5: #F7F7F7;
-  --xi-gray-10: #E8E8E8;
-  --xi-gray-20: #CFCFCF;
-  --xi-gray-30: #B8B8B8;
-  --xi-gray-40: #9F9F9F;
-  --xi-gray-50: #888888;
-  --xi-gray-60: #707070;
-  --xi-gray-70: #585858;
-  --xi-gray-80: #404040;
-  --xi-gray-90: #282828;
-  --xi-gray-100: #101010;
+  --xi-gray-0: #151515;
+  --xi-gray-5: #1F1F1F;
+  --xi-gray-10: #2A2A2A;
+  --xi-gray-20: #3F3F3F;
+  --xi-gray-30: #545454;
+  --xi-gray-40: #696969;
+  --xi-gray-50: #7E7E7E;
+  --xi-gray-60: #929292;
+  --xi-gray-70: #A7A7A7;
+  --xi-gray-80: #BCBCBC;
+  --xi-gray-90: #D1D1D1;
+  --xi-gray-100: #E6E6E6;
 
   /* brand */
-  --xi-brand-0: #EDEFFF;
-  --xi-brand-20: #B4BDFF;
-  --xi-brand-40: #8F9CFF;
-  --xi-brand-60: #697BFF;
-  --xi-brand-80: #445AFF;
-  --xi-brand-100: #3546BD;
+  --xi-brand-0: #21222C;
+  --xi-brand-20: #393D5A;
+  --xi-brand-40: #5B639D;
+  --xi-brand-60: #737ECB;
+  --xi-brand-80: #8B98F9;
+  --xi-brand-100: #B1BAFB;
 
   /* background */
-  --xi-bkgd-main: #EDEFFF;
-  --xi-bkgd-block: #FFFFFF;
+  --xi-bkgd-main: #151515;
+  --xi-bkgd-block: #1F1F1F;
 
   /* moscow */
-  --xi-red-0: #FCE9E9;
-  --xi-red-20: #F19E9E;
-  --xi-red-40: #EB6E6D;
-  --xi-red-60: #E43D3D;
-  --xi-red-80: #DD0D0C;
-  --xi-red-100: #BE0D0C;
+  --xi-red-0: #261B1B;
+  --xi-red-20: #482626;
+  --xi-red-40: #793636;
+  --xi-red-60: #9B4141;
+  --xi-red-80: #BD4C4C;
+  --xi-red-100: #E15251;
 
   /* ekaterinburg */
-  --xi-green-0: #E4F6E9;
-  --xi-green-20: #99DCAB;
-  --xi-green-40: #66CB80;
-  --xi-green-60: #33B956;
-  --xi-green-80: #00A82C;
-  --xi-green-100: #029127;
+  --xi-green-0: #1B261D;
+  --xi-green-20: #26482E;
+  --xi-green-40: #367947;
+  --xi-green-60: #419B58;
+  --xi-green-80: #4CBD69;
+  --xi-green-100: #51E177;
 
-  /* orange */
-  --xi-orange-0: #FCE8DE;
-  --xi-orange-20: #F7BC9E;
-  --xi-orange-40: #F49A6E;
-  --xi-orange-60: #F0793E;
-  --xi-orange-80: #EC570E;
-  --xi-orange-100: #CB4C0E;
+  /* kungur */
+  --xi-orange-0: #271E1A;
+  --xi-orange-20: #462515;
+  --xi-orange-40: #7F4A30;
+  --xi-orange-60: #A25C3A;
+  --xi-orange-80: #C66E43;
+  --xi-orange-100: #EA7D47;
   
-  /* yellow */
-  --xi-yellow-20: #FFF5D7;
-  --xi-yellow-40: #FFEBAF;
-  --xi-yellow-60: #FFE187;
-  --xi-yellow-100: #FFCD37;
+  /* arkhangelsk */
+  --xi-yellow-20: #262214;
+  --xi-yellow-40: #5A4811;
+  --xi-yellow-60: #5A4811;
+  --xi-yellow-100: #C2940A;
 
-  /* violet */
-  --xi-violet-20: #EFDFFB;
-  --xi-violet-40: #CD9CF3;
-  --xi-violet-60: #B46BED;
-  --xi-violet-100: #8208E1;
+  /* vladivostok */
+  --xi-violet-20: #211827;
+  --xi-violet-40: #44215F;
+  --xi-violet-60: #5A2782;
+  --xi-violet-100: #8933CC;
 
-  /* pink */
-  --xi-pink-20: #FBE0F8;
-  --xi-pink-40: #F19DE9;
-  --xi-pink-60: #EB6BDE;
-  --xi-pink-100: #DD09C8;
+  /* volgograd */
+  --xi-pink-20: #271826;
+  --xi-pink-40: #5F2158;
+  --xi-pink-60: #822779;
+  --xi-pink-100: #CC33BD;
 
-  /* cyan */
-  --xi-cyan-20: #DFF4FC;
-  --xi-cyan-40: #9CDEF6;
-  --xi-cyan-60: #6BCEF1;
-  --xi-cyan-100: #09AEE8;
+  /* saratov */
+  --xi-cyan-20: #182327;
+  --xi-cyan-40: #214F5F;
+  --xi-cyan-60: #276B82;
+  --xi-cyan-100: #33A4CC;
 }
