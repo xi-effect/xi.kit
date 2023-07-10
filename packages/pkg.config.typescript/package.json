@@ -4,8 +4,7 @@
   "files": [
     "base.json",
     "nextjs.json",
-    "react-library.json",
-    "mui-theme.d.ts"
+    "react-library.json"
   ],
   "description": "These are base shared `tsconfig.json`s from which all other `tsconfig.json`'s inherit from.",
   "main": "index.js",
