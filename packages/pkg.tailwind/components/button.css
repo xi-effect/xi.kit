@@ -47,6 +47,14 @@
   }
 
   .btn-primary {
-    @apply bg-brand-80 text-brand-0 hover:bg-brand-100 active:bg-brand-100;
+    @apply !bg-brand-80 text-brand-0 hover:bg-brand-100 active:bg-brand-100;
+  }
+
+  .btn-error {
+    @apply !bg-red-80 text-red-0 hover:bg-red-100 active:bg-red-100;
+  }
+
+  .btn-success {
+    @apply !bg-green-80 text-green-0 hover:bg-green-100 active:bg-green-100;
   }
 }

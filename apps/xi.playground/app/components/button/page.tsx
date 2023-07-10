@@ -12,6 +12,7 @@ export default function Button() {
       <button type="button" className="btn btn-l">
         Click me
       </button>
+
       <button type="button" className="btn btn-s btn-primary">
         Click me
       </button>
@@ -19,6 +20,26 @@ export default function Button() {
         Click me
       </button>
       <button type="button" className="btn btn-l btn-primary">
+        Click me
+      </button>
+
+      <button type="button" className="btn btn-s btn-error">
+        Click me
+      </button>
+      <button type="button" className="btn btn-m btn-error">
+        Click me
+      </button>
+      <button type="button" className="btn btn-l btn-error">
+        Click me
+      </button>
+
+      <button type="button" className="btn btn-s btn-success">
+        Click me
+      </button>
+      <button type="button" className="btn btn-m btn-success">
+        Click me
+      </button>
+      <button type="button" className="btn btn-l btn-success">
         Click me
       </button>
     </main>
