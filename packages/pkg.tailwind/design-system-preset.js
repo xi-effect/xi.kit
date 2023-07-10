@@ -29,7 +29,7 @@ module.exports = {
       },
       brand: {
         100: 'var(--xi-brand-100)',
-        80: 'var(--xi-brand-800)',
+        80: 'var(--xi-brand-80)',
         60: 'var(--xi-brand-60)',
         40: 'var(--xi-brand-40)',
         20: 'var(--xi-brand-20)',
