@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@xipkg/icons": "^0.3.0",
-    "next": "13.2.4",
+    "next": "^13.4.9",
     "react": "^18.2.0",
     "uuid": "^9.0.0"
   },
