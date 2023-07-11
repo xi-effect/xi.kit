@@ -7,18 +7,23 @@ export default function Input() {
       </div>
 
       <div className="flex flex-row gap-4">
-        <input className="input input-m input-error" />
-        <input className="input input-s input-error" />
+        <input className="input input-m" placeholder="Текстовое поле" />
+        <input className="input input-s" placeholder="Текстовое поле" />
       </div>
 
       <div className="flex flex-row gap-4">
-        <input className="input input-m input-warning" />
-        <input className="input input-s input-warning" />
+        <input className="input input-m input-error" placeholder="Текстовое поле" />
+        <input className="input input-s input-error" placeholder="Текстовое поле" />
       </div>
 
       <div className="flex flex-row gap-4">
-        <input className="input input-m" disabled />
-        <input className="input input-s" disabled />
+        <input className="input input-m input-warning" placeholder="Текстовое поле" />
+        <input className="input input-s input-warning" placeholder="Текстовое поле" />
+      </div>
+
+      <div className="flex flex-row gap-4">
+        <input className="input input-m" placeholder="Текстовое поле" disabled />
+        <input className="input input-s" placeholder="Текстовое поле" disabled />
       </div>
     </main>
   );
