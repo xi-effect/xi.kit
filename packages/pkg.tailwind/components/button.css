@@ -69,6 +69,11 @@
   }
 
   .btn-outlined {
-    @apply border-2 border-solid bg-gray-0 border-gray-30 text-gray-100 hover:bg-gray-5 active:bg-gray-5;
+    border: 2px solid;
+    @apply bg-gray-0 border-gray-30 text-gray-100 hover:bg-gray-5 active:bg-gray-5;
+  }
+  .btn-outlined.btn-s {
+    border: 1px solid;
+    @apply border-gray-30;
   }
 }
