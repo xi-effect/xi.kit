@@ -62,7 +62,13 @@
     @apply bg-green-80 text-green-0 hover:bg-green-100 active:bg-green-100;
   }
 
+  .btn-text {
+    border: none;
+    @apply bg-gray-0 text-gray-100 hover:bg-gray-5 active:bg-gray-5;
+    @apply disabled:text-gray-30 disabled:bg-gray-0;
+  }
+
   .btn-outlined {
-    @apply border-2 border-solid bg-gray-0 border-gray-30 text-gray-100 hover:bg-gray-5;
+    @apply border-2 border-solid bg-gray-0 border-gray-30 text-gray-100 hover:bg-gray-5 active:bg-gray-5;
   }
 }

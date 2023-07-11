@@ -74,6 +74,30 @@ export default function Button() {
           Click me
         </button>
       </div>
+
+      <div className="flex flex-row gap-4">
+        <button type="button" className="btn btn-s btn-text">
+          Click me
+        </button>
+        <button type="button" className="btn btn-m btn-text">
+          Click me
+        </button>
+        <button type="button" className="btn btn-l btn-text">
+          Click me
+        </button>
+      </div>
+
+      <div className="flex flex-row gap-4">
+        <button type="button" className="btn btn-s btn-text" disabled>
+          Click me
+        </button>
+        <button type="button" className="btn btn-m btn-text" disabled>
+          Click me
+        </button>
+        <button type="button" className="btn btn-l btn-text" disabled>
+          Click me
+        </button>
+      </div>
     </main>
   );
 }
