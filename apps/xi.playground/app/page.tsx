@@ -19,37 +19,33 @@ export default function Home() {
       <button type="button" className="btn btn-l btn-primary">
         Click me
       </button>
-<<<<<<< HEAD
-      <a href="https://www.google.com/">I am a simple link</a>
-      <a href="https://www.google.com/" className="link">
-        I am a default link
-      </a>
-      <a href="https://www.google.com/" className="link link-s">
-        I am a small link
-      </a>
-      <a href="https://www.google.com/" className="link link-m">
-        I am a medium link
-      </a>
-      <a href="https://www.google.com/" className="link link-l">
-        I am a large link
-      </a>
-      <a href="https://www.google.com/" className="link link-l disabled m-5">
-        I am a disabled large link
-      </a>
-      <a href="https://www.google.com/" className="link link-l link-sky m-5">
-        I am a sky large link
-      </a>
-      <a href="https://www.google.com/" className="link link-l link-brand m-5">
-        I am a brand large link
-      </a>
-      <a href="https://www.google.com/" className="link link-l link-moscow m-5">
-        I am a moscow large link
-      </a>
-      <a href="https://www.google.com/" className="link link-l link-ekaterinburg m-5">
-        I am a ekaterinburg large link
-      </a>
-=======
->>>>>>> main
+      <div className="flex p-5 gap-5">
+        <a href="https://www.google.com/" className="link color-red-60">
+          I am a default link
+        </a>
+        <a href="https://www.google.com/" className="link link-s">
+          I am a small link
+        </a>
+        <a href="https://www.google.com/" className="link link-m">
+          I am a medium link
+        </a>
+        <a href="https://www.google.com/" className="link link-l">
+          I am a large link
+        </a>
+        <a className="link link-l link-disabled">I am a disabled large link</a>
+        <a href="https://www.google.com/" className="link link-l link-sky">
+          I am a sky large link
+        </a>
+        <a href="https://www.google.com/" className="link link-l link-brand">
+          I am a brand large link
+        </a>
+        <a href="https://www.google.com/" className="link link-l link-moscow">
+          I am a moscow large link
+        </a>
+        <a href="https://www.google.com/" className="link link-l link-ekaterinburg">
+          I am a ekaterinburg large link
+        </a>
+      </div>
     </main>
   );
 }

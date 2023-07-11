@@ -4,16 +4,22 @@
 
 @layer components {
   .link {
+    display: flex;
     text-decoration: underline;
     cursor: pointer;
     transition: 0.3s;
-    /* 
-    :disabled {
-      color: '#B8B8B8';
-    } */
+    color: var(--xi-gray-90);
 
-    @apply text-green-900 disabled:text-green-400;
-    /* @apply color-gray-90 disabled:text-gray-30; */
+    @apply hover:text-gray-100 active:text-gray-90;
+  }
+
+  .link-disabled {
+    cursor: default;
+    pointer-events: none;
+    text-decoration: none;
+    color: var(--xi-gray-30);
+
+    @apply hover:text-gray-30 active:text-gray-30;
   }
 
   .link-l {
@@ -35,34 +41,26 @@
   }
 
   .link-sky {
-    color: 'gray.60';
-    :hover {
-      color: 'gray.100';
-    }
-    /* @apply color-gray-60 hover:text-gray-100; */
+    color: var(--xi-gray-60);
+
+    @apply hover:text-gray-100 active:text-gray-60;
   }
 
   .link-brand {
-    color: 'brand.80';
-    :hover {
-      color: 'brand.100';
-    }
-    /* @apply color-brand-80 hover:text-brand-100; */
+    color: var(--xi-brand-80);
+
+    @apply hover:text-brand-100 active:text-brand-80;
   }
 
   .link-moscow {
-    color: 'red.80';
-    :hover {
-      color: 'red.100';
-    }
-    /* @apply color-red-80 hover:text-red-100; */
+    color: var(--xi-red-80);
+
+    @apply hover:text-red-100 active:text-red-80;
   }
 
   .link-ekaterinburg {
-    color: 'gren.80';
-    :hover {
-      color: 'green.100';
-    }
-    /* @apply color-green-80 hover:text-green-100; */
+    color: var(--xi-green-80);
+
+    @apply hover:text-green-100 active:text-green-80;
   }
 }
