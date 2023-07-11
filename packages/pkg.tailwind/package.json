@@ -17,7 +17,8 @@
   "files": [
     "./tailwind.css",
     "./design-system-preset.js",
-    "./components/button.css"
+    "./components/button.css",
+    "./components/link.css"
   ],
   "author": "xi.effect",
   "license": "MIT"

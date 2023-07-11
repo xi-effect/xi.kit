@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .link {
+    text-decoration: underline;
+    cursor: pointer;
+    transition: 0.3s;
+    /* 
+    :disabled {
+      color: '#B8B8B8';
+    } */
+
+    @apply text-green-900 disabled:text-green-400;
+    /* @apply color-gray-90 disabled:text-gray-30; */
+  }
+
+  .link-l {
+    gap: 4px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .link-m {
+    gap: 2px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .link-s {
+    gap: 2px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .link-sky {
+    color: 'gray.60';
+    :hover {
+      color: 'gray.100';
+    }
+    /* @apply color-gray-60 hover:text-gray-100; */
+  }
+
+  .link-brand {
+    color: 'brand.80';
+    :hover {
+      color: 'brand.100';
+    }
+    /* @apply color-brand-80 hover:text-brand-100; */
+  }
+
+  .link-moscow {
+    color: 'red.80';
+    :hover {
+      color: 'red.100';
+    }
+    /* @apply color-red-80 hover:text-red-100; */
+  }
+
+  .link-ekaterinburg {
+    color: 'gren.80';
+    :hover {
+      color: 'green.100';
+    }
+    /* @apply color-green-80 hover:text-green-100; */
+  }
+}

@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url('./components/button.css');
+@import url('./components/link.css');
 
 @layer components {
   /* This wont be included in your compiled CSS unless you actually use it */
