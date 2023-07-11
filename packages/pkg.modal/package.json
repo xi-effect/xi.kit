@@ -7,11 +7,12 @@
   "scripts": {
     "build": "tsup index.ts --format cjs --dts",
     "start": "npm run build -- --watch",
+    "dev": "npm run build -- --watch",
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.4",
-    "@xipkg/icons": "^0.4.0",
+    "@xipkg/icons": "^0.4.1",
     "react": "^18.2.0"
   },
   "devDependencies": {

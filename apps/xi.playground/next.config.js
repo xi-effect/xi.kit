@@ -1,11 +1,8 @@
 const plugins = [];
 
 const nextConfig = {
-  transpilePackages: [
-    '@xipkg/tailwind',
-    '@xipkg/config.typescript',
-  ],
   reactStrictMode: true,
+  transpilePackages: ['tailwind', '@xipkg/modal', '@xipkg/tailwind', '@xipkg/config.typescript'],
   images: {
     domains: [
       'cdn.discordapp.com',
