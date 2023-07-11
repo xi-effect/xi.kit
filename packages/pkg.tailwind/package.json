@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/tailwind",
-  "version": "0.0.2",
+  "version": "0.2.0",
   "description": "Tailwind config",
   "main": "./design-system-preset.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "access": "public"
   },
   "files": [
-    "./tailwind.css",
+    "./index.css",
     "./design-system-preset.js",
     "./components/button.css",
     "./components/link.css"

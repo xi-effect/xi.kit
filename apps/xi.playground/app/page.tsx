@@ -1,5 +1,3 @@
-'use client';
-
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center gap-1 p-24">
@@ -21,6 +19,7 @@ export default function Home() {
       <button type="button" className="btn btn-l btn-primary">
         Click me
       </button>
+<<<<<<< HEAD
       <a href="https://www.google.com/">I am a simple link</a>
       <a href="https://www.google.com/" className="link">
         I am a default link
@@ -49,6 +48,8 @@ export default function Home() {
       <a href="https://www.google.com/" className="link link-l link-ekaterinburg m-5">
         I am a ekaterinburg large link
       </a>
+=======
+>>>>>>> main
     </main>
   );
 }

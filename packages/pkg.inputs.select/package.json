@@ -10,10 +10,6 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/base": "5.0.0-alpha.113",
-    "@mui/material": "^5.13.6",
     "@xipkg/icons": "^0.3.0",
     "react": "^18.2.0",
     "uuid": "^9.0.0"
@@ -25,7 +21,6 @@
     "@xipkg/config.typescript": "^0.3.0",
     "@xipkg/eslint-config-custom": "^0.3.0",
     "eslint": "^7.32.0",
-    "react": "^18.2.0",
     "typescript": "^4.6.4"
   },
   "publishConfig": {
