@@ -6,14 +6,17 @@
   .input {
     width: 250px;
     outline: none;
+    transition: 0.3s;
 
     @apply bg-gray-0;
+    @apply hover:border-gray-50 focus:border-gray-80;
+    @apply disabled:bg-gray-10 disabled:border-gray-10;
   }
 
   .input-s {
     height: 32px;
 
-    border: 2px solid;
+    border: 1px solid;
     border-radius: 6px;
     @apply border-gray-30 text-s;
   }
@@ -21,8 +24,18 @@
   .input-m {
     height: 48px;
 
+    border: 2px solid;
     border-radius: 8px;
-    border: 1px solid;
     @apply border-gray-30 text-m;
+  }
+
+  .input-warning {
+    @apply border-orange-80;
+    @apply hover:border-orange-100 focus:border-orange-100;
+  }
+
+  .input-error {
+    @apply border-red-80;
+    @apply hover:border-red-100 focus:border-red-100;
   }
 }
