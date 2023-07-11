@@ -11,6 +11,8 @@
     flex-shrink: 0;
     border: none;
     outline: none;
+    cursor: pointer;
+    transition: 0.3s;
 
     @apply disabled:bg-gray-10 disabled:text-gray-30;
   }
@@ -58,5 +60,9 @@
 
   .btn-success {
     @apply bg-green-80 text-green-0 hover:bg-green-100 active:bg-green-100;
+  }
+
+  .btn-outlined {
+    @apply border-2 border-solid bg-gray-0 border-gray-30 text-gray-100 hover:bg-gray-5;
   }
 }

@@ -42,6 +42,16 @@ export default function Button() {
       <button type="button" className="btn btn-l btn-success">
         Click me
       </button>
+
+      <button type="button" className="btn btn-s btn-outlined">
+        Click me
+      </button>
+      <button type="button" className="btn btn-m btn-outlined">
+        Click me
+      </button>
+      <button type="button" className="btn btn-l btn-outlined">
+        Click me
+      </button>
     </main>
   );
 }
