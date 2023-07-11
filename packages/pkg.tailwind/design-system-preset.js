@@ -9,6 +9,22 @@ module.exports = {
     },
   },
   theme: {
+    fontSize: {
+      s: [
+        '14px',
+        {
+          lineHeight: '20px',
+          fontWeight: '500',
+        },
+      ],
+      m: [
+        '16px',
+        {
+          lineHeight: '22px',
+          fontWeight: '500',
+        },
+      ],
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',

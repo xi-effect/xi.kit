@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input {
+    width: 250px;
+    outline: none;
+
+    @apply bg-gray-0;
+  }
+
+  .input-s {
+    height: 32px;
+
+    border: 2px solid;
+    border-radius: 6px;
+    @apply border-gray-30 text-s;
+  }
+
+  .input-m {
+    height: 48px;
+
+    border-radius: 8px;
+    border: 1px solid;
+    @apply border-gray-30 text-m;
+  }
+}
