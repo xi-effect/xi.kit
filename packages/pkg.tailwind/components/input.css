@@ -10,7 +10,7 @@
     box-sizing: border-box;
 
     @apply bg-gray-0 text-gray-80 placeholder:font-normal placeholder:text-gray-30 placeholder:duration-300;
-    @apply hover:border-gray-50 focus:border-gray-80 focus:placeholder-gray-20;
+    @apply hover:border-gray-50 focus:border-gray-80 focus:placeholder-gray-20 focus:text-gray-100;
     @apply disabled:bg-gray-10 disabled:border-gray-10;
   }
 
