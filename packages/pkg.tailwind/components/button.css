@@ -9,6 +9,10 @@
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
 
     @apply disabled:bg-gray-10 disabled:text-gray-30;
   }
@@ -48,5 +52,28 @@
 
   .btn-primary {
     @apply bg-brand-80 text-brand-0 hover:bg-brand-100 active:bg-brand-100;
+  }
+
+  .btn-error {
+    @apply bg-red-80 text-red-0 hover:bg-red-100 active:bg-red-100;
+  }
+
+  .btn-success {
+    @apply bg-green-80 text-green-0 hover:bg-green-100 active:bg-green-100;
+  }
+
+  .btn-text {
+    border: none;
+    @apply bg-gray-0 text-gray-100 hover:bg-gray-5 active:bg-gray-5;
+    @apply disabled:text-gray-30 disabled:bg-gray-0;
+  }
+
+  .btn-outlined {
+    border: 2px solid;
+    @apply bg-gray-0 border-gray-30 text-gray-100 hover:bg-gray-5 active:bg-gray-5;
+  }
+  .btn-outlined.btn-s {
+    border: 1px solid;
+    @apply border-gray-30;
   }
 }
