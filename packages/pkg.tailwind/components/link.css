@@ -6,6 +6,7 @@
   .link {
     display: flex;
     text-decoration: underline;
+    text-underline-offset: 4px;
     cursor: pointer;
     transition: 0.3s;
     color: var(--xi-gray-90);
