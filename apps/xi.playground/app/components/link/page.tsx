@@ -28,17 +28,14 @@ export default function Link() {
       </div>
 
       <div className="flex flex-col gap-3">
-        <a href="https://www.google.com/" className="link link-l link-sky">
-          I am a sky large link
+        <a href="https://www.google.com/" className="link link-l link-blue">
+          I am a blue large link
         </a>
-        <a href="https://www.google.com/" className="link link-l link-brand">
-          I am a brand large link
+        <a href="https://www.google.com/" className="link link-l link-red">
+          I am a red large link
         </a>
-        <a href="https://www.google.com/" className="link link-l link-moscow">
-          I am a moscow large link
-        </a>
-        <a href="https://www.google.com/" className="link link-l link-ekaterinburg">
-          I am a ekaterinburg large link
+        <a href="https://www.google.com/" className="link link-l link-green">
+          I am a green large link
         </a>
       </div>
     </div>

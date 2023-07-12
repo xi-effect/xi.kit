@@ -41,25 +41,19 @@
     line-height: 16px;
   }
 
-  .link-sky {
-    color: var(--xi-gray-60);
-
-    @apply hover:text-gray-100 active:text-gray-60;
-  }
-
-  .link-brand {
+  .link-blue {
     color: var(--xi-brand-80);
 
     @apply hover:text-brand-100 active:text-brand-80;
   }
 
-  .link-moscow {
+  .link-red {
     color: var(--xi-red-80);
 
     @apply hover:text-red-100 active:text-red-80;
   }
 
-  .link-ekaterinburg {
+  .link-green {
     color: var(--xi-green-80);
 
     @apply hover:text-green-100 active:text-green-80;
