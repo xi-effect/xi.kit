@@ -9,6 +9,20 @@ module.exports = {
     },
   },
   theme: {
+    fontSize: {
+      h1: ['56px', { lineHeight: '64px', fontWeight: '500' }],
+      h2: ['48px', { lineHeight: '56px', fontWeight: '500' }],
+      h3: ['40px', { lineHeight: '48px', fontWeight: '500' }],
+      h4: ['36px', { lineHeight: '44px', fontWeight: '500' }],
+      h5: ['32px', { lineHeight: '40px', fontWeight: '500' }],
+      h6: ['28px', { lineHeight: '36px', fontWeight: '500' }],
+      xl: ['24px', { lineHeight: '32px', fontWeight: '500' }],
+      l: ['20px', { lineHeight: '28px', fontWeight: '500' }],
+      m: ['16px', { lineHeight: '22px', fontWeight: '500' }],
+      s: ['14px', { lineHeight: '20px', fontWeight: '500' }],
+      xs: ['12px', { lineHeight: '16px', fontWeight: '500' }],
+      xxs: ['10px', { lineHeight: '14px', fontWeight: '500' }],
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',

@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input {
+    width: 250px;
+    outline: none;
+    transition: 0.3s;
+    box-sizing: border-box;
+
+    @apply bg-gray-0 text-gray-80 placeholder:font-normal placeholder:text-gray-30 placeholder:duration-300;
+    @apply hover:border-gray-50 focus:border-gray-80 focus:placeholder-gray-20 focus:text-gray-100;
+    @apply disabled:bg-gray-10 disabled:border-gray-10;
+  }
+
+  .input-s {
+    height: 32px;
+    padding: 5px 8px;
+
+    border: 1px solid;
+    border-radius: 6px;
+    @apply border-gray-30 text-s;
+  }
+
+  .input-m {
+    height: 48px;
+    padding: 12px;
+
+    border: 2px solid;
+    border-radius: 8px;
+    @apply border-gray-30 text-m;
+  }
+
+  .input-warning {
+    @apply border-orange-80;
+    @apply hover:border-orange-100 focus:border-orange-100;
+  }
+
+  .input-error {
+    @apply border-red-80;
+    @apply hover:border-red-100 focus:border-red-100;
+  }
+}
