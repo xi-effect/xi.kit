@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .link {
+    display: flex;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: var(--xi-gray-90);
+
+    @apply hover:text-gray-100 active:text-gray-90;
+  }
+
+  .link-disabled {
+    cursor: default;
+    pointer-events: none;
+    text-decoration: none;
+    color: var(--xi-gray-30);
+
+    @apply hover:text-gray-30 active:text-gray-30;
+  }
+
+  .link-l {
+    gap: 4px;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .link-m {
+    gap: 2px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .link-s {
+    gap: 2px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .link-blue {
+    color: var(--xi-brand-80);
+
+    @apply hover:text-brand-100 active:text-brand-80;
+  }
+
+  .link-red {
+    color: var(--xi-red-80);
+
+    @apply hover:text-red-100 active:text-red-80;
+  }
+
+  .link-green {
+    color: var(--xi-green-80);
+
+    @apply hover:text-green-100 active:text-green-80;
+  }
+}
