@@ -19,14 +19,14 @@ export const Modal = ({ children, isOverlay = true, rootProps, portalProps }: Mo
         {isOverlay && (
           <Dialog.Overlay className="bg-gray-60 data-[state=open]:animate-overlayShow fixed inset-0" />
         )}
-        <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-white p-[25px] focus:outline-none">
+        <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-2xl bg-white p-[25px] focus:outline-none">
           {children}
-          <Dialog.Close asChild>
+          <Dialog.Close className="absolute -right-14 top-6" asChild>
             <button
-              className="text-violet11 hover:bg-violet4 focus:shadow-violet7 absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full focus:shadow-[0_0_0_2px] focus:outline-none"
+              className="flex p-2 bg-gray-80 h-[40px] w-[40px] rounded-[20px] "
               aria-label="Close"
             >
-              <Close />
+              <Close className="fill-gray-0" />
             </button>
           </Dialog.Close>
         </Dialog.Content>
