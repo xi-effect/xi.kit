@@ -1,4 +1,4 @@
-'use client';
+use client';
 
 import { Button } from '@mui/material';
 import { Add } from '@xipkg/icons';
@@ -65,28 +65,6 @@ export default function ButtonPage() {
         <Button startIcon={<Add sx={{ fontSize: '16px' }} />} variant="outlined" size="small">
           Click me
         </Button>
-      </div>
-
-      <div className="flex flex-row gap-4">
-        <CustomBtn size="s" variant="outlined" />
-        <CustomBtn size="m" variant="outlined" />
-        <CustomBtn size="l" variant="outlined" />
-      </div>
-      <div className="flex flex-row gap-4">
-        <CustomBtn size="s" variant="outlined" disabled />
-        <CustomBtn size="m" variant="outlined" disabled />
-        <CustomBtn size="l" variant="outlined" disabled />
-      </div>
-
-      <div className="flex flex-row gap-4">
-        <CustomBtn size="s" variant="text" />
-        <CustomBtn size="m" variant="text" />
-        <CustomBtn size="l" variant="text" />
-      </div>
-      <div className="flex flex-row gap-4">
-        <CustomBtn size="s" variant="text" disabled />
-        <CustomBtn size="m" variant="text" disabled />
-        <CustomBtn size="l" variant="text" disabled />
       </div>
     </main>
   );

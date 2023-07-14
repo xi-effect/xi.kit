@@ -26,7 +26,7 @@ export const Button = ({
     (size === 's' && 'btn-s') || (size === 'm' && 'btn-m') || (size === 'l' && 'btn-l');
 
   const variantClasses =
-    (variant === 'contained' && '') ||
+    (variant === 'contained' && 'btn-contained') ||
     (variant === 'text' && 'btn-text') ||
     (variant === 'outlined' && 'btn-outlined');
 
