@@ -66,6 +66,18 @@ export default function ButtonPage() {
           Click me
         </Button>
       </div>
+
+      <div className="flex flex-row gap-4">
+        <CustomBtn size="s" variant="outlined" />
+        <CustomBtn size="m" variant="outlined" />
+        <CustomBtn size="l" variant="outlined" />
+      </div>
+
+      <div className="flex flex-row gap-4">
+        <CustomBtn size="s" variant="text" />
+        <CustomBtn size="m" variant="text" />
+        <CustomBtn size="l" variant="text" />
+      </div>
     </main>
   );
 }
