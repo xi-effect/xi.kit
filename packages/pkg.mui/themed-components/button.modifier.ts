@@ -1,68 +1,164 @@
-import { Components, Theme } from "@mui/material/styles";
+import { Components, Theme } from '@mui/material/styles';
 
-declare module "@mui/material/Button" {
-  interface ButtonPropsVariantOverrides {
+declare module '@mui/material/Button' {
+  export interface ButtonPropsVariantsOverrides {
     primary: true;
     secondary: true;
   }
 }
 
-export const MuiButton: Components<Theme>["MuiButton"] = {
+export const MuiButton: Components<Theme>['MuiButton'] = {
   defaultProps: {
-    variant: "primary",
-    disableElevation: true,
+    variant: 'contained',
+    size: 'medium',
   },
   styleOverrides: {
     root: ({ theme }) => {
-      const {
-        palette: {
-          primary: { dark },
-        },
-      } = theme;
       return {
-        borderRadius: 20,
-        width: 300,
-        border: `1px solid ${dark}`,
+        boxShadow: 'none !important',
+        minWidth: '8px',
+        borderRadius: '12px',
+
+        '&:hover': {
+          boxShadow: 'none !important',
+        },
+
+        '&:active': {
+          boxShadow: 'none !important',
+        },
+
+        '&:disabled': {
+          backgroundColor: theme.palette.gray[10],
+          color: theme.palette.gray[30],
+        },
       };
     },
   },
   variants: [
     {
-      props: { variant: "primary" },
-      style: ({ theme }) => {
-        const {
-          palette: {
-            mode,
-            primary: { dark, light },
-            getContrastText,
-            text: { primary },
-          },
-        } = theme;
-        return {
-          backgroundColor: light,
-          ":hover": {
-            backgroundColor: dark,
-            color: mode === "light" ? getContrastText(primary) : primary,
-          },
-        };
+      props: { size: 'large' },
+      style: {
+        fontSize: '20px',
+        lineHeight: '28px',
+        height: '56px',
+        borderRadius: '12px',
+        padding: '0px  16px 0px 16px',
       },
     },
     {
-      props: { variant: "secondary" },
-      style: ({ theme }) => {
-        const {
-          palette: {
-            secondary: { dark },
-          },
-        } = theme;
-        return {
-          borderRadius: 5,
-          width: 200,
-          ":hover": {
-            backgroundColor: dark,
-          },
-        };
+      props: { size: 'medium' },
+      style: {
+        fontSize: '16px',
+        lineHeight: '22px',
+        height: '48px',
+        borderRadius: '8px',
+        padding: '0px  12px 0px 12px',
       },
+    },
+    {
+      props: { size: 'small' },
+      style: {
+        fontSize: '14px',
+        lineHeight: '20px',
+        height: '32px',
+        borderRadius: '6px',
+        padding: '0px  8px 0px 8px',
+      },
+    },
+    {
+      props: { variant: 'contained' },
+      style: ({ theme }: { theme: Theme }) => ({
+        boxShadow: 'none !important',
+        backgroundColor: theme.palette.brand[80],
+        color: theme.palette.gray[0],
+
+        '&:hover': {
+          boxShadow: 'none !important',
+          backgroundColor: theme.palette.brand[100],
+          color: theme.palette.gray[0],
+        },
+
+        '&:active': {
+          boxShadow: 'none !important',
+          backgroundColor: theme.palette.brand[100],
+          color: theme.palette.gray[0],
+        },
+      }),
+    },
+    {
+      props: { variant: 'outlined' },
+      style: ({ theme }: { theme: Theme }) => ({
+        border: '2px solid',
+        borderColor: theme.palette.gray['30'],
+
+        backgroundColor: theme.palette.gray['0'],
+        color: theme.palette.gray['100'],
+
+        '&:hover': {
+          border: '2px solid',
+          borderColor: theme.palette.gray['30'],
+          backgroundColor: theme.palette.gray['5'],
+          color: theme.palette.gray['100'],
+        },
+
+        '&:active': {
+          border: '2px solid',
+          borderColor: theme.palette.gray['30'],
+          backgroundColor: theme.palette.gray['5'],
+          color: theme.palette.gray['100'],
+        },
+      }),
+    },
+    {
+      props: { variant: 'text' },
+      style: ({ theme }: { theme: Theme }) => ({
+        backgroundColor: theme.palette.gray['0'],
+        color: theme.palette.gray['100'],
+
+        '&:hover': {
+          backgroundColor: theme.palette.gray['5'],
+          color: theme.palette.gray['100'],
+        },
+
+        '&:active': {
+          backgroundColor: theme.palette.gray['5'],
+          color: theme.palette.gray['100'],
+        },
+      }),
+    },
+    {
+      props: { color: 'error' },
+      style: ({ theme }: { theme: Theme }) => ({
+        backgroundColor: theme.palette.red['80'],
+        color: theme.palette.gray['0'],
+
+        '&:hover': {
+          backgroundColor: theme.palette.red['100'],
+          color: theme.palette.gray['0'],
+        },
+
+        '&:active': {
+          backgroundColor: theme.palette.red['100'],
+          color: theme.palette.gray['0'],
+        },
+      }),
+    },
+    {
+      props: { color: 'success' },
+      style: ({ theme }: { theme: Theme }) => ({
+        backgroundColor: theme.palette.green['80'],
+        color: theme.palette.gray['0'],
+
+        '&:hover': {
+          backgroundColor: theme.palette.green['100'],
+          color: theme.palette.gray['0'],
+        },
+
+        '&:active': {
+          backgroundColor: theme.palette.green['100'],
+          color: theme.palette.gray['0'],
+        },
+      }),
     },
   ],
 };

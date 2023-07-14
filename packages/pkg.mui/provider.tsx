@@ -1,16 +1,17 @@
 // app/ThemeRegistry.tsx
 'use client';
+
+import React from 'react';
 import createCache from '@emotion/cache';
 import { useServerInsertedHTML } from 'next/navigation';
 import { CacheProvider } from '@emotion/react';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { theme } from '.';
-import React from 'react';
+import { ThemeVariantsProps, theme } from '.';
 
 // This implementation is from emotion-js
 // https://github.com/emotion-js/emotion/issues/2928#issuecomment-1319747902
-export default function ThemeRegistry(props: { options: any; children: any }) {
+export function ThemeRegistry(props: { options: any; children: any }) {
   const { options, children } = props;
 
   const [{ cache, flush }] = React.useState(() => {
@@ -53,9 +54,12 @@ export default function ThemeRegistry(props: { options: any; children: any }) {
     );
   });
 
+  const mode = ThemeVariantsProps['light'];
+  const activeTheme = theme(mode);
+
   return (
     <CacheProvider value={cache}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={activeTheme}>
         <CssBaseline />
         {children}
       </ThemeProvider>

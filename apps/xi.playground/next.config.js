@@ -8,6 +8,7 @@ const nextConfig = {
     '@xipkg/mui',
     '@xipkg/tailwind',
     '@xipkg/config.typescript',
+    '@xipkg/icons',
   ],
   images: {
     domains: [

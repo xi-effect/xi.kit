@@ -1,19 +1,22 @@
-declare module "@mui/material/styles" {
+import { BreakpointsOptions } from "@mui/material";
+
+declare module '@mui/material/styles' {
   interface BreakpointOverrides {
-    mobile: true;
-    tablet: true;
-    xs: false;
+    xs: true;
+    sm: true;
+    md: true;
+    lg: true;
+    xl: true;
   }
 }
 
-export const breakpoints = {
+export const breakpoints: BreakpointsOptions = {
+  keys: ['xs', 'sm', 'md', 'lg', 'xl'],
   values: {
-    xs: false,
-    sm: 600,
-    md: 900,
-    lg: 1200,
-    xl: 15232,
-    tablet: 640,
-    mobile: 500,
+    xs: 0,
+    sm: 350,
+    md: 700,
+    lg: 1440,
+    xl: 1920,
   },
 };

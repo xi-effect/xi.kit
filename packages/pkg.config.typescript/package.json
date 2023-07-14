@@ -9,8 +9,7 @@
   "description": "These are base shared `tsconfig.json`s from which all other `tsconfig.json`'s inherit from.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "echo \"Error: no dev specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "react": "^18.2.0"
