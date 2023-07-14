@@ -7,6 +7,7 @@ export type ButtonProps = {
   color?: ButtonColors;
   size?: ButtonSizes;
   variant?: ButtonVariants;
+  disabled?: boolean;
 } & ComponentProps<'button'>;
 
 export const Button = ({
@@ -14,6 +15,7 @@ export const Button = ({
   color = 'primary',
   size = 'm',
   variant = 'contained',
+  disabled,
 }: ButtonProps) => {
   const colorClass =
     (color === 'primary' && 'btn-primary') ||
@@ -29,7 +31,11 @@ export const Button = ({
     (variant === 'outlined' && 'btn-outlined');
 
   return (
-    <button type={type} className={`btn ${colorClass} ${sizeClass} ${variantClasses}`}>
+    <button
+      type={type}
+      className={`btn ${colorClass} ${sizeClass} ${variantClasses}`}
+      disabled={!!disabled}
+    >
       Button
     </button>
   );
