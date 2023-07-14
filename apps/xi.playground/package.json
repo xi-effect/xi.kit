@@ -11,6 +11,7 @@
   "dependencies": {
     "@xipkg/tailwind": "*",
     "@xipkg/modal": "*",
+    "@xipkg/mui": "*",
     "next": "^13.4.9",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
