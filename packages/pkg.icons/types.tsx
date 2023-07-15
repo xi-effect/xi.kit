@@ -1,3 +1,3 @@
-import { ComponentProps } from 'react';
+import { SvgIconProps } from '@mui/material';
 
-export type IconProps = ComponentProps<'svg'>;
+export type IconProps = SvgIconProps;
