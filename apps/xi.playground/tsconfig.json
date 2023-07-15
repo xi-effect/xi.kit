@@ -1,5 +1,5 @@
 {
-  "extends": "@xipkg/config.typescript/nextjs.json",
+  "extends": "@xipkg/typescript/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
     "plugins": [{ "name": "next" }]

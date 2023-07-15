@@ -7,7 +7,7 @@ const nextConfig = {
     '@xipkg/modal',
     '@xipkg/mui',
     '@xipkg/tailwind',
-    '@xipkg/config.typescript',
+    '@xipkg/typescript',
     '@xipkg/icons',
   ],
   images: {
