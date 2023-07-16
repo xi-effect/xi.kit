@@ -1,5 +1,5 @@
 {
-  "name": "@xipkg/toggle",
+  "name": "@xipkg/select",
   "version": "0.0.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -11,7 +11,9 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "react": "^18.2.0"
+    "@xipkg/icons": "^0.3.0",
+    "react": "^18.2.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
