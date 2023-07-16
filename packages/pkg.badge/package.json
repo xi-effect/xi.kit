@@ -22,7 +22,6 @@
     "@types/react-dom": "^18.2.6",
     "@xipkg/typescript": "^0.0.0",
     "@xipkg/eslint": "^0.0.0",
-    "@xipkg/theme.types": "latest",
     "eslint": "^7.32.0",
     "typescript": "^5.1.3"
   },

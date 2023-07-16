@@ -11,7 +11,7 @@
     "test": "TIMING=1 eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@xipkg/icons": "^0.3.0",
+    "@xipkg/icons": "^0.4.1",
     "react": "^18.2.0"
   },
   "devDependencies": {
