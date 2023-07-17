@@ -1,3 +1,4 @@
+import type {} from '@mui/material/themeCssVarsAugmentation';
 import { Components, Theme } from '@mui/material/styles';
 
 declare module '@mui/material/Button' {
@@ -28,8 +29,8 @@ export const MuiButton: Components<Theme>['MuiButton'] = {
         },
 
         '&:disabled': {
-          backgroundColor: theme.palette.gray[10],
-          color: theme.palette.gray[30],
+          backgroundColor: theme.vars.gray[10],
+          color: theme.vars.gray[30],
         },
       };
     },
@@ -69,19 +70,19 @@ export const MuiButton: Components<Theme>['MuiButton'] = {
       props: { variant: 'contained' },
       style: ({ theme }: { theme: Theme }) => ({
         boxShadow: 'none !important',
-        backgroundColor: theme.palette.brand[80],
-        color: theme.palette.gray[0],
+        backgroundColor: theme.vars.brand[80],
+        color: theme.vars.gray[0],
 
         '&:hover': {
           boxShadow: 'none !important',
-          backgroundColor: theme.palette.brand[100],
-          color: theme.palette.gray[0],
+          backgroundColor: theme.vars.brand[100],
+          color: theme.vars.gray[0],
         },
 
         '&:active': {
           boxShadow: 'none !important',
-          backgroundColor: theme.palette.brand[100],
-          color: theme.palette.gray[0],
+          backgroundColor: theme.vars.brand[100],
+          color: theme.vars.gray[0],
         },
       }),
     },
@@ -89,74 +90,74 @@ export const MuiButton: Components<Theme>['MuiButton'] = {
       props: { variant: 'outlined' },
       style: ({ theme }: { theme: Theme }) => ({
         border: '2px solid',
-        borderColor: theme.palette.gray['30'],
+        borderColor: theme.vars.gray['30'],
 
-        backgroundColor: theme.palette.gray['0'],
-        color: theme.palette.gray['100'],
+        backgroundColor: theme.vars.gray['0'],
+        color: theme.vars.gray['100'],
 
         '&:hover': {
           border: '2px solid',
-          borderColor: theme.palette.gray['30'],
-          backgroundColor: theme.palette.gray['5'],
-          color: theme.palette.gray['100'],
+          borderColor: theme.vars.gray['30'],
+          backgroundColor: theme.vars.gray['5'],
+          color: theme.vars.gray['100'],
         },
 
         '&:active': {
           border: '2px solid',
-          borderColor: theme.palette.gray['30'],
-          backgroundColor: theme.palette.gray['5'],
-          color: theme.palette.gray['100'],
+          borderColor: theme.vars.gray['30'],
+          backgroundColor: theme.vars.gray['5'],
+          color: theme.vars.gray['100'],
         },
       }),
     },
     {
       props: { variant: 'text' },
       style: ({ theme }: { theme: Theme }) => ({
-        backgroundColor: theme.palette.gray['0'],
-        color: theme.palette.gray['100'],
+        backgroundColor: theme.vars.gray['0'],
+        color: theme.vars.gray['100'],
 
         '&:hover': {
-          backgroundColor: theme.palette.gray['5'],
-          color: theme.palette.gray['100'],
+          backgroundColor: theme.vars.gray['5'],
+          color: theme.vars.gray['100'],
         },
 
         '&:active': {
-          backgroundColor: theme.palette.gray['5'],
-          color: theme.palette.gray['100'],
+          backgroundColor: theme.vars.gray['5'],
+          color: theme.vars.gray['100'],
         },
       }),
     },
     {
       props: { color: 'error' },
       style: ({ theme }: { theme: Theme }) => ({
-        backgroundColor: theme.palette.red['80'],
-        color: theme.palette.gray['0'],
+        backgroundColor: theme.vars.red['80'],
+        color: theme.vars.gray['0'],
 
         '&:hover': {
-          backgroundColor: theme.palette.red['100'],
-          color: theme.palette.gray['0'],
+          backgroundColor: theme.vars.red['100'],
+          color: theme.vars.gray['0'],
         },
 
         '&:active': {
-          backgroundColor: theme.palette.red['100'],
-          color: theme.palette.gray['0'],
+          backgroundColor: theme.vars.red['100'],
+          color: theme.vars.gray['0'],
         },
       }),
     },
     {
       props: { color: 'success' },
       style: ({ theme }: { theme: Theme }) => ({
-        backgroundColor: theme.palette.green['80'],
-        color: theme.palette.gray['0'],
+        backgroundColor: theme.vars.green['80'],
+        color: theme.vars.gray['0'],
 
         '&:hover': {
-          backgroundColor: theme.palette.green['100'],
-          color: theme.palette.gray['0'],
+          backgroundColor: theme.vars.green['100'],
+          color: theme.vars.gray['0'],
         },
 
         '&:active': {
-          backgroundColor: theme.palette.green['100'],
-          color: theme.palette.gray['0'],
+          backgroundColor: theme.vars.green['100'],
+          color: theme.vars.gray['0'],
         },
       }),
     },

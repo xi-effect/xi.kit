@@ -5,7 +5,7 @@ import React from 'react';
 import createCache from '@emotion/cache';
 import { useServerInsertedHTML } from 'next/navigation';
 import { CacheProvider } from '@emotion/react';
-import { ThemeProvider } from '@mui/material/styles';
+import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeVariantsProps, theme } from '.';
 
@@ -53,16 +53,14 @@ export function ThemeRegistry(props: { options: any; children: any }) {
       />
     );
   });
-
-  const mode = ThemeVariantsProps['light'];
-  const activeTheme = theme(mode);
+  const activeTheme = theme();
 
   return (
     <CacheProvider value={cache}>
-      <ThemeProvider theme={activeTheme}>
+      <CssVarsProvider theme={activeTheme}>
         <CssBaseline />
         {children}
-      </ThemeProvider>
+      </CssVarsProvider>
     </CacheProvider>
   );
 }

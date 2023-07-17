@@ -1,4 +1,4 @@
-import { PaletteOptions, SimplePaletteColorOptions } from '@mui/material';
+import { ColorSystemOptions } from '@mui/material';
 
 type Colors = { [key in 100 | 80 | 60 | 40 | 20 | 0]: string };
 type ColorsShort = { [key in 100 | 60 | 40 | 20]: string };
@@ -37,7 +37,22 @@ declare module '@mui/material/styles' {
     cyan: ColorsShort;
   }
 
-  export interface PaletteOptions {
+  export interface ThemeVars {
+    bkgd: {
+      [key in 'main' | 'block']: string;
+    };
+    brand: Colors;
+    gray: ColorsGray;
+    red: Colors;
+    green: Colors;
+    orange: Colors;
+    yellow: ColorsShort;
+    violet: ColorsShort;
+    pink: ColorsShort;
+    cyan: ColorsShort;
+  }
+
+  export interface ColorSystemOptions {
     bkgd: {
       [key in 'main' | 'block']: string;
     };
@@ -53,7 +68,7 @@ declare module '@mui/material/styles' {
   }
 }
 
-export const lightModePalette: PaletteOptions = {
+export const lightModePalette: ColorSystemOptions = {
   gray: {
     100: '#101010',
     90: '#282828',
@@ -130,7 +145,7 @@ export const lightModePalette: PaletteOptions = {
   },
 };
 
-export const darkModePalette: PaletteOptions = {
+export const darkModePalette: ColorSystemOptions = {
   gray: {
     100: '#E6E6E6',
     90: '#D1D1D1',

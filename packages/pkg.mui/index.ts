@@ -1,5 +1,4 @@
-import { createTheme } from '@mui/material';
-import { orange } from '@mui/material/colors';
+import { ThemeVars, experimental_extendTheme as extendTheme } from '@mui/material/styles';
 import { darkModePalette, lightModePalette } from './palette';
 import { typography } from './typography';
 import { spacing } from './spacing';
@@ -13,16 +12,23 @@ export enum ThemeVariantsProps {
   dark = 'dark',
 }
 
-export const theme = (mode: ThemeVariantsProps) => {
-  return createTheme({
-    palette: {
-      mode,
-      ...(mode === 'light' ? lightModePalette : darkModePalette),
+declare module '@mui/material/styles' {
+  interface Theme {
+    vars: ThemeVars;
+  }
+}
+
+export const theme = () => {
+  return extendTheme({
+    cssVarPrefix: 'xi',
+    colorSchemes: {
+      light: { ...lightModePalette },
+      dark: { ...darkModePalette },
     },
     typography,
     spacing,
     breakpoints,
     transitions,
-    components
+    components,
   });
 };
