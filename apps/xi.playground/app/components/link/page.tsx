@@ -28,6 +28,9 @@ export default function Link() {
       </div>
 
       <div className="flex flex-col gap-3">
+        <a href="https://www.google.com/" className="link link-l link-sky">
+          I am a sky large link
+        </a>
         <a href="https://www.google.com/" className="link link-l link-blue">
           I am a blue large link
         </a>

@@ -41,6 +41,12 @@
     line-height: 16px;
   }
 
+  .link-sky {
+    color: var(--xi-gray-60);
+
+    @apply hover:text-gray-100 active:text-gray-60;
+  }
+
   .link-blue {
     color: var(--xi-brand-80);
 
