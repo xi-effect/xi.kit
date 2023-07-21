@@ -4,6 +4,7 @@
 
 @import url('./components/button.css');
 @import url('./components/link.css');
+@import url('./components/input.css');
 
 @layer components {
   /* This wont be included in your compiled CSS unless you actually use it */
@@ -282,7 +283,7 @@ svg {
 
   /* saratov */
   --xi-cyan-20: #182327;
-  --xi-cyan-40: #214f5f;
-  --xi-cyan-60: #276b82;
-  --xi-cyan-100: #33a4cc;
+  --xi-cyan-40: #214F5F;
+  --xi-cyan-60: #276B82;
+  --xi-cyan-100: #33A4CC;
 }

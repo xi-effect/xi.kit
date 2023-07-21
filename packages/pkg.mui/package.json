@@ -1,0 +1,23 @@
+{
+  "name": "@xipkg/mui",
+  "version": "0.0.2",
+  "description": "MUI config",
+  "main": "./index.ts",
+  "scripts": {
+    "build": "tsup index.ts --format cjs --dts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm run build -- --watch"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "xi.effect",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@emotion/cache": "^11.11.0",
+    "@mui/material": "^5.14.0",
+    "next": "^13.4.9"
+  }
+}
