@@ -1,3 +1,4 @@
+import '@xipkg/tailwind/index.css';
 import Link from 'next/link';
 import { Providers } from './providers';
 import ColorButton from './colorbutton';
