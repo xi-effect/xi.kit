@@ -1,42 +1,35 @@
 import { ComponentProps } from 'react';
+import { Button as MuiButton, ButtonProps as MuiButtonProps } from '@mui/material';
 
 export type ButtonColors = 'primary' | 'success' | 'error';
-export type ButtonSizes = 's' | 'm' | 'l';
+export type ButtonSizes = 'small' | 'medium' | 'large';
 export type ButtonVariants = 'text' | 'contained' | 'outlined';
 export type ButtonProps = {
   color?: ButtonColors;
   size?: ButtonSizes;
   variant?: ButtonVariants;
   disabled?: boolean;
-} & ComponentProps<'button'>;
+} & ComponentProps<'button'> &
+  MuiButtonProps;
 
 export const Button = ({
   type = 'button',
   color = 'primary',
-  size = 'm',
+  size = 'medium',
   variant = 'contained',
   disabled,
+  ...props
 }: ButtonProps) => {
-  const colorClass =
-    (color === 'primary' && 'btn-primary') ||
-    (color === 'success' && 'btn-success') ||
-    (color === 'error' && 'btn-error');
-
-  const sizeClass =
-    (size === 's' && 'btn-s') || (size === 'm' && 'btn-m') || (size === 'l' && 'btn-l');
-
-  const variantClasses =
-    (variant === 'contained' && 'btn-contained') ||
-    (variant === 'text' && 'btn-text') ||
-    (variant === 'outlined' && 'btn-outlined');
-
   return (
-    <button
+    <MuiButton
       type={type}
-      className={`btn ${colorClass} ${sizeClass} ${variantClasses}`}
       disabled={!!disabled}
+      color={color}
+      size={size}
+      variant={variant}
+      {...props}
     >
       Button
-    </button>
+    </MuiButton>
   );
 };
