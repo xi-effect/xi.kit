@@ -9,6 +9,28 @@ module.exports = {
     },
   },
   theme: {
+    screens: {
+      // => @media (min-width: 480px) { ... }
+      xs: '480px',
+
+      // => @media (min-width: 720px) { ... }
+      sm: '720px',
+
+      // => @media (min-width: 960px) { ... }
+      md: '960px',
+
+      // => @media (min-width: 1200px) { ... }
+      lg: '1200px',
+
+      // => @media (min-width: 1440px) { ... }
+      xl: '1440px',
+
+      // => @media (min-width: 1680px) { ... }
+      '2xl': '1680px',
+
+      // => @media (min-width: 1920px) { ... }
+      '3xl': '1920px',
+    },
     fontSize: {
       h1: ['56px', { lineHeight: '64px', fontWeight: '500' }],
       h2: ['48px', { lineHeight: '56px', fontWeight: '500' }],
