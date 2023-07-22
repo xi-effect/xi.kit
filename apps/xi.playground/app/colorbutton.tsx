@@ -1,8 +1,12 @@
 'use client';
 
 import { useTheme } from 'next-themes';
+import { Switch, Typography } from '@mui/material';
+import { useState } from 'react';
 
 const ColorButton = () => {
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+
   const { theme, setTheme } = useTheme();
 
   const changeTheme = () => {
@@ -10,9 +14,16 @@ const ColorButton = () => {
     return setTheme('light');
   };
 
+  const onChangeMode = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.checked;
+    changeTheme();
+    setDarkMode(value);
+  };
+
   return (
-    <div>
-      <button onClick={changeTheme}>Mode</button>
+    <div className="flex flex-row space-10-px items-center ml-auto">
+      <Typography variant="m">Mode:</Typography>
+      <Switch checked={darkMode} onChange={onChangeMode} />
     </div>
   );
 };

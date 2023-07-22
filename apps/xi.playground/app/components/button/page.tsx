@@ -5,7 +5,7 @@ import { Add } from '@xipkg/icons';
 
 export default function ButtonPage() {
   return (
-    <main style={{ display: 'flex', gap: '16px', flexDirection: 'column' }}>
+    <main style={{ display: 'flex', gap: '16px', flexDirection: 'column', height: '100%' }}>
       <div style={{ display: 'flex', gap: '16px' }}>
         <Button size="large">Click me</Button>
         <Button size="medium">Click me</Button>
