@@ -5,9 +5,9 @@ import { Switch, Typography } from '@mui/material';
 import { useState } from 'react';
 
 const ColorButton = () => {
-  const [darkMode, setDarkMode] = useState<boolean>(false);
-
   const { theme, setTheme } = useTheme();
+
+  const [darkMode, setDarkMode] = useState<boolean>(theme === 'dark');
 
   const changeTheme = () => {
     if (theme === 'light') return setTheme('dark');
@@ -23,7 +23,7 @@ const ColorButton = () => {
   return (
     <div className="flex flex-row space-10-px items-center ml-auto">
       <Typography variant="m">Mode:</Typography>
-      <Switch checked={darkMode} onChange={onChangeMode} />
+      <Switch checked={darkMode} onChange={onChangeMode} defaultChecked={theme === 'dark'} />
     </div>
   );
 };

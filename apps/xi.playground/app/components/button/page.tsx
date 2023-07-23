@@ -2,10 +2,11 @@
 
 import { Button } from '@xipkg/button';
 import { Add } from '@xipkg/icons';
+import ComponentLayout from '../layout';
 
 export default function ButtonPage() {
   return (
-    <main style={{ display: 'flex', gap: '16px', flexDirection: 'column', height: '100%' }}>
+    <ComponentLayout>
       <div style={{ display: 'flex', gap: '16px' }}>
         <Button size="large">Click me</Button>
         <Button size="medium">Click me</Button>
@@ -161,6 +162,6 @@ export default function ButtonPage() {
           Click me
         </Button>
       </div>
-    </main>
+    </ComponentLayout>
   );
 }
