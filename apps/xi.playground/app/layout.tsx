@@ -34,7 +34,7 @@ export default function RootLayout({ children }: any) {
         <Providers>
           <div className="flex flex-col w-full max-h-screen relative">
             <div className="flex flex-row max-h-full">
-              <ul className="flex flex-col p-2 w-56 border-r-2 space-y-2">
+              <ul className="flex flex-col h-screen overflow-auto max-h-screen p-2 w-56 border-r-2 border-gray-40 space-y-2">
                 {menu.map((item, index) => (
                   <li
                     className={`flex w-full pl-2 hover:bg-gray-10 duration-300 cursor-pointer ${
