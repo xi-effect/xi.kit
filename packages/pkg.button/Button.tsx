@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react';
+import { ComponentProps, ReactNode } from 'react';
 import { Button as MuiButton, ButtonProps as MuiButtonProps } from '@mui/material';
 
 export type ButtonColors = 'primary' | 'success' | 'error';
@@ -18,6 +18,7 @@ export const Button = ({
   size = 'medium',
   variant = 'contained',
   disabled,
+  children,
   ...props
 }: ButtonProps) => {
   return (
@@ -29,7 +30,7 @@ export const Button = ({
       variant={variant}
       {...props}
     >
-      Button
+      {children}
     </MuiButton>
   );
 };
