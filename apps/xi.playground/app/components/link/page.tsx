@@ -6,7 +6,7 @@ export default function ButtonPage() {
   return (
     <main style={{ display: 'flex', gap: '16px' }}>
       <div>
-        <Link>Ссылка</Link>
+        <Link href="https://github.com">Ссылка</Link>
         <Link>Ссылка</Link>
         <Link>Ссылка</Link>
       </div>

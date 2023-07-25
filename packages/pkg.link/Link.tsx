@@ -1,7 +1,9 @@
 import { Link as MuiLink, LinkProps as MuiLinkProps } from '@mui/material';
 
-export type LinkProps = {} & MuiLinkProps;
+export type LinkProps = {
+  href?: string;
+} & MuiLinkProps;
 
-export const Link = ({ children }: LinkProps) => {
-  return <MuiLink>{children}</MuiLink>;
+export const Link = ({ children, href }: LinkProps) => {
+  return <MuiLink href={href}>{children}</MuiLink>;
 };
