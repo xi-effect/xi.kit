@@ -2,6 +2,7 @@
 
 import { useTheme } from 'next-themes';
 import { Button } from '@xipkg/button';
+import { Stack } from '@mui/material';
 
 const ColorButton = () => {
   const { theme, setTheme } = useTheme();
@@ -12,11 +13,11 @@ const ColorButton = () => {
   };
 
   return (
-    <div className="flex flex-row space-10-px items-center ml-auto p-2">
+    <Stack flexDirection="row" alignItems="center" sx={{ p: 2, ml: 'auto' }}>
       <Button onClick={changeTheme} variant="outlined">
         Mode
       </Button>
-    </div>
+    </Stack>
   );
 };
 

@@ -1,9 +1,9 @@
 'use client';
 
-import '@xipkg/tailwind/index.css';
 import { Providers } from './providers';
 import ColorButton from './colorbutton';
 import { usePathname, useRouter } from 'next/navigation';
+import { Stack, Box, List, ListItem } from '@mui/material';
 
 const menu = [
   {
@@ -30,31 +30,56 @@ export default function RootLayout({ children }: any) {
 
   return (
     <html lang="en">
-      <body className="flex w-screen min-h-min">
+      <body style={{ display: 'flex', width: '100vw', minHeight: '100%' }}>
         <Providers>
-          <div className="flex flex-col w-full max-h-screen relative">
-            <div className="flex flex-row max-h-full">
-              <ul className="flex flex-col h-screen overflow-auto max-h-screen p-2 w-56 border-r-2 border-gray-40 space-y-2">
+          <Stack
+            sx={{
+              flexDirection: 'column',
+              width: '100%',
+              maxHeight: '100vh',
+              position: 'relative',
+            }}
+          >
+            <Stack flexDirection="row" sx={{ maxHeight: '100%' }}>
+              <List
+                sx={{
+                  maxHeight: '100vh',
+                  height: '100vh',
+                  overflow: 'auto',
+                  p: 2,
+                  borderRight: '1px solid',
+                  borderColor: 'petersburg.40',
+                  gap: '16px',
+                }}
+              >
                 {menu.map((item, index) => (
-                  <li
-                    className={`flex w-full pl-2 hover:bg-gray-10 duration-300 cursor-pointer ${
-                      current === item.link && 'bg-gray-20 hover:bg-gray-20'
-                    } text-l`}
+                  <ListItem
+                    sx={{
+                      display: 'flex',
+                      width: '100%',
+                      pl: 2,
+                      transition: '0.3s',
+                      bgcolor: current === item.link ? 'petersburg.20' : 'unset',
+                      '&:hover': {
+                        bgcolor: current === item.link ? 'petersburg.20' : 'petersburg.10',
+                        cursor: 'pointer',
+                      },
+                    }}
                     key={index.toString()}
                     onClick={() => onChangePage(item.link)}
                   >
                     {item.label}
-                  </li>
+                  </ListItem>
                 ))}
-              </ul>
-              <div className="flex flex-col justify-center items-center w-full gap-2">
+              </List>
+              <Stack justifyContent="center" alignItems="center" spacing={2} sx={{ width: '100%' }}>
                 <ColorButton />
-                <div className="p-10 w-full h-full items-center justify-center overflow-auto">
+                <Box sx={{ padding: '12px 30px', width: '100%', height: '100%', overflow: 'auto' }}>
                   {children}
-                </div>
-              </div>
-            </div>
-          </div>
+                </Box>
+              </Stack>
+            </Stack>
+          </Stack>
         </Providers>
       </body>
     </html>

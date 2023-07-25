@@ -1,17 +1,10 @@
 import { ReactNode } from 'react';
+import { Stack } from '@mui/material';
 
 const ComponentLayout = ({ children }: { children: ReactNode }) => (
-  <main
-    style={{
-      display: 'flex',
-      justifyContent: 'center',
-      gap: '16px',
-      flexDirection: 'column',
-      width: '100%',
-    }}
-  >
+  <Stack justifyContent="center" spacing={2} sx={{ width: '100%' }}>
     {children}
-  </main>
+  </Stack>
 );
 
 export default ComponentLayout;
