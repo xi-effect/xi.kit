@@ -7,7 +7,12 @@ export type LinkProps = {
 
 export const Link = ({ href, action, children }: LinkProps) => {
   return (
-    <MuiLink href={href} onClick={action} sx={{ cursor: 'pointer' }}>
+    <MuiLink
+      href={href}
+      onClick={action}
+      target={href !== '#' ? '_blank' : ''}
+      sx={{ cursor: 'pointer' }}
+    >
       {children}
     </MuiLink>
   );
