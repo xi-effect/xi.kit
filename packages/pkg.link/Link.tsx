@@ -2,8 +2,13 @@ import { Link as MuiLink, LinkProps as MuiLinkProps } from '@mui/material';
 
 export type LinkProps = {
   href?: string;
+  action?: () => any | Promise<any>;
 } & MuiLinkProps;
 
-export const Link = ({ children, href }: LinkProps) => {
-  return <MuiLink href={href}>{children}</MuiLink>;
+export const Link = ({ href, action, children }: LinkProps) => {
+  return (
+    <MuiLink href={href} onClick={action} sx={{ cursor: 'pointer' }}>
+      {children}
+    </MuiLink>
+  );
 };
