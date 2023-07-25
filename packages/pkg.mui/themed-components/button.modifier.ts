@@ -10,8 +10,10 @@ declare module '@mui/material/Button' {
 
 export const MuiButton: Components<Theme>['MuiButton'] = {
   defaultProps: {
+    type: 'button',
     variant: 'contained',
     size: 'medium',
+    color: 'primary',
   },
   styleOverrides: {
     root: ({ theme }) => {
