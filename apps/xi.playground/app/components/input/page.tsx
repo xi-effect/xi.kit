@@ -1,6 +1,8 @@
+import ComponentLayout from '../layout';
+
 export default function Input() {
   return (
-    <main className="flex min-h-screen flex-col items-center gap-8 p-24">
+    <ComponentLayout>
       <div className="flex flex-row gap-4">
         <input className="input input-m" />
         <input className="input input-s" />
@@ -25,6 +27,6 @@ export default function Input() {
         <input className="input input-m" placeholder="Текстовое поле" disabled />
         <input className="input input-s" placeholder="Текстовое поле" disabled />
       </div>
-    </main>
+    </ComponentLayout>
   );
 }
