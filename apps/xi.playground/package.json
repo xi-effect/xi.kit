@@ -11,6 +11,7 @@
   "dependencies": {
     "@xipkg/button": "*",
     "@xipkg/tailwind": "*",
+    "@xipkg/link": "*",
     "@xipkg/modal": "*",
     "@xipkg/mui": "*",
     "@xipkg/icons": "*",
