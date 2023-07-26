@@ -1,12 +1,14 @@
 'use client';
 
+import ComponentLayout from '../layout';
+
 import { Stack } from '@mui/material';
 import { Eyeon } from '@xipkg/icons';
 import { Input } from '@xipkg/input';
 
 export default function InputPage() {
   return (
-    <main>
+    <ComponentLayout>
       <Stack sx={{ p: 2, width: '250px' }}>
         <Input />
       </Stack>
@@ -37,6 +39,6 @@ export default function InputPage() {
       <Stack sx={{ p: 2, width: '250px' }}>
         <Input placeholder="Текстовое поле" size="small" disabled />
       </Stack>
-    </main>
+    </ComponentLayout>
   );
 }

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@xipkg/button": "*",
     "@xipkg/tailwind": "*",
     "@xipkg/modal": "*",
     "@xipkg/mui": "*",

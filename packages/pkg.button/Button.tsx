@@ -1,8 +1,10 @@
-import { ComponentProps } from 'react';
+import { Button as MuiButton } from '@mui/material';
+import { ButtonProps } from './types';
 
-export type ButtonProps = {} & ComponentProps<'button'>;
-
-export const Button = ({ type = 'button' }: ButtonProps) => {
-  console.log('Button');
-  return <button type={type}>Button</button>;
+export const Button = ({ style, children, ...props }: ButtonProps) => {
+  return (
+    <MuiButton sx={{ ...style }} {...props}>
+      {children}
+    </MuiButton>
+  );
 };
