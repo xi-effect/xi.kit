@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@xipkg/icons": "^0.4.1",
+    "@mui/material": "^5.14.0",
     "react": "^18.2.0"
   },
   "devDependencies": {

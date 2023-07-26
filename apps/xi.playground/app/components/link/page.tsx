@@ -23,6 +23,30 @@ export default function ButtonPage() {
         <Link action={shortAction}>Ссылка</Link>
         <Link action={longAction}>Ссылка</Link>
       </Stack>
+
+      <Stack flexDirection="row" alignItems="center" sx={{ gap: '16px' }}>
+        <Link href="https://github.com" color="error">
+          Ссылка
+        </Link>
+        <Link action={shortAction} color="error">
+          Ссылка
+        </Link>
+        <Link action={longAction} color="error">
+          Ссылка
+        </Link>
+      </Stack>
+
+      <Stack flexDirection="row" alignItems="center" sx={{ gap: '16px' }}>
+        <Link href="https://github.com" color="success">
+          Ссылка
+        </Link>
+        <Link action={shortAction} color="success">
+          Ссылка
+        </Link>
+        <Link action={longAction} color="success">
+          Ссылка
+        </Link>
+      </Stack>
     </Stack>
   );
 }
