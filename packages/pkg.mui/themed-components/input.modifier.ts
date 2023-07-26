@@ -1,12 +1,6 @@
 import type {} from '@mui/material/themeCssVarsAugmentation';
 import { Components, Theme } from '@mui/material/styles';
 
-declare module '@mui/material/InputBase' {
-  export interface InputBasePropsVariantsOverrides {
-    warning: true;
-  }
-}
-
 export const MuiInputBase: Components<Theme>['MuiInputBase'] = {
   styleOverrides: {
     root: ({ theme, ownerState }) => {
