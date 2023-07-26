@@ -7,11 +7,6 @@ import { transitions } from './transitions';
 import { components } from './components';
 export { ThemeRegistry } from './provider';
 
-export enum ThemeVariantsProps {
-  light = 'light',
-  dark = 'dark',
-}
-
 declare module '@mui/material/styles' {
   interface Theme {
     vars: ThemeVars;
