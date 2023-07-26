@@ -1,11 +1,10 @@
 import * as React from 'react';
+import InputBase, { InputBaseProps } from '@mui/material/InputBase';
 
-type InputProps = {} & React.ComponentProps<'input'>;
+export type InputProps = InputBaseProps & {
+  warning?: boolean;
+};
 
-export const Input = React.forwardRef<InputProps>((props, ref) => {
-  const { ...restProps } = props;
-
-  return <input ref={ref} {...restProps} />;
-});
-
-Input.displayName = 'Input';
+export const Input = ({ ...props }: InputProps) => {
+  return <InputBase tabIndex={1} {...props} />;
+};

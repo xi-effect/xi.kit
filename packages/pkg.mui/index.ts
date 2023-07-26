@@ -25,5 +25,8 @@ export const theme = () => {
     breakpoints,
     transitions,
     components,
+    shape: {
+      borderRadius: 8,
+    }
   });
 };
