@@ -44,13 +44,15 @@ export function ThemeRegistry(props: { options: any; children: any }) {
       styles += cache.inserted[name];
     }
     return (
-      <style
-        key={cache.key}
-        data-emotion={`${cache.key} ${names.join(' ')}`}
-        dangerouslySetInnerHTML={{
-          __html: options.prepend ? `@layer emotion {${styles}}` : styles,
-        }}
-      />
+      <>
+        <style
+          key={cache.key}
+          data-emotion={`${cache.key} ${names.join(' ')}`}
+          dangerouslySetInnerHTML={{
+            __html: options.prepend ? `@layer emotion {${styles}}` : styles,
+          }}
+        />
+      </>
     );
   });
 
