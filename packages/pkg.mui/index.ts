@@ -1,4 +1,4 @@
-import { ThemeVars, experimental_extendTheme as extendTheme } from '@mui/material/styles';
+import { ThemeVars, createTheme, experimental_extendTheme as extendTheme } from '@mui/material/styles';
 import { darkModePalette, lightModePalette } from './palette';
 import { typography } from './typography';
 import { spacing } from './spacing';
@@ -18,8 +18,11 @@ declare module '@mui/material/styles' {
   }
 }
 
+const globalTheme = createTheme();
+
 export const theme = () => {
   return extendTheme({
+    ...globalTheme,
     cssVarPrefix: 'xi',
     colorSchemes: {
       light: { ...lightModePalette },

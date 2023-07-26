@@ -15,14 +15,14 @@ declare module '@mui/material/Link' {
 
 export const MuiLink: Components<Theme>['MuiLink'] = {
   defaultProps: {
-    color: 'success',
+    // color: 'success',
   },
   styleOverrides: {
     root: () => {
       return {
         cursor: 'pointer',
         // color: 'red',
-        background: 'green',
+        // background: 'green',
       };
     },
   },
