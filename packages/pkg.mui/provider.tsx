@@ -48,11 +48,12 @@ export function ThemeRegistry(props: { options: any; children: any }) {
         key={cache.key}
         data-emotion={`${cache.key} ${names.join(' ')}`}
         dangerouslySetInnerHTML={{
-          __html: styles,
+          __html: options.prepend ? `@layer emotion {${styles}}` : styles,
         }}
       />
     );
   });
+
   const activeTheme = theme();
 
   return (
