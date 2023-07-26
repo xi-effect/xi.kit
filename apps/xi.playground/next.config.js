@@ -9,6 +9,7 @@ const nextConfig = {
     '@xipkg/tailwind',
     '@xipkg/typescript',
     '@xipkg/icons',
+    '@xipkg/link',
   ],
   images: {
     domains: [

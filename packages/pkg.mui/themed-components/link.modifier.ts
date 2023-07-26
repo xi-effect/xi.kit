@@ -2,10 +2,10 @@ import type {} from '@mui/material/themeCssVarsAugmentation';
 import { Components, Theme } from '@mui/material/styles';
 
 declare module '@mui/material/Link' {
-  export interface LinkPropsSizesOverrides {
+  export interface LinkPropsSizeOverrides {
     size: true;
   }
-  export interface LinkPropsColorsOverrides {
+  export interface LinkPropsColorOverrides {
     default: true;
     success: true;
     primary: true;
@@ -15,7 +15,7 @@ declare module '@mui/material/Link' {
 
 export const MuiLink: Components<Theme>['MuiLink'] = {
   defaultProps: {
-    // color: 'success',
+    color: 'success',
   },
   styleOverrides: {
     root: ({ theme }) => {
