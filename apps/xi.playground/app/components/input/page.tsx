@@ -1,32 +1,44 @@
+'use client';
+
 import ComponentLayout from '../layout';
 
-export default function Input() {
+import { Stack } from '@mui/material';
+import { Eyeon } from '@xipkg/icons';
+import { Input } from '@xipkg/input';
+
+export default function InputPage() {
   return (
     <ComponentLayout>
-      <div className="flex flex-row gap-4">
-        <input className="input input-m" />
-        <input className="input input-s" />
-      </div>
-
-      <div className="flex flex-row gap-4">
-        <input className="input input-m" placeholder="Текстовое поле" />
-        <input className="input input-s" placeholder="Текстовое поле" />
-      </div>
-
-      <div className="flex flex-row gap-4">
-        <input className="input input-m input-error" placeholder="Текстовое поле" />
-        <input className="input input-s input-error" placeholder="Текстовое поле" />
-      </div>
-
-      <div className="flex flex-row gap-4">
-        <input className="input input-m input-warning" placeholder="Текстовое поле" />
-        <input className="input input-s input-warning" placeholder="Текстовое поле" />
-      </div>
-
-      <div className="flex flex-row gap-4">
-        <input className="input input-m" placeholder="Текстовое поле" disabled />
-        <input className="input input-s" placeholder="Текстовое поле" disabled />
-      </div>
+      <Stack sx={{ p: 2, width: '250px' }}>
+        <Input />
+      </Stack>
+      <Stack sx={{ p: 2, width: '250px' }}>
+        <Input startAdornment={<Eyeon sx={{ fontSize: 24 }} />} placeholder="Текстовое поле" />
+      </Stack>
+      <Stack sx={{ p: 2, width: '250px' }}>
+        <Input startAdornment={<Eyeon />} placeholder="Текстовое поле" error />
+      </Stack>
+      <Stack sx={{ p: 2, width: '250px' }}>
+        <Input startAdornment={<Eyeon />} placeholder="Текстовое поле" warning />
+      </Stack>
+      <Stack sx={{ p: 2, width: '250px' }}>
+        <Input startAdornment={<Eyeon />} placeholder="Текстовое поле" disabled />
+      </Stack>
+      <Stack sx={{ p: 2, width: '250px' }}>
+        <Input size="small" />
+      </Stack>
+      <Stack sx={{ p: 2, width: '250px' }}>
+        <Input placeholder="Текстовое поле" size="small" />
+      </Stack>
+      <Stack sx={{ p: 2, width: '250px' }}>
+        <Input placeholder="Текстовое поле" size="small" error />
+      </Stack>
+      <Stack sx={{ p: 2, width: '250px' }}>
+        <Input placeholder="Текстовое поле" size="small" warning />
+      </Stack>
+      <Stack sx={{ p: 2, width: '250px' }}>
+        <Input placeholder="Текстовое поле" size="small" disabled />
+      </Stack>
     </ComponentLayout>
   );
 }

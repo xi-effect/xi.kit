@@ -10,6 +10,7 @@ const nextConfig = {
     '@xipkg/typescript',
     '@xipkg/icons',
     '@xipkg/link',
+    '@xipkg/input',
   ],
   images: {
     domains: [
