@@ -11,7 +11,8 @@ import { theme } from '@xipkg/mui';
 import React from 'react';
 
 export function Providers(props) {
-  const { options, children } = props;
+  const options = { key: 'mui', prepend: true };
+  const { children } = props;
 
   const [{ cache, flush }] = React.useState(() => {
     const cache = createCache(options);

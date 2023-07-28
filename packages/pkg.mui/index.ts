@@ -1,4 +1,4 @@
-import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
+import { createTheme, experimental_extendTheme as extendTheme } from '@mui/material/styles';
 import { darkModePalette, lightModePalette } from './palette';
 import { typography } from './typography';
 import { spacing } from './spacing';
