@@ -28,22 +28,22 @@ export default function ButtonPage() {
         <Link href="https://github.com">
           Ссылка
         </Link>
-        <Link onClick={shortAction} color={"error"}>
+        <Link onClick={shortAction}>
           Ссылка
         </Link>
-        <Link onClick={longAction} color={"error"}>
+        <Link onClick={longAction}>
           Ссылка
         </Link>
       </Stack>
 
       <Stack flexDirection="row" alignItems="center" sx={{ gap: '16px' }}>
-        <Link href="https://github.com" color="success">
+        <Link href="https://github.com">
           Ссылка
         </Link>
-        <Link onClick={shortAction} color={"success"}>
+        <Link onClick={shortAction}>
           Ссылка
         </Link>
-        <Link onClick={longAction} color={"success"}>
+        <Link onClick={longAction}>
           Ссылка
         </Link>
       </Stack>
