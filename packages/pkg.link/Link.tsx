@@ -1,6 +1,17 @@
-export type LinkProps = {};
+import { ComponentProps } from 'react';
+import { Link as MuiLink, LinkProps as MuiLinkProps } from '@mui/material';
 
-export const Link = ({}: LinkProps) => {
-  console.log('Link');
-  return <div>Link</div>;
+export type LinkColorsT = 'default' | 'primary' | 'success' | 'error';
+
+export type LinkProps = {
+  color?: LinkColorsT;
+} & ComponentProps<'link'> &
+  MuiLinkProps;
+
+export const Link = ({ ...props }: LinkProps) => {
+  return (
+    <MuiLink {...props}>
+      {props.children}
+    </MuiLink>
+  );
 };

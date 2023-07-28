@@ -12,8 +12,11 @@ declare module '@mui/material/styles' {
   }
 }
 
+const globalTheme = createTheme();
+
 export const theme = () => {
   return extendTheme({
+    ...globalTheme,
     cssVarPrefix: 'xi',
     colorSchemes: {
       light: { ...lightModePalette },
