@@ -13,7 +13,7 @@ export default function InputPage() {
         <Input />
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
-        <Input startAdornment={<Eyeon sx={{ fontSize: 24 }} />} placeholder="Текстовое поле" />
+        <Input variant="outlined" startAdornment={<Eyeon sx={{ fontSize: 24 }} />} placeholder="Текстовое поле" />
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
         <Input startAdornment={<Eyeon />} placeholder="Текстовое поле" error />

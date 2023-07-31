@@ -1,10 +1,10 @@
 import * as React from 'react';
-import InputBase, { InputBaseProps } from '@mui/material/InputBase';
+import { Input as MuiInput, InputProps as MuiInputProps } from '@mui/material';
 
-export type InputProps = InputBaseProps & {
+export type InputProps = MuiInputProps & {
   warning?: boolean;
 };
 
 export const Input = ({ ...props }: InputProps) => {
-  return <InputBase tabIndex={1} {...props} />;
+  return <MuiInput tabIndex={1} {...props} />;
 };
