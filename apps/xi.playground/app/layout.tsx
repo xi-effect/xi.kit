@@ -48,7 +48,7 @@ export default function RootLayout({ children }: any) {
                   overflow: 'auto',
                   p: 2,
                   borderRight: '1px solid',
-                  borderColor: 'petersburg.40',
+                  borderColor: 'gray.40',
                   gap: '16px',
                 }}
               >
@@ -59,9 +59,9 @@ export default function RootLayout({ children }: any) {
                       width: '100%',
                       pl: 2,
                       transition: '0.3s',
-                      bgcolor: current === item.link ? 'petersburg.20' : 'unset',
+                      bgcolor: current === item.link ? 'gray.20' : 'unset',
                       '&:hover': {
-                        bgcolor: current === item.link ? 'petersburg.20' : 'petersburg.10',
+                        bgcolor: current === item.link ? 'gray.20' : 'gray.10',
                         cursor: 'pointer',
                       },
                     }}

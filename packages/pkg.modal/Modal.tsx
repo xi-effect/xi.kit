@@ -1,6 +1,6 @@
 import 'pkg.config.muidts';
 import { Button, ButtonProps } from '@xipkg/button';
-import { Close } from 'pkg.icons';
+import { Close } from '@xipkg/icons';
 import { FC, MouseEvent, ReactNode } from 'react';
 import {
   useTheme,
@@ -18,6 +18,17 @@ import {
   IconButton,
 } from '@mui/material';
 import { actionsStyle, contentStyle, dialogStyle, iconStyle, titleStyle } from './style';
+
+declare module '@mui/material/Typography' {
+  export interface TypographyPropsVariantOverrides {
+    xl: true;
+    l: true;
+    m: true;
+    s: true;
+    xs: true;
+    xxs: true;
+  }
+}
 
 export type ModalProps = {
   open: boolean;
@@ -86,7 +97,7 @@ export const Modal: FC<ModalProps> = ({
       scroll="body"
       sx={{
         '& .MuiBackdrop-root': {
-          backgroundColor: alpha(theme.palette.petersburg[100], 0.4),
+          backgroundColor: alpha(theme.palette.gray[100], 0.4),
         },
         ...dialogSx,
       }}
@@ -112,7 +123,7 @@ export const Modal: FC<ModalProps> = ({
           component="div"
           sx={{
             ...titleStyle.default,
-            borderColor: hideLines ? 'transparent' : 'petersburg.10',
+            borderColor: hideLines ? 'transparent' : 'gray.10',
             ...titleStyle[size],
             ...dialogTitleSx,
           }}
@@ -120,11 +131,11 @@ export const Modal: FC<ModalProps> = ({
         >
           {dialogTitleChildren}
 
-          <Typography variant="xl" component="h3" sx={{ color: 'petersburg.100', fontWeight: 600 }}>
+          <Typography variant="xl" component="h3" sx={{ color: 'gray.100', fontWeight: 600 }}>
             {title}
           </Typography>
           {subtitle && (
-            <Typography variant="m" sx={{ color: 'petersburg.80', fontWeight: 400 }}>
+            <Typography variant="m" sx={{ color: 'gray.80', fontWeight: 400 }}>
               {subtitle}
             </Typography>
           )}
@@ -151,7 +162,7 @@ export const Modal: FC<ModalProps> = ({
         <DialogActions
           sx={{
             ...actionsStyle.default,
-            borderColor: hideLines || !children ? 'transparent' : 'petersburg.10',
+            borderColor: hideLines || !children ? 'transparent' : 'gray.10',
             ...actionsStyle[size],
             ...dialogActionsSx,
           }}
@@ -163,7 +174,8 @@ export const Modal: FC<ModalProps> = ({
             <Button
               onClick={onCancelButton}
               variant="outlined"
-              color="grayscale"
+              // @ts-ignore
+              color="gray"
               {...cancelButtonProps}
             >
               {cancelButtonTitle}

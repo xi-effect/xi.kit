@@ -1,6 +1,5 @@
-import 'pkg.config.muidts';
 import { ToggleButtonGroup, ToggleButton, Typography } from '@mui/material';
-import { FC, MouseEvent } from 'react';
+import { MouseEvent } from 'react';
 
 import {
   buttonSizes,
@@ -9,6 +8,17 @@ import {
   buttonBorderRadius,
   groupSizes,
 } from './styles';
+
+declare module '@mui/material/Typography' {
+  export interface TypographyPropsVariantOverrides {
+    xl: true;
+    l: true;
+    m: true;
+    s: true;
+    xs: true;
+    xxs: true;
+  }
+}
 
 export type SwitcherProps = {
   currentValue: string | number;
@@ -21,7 +31,7 @@ export type SwitcherProps = {
   onChange: (value?: string | number, event?: MouseEvent<HTMLElement>) => void;
 };
 
-export const Switcher: FC<SwitcherProps> = ({
+export const Switcher = ({
   currentValue,
   values,
   size = 'large',
@@ -30,7 +40,7 @@ export const Switcher: FC<SwitcherProps> = ({
   disabledValue,
   isError,
   onChange,
-}) => {
+}: SwitcherProps) => {
   const handleChange = (event: MouseEvent<HTMLElement>, value: any) => {
     onChange(value, event);
   };

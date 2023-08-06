@@ -1,7 +1,7 @@
 import { FunctionComponent, useState, FC, ChangeEvent } from 'react';
 import { MenuItem, Select as MuiSelect, Typography, Stack } from '@mui/material';
 import { ClickAwayListener } from '@mui/base';
-import { Arrow } from 'pkg.icons';
+import { ArrowUp } from '@xipkg/icons';
 import { SizesT, TypesT, ItemT, GroupT } from './types';
 import {
   selectSizes,
@@ -52,9 +52,9 @@ const OpenIcon = (isOpen: boolean, size: SizesT, isDisabled: boolean, onClick: (
     onClick={onClick}
     sx={{ height: '100%', cursor: 'pointer', pointerEvents: isDisabled ? 'none' : '' }}
   >
-    <Arrow
+    <ArrowUp
       sx={{
-        color: 'petersburg.80',
+        color: 'gray.80',
         transform: isOpen ? 'rotate(-90deg)' : 'rotate(90deg)',
         fontSize: size === 'm' ? '14px' : '11px',
       }}
@@ -131,14 +131,14 @@ export const Select: FC<SelectProps> = ({
               <Icon
                 sx={{
                   ...placeholderIconSizes[size],
-                  color: 'petersburg.40',
+                  color: 'gray.40',
                 }}
               />
             )}
             <Typography
               sx={{
                 ...placeholderTextSizes[size],
-                color: 'petersburg.40',
+                color: 'gray.40',
                 textOverflow: 'ellipsis',
                 overflow: 'hidden',
               }}
@@ -184,7 +184,7 @@ export const Select: FC<SelectProps> = ({
               sx={{
                 fontSize: '10px',
                 lineHeight: '14px',
-                color: 'petersburg.40',
+                color: 'gray.40',
                 p: !group.title ? '' : '4px 12px',
                 cursor: 'default',
               }}

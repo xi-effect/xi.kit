@@ -5,14 +5,25 @@ import { formControlGap, sizesStyle, typographyVariants } from './style';
 import { CheckedIcon, Icon } from './StyledRadioIcon';
 import { RadioProps } from './types';
 
-export const Radio: FC<RadioProps> = ({
+declare module '@mui/material/Typography' {
+  export interface TypographyPropsVariantOverrides {
+    xl: true;
+    l: true;
+    m: true;
+    s: true;
+    xs: true;
+    xxs: true;
+  }
+}
+
+export const Radio = ({
   size = 'large',
   color = 'primary',
   label,
-  value = null,
+  value,
   disabled,
   onChange,
-}) => {
+}: RadioProps) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>, checked: boolean) => {
     if (onChange) {
       onChange(checked, event);
@@ -37,7 +48,7 @@ export const Radio: FC<RadioProps> = ({
       label={
         label && (
           <Typography
-            sx={{ fontWeight: 400, color: disabled ? 'petersburg.40' : 'petersburg.90' }}
+            sx={{ fontWeight: 400, color: disabled ? 'gray.40' : 'gray.90' }}
             variant={typographyVariants[size]}
           >
             {label}

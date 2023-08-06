@@ -33,9 +33,9 @@ export const placeholderTextSizes: { [key in SizesT]: any } = {
 
 export const selectTypes: { [key in TypesT]: any } = {
   default: {
-    borderColor: 'petersburg.40',
+    borderColor: 'gray.40',
     '&:hover': {
-      borderColor: 'petersburg.60',
+      borderColor: 'gray.60',
     },
   },
   warning: {
@@ -45,15 +45,15 @@ export const selectTypes: { [key in TypesT]: any } = {
     borderColor: 'moscow.60',
   },
   disabled: {
-    borderColor: 'petersburg.10',
-    bgcolor: 'petersburg.10',
+    borderColor: 'gray.10',
+    bgcolor: 'gray.10',
   },
 };
 
 export const MenuProps = (menuMaxHeight: string) => ({
   '& .MuiMenu-paper': {
     border: '1px solid',
-    borderColor: 'petersburg.10',
+    borderColor: 'gray.10',
     boxShadow: '0px 16px 8px rgba(16, 16, 16, 0.04), 0px 12px 16px rgba(16, 16, 16, 0.04)',
     borderRadius: '8px',
     mt: '4px',
@@ -63,7 +63,7 @@ export const MenuProps = (menuMaxHeight: string) => ({
   },
   '& .MuiMenu-list': {
     p: '3px',
-    bgcolor: 'petersburg.0',
+    bgcolor: 'gray.0',
   },
   '& .MuiBackdrop-root': {
     bgcolor: 'unset',
@@ -81,9 +81,9 @@ export const menuItemStyles = {
   '&.Mui-selected': {
     bgcolor: 'brand.0',
     color: 'brand.80',
-    '&:hover': { bgcolor: 'petersburg.5', color: 'petersburg.100' },
+    '&:hover': { bgcolor: 'gray.5', color: 'gray.100' },
   },
-  '&:hover': { bgcolor: 'petersburg.5' },
+  '&:hover': { bgcolor: 'gray.5' },
   transition: '0.3s',
   fontSize: '14px',
   lineHeight: '20px',
@@ -101,7 +101,7 @@ export const dividerStyles = {
     disaply: 'inline-block',
     width: '90%',
     height: '1px',
-    bgcolor: 'petersburg.10',
+    bgcolor: 'gray.10',
   },
 };
 
@@ -114,6 +114,6 @@ export const selectOverrideClasses = {
     padding: 0,
   },
   '&.Mui-focused': {
-    borderColor: 'petersburg.80',
+    borderColor: 'gray.80',
   },
 };

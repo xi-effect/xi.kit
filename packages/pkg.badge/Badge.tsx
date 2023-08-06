@@ -1,17 +1,76 @@
-import { ReactNode } from 'react';
+import { Typography, TypographyProps, StackProps, SvgIconProps, Stack } from '@mui/material';
+import { FunctionComponent } from 'react';
+import { getStyles } from './styles';
+
+declare module '@mui/material/Typography' {
+  export interface TypographyPropsVariantOverrides {
+    xl: true;
+    l: true;
+    m: true;
+    s: true;
+    xs: true;
+    xxs: true;
+  }
+}
 
 export type BadgeProps = {
+  icon?: FunctionComponent<SvgIconProps>;
   children: string;
-  iconBefore?: ReactNode;
-  iconAfter?: ReactNode;
+  bgColor: string;
+  iconColor?: string;
+  fontColor?: string;
+  size?: 'small';
+  stackProps?: StackProps;
+  typographyProps?: TypographyProps;
+  iconProps?: SvgIconProps;
 };
 
-export const Badge = ({ children, iconBefore, iconAfter }: BadgeProps) => {
+export const Badge = ({
+  icon,
+  children,
+  bgColor,
+  iconColor,
+  fontColor,
+  size,
+  stackProps = { sx: {} },
+  iconProps = { sx: {} },
+  typographyProps,
+}: BadgeProps) => {
+  const IconComponent = icon as FunctionComponent<any>;
+
+  const styles = getStyles(size);
+
+  const { sx: iconSx, ...otherIconProps } = iconProps;
+  const { sx: stackSx, ...otherStackProps } = stackProps;
+
   return (
-    <div>
-      {iconBefore}
-      <span>{children}</span>
-      {iconAfter}
-    </div>
+    <Stack
+      direction="row"
+      alignItems="center"
+      sx={{
+        backgroundColor: bgColor,
+        ...styles.stack.sx,
+        ...stackSx,
+      }}
+      {...otherStackProps}
+    >
+      {icon && (
+        <IconComponent
+          sx={{ color: iconColor, ...styles.icon.sx, ...iconSx }}
+          {...otherIconProps}
+        />
+      )}
+
+      <Typography
+        variant={styles.typography.variant}
+        component="span"
+        sx={{
+          color: fontColor,
+        }}
+        {...typographyProps}
+      >
+        {children}
+      </Typography>
+    </Stack>
   );
 };

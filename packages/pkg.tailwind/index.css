@@ -64,7 +64,7 @@ svg {
 /* Palette */
 
 :root {
-  /* petersburg */
+  /* gray */
   --xi-gray-0: #ffffff;
   --xi-gray-5: #f7f7f7;
   --xi-gray-10: #e8e8e8;
@@ -140,7 +140,7 @@ svg {
 }
 
 [data-theme='dark'] {
-  /* petersburg */
+  /* gray */
   --xi-gray-0: #151515;
   --xi-gray-5: #1f1f1f;
   --xi-gray-10: #2a2a2a;

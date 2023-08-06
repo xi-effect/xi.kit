@@ -54,7 +54,7 @@ export const Checkbox = ({
         width: '100%',
         height: '100%',
         transition: '0.3s',
-        bgcolor: isHovered && type !== 'disabled' ? 'petersburg.5' : defaultIconTypes[type].bgcolor,
+        bgcolor: isHovered && type !== 'disabled' ? 'gray.5' : defaultIconTypes[type].bgcolor,
       }}
     />
   );
@@ -63,7 +63,7 @@ export const Checkbox = ({
   const CheckedIcon = icon === 'check' ? CheckIcon : MinusIcon;
 
   /* label */
-  const CkecboxLabel = <Typography sx={{ ...labelSizes[size] }}>{label}</Typography>;
+  const CheckboxLabel = <Typography sx={{ ...labelSizes[size] }}>{label}</Typography>;
 
   /* checkbox */
   const CustomCheckbox = (
@@ -93,13 +93,13 @@ export const Checkbox = ({
           height: 'max-content',
           padding: '4px 8px 4px 4px',
           border: '1px solid',
-          borderColor: isChecked && type === 'default' ? 'brand.80' : 'petersburg.5',
+          borderColor: isChecked && type === 'default' ? 'brand.80' : 'gray.5',
           transition: '0.3s',
           bgcolor:
-            isHovered && type !== 'disabled' ? 'petersburg.10' : containerTypes[type].bgcolor,
+            isHovered && type !== 'disabled' ? 'gray.10' : containerTypes[type].bgcolor,
           m: 0,
         }}
-        label={CkecboxLabel}
+        label={CheckboxLabel}
         onMouseEnter={onHover}
         onMouseLeave={onOutOfHover}
       />

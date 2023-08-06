@@ -1,20 +1,20 @@
 /* names created according to: component name + prop + style (S) */
 /* styles according to types */
 export const containerTypes = {
-  default: { bgcolor: 'petersburg.5' },
+  default: { bgcolor: 'gray.5' },
   warning: {
-    bgcolor: 'petersburg.5',
+    bgcolor: 'gray.5',
   },
-  error: { bgcolor: 'petersburg.5' },
-  disabled: { bgcolor: 'petersburg.10' },
+  error: { bgcolor: 'gray.5' },
+  disabled: { bgcolor: 'gray.10' },
 };
 export const checkboxTypes = {
-  default: { color: 'petersburg.40' },
+  default: { color: 'gray.40' },
   warning: {
     color: 'kungur.80',
   },
   error: { color: 'moscow.80' },
-  disabled: { color: 'petersburg.10' },
+  disabled: { color: 'gray.10' },
 };
 export const checkedCheckboxTypes = {
   default: { bgcolor: 'brand.80' },
@@ -22,24 +22,24 @@ export const checkedCheckboxTypes = {
     bgcolor: 'kungur.80',
   },
   error: { bgcolor: 'moscow.80' },
-  disabled: { bgcolor: 'petersburg.10' },
+  disabled: { bgcolor: 'gray.10' },
 };
 export const checkedIconTypes = {
-  default: { color: 'petersburg.0' },
+  default: { color: 'gray.0' },
   warning: {
-    color: 'petersburg.0',
+    color: 'gray.0',
   },
-  error: { color: 'petersburg.0' },
-  disabled: { color: 'petersburg.40' },
+  error: { color: 'gray.0' },
+  disabled: { color: 'gray.40' },
 };
 export const defaultIconTypes = {
-  default: { borderColor: 'brand.80', bgcolor: 'petersburg.0' },
+  default: { borderColor: 'brand.80', bgcolor: 'gray.0' },
   warning: {
     borderColor: 'kungur.80',
-    bgcolor: 'petersburg.0',
+    bgcolor: 'gray.0',
   },
-  error: { borderColor: 'moscow.80', bgcolor: 'petersburg.0' },
-  disabled: { borderColor: 'petersburg.10', bgcolor: 'petersburg.10', color: 'petersburg.10' },
+  error: { borderColor: 'moscow.80', bgcolor: 'gray.0' },
+  disabled: { borderColor: 'gray.10', bgcolor: 'gray.10', color: 'gray.10' },
 };
 
 /* styles according to sizes */
