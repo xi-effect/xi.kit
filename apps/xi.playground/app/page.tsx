@@ -1,11 +1,5 @@
 'use client';
 
-import ColorButton from "./colorbutton";
-
-const Home = () => (
-  <div>
-    <ColorButton />
-  </div>
-);
+const Home = () => <div>1</div>;
 
 export default Home;

@@ -14,6 +14,7 @@
     "@xipkg/link": "*",
     "@xipkg/modal": "*",
     "@xipkg/mui": "*",
+    "@xipkg/badge": "*",
     "@xipkg/icons": "*",
     "next": "^13.4.12",
     "@xipkg/input": "*",

@@ -1,167 +1,109 @@
-'use client';
+import { useState } from 'react';
 
 import { Button } from '@xipkg/button';
-import { Add } from '@xipkg/icons';
-import ComponentLayout from '../layout';
+import { Camera } from '@xipkg/icons';
 
 export default function ButtonPage() {
+  const [status, setStatus] = useState<'idle' | 'pending' | 'completed'>('idle');
+
+  const onClickCompleted = () => {
+    setStatus('pending');
+
+    setTimeout(() => {
+      setStatus('completed');
+
+      setTimeout(() => {
+        setStatus('idle');
+      }, 1500);
+    }, 1500);
+  };
+
+  const onClickIdle = () => {
+    setStatus('pending');
+
+    setTimeout(() => {
+      setStatus('idle');
+    }, 1500);
+  };
+
   return (
-    <ComponentLayout>
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <Button size="large">Click me</Button>
-        <Button size="medium">Click me</Button>
-        <Button size="small">Click me</Button>
-      </div>
+    <>
+      <Button
+        startIcon={<Camera />}
+        status={status}
+        size="small"
+        onClick={onClickCompleted}
+        variant="contained"
+        color="primary"
+        isSnackbar
+        isSnackbarIconEnd
+      >
+        Test
+      </Button>
 
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <Button variant="contained" size="large">
-          Click me
-        </Button>
-        <Button variant="contained" size="medium">
-          Click me
-        </Button>
-        <Button variant="contained" size="small">
-          Click me
-        </Button>
-      </div>
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <Button variant="contained" size="large" color="error">
-          Click me
-        </Button>
-        <Button variant="contained" size="medium" color="error">
-          Click me
-        </Button>
-        <Button variant="contained" size="small" color="error">
-          Click me
-        </Button>
-      </div>
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <Button variant="contained" size="large" color="success">
-          Click me
-        </Button>
-        <Button variant="contained" size="medium" color="success">
-          Click me
-        </Button>
-        <Button variant="contained" size="small" color="success">
-          Click me
-        </Button>
-      </div>
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <Button variant="contained" size="large" disabled>
-          Click me
-        </Button>
-        <Button variant="contained" size="medium" disabled>
-          Click me
-        </Button>
-        <Button variant="contained" size="small" disabled>
-          Click me
-        </Button>
-      </div>
+      <Button status={status} size="medium" onClick={onClickIdle} variant="contained" color="error">
+        Test
+      </Button>
 
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <Button variant="text" size="large">
-          Click me
-        </Button>
-        <Button variant="text" size="medium">
-          Click me
-        </Button>
-        <Button variant="text" size="small">
-          Click me
-        </Button>
-      </div>
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <Button variant="text" size="large" disabled>
-          Click me
-        </Button>
-        <Button variant="text" size="medium" disabled>
-          Click me
-        </Button>
-        <Button variant="text" size="small" disabled>
-          Click me
-        </Button>
-      </div>
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <Button startIcon={<Add sx={{ fontSize: '32px' }} />} variant="text" size="large">
-          Click me
-        </Button>
-        <Button startIcon={<Add sx={{ fontSize: '24px' }} />} variant="text" size="medium">
-          Click me
-        </Button>
-        <Button startIcon={<Add sx={{ fontSize: '16px' }} />} variant="text" size="small">
-          Click me
-        </Button>
-      </div>
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <Button startIcon={<Add sx={{ fontSize: '32px' }} />} variant="text" size="large" disabled>
-          Click me
-        </Button>
-        <Button startIcon={<Add sx={{ fontSize: '24px' }} />} variant="text" size="medium" disabled>
-          Click me
-        </Button>
-        <Button startIcon={<Add sx={{ fontSize: '16px' }} />} variant="text" size="small" disabled>
-          Click me
-        </Button>
-      </div>
+      <Button
+        startIcon={Camera}
+        size="large"
+        status={status}
+        onClick={onClickCompleted}
+        loadingPosition="icon"
+        variant="outlined"
+        color="grayscale"
+      >
+        Test
+      </Button>
 
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <Button variant="outlined" size="large">
-          Click me
-        </Button>
-        <Button variant="outlined" size="medium">
-          Click me
-        </Button>
-        <Button variant="outlined" size="small">
-          Click me
-        </Button>
-      </div>
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <Button variant="outlined" size="large" disabled>
-          Click me
-        </Button>
-        <Button variant="outlined" size="medium" disabled>
-          Click me
-        </Button>
-        <Button variant="outlined" size="small" disabled>
-          Click me
-        </Button>
-      </div>
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <Button startIcon={<Add sx={{ fontSize: '32px' }} />} variant="outlined" size="large">
-          Click me
-        </Button>
-        <Button startIcon={<Add sx={{ fontSize: '24px' }} />} variant="outlined" size="medium">
-          Click me
-        </Button>
-        <Button startIcon={<Add sx={{ fontSize: '16px' }} />} variant="outlined" size="small">
-          Click me
-        </Button>
-      </div>
-      <div style={{ display: 'flex', gap: '16px' }}>
-        <Button
-          startIcon={<Add sx={{ fontSize: '32px' }} />}
-          variant="outlined"
-          size="large"
-          disabled
-        >
-          Click me
-        </Button>
-        <Button
-          startIcon={<Add sx={{ fontSize: '24px' }} />}
-          variant="outlined"
-          size="medium"
-          disabled
-        >
-          Click me
-        </Button>
-        <Button
-          startIcon={<Add sx={{ fontSize: '16px' }} />}
-          variant="outlined"
-          size="small"
-          disabled
-        >
-          Click me
-        </Button>
-      </div>
-    </ComponentLayout>
+      <Button
+        startIcon={Camera}
+        status={status}
+        size="large"
+        onClick={onClickCompleted}
+        loadingPosition="icon"
+        variant="contained"
+        color="success"
+        isSnackbar
+        isSnackbarIconStart
+        snackbarLoadingPosition="icon"
+        snackbarText="WAIT...."
+      >
+        Test
+      </Button>
+
+      <Button
+        startIcon={Camera}
+        status="pending"
+        size="large"
+        onClick={onClickCompleted}
+        loadingPosition="icon"
+        variant="contained"
+        color="success"
+        isSnackbar
+        isSnackbarIconStart
+        snackbarLoadingPosition="icon"
+        snackbarText="WAIT...."
+      >
+        Test
+      </Button>
+
+      <Button
+        startIcon={Camera}
+        status="completed"
+        size="large"
+        onClick={onClickCompleted}
+        loadingPosition="icon"
+        variant="contained"
+        color="success"
+        isSnackbar
+        isSnackbarIconStart
+        snackbarLoadingPosition="icon"
+        snackbarText="Completed...."
+      >
+        Completed
+      </Button>
+    </>
   );
 }

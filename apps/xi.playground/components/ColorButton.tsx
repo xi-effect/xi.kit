@@ -4,7 +4,7 @@ import { useTheme } from 'next-themes';
 import { Button } from '@xipkg/button';
 import { Stack } from '@mui/material';
 
-const ColorButton = () => {
+export const ColorButton = () => {
   const { theme, setTheme } = useTheme();
 
   const changeTheme = () => {
@@ -20,5 +20,3 @@ const ColorButton = () => {
     </Stack>
   );
 };
-
-export default ColorButton;

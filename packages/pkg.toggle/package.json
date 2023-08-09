@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/toggle",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -17,8 +17,8 @@
     "@types/node": "^17.0.12",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "@xipkg/eslint": "^0.0.2",
     "@xipkg/typescript": "^0.0.0",
-    "@xipkg/eslint": "^0.0.0",
     "eslint": "^7.32.0",
     "typescript": "^5.1.3"
   },

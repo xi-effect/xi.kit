@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/mui",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "description": "MUI config",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -15,9 +15,9 @@
   "author": "xi.effect",
   "license": "MIT",
   "dependencies": {
+    "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
-    "@emotion/cache": "^11.11.0",
     "@mui/material": "^5.14.2",
     "next": "^13.4.12"
   }

@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/typescript",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "files": [
     "base.json",
     "nextjs.json",
