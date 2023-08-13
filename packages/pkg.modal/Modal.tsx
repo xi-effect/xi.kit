@@ -1,4 +1,3 @@
-import 'pkg.config.muidts';
 import { Button, ButtonProps } from '@xipkg/button';
 import { Close } from '@xipkg/icons';
 import { FC, MouseEvent, ReactNode } from 'react';

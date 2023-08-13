@@ -1,4 +1,3 @@
-import 'pkg.config.muidts';
 import { FC, useState } from 'react';
 import { Stack, Typography } from '@mui/material';
 import Icons from './Icons';

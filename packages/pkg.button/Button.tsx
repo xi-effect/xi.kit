@@ -1,5 +1,3 @@
-import 'pkg.config.muidts';
-
 import { Typography, Button as MuiButton, darken, useTheme } from '@mui/material';
 import React, { FC, MouseEvent } from 'react';
 

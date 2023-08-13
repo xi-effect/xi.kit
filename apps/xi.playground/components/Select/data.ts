@@ -1,4 +1,4 @@
-import { Folder } from 'pkg.icons';
+import { Folder } from '@xipkg/icons';
 import { v4 } from 'uuid';
 
 export const selectTestData = [

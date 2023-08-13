@@ -1,4 +1,3 @@
-import 'pkg.config.muidts';
 import { ChangeEvent, DragEvent, useRef, useState } from 'react';
 import { Button, IconButton, Stack, Typography } from '@mui/material';
 import { Download } from '@xipkg/icons';
