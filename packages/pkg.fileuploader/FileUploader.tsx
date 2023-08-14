@@ -28,7 +28,6 @@ declare module '@mui/material/Typography' {
   }
 }
 
-
 export const FileUploader = ({
   size = 'large',
   fileName,
