@@ -1,6 +1,9 @@
 import TextField, { TextFieldProps } from '@mui/material/TextField';
+import React from 'react';
 
-export const Input = (props: TextFieldProps) => {
+type InputProps = TextFieldProps;
+
+export const Input = (props: InputProps) => {
   return (
     <TextField
       sx={{
@@ -32,4 +35,3 @@ export const Input = (props: TextFieldProps) => {
     />
   );
 };
-

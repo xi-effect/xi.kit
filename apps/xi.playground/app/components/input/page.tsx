@@ -13,16 +13,31 @@ export default function InputPage() {
         <Input />
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
-        <Input variant="outlined" startAdornment={<Eyeon sx={{ fontSize: 24 }} />} placeholder="Текстовое поле" />
+        <Input
+          variant="outlined"
+          InputProps={{ startAdornment: <Eyeon sx={{ fontSize: 24 }} /> }}
+          placeholder="Текстовое поле"
+        />
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
-        <Input startAdornment={<Eyeon />} placeholder="Текстовое поле" error />
+        <Input
+          InputProps={{ startAdornment: <Eyeon sx={{ fontSize: 24 }} /> }}
+          placeholder="Текстовое поле"
+          error
+        />
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
-        <Input startAdornment={<Eyeon />} placeholder="Текстовое поле" warning />
+        <Input
+          InputProps={{ startAdornment: <Eyeon sx={{ fontSize: 24 }} /> }}
+          placeholder="Текстовое поле"
+        />
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
-        <Input startAdornment={<Eyeon />} placeholder="Текстовое поле" disabled />
+        <Input
+          InputProps={{ startAdornment: <Eyeon sx={{ fontSize: 24 }} /> }}
+          placeholder="Текстовое поле"
+          disabled
+        />
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
         <Input size="small" />
@@ -34,7 +49,7 @@ export default function InputPage() {
         <Input placeholder="Текстовое поле" size="small" error />
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
-        <Input placeholder="Текстовое поле" size="small" warning />
+        <Input placeholder="Текстовое поле" size="small" />
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
         <Input placeholder="Текстовое поле" size="small" disabled />
