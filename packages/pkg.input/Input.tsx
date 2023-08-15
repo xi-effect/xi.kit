@@ -1,6 +1,6 @@
 import TextField, { TextFieldProps } from '@mui/material/TextField';
 
-export const Input = ({ sx, ...props }: TextFieldProps) => {
+export const Input = (props: TextFieldProps) => {
   return (
     <TextField
       sx={{
@@ -26,7 +26,7 @@ export const Input = ({ sx, ...props }: TextFieldProps) => {
         '& .MuiOutlinedInput-notchedOutline': {
           border: `1px solid ${props.error ? 'red.80' : 'gray.50'}`,
         },
-        ...sx,
+        ...props.sx,
       }}
       {...props}
     />
