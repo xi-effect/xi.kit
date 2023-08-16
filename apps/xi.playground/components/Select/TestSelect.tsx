@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Select } from 'pkg.inputs.select';
+import { Select } from '@xipkg/select';
 
 export const TestSelect = (staticData: any) => {
   const [value, setValue] = useState('');

@@ -1,5 +1,6 @@
+'use client';
+
 import { Dropdown, DropdownProps } from '@xipkg/dropdown';
-import { LayoutPages } from 'kit/LayoutPages';
 import { MenuItem, Typography } from '@mui/material';
 import { ArrowUp } from '@xipkg/icons';
 
@@ -32,13 +33,13 @@ const TestDropdowns: DropdownProps[] = [
 ];
 
 const TestComponents = () => (
-  <LayoutPages>
+  <>
     {TestDropdowns.map((dropdown, index) => (
       <Dropdown {...dropdown} key={`dropdown_${index}`}>
         <MenuItem>Item 1</MenuItem>
       </Dropdown>
     ))}
-  </LayoutPages>
+  </>
 );
 
 export default TestComponents;

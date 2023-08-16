@@ -76,7 +76,7 @@
     "src/Notification.tsx",
     "src/Objects.tsx",
     "src/Ol.tsx",
-    "src/Pallet.tsx",
+    "src/Palette.tsx",
     "src/PeopleInvite.tsx",
     "src/Photo.tsx",
     "src/Picture.tsx",

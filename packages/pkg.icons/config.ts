@@ -73,7 +73,7 @@ export const icons = [
   'Notification',
   'Objects',
   'Ol',
-  'Pallet',
+  'Palette',
   'PeopleInvite',
   'Photo',
   'Picture',

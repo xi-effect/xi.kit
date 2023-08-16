@@ -72,7 +72,7 @@ import { Nature } from './src/Nature';
 import { Notification } from './src/Notification';
 import { Objects } from './src/Objects';
 import { Ol } from './src/Ol';
-import { Pallet } from './src/Pallet';
+import { Palette } from './src/Palette';
 import { PeopleInvite } from './src/PeopleInvite';
 import { Photo } from './src/Photo';
 import { Picture } from './src/Picture';
@@ -185,7 +185,7 @@ export {
   Notification,
   Objects,
   Ol,
-  Pallet,
+  Palette,
   PeopleInvite,
   Photo,
   Picture,

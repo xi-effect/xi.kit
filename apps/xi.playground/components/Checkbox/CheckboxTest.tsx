@@ -1,4 +1,6 @@
-import { Checkbox, CheckboxProps } from 'pkg.inputs.checkbox';
+'use client';
+
+import { Checkbox, CheckboxProps } from '@xipkg/checkbox';
 import React, { useState } from 'react';
 
 export const ChecboxTest = (data: any) => {
