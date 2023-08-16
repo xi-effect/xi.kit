@@ -2,7 +2,7 @@ import { FunctionComponent, ReactElement } from 'react';
 
 export type DropdownSizesT = 's' | 'm' | 'l';
 
-export type DropdownPropsT = {
+export type DropdownProps = {
   Element: FunctionComponent<any>;
   size?: DropdownSizesT;
   children?: ReactElement | ReactElement[];

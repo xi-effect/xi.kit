@@ -2,9 +2,9 @@ import { Button, Menu, ClickAwayListener } from '@mui/material';
 import React, { useState, FC } from 'react';
 import { v4 } from 'uuid';
 import { dropdownSizes, menuStyles } from './styles';
-import { DropdownPropsT } from './types';
+import { DropdownProps } from './types';
 
-export const Dropdown: FC<DropdownPropsT> = ({
+export const Dropdown: FC<DropdownProps> = ({
   Element,
   size = 'l',
   menuProps,
