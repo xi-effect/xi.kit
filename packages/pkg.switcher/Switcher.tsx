@@ -51,7 +51,7 @@ export const Switcher = ({
       sx={{
         width: 'fit-content',
         border: '2px solid',
-        borderColor: isError ? 'moscow.80' : 'transparent',
+        borderColor: isError ? 'var(--xi-red-80)' : 'transparent',
         backgroundColor: groupBackgroundColor || 'transparent',
         ...groupSizes[size],
       }}

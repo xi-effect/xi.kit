@@ -27,17 +27,17 @@ export const File: FC<FileProps> = ({
       alignItems="center"
       justifyContent="space-between"
       sx={{
-        backgroundColor: isFocus ? 'gray.5' : 'gray.0',
+        backgroundColor: isFocus ? 'var(--xi-gray-5)' : 'var(--xi-gray-0)',
         transition: 'all 0.1s ease-in',
         ...containerStyle[size],
         '&:hover': {
-          backgroundColor: 'gray.5',
+          backgroundColor: 'var(--xi-gray-5)',
 
-          '& .MuiTypography-root': { color: isError ? 'moscow.80' : 'gray.100' },
+          '& .MuiTypography-root': { color: isError ? 'var(--xi-red-80)' : 'var(--xi-gray-10)' },
 
-          '& .MuiSvgIcon-root': { color: 'gray.80' },
+          '& .MuiSvgIcon-root': { color: 'var(--xi-gray-80)' },
 
-          '& .MuiCircularProgress-root': { color: 'gray.80' },
+          '& .MuiCircularProgress-root': { color: 'var(--xi-gray-80)' },
         },
         ...props,
       }}
@@ -61,7 +61,7 @@ export const File: FC<FileProps> = ({
         sx={{
           wordBreak: 'break-all',
           transition: 'all 0.1s ease-in',
-          color: isError ? 'moscow.80' : 'gray.90',
+          color: isError ? 'var(--xi-red-80)' : 'var(--xi-gray-90)',
           fontWeight: 400,
           cursor: onClick ? 'pointer' : 'default',
           paddingRight: '10px',
@@ -73,7 +73,7 @@ export const File: FC<FileProps> = ({
 
       <Icons
         size={size}
-        color={isFocus ? 'gray.80' : 'gray.40'}
+        color={isFocus ? 'var(--xi-gray-80)' : 'var(--xi-gray-40)'}
         isDeleteIcon={isDeleteIcon && !isPending && !isSucceeded}
         isLoadingIcon={!isAbortIcon && isPending}
         isSucceededIcon={isSucceeded}

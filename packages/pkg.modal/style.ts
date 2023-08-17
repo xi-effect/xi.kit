@@ -3,7 +3,7 @@ export const dialogStyle = {
     borderRadius: '16px',
     alignItems: 'center',
     overflow: 'visible',
-    bgcolor: 'gray.0',
+    bgcolor: 'var(--xi-gray-0)',
     boxShadow: 'none',
     m: '40px 0',
   },
@@ -22,7 +22,7 @@ export const dialogStyle = {
 export const titleStyle = {
   default: {
     borderBottom: '1px solid',
-    borderColor: 'gray.10',
+    borderColor: 'var(--xi-gray-10)',
     width: '100%',
     display: 'flex',
     flexDirection: 'column' as 'column',
@@ -76,11 +76,11 @@ export const iconStyle = {
   position: 'absolute',
   width: '40px',
   height: '40px',
-  backgroundColor: 'gray.80',
-  color: 'gray.0',
+  backgroundColor: 'var(--xi-gray-80)',
+  color: 'var(--xi-gray-0)',
   right: '-56px',
 
   '&:hover': {
-    backgroundColor: 'gray.90',
+    backgroundColor: 'var(--xi-gray-90)',
   },
 };

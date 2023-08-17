@@ -31,80 +31,115 @@ export default function ButtonPage() {
   return (
     <>
       <Button
-        startIcon={<Camera />}
-        status={status}
         size="small"
-        onClick={onClickCompleted}
         variant="contained"
         color="primary"
-        isSnackbar
-        isSnackbarIconEnd
+        sx={{
+          width: '200px'
+        }}
       >
         Test
       </Button>
-
-      <Button status={status} size="medium" onClick={onClickIdle} variant="contained" color="error">
+      <Button
+        size="medium"
+        variant="contained"
+        color="primary"
+        sx={{
+          width: '200px'
+        }}
+      >
         Test
       </Button>
-
       <Button
-        startIcon={Camera}
         size="large"
-        status={status}
-        onClick={onClickCompleted}
-        loadingPosition="icon"
+        variant="contained"
+        color="primary"
+        sx={{
+          width: '200px'
+        }}
+      >
+        Test
+      </Button>
+      <Button
+        size="small"
         variant="outlined"
-        color="grayscale"
+        sx={{
+          width: '200px'
+        }}
       >
         Test
       </Button>
-
       <Button
-        startIcon={Camera}
-        status={status}
-        size="large"
-        onClick={onClickCompleted}
-        loadingPosition="icon"
-        variant="contained"
-        color="success"
-        isSnackbar
-        isSnackbarIconStart
-        snackbarLoadingPosition="icon"
-        snackbarText="WAIT...."
+        size="medium"
+        variant="outlined"
+        sx={{
+          width: '200px'
+        }}
       >
         Test
       </Button>
-
       <Button
-        startIcon={Camera}
-        status="pending"
         size="large"
-        onClick={onClickCompleted}
-        loadingPosition="icon"
-        variant="contained"
-        color="success"
-        isSnackbar
-        isSnackbarIconStart
-        snackbarLoadingPosition="icon"
-        snackbarText="WAIT...."
+        variant="outlined"
+        sx={{
+          width: '200px'
+        }}
       >
         Test
       </Button>
-
       <Button
-        startIcon={Camera}
-        status="completed"
-        size="large"
-        onClick={onClickCompleted}
-        loadingPosition="icon"
-        variant="contained"
-        color="success"
-        isSnackbar
-        isSnackbarIconStart
-        snackbarLoadingPosition="icon"
-        snackbarText="Completed...."
+        size="small"
+        color="error"
+        sx={{
+          width: '200px'
+        }}
       >
-        Completed
+        Test
+      </Button>
+      <Button
+        size="medium"
+        color="error"
+        sx={{
+          width: '200px'
+        }}
+      >
+        Test
+      </Button>
+      <Button
+        size="large"
+        color="error"
+        sx={{
+          width: '200px'
+        }}
+      >
+        Test
+      </Button>
+      <Button
+        size="small"
+        color="success"
+        sx={{
+          width: '200px'
+        }}
+      >
+        Test
+      </Button>
+      <Button
+        size="medium"
+        color="success"
+        sx={{
+          width: '200px'
+        }}
+      >
+        Test
+      </Button>
+      <Button
+        size="large"
+        color="success"
+        sx={{
+          width: '200px'
+        }}
+      >
+        Test
       </Button>
     </>
   );

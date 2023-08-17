@@ -6,8 +6,8 @@ export const containerStyle = {
     alignItems: 'center',
     borderRadius: '8px',
     border: '1px dashed',
-    borderColor: 'gray.40',
-    backgroundColor: 'gray.0',
+    borderColor: 'var(--xi-gray-40)',
+    backgroundColor: 'var(--xi-gray-0)',
     transition: 'all 0.1s ease-in',
     padding: '0 8px',
     maxWidth: '500px',
@@ -41,33 +41,33 @@ const actionContainerStyle = {
   dragOver: {
     boxShadow: '0px 0px 0px 4px #B4BDFF',
     border: '4px solid',
-    borderColor: 'brand.80',
+    borderColor: 'var(--xi-brand-80)',
   },
 
   hover: {
-    large: { borderColor: 'brand.80' },
-    medium: { borderColor: 'transparent', backgroundColor: 'gray.5' },
-    small: { borderColor: 'transparent', backgroundColor: 'gray.5' },
+    large: { borderColor: 'var(--xi-brand-80)' },
+    medium: { borderColor: 'transparent', backgroundColor: 'var(--xi-gray-5)' },
+    small: { borderColor: 'transparent', backgroundColor: 'var(--xi-gray-5)' },
   },
 
   focus: {
     border: '2px solid',
-    borderColor: 'gray.80',
+    borderColor: 'var(--xi-gray-80)',
   },
 
   warning: {
     border: '2px solid',
-    borderColor: 'kungur.80',
+    borderColor: 'var(--xi-orange-80)',
   },
 
   error: {
     border: '2px solid',
-    borderColor: 'moscow.60',
+    borderColor: 'var(--xi-red-60)',
   },
 
   disabled: {
-    borderColor: 'gray.40',
-    backgroundColor: 'gray.10',
+    borderColor: 'var(--xi-gray-40)',
+    backgroundColor: 'var(--xi-gray-10)',
     pointerEvents: 'none',
     borderWidth: '2px',
   },
@@ -130,15 +130,15 @@ export const getActionTextStyle = (
 const textColorStyle = {
   default: {
     large: { button: { color: 'brand.60' }, description: { color: 'brand.20' } },
-    medium: { button: { color: 'gray.90' }, description: { color: 'gray.40' } },
-    small: { button: { color: 'gray.90' }, description: { color: 'gray.40' } },
+    medium: { button: { color: 'var(--xi-gray-90)' }, description: { color: 'var(--xi-gray-40)' } },
+    small: { button: { color: 'var(--xi-gray-90)' }, description: { color: 'var(--xi-gray-40)' } },
   },
 
   active: {
-    large: { button: { color: 'brand.80' }, description: { color: 'brand.60' } },
-    medium: { description: { color: 'gray.80' }, button: { color: 'gray.100' } },
-    small: { description: { color: 'gray.80' }, button: { color: 'gray.100' } },
+    large: { button: { color: 'var(--xi-brand-80)' }, description: { color: 'brand.60' } },
+    medium: { description: { color: 'var(--xi-gray-80)' }, button: { color: 'var(--xi-gray-10)0' } },
+    small: { description: { color: 'var(--xi-gray-80)' }, button: { color: 'var(--xi-gray-10)0' } },
   },
 
-  disabled: { button: { color: 'gray.40' }, description: { color: 'gray.40' } },
+  disabled: { button: { color: 'var(--xi-gray-40)' }, description: { color: 'var(--xi-gray-40)' } },
 };

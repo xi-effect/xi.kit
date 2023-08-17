@@ -16,7 +16,7 @@ export const Input = (props: InputProps) => {
         },
         '& .MuiInputBase-input::placeholder': {
           opacity: 1,
-          color: `${props.error ? 'red.80' : 'gray.30'}`,
+          color: `${props.error ? 'red.80' : 'var(--xi-gray-30)'}`,
         },
         '& .MuiFormHelperText-root': {
           fontSize: 14,
@@ -27,7 +27,7 @@ export const Input = (props: InputProps) => {
           lineHeight: '16px',
         },
         '& .MuiOutlinedInput-notchedOutline': {
-          border: `1px solid ${props.error ? 'red.80' : 'gray.50'}`,
+          border: `1px solid ${props.error ? 'red.80' : 'var(--xi-gray-5)0'}`,
         },
         ...props.sx,
       }}

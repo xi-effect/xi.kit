@@ -96,7 +96,7 @@ export const Modal: FC<ModalProps> = ({
       scroll="body"
       sx={{
         '& .MuiBackdrop-root': {
-          backgroundColor: alpha(theme.palette.gray[100], 0.4),
+          backgroundColor: 'var(--xi-gray-40)',
         },
         ...dialogSx,
       }}
@@ -122,7 +122,7 @@ export const Modal: FC<ModalProps> = ({
           component="div"
           sx={{
             ...titleStyle.default,
-            borderColor: hideLines ? 'transparent' : 'gray.10',
+            borderColor: hideLines ? 'transparent' : 'var(--xi-gray-10)',
             ...titleStyle[size],
             ...dialogTitleSx,
           }}
@@ -130,11 +130,11 @@ export const Modal: FC<ModalProps> = ({
         >
           {dialogTitleChildren}
 
-          <Typography variant="xl" component="h3" sx={{ color: 'gray.100', fontWeight: 600 }}>
+          <Typography variant="xl" component="h3" sx={{ color: 'var(--xi-gray-10)0', fontWeight: 600 }}>
             {title}
           </Typography>
           {subtitle && (
-            <Typography variant="m" sx={{ color: 'gray.80', fontWeight: 400 }}>
+            <Typography variant="m" sx={{ color: 'var(--xi-gray-80)', fontWeight: 400 }}>
               {subtitle}
             </Typography>
           )}
@@ -161,7 +161,7 @@ export const Modal: FC<ModalProps> = ({
         <DialogActions
           sx={{
             ...actionsStyle.default,
-            borderColor: hideLines || !children ? 'transparent' : 'gray.10',
+            borderColor: hideLines || !children ? 'transparent' : 'var(--xi-gray-10)',
             ...actionsStyle[size],
             ...dialogActionsSx,
           }}

@@ -54,7 +54,7 @@ const OpenIcon = (isOpen: boolean, size: SizesT, isDisabled: boolean, onClick: (
   >
     <ArrowUp
       sx={{
-        color: 'gray.80',
+        color: 'var(--xi-gray-80)',
         transform: isOpen ? 'rotate(-90deg)' : 'rotate(90deg)',
         fontSize: size === 'm' ? '14px' : '11px',
       }}
@@ -131,14 +131,14 @@ export const Select: FC<SelectProps> = ({
               <Icon
                 sx={{
                   ...placeholderIconSizes[size],
-                  color: 'gray.40',
+                  color: 'var(--xi-gray-40)',
                 }}
               />
             )}
             <Typography
               sx={{
                 ...placeholderTextSizes[size],
-                color: 'gray.40',
+                color: 'var(--xi-gray-40)',
                 textOverflow: 'ellipsis',
                 overflow: 'hidden',
               }}
@@ -184,7 +184,7 @@ export const Select: FC<SelectProps> = ({
               sx={{
                 fontSize: '10px',
                 lineHeight: '14px',
-                color: 'gray.40',
+                color: 'var(--xi-gray-40)',
                 p: !group.title ? '' : '4px 12px',
                 cursor: 'default',
               }}

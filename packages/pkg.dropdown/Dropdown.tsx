@@ -36,7 +36,7 @@ export const Dropdown: FC<DropdownProps> = ({
           disableRipple
           sx={{
             ...dropdownSizes[size],
-            color: 'gray.80',
+            color: 'var(--xi-gray-80)',
             textTransform: 'none',
             transition: '0.3s',
             disaply: 'flex',
@@ -44,12 +44,12 @@ export const Dropdown: FC<DropdownProps> = ({
             justifyContent: 'center',
             p: '5px',
             border: '1px solid',
-            borderColor: 'gray.0',
-            '&:hover': { color: 'gray.100', bgcolor: 'unset' },
+            borderColor: 'var(--xi-gray-0)',
+            '&:hover': { color: 'var(--xi-gray-10)0', bgcolor: 'unset' },
             '&:focus-visible': {
               bgcolor: 'unset',
               border: '1px solid',
-              borderColor: 'gray.100',
+              borderColor: 'var(--xi-gray-10)0',
             },
             ...buttonSx,
           }}

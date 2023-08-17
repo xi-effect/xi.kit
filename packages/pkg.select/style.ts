@@ -33,27 +33,27 @@ export const placeholderTextSizes: { [key in SizesT]: any } = {
 
 export const selectTypes: { [key in TypesT]: any } = {
   default: {
-    borderColor: 'gray.40',
+    borderColor: 'var(--xi-gray-40)',
     '&:hover': {
-      borderColor: 'gray.60',
+      borderColor: 'var(--xi-gray-60)',
     },
   },
   warning: {
-    borderColor: 'kungur.80',
+    borderColor: 'var(--xi-orange-80)',
   },
   error: {
-    borderColor: 'moscow.60',
+    borderColor: 'var(--xi-red-60)',
   },
   disabled: {
-    borderColor: 'gray.10',
-    bgcolor: 'gray.10',
+    borderColor: 'var(--xi-gray-10)',
+    bgcolor: 'var(--xi-gray-10)',
   },
 };
 
 export const MenuProps = (menuMaxHeight: string) => ({
   '& .MuiMenu-paper': {
     border: '1px solid',
-    borderColor: 'gray.10',
+    borderColor: 'var(--xi-gray-10)',
     boxShadow: '0px 16px 8px rgba(16, 16, 16, 0.04), 0px 12px 16px rgba(16, 16, 16, 0.04)',
     borderRadius: '8px',
     mt: '4px',
@@ -63,7 +63,7 @@ export const MenuProps = (menuMaxHeight: string) => ({
   },
   '& .MuiMenu-list': {
     p: '3px',
-    bgcolor: 'gray.0',
+    bgcolor: 'var(--xi-gray-0)',
   },
   '& .MuiBackdrop-root': {
     bgcolor: 'unset',
@@ -80,10 +80,10 @@ export const menuItemStyles = {
   borderRadius: '4px',
   '&.Mui-selected': {
     bgcolor: 'brand.0',
-    color: 'brand.80',
-    '&:hover': { bgcolor: 'gray.5', color: 'gray.100' },
+    color: 'var(--xi-brand-80)',
+    '&:hover': { bgcolor: 'var(--xi-gray-5)', color: 'var(--xi-gray-10)0' },
   },
-  '&:hover': { bgcolor: 'gray.5' },
+  '&:hover': { bgcolor: 'var(--xi-gray-5)' },
   transition: '0.3s',
   fontSize: '14px',
   lineHeight: '20px',
@@ -101,7 +101,7 @@ export const dividerStyles = {
     disaply: 'inline-block',
     width: '90%',
     height: '1px',
-    bgcolor: 'gray.10',
+    bgcolor: 'var(--xi-gray-10)',
   },
 };
 
@@ -114,6 +114,6 @@ export const selectOverrideClasses = {
     padding: 0,
   },
   '&.Mui-focused': {
-    borderColor: 'gray.80',
+    borderColor: 'var(--xi-gray-80)',
   },
 };

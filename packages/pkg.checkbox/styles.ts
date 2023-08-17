@@ -1,45 +1,45 @@
 /* names created according to: component name + prop + style (S) */
 /* styles according to types */
 export const containerTypes = {
-  default: { bgcolor: 'gray.5' },
+  default: { bgcolor: 'var(--xi-gray-5)' },
   warning: {
-    bgcolor: 'gray.5',
+    bgcolor: 'var(--xi-gray-5)',
   },
-  error: { bgcolor: 'gray.5' },
-  disabled: { bgcolor: 'gray.10' },
+  error: { bgcolor: 'var(--xi-gray-5)' },
+  disabled: { bgcolor: 'var(--xi-gray-10)' },
 };
 export const checkboxTypes = {
-  default: { color: 'gray.40' },
+  default: { color: 'var(--xi-gray-40)' },
   warning: {
-    color: 'kungur.80',
+    color: 'var(--xi-orange-80)',
   },
-  error: { color: 'moscow.80' },
-  disabled: { color: 'gray.10' },
+  error: { color: 'var(--xi-red-80)' },
+  disabled: { color: 'var(--xi-gray-10)' },
 };
 export const checkedCheckboxTypes = {
-  default: { bgcolor: 'brand.80' },
+  default: { bgcolor: 'var(--xi-brand-80)' },
   warning: {
-    bgcolor: 'kungur.80',
+    bgcolor: 'var(--xi-orange-80)',
   },
-  error: { bgcolor: 'moscow.80' },
-  disabled: { bgcolor: 'gray.10' },
+  error: { bgcolor: 'var(--xi-red-80)' },
+  disabled: { bgcolor: 'var(--xi-gray-10)' },
 };
 export const checkedIconTypes = {
-  default: { color: 'gray.0' },
+  default: { color: 'var(--xi-gray-0)' },
   warning: {
-    color: 'gray.0',
+    color: 'var(--xi-gray-0)',
   },
-  error: { color: 'gray.0' },
-  disabled: { color: 'gray.40' },
+  error: { color: 'var(--xi-gray-0)' },
+  disabled: { color: 'var(--xi-gray-40)' },
 };
 export const defaultIconTypes = {
-  default: { borderColor: 'brand.80', bgcolor: 'gray.0' },
+  default: { borderColor: 'var(--xi-brand-80)', bgcolor: 'var(--xi-gray-0)' },
   warning: {
-    borderColor: 'kungur.80',
-    bgcolor: 'gray.0',
+    borderColor: 'var(--xi-orange-80)',
+    bgcolor: 'var(--xi-gray-0)',
   },
-  error: { borderColor: 'moscow.80', bgcolor: 'gray.0' },
-  disabled: { borderColor: 'gray.10', bgcolor: 'gray.10', color: 'gray.10' },
+  error: { borderColor: 'var(--xi-red-80)', bgcolor: 'var(--xi-gray-0)' },
+  disabled: { borderColor: 'var(--xi-gray-10)', bgcolor: 'var(--xi-gray-10)', color: 'var(--xi-gray-10)' },
 };
 
 /* styles according to sizes */

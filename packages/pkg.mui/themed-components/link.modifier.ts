@@ -43,13 +43,13 @@ import type {} from '@mui/material/themeCssVarsAugmentation';
 //     // {
 //     //   props: { color: 'success' },
 //     //   style: ({ theme }: { theme: Theme }) => ({
-//     //     color: theme.vars.green['80'],
+//     //     color: 'var(--xi-green-80)',
 //     //   }),
 //     // },
 //     // {
 //     //   props: { color: 'error' },
 //     //   style: ({ theme }: { theme: Theme }) => ({
-//     //     color: theme.vars.red['80'],
+//     //     color: 'var(--xi-red-80)',
 //     //   }),
 //     // },
 //   ],

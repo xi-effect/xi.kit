@@ -1,37 +1,37 @@
 import { styled } from '@mui/material/styles';
 import { IconProps } from './types';
 
-export const Icon = styled('span')<IconProps & any>(({ theme, sizes, color }) => ({
+export const Icon = styled('span')<IconProps & any>(({ sizes, color = 'gray' }) => ({
   borderRadius: '50%',
   border: '1px solid',
-  borderColor: color === 'primary' ? theme.palette.gray[40] : theme.palette[color].dark,
-  backgroundColor: theme.palette.gray[0],
+  borderColor: color === 'primary' ? 'var(--xi-gray-40)' : `var(--xi-${color}-100)`,
+  backgroundColor: 'var(--xi-gray-0)',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   'input:hover ~ &': {
-    backgroundColor: theme.palette.gray[5],
+    backgroundColor: 'var(--xi-gray-5)',
   },
   'input:disabled ~ &': {
-    background: theme.palette.gray[10],
-    borderColor: theme.palette.gray[10],
+    background: 'var(--xi-gray-10)',
+    borderColor: 'var(--xi-gray-10)',
   },
   ...sizes.icon,
 }));
 
-export const CheckedIcon = styled(Icon)<IconProps & any>(({ theme, sizes, color }) => ({
-  backgroundColor: theme.palette[color].dark,
-  borderColor: theme.palette[color].dark,
+export const CheckedIcon = styled(Icon)<IconProps & any>(({ sizes, color }) => ({
+  backgroundColor: `var(--xi-${color}-100)`,
+  borderColor: `var(--xi-${color}-100)`,
   '&:before': {
     content: '""',
     borderRadius: '50%',
-    backgroundColor: theme.palette.gray[0],
+    backgroundColor: 'var(--xi-gray-0)',
     ...sizes.checkedIcon,
   },
   'input:hover ~ &': {
-    backgroundColor: theme.palette[color].dark,
+    backgroundColor: `var(--xi-${color}-100)`,
   },
   'input:disabled ~ &:before': {
-    background: theme.palette.gray[40],
+    background: 'var(--xi-gray-40)',
   },
 }));

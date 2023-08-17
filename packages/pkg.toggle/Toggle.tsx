@@ -68,7 +68,7 @@ export const Toggle = ({
       {children && (
         <Typography
           variant={typographyVariants[size]}
-          sx={{ fontWeight: 400, color: disabled ? 'gray.40' : 'gray.90' }}
+          sx={{ fontWeight: 400, color: disabled ? 'var(--xi-gray-40)' : 'var(--xi-gray-90)' }}
         >
           {children}
         </Typography>

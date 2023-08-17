@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react';
 import { Stack, ListItem, ListItemButton, List } from '@mui/material';
-import { useRouter, NextRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { ColorButton } from 'components/ColorButton';
 
 export type NavigationT = {
@@ -57,11 +57,11 @@ const menuArray = [
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
-  const router: NextRouter = useRouter();
+  const router = useRouter();
 
   return (
     <Stack
-      sx={{ p: 2, height: '100%', overflow: 'auto', position: 'relative' }}
+      sx={{ p: 2, height: '100%', minHeight: '100vh', width: '100vw', overflow: 'auto', position: 'relative' }}
       direction="row"
       justifyContent="flex-start"
       alignItems="flex-start"
@@ -96,7 +96,7 @@ export const Navigation = ({ children }: NavigationT) => {
         </List>
       </Stack>
       <Stack
-        sx={{ width: '100%' }}
+        sx={{ width: 'calc(100vw - 600px)', height: '100%' }}
         direction="column"
         justifyContent="flex-start"
         alignItems="flex-start"

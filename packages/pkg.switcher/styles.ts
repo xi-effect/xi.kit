@@ -21,7 +21,7 @@ export const buttonBorderRadius = {
 
 export const buttonStyle = {
   default: {
-    color: 'gray.80',
+    color: 'var(--xi-gray-80)',
     textTransform: 'none',
     bgcolor: 'transparent',
     '&:hover': {
@@ -30,23 +30,23 @@ export const buttonStyle = {
   },
   primary: {
     '&.Mui-selected': {
-      color: 'gray.0',
-      bgcolor: 'brand.80',
+      color: 'var(--xi-gray-0)',
+      bgcolor: 'var(--xi-brand-80)',
       '&:hover': {
-        bgcolor: 'brand.80',
+        bgcolor: 'var(--xi-brand-80)',
       },
     },
-    '&:disabled': { border: 'none', color: 'gray.0', bgcolor: 'brand.20' },
+    '&:disabled': { border: 'none', color: 'var(--xi-gray-0)', bgcolor: 'brand.20' },
   },
   white: {
     '&.Mui-selected': {
-      color: 'gray.90',
-      bgcolor: 'gray.0',
+      color: 'var(--xi-gray-90)',
+      bgcolor: 'var(--xi-gray-0)',
       '&:hover': {
-        bgcolor: 'gray.0',
+        bgcolor: 'var(--xi-gray-0)',
       },
     },
-    '&:disabled': { border: 'none', color: 'gray.40', bgcolor: 'gray.10' },
+    '&:disabled': { border: 'none', color: 'var(--xi-gray-40)', bgcolor: 'var(--xi-gray-10)' },
   },
 };
 

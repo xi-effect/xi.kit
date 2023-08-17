@@ -48,7 +48,7 @@ export const Radio = ({
       label={
         label && (
           <Typography
-            sx={{ fontWeight: 400, color: disabled ? 'gray.40' : 'gray.90' }}
+            sx={{ fontWeight: 400, color: disabled ? 'var(--xi-gray-40)' : 'var(--xi-gray-90)' }}
             variant={typographyVariants[size]}
           >
             {label}

@@ -21,60 +21,60 @@ export const buttonSizes = {
 export const buttonVariantsColor = {
   contained: {
     primary: {
-      bgcolor: 'brand.80',
-      color: 'petersburg.0',
+      bgcolor: 'var(--xi-brand-80)',
+      color: 'var(--xi-gray-0)',
     },
     success: {
-      bgcolor: 'ekaterinburg.80',
-      color: 'petersburg.0',
+      bgcolor: 'var(--xi-green-80)',
+      color: 'var(--xi-gray-0)',
     },
     error: {
-      bgcolor: 'moscow.80',
-      color: 'petersburg.0',
+      bgcolor: 'var(--xi-red-80)',
+      color: 'var(--xi-gray-0)',
     },
-    grayscale: {
-      bgcolor: 'petersburg.40',
-      color: 'petersburg.100',
+    gray: {
+      bgcolor: 'var(--xi-gray-40)',
+      color: 'var(--xi-gray-100)',
     },
   },
   outlined: {
     primary: {
-      borderColor: 'brand.80',
-      color: 'brand.80',
+      borderColor: 'var(--xi-brand-80)',
+      color: 'var(--xi-brand-80)',
     },
     success: {
-      borderColor: 'ekaterinburg.80',
-      color: 'ekaterinburg.80',
+      borderColor: 'var(--xi-green-80)',
+      color: 'var(--xi-green-80)',
     },
     error: {
-      borderColor: 'moscow.80',
-      color: 'moscow.80',
+      borderColor: 'var(--xi-red-80)',
+      color: 'var(--xi-red-80)',
     },
-    grayscale: {
-      color: 'petersburg.100',
-      borderColor: 'petersburg.40',
+    gray: {
+      color: 'var(--xi-gray-100)',
+      borderColor: 'var(--xi-gray-40)',
     },
   },
   text: {
-    primary: { color: 'brand.80' },
-    success: { color: 'ekaterinburg.80' },
-    error: { color: 'moscow.80' },
-    grayscale: { color: 'petersburg.100' },
+    primary: { color: 'var(--xi-brand-80)' },
+    success: { color: 'var(--xi-green-80)' },
+    error: { color: 'var(--xi-red-80)' },
+    gray: { color: 'var(--xi-gray-100)' },
   },
 };
 
 export const buttonDisabledStyle = {
   contained: {
-    backgroundColor: 'petersburg.10',
-    color: 'petersburg.40',
+    backgroundColor: 'var(--xi-gray-10)',
+    color: 'var(--xi-gray-40)',
   },
   outlined: {
     border: '1px solid',
-    borderColor: 'petersburg.10',
-    color: 'petersburg.40',
+    borderColor: 'var(--xi-gray-10)',
+    color: 'var(--xi-gray-40)',
   },
   text: {
-    color: 'petersburg.40',
+    color: 'var(--xi-gray-40)',
   },
 };
 
@@ -117,21 +117,21 @@ export const spinnerSizes = {
   small: 16,
 };
 
+const style = {
+  large: {
+    padding: '13px 32px',
+  },
+  medium: {
+    padding: '12px 24px',
+  },
+  small: {
+    padding: '8px 16px',
+  },
+};
+
 export const getButtonPadding = (isText: boolean, startIcon: boolean, endIcon: boolean) => {
   const isTextIconButton = isText && (startIcon || endIcon);
   const isIconButton = !isText && (startIcon || endIcon);
-
-  const style = {
-    large: {
-      padding: '13px 32px',
-    },
-    medium: {
-      padding: '12px 24px',
-    },
-    small: {
-      padding: '8px 16px',
-    },
-  };
 
   if (isTextIconButton) {
     if (startIcon) {
@@ -173,18 +173,18 @@ export const getSnackbarCurrentPosition = (snackbarSize: number, position: Snack
 };
 
 export const getActionButtonStyle = (variant: Variant, color: string) => {
-  if (color === 'grayscale') {
-    return { bgcolor: 'petersburg.5', color: 'petersburg.100' };
+  if (color === 'gray') {
+    return { bgcolor: 'var(--xi-gray-5)', color: 'var(--xi-gray-100)' };
   }
 
   switch (variant) {
     case 'contained':
-      return { bgcolor: color, color: 'petersburg.0' };
+      return { bgcolor: color, color: 'var(--xi-gray-0)' };
     case 'outlined':
-      return { bgcolor: 'petersburg.5', borderColor: color, color };
+      return { bgcolor: 'var(--xi-gray-5)', borderColor: color, color };
     default:
       return {
-        bgcolor: 'petersburg.5',
+        bgcolor: 'var(--xi-gray-5)',
         color,
       };
   }

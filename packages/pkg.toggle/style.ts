@@ -60,9 +60,9 @@ export const sizeStyle = {
 };
 
 export const colorStyle = {
-  initial: { backgroundColor: 'gray.40' },
-  disabled: { backgroundColor: 'gray.10', color: 'gray.40' },
-  checked: { color: 'gray.0', backgroundColor: 'brand.80' },
+  initial: { backgroundColor: 'var(--xi-gray-40)' },
+  disabled: { backgroundColor: 'var(--xi-gray-10)', color: 'var(--xi-gray-40)' },
+  checked: { color: 'var(--xi-gray-0)', backgroundColor: 'var(--xi-brand-80)' },
 };
 
 export const typographyVariants = {

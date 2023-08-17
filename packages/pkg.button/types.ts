@@ -3,7 +3,7 @@ import { ButtonProps as MuiButtonProps } from '@mui/material';
 export type Status = 'idle' | 'pending' | 'completed';
 export type Size = 'small' | 'medium' | 'large';
 export type Variant = 'contained' | 'outlined' | 'text';
-export type Color = 'primary' | 'success' | 'error' | 'grayscale';
+export type Color = 'primary' | 'success' | 'error' | 'gray';
 export type LoadingPosition = 'icon' | 'center';
 export type SnackbarPosition = 'left' | 'right' | 'top' | 'bottom';
 
