@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/typescript",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "files": [
     "base.json",
     "nextjs.json",
@@ -25,5 +25,6 @@
     "access": "public"
   },
   "author": "xi.effect",
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "0ee562e7c7723699c85daf61b493d6a57b7c1f08"
 }

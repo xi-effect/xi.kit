@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/mui",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "MUI config",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -20,5 +20,6 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.2",
     "next": "^13.4.12"
-  }
+  },
+  "gitHead": "0ee562e7c7723699c85daf61b493d6a57b7c1f08"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/eslint",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
@@ -28,5 +28,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "description": ""
+  "description": "",
+  "gitHead": "0ee562e7c7723699c85daf61b493d6a57b7c1f08"
 }
