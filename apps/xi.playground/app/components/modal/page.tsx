@@ -11,10 +11,10 @@ const TestComponents = () => {
 
   return (
     <Stack sx={{ p: '20px' }} direction="row" justifyContent="center" spacing={2}>
-      <Button variant="contained" onClick={() => setIsOpenLarge(true)}>
+      <Button onClick={() => setIsOpenLarge(true)}>
         Open large modal
       </Button>
-      <Button variant="contained" onClick={() => setIsOpenSmall(true)}>
+      <Button onClick={() => setIsOpenSmall(true)}>
         Open small modal
       </Button>
 
@@ -61,13 +61,11 @@ const TestComponents = () => {
         cancelButtonProps={{ variant: 'text', sx: { width: '100%' } }}
         hideLines
       >
-        <Button size="large" variant="contained" onClick={() => alert('1 действие')}>
+        <Button size="l" onClick={() => alert('1 действие')}>
           1 действие
         </Button>
         <Button
-          size="large"
-          variant="outlined"
-          color="grayscale"
+          size="l"
           onClick={() => alert('2 действие')}
         >
           2 действие

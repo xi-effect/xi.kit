@@ -2,45 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('./components/button.css');
-@import url('./components/input.css');
-
-@layer components {
-  /* This wont be included in your compiled CSS unless you actually use it */
-  .c-avatar {
-    display: flex;
-    width: 32px;
-    height: 32px;
-    padding: 4px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 16px;
-
-    @apply text-green-100 bg-green-0 text-xs font-semibold;
-  }
-
-  .c-spinner {
-    width: 48px;
-    height: 48px;
-    border: 2px solid;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-  }
-
-  @keyframes rotation {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-}
-
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -405,7 +366,6 @@ textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
   line-height: inherit; /* 1 */
-  color: inherit; /* 1 */
   margin: 0; /* 2 */
   padding: 0; /* 3 */
 }
@@ -554,7 +514,7 @@ textarea {
 input::placeholder,
 textarea::placeholder {
   opacity: 1; /* 1 */
-  color: theme('colors.var(--xi-gray-40)', #9ca3af); /* 2 */
+  color: var(--xi-gray-40); /* 2 */
 }
 
 /*

@@ -16,9 +16,7 @@
   },
   "files": [
     "./index.css",
-    "./design-system-preset.js",
-    "./components/button.css",
-    "./components/input.css"
+    "./design-system-preset.js"
   ],
   "author": "xi.effect",
   "license": "MIT",

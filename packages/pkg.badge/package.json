@@ -11,9 +11,8 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.14.0",
+    "class-variance-authority": "^0.7.0",
+    "@xipkg/utils": "*",
     "react": "^18.2.0"
   },
   "devDependencies": {

@@ -172,9 +172,6 @@ export const Modal: FC<ModalProps> = ({
           {onCancelButton && (
             <Button
               onClick={onCancelButton}
-              variant="outlined"
-              // @ts-ignore
-              color="gray"
               {...cancelButtonProps}
             >
               {cancelButtonTitle}

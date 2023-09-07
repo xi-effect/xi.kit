@@ -14,7 +14,7 @@ export const ColorButton = () => {
 
   return (
     <Stack flexDirection="row" alignItems="center" sx={{ p: 2, ml: 'auto' }}>
-      <Button onClick={changeTheme} variant="outlined">
+      <Button onClick={changeTheme} variant="secondary">
         Mode
       </Button>
     </Stack>

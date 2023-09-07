@@ -1,18 +1,48 @@
-import { Button as MuiButton } from '@mui/material';
+import * as React from 'react';
+import { Slot } from '@radix-ui/react-slot';
+import { cva, type VariantProps } from 'class-variance-authority';
 
-import { ButtonProps } from './types';
+import { cn } from '@xipkg/utils';
 
-declare module '@mui/material/Typography' {
-  export interface TypographyPropsVariantOverrides {
-    xl: true;
-    l: true;
-    m: true;
-    s: true;
-    xs: true;
-    xxs: true;
-  }
+export const buttonVariants = cva(
+  'inline-flex items-center w-fit justify-center ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  {
+    variants: {
+      variant: {
+        default: 'bg-brand-80 text-[#daf] hover:bg-brand-100 active:bg-brand-100 focus:bg-brand-100',
+        secondary: 'bg-gray-0 text-gray-100 border-gray-30 border-2 hover:bg-gray-5 active:bg-gray-5 focus:bg-gray-5',
+        ghost: 'text-gray-100 bg-gray-0 border-0 hover:bg-gray-5 active:bg-gray-5 focus:bg-gray-5',
+        error: 'bg-red-80 text-gray-0 hover:bg-red-100 active:bg-red-100 focus:bg-red-100',
+        success: 'bg-green-80 text-gray-0 hover:bg-green-100 active:bg-green-100 focus:bg-green-100'
+      },
+      size: {
+        l: 'h-14 px-8 rounded-xl text-l',
+        m: 'h-12 px-6 rounded-lg text-m',
+        s: 'h-8 px-4 rounded-md text-s',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      size: 'l',
+    },
+  },
+);
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
 }
 
-export const Button = ({ children, ...props }: ButtonProps) => {
-  return <MuiButton {...props}>{children}</MuiButton>;
-};
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, children, ...props }, ref) => {
+    const Comp = asChild ? Slot : 'button';
+    return (
+      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
+        {children}
+      </Comp>
+    );
+  },
+);
+
+Button.displayName = 'Button';

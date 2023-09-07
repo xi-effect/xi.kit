@@ -1,76 +1,40 @@
-import { Typography, TypographyProps, StackProps, SvgIconProps, Stack } from '@mui/material';
-import { FunctionComponent } from 'react';
-import { getStyles } from './styles';
+import * as React from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
 
-declare module '@mui/material/Typography' {
-  export interface TypographyPropsVariantOverrides {
-    xl: true;
-    l: true;
-    m: true;
-    s: true;
-    xs: true;
-    xxs: true;
-  }
-}
+import { cn } from '@xipkg/utils';
 
-export type BadgeProps = {
-  icon?: FunctionComponent<SvgIconProps>;
-  children: string;
-  bgColor: string;
-  iconColor?: string;
-  fontColor?: string;
-  size?: 'small';
-  stackProps?: StackProps;
-  typographyProps?: TypographyProps;
-  iconProps?: SvgIconProps;
-};
+export const badgeVariants = cva(
+  'inline-flex items-center border w-fit px-2.5 py-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+  {
+    variants: {
+      variant: {
+        default: 'border-transparent bg-gray-10 text-gray-90',
+        secondary:
+          'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
+        destructive:
+          'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
+        outline: 'text-foreground',
+      },
+      size: {
+        m: 'h-7 rounded-md text-s',
+        s: 'h-5 rounded text-xs',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      size: 'm',
+    },
+  },
+);
 
-export const Badge = ({
-  icon,
-  children,
-  bgColor,
-  iconColor,
-  fontColor,
-  size,
-  stackProps = { sx: {} },
-  iconProps = { sx: {} },
-  typographyProps,
-}: BadgeProps) => {
-  const IconComponent = icon as FunctionComponent<any>;
+export interface BadgeProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof badgeVariants> {}
 
-  const styles = getStyles(size);
-
-  const { sx: iconSx, ...otherIconProps } = iconProps;
-  const { sx: stackSx, ...otherStackProps } = stackProps;
-
+export const Badge = ({ className, variant, size, children, ...props }: BadgeProps) => {
   return (
-    <Stack
-      direction="row"
-      alignItems="center"
-      sx={{
-        backgroundColor: bgColor,
-        ...styles.stack.sx,
-        ...stackSx,
-      }}
-      {...otherStackProps}
-    >
-      {icon && (
-        <IconComponent
-          sx={{ color: iconColor, ...styles.icon.sx, ...iconSx }}
-          {...otherIconProps}
-        />
-      )}
-
-      <Typography
-        variant={styles.typography.variant}
-        component="span"
-        sx={{
-          color: fontColor,
-        }}
-        {...typographyProps}
-      >
-        {children}
-      </Typography>
-    </Stack>
+    <div className={cn(badgeVariants({ variant, size }), className)} {...props}>
+      {children}
+    </div>
   );
 };

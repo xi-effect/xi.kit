@@ -1,5 +1,7 @@
 'use client';
 
+import '@xipkg/tailwind/index.css'
+
 import { Providers } from './providers';
 import { LayoutPages } from 'kit/LayoutPages';
 

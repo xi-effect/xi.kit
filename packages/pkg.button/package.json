@@ -11,10 +11,9 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.14.0",
-    "@xipkg/icons": "^0.4.4",
+    "class-variance-authority": "^0.7.0",
+    "@xipkg/utils": "*",
+    "@radix-ui/react-slot": "^1.0.2",
     "react": "^18.2.0"
   },
   "devDependencies": {
