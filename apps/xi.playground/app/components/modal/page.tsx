@@ -58,7 +58,6 @@ const TestComponents = () => {
         onClose={() => setIsOpenSmall(false)}
         cancelButtonTitle="Отменить"
         onCancelButton={() => setIsOpenSmall(false)}
-        cancelButtonProps={{ variant: 'text', sx: { width: '100%' } }}
         hideLines
       >
         <Button size="l" onClick={() => alert('1 действие')}>
