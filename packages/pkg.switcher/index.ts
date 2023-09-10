@@ -1,2 +1,1 @@
-export { Switcher } from './Switcher';
-export type { SwitcherProps } from './Switcher';
+export { Tabs, TabsList, TabsTrigger, TabsContent } from './Switcher';

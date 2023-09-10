@@ -1,60 +1,38 @@
-import { FormControlLabel, Radio as MuiRadio, Typography } from '@mui/material';
-import { ChangeEvent, FC } from 'react';
+'use client';
 
-import { formControlGap, sizesStyle, typographyVariants } from './style';
-import { CheckedIcon, Icon } from './StyledRadioIcon';
-import { RadioProps } from './types';
+import * as React from 'react';
+import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
+import { Circle } from 'lucide-react';
 
-declare module '@mui/material/Typography' {
-  export interface TypographyPropsVariantOverrides {
-    xl: true;
-    l: true;
-    m: true;
-    s: true;
-    xs: true;
-    xxs: true;
-  }
-}
+import { cn } from '@xipkg/utils';
 
-export const Radio = ({
-  size = 'large',
-  color = 'primary',
-  label,
-  value,
-  disabled,
-  onChange,
-}: RadioProps) => {
-  const handleChange = (event: ChangeEvent<HTMLInputElement>, checked: boolean) => {
-    if (onChange) {
-      onChange(checked, event);
-    }
-  };
+const RadioGroup = React.forwardRef<
+  React.ElementRef<typeof RadioGroupPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
+>(({ className, ...props }, ref) => {
+  return <RadioGroupPrimitive.Root className={cn('grid gap-2', className)} {...props} ref={ref} />;
+});
+RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
 
+const RadioGroupItem = React.forwardRef<
+  React.ElementRef<typeof RadioGroupPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
+>(({ className, children, ...props }, ref) => {
   return (
-    <FormControlLabel
-      sx={{ m: 0, gap: formControlGap[size] }}
-      value={value}
-      control={
-        <MuiRadio
-          disabled={disabled}
-          value={value}
-          onChange={handleChange}
-          disableRipple
-          sx={{ p: 0 }}
-          checkedIcon={<CheckedIcon color={color} sizes={sizesStyle[size]} />}
-          icon={<Icon color={color} sizes={sizesStyle[size]} />}
-        />
-      }
-      label={
-        label && (
-          <Typography
-            sx={{ fontWeight: 400, color: disabled ? 'var(--xi-gray-40)' : 'var(--xi-gray-90)' }}
-            variant={typographyVariants[size]}
-          >
-            {label}
-          </Typography>
-        )
-      }
-    />
+    <RadioGroupPrimitive.Item
+      ref={ref}
+      className={cn(
+        'aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+        className,
+      )}
+      {...props}
+    >
+      <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
+        <Circle className="h-2.5 w-2.5 fill-current text-current" />
+      </RadioGroupPrimitive.Indicator>
+    </RadioGroupPrimitive.Item>
   );
-};
+});
+RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;
+
+export { RadioGroup, RadioGroupItem };
