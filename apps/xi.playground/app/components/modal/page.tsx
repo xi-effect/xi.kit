@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@xipkg/button';
 import {
   Modal,
@@ -11,11 +13,11 @@ import {
 import { Input } from '@xipkg/input';
 import { Label } from '@xipkg/label';
 
-export function ModalDemo() {
+export default function ModalDemo() {
   return (
     <Modal>
       <ModalTrigger asChild>
-        <Button variant="secondary">Edit Profile</Button>
+        <Button>Edit Profile</Button>
       </ModalTrigger>
       <ModalContent className="sm:max-w-[425px]">
         <ModalHeader>

@@ -1,29 +1,13 @@
 'use client';
 
+import { Label } from '@xipkg/label';
 import { Toggle } from '@xipkg/toggle';
-import { useState } from 'react';
 
-const TestComponents = () => {
-  const [checked1, setChecked1] = useState(true);
-  const [checked2, setChecked2] = useState(false);
-  const [checked3, setChecked3] = useState(true);
-
+export default function SwitchDemo() {
   return (
-    <>
-      <Toggle checked={checked1} onChange={setChecked1}>
-        {`${checked1}`}
-      </Toggle>
-      <Toggle checked={checked2} onChange={setChecked2} size="medium">
-        {`${checked2}`}
-      </Toggle>
-      <Toggle checked={checked3} onChange={setChecked3} size="small">
-        {`${checked3}`}
-      </Toggle>
-      <Toggle disabled checked={false} onChange={() => {}}>
-        disabled
-      </Toggle>
-    </>
+    <div className="flex items-center space-x-2">
+      <Toggle id="airplane-mode" />
+      <Label htmlFor="airplane-mode">Airplane Mode</Label>
+    </div>
   );
-};
-
-export default TestComponents;
+}
