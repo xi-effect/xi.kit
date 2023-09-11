@@ -1,86 +1,43 @@
-import { ChangeEvent } from 'react';
-import { Switch, Stack, Typography } from '@mui/material';
-import { colorStyle, sizeStyle, stackGap, typographyVariants } from './style';
+'use client';
 
-declare module '@mui/material/Typography' {
-  export interface TypographyPropsVariantOverrides {
-    xl: true;
-    l: true;
-    m: true;
-    s: true;
-    xs: true;
-    xxs: true;
-  }
-}
+import * as React from 'react';
+import * as TogglePrimitive from '@radix-ui/react-toggle';
+import { cva, type VariantProps } from 'class-variance-authority';
 
-export const Toggle = ({
-  size = 'large',
-  checked,
-  disabled,
-  children,
-  onChange,
-}: ToggleProps) => {
-  const handleChange = (event: ChangeEvent<HTMLInputElement>, checked: boolean) => {
-    onChange(checked, event);
-  };
+import { cn } from '@xipkg/utils';
 
-  return (
-    <Stack direction="row" alignItems="center" gap={stackGap[size]}>
-      <Switch
-        sx={{
-          ...sizeStyle[size].sizes,
-          '& .MuiSwitch-thumb': {
-            boxShadow: 'none',
-            ...sizeStyle[size]['& .MuiSwitch-thumb'],
-          },
-          '& .MuiSwitch-switchBase': {
-            ...sizeStyle[size]['& .MuiSwitch-switchBase'],
-            transitionDuration: '300ms',
-            '&.Mui-checked': {
-              ...sizeStyle[size]['&.Mui-checked'],
-              color: colorStyle.checked.color,
-              '& + .MuiSwitch-track': {
-                opacity: 1,
-                backgroundColor: colorStyle.checked.backgroundColor,
-              },
-              '&.Mui-disabled + .MuiSwitch-track': {
-                backgroundColor: colorStyle.disabled.backgroundColor,
-                opacity: 1,
-              },
-            },
-            '& + .MuiSwitch-track': {
-              opacity: 1,
-              backgroundColor: colorStyle.initial.backgroundColor,
-            },
-            '&.Mui-disabled .MuiSwitch-thumb': {
-              color: colorStyle.disabled.color,
-            },
-            '&.Mui-disabled + .MuiSwitch-track': {
-              backgroundColor: colorStyle.disabled.backgroundColor,
-              opacity: 1,
-            },
-          },
-        }}
-        checked={checked}
-        disabled={disabled}
-        onChange={handleChange}
-      />
-      {children && (
-        <Typography
-          variant={typographyVariants[size]}
-          sx={{ fontWeight: 400, color: disabled ? 'var(--xi-gray-40)' : 'var(--xi-gray-90)' }}
-        >
-          {children}
-        </Typography>
-      )}
-    </Stack>
-  );
-};
+const toggleVariants = cva(
+  'inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors hover:bg-muted hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=on]:bg-accent data-[state=on]:text-accent-foreground',
+  {
+    variants: {
+      variant: {
+        default: 'bg-transparent',
+        outline: 'border border-input bg-transparent hover:bg-accent hover:text-accent-foreground',
+      },
+      size: {
+        default: 'h-10 px-3',
+        sm: 'h-9 px-2.5',
+        lg: 'h-11 px-5',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      size: 'default',
+    },
+  },
+);
 
-export type ToggleProps = {
-  size?: 'small' | 'medium' | 'large';
-  checked: boolean;
-  disabled?: boolean;
-  children?: string;
-  onChange: (checked: boolean, event?: ChangeEvent<HTMLInputElement>) => void;
-};
+const Toggle = React.forwardRef<
+  React.ElementRef<typeof TogglePrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root> & VariantProps<typeof toggleVariants>
+>(({ className, variant, size, ...props }, ref) => (
+  <TogglePrimitive.Root
+    ref={ref}
+    className={cn(toggleVariants({ variant, size, className }))}
+    {...props}
+  />
+));
+
+Toggle.displayName = TogglePrimitive.Root.displayName;
+
+export { Toggle, toggleVariants };

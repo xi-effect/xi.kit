@@ -1,108 +1,26 @@
-import { useState, ChangeEvent } from 'react';
-import { FormControlLabel, Checkbox as MuiCheckbox, Box, Typography } from '@mui/material';
-import { Check, Divider } from '@xipkg/icons';
+'use client';
 
-import {
-  containerTypes,
-  checkboxTypes,
-  checkedCheckboxTypes,
-  checkedIconTypes,
-  defaultIconTypes,
-  containerSizes,
-  checboxSizes,
-  checkedIconSizes,
-  labelSizes,
-} from './styles';
+import * as React from 'react';
+import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
+import { Check } from 'lucide-react';
 
-import { ChecboxSizes, CheckboxTypes, ChecboxIcons } from './types';
+import { cn } from '@xipkg/utils';
 
-export type CheckboxProps = {
-  size: ChecboxSizes;
-  type?: CheckboxTypes;
-  label?: string;
-  /* checbox checked icon */
-  icon?: ChecboxIcons;
-  /* default checked state */
-  isChecked?: boolean;
-  onClick?: (event: ChangeEvent) => void;
-};
-
-export const Checkbox = ({
-  type = 'default',
-  size,
-  label = '',
-  icon = 'check',
-  isChecked = false,
-  onClick,
-}: CheckboxProps) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const onHover = () => {
-    setIsHovered(true);
-  };
-  const onOutOfHover = () => {
-    setIsHovered(false);
-  };
-
-  /* icons */
-  const DefaultIcon = (
-    <Box
-      sx={{
-        ...defaultIconTypes[type],
-        ...checboxSizes[size],
-        border: '1px solid',
-        width: '100%',
-        height: '100%',
-        transition: '0.3s',
-        bgcolor: isHovered && type !== 'disabled' ? 'var(--xi-gray-5)' : defaultIconTypes[type].bgcolor,
-      }}
-    />
-  );
-  const CheckIcon = <Check sx={{ ...checkedIconTypes[type], ...checkedIconSizes[size] }} />;
-  const MinusIcon = <Divider sx={{ ...checkedIconTypes[type], ...checkedIconSizes[size] }} />;
-  const CheckedIcon = icon === 'check' ? CheckIcon : MinusIcon;
-
-  /* label */
-  const CheckboxLabel = <Typography sx={{ ...labelSizes[size] }}>{label}</Typography>;
-
-  /* checkbox */
-  const CustomCheckbox = (
-    <MuiCheckbox
-      sx={{
-        ...checkboxTypes[type],
-        '&.Mui-checked': { ...checkedCheckboxTypes[type] },
-        ...checboxSizes[size],
-        padding: 0,
-      }}
-      icon={DefaultIcon}
-      checkedIcon={CheckedIcon}
-      checked={isChecked}
-      onChange={onClick}
-      disabled={type === 'disabled'}
-    />
-  );
-
-  return (
-    (!label && CustomCheckbox) || (
-      <FormControlLabel
-        control={CustomCheckbox}
-        sx={{
-          ...containerTypes[type],
-          ...containerSizes[size],
-          width: 'max-content',
-          height: 'max-content',
-          padding: '4px 8px 4px 4px',
-          border: '1px solid',
-          borderColor: isChecked && type === 'default' ? 'var(--xi-brand-80)' : 'var(--xi-gray-5)',
-          transition: '0.3s',
-          bgcolor:
-            isHovered && type !== 'disabled' ? 'var(--xi-gray-10)' : containerTypes[type].bgcolor,
-          m: 0,
-        }}
-        label={CheckboxLabel}
-        onMouseEnter={onHover}
-        onMouseLeave={onOutOfHover}
-      />
-    )
-  );
-};
+export const Checkbox = React.forwardRef<
+  React.ElementRef<typeof CheckboxPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
+>(({ className, ...props }, ref) => (
+  <CheckboxPrimitive.Root
+    ref={ref}
+    className={cn(
+      'peer h-4 w-4 shrink-0 rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground',
+      className,
+    )}
+    {...props}
+  >
+    <CheckboxPrimitive.Indicator className={cn('flex items-center justify-center text-current')}>
+      <Check className="h-4 w-4" />
+    </CheckboxPrimitive.Indicator>
+  </CheckboxPrimitive.Root>
+));
+Checkbox.displayName = CheckboxPrimitive.Root.displayName;

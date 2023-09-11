@@ -1,216 +1,121 @@
-import { FunctionComponent, useState, FC, ChangeEvent } from 'react';
-import { MenuItem, Select as MuiSelect, Typography, Stack } from '@mui/material';
-import { ClickAwayListener } from '@mui/base';
-import { ArrowUp } from '@xipkg/icons';
-import { SizesT, TypesT, ItemT, GroupT } from './types';
-import {
-  selectSizes,
-  selectTypes,
-  MenuProps,
-  selectOverrideClasses,
-  placeholderIconSizes,
-  placeholderTextSizes,
-  dividerStyles,
-  menuItemStyles,
-} from './style';
+'use client';
 
-export type SelectProps = {
-  /* unique id */
-  id: string;
-  /*
-    use items when linear array of items
-    or otherwise use groups
-  */
-  /* select items */
-  items?: ItemT[];
-  /* select items divided by groups */
-  groups?: GroupT[];
-  /* cancel your previus choose  */
-  cancelItem?: string;
-  /* select sized */
-  size?: SizesT;
-  type?: TypesT;
-  /* select custom width */
-  width?: string;
-  label?: string;
-  /* Icon in placeholder */
-  Icon?: FunctionComponent<any>;
-  /* dropdown menu max height */
-  maxHeight?: string;
+import * as React from 'react';
+import * as SelectPrimitive from '@radix-ui/react-select';
+import { Check, ChevronDown } from 'lucide-react';
 
-  /* selected value */
-  value: string[];
-  /* change selected value */
-  onChange: (e: ChangeEvent<Element>) => void;
-  sx?: any;
-};
+import { cn } from '@xipkg/utils';
 
-const OpenIcon = (isOpen: boolean, size: SizesT, isDisabled: boolean, onClick: () => void) => (
-  <Stack
-    justifyContent="center"
-    alignItems="center"
-    onClick={onClick}
-    sx={{ height: '100%', cursor: 'pointer', pointerEvents: isDisabled ? 'none' : '' }}
+const Select = SelectPrimitive.Root;
+
+const SelectGroup = SelectPrimitive.Group;
+
+const SelectValue = SelectPrimitive.Value;
+
+const SelectTrigger = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger>
+>(({ className, children, ...props }, ref) => (
+  <SelectPrimitive.Trigger
+    ref={ref}
+    className={cn(
+      'flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+      className,
+    )}
+    {...props}
   >
-    <ArrowUp
-      sx={{
-        color: 'var(--xi-gray-80)',
-        transform: isOpen ? 'rotate(-90deg)' : 'rotate(90deg)',
-        fontSize: size === 'm' ? '14px' : '11px',
-      }}
-    />
-  </Stack>
-);
+    {children}
+    <SelectPrimitive.Icon asChild>
+      <ChevronDown className="h-4 w-4 opacity-50" />
+    </SelectPrimitive.Icon>
+  </SelectPrimitive.Trigger>
+));
+SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
-export const Select: FC<SelectProps> = ({
-  id,
-  items,
-  groups,
-  cancelItem,
-  size = 'm',
-  type = 'default',
-  width = '250px',
-  maxHeight = '300px',
-  label = 'Выберите',
-  Icon,
-  value,
-  onChange,
-  sx,
-}: SelectProps) => {
-  const [isOpened, setIsOpened] = useState(false);
-
-  /* menu interactions */
-  const onToggleMenu = () => {
-    setIsOpened((prev) => !prev);
-  };
-  const onCloseMenu = () => {
-    setIsOpened(false);
-  };
-  const handleDropIconClick = () => {
-    setIsOpened((state) => !state);
-  };
-
-  /* select value interactions */
-  const onChangeValue = (e: any) => {
-    // const newValue = e.target.value;
-    onChange(e);
-  };
-
-  const isDisabled = type === 'disabled';
-
-  return (
-    <ClickAwayListener onClickAway={onCloseMenu}>
-      {/* <FormControl sx={{ position: 'relative' }}> */}
-      <MuiSelect
-        labelId={id}
-        sx={{
-          ...selectSizes[size],
-          border: '1.5px solid',
-          ...selectTypes[type],
-          width,
-          transition: '0.3s',
-          outline: 'none',
-          ...selectOverrideClasses,
-          ...sx,
-        }}
-        disabled={isDisabled}
-        tabIndex={isDisabled ? -1 : 0}
-        onChange={onChangeValue}
-        value={value[0]}
-        MenuProps={{ sx: { ...MenuProps(maxHeight) } }}
-        displayEmpty
-        IconComponent={() => OpenIcon(isOpened, size, isDisabled, handleDropIconClick)}
-        onClose={onCloseMenu}
-        onOpen={onToggleMenu}
-        open={isOpened}
-      >
-        {/* placeholder */}
-        <MenuItem value="" sx={{ display: 'none' }} key="disabled_item" defaultChecked>
-          <Stack direction="row" alignItems="center" spacing={1} sx={{ width: '110%' }}>
-            {Icon && (
-              <Icon
-                sx={{
-                  ...placeholderIconSizes[size],
-                  color: 'var(--xi-gray-40)',
-                }}
-              />
-            )}
-            <Typography
-              sx={{
-                ...placeholderTextSizes[size],
-                color: 'var(--xi-gray-40)',
-                textOverflow: 'ellipsis',
-                overflow: 'hidden',
-              }}
-            >
-              {label}
-            </Typography>
-          </Stack>
-        </MenuItem>
-
-        {/* cancel choose item */}
-        {cancelItem && (
-          <MenuItem
-            key="cancel_item"
-            value={cancelItem}
-            defaultChecked={false}
-            sx={{
-              ...menuItemStyles,
-              ...dividerStyles,
-              position: 'relative',
-            }}
-          >
-            {cancelItem}
-          </MenuItem>
+const SelectContent = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
+>(({ className, children, position = 'popper', ...props }, ref) => (
+  <SelectPrimitive.Portal>
+    <SelectPrimitive.Content
+      ref={ref}
+      className={cn(
+        'relative z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+        position === 'popper' &&
+          'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
+        className,
+      )}
+      position={position}
+      {...props}
+    >
+      <SelectPrimitive.Viewport
+        className={cn(
+          'p-1',
+          position === 'popper' &&
+            'h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]',
         )}
+      >
+        {children}
+      </SelectPrimitive.Viewport>
+    </SelectPrimitive.Content>
+  </SelectPrimitive.Portal>
+));
+SelectContent.displayName = SelectPrimitive.Content.displayName;
 
-        {/* items list / dropdown menu  */}
-        {items &&
-          items.map((item) => (
-            <MenuItem
-              value={item.value}
-              key={item.id}
-              disabled={item.isDisabled}
-              sx={{
-                ...menuItemStyles,
-              }}
-            >
-              {item.label ?? item.value}
-            </MenuItem>
-          ))}
-        {groups &&
-          groups.map((group, groupIndex, groupArray) => [
-            <Typography
-              sx={{
-                fontSize: '10px',
-                lineHeight: '14px',
-                color: 'var(--xi-gray-40)',
-                p: !group.title ? '' : '4px 12px',
-                cursor: 'default',
-              }}
-            >
-              {group.title}
-            </Typography>,
-            group.items.map((item, index, array) => {
-              const isLastGroup = groupIndex === groupArray.length - 1;
-              const divider = index === array.length - 1 && !isLastGroup ? dividerStyles : {};
-              return (
-                <MenuItem
-                  value={item.value}
-                  key={item.id}
-                  disabled={item.isDisabled}
-                  sx={{
-                    ...menuItemStyles,
-                    ...divider,
-                  }}
-                >
-                  {item.label ?? item.value}
-                </MenuItem>
-              );
-            }),
-          ])}
-      </MuiSelect>
-      {/* </FormControl> */}
-    </ClickAwayListener>
-  );
+const SelectLabel = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Label>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
+>(({ className, ...props }, ref) => (
+  <SelectPrimitive.Label
+    ref={ref}
+    className={cn('py-1.5 pl-8 pr-2 text-sm font-semibold', className)}
+    {...props}
+  />
+));
+SelectLabel.displayName = SelectPrimitive.Label.displayName;
+
+const SelectItem = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
+>(({ className, children, ...props }, ref) => (
+  <SelectPrimitive.Item
+    ref={ref}
+    className={cn(
+      'relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      className,
+    )}
+    {...props}
+  >
+    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+      <SelectPrimitive.ItemIndicator>
+        <Check className="h-4 w-4" />
+      </SelectPrimitive.ItemIndicator>
+    </span>
+
+    <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+  </SelectPrimitive.Item>
+));
+SelectItem.displayName = SelectPrimitive.Item.displayName;
+
+const SelectSeparator = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Separator>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
+>(({ className, ...props }, ref) => (
+  <SelectPrimitive.Separator
+    ref={ref}
+    className={cn('-mx-1 my-1 h-px bg-muted', className)}
+    {...props}
+  />
+));
+SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
+
+export {
+  Select,
+  SelectGroup,
+  SelectValue,
+  SelectTrigger,
+  SelectContent,
+  SelectLabel,
+  SelectItem,
+  SelectSeparator,
 };

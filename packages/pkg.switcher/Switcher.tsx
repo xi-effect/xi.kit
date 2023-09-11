@@ -1,92 +1,55 @@
-import { ToggleButtonGroup, ToggleButton, Typography } from '@mui/material';
-import { MouseEvent } from 'react';
+'use client';
 
-import {
-  buttonSizes,
-  typographyVariants,
-  buttonStyle,
-  buttonBorderRadius,
-  groupSizes,
-} from './styles';
+import * as React from 'react';
+import * as TabsPrimitive from '@radix-ui/react-tabs';
 
-declare module '@mui/material/Typography' {
-  export interface TypographyPropsVariantOverrides {
-    xl: true;
-    l: true;
-    m: true;
-    s: true;
-    xs: true;
-    xxs: true;
-  }
-}
+import { cn } from '@xipkg/utils';
 
-export type SwitcherProps = {
-  currentValue: string | number;
-  values: string[] | number[];
-  size?: 'large' | 'medium' | 'small';
-  color?: 'primary' | 'white';
-  groupBackgroundColor?: string;
-  disabledValue?: string | number;
-  isError?: boolean;
-  onChange: (value?: string | number, event?: MouseEvent<HTMLElement>) => void;
-};
+const Tabs = TabsPrimitive.Root;
 
-export const Switcher = ({
-  currentValue,
-  values,
-  size = 'large',
-  color = 'primary',
-  groupBackgroundColor,
-  disabledValue,
-  isError,
-  onChange,
-}: SwitcherProps) => {
-  const handleChange = (event: MouseEvent<HTMLElement>, value: any) => {
-    onChange(value, event);
-  };
+const TabsList = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.List>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.List
+    ref={ref}
+    className={cn(
+      'inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground',
+      className,
+    )}
+    {...props}
+  />
+));
+TabsList.displayName = TabsPrimitive.List.displayName;
 
-  return (
-    <ToggleButtonGroup
-      value={currentValue}
-      sx={{
-        width: 'fit-content',
-        border: '2px solid',
-        borderColor: isError ? 'var(--xi-red-80)' : 'transparent',
-        backgroundColor: groupBackgroundColor || 'transparent',
-        ...groupSizes[size],
-      }}
-      color="primary"
-      onChange={handleChange}
-      exclusive
-    >
-      {values.map((value, i) => (
-        <ToggleButton
-          value={value}
-          disableFocusRipple
-          disableRipple
-          disabled={disabledValue === value}
-          sx={{
-            border: 'none',
-            ...buttonSizes[size],
-            ...buttonStyle[color],
-            ...buttonStyle.default,
-            '&.MuiToggleButtonGroup-grouped:not(:first-of-type)': {
-              borderRadius: `${buttonBorderRadius[size]} !important`,
-              marginLeft: '0 !important',
-              borderLeft: 'none !important',
-            },
-            '&.MuiToggleButtonGroup-grouped:not(:last-of-type)': {
-              borderRadius: `${buttonBorderRadius[size]} !important`,
-            },
-            borderRadius: buttonBorderRadius[size],
-          }}
-          key={`${i}`}
-        >
-          <Typography variant={typographyVariants[size]} sx={{ lineHeight: '0' }}>
-            {value}
-          </Typography>
-        </ToggleButton>
-      ))}
-    </ToggleButtonGroup>
-  );
-};
+const TabsTrigger = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.Trigger
+    ref={ref}
+    className={cn(
+      'inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm',
+      className,
+    )}
+    {...props}
+  />
+));
+TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+
+const TabsContent = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.Content
+    ref={ref}
+    className={cn(
+      'mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+      className,
+    )}
+    {...props}
+  />
+));
+TabsContent.displayName = TabsPrimitive.Content.displayName;
+
+export { Tabs, TabsList, TabsTrigger, TabsContent };

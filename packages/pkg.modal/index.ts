@@ -1,2 +1,9 @@
-export { Modal } from './Modal';
-export type { ModalProps } from './Modal';
+export {
+  Dialog as Modal,
+  DialogTrigger as ModalTrigger,
+  DialogContent as ModalContent,
+  DialogHeader as ModalHeader,
+  DialogFooter as ModalFooter,
+  DialogTitle as ModalTitle,
+  DialogDescription as ModalDescription,
+} from './Modal';
