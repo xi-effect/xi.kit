@@ -1,0 +1,5 @@
+{
+  "extends": "@xipkg/typescript/base.json",
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
+}
