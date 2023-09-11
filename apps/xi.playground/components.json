@@ -8,5 +8,9 @@
     "css": "@xipkg/tailwind/design-system-preset.js/index.css",
     "baseColor": "slate",
     "cssVariables": true
+  },
+  "aliases": {
+    "components": "@xipkg/",
+    "utils": "@xipkg/utils"
   }
 }
