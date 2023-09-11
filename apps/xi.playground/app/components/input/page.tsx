@@ -14,45 +14,27 @@ export default function InputPage() {
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
         <Input
-          variant="outlined"
-          InputProps={{ startAdornment: <Eyeon sx={{ fontSize: 24 }} /> }}
           placeholder="Текстовое поле"
         />
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
         <Input
-          InputProps={{ startAdornment: <Eyeon sx={{ fontSize: 24 }} /> }}
-          placeholder="Текстовое поле"
-          error
-        />
-      </Stack>
-      <Stack sx={{ p: 2, width: '250px' }}>
-        <Input
-          InputProps={{ startAdornment: <Eyeon sx={{ fontSize: 24 }} /> }}
           placeholder="Текстовое поле"
         />
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
         <Input
-          InputProps={{ startAdornment: <Eyeon sx={{ fontSize: 24 }} /> }}
+          placeholder="Текстовое поле"
+        />
+      </Stack>
+      <Stack sx={{ p: 2, width: '250px' }}>
+        <Input
           placeholder="Текстовое поле"
           disabled
         />
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
-        <Input size="small" />
-      </Stack>
-      <Stack sx={{ p: 2, width: '250px' }}>
-        <Input placeholder="Текстовое поле" size="small" />
-      </Stack>
-      <Stack sx={{ p: 2, width: '250px' }}>
-        <Input placeholder="Текстовое поле" size="small" error />
-      </Stack>
-      <Stack sx={{ p: 2, width: '250px' }}>
-        <Input placeholder="Текстовое поле" size="small" />
-      </Stack>
-      <Stack sx={{ p: 2, width: '250px' }}>
-        <Input placeholder="Текстовое поле" size="small" disabled />
+        <Input />
       </Stack>
     </ComponentLayout>
   );
