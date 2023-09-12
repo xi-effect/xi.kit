@@ -12,7 +12,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@storybook/cli": "^7.4.1",
+    "@storybook/cli": "^7.5.0-alpha.2",
     "@turbo/gen": "^1.10.7",
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
@@ -24,9 +24,9 @@
   },
   "name": "xi.kit",
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.7.1"
   },
-  "packageManager": "npm@9.1.2",
+  "packageManager": "npm@10.1.0",
   "workspaces": [
     "apps/*",
     "packages/*"
