@@ -66,6 +66,6 @@
   },
   "packageManager": "npm@10.1.0",
   "overrides": {
-    "esbuild-register@^3.4.0": "github:unknownproperty/esbuild-register"
+    "tsconfig-paths": "^4.2.0"
   }
 }
