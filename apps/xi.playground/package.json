@@ -64,5 +64,8 @@
   "engines": {
     "node": ">=18.7.1"
   },
-  "packageManager": "npm@10.1.0"
+  "packageManager": "npm@10.1.0",
+  "overrides": {
+    "esbuild-register@^3.4.0": "github:unknownproperty/esbuild-register"
+  }
 }

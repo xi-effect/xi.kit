@@ -31,7 +31,7 @@
     "apps/*",
     "packages/*"
   ],
-  "resolutions": {
-    "esbuild-register@^3.4.0": "patch:esbuild-register@npm%3A3.4.2#./.yarn/patches/esbuild-register-npm-3.4.2-c873c16acc.patch"
+  "overrides": {
+    "esbuild-register@^3.4.0": "github:unknownproperty/esbuild-register"
   }
 }
