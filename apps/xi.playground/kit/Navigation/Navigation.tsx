@@ -19,6 +19,10 @@ const menuArray = [
     label: 'Button',
   },
   {
+    link: '/components/input',
+    label: 'Input',
+  },
+  {
     link: '/components/checkbox',
     label: 'Checkbox',
   },
@@ -61,7 +65,14 @@ export const Navigation = ({ children }: NavigationT) => {
 
   return (
     <Stack
-      sx={{ p: 2, height: '100%', minHeight: '100vh', width: '100vw', overflow: 'auto', position: 'relative' }}
+      sx={{
+        p: 2,
+        height: '100%',
+        minHeight: '100vh',
+        width: '100vw',
+        overflow: 'auto',
+        position: 'relative',
+      }}
       direction="row"
       justifyContent="flex-start"
       alignItems="flex-start"

@@ -16,8 +16,8 @@ export const badgeVariants = cva(
         outline: 'text-foreground',
       },
       size: {
-        m: 'h-7 rounded-md text-s',
-        s: 'h-5 rounded text-xs',
+        m: 'h-7 rounded-md text-[14px]',
+        s: 'h-5 rounded text-[12px]',
       },
     },
     defaultVariants: {
