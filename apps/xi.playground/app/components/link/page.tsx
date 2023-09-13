@@ -19,31 +19,31 @@ export default function ButtonPage() {
   return (
     <Stack spacing={2}>
       <Stack flexDirection="row" alignItems="center" sx={{ gap: '16px' }}>
-        <Link>Ссылка</Link>
-        <Link onClick={shortAction}>Ссылка</Link>
-        <Link onClick={longAction}>Ссылка</Link>
+        <Link href="https://github.com">Ссылка</Link>
+        <Link href="https://github.com">Ссылка</Link>
+        <Link href="https://github.com">Ссылка</Link>
       </Stack>
 
       <Stack flexDirection="row" alignItems="center" sx={{ gap: '16px' }}>
-        <Link href="https://github.com">
+        <Link size="l" href="https://github.com">
           Ссылка
         </Link>
-        <Link onClick={shortAction}>
+        <Link size="l" href="https://github.com">
           Ссылка
         </Link>
-        <Link onClick={longAction}>
+        <Link size="l" href="https://github.com">
           Ссылка
         </Link>
       </Stack>
 
       <Stack flexDirection="row" alignItems="center" sx={{ gap: '16px' }}>
-        <Link href="https://github.com">
+        <Link size="s" href="https://github.com">
           Ссылка
         </Link>
-        <Link onClick={shortAction}>
+        <Link size="s" href="https://github.com">
           Ссылка
         </Link>
-        <Link onClick={longAction}>
+        <Link size="s" href="https://github.com">
           Ссылка
         </Link>
       </Stack>

@@ -15,10 +15,13 @@ export default function InputPage() {
         <Input placeholder="Текстовое поле" />
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
-        <Input placeholder="Текстовое поле" />
+        <Input placeholder="Текстовое поле" variant="s"/>
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
-        <Input placeholder="Текстовое поле" />
+        <Input placeholder="Текстовое поле" warning />
+      </Stack>
+      <Stack sx={{ p: 2, width: '250px' }}>
+        <Input placeholder="Текстовое поле" error />
       </Stack>
       <Stack sx={{ p: 2, width: '250px' }}>
         <Input placeholder="Текстовое поле" disabled />
