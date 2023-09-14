@@ -12,7 +12,7 @@ export const linkVariants = cva(
     variants: {
       variant: {
         default:
-          'decoration-gray-30 hover:decoration-gray-100 text-gray-90 hover:text-gray-100 disabled:pointer-events-none disabled:text-gray-30',
+          'decoration-gray-40 hover:decoration-gray-100 text-gray-90 hover:text-gray-100 disabled:pointer-events-none disabled:text-gray-30',
         sky: '',
         brand: '',
         error: '',
