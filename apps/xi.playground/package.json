@@ -20,6 +20,8 @@
     "@xipkg/checkbox": "*",
     "@xipkg/dropdown": "*",
     "@xipkg/file": "*",
+    "@xipkg/form": "*",
+    "@xipkg/label": "*",
     "@xipkg/fileuploader": "*",
     "@xipkg/icons": "*",
     "@xipkg/input": "*",

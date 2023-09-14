@@ -1,6 +1,6 @@
 "use client";
 
-import { LayoutPages } from 'kit/LayoutPages';
+import { LayoutPages } from 'components/LayoutPages';
 import { ThemeProvider } from 'next-themes';
 import React from 'react';
 
