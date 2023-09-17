@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/switcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -11,16 +11,16 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@xipkg/icons": "^0.4.4",
-    "@xipkg/utils": "^1.0.0",
-    "react": "^18.2.0",
-    "@radix-ui/react-tabs": "1.0.4"
+    "@radix-ui/react-tabs": "1.0.4",
+    "@xipkg/icons": "^0.4.5",
+    "@xipkg/utils": "^1.0.1",
+    "react": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
-    "@xipkg/eslint": "^0.0.3",
+    "@xipkg/eslint": "^0.0.4",
     "@xipkg/typescript": "^0.0.0",
     "eslint": "^7.32.0",
     "typescript": "^5.1.3"
@@ -30,5 +30,5 @@
   },
   "author": "xi.effect",
   "description": "",
-  "gitHead": "0ee562e7c7723699c85daf61b493d6a57b7c1f08"
+  "gitHead": "33022d3bd6e72a5ccc9097b187742f9139f7d905"
 }

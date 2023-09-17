@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/form",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -11,20 +11,20 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@xipkg/utils": "^1.0.0",
-    "@xipkg/label": "*",
-    "react": "^18.2.0",
+    "@hookform/resolvers": "3.3.1",
     "@radix-ui/react-label": "2.0.2",
     "@radix-ui/react-slot": "1.0.2",
+    "@xipkg/label": "^0.0.5",
+    "@xipkg/utils": "^1.0.1",
+    "react": "^18.2.0",
     "react-hook-form": "7.46.1",
-    "@hookform/resolvers": "3.3.1",
     "zod": "3.22.2"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
-    "@xipkg/eslint": "^0.0.3",
+    "@xipkg/eslint": "^0.0.4",
     "@xipkg/typescript": "^0.0.0",
     "eslint": "^7.32.0",
     "react": "^18.2.0",
@@ -35,5 +35,5 @@
   },
   "author": "xi.effect",
   "description": "",
-  "gitHead": "0ee562e7c7723699c85daf61b493d6a57b7c1f08"
+  "gitHead": "33022d3bd6e72a5ccc9097b187742f9139f7d905"
 }
