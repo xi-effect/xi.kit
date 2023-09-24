@@ -38,9 +38,7 @@ export const linkVariants = cva(
 
 export interface LinkProps
   extends React.ComponentProps<typeof NextLink>,
-    VariantProps<typeof linkVariants> {
-  href: string;
-}
+    VariantProps<typeof linkVariants> {}
 
 export const Link = React.forwardRef<HTMLLinkElement, LinkProps>(
   ({ className, theme, variant, size, href, children, ...props }, ref) => {
