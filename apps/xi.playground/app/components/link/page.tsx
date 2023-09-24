@@ -37,13 +37,24 @@ export default function ButtonPage() {
       </Stack>
 
       <Stack flexDirection="row" alignItems="center" sx={{ gap: '16px' }}>
-        <Link size="s" href="https://github.com">
+        <Link size="s" theme="brand" href="https://github.com">
           Ссылка
         </Link>
-        <Link size="s" href="https://github.com">
+        <Link size="s" theme="brand" href="https://github.com">
           Ссылка
         </Link>
-        <Link size="s" href="https://github.com">
+        <Link size="s" theme="brand" href="https://github.com">
+          Ссылка
+        </Link>
+      </Stack>
+      <Stack flexDirection="row" alignItems="center" sx={{ gap: '16px' }}>
+        <Link size="s" theme="brand" variant="always" href="https://github.com">
+          Ссылка
+        </Link>
+        <Link size="s" theme="brand" variant="none" href="https://github.com">
+          Ссылка
+        </Link>
+        <Link size="s" theme="brand" variant="hover" href="https://github.com">
           Ссылка
         </Link>
       </Stack>
