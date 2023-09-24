@@ -40,7 +40,7 @@ export interface LinkProps
   extends React.ComponentProps<typeof NextLink>,
     VariantProps<typeof linkVariants> {}
 
-export const Link = React.forwardRef<HTMLLinkElement, LinkProps>(
+export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
   ({ className, theme, variant, size, href, children, ...props }, ref) => {
     return (
       <NextLink
