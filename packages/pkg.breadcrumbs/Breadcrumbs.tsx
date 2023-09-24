@@ -26,7 +26,7 @@ export const Breadcrumbs = ({
   const CustomSeparator = Separator ? (
     <Separator sx={{ ...separatorSizes[size], color }} />
   ) : (
-    <ArrowLeft sx={{ ...separatorSizes[size], color }} />
+    <ArrowLeft />
   );
 
   return (

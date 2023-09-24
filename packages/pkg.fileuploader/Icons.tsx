@@ -17,25 +17,13 @@ const Icons: FC<IconsProps> = ({
   <>
     {isDeleteIcon && (
       <IconButton disableRipple sx={{ p: 0 }} onClick={onDeleteClick}>
-        <Close
-          sx={{
-            transition: 'all 0.1s ease-in',
-            color,
-            ...iconSizesStyle[size],
-          }}
-        />
+        <Close />
       </IconButton>
     )}
 
     {isAbortIcon && (
       <IconButton disableRipple sx={{ p: 0 }} onClick={onAbortRequestClick}>
-        <Close
-          sx={{
-            transition: 'all 0.1s ease-in',
-            color,
-            ...iconSizesStyle[size],
-          }}
-        />
+        <Close />
       </IconButton>
     )}
 
@@ -51,16 +39,7 @@ const Icons: FC<IconsProps> = ({
       />
     )}
 
-    {isSucceededIcon && (
-      <Check
-        sx={{
-          marginLeft: 'auto',
-          transition: 'all 0.1s ease-in',
-          color,
-          ...iconSizesStyle[size],
-        }}
-      />
-    )}
+    {isSucceededIcon && <Check />}
   </>
 );
 

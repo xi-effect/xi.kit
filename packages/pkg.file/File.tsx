@@ -77,13 +77,7 @@ export const File = ({ name, url, size, icon, hideCloseIcon, style }: FileProps)
       >
         {(!icon && (
           <Box sx={{ maxWidth: '48px', maxHeight: '48px', height: '100%', width: '100%' }}>
-            <FileIcon
-              color="primary"
-              sx={{
-                width: '100%',
-                height: '100%',
-              }}
-            />
+            <FileIcon />
           </Box>
         )) || (
           <Box sx={{ maxWidth: '48px', maxHeight: '48px' }}>
@@ -104,12 +98,22 @@ export const File = ({ name, url, size, icon, hideCloseIcon, style }: FileProps)
 
       <Box sx={{ textAlign: 'left', width: '100%' }}>
         <Typography
-          sx={{ fontSize: '16px', fontWeight: 500, lineHeight: '22px', color: 'var(--xi-gray-10)0' }}
+          sx={{
+            fontSize: '16px',
+            fontWeight: 500,
+            lineHeight: '22px',
+            color: 'var(--xi-gray-10)0',
+          }}
         >
           {name}
         </Typography>
         <Typography
-          sx={{ fontSize: '14px', fontWeight: 400, lineHeight: '20px', color: 'var(--xi-gray-10)0' }}
+          sx={{
+            fontSize: '14px',
+            fontWeight: 400,
+            lineHeight: '20px',
+            color: 'var(--xi-gray-10)0',
+          }}
         >
           {formatSize(size)}
         </Typography>

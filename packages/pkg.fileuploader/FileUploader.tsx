@@ -218,13 +218,7 @@ export const FileUploader = ({
             sx={{ p: 0, marginLeft: 'auto' }}
             onClick={handleUploadButtonClick}
           >
-            <Download
-              sx={{
-                transition: 'all 0.1s ease-in',
-                color: actionTextStyle.description.color,
-                ...iconSizesStyle[size],
-              }}
-            />
+            <Download />
           </IconButton>
         )}
       </Stack>
