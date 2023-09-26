@@ -12,7 +12,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@storybook/cli": "^7.4.5",
+    "@storybook/cli": "^7.5.0-alpha.3",
     "@turbo/gen": "^1.10.7",
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
