@@ -4,8 +4,8 @@
   "rsc": true,
   "tsx": true,
   "tailwind": {
-    "config": "tailwind.config.ts",
-    "css": "@xipkg/tailwind/design-system-preset.js/index.css",
+    "config": "tailwind.config.js",
+    "css": "@xipkg/tailwind/index.css",
     "baseColor": "slate",
     "cssVariables": true
   },
