@@ -1,4 +1,3 @@
-import { Grid as GridLayout, Typography, Stack } from '@mui/material';
 import {
   Account,
   Activity,
@@ -140,25 +139,18 @@ const iconsDict = [
 ];
 
 const Icons = () => (
-  <>
-    <GridLayout sx={{ p: 2 }} container spacing={4}>
+  <div className='p-2'>
+    <div className="grid grid-rows-6 grid-flow-col gap-4">
       {iconsDict.map((icon, index) => {
         return (
-          <GridLayout key={index} item>
-            <Stack
-              direction="column"
-              justifyContent="flex-start"
-              alignItems="center"
-              spacing={1}
-              sx={{ width: '64px', height: '64px' }}
+            <div className='h-[32px] w-[32px]' key={index.toString()}
             >
               {icon}
-            </Stack>
-          </GridLayout>
+            </div>
         );
       })}
-    </GridLayout>
-  </>
+    </div>
+  </div>
 );
 
 export default Icons;
