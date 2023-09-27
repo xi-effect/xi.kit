@@ -1,5 +1,4 @@
-import { Svg } from '../Svg';
-import { IconProps } from '../types';
+import { Svg, IconProps  } from '../Svg';
 
 export const ChevronUp = ({ ...props }: IconProps) => (
   <Svg {...props}>

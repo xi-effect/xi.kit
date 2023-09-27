@@ -1,5 +1,4 @@
-import { Svg } from '../Svg';
-import { IconProps } from '../types';
+import { Svg, IconProps  } from '../Svg';
 
 export const Hand = ({ ...props }: IconProps) => (
   <Svg {...props}>

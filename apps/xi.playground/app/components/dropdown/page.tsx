@@ -1,23 +1,8 @@
-"use client";
+'use client';
 
-import {
-  Cloud,
-  CreditCard,
-  Github,
-  Keyboard,
-  LifeBuoy,
-  LogOut,
-  Mail,
-  MessageSquare,
-  Plus,
-  PlusCircle,
-  Settings,
-  User,
-  UserPlus,
-  Users,
-} from "lucide-react"
- 
-import { Button } from "@xipkg/button"
+import { PeopleInvite } from '@xipkg/icons';
+
+import { Button } from '@xipkg/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,94 +16,132 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@xipkg/dropdown"
+} from '@xipkg/dropdown';
 
 const TestComponents = () => (
-  <DropdownMenu>
-    <DropdownMenuTrigger asChild>
-      <Button variant="secondary">Open</Button>
-    </DropdownMenuTrigger>
-    <DropdownMenuContent className="w-56">
-      <DropdownMenuLabel>My Account</DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      <DropdownMenuGroup>
+  <div className="p-12">
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="secondary">Open</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56">
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <PeopleInvite className="mr-2 h-4 w-4" />
+            <span>Profile</span>
+            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <PeopleInvite className="mr-2 h-4 w-4" />
+            <span>Billing</span>
+            <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <PeopleInvite className="mr-2 h-4 w-4" />
+            <span>Settings</span>
+            <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <PeopleInvite className="mr-2 h-4 w-4" />
+            <span>Keyboard shortcuts</span>
+            <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <PeopleInvite className="mr-2 h-4 w-4" />
+            <span>Team</span>
+          </DropdownMenuItem>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>
+              <PeopleInvite className="mr-2 h-4 w-4" />
+              <span>Invite users</span>
+            </DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuItem>
+                  <PeopleInvite className="mr-2 h-4 w-4" />
+                  <span>Email</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <PeopleInvite className="mr-2 h-4 w-4" />
+                  <span>Message</span>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <PeopleInvite className="mr-2 h-4 w-4" />
+                  <span>More...</span>
+                </DropdownMenuItem>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+          <DropdownMenuItem>
+            <PeopleInvite className="mr-2 h-4 w-4" />
+            <span>New Team</span>
+            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <User className="mr-2 h-4 w-4" />
-          <span>Profile</span>
-          <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+          <PeopleInvite className="mr-2 h-4 w-4" />
+          <span>GitHub</span>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <CreditCard className="mr-2 h-4 w-4" />
-          <span>Billing</span>
-          <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+          <PeopleInvite className="mr-2 h-4 w-4" />
+          <span>Support</span>
         </DropdownMenuItem>
+        <DropdownMenuItem disabled>
+          <PeopleInvite className="mr-2 h-4 w-4" />
+          <span>API</span>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Settings className="mr-2 h-4 w-4" />
-          <span>Settings</span>
-          <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+          <PeopleInvite className="mr-2 h-4 w-4" />
+          <span>Log out</span>
+          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Keyboard className="mr-2 h-4 w-4" />
-          <span>Keyboard shortcuts</span>
-          <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-        </DropdownMenuItem>
-      </DropdownMenuGroup>
-      <DropdownMenuSeparator />
-      <DropdownMenuGroup>
-        <DropdownMenuItem>
-          <Users className="mr-2 h-4 w-4" />
-          <span>Team</span>
-        </DropdownMenuItem>
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger>
-            <UserPlus className="mr-2 h-4 w-4" />
-            <span>Invite users</span>
-          </DropdownMenuSubTrigger>
-          <DropdownMenuPortal>
-            <DropdownMenuSubContent>
+      </DropdownMenuContent>
+    </DropdownMenu>
+    <div className="mt-14">
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="secondary">Open</Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className="w-56">
+          <div className="bg-gray-5 rounded-lg">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
               <DropdownMenuItem>
-                <Mail className="mr-2 h-4 w-4" />
-                <span>Email</span>
+                <span>Пригласить людей</span>
+                <PeopleInvite size="s" className="ml-auto h-4 w-4" />
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <MessageSquare className="mr-2 h-4 w-4" />
-                <span>Message</span>
+                <PeopleInvite className="mr-2 h-4 w-4" />
+                <span>Billing</span>
+                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
               </DropdownMenuItem>
-              <DropdownMenuSeparator />
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
               <DropdownMenuItem>
-                <PlusCircle className="mr-2 h-4 w-4" />
-                <span>More...</span>
+                <PeopleInvite className="mr-2 h-4 w-4" />
+                <span>Team</span>
               </DropdownMenuItem>
-            </DropdownMenuSubContent>
-          </DropdownMenuPortal>
-        </DropdownMenuSub>
-        <DropdownMenuItem>
-          <Plus className="mr-2 h-4 w-4" />
-          <span>New Team</span>
-          <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-        </DropdownMenuItem>
-      </DropdownMenuGroup>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem>
-        <Github className="mr-2 h-4 w-4" />
-        <span>GitHub</span>
-      </DropdownMenuItem>
-      <DropdownMenuItem>
-        <LifeBuoy className="mr-2 h-4 w-4" />
-        <span>Support</span>
-      </DropdownMenuItem>
-      <DropdownMenuItem disabled>
-        <Cloud className="mr-2 h-4 w-4" />
-        <span>API</span>
-      </DropdownMenuItem>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem>
-        <LogOut className="mr-2 h-4 w-4" />
-        <span>Log out</span>
-        <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-      </DropdownMenuItem>
-    </DropdownMenuContent>
-  </DropdownMenu>
+              <DropdownMenuItem>
+                <PeopleInvite className="mr-2 h-4 w-4" />
+                <span>New Team</span>
+                <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          </div>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </div>
+  </div>
 );
 
 export default TestComponents;
