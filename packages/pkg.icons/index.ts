@@ -224,4 +224,4 @@ export {
   icons,
 };
 
-export type { IconProps } from './types';
+export type { IconProps } from './Svg';
