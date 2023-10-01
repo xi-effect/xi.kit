@@ -110,7 +110,7 @@ const TestComponents = () => (
         <DropdownMenuTrigger asChild>
           <Button variant="secondary">Open</Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56">
+        <DropdownMenuContent className="w-56 relative top-[-56px]">
           <div className="bg-gray-5 rounded-lg">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
