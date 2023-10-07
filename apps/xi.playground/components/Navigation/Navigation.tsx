@@ -11,6 +11,10 @@ export type NavigationT = {
 
 const menuArray = [
   {
+    link: '/components/avatar',
+    label: 'Avatar',
+  },
+  {
     link: '/components/badge',
     label: 'Badge',
   },
@@ -110,15 +114,7 @@ export const Navigation = ({ children }: NavigationT) => {
           ))}
         </List>
       </Stack>
-      <Stack
-        sx={{ width: 'calc(100vw - 600px)', height: '100%' }}
-        direction="column"
-        justifyContent="flex-start"
-        alignItems="flex-start"
-        spacing={2}
-      >
-        {children}
-      </Stack>
+      <div className='h-fill min-h-screen w-fill'>{children}</div>
     </Stack>
   );
 };

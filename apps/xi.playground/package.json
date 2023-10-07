@@ -33,6 +33,8 @@
     "@xipkg/switcher": "*",
     "@xipkg/tailwind": "*",
     "@xipkg/toggle": "*",
+    "@xipkg/avatar": "*",
+    "@xipkg/userprofile": "*",
     "next": "^13.4.19",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",

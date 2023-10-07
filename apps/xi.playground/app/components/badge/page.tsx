@@ -1,7 +1,7 @@
 import { Badge } from '@xipkg/badge';
 
 const BadgePage = () => (
-  <div className="flex flex-column gap-5 h-full">
+  <div className="flex flex-col gap-5 h-full">
     <Badge>
       Title
     </Badge>

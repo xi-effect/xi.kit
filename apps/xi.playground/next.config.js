@@ -22,6 +22,8 @@ const nextConfig = {
     '@xipkg/select',
     '@xipkg/switcher',
     '@xipkg/toggle',
+    '@xipkg/avatar',
+    '@xipkg/userprofile',
   ],
   images: {
     domains: [
