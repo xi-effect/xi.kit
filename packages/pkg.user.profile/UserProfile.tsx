@@ -4,12 +4,12 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@xipkg/utils';
 import { Avatar } from '@xipkg/avatar';
 
-export const userProfileVariants = cva('flex flex-col', {
+export const userProfileVariants = cva('flex flex-row items-center', {
   variants: {
     size: {
-      l: 'gap-2',
-      m: 'gap-2',
-      s: 'gap-1.5',
+      l: 'h-[48px] gap-2',
+      m: 'h-[32px] gap-2',
+      s: 'h-[24px] gap-1.5',
     },
   },
   defaultVariants: {
@@ -30,7 +30,7 @@ export const userProfileTextVariants = cva('text-gray-100', {
   },
 });
 
-export const userProfileLabelVariants = cva('font-normal text-gray-60', {
+export const userProfileLabelVariants = cva('font-normal text-gray-60 mt-[-2px]', {
   variants: {
     size: {
       l: 'text-[12px]',
@@ -60,17 +60,17 @@ export const UserProfile = ({
   classNameLabel,
   src,
   preview,
-  size,
+  size = "m",
   text,
   label,
   ...props
 }: UserProfileProps) => {
   return (
     <div className={cn(userProfileVariants({ size }), className)} {...props}>
-      <Avatar src={src} text={preview} />
-      <div className="flex flex-row -gap-[2px]">
+      <Avatar size={size} src={src} text={preview} />
+      <div className="flex flex-col">
         <span className={cn(userProfileTextVariants({ size }), classNameText)}>{text}</span>
-        {size === 's' && (
+        {size !== 's' && (
           <span className={cn(userProfileLabelVariants({ size }), classNameLabel)}>{label}</span>
         )}
       </div>
