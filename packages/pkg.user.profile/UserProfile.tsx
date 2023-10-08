@@ -2,42 +2,78 @@ import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@xipkg/utils';
+import { Avatar } from '@xipkg/avatar';
 
-export const userProfileVariants = cva(
-  'inline-flex items-center border w-fit px-2.5 py-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
-  {
-    variants: {
-      variant: {
-        default: 'border-transparent bg-gray-10 text-gray-90',
-        secondary:
-          'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        destructive:
-          'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
-        outline: 'text-foreground',
-      },
-      size: {
-        xxl: 'h-7 rounded-md text-[14px]',
-        xl: 'h-5 rounded text-[12px]',
-        l: 'h-5 rounded text-[12px]',
-        m: 'h-7 rounded-md text-[14px]',
-        s: 'h-5 rounded text-[12px]',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-      size: 'm',
+export const userProfileVariants = cva('flex flex-col', {
+  variants: {
+    size: {
+      l: 'gap-2',
+      m: 'gap-2',
+      s: 'gap-1.5',
     },
   },
-);
+  defaultVariants: {
+    size: 'm',
+  },
+});
+
+export const userProfileTextVariants = cva('text-gray-100', {
+  variants: {
+    size: {
+      l: 'text-[16px]',
+      m: 'text-[14px]',
+      s: 'text-[12px]',
+    },
+  },
+  defaultVariants: {
+    size: 'm',
+  },
+});
+
+export const userProfileLabelVariants = cva('font-normal text-gray-60', {
+  variants: {
+    size: {
+      l: 'text-[12px]',
+      m: 'text-[10px]',
+      s: '',
+    },
+  },
+  defaultVariants: {
+    size: 'm',
+  },
+});
 
 export interface UserProfileProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof userProfileVariants> {}
+    VariantProps<typeof userProfileVariants> {
+  src?: string;
+  preview?: string;
+  text: string;
+  label?: string;
+  classNameText?: string;
+  classNameLabel?: string;
+}
 
-export const UserProfile = ({ className, variant, size, children, ...props }: UserProfileProps) => {
+export const UserProfile = ({
+  className,
+  classNameText,
+  classNameLabel,
+  src,
+  preview,
+  size,
+  text,
+  label,
+  ...props
+}: UserProfileProps) => {
   return (
-    <div className={cn(userProfileVariants({ variant, size }), className)} {...props}>
-      Компонент не готов
+    <div className={cn(userProfileVariants({ size }), className)} {...props}>
+      <Avatar src={src} text={preview} />
+      <div className="flex flex-row -gap-[2px]">
+        <span className={cn(userProfileTextVariants({ size }), classNameText)}>{text}</span>
+        {size === 's' && (
+          <span className={cn(userProfileLabelVariants({ size }), classNameLabel)}>{label}</span>
+        )}
+      </div>
     </div>
   );
 };

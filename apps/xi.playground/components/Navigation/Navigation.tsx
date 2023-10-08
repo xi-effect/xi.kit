@@ -66,6 +66,10 @@ const menuArray = [
     link: '/components/icons',
     label: 'Icons',
   },
+  {
+    link: '/components/userprofile',
+    label: 'UserProfile',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {

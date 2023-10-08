@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@xipkg/utils": "^1.0.1",
+    "@xipkg/avatar": "^0.1.0",
     "class-variance-authority": "^0.7.0",
     "react": "^18.2.0"
   },
