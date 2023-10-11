@@ -5,9 +5,7 @@ import { Button } from '@xipkg/button';
 export default function ButtonPage() {
   return (
     <div className="flex flex-col gap-5 h-full">
-      <Button size="l">
-        Test
-      </Button>
+      <Button size="l">Test</Button>
       <Button size="l" variant="secondary">
         Test
       </Button>
