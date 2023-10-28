@@ -31,6 +31,10 @@ export const inputVariants = cva(
         true: 'pr-3',
         false: '',
       },
+      afterString: {
+        true: 'gap-x-2',
+        false: '',
+      }
     },
     compoundVariants: [
       {
@@ -50,13 +54,15 @@ export const inputVariants = cva(
       warning: false,
       before: false,
       focus: false,
+      after: false,
+      afterString: false
     },
   },
 );
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement>,
-    Omit<VariantProps<typeof inputVariants>, 'before' | 'after'> {
+    Omit<VariantProps<typeof inputVariants>, 'before' | 'after' | 'afterString'> {
   before?: JSX.Element | string;
   after?: JSX.Element | string;
 }
@@ -86,6 +92,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             before: Boolean(before),
             after: Boolean(after),
             focus,
+            afterString: typeof after === 'string'
           }),
         )}
       >
