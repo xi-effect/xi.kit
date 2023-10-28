@@ -1,13 +1,11 @@
 'use client';
 
-import ComponentLayout from '../layout';
-
 import { Stack } from '@mui/material';
 import { Input } from '@xipkg/input';
 
 export default function InputPage() {
   return (
-    <ComponentLayout>
+    <>
       <Stack sx={{ p: 2, width: '250px' }}>
         <Input />
       </Stack>
@@ -29,6 +27,6 @@ export default function InputPage() {
       <Stack sx={{ p: 2, width: '250px' }}>
         <Input />
       </Stack>
-    </ComponentLayout>
+    </>
   );
 }
