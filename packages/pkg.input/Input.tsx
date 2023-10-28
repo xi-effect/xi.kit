@@ -98,7 +98,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
         />
-        <div>{after}</div>
+        <div className='text-gray-60'>{after}</div>
       </div>
     );
   },
