@@ -27,12 +27,21 @@ export const inputVariants = cva(
         true: 'pl-3 gap-x-2',
         false: '',
       },
+      after: {
+        true: 'pr-3',
+        false: '',
+      },
     },
     compoundVariants: [
       {
         variant: 's',
         before: true,
         className: 'pl-2 gap-x-1',
+      },
+      {
+        variant: 's',
+        after: true,
+        className: 'pr-2',
       },
     ],
     defaultVariants: {
@@ -47,12 +56,13 @@ export const inputVariants = cva(
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement>,
-    Omit<VariantProps<typeof inputVariants>, 'before'> {
+    Omit<VariantProps<typeof inputVariants>, 'before' | 'after'> {
   before?: JSX.Element | string;
+  after?: JSX.Element | string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, variant, error, warning, type, before, onFocus, onBlur, ...props }, ref) => {
+  ({ className, variant, error, warning, type, before, after, onFocus, onBlur, ...props }, ref) => {
     const [focus, setFocus] = React.useState<boolean>(false);
 
     const handleFocus = (e: React.FocusEvent<HTMLInputElement, Element>) => {
@@ -68,7 +78,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div
         className={cn(
-          inputVariants({ variant, error, warning, className, before: Boolean(before), focus }),
+          inputVariants({
+            variant,
+            error,
+            warning,
+            className,
+            before: Boolean(before),
+            after: Boolean(after),
+            focus,
+          }),
         )}
       >
         <div>{before}</div>
@@ -80,6 +98,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
         />
+        <div>{after}</div>
       </div>
     );
   },
