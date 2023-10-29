@@ -94,11 +94,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             disabled,
             error,
             warning,
-            className,
             before: Boolean(before),
             after: Boolean(after),
             focus,
             afterString: typeof after === 'string',
+            className,
           }),
         )}
       >
