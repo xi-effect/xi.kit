@@ -102,7 +102,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           }),
         )}
       >
-        <div>{before}</div>
+        {before && <div>{before}</div>}
         <input
           disabled={disabled}
           onBlur={handleBlur}
@@ -112,7 +112,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
         />
-        <div className="text-gray-60">{after}</div>
+        {after && <div className="text-gray-60">{after}</div>}
       </div>
     );
   },
