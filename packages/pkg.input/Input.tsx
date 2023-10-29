@@ -107,7 +107,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           disabled={disabled}
           onBlur={handleBlur}
           onFocus={handleFocus}
-          className="border-none outline-none h-full py-2 w-full disabled:cursor-not-allowed"
+          className="border-none outline-none h-full py-2 w-full bg-transparent disabled:cursor-not-allowed"
           type={type}
           ref={ref}
           {...props}
