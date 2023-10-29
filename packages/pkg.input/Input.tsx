@@ -73,7 +73,7 @@ export interface InputProps
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, variant, error, warning, type, before, after, onFocus, onBlur, disabled,...props }, ref) => {
+  ({ className, variant, error, warning, before, after, onFocus, onBlur, disabled,...props }, ref) => {
     const [focus, setFocus] = React.useState<boolean>(false);
 
     const handleFocus = (e: React.FocusEvent<HTMLInputElement, Element>) => {
@@ -108,7 +108,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           onBlur={handleBlur}
           onFocus={handleFocus}
           className="border-none outline-none h-full py-2 w-full bg-transparent disabled:cursor-not-allowed"
-          type={type}
           ref={ref}
           {...props}
         />
