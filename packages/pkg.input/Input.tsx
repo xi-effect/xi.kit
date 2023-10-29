@@ -3,7 +3,7 @@ import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@xipkg/utils';
 
-export const inputVariants = cva(
+export const inputWrapperVariants = cva(
   'flex items-center w-full rounded-md border-2 border-gray-30 bg-gray-0 text-gray-80 hover:border-gray-50 active:border-gray-30 px-3 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-30',
   {
     variants: {
@@ -67,7 +67,7 @@ export const inputVariants = cva(
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement>,
-    Omit<VariantProps<typeof inputVariants>, 'before' | 'after' | 'afterString' | 'disabled'> {
+    Omit<VariantProps<typeof inputWrapperVariants>, 'before' | 'after' | 'afterString' | 'disabled'> {
   before?: JSX.Element | string;
   after?: JSX.Element | string;
 }
@@ -89,7 +89,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div
         className={cn(
-          inputVariants({
+          inputWrapperVariants({
             variant,
             disabled,
             error,
