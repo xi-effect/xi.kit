@@ -31,6 +31,7 @@ import { Code } from './icons/Code';
 import { Collapse } from './icons/Collapse';
 import { ColorPicker } from './icons/ColorPicker';
 import { Copy } from './icons/Copy';
+import { CrossCircle } from './icons/CrossCircle';
 import { Divider } from './icons/Divider';
 import { Download } from './icons/Download';
 import { Edit } from './icons/Edit';
@@ -144,6 +145,7 @@ export {
   Collapse,
   ColorPicker,
   Copy,
+  CrossCircle,
   Divider,
   Download,
   Edit,
