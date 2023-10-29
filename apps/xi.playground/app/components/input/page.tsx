@@ -1,23 +1,22 @@
 'use client';
 
 import { Input } from '@xipkg/input';
-import beforeIcon from '../../../public/beforeIcon.svg';
-import afterIcon from '../../../public/afterIcon.svg';
+import { Link, CrossCircle } from '@xipkg/icons';
 
 export default function InputPage() {
   return (
     <>
       <div className="w-[250px] p-4">
-        <Input before={<img src={beforeIcon.src} />} />
+        <Input before={<Link />} />
       </div>
       <div className="w-[250px] p-4">
-        <Input variant="s" before={<img src={beforeIcon.src} width={16} height={16} />} />
+        <Input variant="s" before={<Link size="s" />} />
       </div>
       <div className="w-[250px] p-4">
-        <Input after={<img src={afterIcon.src} />} />
+        <Input after={<CrossCircle />} />
       </div>
       <div className="w-[250px] p-4">
-        <Input variant="s" after={<img src={afterIcon.src} width={16} height={16} />} />
+        <Input variant="s" after={<CrossCircle size="s" />} />
       </div>
       <div className="w-[250px] p-4">
         <Input after="минут" />
