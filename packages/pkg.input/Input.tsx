@@ -54,7 +54,7 @@ export const inputWrapperVariants = cva(
     ],
     defaultVariants: {
       variant: 'm',
-      disabled:false,
+      disabled: false,
       error: false,
       warning: false,
       before: false,
@@ -66,14 +66,34 @@ export const inputWrapperVariants = cva(
 );
 
 export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
-    Omit<VariantProps<typeof inputWrapperVariants>, 'before' | 'after' | 'afterString' | 'disabled'> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'className'>,
+    Omit<
+      VariantProps<typeof inputWrapperVariants>,
+      'before' | 'after' | 'afterString' | 'disabled'
+    > {
+  wrapperClassName?: string;
+  inputClassName?: string;
   before?: JSX.Element | string;
   after?: JSX.Element | string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, variant, error, warning, before, after, onFocus, onBlur, disabled,...props }, ref) => {
+  (
+    {
+      variant,
+      error,
+      warning,
+      before,
+      after,
+      onFocus,
+      onBlur,
+      disabled,
+      wrapperClassName,
+      inputClassName,
+      ...props
+    },
+    ref,
+  ) => {
     const [focus, setFocus] = React.useState<boolean>(false);
 
     const handleFocus = (e: React.FocusEvent<HTMLInputElement, Element>) => {
@@ -98,7 +118,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             after: Boolean(after),
             focus,
             afterString: typeof after === 'string',
-            className,
+            className: wrapperClassName,
           }),
         )}
       >
@@ -107,7 +127,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           disabled={disabled}
           onBlur={handleBlur}
           onFocus={handleFocus}
-          className="border-none outline-none h-full py-2 w-full bg-transparent disabled:cursor-not-allowed"
+          className={
+            'border-none outline-none h-full py-2 w-full bg-transparent disabled:cursor-not-allowed' +
+            ' ' +
+            inputClassName
+          }
           ref={ref}
           {...props}
         />
