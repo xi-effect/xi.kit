@@ -1,32 +1,44 @@
 'use client';
 
-import { Stack } from '@mui/material';
 import { Input } from '@xipkg/input';
+import { Link, CrossCircle } from '@xipkg/icons';
 
 export default function InputPage() {
   return (
     <>
-      <Stack sx={{ p: 2, width: '250px' }}>
-        <Input />
-      </Stack>
-      <Stack sx={{ p: 2, width: '250px' }}>
+      <div className="w-[250px] p-4">
+        <Input before={<Link />} />
+      </div>
+      <div className="w-[250px] p-4">
+        <Input variant="s" before={<Link size="s" />} />
+      </div>
+      <div className="w-[250px] p-4">
+        <Input after={<CrossCircle />} />
+      </div>
+      <div className="w-[250px] p-4">
+        <Input variant="s" after={<CrossCircle size="s" />} />
+      </div>
+      <div className="w-[250px] p-4">
+        <Input after="минут" />
+      </div>
+      <div className="w-[250px] p-4">
         <Input placeholder="Текстовое поле" />
-      </Stack>
-      <Stack sx={{ p: 2, width: '250px' }}>
-        <Input placeholder="Текстовое поле" variant="s"/>
-      </Stack>
-      <Stack sx={{ p: 2, width: '250px' }}>
+      </div>
+      <div className="w-[250px] p-4">
+        <Input placeholder="Текстовое поле" variant="s" />
+      </div>
+      <div className="w-[250px] p-4">
         <Input placeholder="Текстовое поле" warning />
-      </Stack>
-      <Stack sx={{ p: 2, width: '250px' }}>
+      </div>
+      <div className="w-[250px] p-4">
         <Input placeholder="Текстовое поле" error />
-      </Stack>
-      <Stack sx={{ p: 2, width: '250px' }}>
+      </div>
+      <div className="w-[250px] p-4">
         <Input placeholder="Текстовое поле" disabled />
-      </Stack>
-      <Stack sx={{ p: 2, width: '250px' }}>
+      </div>
+      <div className="w-[250px] p-4">
         <Input />
-      </Stack>
+      </div>
     </>
   );
 }
