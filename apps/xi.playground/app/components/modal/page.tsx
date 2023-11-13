@@ -31,13 +31,13 @@ export default function ModalDemo() {
             <Label htmlFor="name" className="text-right">
               Name
             </Label>
-            <Input id="name" value="Pedro Duarte" className="col-span-3" />
+            <Input id="name" value="Pedro Duarte" wrapperClassName="col-span-3" />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="username" className="text-right">
               Username
             </Label>
-            <Input id="username" value="@peduarte" className="col-span-3" />
+            <Input id="username" value="@peduarte" wrapperClassName="col-span-3" />
           </div>
         </div>
         <ModalFooter>
