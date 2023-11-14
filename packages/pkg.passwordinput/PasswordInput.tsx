@@ -41,14 +41,9 @@ export const inputWrapperVariants = cva(
 
 export interface PasswordInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'className'>,
-    Omit<
-      VariantProps<typeof inputWrapperVariants>,
-      'before' | 'after' | 'afterString' | 'disabled'
-    > {
+    Omit<VariantProps<typeof inputWrapperVariants>, 'disabled'> {
   wrapperClassName?: string;
   inputClassName?: string;
-  before?: JSX.Element | string;
-  after?: JSX.Element | string;
 }
 
 const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
