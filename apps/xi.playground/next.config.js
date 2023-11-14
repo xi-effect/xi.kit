@@ -11,6 +11,7 @@ const nextConfig = {
     '@xipkg/icons',
     '@xipkg/link',
     '@xipkg/input', 
+    '@xipkg/passwordinput', 
     '@xipkg/badge',
     '@xipkg/breadcrumbs',
     '@xipkg/button',
