@@ -6,7 +6,7 @@ export default function PasswordInputPage() {
   return (
     <>
       <div className="w-[250px] p-4">
-        <PasswordInput placeholder="Пароль" />
+        <PasswordInput showPasswordStrength placeholder="Пароль" />
       </div>
       <div className="w-[250px] p-4">
         <PasswordInput placeholder="Пароль" variant="s" />

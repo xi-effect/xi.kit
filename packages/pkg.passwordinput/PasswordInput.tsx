@@ -3,6 +3,8 @@ import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@xipkg/utils';
 import { Eyeoff, Eyeon } from '@xipkg/icons';
+import PasswordStrength from './components/PasswordStrength';
+import { usePasswordStrength } from './utils/usePasswordStrength';
 
 export const inputWrapperVariants = cva(
   'group flex items-center w-full rounded-md border-2 border-gray-30 bg-gray-0 text-gray-80 hover:border-gray-50 active:border-gray-30 px-3 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-30',
@@ -44,6 +46,7 @@ export interface PasswordInputProps
     Omit<VariantProps<typeof inputWrapperVariants>, 'disabled'> {
   wrapperClassName?: string;
   inputClassName?: string;
+  showPasswordStrength?: boolean;
 }
 
 const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
@@ -57,12 +60,16 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
       disabled,
       wrapperClassName,
       inputClassName,
+      showPasswordStrength,
+      onChange,
       ...props
     },
     ref,
   ) => {
     const [focus, setFocus] = React.useState<boolean>(false);
     const [isHidden, setIsHidden] = React.useState(true);
+    const { password, updatePassword, color, error:errorText, strengthValue, weakPassword } =
+      usePasswordStrength();
     const handleFocus = (e: React.FocusEvent<HTMLInputElement, Element>) => {
       setFocus(true);
       onFocus && onFocus(e);
@@ -74,45 +81,57 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
     };
 
     return (
-      <div
-        className={cn(
-          inputWrapperVariants({
-            variant,
-            disabled,
-            error,
-            warning,
-            focus,
-            className: wrapperClassName,
-          }),
-        )}
-      >
-        <input
-          disabled={disabled}
-          onBlur={handleBlur}
-          onFocus={handleFocus}
-          className={
-            'border-none outline-none h-full py-2 w-full bg-transparent disabled:cursor-not-allowed' +
-            ' ' +
-            inputClassName
-          }
-          ref={ref}
-          {...props}
-          type={isHidden ? 'password' : 'text'}
-        />
-        <button className="bg-transparent" onClick={() => setIsHidden(!isHidden)}>
-          {!disabled &&
-            (isHidden ? (
-              <Eyeon
-                className={'group-hover:fill-gray-70  ' + (focus ? 'fill-gray-70' : 'fill-gray-60')}
-                size={variant}
-              />
-            ) : (
-              <Eyeoff
-                className={'group-hover:fill-gray-70  ' + (focus ? 'fill-gray-70' : 'fill-gray-60')}
-                size={variant}
-              />
-            ))}
-        </button>
+      <div className="flex flex-col gap-y-2">
+        <div
+          className={cn(
+            inputWrapperVariants({
+              variant,
+              disabled,
+              error,
+              warning,
+              focus,
+              className: wrapperClassName,
+            }),
+          )}
+        >
+          <input
+            disabled={disabled}
+            onBlur={handleBlur}
+            onFocus={handleFocus}
+            value={password}
+            onChange={(e) => {
+              updatePassword(e.target.value);
+              onChange && onChange(e);
+            }}
+            className={
+              'border-none outline-none h-full py-2 w-full bg-transparent disabled:cursor-not-allowed' +
+              ' ' +
+              inputClassName
+            }
+            ref={ref}
+            {...props}
+            type={isHidden ? 'password' : 'text'}
+          />
+          <button className="bg-transparent" onClick={() => setIsHidden(!isHidden)}>
+            {!disabled &&
+              (isHidden ? (
+                <Eyeon
+                  className={
+                    'group-hover:fill-gray-70  ' + (focus ? 'fill-gray-70' : 'fill-gray-60')
+                  }
+                  size={variant}
+                />
+              ) : (
+                <Eyeoff
+                  className={
+                    'group-hover:fill-gray-70  ' + (focus ? 'fill-gray-70' : 'fill-gray-60')
+                  }
+                  size={variant}
+                />
+              ))}
+          </button>
+        </div>
+        {showPasswordStrength && <PasswordStrength isWeak={weakPassword} color={color} error={errorText} strength={strengthValue} />}
       </div>
     );
   },
