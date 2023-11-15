@@ -68,4 +68,6 @@ export const Avatar = ({
         {...props}
       />
     );
+
+  return null;
 };
