@@ -15,35 +15,67 @@ import { Label } from '@xipkg/label';
 
 export default function ModalDemo() {
   return (
-    <Modal>
-      <ModalTrigger asChild>
-        <Button>Edit Profile</Button>
-      </ModalTrigger>
-      <ModalContent className="sm:max-w-[425px]">
-        <ModalHeader>
-          <ModalTitle>Edit profile</ModalTitle>
-          <ModalDescription>
-            Make changes to your profile here. Click save when you're done.
-          </ModalDescription>
-        </ModalHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input id="name" value="Pedro Duarte" className="col-span-3" />
+    <div style={{ display: 'flex', gap: '12px' }}>
+      <Modal>
+        <ModalTrigger asChild>
+          <Button size="s">Edit Profile</Button>
+        </ModalTrigger>
+        <ModalContent className="sm:max-w-[425px]">
+          <ModalHeader>
+            <ModalTitle>Edit profile</ModalTitle>
+            <ModalDescription>
+              Make changes to your profile here. Click save when you're done.
+            </ModalDescription>
+          </ModalHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="name" className="text-right">
+                Name
+              </Label>
+              <Input id="name" value="Pedro Duarte" className="col-span-3" />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="username" className="text-right">
+                Username
+              </Label>
+              <Input id="username" value="@peduarte" className="col-span-3" />
+            </div>
           </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input id="username" value="@peduarte" className="col-span-3" />
+          <ModalFooter>
+            <Button type="submit">Save changes</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+      <Modal>
+        <ModalTrigger asChild>
+          <Button>Edit Profile</Button>
+        </ModalTrigger>
+        <ModalContent variant="full" className="">
+          <ModalHeader>
+            <ModalTitle>Edit profile</ModalTitle>
+            <ModalDescription>
+              Make changes to your profile here. Click save when you're done.
+            </ModalDescription>
+          </ModalHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="name" className="text-right">
+                Name
+              </Label>
+              <Input id="name" value="Pedro Duarte" className="col-span-3" />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="username" className="text-right">
+                Username
+              </Label>
+              <Input id="username" value="@peduarte" className="col-span-3" />
+            </div>
           </div>
-        </div>
-        <ModalFooter>
-          <Button type="submit">Save changes</Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+          <ModalFooter>
+            <Button type="submit">Save changes</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </div>
   );
 }

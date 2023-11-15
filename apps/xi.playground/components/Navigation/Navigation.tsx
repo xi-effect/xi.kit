@@ -70,6 +70,10 @@ const menuArray = [
     link: '/components/userprofile',
     label: 'UserProfile',
   },
+  {
+    link: '/components/modal',
+    label: 'Modal',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
