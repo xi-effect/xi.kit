@@ -53,6 +53,7 @@ import { H2 } from './icons/H2';
 import { H3 } from './icons/H3';
 import { Hand } from './icons/Hand';
 import { Heart } from './icons/Heart';
+import { HelpCircle } from './icons/HelpCircle';
 import { Home } from './icons/Home';
 import { Italic } from './icons/Italic';
 import { Key } from './icons/Key';
@@ -167,6 +168,7 @@ export {
   H3,
   Hand,
   Heart,
+  HelpCircle,
   Home,
   Italic,
   Key,

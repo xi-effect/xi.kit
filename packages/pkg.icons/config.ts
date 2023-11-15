@@ -53,6 +53,7 @@ export const icons = [
   'H3',
   'Hand',
   'Heart',
+  'HelpCircle',
   'Home',
   'Italic',
   'Key',
