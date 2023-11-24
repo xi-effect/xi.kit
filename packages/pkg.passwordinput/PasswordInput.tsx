@@ -68,8 +68,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
   ) => {
     const [focus, setFocus] = React.useState<boolean>(false);
     const [isHidden, setIsHidden] = React.useState(true);
-    const { password, updatePassword, color, error:errorText, strengthValue, weakPassword } =
-      usePasswordStrength();
+    const { password, setPassword, color, message, strength, isWeak } = usePasswordStrength();
     const handleFocus = (e: React.FocusEvent<HTMLInputElement, Element>) => {
       setFocus(true);
       onFocus && onFocus(e);
@@ -100,7 +99,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
             onFocus={handleFocus}
             value={password}
             onChange={(e) => {
-              updatePassword(e.target.value);
+              setPassword(e.target.value);
               onChange && onChange(e);
             }}
             className={
@@ -131,7 +130,14 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
               ))}
           </button>
         </div>
-        {showPasswordStrength && <PasswordStrength isWeak={weakPassword} color={color} error={errorText} strength={strengthValue} />}
+        {showPasswordStrength && (
+          <PasswordStrength
+            isWeak={isWeak}
+            color={color}
+            error={message}
+            strength={strength}
+          />
+        )}
       </div>
     );
   },
