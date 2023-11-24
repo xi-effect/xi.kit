@@ -28,7 +28,7 @@ export default function PasswordStrength({ strength, error, color: { bar, text }
       <div className="relative w-full bg-gray-10 rounded-[3px] h-[6px]">
         <div
           style={{ width: `${strength}%`, backgroundColor: `var(--xi-${bar})` }}
-          className="absolute h-full top-0 left-0 rounded-[3px]"
+          className="duration-300 absolute h-full top-0 left-0 rounded-[3px]"
         ></div>
       </div>
       <div
