@@ -5,7 +5,7 @@ const MIN_PASSWORD_LENGTH = 6;
 const calculateStrength = (value: string): { message: string; strength: number } => {
   const weakPasswordMessage = { message: 'Такой пароль легко взломать', strength: 25 };
   const mediumPasswordMessage = {
-    message: 'Слишком короткий пароль, добавьте символов',
+    message: 'Слабый пароль',
     strength: 50,
   };
   const strongPasswordMessage = { message: 'Надежный пароль', strength: 100 };
@@ -20,8 +20,8 @@ const calculateStrength = (value: string): { message: string; strength: number }
     case /^[0-9]*$/.test(value): {
       if (value.length >= 13) return strongPasswordMessage;
       else if (value.length === 11 || value.length === 12) {
-        const strength = value.length === 11 ? 50 : 60;
-        return { message: 'Слишком короткий пароль, добавьте символов', strength };
+        const strength = value.length === 11 ? mediumPasswordMessage.strength : 60;
+        return { message: mediumPasswordMessage.message, strength };
       } else {
         return weakPasswordMessage;
       }
