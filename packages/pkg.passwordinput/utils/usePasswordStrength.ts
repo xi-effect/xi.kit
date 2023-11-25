@@ -76,21 +76,21 @@ export const usePasswordStrength = () => {
   const { strength: actualStrength } = useMemo(() => calculateStrength(password), [password]);
   const isWeak = useMemo(() => strength === 25, [strength]);
   const bar = useMemo(() => {
-    if (actualStrength === 0) return { bar: 'gray-30' };
+    if (actualStrength === 0) return 'gray-30';
     if (actualStrength <= 25) {
-      return { bar: 'red-100' };
+      return 'red-100';
     }
-    if (actualStrength >= 33 && actualStrength <= 66) return { bar: 'orange-100' };
-    return { bar: 'green-100' };
+    if (actualStrength >= 33 && actualStrength <= 66) return 'orange-100';
+    return 'green-100';
   }, [actualStrength]);
 
   const text = useMemo(() => {
-    if (strength === 0) return { text: 'gray-60' };
+    if (strength === 0) return 'gray-60';
     if (strength <= 25) {
-      return { text: 'red-100' };
+      return 'red-100';
     }
-    if (strength >= 33 && strength < 66) return { text: 'orange-100' };
-    return { text: 'green-100' };
+    if (strength >= 33 && strength < 66) return 'orange-100';
+    return 'green-100';
   }, [strength]);
 
   return {
