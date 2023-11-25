@@ -26,7 +26,7 @@ const calculateStrength = (value: string): { message: string; strength: number }
         return weakPasswordMessage;
       }
     }
-    case /^[a-z]*$/.test(value): {
+    case /^[а-яa-z]*$/.test(value): {
       if (value.length >= 9) return strongPasswordMessage;
       else if (value.length === 8) {
         return mediumPasswordMessage;
@@ -34,7 +34,7 @@ const calculateStrength = (value: string): { message: string; strength: number }
         return weakPasswordMessage;
       }
     }
-    case /^[A-Za-z]*$/.test(value): {
+    case /^[А-Яа-яA-Za-z]*$/.test(value): {
       if (value.length >= 8) return strongPasswordMessage;
       else if (value.length === 7) {
         return mediumPasswordMessage;
@@ -42,7 +42,7 @@ const calculateStrength = (value: string): { message: string; strength: number }
         return weakPasswordMessage;
       }
     }
-    case /^[0-9A-Za-z]*$/.test(value): {
+    case /^[0-9А-Яа-яA-Za-z]*$/.test(value): {
       if (value.length >= 7) return strongPasswordMessage;
       else if (value.length === 6) {
         return mediumPasswordMessage;
@@ -50,7 +50,7 @@ const calculateStrength = (value: string): { message: string; strength: number }
         return weakPasswordMessage;
       }
     }
-    case /^[0-9A-Za-z!@#$&()`.+,\/"-;<>|~\\]*$/.test(value): {
+    case /^[0-9А-Яа-яA-Za-z!@#$&()`.+,\/"-_;<>|~\\]*$/.test(value): {
       if (value.length >= 7) return strongPasswordMessage;
       else if (value.length === 6) {
         return mediumPasswordMessage;
