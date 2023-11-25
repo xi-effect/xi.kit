@@ -6,9 +6,12 @@ const calculateStrength = (value: string): { message: string; strength: number }
   const weakPasswordMessage = { message: 'Такой пароль легко взломать', strength: 25 };
   const mediumPasswordMessage = {
     message: 'Слабый пароль',
-    strength: 50,
+    strength: 33,
   };
-  const strongPasswordMessage = { message: 'Надежный пароль', strength: 100 };
+  const strongPasswordMessage = {
+    message: 'Надежный пароль',
+    strength: Math.min(100, 66 + Math.ceil(value.length / 6)),
+  };
   switch (true) {
     case value.length === 0:
       return { message: 'Минимум 6 символов', strength: 0 };
@@ -70,15 +73,32 @@ export const usePasswordStrength = () => {
     () => calculateStrength(debouncedPassword),
     [debouncedPassword],
   );
+  const { strength: actualStrength } = useMemo(() => calculateStrength(password), [password]);
   const isWeak = useMemo(() => strength === 25, [strength]);
-  const color = useMemo(() => {
-    if (strength === 0) return { bar: 'gray-30', text: 'gray-60' };
-    if (strength <= 25) {
-      return { bar: 'red-100', text: 'red-100' };
+  const bar = useMemo(() => {
+    if (actualStrength === 0) return { bar: 'gray-30' };
+    if (actualStrength <= 25) {
+      return { bar: 'red-100' };
     }
-    if (strength > 25 && strength < 80) return { bar: 'orange-100', text: 'orange-100' };
-    return { bar: 'green-100', text: 'green-100' };
+    if (actualStrength >= 33 && actualStrength <= 66) return { bar: 'orange-100' };
+    return { bar: 'green-100' };
+  }, [actualStrength]);
+
+  const text = useMemo(() => {
+    if (strength === 0) return { text: 'gray-60' };
+    if (strength <= 25) {
+      return { text: 'red-100' };
+    }
+    if (strength >= 33 && strength < 66) return { text: 'orange-100' };
+    return { text: 'green-100' };
   }, [strength]);
 
-  return { password, setPassword, strength, message, color, isWeak };
+  return {
+    password,
+    setPassword,
+    strength: actualStrength,
+    message,
+    color: { bar, text },
+    isWeak,
+  };
 };
