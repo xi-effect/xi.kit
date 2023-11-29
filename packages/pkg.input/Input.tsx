@@ -72,7 +72,7 @@ export interface InputProps
       'before' | 'after' | 'afterString' | 'disabled'
     > {
   wrapperClassName?: string;
-  inputClassName?: string;
+  className?: string;
   before?: JSX.Element | string;
   after?: JSX.Element | string;
 }
@@ -89,7 +89,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       onBlur,
       disabled,
       wrapperClassName,
-      inputClassName,
+      className,
       ...props
     },
     ref,
@@ -130,7 +130,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           className={
             'border-none outline-none h-full py-2 w-full bg-transparent disabled:cursor-not-allowed' +
             ' ' +
-            inputClassName
+            className
           }
           ref={ref}
           {...props}
