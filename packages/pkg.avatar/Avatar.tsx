@@ -57,17 +57,14 @@ export const Avatar = ({
 
   if (text) return <div className={cn(avatarVariants({ color, size }), className)}>{text}</div>;
 
-  if (src)
-    return (
-      <Image
-        style={imageStyle}
-        src={src}
-        width={avatarSize}
-        height={avatarSize}
-        alt={alt || 'user avatar'}
-        {...props}
-      />
-    );
-
-  return null;
+  return (
+    <Image
+      style={imageStyle}
+      src={!!src ? src : ''}
+      width={avatarSize}
+      height={avatarSize}
+      alt={alt || 'user avatar'}
+      {...props}
+    />
+  );
 };
