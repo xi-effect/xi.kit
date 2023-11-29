@@ -9,6 +9,7 @@ import {
   ModalHeader,
   ModalTitle,
   ModalTrigger,
+  ModalCloseButton,
 } from '@xipkg/modal';
 import { Input } from '@xipkg/input';
 import { Label } from '@xipkg/label';
@@ -50,7 +51,8 @@ export default function ModalDemo() {
         <ModalTrigger asChild>
           <Button>Edit Profile</Button>
         </ModalTrigger>
-        <ModalContent variant="full" className="">
+        <ModalContent variant="full">
+          <ModalCloseButton />
           <ModalHeader>
             <ModalTitle>Edit profile</ModalTitle>
             <ModalDescription>
