@@ -109,6 +109,7 @@ import { Users } from './icons/Users';
 import { VariantSelect } from './icons/VariantSelect';
 import { Video } from './icons/Video';
 import { Window } from './icons/Window';
+import { SoundTwo } from './icons/SoundTwo';
 import { icons } from './config';
 
 export {
@@ -223,6 +224,7 @@ export {
   VariantSelect,
   Video,
   Window,
+  SoundTwo,
   icons,
 };
 

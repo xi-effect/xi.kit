@@ -108,4 +108,5 @@ export const icons = [
   'VariantSelect',
   'Video',
   'Window',
+  'SoundTwo',
 ];

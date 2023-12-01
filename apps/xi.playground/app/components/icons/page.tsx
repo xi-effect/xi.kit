@@ -66,6 +66,8 @@ import {
   Underline,
   Updates,
   Users,
+  Key,
+  SoundTwo,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -136,17 +138,94 @@ const iconsDict = [
   <Underline />,
   <Updates />,
   <Users />,
+  <Key />,
+  <SoundTwo />,
+];
+
+const iconsDictNames = [
+  'Account',
+  'Activity',
+  'Add',
+  'Announce',
+  'ArrowUp',
+  'Bold',
+  'Burger',
+  'Calendar',
+  'CategoryAdd',
+  'Camera',
+  'Chat',
+  'Check',
+  'ChannelAdd',
+  'Cite',
+  'Clip',
+  'Clock',
+  'Close',
+  'Copy',
+  'Code',
+  'Edit',
+  'Emotions',
+  'Endcall',
+  'Exit',
+  'External',
+  'Eyeoff',
+  'Eyeon',
+  'File',
+  'Flag',
+  'Folder',
+  'Food',
+  'Grid',
+  'H1',
+  'H2',
+  'H3',
+  'Hand',
+  'Heart',
+  'Home',
+  'PeopleInvite',
+  'Italic',
+  'Link',
+  'Maximize',
+  'Microphone',
+  'Divider',
+  'Move',
+  'Movie',
+  'Music',
+  'Nature',
+  'Notification',
+  'Objects',
+  'Ol',
+  'Palette',
+  'Photo',
+  'Picture',
+  'Places',
+  'Play',
+  'Screenshare',
+  'Search',
+  'Send',
+  'Settings',
+  'Stroke',
+  'Task',
+  'Text',
+  'Trash',
+  'Ul',
+  'Underline',
+  'Updates',
+  'Users',
+  'Key',
+  'SoundTwo',
 ];
 
 const Icons = () => (
-  <div className='p-2'>
+  <div className="p-2">
     <div className="grid grid-rows-6 grid-flow-col gap-4">
       {iconsDict.map((icon, index) => {
         return (
-            <div className='h-[32px] w-[32px]' key={index.toString()}
-            >
-              {icon}
-            </div>
+          <div
+            className="h-[48px] w-[56px] flex flex-col justify-center place-items-center"
+            key={index.toString()}
+          >
+            <div>{icon}</div>
+            <span className="text-[10px]">{iconsDictNames[index]}</span>
+          </div>
         );
       })}
     </div>
