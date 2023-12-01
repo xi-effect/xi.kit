@@ -71,22 +71,18 @@ DialogContent.displayName = DialogPrimitive.Content.displayName;
 
 export interface DialogCloseButtonProps
   extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close> {
-    icon?: React.ReactNode;
+  icon?: React.ReactNode;
 }
 
-const DialogCloseButton = ({
-  className,
-  icon,
-  ...props
-}: DialogCloseButtonProps) => (
+const DialogCloseButton = ({ className, children, ...props }: DialogCloseButtonProps) => (
   <DialogPrimitive.Close
     className={cn(
-      'absolute right-4 top-4 rounded-sm bg-transparent transition-opacity focus:outline-none disabled:pointer-events-none',
+      'bg-transparent transition-opacity focus:outline-none disabled:pointer-events-none',
       className,
     )}
     {...props}
   >
-    {icon ? icon : <X className="h-4 w-4" />}
+    {children}
   </DialogPrimitive.Close>
 );
 DialogCloseButton.displayName = 'DialogCloseButton';
