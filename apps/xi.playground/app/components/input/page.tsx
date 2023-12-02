@@ -1,6 +1,7 @@
 'use client';
 
 import { Input } from '@xipkg/input';
+import { Label } from '@xipkg/label';
 import { Link, CrossCircle } from '@xipkg/icons';
 
 export default function InputPage() {
@@ -19,6 +20,7 @@ export default function InputPage() {
         <Input variant="s" after={<CrossCircle size="s" />} />
       </div>
       <div className="w-[250px] p-4">
+        <Label>Username</Label>
         <Input after="минут" />
       </div>
       <div className="w-[250px] p-4">
