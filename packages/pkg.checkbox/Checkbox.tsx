@@ -8,7 +8,7 @@ import * as React from 'react';
 import { cn } from '@xipkg/utils';
 
 const checkboxVariants = cva(
-  'shrink-0 p-[2px]  peer data-[state=checked]:text-gray-0 data-[state=checked]:bg-brand-80 data-[state=checked]:border-brand-80 disabled:!cursor-not-allowed disabled:!bg-gray-10 disabled:!text-gray-30 disabled:!border-0 border bg-gray-0 border-gray-30',
+  'shrink-0 p-[2px] peer data-[state=checked]:text-gray-0 data-[state=checked]:bg-brand-80 data-[state=checked]:border-brand-80 disabled:!cursor-not-allowed disabled:!bg-gray-10 disabled:!text-gray-30 disabled:!border-0 border bg-gray-0 border-gray-30',
   {
     variants: {
       size: {
@@ -51,7 +51,7 @@ export const Checkbox = React.forwardRef<
   React.ElementRef<typeof CheckboxPrimitive.Root>,
   CheckboxProps
 >(({ className, children = null, size, state, ...props }, ref) => (
-  <label className={labelVariants({ size })}>
+  <label className={cn(labelVariants({ size }), !props.disabled && 'hover:cursor-pointer')}>
     <CheckboxPrimitive.Root
       ref={ref}
       className={cn(checkboxVariants({ size, state }), className)}
