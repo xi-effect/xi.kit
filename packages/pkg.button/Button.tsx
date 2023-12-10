@@ -5,7 +5,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@xipkg/utils';
 
 export const buttonVariants = cva(
-  'inline-flex items-start w-fit justify-center ring-offset-gray-100 duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex border-box justify-center items-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
@@ -19,14 +19,14 @@ export const buttonVariants = cva(
           'bg-green-80 text-gray-0 hover:bg-green-100 active:bg-green-100 focus:bg-green-100',
       },
       size: {
-        l: 'h-14 px-8 py-3 rounded-xl text-xl',
-        m: 'h-12 px-6 py-3 rounded-lg text-base',
-        s: 'h-8 px-4 py-[5px] rounded-md text-sm',
+        l: 'h-14 rounded-xl px-8 text-[20px] pb-[3px]',
+        m: 'h-12 rounded-lg px-4 text-[16px] pb-[2px]',
+        s: 'h-8 rounded-md px-3 text-[14px] pb-[2px]',
       },
     },
     defaultVariants: {
       variant: 'default',
-      size: 'l',
+      size: 'm',
     },
   },
 );
