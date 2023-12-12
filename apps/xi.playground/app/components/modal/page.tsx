@@ -13,6 +13,7 @@ import {
 } from '@xipkg/modal';
 import { Input } from '@xipkg/input';
 import { Label } from '@xipkg/label';
+import { Close } from '@xipkg/icons';
 
 export default function ModalDemo() {
   return (
@@ -22,6 +23,9 @@ export default function ModalDemo() {
           <Button size="s">Edit Profile</Button>
         </ModalTrigger>
         <ModalContent className="sm:max-w-[425px]">
+          <ModalCloseButton>
+            <Close className="fill-gray-80 sm:fill-gray-0" />
+          </ModalCloseButton>
           <ModalHeader>
             <ModalTitle>Edit profile</ModalTitle>
             <ModalDescription>
@@ -52,7 +56,9 @@ export default function ModalDemo() {
           <Button>Edit Profile</Button>
         </ModalTrigger>
         <ModalContent variant="full">
-          <ModalCloseButton />
+          <ModalCloseButton>
+            <Close />
+          </ModalCloseButton>
           <ModalHeader>
             <ModalTitle>Edit profile</ModalTitle>
             <ModalDescription>
@@ -74,7 +80,9 @@ export default function ModalDemo() {
             </div>
           </div>
           <ModalFooter>
-            <Button type="submit">Save changes</Button>
+            <Button size="m" type="submit">
+              Save changes
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
