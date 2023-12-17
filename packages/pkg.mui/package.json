@@ -19,7 +19,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.2",
-    "next": "^13.4.12"
+    "next": "^14.0.4"
   },
   "gitHead": "33022d3bd6e72a5ccc9097b187742f9139f7d905"
 }
