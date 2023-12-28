@@ -1,6 +1,7 @@
-import { File as FileIcon, Close } from '@xipkg/icons';
-import { Box, Stack, Typography, Link } from '@mui/material';
+import { Close, File as FileIcon } from '@xipkg/icons';
+import { cn } from '@xipkg/utils';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export type FileProps = {
   /* File name */
@@ -11,8 +12,8 @@ export type FileProps = {
   size: number;
   /* File icon (screenshot/image) url */
   icon?: string;
-  hideCloseIcon?: boolean;
-  style?: any;
+  className?: string;
+  onDelete: (name: string) => void;
 };
 
 const FILE_SIZES = ['байт', 'Кб', 'Мб', 'Гб', 'Тб'];
@@ -37,106 +38,48 @@ const formatSize = (size: number): string => {
   return formattedSize;
 };
 
-export const File = ({ name, url, size, icon, hideCloseIcon, style }: FileProps) => (
-  <Stack
-    sx={{
-      position: 'relative',
-      maxWidth: '377px',
-      width: '100%',
-      height: '72px',
-      border: '1px solid',
-      borderColor: 'var(--xi-gray-10)',
-      borderRadius: '8px',
-      transition: '0.3s',
-      backgroundColor: 'var(--xi-gray-0)',
-      '&:hover': {
-        backgroundColor: 'var(--xi-gray-5)',
-      },
-      ...style,
-    }}
-    spacing={1}
-    direction="row"
-    alignItems="center"
-  >
-    <Link
-      href={url}
-      download={name}
-      sx={{
-        width: '100%',
-        textDecoration: 'none',
-        padding: '8px 14px 8px 12px',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-      }}
+export const File = ({ name, url, size, icon, onDelete, className }: FileProps) => {
+  return (
+    <div
+      className={cn(
+        'relative max-w-[377px] items-center flex h-[4.5rem] border border-gray-10 rounded-[8px] transition bg-gray-0 hover:bg-gray-10',
+        className,
+      )}
     >
-      <Stack
-        justifyContent="center"
-        alignItems="center"
-        sx={{ width: '48px', height: '48px', flexShrink: 0 }}
+      <Link
+        href={url}
+        download={name}
+        className="w-full py-2 pr-[14px] pl-3 text-decoration-none flex items-center gap-2"
       >
-        {(!icon && (
-          <Box sx={{ maxWidth: '48px', maxHeight: '48px', height: '100%', width: '100%' }}>
-            <FileIcon />
-          </Box>
-        )) || (
-          <Box sx={{ maxWidth: '48px', maxHeight: '48px' }}>
-            <Image
-              src={icon || ''}
-              alt={name}
-              width={0}
-              height={0}
-              style={{
-                width: '100%',
-                height: '100%',
-                borderRadius: 4,
-              }}
-            />
-          </Box>
-        )}
-      </Stack>
+        <div className="flex items-center justify-center w-12 h-12 shrink-0">
+          {(!icon && (
+            <div className="max-w-[48px] max-h-12 h-full w-full">
+              <FileIcon />
+            </div>
+          )) || (
+            <div className="max-w-[48px] max-h-12">
+              <Image
+                src={icon || ''}
+                alt={name}
+                className="rounded w-full h-full max-h-[inherit]"
+                width={0}
+                height={0}
+              />
+            </div>
+          )}
+        </div>
 
-      <Box sx={{ textAlign: 'left', width: '100%' }}>
-        <Typography
-          sx={{
-            fontSize: '16px',
-            fontWeight: 500,
-            lineHeight: '22px',
-            color: 'var(--xi-gray-10)0',
-          }}
+        <div className="flex flex-col overflow-hidden text-left grow">
+          <p className="font-medium leading-[22px] text-gray-100 truncate">{name}</p>
+          <p className="text-sm leading-[20px] mt-0.5 text-gray-80">{formatSize(size)}</p>
+        </div>
+        <button
+          onClick={() => onDelete(name)}
+          className="p-1 transition bg-transparent rounded-full hover:bg-gray-0"
         >
-          {name}
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: '14px',
-            fontWeight: 400,
-            lineHeight: '20px',
-            color: 'var(--xi-gray-10)0',
-          }}
-        >
-          {formatSize(size)}
-        </Typography>
-      </Box>
-    </Link>
-    {!hideCloseIcon && (
-      <Stack
-        alignItems="center"
-        justifyContent="center"
-        sx={{
-          position: 'absolute',
-          right: '10px',
-          width: '32px',
-          height: '32px',
-          display: 'flex',
-          borderRadius: '50%',
-          transition: '0.6s',
-          cursor: 'pointer',
-          '&:hover': { backgroundColor: 'var(--xi-gray-0)' },
-        }}
-      >
-        <Close />
-      </Stack>
-    )}
-  </Stack>
-);
+          <Close />
+        </button>
+      </Link>
+    </div>
+  );
+};
