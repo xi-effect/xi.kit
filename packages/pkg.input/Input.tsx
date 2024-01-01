@@ -60,7 +60,7 @@ export const inputVariants = cva(
   },
 );
 
-export const addsVariants = cva('absolute flex items-center', {
+export const addsVariants = cva('absolute flex items-center z-50', {
   variants: {
     variant: {
       m: 'h-6 top-3',
@@ -108,22 +108,22 @@ export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement>,
     VariantProps<typeof inputVariants> {
   before?: React.ReactNode;
-  beforeWrapperClassName?: string;
   after?: React.ReactNode;
+  beforeProps?: any;
+  afterProps?: any;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { className, variant, error, warning, type, beforeWrapperClassName, before, after, ...props },
+    { className, variant, error, warning, type, before, after, beforeProps, afterProps, ...props },
     ref,
   ) => {
     return (
       <div className="relative">
         {!!before && (
           <div
-            className={cn(
-              addsVariants({ variant, beforeBool: !!before, afterBool: !!after, className }),
-            )}
+            className={cn(addsVariants({ variant, beforeBool: !!before, afterBool: !!after }))}
+            {...beforeProps}
           >
             {before}
           </div>
@@ -145,9 +145,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         />
         {!!after && (
           <div
-            className={cn(
-              addsVariants({ variant, beforeBool: !!before, afterBool: !!after, className }),
-            )}
+            className={cn(addsVariants({ variant, beforeBool: !!before, afterBool: !!after }))}
+            {...afterProps}
           >
             {after}
           </div>
