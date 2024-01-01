@@ -109,20 +109,37 @@ export interface InputProps
     VariantProps<typeof inputVariants> {
   before?: React.ReactNode;
   after?: React.ReactNode;
-  beforeProps?: any;
-  afterProps?: any;
+  beforeClassName?: string;
+  afterClassName?: string;
+  beforeProps?: React.HTMLAttributes<HTMLDivElement>;
+  afterProps?: React.HTMLAttributes<HTMLDivElement>;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { className, variant, error, warning, type, before, after, beforeProps, afterProps, ...props },
+    {
+      className,
+      variant,
+      error,
+      warning,
+      type,
+      before,
+      after,
+      beforeClassName,
+      afterClassName,
+      beforeProps,
+      afterProps,
+      ...props
+    },
     ref,
   ) => {
     return (
       <div className="relative">
         {!!before && (
           <div
-            className={cn(addsVariants({ variant, beforeBool: !!before, afterBool: !!after }))}
+            className={cn(
+              addsVariants({ variant, beforeBool: !!before, afterBool: !!after, className: beforeClassName }),
+            )}
             {...beforeProps}
           >
             {before}
@@ -145,7 +162,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         />
         {!!after && (
           <div
-            className={cn(addsVariants({ variant, beforeBool: !!before, afterBool: !!after }))}
+            className={cn(
+              addsVariants({ variant, beforeBool: !!before, afterBool: !!after, className: afterClassName }),
+            )}
             {...afterProps}
           >
             {after}

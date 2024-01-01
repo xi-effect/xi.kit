@@ -21,13 +21,12 @@ export default function InputPage() {
       </div>
       <div className="w-[250px] p-4">
         <Input
-          after={
-            isPasswordShow ? (
-              <Eyeoff className="z-100" onClick={changePasswordShow} />
-            ) : (
-              <Eyeon className="z-100" onClick={changePasswordShow} />
-            )
-          }
+          afterClassName="cursor-pointer"
+          type={isPasswordShow ? 'text' : 'password'}
+          after={isPasswordShow ? <Eyeoff /> : <Eyeon />}
+          afterProps={{
+            onClick: changePasswordShow,
+          }}
         />
       </div>
       <div className="w-[250px] p-4">
