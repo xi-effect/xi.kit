@@ -20,7 +20,7 @@ export const inputVariants = cva(
         false: '',
       },
       beforeBool: {
-        true: 'pl-11',
+        true: '',
         false: '',
       },
       afterBool: {
@@ -28,6 +28,28 @@ export const inputVariants = cva(
         false: '',
       },
     },
+    compoundVariants: [
+      {
+        variant: 'm',
+        beforeBool: true,
+        className: 'pl-11',
+      },
+      {
+        variant: 's',
+        beforeBool: true,
+        className: 'pl-7',
+      },
+      {
+        variant: 'm',
+        afterBool: true,
+        className: 'pr-11',
+      },
+      {
+        variant: 's',
+        afterBool: true,
+        className: 'pr-7',
+      },
+    ],
     defaultVariants: {
       variant: 'm',
       error: false,
@@ -38,20 +60,49 @@ export const inputVariants = cva(
   },
 );
 
-export const addsVariants = cva(
-  'absolute flex',
-  {
-    variants: {
-      variant: {
-        m: 'h-6 top-3 left-3',
-        s: 'h-4 top-2 left-2',
-      },
+export const addsVariants = cva('absolute flex items-center', {
+  variants: {
+    variant: {
+      m: 'h-6 top-3',
+      s: 'h-4 top-2',
     },
-    defaultVariants: {
-      variant: 'm',
+    beforeBool: {
+      true: '',
+      false: '',
+    },
+    afterBool: {
+      true: '',
+      false: '',
     },
   },
-);
+  compoundVariants: [
+    {
+      variant: 'm',
+      beforeBool: true,
+      className: 'left-3',
+    },
+    {
+      variant: 's',
+      beforeBool: true,
+      className: 'left-2',
+    },
+    {
+      variant: 'm',
+      afterBool: true,
+      className: 'right-3',
+    },
+    {
+      variant: 's',
+      afterBool: true,
+      className: 'right-2',
+    },
+  ],
+  defaultVariants: {
+    variant: 'm',
+    beforeBool: false,
+    afterBool: false,
+  },
+});
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement>,
@@ -68,14 +119,39 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ) => {
     return (
       <div className="relative">
-        {!!before && <div className={cn(addsVariants({ variant, className }))}>{before}</div>}
+        {!!before && (
+          <div
+            className={cn(
+              addsVariants({ variant, beforeBool: !!before, afterBool: !!after, className }),
+            )}
+          >
+            {before}
+          </div>
+        )}
         <input
           type={type}
-          className={cn(inputVariants({ variant, error, warning, beforeBool: !!before, afterBool: !!after, className }))}
+          className={cn(
+            inputVariants({
+              variant,
+              error,
+              warning,
+              beforeBool: !!before,
+              afterBool: !!after,
+              className,
+            }),
+          )}
           ref={ref}
           {...props}
         />
-        {!!after && after}
+        {!!after && (
+          <div
+            className={cn(
+              addsVariants({ variant, beforeBool: !!before, afterBool: !!after, className }),
+            )}
+          >
+            {after}
+          </div>
+        )}
       </div>
     );
   },
