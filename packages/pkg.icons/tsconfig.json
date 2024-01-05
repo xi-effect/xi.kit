@@ -112,7 +112,8 @@
     "icons/VariantSelect.tsx",
     "icons/Window.tsx",
     "icons/Video.tsx",
-    "icons/SoundTwo.tsx"
+    "icons/SoundTwo.tsx",
+    "icons/Plus.tsx"
   ],
   "exclude": ["dist", "build", "node_modules"]
 }

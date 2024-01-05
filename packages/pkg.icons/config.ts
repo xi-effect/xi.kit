@@ -109,4 +109,5 @@ export const icons = [
   'Video',
   'Window',
   'SoundTwo',
+  'Plus',
 ];

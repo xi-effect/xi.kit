@@ -68,6 +68,7 @@ import {
   Users,
   Key,
   SoundTwo,
+  Plus,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -140,6 +141,7 @@ const iconsDict = [
   <Users />,
   <Key />,
   <SoundTwo />,
+  <Plus />,
 ];
 
 const iconsDictNames = [
@@ -212,6 +214,7 @@ const iconsDictNames = [
   'Users',
   'Key',
   'SoundTwo',
+  'Plus',
 ];
 
 const Icons = () => (
