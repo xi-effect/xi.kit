@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/modal",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "1.0.4",
-    "@xipkg/icons": "^0.4.5",
+    "@xipkg/icons": "^0.8.0",
     "@xipkg/utils": "^1.0.1",
     "lucide-react": "0.276.0",
     "react": "^18.2.0"
