@@ -1,7 +1,6 @@
 import { Upload } from '@xipkg/icons';
 import { cva } from 'class-variance-authority';
-import { ChangeEvent, DragEvent, useRef, useState } from 'react';
-import { File } from './File';
+import { ChangeEvent, DragEvent, useId, useRef, useState } from 'react';
 import { FileUploaderProps } from './types';
 import { formatFileSize, stopDefaultEvents, validateFile, validateSize } from './utils';
 
@@ -33,37 +32,33 @@ const containerStyles = cva(
   },
 );
 
-const buttonStyles = cva('text-sm bg-transparent', {
+const titleStyles = cva('text-sm text-center', {
   variants: {
     isDragOver: {
       true: 'pointer-events-none',
     },
     size: {
       large: 'text-brand-60 group-hover:text-brand-80 font-medium',
-      medium: 'text-base group-hover:text-gray-100',
-      small: 'text-sm group-hover:text-gray-100',
+      medium: 'text-base text-gray-80 group-hover:text-gray-100',
+      small: 'text-gray-80 group-hover:text-gray-100',
     },
   },
 });
 
 export const DEFAULT_EXTENSIONS = ['jpg', 'gif', 'png', 'pdf', 'zip'] as const;
-const DEFAULT_SIZE_LIMIT = 2 * 1024 * 1024; // 2 MB
+const DEFAULT_SIZE_LIMIT = 6 * 1024 * 1024; // 6 MB
 
 export const FileUploader = ({
   size = 'large',
-  fileName,
   descriptionText,
   multiple,
   disabled,
   isWarning,
-  isPending,
-  isSucceeded,
   onChange,
-  onDeleteClick,
-  onAbortRequestClick,
   limit = 3,
   bytesSizeLimit = DEFAULT_SIZE_LIMIT,
   extensions = DEFAULT_EXTENSIONS as any,
+  children,
 }: FileUploaderProps) => {
   const [isDragOver, setIsDragOver] = useState(false);
   const [error, setError] = useState('');
@@ -71,12 +66,10 @@ export const FileUploader = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const dragDeph = useRef(0);
 
-  const isAsyncUploader = isPending || isSucceeded;
-  const isLarge = size === 'large';
+  const id = useId();
 
-  const handleUploadButtonClick = () => {
-    inputRef.current?.click();
-  };
+  const isLarge = size === 'large';
+  const formatedSizeLimit = formatFileSize(bytesSizeLimit);
 
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     stopDefaultEvents(e);
@@ -85,6 +78,7 @@ export const FileUploader = ({
   };
 
   const handleFilesChange = (files?: FileList | null) => {
+    setError('');
     if (!files || files.length == 0) return;
 
     const fileList = [...files];
@@ -93,17 +87,14 @@ export const FileUploader = ({
       fileList.some((file) => !validateFile(file, extensions)) ||
       !validateSize(fileList, bytesSizeLimit)
     ) {
-      setError(
+      return setError(
         `Можно отправить не более ${limit} файлов с расширением ${extensions.join(
           ', ',
-        )} общим объёмом до ${formatFileSize(
-          bytesSizeLimit,
-        )}. Чтобы добавить файлы удалите выбранные`,
+        )} общим объёмом до ${formatedSizeLimit}`,
       );
-      return;
     }
 
-    onChange([...files]);
+    onChange(fileList);
     if (inputRef.current) inputRef.current.value = '';
   };
 
@@ -123,80 +114,64 @@ export const FileUploader = ({
     }
   };
 
+  const fileInput = (
+    <input
+      id={id}
+      accept="image/*"
+      onChange={handleChange}
+      multiple={multiple}
+      ref={inputRef}
+      type="file"
+      className="sr-only"
+      disabled={disabled}
+    />
+  );
+
   return (
     <div>
-      <div
-        className={containerStyles({
-          isDisabled: disabled,
-          isDragOver,
-          isError: !!error,
-          isWarning,
-          size,
-        })}
-        onDrop={handleDrop}
-        onDragEnter={handleDragEnter}
-        onDragOver={(e) => stopDefaultEvents(e)}
-        onDragLeave={handleDragLeave}
-      >
-        <input
-          accept="image/*"
-          onChange={handleChange}
-          multiple={multiple}
-          ref={inputRef}
-          type="file"
-          className="hidden"
-          disabled={disabled}
-        />
-
-        {fileName && !isLarge ? (
-          <File
-            name={fileName}
-            size={size}
-            isDeleteIcon={!isPending && !isSucceeded}
-            isPending={isPending}
-            isSucceeded={isSucceeded}
-            error={error}
-            onClick={!isAsyncUploader ? handleUploadButtonClick : undefined}
-            onDeleteClick={onDeleteClick}
-            onAbortRequestClick={onAbortRequestClick}
-          />
-        ) : (
+      <label htmlFor={id} className="cursor-pointer">
+        {children ? (
           <>
-            <button
-              disabled={disabled}
-              className={buttonStyles({ isDragOver, size })}
-              onClick={handleUploadButtonClick}
-            >
+            {children}
+            {fileInput}
+          </>
+        ) : (
+          <div
+            className={containerStyles({
+              isDisabled: disabled,
+              isDragOver,
+              isError: !!error,
+              isWarning,
+              size,
+            })}
+            onDrop={handleDrop}
+            onDragEnter={handleDragEnter}
+            onDragOver={stopDefaultEvents}
+            onDragLeave={handleDragLeave}
+          >
+            {fileInput}
+            <p className={titleStyles({ isDragOver, size })}>
               {isLarge ? (
-                <p className="text-brand-60 group-hover:text-brand-80">
-                  Перетащите сюда или выберите файл
-                </p>
+                'Перетащите сюда или выберите файл'
               ) : (
-                <p className="text-gray-60 group-hover:text-gray-80">
+                <>
                   <span className="text-gray-90 group-hover:text-gray-100">Выберите файл</span> или
                   перетащите сюда
-                </p>
+                </>
               )}
-            </button>
+            </p>
 
             {isLarge && (
               <p className="text-xs group-hover:text-brand-60 text-brand-40">
-                {descriptionText || 'JPG, GIF, PNG, PDF или ZIP, до 4 мб'}
+                {descriptionText ||
+                  `${extensions.map((el) => el.toUpperCase()).join(', ')} до ${formatedSizeLimit}`}
               </p>
             )}
-          </>
-        )}
 
-        {!isLarge && !fileName && (
-          <button
-            disabled={disabled}
-            className="ml-auto bg-transparent"
-            onClick={handleUploadButtonClick}
-          >
-            <Upload />
-          </button>
+            {!isLarge && <Upload className="ml-auto" />}
+          </div>
         )}
-      </div>
+      </label>
       {error && <p className="mt-4 text-sm leading-5 text-gray-100">{error}</p>}
     </div>
   );

@@ -20,7 +20,7 @@ export const formatFileSize = (bytes: number) => {
   }
 };
 
-export const stopDefaultEvents = (e: React.DragEvent<HTMLDivElement>) => {
+export const stopDefaultEvents = <T extends React.UIEvent>(e: T) => {
   e.stopPropagation();
   e.preventDefault();
 };
