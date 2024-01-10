@@ -69,7 +69,7 @@ const TestComponents = () => {
         ))}
       </div>
       <h2>Sync</h2>
-      <FileUploader onChange={handleFilesChange} size="small" />
+      <FileUploader disabled onChange={handleFilesChange} size="small" />
       <FileUploader onChange={handleFilesChange} size="medium" />
       <FileUploader onChange={handleFilesChange} multiple />
       <h2>Sync Single</h2>

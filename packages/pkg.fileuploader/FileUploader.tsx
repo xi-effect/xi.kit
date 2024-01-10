@@ -6,7 +6,7 @@ import { FileUploaderProps } from './types';
 import { stopDefaultEvents, validateFile, validateSize } from './utils';
 
 const containerStyles = cva(
-  'w-full flex group items-center rounded-lg border border-dashed border-gray-40 bg-gray-0 transition px-2 max-w-[500px] gap-3 focus-within:border-solid focus-within:border-gray-80',
+  'flex group items-center rounded-lg border border-dashed border-gray-40 bg-gray-0 transition-[outline_shadow] px-2 max-w-[500px] gap-3 focus-within:border-solid focus-within:border-gray-80',
   {
     variants: {
       size: {
@@ -18,16 +18,16 @@ const containerStyles = cva(
           'min-h-[32px] pt-[5px] pb-[7px] [&_svg]:w-4 [&_svg]:h-4 px-2 rounded-md hover:bg-gray-5 hover:border-transparent',
       },
       isDragOver: {
-        true: 'shadow-[0px_0px_0px_4px_#B4BDFF] border-4 border-brand-80 !border-solid',
+        true: 'shadow-[0px_0px_0px_4px_var(--xi-brand-80)] outline-offset-4 outline-4 outline-brand-20 outline border-transparent',
       },
       isError: {
-        true: 'border-2 !border-red-60 !border-solid',
+        true: 'ring-2 ring-red-60 !border-transparent',
       },
       isWarning: {
-        true: 'border-2 !border-orange-80 !border-solid',
+        true: 'ring-2 ring-orange-80 !border-transparent',
       },
       isDisabled: {
-        true: 'border-gray-40 bg-gray-10 pointer-events-none border-2',
+        true: 'bg-gray-10 pointer-events-none border-gray-30',
       },
     },
   },
@@ -37,6 +37,9 @@ const titleStyles = cva('text-sm text-center', {
   variants: {
     isDragOver: {
       true: 'pointer-events-none',
+    },
+    isDisabled: {
+      true: 'text-gray-30 [&_span]:text-gray-30',
     },
     size: {
       large: 'text-brand-60 group-hover:text-brand-80 font-medium',
@@ -133,7 +136,7 @@ export const FileUploader = ({
 
   return (
     <div>
-      <label htmlFor={id} className="cursor-pointer">
+      <label htmlFor={id} className={disabled ? '' : 'cursor-pointer'}>
         {children ? (
           <>
             {children}
@@ -154,7 +157,7 @@ export const FileUploader = ({
             onDragLeave={handleDragLeave}
           >
             {fileInput}
-            <p className={titleStyles({ isDragOver, size })}>
+            <p className={titleStyles({ isDragOver, size, isDisabled: disabled })}>
               {isLarge ? (
                 'Перетащите сюда или выберите файл'
               ) : (
