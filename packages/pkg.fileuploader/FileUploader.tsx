@@ -1,8 +1,9 @@
 import { Upload } from '@xipkg/icons';
+import { formatBytesSize, plural } from '@xipkg/utils';
 import { cva } from 'class-variance-authority';
 import { ChangeEvent, DragEvent, useId, useRef, useState } from 'react';
 import { FileUploaderProps } from './types';
-import { formatFileSize, stopDefaultEvents, validateFile, validateSize } from './utils';
+import { stopDefaultEvents, validateFile, validateSize } from './utils';
 
 const containerStyles = cva(
   'w-full flex group items-center rounded-lg border border-dashed border-gray-40 bg-gray-0 transition px-2 max-w-[500px] gap-3 focus-within:border-solid focus-within:border-gray-80',
@@ -48,6 +49,8 @@ const titleStyles = cva('text-sm text-center', {
 export const DEFAULT_EXTENSIONS = ['jpg', 'gif', 'png', 'pdf', 'zip'] as const;
 const DEFAULT_SIZE_LIMIT = 6 * 1024 * 1024; // 6 MB
 
+const pluralFiles = ['файла', 'файлов', 'файлов'];
+
 export const FileUploader = ({
   size = 'large',
   descriptionText,
@@ -69,7 +72,7 @@ export const FileUploader = ({
   const id = useId();
 
   const isLarge = size === 'large';
-  const formatedSizeLimit = formatFileSize(bytesSizeLimit);
+  const formatedSizeLimit = formatBytesSize(bytesSizeLimit);
 
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     stopDefaultEvents(e);
@@ -88,9 +91,10 @@ export const FileUploader = ({
       !validateSize(fileList, bytesSizeLimit)
     ) {
       return setError(
-        `Можно отправить не более ${limit} файлов с расширением ${extensions.join(
-          ', ',
-        )} общим объёмом до ${formatedSizeLimit}`,
+        `Можно отправить не более ${limit} ${plural(
+          pluralFiles,
+          limit,
+        )} с расширением ${extensions.join(', ')} общим объёмом до ${formatedSizeLimit}`,
       );
     }
 

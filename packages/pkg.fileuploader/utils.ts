@@ -9,17 +9,6 @@ export const validateSize = (files: File[], limitBytes: number) => {
   return totalSize <= limitBytes;
 };
 
-export const formatFileSize = (bytes: number) => {
-  const KILOBYTES = 1024;
-  const MEGABYTES = KILOBYTES * 1024;
-
-  if (bytes < MEGABYTES) {
-    return (bytes / KILOBYTES).toFixed(2) + ' Кб';
-  } else {
-    return (bytes / MEGABYTES).toFixed(2) + ' Мб';
-  }
-};
-
 export const stopDefaultEvents = <T extends React.UIEvent>(e: T) => {
   e.stopPropagation();
   e.preventDefault();

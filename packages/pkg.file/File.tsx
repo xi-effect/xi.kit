@@ -1,5 +1,5 @@
 import { Close, File as FileIcon } from '@xipkg/icons';
-import { cn } from '@xipkg/utils';
+import { cn, formatBytesSize } from '@xipkg/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -14,28 +14,6 @@ export type FileProps = {
   icon?: string;
   className?: string;
   onDelete: (name: string) => void;
-};
-
-const FILE_SIZES = ['байт', 'Кб', 'Мб', 'Гб', 'Тб'];
-// format byte word in right form
-// 1, 5, 6... байт (standart form)
-// 2, 3, 4 байта (changed form)
-const formatByteWord = (size: number): string => {
-  const lastDigit: number = size % 10;
-  /* Size ends with one of this digits => change form */
-  const changeFormNums: number[] = [2, 3, 4];
-  if (changeFormNums.includes(lastDigit)) {
-    return 'байта';
-  }
-  return 'байт';
-};
-// coefficient bytes to Kb
-const k = 1000;
-const formatSize = (size: number): string => {
-  const n: number = Math.floor(Math.log10(size) / Math.log10(k));
-  const formattedSizeNum: number = Math.ceil(size / k ** n);
-  const formattedSize: string = `${formattedSizeNum} ${!n ? formatByteWord(size) : FILE_SIZES[n]}`;
-  return formattedSize;
 };
 
 export const File = ({ name, url, size, icon, onDelete, className }: FileProps) => {
@@ -71,7 +49,7 @@ export const File = ({ name, url, size, icon, onDelete, className }: FileProps) 
 
         <div className="flex flex-col overflow-hidden text-left grow">
           <p className="font-medium leading-[22px] text-gray-100 truncate">{name}</p>
-          <p className="text-sm leading-[20px] mt-0.5 text-gray-80">{formatSize(size)}</p>
+          <p className="text-sm leading-[20px] mt-0.5 text-gray-80">{formatBytesSize(size)}</p>
         </div>
         <button
           onClick={() => onDelete(name)}
