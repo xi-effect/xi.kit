@@ -14,7 +14,6 @@ const Tooltip = (props: TooltipProps) => {
           props.className,
         )}
       >
-        {/* <span className="absolute top-0 left-[-8px] border-l-0 border-r-8 border-solid border-r-gray-0 border-y-transparent border-y-4" /> */}
         {props.text}
       </div>
     </div>

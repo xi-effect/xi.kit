@@ -13,7 +13,8 @@ const testFileData: FileProps = {
 
 const TestComponents = () => (
   <div className="flex flex-col w-full gap-4">
-    <File {...testFileData} />
+    <File {...testFileData} icon="" />
+    <File {...testFileData} onDelete={undefined} />
     <File {...testFileData} name={'VeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeryBigFilename.jpg'} />
   </div>
 );

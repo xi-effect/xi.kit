@@ -39,7 +39,7 @@ const titleStyles = cva('text-sm text-center', {
       true: 'pointer-events-none',
     },
     isDisabled: {
-      true: 'text-gray-30 [&_span]:text-gray-30',
+      true: '!text-gray-30 [&_span]:text-gray-30',
     },
     size: {
       large: 'text-brand-60 group-hover:text-brand-80 font-medium',
