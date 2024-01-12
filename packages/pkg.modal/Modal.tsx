@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { X } from 'lucide-react';
 
 import { cn } from '@xipkg/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
@@ -32,7 +31,7 @@ const DialogOverlay = React.forwardRef<
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
 export const dialogContentVariants = cva(
-  'fixed left-[50%] top-[50%] z-50 grid translate-x-[-50%] translate-y-[-50%] gap-4 bg-gray-0 p-6 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]',
+  'fixed left-[50%] top-[50%] z-50 grid translate-x-[-50%] translate-y-[-50%] gap-4 bg-gray-0 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]',
   {
     variants: {
       variant: {
@@ -69,32 +68,49 @@ const DialogContent = React.forwardRef<
 ));
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
+export const dialogCloseButtonVariants = cva('fixed', {
+  variants: {
+    view: {
+      default:
+        'top-8 right-6 sm:top-6 sm:right-[-56px] flex flex-row w-10 h-10 items-start pt-2 px-2 rounded-[20px] bg-gray-5',
+      full: 'left-[50%] top-[50%] z-50 grid translate-x-[-50%] translate-y-[-50%] gap-4 bg-gray-0 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]',
+    },
+  },
+  defaultVariants: {
+    view: 'default',
+  },
+});
+
 export interface DialogCloseButtonProps
   extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close> {
+  view?: 'default' | 'full';
   icon?: React.ReactNode;
 }
 
-const DialogCloseButton = ({ className, children, ...props }: DialogCloseButtonProps) => (
-  <DialogPrimitive.Close
-    className={cn(
-      'bg-transparent transition-opacity focus:outline-none disabled:pointer-events-none',
-      className,
-    )}
-    {...props}
-  >
+const DialogCloseButton = ({ view, className, children, ...props }: DialogCloseButtonProps) => (
+  <DialogPrimitive.Close className={cn(dialogCloseButtonVariants({ view, className }))} {...props}>
     {children}
   </DialogPrimitive.Close>
 );
 DialogCloseButton.displayName = 'DialogCloseButton';
 
 const DialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('flex flex-col space-y-1.5 text-center sm:text-left', className)} {...props} />
+  <div
+    className={cn(
+      'flex flex-col p-6 border-b border-gray-20 space-y-2 text-left',
+      className,
+    )}
+    {...props}
+  />
 );
 DialogHeader.displayName = 'DialogHeader';
 
 const DialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2', className)}
+    className={cn(
+      'flex flex-col-reverse p-6 border-t border-gray-20 sm:flex-row sm:justify-end sm:space-x-2',
+      className,
+    )}
     {...props}
   />
 );
@@ -106,7 +122,7 @@ const DialogTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn('text-lg font-semibold leading-none tracking-tight', className)}
+    className={cn('text-[24px] font-semibold leading-nonet', className)}
     {...props}
   />
 ));
@@ -118,7 +134,7 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn('text-sm text-muted-foreground', className)}
+    className={cn('text-[16px] text-gray-80', className)}
     {...props}
   />
 ));

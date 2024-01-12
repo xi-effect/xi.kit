@@ -5,20 +5,20 @@ import { Button } from '@xipkg/button';
 export default function ButtonPage() {
   return (
     <div className="flex flex-col gap-5 h-full">
-      <Button size="l">Test</Button>
+      <Button size="l">Large</Button>
       <Button size="l" variant="secondary">
-        Test
+        Large
       </Button>
       <Button size="l" variant="ghost">
-        Test
+        Large
       </Button>
       <Button size="m" variant="error">
-        Test
+        Medium
       </Button>
       <Button size="s" variant="success" className="w-[200px]">
-        Test
+        Small
       </Button>
-      <Button size="l">Test</Button>
+      <Button size="l">Large</Button>
     </div>
   );
 }

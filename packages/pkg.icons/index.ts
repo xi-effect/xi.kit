@@ -110,6 +110,7 @@ import { VariantSelect } from './icons/VariantSelect';
 import { Video } from './icons/Video';
 import { Window } from './icons/Window';
 import { SoundTwo } from './icons/SoundTwo';
+import { Plus } from './icons/Plus';
 import { icons } from './config';
 
 export {
@@ -225,6 +226,7 @@ export {
   Video,
   Window,
   SoundTwo,
+  Plus,
   icons,
 };
 

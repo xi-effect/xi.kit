@@ -1,14 +1,33 @@
 'use client';
 
 import { Input } from '@xipkg/input';
+import { Eyeoff, Eyeon } from '@xipkg/icons';
 import { Label } from '@xipkg/label';
 import { Link, CrossCircle } from '@xipkg/icons';
+import React from 'react';
 
 export default function InputPage() {
+  const [isPasswordShow, setIsPasswordShow] = React.useState(false);
+
+  const changePasswordShow = () => {
+    console.log('isPasswordShow');
+    setIsPasswordShow((prev) => !prev);
+  };
+
   return (
     <>
       <div className="w-[250px] p-4">
         <Input before={<Link />} />
+      </div>
+      <div className="w-[250px] p-4">
+        <Input
+          afterClassName="cursor-pointer"
+          type={isPasswordShow ? 'text' : 'password'}
+          after={isPasswordShow ? <Eyeoff /> : <Eyeon />}
+          afterProps={{
+            onClick: changePasswordShow,
+          }}
+        />
       </div>
       <div className="w-[250px] p-4">
         <Input variant="s" before={<Link size="s" />} />
