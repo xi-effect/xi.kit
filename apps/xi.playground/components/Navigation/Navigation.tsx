@@ -1,9 +1,9 @@
 'use client';
 
-import { ReactNode } from 'react';
-import { Stack, ListItem, ListItemButton, List } from '@mui/material';
-import { useRouter } from 'next/navigation';
+import { List, ListItem, ListItemButton, Stack } from '@mui/material';
 import { ColorButton } from 'components/ColorButton';
+import { useRouter } from 'next/navigation';
+import { ReactNode } from 'react';
 
 export type NavigationT = {
   children: ReactNode;
@@ -33,6 +33,10 @@ const menuArray = [
   {
     link: '/components/file',
     label: 'File',
+  },
+  {
+    link: '/components/fileuploader',
+    label: 'FileUploader',
   },
   {
     link: '/components/form',
@@ -122,7 +126,7 @@ export const Navigation = ({ children }: NavigationT) => {
           ))}
         </List>
       </Stack>
-      <div className='h-fill min-h-screen w-fill'>{children}</div>
+      <div className="min-h-screen h-fill w-fill">{children}</div>
     </Stack>
   );
 };

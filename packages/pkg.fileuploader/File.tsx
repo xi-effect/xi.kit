@@ -1,86 +1,72 @@
-import { FC, useState } from 'react';
-import { Stack, Typography } from '@mui/material';
-import Icons from './Icons';
-import { containerStyle, textVariants } from './styles/fileStyle';
+import { Check, Close } from '@xipkg/icons';
+import { cn } from '@xipkg/utils';
+import { cva } from 'class-variance-authority';
+import { FC } from 'react';
+import Spinner from './Spinner';
+import Tooltip from './Tooltip';
 import { FileProps } from './types';
+import { stopDefaultEvents } from './utils';
+
+const containerStyles = cva(
+  'flex relative group hover:text-gray-80 hover:bg-gray-5 items-center transition justify-between bg-gray-0 focus-within:bg-gray-5',
+  {
+    variants: {
+      size: {
+        medium: 'min-h-[40px] p-3 rounded-lg',
+        small: 'h-8 p-2 rounded-md',
+      },
+    },
+  },
+);
 
 export const File: FC<FileProps> = ({
   size = 'medium',
-  isDeleteIcon = true,
   isPending,
   isSucceeded,
-  isError,
-  children,
-  onClick,
+  error,
+  name,
   onDeleteClick,
   onAbortRequestClick,
-  ...props
 }) => {
-  const [isHover, setIsHover] = useState(false);
-  const [isFocus, setIsFocus] = useState(false);
-
-  const isAbortIcon = onAbortRequestClick && isPending && (isHover || isFocus);
+  const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
+		isPending || isSucceeded ? onAbortRequestClick?.() : onDeleteClick?.();
+    stopDefaultEvents(e);
+  };
 
   return (
-    <Stack
-      direction="row"
-      alignItems="center"
-      justifyContent="space-between"
-      sx={{
-        backgroundColor: isFocus ? 'var(--xi-gray-5)' : 'var(--xi-gray-0)',
-        transition: 'all 0.1s ease-in',
-        ...containerStyle[size],
-        '&:hover': {
-          backgroundColor: 'var(--xi-gray-5)',
-
-          '& .MuiTypography-root': { color: isError ? 'var(--xi-red-80)' : 'var(--xi-gray-10)' },
-
-          '& .MuiSvgIcon-root': { color: 'var(--xi-gray-80)' },
-
-          '& .MuiCircularProgress-root': { color: 'var(--xi-gray-80)' },
-        },
-        ...props,
-      }}
-      onFocus={() => {
-        setIsFocus(true);
-      }}
-      onBlur={() => {
-        setIsFocus(false);
-        setIsHover(false);
-      }}
-      onMouseEnter={() => {
-        setIsHover(true);
-      }}
-      onMouseLeave={() => {
-        setIsHover(false);
-        setIsFocus(false);
-      }}
-    >
-      <Typography
-        variant={textVariants[size]}
-        sx={{
-          wordBreak: 'break-all',
-          transition: 'all 0.1s ease-in',
-          color: isError ? 'var(--xi-red-80)' : 'var(--xi-gray-90)',
-          fontWeight: 400,
-          cursor: onClick ? 'pointer' : 'default',
-          paddingRight: '10px',
-        }}
-        onClick={onClick}
+    <div className={containerStyles({ size })}>
+      <p
+        className={cn(
+          'break-all transition truncate pr-2.5',
+          !!error ? 'text-red-80' : 'text-gray-90',
+        )}
       >
-        {children}
-      </Typography>
+        {error && (
+          <>
+            <span className="text-gray-100">Выбран файл</span>
+            <Tooltip className="hidden group-hover:block" text={error} />
+          </>
+        )}{' '}
+        {name}
+      </p>
 
-      <Icons
-        size={size}
-        color={isFocus ? 'var(--xi-gray-80)' : 'var(--xi-gray-40)'}
-        isDeleteIcon={isDeleteIcon && !isPending && !isSucceeded}
-        isLoadingIcon={!isAbortIcon && isPending}
-        isSucceededIcon={isSucceeded}
-        isAbortIcon={isAbortIcon}
-        onDeleteClick={onDeleteClick}
-        onAbortRequestClick={onAbortRequestClick}
-      />
-    </Stack>
+      <div className="flex [&_svg]:w-full [&_svg]:h-full items-center justify-center w-4 f-4 shrink-0">
+        <div className="group-hover:hidden">
+          {(isSucceeded && <Check />) || (isPending && <Spinner />)}
+        </div>
+
+        {onDeleteClick && (
+          <button
+            className={cn(
+              'inline-flex bg-transparent',
+              isPending || (isSucceeded && 'hidden group-hover:inline-flex'),
+            )}
+            onClick={handleClose}
+          >
+            <Close />
+          </button>
+        )}
+      </div>
+    </div>
   );
 };

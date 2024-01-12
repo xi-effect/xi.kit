@@ -1,2 +1,1 @@
-export { File } from './File';
-export type { FileProps } from './File';
+export { File, type FileProps } from './File';

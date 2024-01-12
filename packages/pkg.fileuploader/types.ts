@@ -1,43 +1,27 @@
-import { SxProps } from '@mui/material';
+import { DEFAULT_EXTENSIONS } from './FileUploader';
 
 export type SizeType = 'large' | 'medium' | 'small';
 export type FileSizeType = 'medium' | 'small';
 
 export type FileUploaderProps = {
   size?: SizeType;
-  fileName?: string | null;
   multiple?: boolean;
-  isError?: boolean;
+  limit?: number;
   isWarning?: boolean;
-  isPending?: boolean;
-  isSucceeded?: boolean;
   disabled?: boolean;
   descriptionText?: string;
-  buttonText?: string;
-  onChange: (files: File[] | File) => void;
-  onDeleteClick?: () => void;
-  onAbortRequestClick?: () => void;
+  onChange: (files: File[]) => void;
+  extensions?: ((typeof DEFAULT_EXTENSIONS)[number] & string)[];
+  bytesSizeLimit?: number;
+  children?: React.ReactNode;
 };
 
 export type FileProps = {
+  name: string;
   size?: FileSizeType;
-  children?: string;
-  isDeleteIcon?: boolean;
   isPending?: boolean;
   isSucceeded?: boolean;
-  isError?: boolean;
-  onClick?: () => void;
-  onDeleteClick?: () => void;
-  onAbortRequestClick?: () => void;
-} & SxProps;
-
-export type IconsProps = {
-  size: FileSizeType;
-  color: string;
-  isDeleteIcon?: boolean;
-  isLoadingIcon?: boolean;
-  isSucceededIcon?: boolean;
-  isAbortIcon?: boolean;
+  error?: string;
   onDeleteClick?: () => void;
   onAbortRequestClick?: () => void;
 };

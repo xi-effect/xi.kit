@@ -1,227 +1,185 @@
-import { ChangeEvent, DragEvent, useRef, useState } from 'react';
-import { Button, IconButton, Stack, Typography } from '@mui/material';
-import { Download } from '@xipkg/icons';
-import { File } from './File';
+import { Upload } from '@xipkg/icons';
+import { formatBytesSize, plural } from '@xipkg/utils';
+import { cva } from 'class-variance-authority';
+import { ChangeEvent, DragEvent, useId, useRef, useState } from 'react';
 import { FileUploaderProps } from './types';
-import {
-  buttonTextVariants,
-  containerStyle,
-  getActionContainerStyle,
-  getActionTextStyle,
-  textVariants,
-} from './styles/fileUploaderStyle';
-import { iconSizesStyle } from './styles/fileStyle';
+import { stopDefaultEvents, validateFile, validateSize } from './utils';
 
-const stopDefaultEvents = (e: DragEvent<HTMLDivElement>) => {
-  e.stopPropagation();
-  e.preventDefault();
-};
+const containerStyles = cva(
+  'flex group items-center rounded-lg border border-dashed border-gray-40 bg-gray-0 transition-[outline_shadow] px-2 max-w-[500px] gap-3 focus-within:border-solid focus-within:border-gray-80',
+  {
+    variants: {
+      size: {
+        large:
+          'h-[92px] p-6 justify-center flex-col gap-2 border-brand-60 bg-brand-0 hover:border-brand-80',
+        medium:
+          'min-h-[48px] pt-3 pb-[14px] [&_svg]:w-6 [&_svg]:h-6 px-3 hover:bg-gray-5 hover:border-transparent',
+        small:
+          'min-h-[32px] pt-[5px] pb-[7px] [&_svg]:w-4 [&_svg]:h-4 px-2 rounded-md hover:bg-gray-5 hover:border-transparent',
+      },
+      isDragOver: {
+        true: 'shadow-[0px_0px_0px_4px_var(--xi-brand-80)] outline-offset-4 outline-4 outline-brand-20 outline border-transparent',
+      },
+      isError: {
+        true: 'ring-2 ring-red-60 !border-transparent',
+      },
+      isWarning: {
+        true: 'ring-2 ring-orange-80 !border-transparent',
+      },
+      isDisabled: {
+        true: 'bg-gray-10 pointer-events-none border-gray-30',
+      },
+    },
+  },
+);
 
-declare module '@mui/material/Typography' {
-  export interface TypographyPropsVariantOverrides {
-    xl: true;
-    l: true;
-    m: true;
-    s: true;
-    xs: true;
-    xxs: true;
-  }
-}
+const titleStyles = cva('text-sm text-center', {
+  variants: {
+    isDragOver: {
+      true: 'pointer-events-none',
+    },
+    isDisabled: {
+      true: '!text-gray-30 [&_span]:text-gray-30',
+    },
+    size: {
+      large: 'text-brand-60 group-hover:text-brand-80 font-medium',
+      medium: 'text-base text-gray-80 group-hover:text-gray-100',
+      small: 'text-gray-80 group-hover:text-gray-100',
+    },
+  },
+});
+
+export const DEFAULT_EXTENSIONS = ['jpg', 'gif', 'png', 'pdf', 'zip'] as const;
+const DEFAULT_SIZE_LIMIT = 6 * 1024 * 1024; // 6 MB
+
+const pluralFiles = ['файла', 'файлов', 'файлов'];
 
 export const FileUploader = ({
   size = 'large',
-  fileName,
-  buttonText,
   descriptionText,
   multiple,
   disabled,
-  isError,
   isWarning,
-  isPending,
-  isSucceeded,
   onChange,
-  onDeleteClick,
-  onAbortRequestClick,
+  limit = 3,
+  bytesSizeLimit = DEFAULT_SIZE_LIMIT,
+  extensions = DEFAULT_EXTENSIONS as any,
+  children,
 }: FileUploaderProps) => {
   const [isDragOver, setIsDragOver] = useState(false);
-  const [isHover, setIsHover] = useState(false);
-  const [isFocus, setIsFocus] = useState(false);
+  const [error, setError] = useState('');
 
   const inputRef = useRef<HTMLInputElement>(null);
+  const dragDeph = useRef(0);
 
-  const isAsyncUploader = isPending || isSucceeded;
+  const id = useId();
+
   const isLarge = size === 'large';
-
-  const defaultDescription = isLarge
-    ? 'JPG, GIF, PNG, PDF или ZIP, до 4 мб'
-    : '\u00A0или перетащите сюда';
-
-  const defaultButtonText = isLarge ? 'Перетащите сюда или выберите файл' : 'Выберите файл';
-
-  const actionContainerStyle = getActionContainerStyle(
-    size,
-    isDragOver,
-    isHover,
-    isFocus,
-    !!isError,
-    !!isWarning,
-    !!disabled,
-  );
-
-  const actionTextStyle = getActionTextStyle(
-    size,
-    isDragOver,
-    isHover,
-    isFocus,
-    !!isError,
-    !!isWarning,
-    !!disabled,
-  );
-
-  const handleUploadButtonClick = () => {
-    inputRef.current?.click();
-  };
+  const formatedSizeLimit = formatBytesSize(bytesSizeLimit);
 
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     stopDefaultEvents(e);
     setIsDragOver(false);
+    handleFilesChange(e.dataTransfer.files);
+  };
 
-    const fileList = e.dataTransfer.files;
-    if (multiple) {
-      onChange([...fileList]);
+  const handleFilesChange = (files?: FileList | null) => {
+    setError('');
+    if (!files || files.length == 0) return;
+
+    const fileList = [...files];
+    if (
+      fileList.length > limit ||
+      fileList.some((file) => !validateFile(file, extensions)) ||
+      !validateSize(fileList, bytesSizeLimit)
+    ) {
+      return setError(
+        `Можно отправить не более ${limit} ${plural(
+          pluralFiles,
+          limit,
+        )} с расширением ${extensions.join(', ')} общим объёмом до ${formatedSizeLimit}`,
+      );
     }
 
-    if (!multiple) {
-      onChange(fileList[0]);
-    }
+    onChange(fileList);
+    if (inputRef.current) inputRef.current.value = '';
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const fileList = e.target.files;
+    handleFilesChange(e.target.files);
+  };
 
-    if (fileList?.length) {
-      if (multiple) {
-        onChange([...fileList]);
-        e.target.value = '';
-      }
+  const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+    dragDeph.current++;
+    setIsDragOver(true);
+  };
 
-      if (!multiple) {
-        onChange(fileList[0]);
-        e.target.value = '';
-      }
+  const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    dragDeph.current--;
+    if (dragDeph.current === 0) {
+      setIsDragOver(false);
     }
   };
 
+  const fileInput = (
+    <input
+      id={id}
+      accept="image/*"
+      onChange={handleChange}
+      multiple={multiple}
+      ref={inputRef}
+      type="file"
+      className="sr-only"
+      disabled={disabled}
+    />
+  );
+
   return (
-    <Stack>
-      <Stack
-        sx={{
-          ...containerStyle.default,
-          ...containerStyle[size],
-          ...actionContainerStyle,
-        }}
-        onDrop={handleDrop}
-        onDragOver={(e: DragEvent<HTMLDivElement>) => {
-          stopDefaultEvents(e);
-          setIsDragOver(true);
-        }}
-        onDragLeave={(e: DragEvent<HTMLDivElement>) => {
-          stopDefaultEvents(e);
-          setIsDragOver(false);
-        }}
-        onFocus={() => {
-          setIsFocus(true);
-        }}
-        onBlur={() => {
-          setIsFocus(false);
-        }}
-        onMouseEnter={() => {
-          setIsHover(true);
-          setIsFocus(false);
-        }}
-        onMouseLeave={() => {
-          setIsHover(false);
-          setIsFocus(false);
-        }}
-      >
-        <input
-          onChange={handleChange}
-          multiple={multiple}
-          ref={inputRef}
-          type="file"
-          style={{ display: 'none' }}
-          disabled={disabled}
-        />
-
-        {fileName && !isLarge ? (
-          <File
-            size={size}
-            isDeleteIcon={!isPending && !isSucceeded}
-            isPending={isPending}
-            isSucceeded={isSucceeded}
-            isError={isError}
-            onClick={!isAsyncUploader ? handleUploadButtonClick : undefined}
-            onDeleteClick={onDeleteClick}
-            onAbortRequestClick={onAbortRequestClick}
-            p={0}
-            backgroundColor="transparent"
-            height="100%"
-            maxWidth="100%"
-            width="100%"
-          >
-            {fileName}
-          </File>
-        ) : (
+    <div>
+      <label htmlFor={id} className={disabled ? '' : 'cursor-pointer'}>
+        {children ? (
           <>
-            <Button
-              disabled={disabled}
-              disableRipple
-              sx={{
-                textTransform: 'initial',
-                p: 0,
-                pointerEvents: isDragOver ? 'none' : 'initial',
-                transition: 'all 0.1s ease-in',
-                '&:hover': { background: 'initial' },
-                color: actionTextStyle.button.color,
-                '&:disabled': {
-                  color: actionTextStyle.button.color,
-                },
-              }}
-              onClick={handleUploadButtonClick}
-            >
-              <Typography
-                variant={buttonTextVariants[size]}
-                sx={{ pointerEvents: 'none', fontWeight: isLarge ? 500 : 400 }}
-              >
-                {buttonText || defaultButtonText}
-              </Typography>
-            </Button>
-
-            <Typography
-              variant={textVariants[size]}
-              sx={{
-                pointerEvents: 'none',
-                fontWeight: 400,
-                transition: 'all 0.1s ease-in',
-                color: actionTextStyle.description.color,
-              }}
-            >
-              {descriptionText || defaultDescription}
-            </Typography>
+            {children}
+            {fileInput}
           </>
-        )}
-
-        {!isLarge && !fileName && (
-          <IconButton
-            disabled={disabled}
-            disableRipple
-            sx={{ p: 0, marginLeft: 'auto' }}
-            onClick={handleUploadButtonClick}
+        ) : (
+          <div
+            className={containerStyles({
+              isDisabled: disabled,
+              isDragOver,
+              isError: !!error,
+              isWarning,
+              size,
+            })}
+            onDrop={handleDrop}
+            onDragEnter={handleDragEnter}
+            onDragOver={stopDefaultEvents}
+            onDragLeave={handleDragLeave}
           >
-            <Download />
-          </IconButton>
+            {fileInput}
+            <p className={titleStyles({ isDragOver, size, isDisabled: disabled })}>
+              {isLarge ? (
+                'Перетащите сюда или выберите файл'
+              ) : (
+                <>
+                  <span className="text-gray-90 group-hover:text-gray-100">Выберите файл</span> или
+                  перетащите сюда
+                </>
+              )}
+            </p>
+
+            {isLarge && (
+              <p className="text-xs group-hover:text-brand-60 text-brand-40">
+                {descriptionText ||
+                  `${extensions.map((el) => el.toUpperCase()).join(', ')} до ${formatedSizeLimit}`}
+              </p>
+            )}
+
+            {!isLarge && <Upload className="ml-auto" />}
+          </div>
         )}
-      </Stack>
-    </Stack>
+      </label>
+      {error && <p className="mt-4 text-sm leading-5 text-gray-100">{error}</p>}
+    </div>
   );
 };
