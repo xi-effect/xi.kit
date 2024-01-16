@@ -111,6 +111,7 @@ import { Video } from './icons/Video';
 import { Window } from './icons/Window';
 import { SoundTwo } from './icons/SoundTwo';
 import { Plus } from './icons/Plus';
+import { CaretUp } from './icons/CaretUp';
 import { icons } from './config';
 
 export {
@@ -227,6 +228,7 @@ export {
   Window,
   SoundTwo,
   Plus,
+  CaretUp,
   icons,
 };
 
