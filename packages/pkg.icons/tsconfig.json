@@ -114,7 +114,8 @@
     "icons/Video.tsx",
     "icons/SoundTwo.tsx",
     "icons/Plus.tsx",
-    "icons/CaretUp.tsx"
+    "icons/CaretUp.tsx",
+    "icons/Conference.tsx"
   ],
   "exclude": ["dist", "build", "node_modules"]
 }

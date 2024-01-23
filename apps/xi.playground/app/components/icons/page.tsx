@@ -73,6 +73,7 @@ import {
   Window,
   Laptop,
   CaretUp,
+  Conference,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -149,7 +150,8 @@ const iconsDict = [
   <Plus />,
   <Window />,
   <Laptop />,
-  <CaretUp />
+  <CaretUp />,
+  <Conference />,
 ];
 
 const iconsDictNames = [
@@ -227,6 +229,7 @@ const iconsDictNames = [
   'Window',
   'Laptop',
   'CaretUp',
+  'Conference',
 ];
 
 const Icons = () => (
