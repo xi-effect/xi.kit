@@ -110,5 +110,7 @@ export const icons = [
   'Window',
   'SoundTwo',
   'Plus',
-  'CaretUp'
+  'CaretUp',
+  'Conference',
+  'Group',
 ];

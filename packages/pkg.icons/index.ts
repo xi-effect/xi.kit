@@ -112,6 +112,8 @@ import { Window } from './icons/Window';
 import { SoundTwo } from './icons/SoundTwo';
 import { Plus } from './icons/Plus';
 import { CaretUp } from './icons/CaretUp';
+import { Conference } from './icons/Conference';
+import { Group } from './icons/Group';
 import { icons } from './config';
 
 export {
@@ -229,6 +231,8 @@ export {
   SoundTwo,
   Plus,
   CaretUp,
+  Conference,
+  Group,
   icons,
 };
 
