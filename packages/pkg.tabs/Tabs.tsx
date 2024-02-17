@@ -9,6 +9,8 @@ type TriggerSize = {
   width: number;
 };
 
+const getValue = (el?: HTMLElement) => el?.getAttribute('id')?.split('-').pop();
+
 const Root = ({
   onValueChange,
   ...props
@@ -22,7 +24,7 @@ const Root = ({
     shadowRef.current = ref.current?.querySelector('#shadow');
     if (!list || !shadowRef.current) return;
     sizes.current = [...list.children].slice(1).reduce<Record<string, TriggerSize>>((acc, el) => {
-      const value = el.getAttribute('id')?.split('-').pop();
+      const value = getValue(el as HTMLElement);
       if (value) {
         acc[value] = {
           left: (el as HTMLElement).offsetLeft,
@@ -31,7 +33,7 @@ const Root = ({
       }
       return acc;
     }, {});
-    handleValueChange(list.children[1].getAttribute('id')?.split('-').pop() || '');
+    handleValueChange(getValue(list.children[1] as HTMLElement) || '');
   }, [ref.current]);
 
   const handleValueChange = (value: string) => {
@@ -51,7 +53,6 @@ const List = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
 >(({ className, children, ...props }, ref) => {
-  React.useEffect(() => {}, []);
 
   return (
     <TabsPrimitive.List
