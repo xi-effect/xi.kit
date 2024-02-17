@@ -78,6 +78,10 @@ const menuArray = [
     link: '/components/modal',
     label: 'Modal',
   },
+  {
+    link: '/components/tabs',
+    label: 'Tabs',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
