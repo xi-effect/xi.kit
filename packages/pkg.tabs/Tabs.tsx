@@ -1,54 +1,43 @@
 'use client';
 
-import * as React from 'react';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { cn } from '@xipkg/utils';
+import * as React from 'react';
 
-const Root = ({
-  onValueChange,
-  onClick,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>) => {
-  const ref = React.useRef<HTMLDivElement | null>(null);
-  const shadowRef = React.useRef<HTMLElement | null | undefined>(null);
-  const initButtonRef = React.useRef<HTMLElement | null | undefined>(null);
-
-  React.useEffect(() => {
-    shadowRef.current = ref.current?.querySelector('#shadow');
-    initButtonRef.current = ref.current?.querySelector("button[data-state='active'][role='tab']");
-
-    if (!shadowRef.current || !initButtonRef.current) return;
-    shadowRef.current.setAttribute(
-      'style',
-      `left: ${initButtonRef.current.offsetLeft}px; width: ${initButtonRef.current.clientWidth}px`,
-    );
-  }, []);
-
-  const handleOnClick = (event: any) => {
-    if (!shadowRef.current) return;
-
-    shadowRef.current.setAttribute(
-      'style',
-      `left: ${event.target.offsetLeft}px; width: ${event.target.clientWidth}px`,
-    );
-
-    onClick?.(event);
-  };
-
-  return <TabsPrimitive.Root onClick={handleOnClick} ref={ref} {...props} />;
-};
+const Root = TabsPrimitive.Root;
 
 const List = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
->(({ className, children, ...props }, ref) => {
+>(({ className, children, onClick, ...props }, ref) => {
+  const shadowRef = React.useRef<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    if (!shadowRef.current) return;
+    const { offsetLeft, clientWidth } = shadowRef.current.nextSibling as HTMLElement;
+    shadowRef.current.setAttribute('style', `left: ${offsetLeft}px; width: ${clientWidth}px`);
+  }, []);
+
+  const handleOnClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!shadowRef.current) return;
+    shadowRef.current.setAttribute(
+      'style',
+      `left: ${(event.target as HTMLElement).offsetLeft}px; width: ${
+        (event.target as HTMLElement).clientWidth
+      }px`,
+    );
+    onClick?.(event);
+  };
+
   return (
     <TabsPrimitive.List
       ref={ref}
+      onClick={handleOnClick}
       className={cn('flex relative border-b-2 border-gray-10 items-center', className)}
       {...props}
     >
       <div
+        ref={shadowRef}
         id="shadow"
         className="absolute duration-300 rounded-md transition-[left,width] h-0.5 -bottom-0.5 bg-brand-80"
       ></div>
@@ -88,4 +77,4 @@ const Content = React.forwardRef<
 ));
 Content.displayName = TabsPrimitive.Content.displayName;
 
-export { Root, List, Trigger, Content };
+export { Content, List, Root, Trigger };
