@@ -6,15 +6,31 @@ interface TabsDemoProps {}
 
 const TabsDemo = (props: TabsDemoProps) => {
   return (
-    <div className="w-[500PX]">
-      <Tabs.Root onValueChange={console.log} defaultValue="Tab 1">
+    <div className="flex flex-col w-[500PX] gap-4">
+      <Tabs.Root onValueChange={console.log} defaultValue="Tab 2222222">
         <Tabs.List>
-          {['Tab 1', 'Tab 2222222', 'Tab 33333333333'].map((el) => (
-            <Tabs.Trigger value={el}>{el}</Tabs.Trigger>
+          {['Tab 1', 'Tab 2222222', 'Tab 33333333333'].map((el, index) => (
+            <Tabs.Trigger key={index} index={index} value={el}>
+              {el}
+            </Tabs.Trigger>
           ))}
         </Tabs.List>
-        {['Tab 1', 'Tab 2222222', 'Tab 33333333333'].map((el) => (
-          <Tabs.Content value={el}>
+        {['Tab 1', 'Tab 2222222', 'Tab 33333333333'].map((el, index) => (
+          <Tabs.Content key={index} value={el}>
+            {<div className="grid w-full h-full bg-brand-40 place-content-center">{el}</div>}
+          </Tabs.Content>
+        ))}
+      </Tabs.Root>
+      <Tabs.Root onValueChange={console.log} defaultValue="Tab 1">
+        <Tabs.List>
+          {['Tab 1', 'Tab 2222222', 'Tab 33333333333'].map((el, index) => (
+            <Tabs.Trigger key={index} index={index} value={el}>
+              {el}
+            </Tabs.Trigger>
+          ))}
+        </Tabs.List>
+        {['Tab 1', 'Tab 2222222', 'Tab 33333333333'].map((el, index) => (
+          <Tabs.Content key={index} value={el}>
             {<div className="grid w-full h-full bg-brand-40 place-content-center">{el}</div>}
           </Tabs.Content>
         ))}
