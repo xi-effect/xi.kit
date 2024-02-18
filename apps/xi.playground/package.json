@@ -11,9 +11,6 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.14.2",
     "@xipkg/badge": "*",
     "@xipkg/breadcrumbs": "*",
     "@xipkg/button": "*",
@@ -27,7 +24,6 @@
     "@xipkg/input": "*",
     "@xipkg/link": "*",
     "@xipkg/modal": "*",
-    "@xipkg/mui": "*",
     "@xipkg/radio": "*",
     "@xipkg/select": "*",
     "@xipkg/switcher": "*",
@@ -36,7 +32,7 @@
     "@xipkg/avatar": "*",
     "@xipkg/userprofile": "*",
     "@xipkg/tabs": "*",
-    "next": "^14.0.4",
+    "next": "^13.5.6",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

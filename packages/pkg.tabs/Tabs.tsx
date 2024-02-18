@@ -1,68 +1,45 @@
 'use client';
 
-import * as React from 'react';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { cn } from '@xipkg/utils';
+import * as React from 'react';
 
-type TriggerSize = {
-  left: number;
-  width: number;
-};
-
-const getValue = (el?: HTMLElement) => el?.getAttribute('id')?.split('-').pop();
-
-const Root = ({
-  onValueChange,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>) => {
-  const ref = React.useRef<HTMLDivElement | null>(null);
-  const shadowRef = React.useRef<HTMLElement | null | undefined>(null);
-  const sizes = React.useRef<Record<string, TriggerSize>>({});
-
-  React.useEffect(() => {
-    const list = ref.current?.querySelector('[role=tablist]');
-    shadowRef.current = ref.current?.querySelector('#shadow');
-    if (!list || !shadowRef.current) return;
-    sizes.current = [...list.children].slice(1).reduce<Record<string, TriggerSize>>((acc, el) => {
-      const value = getValue(el as HTMLElement);
-      if (value) {
-        acc[value] = {
-          left: (el as HTMLElement).offsetLeft,
-          width: (el as HTMLElement).clientWidth,
-        };
-      }
-      return acc;
-    }, {});
-    handleValueChange(getValue(list.children[1] as HTMLElement) || '');
-  }, [ref.current]);
-
-  const handleValueChange = (value: string) => {
-    const triggerSizes = sizes.current[value];
-    if (!triggerSizes || !shadowRef.current) return;
-    shadowRef.current.setAttribute(
-      'style',
-      `left: ${triggerSizes.left}px; width: ${triggerSizes.width}px; display: block;`,
-    );
-    onValueChange?.(value);
-  };
-
-  return <TabsPrimitive.Root onValueChange={handleValueChange} ref={ref} {...props} />;
-};
+const Root = TabsPrimitive.Root;
 
 const List = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
->(({ className, children, ...props }, ref) => {
+>(({ className, children, onClick, ...props }, ref) => {
+  const shadowRef = React.useRef<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    if (!shadowRef.current) return;
+    const { offsetLeft, clientWidth } = shadowRef.current.nextSibling as HTMLElement;
+    shadowRef.current.setAttribute('style', `left: ${offsetLeft}px; width: ${clientWidth}px`);
+  }, []);
+
+  const handleOnClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!shadowRef.current) return;
+    shadowRef.current.setAttribute(
+      'style',
+      `left: ${(event.target as HTMLElement).offsetLeft}px; width: ${
+        (event.target as HTMLElement).clientWidth
+      }px`,
+    );
+    onClick?.(event);
+  };
 
   return (
     <TabsPrimitive.List
       ref={ref}
+      onClick={handleOnClick}
       className={cn('flex relative border-b-2 border-gray-10 items-center', className)}
       {...props}
     >
       <div
+        ref={shadowRef}
         id="shadow"
-        className="absolute duration-300 rounded-md hidden transition-[left,width] h-0.5 -bottom-0.5 bg-brand-80"
+        className="absolute duration-300 rounded-md transition-[left,width] h-0.5 -bottom-0.5 bg-brand-80"
       ></div>
       {children}
     </TabsPrimitive.List>
@@ -72,7 +49,7 @@ List.displayName = TabsPrimitive.List.displayName;
 
 const Trigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> & { index: number }
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Trigger
     ref={ref}
@@ -100,4 +77,4 @@ const Content = React.forwardRef<
 ));
 Content.displayName = TabsPrimitive.Content.displayName;
 
-export { Root, List, Trigger, Content };
+export { Content, List, Root, Trigger };
