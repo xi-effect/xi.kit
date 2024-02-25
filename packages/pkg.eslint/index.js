@@ -17,7 +17,7 @@ module.exports = {
     'plugin:import/warnings',
   ],
   ignorePatterns: ['sw.js', 'workbox-*.js', 'fallback-*.js', 'templates/**/*.tsx|ts|js'],
-  plugins: ['react', 'react-hooks', '@typescript-eslint'],
+  plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
   rules: {
     semi: 'off',
     '@typescript-eslint/semi': 'error',
@@ -39,7 +39,6 @@ module.exports = {
     'no-shadow': 'off',
     'react-hooks/exhaustive-deps': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
-    'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
     'linebreak-style': 0,
     'import/no-cycle': 'off',
