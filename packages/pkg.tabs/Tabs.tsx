@@ -19,11 +19,12 @@ const List = React.forwardRef<
   }, []);
 
   const handleOnClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if ((event.target as HTMLButtonElement).type !== "button") return;
     if (!shadowRef.current) return;
+
     shadowRef.current.setAttribute(
       'style',
-      `left: ${(event.target as HTMLElement).offsetLeft}px; width: ${
-        (event.target as HTMLElement).clientWidth
+      `left: ${(event.target as HTMLElement).offsetLeft}px; width: ${(event.target as HTMLElement).clientWidth
       }px`,
     );
     onClick?.(event);
@@ -54,7 +55,7 @@ const Trigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      'flex text-center bg-transparent data-[state=active]:hover:cursor-default grow items-center justify-center whitespace-nowrap pb-1 disabled:pointer-events-none disabled:opacity-50 text-gray-80 data-[state=active]:text-gray-100',
+      'flex text-center bg-transparent cursor-pointer data-[state=active]:hover:cursor-default grow items-center justify-center whitespace-nowrap pb-1 disabled:pointer-events-none disabled:opacity-50 text-gray-80 data-[state=active]:text-gray-100',
       className,
     )}
     {...props}
