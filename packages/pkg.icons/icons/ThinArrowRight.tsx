@@ -1,7 +1,7 @@
 import { Svg, IconProps } from '../Svg';
 import React from 'react';
 
-export const ThinArroRight = ({ ...props }: IconProps) => (
+export const ThinArrowRight = ({ ...props }: IconProps) => (
   <Svg {...props}>
     <path
       fill-rule="evenodd"

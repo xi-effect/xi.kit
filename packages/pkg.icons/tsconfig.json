@@ -101,6 +101,8 @@
     "icons/Task.tsx",
     "icons/TaskFile.tsx",
     "icons/Trash.tsx",
+    "icons/ThinArrowRight.tsx",
+    "icons/TelegramNoCircle.tsx",
     "icons/Telegram.tsx",
     "icons/Text.tsx",
     "icons/Ul.tsx",
