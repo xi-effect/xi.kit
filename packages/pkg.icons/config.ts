@@ -114,4 +114,5 @@ export const icons = [
   'Conference',
   'Group',
   'ThinArrowRight',
+  'TelegramFilled',
 ];
