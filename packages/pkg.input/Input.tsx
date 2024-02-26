@@ -138,7 +138,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {!!before && (
           <div
             className={cn(
-              addsVariants({ variant, beforeBool: !!before, afterBool: !!after, className: beforeClassName }),
+              addsVariants({
+                variant,
+                beforeBool: !!before,
+                afterBool: !!after,
+                className: beforeClassName,
+              }),
             )}
             {...beforeProps}
           >
@@ -163,7 +168,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {!!after && (
           <div
             className={cn(
-              addsVariants({ variant, beforeBool: !!before, afterBool: !!after, className: afterClassName }),
+              addsVariants({
+                variant,
+                beforeBool: !!before,
+                afterBool: !!after,
+                className: afterClassName,
+              }),
             )}
             {...afterProps}
           >

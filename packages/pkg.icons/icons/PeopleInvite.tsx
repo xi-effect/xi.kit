@@ -1,5 +1,4 @@
-import { Svg, IconProps  } from '../Svg';
-
+import { Svg, IconProps } from '../Svg';
 
 export const PeopleInvite = ({ ...props }: IconProps) => (
   <Svg {...props}>

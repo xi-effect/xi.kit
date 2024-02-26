@@ -1,4 +1,4 @@
-import { Svg, IconProps  } from '../Svg';
+import { Svg, IconProps } from '../Svg';
 
 export const Palette = ({ ...props }: IconProps) => (
   <Svg {...props}>

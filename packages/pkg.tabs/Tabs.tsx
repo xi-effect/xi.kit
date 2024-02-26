@@ -19,12 +19,13 @@ const List = React.forwardRef<
   }, []);
 
   const handleOnClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if ((event.target as HTMLButtonElement).type !== "button") return;
+    if ((event.target as HTMLButtonElement).type !== 'button') return;
     if (!shadowRef.current) return;
 
     shadowRef.current.setAttribute(
       'style',
-      `left: ${(event.target as HTMLElement).offsetLeft}px; width: ${(event.target as HTMLElement).clientWidth
+      `left: ${(event.target as HTMLElement).offsetLeft}px; width: ${
+        (event.target as HTMLElement).clientWidth
       }px`,
     );
     onClick?.(event);
@@ -34,13 +35,13 @@ const List = React.forwardRef<
     <TabsPrimitive.List
       ref={ref}
       onClick={handleOnClick}
-      className={cn('flex relative border-b-2 border-gray-10 items-center', className)}
+      className={cn('border-gray-10 relative flex items-center border-b-2', className)}
       {...props}
     >
       <div
         ref={shadowRef}
         id="shadow"
-        className="absolute duration-300 rounded-md transition-[left,width] h-0.5 -bottom-0.5 bg-brand-80"
+        className="bg-brand-80 absolute -bottom-0.5 h-0.5 rounded-md transition-[left,width] duration-300"
       ></div>
       {children}
     </TabsPrimitive.List>
@@ -55,7 +56,7 @@ const Trigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      'flex text-center bg-transparent cursor-pointer data-[state=active]:hover:cursor-default grow items-center justify-center whitespace-nowrap pb-1 disabled:pointer-events-none disabled:opacity-50 text-gray-80 data-[state=active]:text-gray-100',
+      'text-gray-80 flex grow cursor-pointer items-center justify-center whitespace-nowrap bg-transparent pb-1 text-center disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-100 data-[state=active]:hover:cursor-default',
       className,
     )}
     {...props}
@@ -70,7 +71,7 @@ const Content = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      'mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+      'ring-offset-background focus-visible:ring-ring mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
       className,
     )}
     {...props}

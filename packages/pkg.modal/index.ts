@@ -6,5 +6,5 @@ export {
   DialogFooter as ModalFooter,
   DialogTitle as ModalTitle,
   DialogDescription as ModalDescription,
-  DialogCloseButton as ModalCloseButton
+  DialogCloseButton as ModalCloseButton,
 } from './Modal';

@@ -20,22 +20,22 @@ export const File = ({ name, url, size, icon, onDelete, className }: FileProps) 
   return (
     <div
       className={cn(
-        'relative max-w-[377px] items-center flex h-[4.5rem] border border-gray-10 rounded-lg transition bg-gray-0 hover:bg-gray-10',
+        'border-gray-10 bg-gray-0 hover:bg-gray-10 relative flex h-[4.5rem] max-w-[377px] items-center rounded-lg border transition',
         className,
       )}
     >
       <Link
         href={url}
         download={name}
-        className="w-full py-2 pr-[14px] pl-3 text-decoration-none flex items-center gap-2"
+        className="text-decoration-none flex w-full items-center gap-2 py-2 pl-3 pr-[14px]"
       >
-        <div className="relative flex items-center justify-center w-12 h-12 shrink-0">
+        <div className="relative flex h-12 w-12 shrink-0 items-center justify-center">
           {!icon ? <FileIcon /> : <Image src={icon} alt={name} className="rounded" fill />}
         </div>
 
-        <div className="flex flex-col overflow-hidden text-left grow">
-          <p className="font-medium leading-[22px] text-gray-100 truncate">{name}</p>
-          <p className="text-sm leading-[20px] mt-0.5 text-gray-80">{formatBytesSize(size)}</p>
+        <div className="flex grow flex-col overflow-hidden text-left">
+          <p className="truncate font-medium leading-[22px] text-gray-100">{name}</p>
+          <p className="text-gray-80 mt-0.5 text-sm leading-[20px]">{formatBytesSize(size)}</p>
         </div>
         {onDelete && (
           <button
@@ -43,7 +43,7 @@ export const File = ({ name, url, size, icon, onDelete, className }: FileProps) 
               e.preventDefault();
               onDelete(name);
             }}
-            className="p-1 transition bg-transparent rounded-full hover:bg-gray-0"
+            className="hover:bg-gray-0 rounded-full bg-transparent p-1 transition"
           >
             <Close />
           </button>

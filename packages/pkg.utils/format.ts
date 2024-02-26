@@ -1,6 +1,5 @@
 import { plural } from '@xipkg/utils';
 
-
 const FILE_SIZES = ['байт', 'Кб', 'Мб', 'Гб', 'Тб'];
 const pluralByteForms = ['байт', 'байта', 'байтов'];
 // coefficient bytes to Kb

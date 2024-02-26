@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { LayoutPages } from 'components/LayoutPages';
 import { ThemeProvider } from 'next-themes';
@@ -9,7 +9,9 @@ export function Providers(props) {
 
   return (
     <>
-      <ThemeProvider attribute="data-theme"><LayoutPages>{children}</LayoutPages></ThemeProvider>
+      <ThemeProvider attribute="data-theme">
+        <LayoutPages>{children}</LayoutPages>
+      </ThemeProvider>
     </>
   );
 }

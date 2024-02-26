@@ -29,7 +29,7 @@ export const File: FC<FileProps> = ({
   onAbortRequestClick,
 }) => {
   const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
-		isPending || isSucceeded ? onAbortRequestClick?.() : onDeleteClick?.();
+    isPending || isSucceeded ? onAbortRequestClick?.() : onDeleteClick?.();
     stopDefaultEvents(e);
   };
 
@@ -37,7 +37,7 @@ export const File: FC<FileProps> = ({
     <div className={containerStyles({ size })}>
       <p
         className={cn(
-          'break-all transition truncate pr-2.5',
+          'truncate break-all pr-2.5 transition',
           !!error ? 'text-red-80' : 'text-gray-90',
         )}
       >
@@ -50,7 +50,7 @@ export const File: FC<FileProps> = ({
         {name}
       </p>
 
-      <div className="flex [&_svg]:w-full [&_svg]:h-full items-center justify-center w-4 f-4 shrink-0">
+      <div className="f-4 flex w-4 shrink-0 items-center justify-center [&_svg]:h-full [&_svg]:w-full">
         <div className="group-hover:hidden">
           {(isSucceeded && <Check />) || (isPending && <Spinner />)}
         </div>

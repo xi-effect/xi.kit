@@ -1,4 +1,4 @@
-import { Svg, IconProps  } from '../Svg';
+import { Svg, IconProps } from '../Svg';
 
 export const Announce = ({ ...props }: IconProps) => (
   <Svg {...props}>

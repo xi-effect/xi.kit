@@ -56,7 +56,10 @@ export default function ModalDemo() {
           <Button>Edit Profile</Button>
         </ModalTrigger>
         <ModalContent variant="full">
-          <ModalCloseButton className="h-10 w-10 ml-auto sm:absolute bg-transparent flex p-2 sm:top-0 xl:top-0 right-[16px] sm:right-0 xl:right-[-56px]" variant="full">
+          <ModalCloseButton
+            className="h-10 w-10 ml-auto sm:absolute bg-transparent flex p-2 sm:top-0 xl:top-0 right-[16px] sm:right-0 xl:right-[-56px]"
+            variant="full"
+          >
             <Close />
           </ModalCloseButton>
           <ModalHeader>

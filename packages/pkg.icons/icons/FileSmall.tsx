@@ -1,4 +1,4 @@
-import { Svg, IconProps  } from '../Svg';
+import { Svg, IconProps } from '../Svg';
 
 export const FileSmall = ({ ...props }: IconProps) => (
   <Svg {...props}>

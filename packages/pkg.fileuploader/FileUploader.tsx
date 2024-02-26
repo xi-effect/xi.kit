@@ -169,7 +169,7 @@ export const FileUploader = ({
             </p>
 
             {isLarge && (
-              <p className="text-xs group-hover:text-brand-60 text-brand-40">
+              <p className="group-hover:text-brand-60 text-brand-40 text-xs">
                 {descriptionText ||
                   `${extensions.map((el) => el.toUpperCase()).join(', ')} до ${formatedSizeLimit}`}
               </p>

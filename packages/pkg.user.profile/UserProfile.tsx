@@ -60,7 +60,7 @@ export const UserProfile = ({
   classNameLabel,
   src,
   preview,
-  size = "m",
+  size = 'm',
   text,
   label,
   ...props

@@ -1,4 +1,4 @@
-import { Svg, IconProps  } from '../Svg';
+import { Svg, IconProps } from '../Svg';
 
 export const ArrowRight = ({ ...props }: IconProps) => (
   <Svg {...props}>
