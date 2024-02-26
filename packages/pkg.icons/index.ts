@@ -97,7 +97,9 @@ import { Speaker } from './icons/Speaker';
 import { Sun } from './icons/Sun';
 import { Task } from './icons/Task';
 import { TaskFile } from './icons/TaskFile';
+import { ThinArrowRight } from './icons/ThinArrowRight';
 import { Telegram } from './icons/Telegram';
+import { TelegramFilled } from './icons/TelegramFilled';
 import { Text } from './icons/Text';
 import { Trash } from './icons/Trash';
 import { Ul } from './icons/Ul';
@@ -216,6 +218,8 @@ export {
   Stroke,
   Task,
   TaskFile,
+  ThinArrowRight,
+  TelegramFilled,
   Telegram,
   Text,
   Trash,

@@ -113,4 +113,6 @@ export const icons = [
   'CaretUp',
   'Conference',
   'Group',
+  'ThinArrowRight',
+  'TelegramFilled',
 ];
