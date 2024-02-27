@@ -51,7 +51,7 @@ List.displayName = TabsPrimitive.List.displayName;
 
 const Trigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> & { index: number }
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Trigger
     ref={ref}
