@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
@@ -16,7 +16,7 @@
   border-radius: 6px;
   width: 10px;
   background-color: #cccccc;
-}
+} */
 
 svg {
   pointer-events: none;
