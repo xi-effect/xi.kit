@@ -16,6 +16,7 @@ export const linkVariants = cva(
           'decoration-brand-20 hover:decoration-brand-100 text-brand-80 hover:text-brand-100 disabled:text-gray-30',
         error: '',
         success: '',
+        white: 'decoration-gray-5 hover:decoration-gray-5 focus:decoration-gray-5 active:decoration-gray-5 text-gray-10 hover:text-gray-5 focus:text-gray-5 active:text-gray-5'
       },
       variant: {
         always: 'underline decoration-1 underline-offset-4',
