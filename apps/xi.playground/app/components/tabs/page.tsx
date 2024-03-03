@@ -6,11 +6,11 @@ interface TabsDemoProps {}
 
 const TabsDemo = (props: TabsDemoProps) => {
   return (
-    <div className="flex flex-col w-[500PX] gap-4">
+    <div className="flex flex-col w-[500px] gap-4">
       <Tabs.Root onValueChange={console.log} defaultValue="Tab 2222222">
         <Tabs.List>
           {['Tab 1', 'Tab 2222222', 'Tab 33333333333'].map((el, index) => (
-            <Tabs.Trigger key={index} index={index} value={el}>
+            <Tabs.Trigger key={index} value={el}>
               {el}
             </Tabs.Trigger>
           ))}
@@ -22,9 +22,9 @@ const TabsDemo = (props: TabsDemoProps) => {
         ))}
       </Tabs.Root>
       <Tabs.Root onValueChange={console.log} defaultValue="Tab 1">
-        <Tabs.List>
+        <Tabs.List className="border-0 gap-8" classNameShadow='h-[4px] rounded-b-none rounded-t-[2px]'>
           {['Tab 1', 'Tab 2222222', 'Tab 33333333333'].map((el, index) => (
-            <Tabs.Trigger key={index} index={index} value={el}>
+            <Tabs.Trigger key={index} value={el}>
               {el}
             </Tabs.Trigger>
           ))}

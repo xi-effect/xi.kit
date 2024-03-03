@@ -8,8 +8,8 @@ const Root = TabsPrimitive.Root;
 
 const List = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
->(({ className, children, onClick, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> & { classNameShadow?: string }
+>(({ className, classNameShadow = '', children, onClick, ...props }, ref) => {
   const shadowRef = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
@@ -41,7 +41,7 @@ const List = React.forwardRef<
       <div
         ref={shadowRef}
         id="shadow"
-        className="bg-brand-80 absolute -bottom-0.5 h-0.5 rounded-md transition-[left,width] duration-300"
+        className={`bg-brand-80 absolute -bottom-0.5 h-0.5 rounded-md transition-[left,width] duration-300 ${classNameShadow}`}
       ></div>
       {children}
     </TabsPrimitive.List>
