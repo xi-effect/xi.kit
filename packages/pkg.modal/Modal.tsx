@@ -72,25 +72,37 @@ export const dialogCloseButtonVariants = cva('', {
   variants: {
     variant: {
       default:
-        'fixed top-8 right-6 sm:top-6 sm:right-[-56px] flex flex-row w-10 h-10 items-start pt-2 px-2 rounded-[20px] bg-gray-5 sm:bg-gray-80',
+        'fixed top-8 right-6 flex flex-row w-10 h-10 items-start pt-2 px-2 rounded-[20px] bg-gray-5',
       full: 'fixed z-50 bg-transparent',
       noStyle: '',
+    },
+    breakpoint: {
+      sm: 'sm:top-6 sm:right-[-56px] sm:bg-gray-80',
+      lg: 'lg:top-6 lg:right-[-56px] lg:bg-gray-80',
+      md: 'md:top-6 md:right-[-56px] md:bg-gray-80',
     },
   },
   defaultVariants: {
     variant: 'default',
+    breakpoint: 'sm',
   },
 });
 
 export interface DialogCloseButtonProps
-  extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close> {
-  variant?: 'default' | 'full' | 'noStyle';
+  extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close>,
+    VariantProps<typeof dialogCloseButtonVariants> {
   icon?: React.ReactNode;
 }
 
-const DialogCloseButton = ({ variant, className, children, ...props }: DialogCloseButtonProps) => (
+const DialogCloseButton = ({
+  variant,
+  breakpoint,
+  className,
+  children,
+  ...props
+}: DialogCloseButtonProps) => (
   <DialogPrimitive.Close
-    className={cn(dialogCloseButtonVariants({ variant, className }))}
+    className={cn(dialogCloseButtonVariants({ variant, breakpoint, className }))}
     {...props}
   >
     {children}
