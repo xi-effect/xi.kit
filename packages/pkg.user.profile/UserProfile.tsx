@@ -67,7 +67,7 @@ export interface UserProfileProps
     VariantProps<typeof userProfileVariants> {
   src?: string;
   preview?: string;
-  userId: number;
+  userId: number | null;
   color?: 'brand';
   withOutText?: boolean;
   text?: string;
@@ -105,7 +105,7 @@ export const UserProfile = ({
 
   return (
     <div className={cn(userProfileVariants({ size }), className)} {...props}>
-      {showAvatar ? (
+      {showAvatar && !!userId ? (
         <Image
           src={`https://auth.xieffect.ru/api/users/${userId}/avatar.webp`}
           width={avatarSize}
