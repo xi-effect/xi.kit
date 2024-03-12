@@ -4,7 +4,7 @@ import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@xipkg/utils';
-import Image, { type ImageProps } from 'next/image';
+import Image from 'next/image';
 
 export const avatarVariants = cva('flex items-center justify-center font-semibold', {
   variants: {
@@ -37,12 +37,11 @@ const imageStyle = {
   borderRadius: '50%',
 };
 
-export interface AvatarProps extends VariantProps<typeof avatarVariants> {
-  text?: string;
-  className?: string;
-  src?: string;
-  alt?: string;
-}
+export type AvatarProps = React.ComponentProps<typeof Image> &
+  VariantProps<typeof avatarVariants> & {
+    text?: string;
+    className?: string;
+  };
 
 export const Avatar = ({
   text,
