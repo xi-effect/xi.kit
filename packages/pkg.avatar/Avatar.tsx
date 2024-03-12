@@ -54,7 +54,7 @@ export const Avatar = ({
 }: AvatarProps) => {
   const avatarSize = size ? sizeMap[size] : 32;
 
-  if (text) return <div className={cn(avatarVariants({ color, size }), className)}>{text}</div>;
+  if (text) return ;
 
   return (
     <Image

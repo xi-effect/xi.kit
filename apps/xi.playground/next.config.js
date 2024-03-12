@@ -26,12 +26,11 @@ const nextConfig = {
     '@xipkg/userprofile',
   ],
   images: {
-    domains: [
-      'cdn.discordapp.com',
-      'localhost:3000',
-      'localhost:5000',
-      'xieffect.ru:5000',
-      'xieffect.ru',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'auth.xieffect.ru',
+      },
     ],
   },
   webpack(config) {
