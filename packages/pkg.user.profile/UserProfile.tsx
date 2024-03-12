@@ -120,7 +120,7 @@ export const UserProfile = ({
           {...avatarProps}
         />
       ) : (
-        <div className={cn(avatarVariants({ color, size }), className)}>{text ? text[1] : ''}</div>
+        <div className={cn(avatarVariants({ color, size }), className)}>{text ? text[0] : ''}</div>
       )}
       {!withOutText && text && label && (
         <div className="flex flex-col">
