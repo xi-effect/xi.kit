@@ -74,7 +74,7 @@ export interface UserProfileProps
   label?: string;
   classNameText?: string;
   classNameLabel?: string;
-  avatarProps: React.ComponentProps<typeof Image>;
+  avatarProps?: React.ComponentProps<typeof Image>;
 }
 
 const sizeMap = {
@@ -117,6 +117,7 @@ export const UserProfile = ({
             console.log('e', e);
             setShowAvatar(false);
           }}
+          {...avatarProps}
         />
       ) : (
         <div className={cn(avatarVariants({ color, size }), className)}>{text ? text[1] : ''}</div>
