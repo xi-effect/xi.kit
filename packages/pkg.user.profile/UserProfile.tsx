@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-import { cn } from '@xipkg/utils';
-import Image from 'next/image';
+import { cn, useSessionStorage } from '@xipkg/utils';
+import Image, { ImageProps } from 'next/image';
 
 export const userProfileVariants = cva('flex flex-row items-center', {
   variants: {
@@ -74,7 +74,7 @@ export interface UserProfileProps
   label?: string;
   classNameText?: string;
   classNameLabel?: string;
-  avatarProps?: React.ComponentProps<typeof Image>;
+  imageProps?: ImageProps;
 }
 
 const sizeMap = {
@@ -97,15 +97,16 @@ export const UserProfile = ({
   color = 'brand',
   text,
   label,
-  avatarProps,
+  imageProps,
   ...props
 }: UserProfileProps) => {
+  const [isAvatar, setIsAvatar] = useSessionStorage('is-avatar', true);
+
   const avatarSize = size ? sizeMap[size] : 32;
-  const [showAvatar, setShowAvatar] = React.useState(true);
 
   return (
     <div className={cn(userProfileVariants({ size }), className)} {...props}>
-      {showAvatar && !!userId ? (
+      {isAvatar && !!userId ? (
         <Image
           src={`https://auth.xieffect.ru/api/users/${userId}/avatar.webp`}
           width={avatarSize}
@@ -113,11 +114,15 @@ export const UserProfile = ({
           alt="user avatar"
           unoptimized
           style={{ borderRadius: '50%', cursor: 'pointer' }}
-          onError={(e) => {
-            console.log('e', e);
-            setShowAvatar(false);
+          onLoadingComplete={(e) => {
+            console.log('onLoadingComplete', e);
+            setIsAvatar(true);
           }}
-          {...avatarProps}
+          onError={(e) => {
+            console.log('onError', e);
+            setIsAvatar(false);
+          }}
+          {...imageProps}
         />
       ) : (
         <div className={cn(avatarVariants({ color, size }), className)}>{text ? text[0] : ''}</div>
