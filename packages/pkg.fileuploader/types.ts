@@ -4,6 +4,8 @@ export type SizeType = 'large' | 'medium' | 'small';
 export type FileSizeType = 'medium' | 'small';
 
 export type FileUploaderProps = {
+  withError?: boolean;
+  withLargeError?: boolean;
   size?: SizeType;
   multiple?: boolean;
   limit?: number;

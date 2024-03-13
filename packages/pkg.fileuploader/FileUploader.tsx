@@ -49,12 +49,14 @@ const titleStyles = cva('text-sm text-center', {
   },
 });
 
-export const DEFAULT_EXTENSIONS = ['jpg', 'gif', 'png', 'pdf', 'zip'] as const;
+export const DEFAULT_EXTENSIONS = ['webp', 'jpg', 'gif', 'png', 'pdf', 'zip'] as const;
 const DEFAULT_SIZE_LIMIT = 6 * 1024 * 1024; // 6 MB
 
 const pluralFiles = ['файла', 'файлов', 'файлов'];
 
 export const FileUploader = ({
+  withError = true,
+  withLargeError = true,
   size = 'large',
   descriptionText,
   multiple,
@@ -168,7 +170,7 @@ export const FileUploader = ({
               )}
             </p>
 
-            {isLarge && (
+            {isLarge && withLargeError && (
               <p className="group-hover:text-brand-60 text-brand-40 text-xs">
                 {descriptionText ||
                   `${extensions.map((el) => el.toUpperCase()).join(', ')} до ${formatedSizeLimit}`}
@@ -179,7 +181,7 @@ export const FileUploader = ({
           </div>
         )}
       </label>
-      {error && <p className="mt-4 text-sm leading-5 text-gray-100">{error}</p>}
+      {error && withError && <p className="mt-4 text-sm leading-5 text-gray-100">{error}</p>}
     </div>
   );
 };
