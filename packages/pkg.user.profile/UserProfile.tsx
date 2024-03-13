@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-import { cn, useSessionStorage } from '@xipkg/utils';
+import { cn } from '@xipkg/utils';
 import Image, { ImageProps } from 'next/image';
 
 export const userProfileVariants = cva('flex flex-row items-center', {
@@ -65,6 +65,8 @@ export const avatarVariants = cva('flex items-center justify-center font-semibol
 export interface UserProfileProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof userProfileVariants> {
+  isAvatar: boolean;
+  setIsAvatar: (value: { [key in string]: boolean }) => void;
   src?: string;
   preview?: string;
   userId: number | null;
@@ -86,6 +88,8 @@ const sizeMap = {
 };
 
 export const UserProfile = ({
+  isAvatar,
+  setIsAvatar,
   className,
   classNameText,
   classNameLabel,
@@ -100,8 +104,6 @@ export const UserProfile = ({
   imageProps,
   ...props
 }: UserProfileProps) => {
-  const [isAvatar, setIsAvatar] = useSessionStorage('is-avatar', true);
-
   const avatarSize = size ? sizeMap[size] : 32;
 
   return (
@@ -116,11 +118,11 @@ export const UserProfile = ({
           style={{ borderRadius: '50%', cursor: 'pointer' }}
           onLoadingComplete={(e) => {
             console.log('onLoadingComplete', e);
-            setIsAvatar(true);
+            setIsAvatar({ isAvatar: true });
           }}
           onError={(e) => {
             console.log('onError', e);
-            setIsAvatar(false);
+            setIsAvatar({ isAvatar: false });
           }}
           {...imageProps}
         />
