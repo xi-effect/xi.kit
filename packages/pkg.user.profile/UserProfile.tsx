@@ -98,7 +98,7 @@ export const UserProfile = ({
           }}
           alt="user avatar"
         />
-        <AvatarFallback>{text[0].toUpperCase()}</AvatarFallback>
+        <AvatarFallback size={size}>{text[0].toUpperCase()}</AvatarFallback>
       </Avatar>
       {!withOutText && text && label && (
         <div className="flex flex-col">
