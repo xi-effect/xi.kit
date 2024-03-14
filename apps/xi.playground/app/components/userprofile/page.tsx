@@ -11,9 +11,9 @@ export default function UserProfileDemo() {
         <UserProfile userId={2} text="Ivan Kovylyaev" label="@ikovylyaev" size="l" />
         <UserProfile userId={2} text="Ivan Kovylyaev" label="@ikovylyaev" size="m" />
         <UserProfile userId={2} text="Ivan Kovylyaev" label="@ikovylyaev" size="s" />
-        <UserProfile userId={2} preview="МК" text="Ivan Kovylyaev" label="@ikovylyaev" size="l" />
-        <UserProfile userId={2} preview="МК" text="Ivan Kovylyaev" label="@ikovylyaev" size="m" />
-        <UserProfile userId={2} preview="МК" text="Ivan Kovylyaev" label="@ikovylyaev" size="s" />
+        <UserProfile userId={0} text="Ivan Kovylyaev" label="@ikovylyaev" size="l" />
+        <UserProfile userId={0} text="Ivan Kovylyaev" label="@ikovylyaev" size="m" />
+        <UserProfile userId={0} text="Ivan Kovylyaev" label="@ikovylyaev" size="s" />
       </div>
     </>
   );

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 
 import { cn } from '@xipkg/utils';
-import Image, { ImageProps } from 'next/image';
+import { Avatar, AvatarFallback, AvatarImage } from '@xipkg/avatar';
 
 export const userProfileVariants = cva('flex flex-row items-center', {
   variants: {
@@ -62,73 +62,44 @@ export const avatarVariants = cva('flex items-center justify-center font-semibol
   },
 });
 
-export interface UserProfileProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof userProfileVariants> {
-  isAvatar: boolean;
-  setIsAvatar: (value: { [key in string]: boolean }) => void;
+export interface UserProfileProps extends React.HTMLAttributes<HTMLDivElement> {
+  size?: 'l' | 'm' | 's';
   src?: string;
-  preview?: string;
   userId: number | null;
   color?: 'brand';
   withOutText?: boolean;
-  text?: string;
+  text: string;
   label?: string;
   classNameText?: string;
   classNameLabel?: string;
-  imageProps?: ImageProps;
 }
 
-const sizeMap = {
-  xxl: 128,
-  xl: 64,
-  l: 48,
-  m: 32,
-  s: 24,
-};
-
 export const UserProfile = ({
-  isAvatar,
-  setIsAvatar,
   className,
   classNameText,
   classNameLabel,
   withOutText = false,
   userId,
   src,
-  preview,
   size = 'm',
   color = 'brand',
   text,
   label,
-  imageProps,
   ...props
 }: UserProfileProps) => {
-  const avatarSize = size ? sizeMap[size] : 32;
-
   return (
     <div className={cn(userProfileVariants({ size }), className)} {...props}>
-      {isAvatar && !!userId ? (
-        <Image
+      <Avatar size={size}>
+        <AvatarImage
           src={`https://auth.xieffect.ru/api/users/${userId}/avatar.webp`}
-          width={avatarSize}
-          height={avatarSize}
+          imageProps={{
+            src: `https://auth.xieffect.ru/api/users/${userId}/avatar.webp`,
+            alt: 'user avatar',
+          }}
           alt="user avatar"
-          unoptimized
-          style={{ borderRadius: '50%', cursor: 'pointer' }}
-          onLoadingComplete={(e) => {
-            console.log('onLoadingComplete', e);
-            setIsAvatar({ isAvatar: true });
-          }}
-          onError={(e) => {
-            console.log('onError', e);
-            setIsAvatar({ isAvatar: false });
-          }}
-          {...imageProps}
         />
-      ) : (
-        <div className={cn(avatarVariants({ color, size }), className)}>{text ? text[0] : ''}</div>
-      )}
+        <AvatarFallback>{text[0].toUpperCase()}</AvatarFallback>
+      </Avatar>
       {!withOutText && text && label && (
         <div className="flex flex-col">
           <span className={cn(userProfileTextVariants({ size }), classNameText)}>{text}</span>
