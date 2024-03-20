@@ -47,6 +47,8 @@ module.exports = {
     indent: 'off',
     'react/jsx-wrap-multilines': 'off',
     'react/jsx-curly-newline': 'off',
+    'react/jsx-one-expression-per-line': 'off',
+    'no-irregular-whitespace': 'off',
     'operator-linebreak': 'off',
     'no-confusing-arrow': 'off',
     'function-paren-newline': 'off',
