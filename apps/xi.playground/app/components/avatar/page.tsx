@@ -26,15 +26,6 @@ const AvatarPage = () => (
       />
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
-    {/* <Avatar text="МК" size="xl" />
-    <Avatar text="МК" size="l" />
-    <Avatar text="МК" size="m" />
-    <Avatar text="МК" size="s" />
-    <Avatar src="/avatar.jpg" />
-    <Avatar src="/avatar.jpg" size="xl" />
-    <Avatar src="/avatar.jpg" size="l" />
-    <Avatar src="/avatar.jpg" size="m" />
-    <Avatar src="/avatar.jpg" size="s" /> */}
   </div>
 );
 
