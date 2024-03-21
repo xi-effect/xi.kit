@@ -54,5 +54,13 @@ module.exports = {
     'function-paren-newline': 'off',
     'newline-per-chained-call': 'off',
     '@next/next/no-html-link-for-pages': 'off',
+    "quote-props": [
+      "warn",
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "quotes": [
+      "warn",
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
   },
 };
