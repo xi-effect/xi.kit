@@ -53,5 +53,6 @@ module.exports = {
     'no-confusing-arrow': 'off',
     'function-paren-newline': 'off',
     'newline-per-chained-call': 'off',
+    '@next/next/no-html-link-for-pages': 'off',
   },
 };
