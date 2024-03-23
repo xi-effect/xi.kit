@@ -5,7 +5,6 @@ const nextConfig = {
   transpilePackages: [
     'tailwind',
     '@xipkg/modal',
-    '@xipkg/mui',
     '@xipkg/tailwind',
     '@xipkg/typescript',
     '@xipkg/icons',
@@ -24,6 +23,8 @@ const nextConfig = {
     '@xipkg/toggle',
     '@xipkg/avatar',
     '@xipkg/userprofile',
+    '@xipkg/calendar',
+    '@xipkg/utils'
   ],
   images: {
     remotePatterns: [

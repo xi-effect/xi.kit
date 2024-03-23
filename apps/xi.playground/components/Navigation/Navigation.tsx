@@ -82,6 +82,10 @@ const menuArray = [
     link: '/components/tabs',
     label: 'Tabs',
   },
+  {
+    link: '/components/calendar',
+    label: 'Calendar',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
