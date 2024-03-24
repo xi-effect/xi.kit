@@ -35,6 +35,8 @@
     "icons/Close.tsx",
     "icons/Code.tsx",
     "icons/Copy.tsx",
+    "icons/Crown.tsx",
+    "icons/CrossCircle.tsx",
     "icons/Download.tsx",
     "icons/Edit.tsx",
     "icons/Emotions.tsx",

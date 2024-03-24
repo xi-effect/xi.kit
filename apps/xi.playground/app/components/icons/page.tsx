@@ -77,6 +77,8 @@ import {
   CaretUp,
   Conference,
   Group,
+  Crown,
+  CrossCircle,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -158,6 +160,8 @@ const iconsDict = [
   <CaretUp />,
   <Conference />,
   <Group />,
+  <Crown />,
+  <CrossCircle />,
 ];
 
 const iconsDictNames = [
@@ -239,6 +243,8 @@ const iconsDictNames = [
   'CaretUp',
   'Conference',
   'Group',
+  'Crown',
+  'CrossCircle',
 ];
 
 const Icons = () => (
