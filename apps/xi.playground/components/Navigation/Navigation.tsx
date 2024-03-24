@@ -86,6 +86,14 @@ const menuArray = [
     link: '/components/calendar',
     label: 'Calendar',
   },
+  {
+    link: '/components/datepicker',
+    label: 'DatePicker',
+  },
+  {
+    link: '/components/popover',
+    label: 'Popover',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {

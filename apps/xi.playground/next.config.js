@@ -24,7 +24,8 @@ const nextConfig = {
     '@xipkg/avatar',
     '@xipkg/userprofile',
     '@xipkg/calendar',
-    '@xipkg/utils'
+    '@xipkg/utils',
+    '@xipkg/popover'
   ],
   images: {
     remotePatterns: [

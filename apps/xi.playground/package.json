@@ -33,6 +33,7 @@
     "@xipkg/userprofile": "*",
     "@xipkg/calendar": "*",
     "@xipkg/tabs": "*",
+    "@xipkg/popover": "*",
     "next": "^13.5.6",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
