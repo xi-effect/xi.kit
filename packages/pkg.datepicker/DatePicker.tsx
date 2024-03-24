@@ -1,34 +1,34 @@
 'use client';
 
 import * as React from 'react';
-import { format } from 'date-fns';
-import { Calendar as CalendarIcon } from 'lucide-react';
 
 import { cn } from '@xipkg/utils';
-import { Button } from '@xipkg/button';
 import { Calendar } from '@xipkg/calendar';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { ru } from 'date-fns/locale';
+import { Popover, PopoverContent, PopoverTrigger } from '@xipkg/popover';
 
-export function DatePickerDemo() {
-  const [date, setDate] = React.useState<Date>();
+type DatePickerPropsT = {
+  children: React.ReactNode;
+  classNamePopoverTrigger?: string;
+  classNamePopoverContent?: string;
+} & React.ComponentProps<typeof Calendar>;
 
+const DatePicker = ({
+  children,
+  classNamePopoverTrigger,
+  classNamePopoverContent,
+  ...calendarProps
+}: DatePickerPropsT) => {
   return (
     <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          variant="default"
-          className={cn(
-            'w-[280px] justify-start text-left font-normal',
-            !date && 'text-muted-foreground',
-          )}
-        >
-          <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? format(date, 'PPP') : <span>Pick a date</span>}
-        </Button>
+      <PopoverTrigger className={classNamePopoverTrigger} asChild>
+        {children}
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0">
-        <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
+      <PopoverContent className={cn('w-auto p-0', classNamePopoverContent)}>
+        <Calendar {...calendarProps} locale={ru} />
       </PopoverContent>
     </Popover>
   );
-}
+};
+
+export { DatePicker };
