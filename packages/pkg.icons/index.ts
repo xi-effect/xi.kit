@@ -116,6 +116,7 @@ import { Plus } from './icons/Plus';
 import { CaretUp } from './icons/CaretUp';
 import { Conference } from './icons/Conference';
 import { Group } from './icons/Group';
+import { Crown } from './icons/Crown';
 import { icons } from './config';
 
 export {
@@ -237,6 +238,7 @@ export {
   CaretUp,
   Conference,
   Group,
+  Crown,
   icons,
 };
 

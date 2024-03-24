@@ -32,6 +32,8 @@ export const icons = [
   'Collapse',
   'ColorPicker',
   'Copy',
+  'Crown',
+  'CrossCircle',
   'Divider',
   'Download',
   'Edit',
