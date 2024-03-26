@@ -11,6 +11,7 @@ const List = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> & { classNameShadow?: string }
 >(({ className, classNameShadow = '', children, onClick, ...props }, ref) => {
   const shadowRef = React.useRef<HTMLDivElement | null>(null);
+	const shadowKey = React.useId()
 
   React.useEffect(() => {
     if (!shadowRef.current) return;
@@ -39,6 +40,7 @@ const List = React.forwardRef<
       {...props}
     >
       <div
+				key={shadowKey}
         ref={shadowRef}
         id="shadow"
         className={`bg-brand-80 absolute -bottom-0.5 h-0.5 rounded-md transition-[left,width] duration-300 ${classNameShadow}`}
