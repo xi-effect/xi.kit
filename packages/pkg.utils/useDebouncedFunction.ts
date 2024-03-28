@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef } from 'react';
 
 type DebouncedFunction<F extends (...args: any[]) => any> = (...args: Parameters<F>) => void;
