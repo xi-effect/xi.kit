@@ -1,6 +1,6 @@
 {
-  "name": "pkg.router.url",
-  "version": "0.0.0",
+  "name": "@xipkg/routerurl",
+  "version": "0.1.0",
   "main": "./index.tsx",
   "types": "./index.tsx",
   "license": "MIT",
