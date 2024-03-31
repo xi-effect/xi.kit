@@ -1,3 +1,5 @@
+'use client';
+
 import { ReadonlyURLSearchParams } from 'next/navigation';
 
 type DeleteQueryT = {
