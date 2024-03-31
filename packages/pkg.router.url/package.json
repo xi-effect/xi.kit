@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/routerurl",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "./index.tsx",
   "types": "./index.tsx",
   "license": "MIT",
@@ -19,6 +19,9 @@
     "@xipkg/eslint": "1.4.0",
     "@xipkg/typescript": "latest",
     "typescript": "^5.4.2"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "description": "utility to work with router/url",
   "author": "xi.effect"
