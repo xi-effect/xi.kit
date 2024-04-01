@@ -83,7 +83,7 @@ export const UserProfile = ({
   src,
   size = 'm',
   color = 'brand',
-  text,
+  text = "T",
   label,
   ...props
 }: UserProfileProps) => {
