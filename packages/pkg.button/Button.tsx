@@ -18,7 +18,7 @@ export const buttonVariants = cva(
         success:
           'bg-green-80 text-gray-0 hover:bg-green-100 active:bg-green-100 focus:bg-green-100',
         secondary_error: 
-          'bg-red-0 text-red-100 border-2 border-2-red-100 disabled:text-red-20 disabled:border-red-20 hover:bg-red-20 active:bg-red-20 focus:bg-red-20',
+          'bg-red-0 text-red-100 border-2 border-red-100 disabled:text-red-20 disabled:border-red-20 hover:bg-red-20 active:bg-red-20 focus:bg-red-20',
       },
       size: {
         l: 'h-14 rounded-xl px-8 text-[20px] pb-[3px]',
