@@ -19,6 +19,9 @@ export default function ButtonPage() {
         Small
       </Button>
       <Button size="l">Large</Button>
+      <Button size="s" variant="secondary_error">
+        Secondary Error
+      </Button>
     </div>
   );
 }
