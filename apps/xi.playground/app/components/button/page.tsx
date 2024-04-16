@@ -19,7 +19,7 @@ export default function ButtonPage() {
         Small
       </Button>
       <Button size="l">Large</Button>
-      <Button size="s" variant="secondary_error">
+      <Button size="s" variant="secondary-error">
         Secondary Error
       </Button>
     </div>
