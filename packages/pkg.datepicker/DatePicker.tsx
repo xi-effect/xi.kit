@@ -11,9 +11,9 @@ type DatePickerPropsT = {
   children: React.ReactNode;
   classNamePopoverTrigger?: string;
   classNamePopoverContent?: string;
-  popoverProps: React.ComponentProps<typeof Popover>;
-  popoverTriggerProps: React.ComponentProps<typeof PopoverTrigger>;
-  popoverContentProps: React.ComponentProps<typeof PopoverContent>;
+  popoverProps?: React.ComponentProps<typeof Popover>;
+  popoverTriggerProps?: React.ComponentProps<typeof PopoverTrigger>;
+  popoverContentProps?: React.ComponentProps<typeof PopoverContent>;
 } & React.ComponentProps<typeof Calendar>;
 
 const DatePicker = ({
