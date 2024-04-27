@@ -34,18 +34,29 @@ export const buttonVariants = cva(
         s: 'h-8 rounded-md px-3 text-[14px] pb-[2px]',
       },
     },
+    compoundVariants: [
+      {
+        variant: ['default-spinner', 'secondary-spinner', 'ghost-spinner'],
+        size: 'l',
+        class: 'before:w-8 before:h-8',
+      },
+      {
+        variant: ['default-spinner', 'secondary-spinner', 'ghost-spinner'],
+        size: 'm',
+        class: 'before:w-6 before:h-6',
+      },
+      {
+        variant: ['default-spinner', 'secondary-spinner', 'ghost-spinner'],
+        size: 's',
+        class: 'before:w-4 before:h-4',
+      }
+    ],
     defaultVariants: {
       variant: 'default',
       size: 'm',
     },
   },
 );
-
-const spinnerSize = {
-  l: 'before:w-8 before:h-8',
-  m: 'before:w-6 before:h-6',
-  s: 'before:w-4 before:h-4',
-};
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -56,12 +67,9 @@ export interface ButtonProps
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, children, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button';
-    const spinnerStyles = variant === 'default-spinner' || variant ==='secondary-spinner' ||  variant ==='ghost-spinner' 
-      ? spinnerSize[size || 'm'] 
-      : '';
 
     return (
-      <Comp className={`${cn(buttonVariants({ variant, size, className }))} ${spinnerStyles}`} ref={ref} {...props}>
+      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
         {children}
       </Comp>
     );
