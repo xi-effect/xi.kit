@@ -14,7 +14,7 @@ jobs:
   # build-frodo:
   #   needs: prepare
   #   if: needs.prepare.outputs.xi-frodo == 'true'
-  #   uses: xi-effect/xieffect-actions/.github/workflows/docker-build-nocache.yml@main
+  #   uses: xi-effect/xi.actions/.github/workflows/docker-build-nocache.yml@main
   #   with:
   #     tag: frodo-${{ github.run_id }}
   #     arguments: "APP_NAME=xi.frodo"
