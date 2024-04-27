@@ -4,6 +4,8 @@ import * as React from 'react';
 
 import { cn } from '@xipkg/utils';
 
+const spinner = 'before:content-[""] before:animate-spin before:rounded-full before:border-gray-60 before:border-2 before:border-t-transparent disabled:opacity-100';
+
 export const buttonVariants = cva(
   'inline-flex border-box justify-center items-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
@@ -19,6 +21,12 @@ export const buttonVariants = cva(
           'bg-green-80 text-gray-0 hover:bg-green-100 active:bg-green-100 focus:bg-green-100',
         'secondary-error': 
           'bg-red-0 text-red-100 border-2 border-red-100 disabled:text-red-20 disabled:border-red-20 hover:bg-red-20 active:bg-red-20 focus:bg-red-20',
+        'default-spinner':
+          `bg-gray-10 ${spinner}`,
+        'secondary-spinner':
+          `bg-gray-0 border-gray-30 border-2 ${spinner}`,
+        'ghost-spinner':
+          `bg-gray-0 border-0 ${spinner}`,
       },
       size: {
         l: 'h-14 rounded-xl px-8 text-[20px] pb-[3px]',
@@ -26,6 +34,23 @@ export const buttonVariants = cva(
         s: 'h-8 rounded-md px-3 text-[14px] pb-[2px]',
       },
     },
+    compoundVariants: [
+      {
+        variant: ['default-spinner', 'secondary-spinner', 'ghost-spinner'],
+        size: 'l',
+        class: 'before:w-8 before:h-8 p-0',
+      },
+      {
+        variant: ['default-spinner', 'secondary-spinner', 'ghost-spinner'],
+        size: 'm',
+        class: 'before:w-6 before:h-6 p-0',
+      },
+      {
+        variant: ['default-spinner', 'secondary-spinner', 'ghost-spinner'],
+        size: 's',
+        class: 'before:w-4 before:h-4 p-0',
+      }
+    ],
     defaultVariants: {
       variant: 'default',
       size: 'm',
@@ -42,6 +67,7 @@ export interface ButtonProps
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, children, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button';
+
     return (
       <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props}>
         {children}
