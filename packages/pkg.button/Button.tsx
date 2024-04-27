@@ -56,12 +56,12 @@ export interface ButtonProps
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, children, ...props }, ref) => {
     const Comp = asChild ? Slot : 'button';
-    const isSpinner = variant === 'default-spinner' || variant ==='secondary-spinner' ||  variant ==='ghost-spinner' 
+    const spinnerStyles = variant === 'default-spinner' || variant ==='secondary-spinner' ||  variant ==='ghost-spinner' 
       ? spinnerSize[size || 'm'] 
       : '';
 
     return (
-      <Comp className={`${cn(buttonVariants({ variant, size, className }))} ${isSpinner}`} ref={ref} {...props}>
+      <Comp className={`${cn(buttonVariants({ variant, size, className }))} ${spinnerStyles}`} ref={ref} {...props}>
         {children}
       </Comp>
     );
