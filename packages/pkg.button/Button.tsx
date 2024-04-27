@@ -38,17 +38,17 @@ export const buttonVariants = cva(
       {
         variant: ['default-spinner', 'secondary-spinner', 'ghost-spinner'],
         size: 'l',
-        class: 'before:w-8 before:h-8',
+        class: 'before:w-8 before:h-8 p-0',
       },
       {
         variant: ['default-spinner', 'secondary-spinner', 'ghost-spinner'],
         size: 'm',
-        class: 'before:w-6 before:h-6',
+        class: 'before:w-6 before:h-6 p-0',
       },
       {
         variant: ['default-spinner', 'secondary-spinner', 'ghost-spinner'],
         size: 's',
-        class: 'before:w-4 before:h-4',
+        class: 'before:w-4 before:h-4 p-0',
       }
     ],
     defaultVariants: {
