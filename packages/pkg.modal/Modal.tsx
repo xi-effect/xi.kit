@@ -22,7 +22,7 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      'bg-background/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 backdrop-blur-sm',
+      'bg-gray-100 dark:bg-gray-0 opacity-40 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50',
       className,
     )}
     {...props}
@@ -35,7 +35,7 @@ export const dialogContentVariants = cva(
   {
     variants: {
       variant: {
-        default: 'w-full max-w-lg md:w-full rounded-lg shadow-lg',
+        default: 'w-[calc(100%-16px)] max-w-lg md:w-full rounded-[16px] shadow-xl',
         full: 'w-[100vw] h-[100vh]',
       },
     },
@@ -56,7 +56,7 @@ const DialogContent = React.forwardRef<
   DialogContentProps
 >(({ variant, className, closeClassName, children, ...props }, ref) => (
   <DialogPortal>
-    <DialogOverlay className='bg-gray-0 opacity-40' />
+    <DialogOverlay />
     <DialogPrimitive.Content
       ref={ref}
       className={cn(dialogContentVariants({ variant, className }))}
@@ -77,9 +77,9 @@ export const dialogCloseButtonVariants = cva('', {
       noStyle: '',
     },
     breakpoint: {
-      sm: 'sm:top-6 sm:right-[-56px] sm:bg-gray-80',
-      lg: 'lg:top-6 lg:right-[-56px] lg:bg-gray-80',
-      md: 'md:top-6 md:right-[-56px] md:bg-gray-80',
+      sm: 'sm:top-6 sm:right-[-56px] sm:bg-gray-80 dark:sm:bg-gray-10',
+      lg: 'lg:top-6 lg:right-[-56px] lg:bg-gray-80 dark:lg:bg-gray-10',
+      md: 'md:top-6 md:right-[-56px] md:bg-gray-80 dark:md:bg-gray-10',
     },
   },
   defaultVariants: {
@@ -112,14 +112,14 @@ DialogCloseButton.displayName = 'DialogCloseButton';
 
 const DialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn('border-gray-20 flex flex-col space-y-2 border-b p-6 text-left', className)}
+    className={cn('border-gray-20 flex flex-col space-y-2 border-b p-6 text-left rounded-t-[16px]', className)}
     {...props}
   />
 );
 DialogHeader.displayName = 'DialogHeader';
 
 const DialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('border-gray-20 border-t p-6', className)} {...props} />
+  <div className={cn('border-gray-20 border-t p-6 rounded-b-[16px]', className)} {...props} />
 );
 DialogFooter.displayName = 'DialogFooter';
 

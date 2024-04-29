@@ -24,7 +24,7 @@ export default function ModalDemo() {
         </ModalTrigger>
         <ModalContent className="sm:max-w-[425px]">
           <ModalCloseButton>
-            <Close className="fill-gray-80 sm:fill-gray-0" />
+            <Close className="fill-gray-80 sm:fill-gray-0 dark:fill-gray-80" />
           </ModalCloseButton>
           <ModalHeader>
             <ModalTitle>Edit profile</ModalTitle>
