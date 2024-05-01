@@ -13,10 +13,10 @@ export const ColorButton = () => {
   };
 
   return (
-    <Stack flexDirection="row" alignItems="center" sx={{ p: 2, ml: 'auto' }}>
+    <div className="p-2 ml-auto flex flex-row items-center">
       <Button onClick={changeTheme} variant="secondary">
         Mode
       </Button>
-    </Stack>
+    </div>
   );
 };
