@@ -120,7 +120,8 @@
     "icons/Plus.tsx",
     "icons/CaretUp.tsx",
     "icons/Conference.tsx",
-    "icons/Group.tsx"
+    "icons/Group.tsx",
+    "icons/WhiteBoard.tsx"
   ],
   "exclude": ["dist", "build", "node_modules"]
 }

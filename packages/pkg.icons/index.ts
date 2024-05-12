@@ -116,6 +116,7 @@ import { Plus } from './icons/Plus';
 import { CaretUp } from './icons/CaretUp';
 import { Conference } from './icons/Conference';
 import { Group } from './icons/Group';
+import { WhiteBoard } from './icons/WhiteBoard';
 import { Crown } from './icons/Crown';
 import { icons } from './config';
 
@@ -239,6 +240,7 @@ export {
   Conference,
   Group,
   Crown,
+  WhiteBoard,
   icons,
 };
 

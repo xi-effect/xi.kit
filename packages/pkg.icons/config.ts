@@ -117,4 +117,5 @@ export const icons = [
   'Group',
   'ThinArrowRight',
   'TelegramFilled',
+  'WhiteBoard'
 ];

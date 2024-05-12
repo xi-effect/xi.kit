@@ -83,6 +83,7 @@ import {
   ChevronBottom,
   ChevronRight,
   ChevronLeft,
+  WhiteBoard,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -170,6 +171,7 @@ const iconsDict = [
   <Group />,
   <Crown />,
   <CrossCircle />,
+  <WhiteBoard />,
 ];
 
 const iconsDictNames = [
@@ -257,6 +259,7 @@ const iconsDictNames = [
   'Group',
   'Crown',
   'CrossCircle',
+  'WhiteBoard',
 ];
 
 const Icons = () => (
