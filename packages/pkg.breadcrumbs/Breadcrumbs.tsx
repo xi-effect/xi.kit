@@ -16,7 +16,7 @@ export const breadcrumbsVariants = cva(
           'text-gray-60',
       },
       size: {
-        l: 'text-[16px] leading-[22px]',
+        l: 'text-[16px]',
         m: 'text-[14px]',
         s: 'text-[12px]',
       },
