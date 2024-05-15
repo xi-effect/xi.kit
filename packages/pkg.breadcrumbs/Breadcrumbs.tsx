@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChevronRightIcon } from "@radix-ui/react-icons";
+import { ChevronRight } from "@xipkg/icons";
 import { breadcrumbLink } from './types';
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from 'class-variance-authority';
@@ -10,10 +10,8 @@ export const breadcrumbsVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          'text-brand-40',
-        secondary:
-          'text-gray-60',
+        default: 'text-brand-40',
+        secondary: 'text-gray-60',
       },
       size: {
         l: 'text-[16px]',
@@ -32,13 +30,18 @@ export const separatorVariants = cva(
   '',
   {
     variants: {
-      size: {
-        l: '[&>svg]:size-[16px]',
-        m: '[&>svg]:size-[14px]',
-        s: '[&>svg]:size-[12px]',
-      },
+      variant: {
+        default: '[&>svg]:fill-brand-40',
+        secondary: '[&>svg]:fill-gray-60',
+        },
+        size: {
+          l: '[&>svg]:size-[16px]',
+          m: '[&>svg]:size-[14px]',
+          s: '[&>svg]:size-[12px]',
+        },
     },
     defaultVariants: {
+      variant: 'default',
       size: 'm',
     },
   }
@@ -136,7 +139,7 @@ const BreadcrumbSeparator = ({
     className={cn(separatorSize, className)}
     {...props}
   >
-    {children ?? <ChevronRightIcon />}
+    {children ?? <ChevronRight />}
   </span>
 );
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
@@ -164,7 +167,7 @@ export const Breadcrumbs = React.forwardRef<
               (
               <>
                 <BreadcrumbLink href="/">{item.name}</BreadcrumbLink>
-                <BreadcrumbSeparator separatorSize={separatorVariants({ size })}/>
+                <BreadcrumbSeparator separatorSize={separatorVariants({ variant, size })}/>
               </>
               )
               : <BreadcrumbPage className={cn(pageVariants({ variant }))}>{item.name}</BreadcrumbPage>
