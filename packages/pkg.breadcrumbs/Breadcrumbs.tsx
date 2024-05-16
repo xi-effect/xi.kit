@@ -10,13 +10,13 @@ export const breadcrumbsVariants = cva(
   {
     variants: {
       variant: {
-        default: 'text-brand-40',
-        secondary: 'text-gray-60',
+        default: 'text-brand-40 [&_svg]:fill-brand-40 [&_span]:text-brand-80',
+        secondary: 'text-gray-60 [&_svg]:fill-gray-60 [&_span]:text-gray-100',
       },
       size: {
-        l: 'text-[16px]',
-        m: 'text-[14px]',
-        s: 'text-[12px]',
+        l: 'text-[16px] [&_svg]:size-[16px]',
+        m: 'text-[14px] [&_svg]:size-[14px]',
+        s: 'text-[12px] [&_svg]:size-[12px]',
       },
     },
     defaultVariants: {
@@ -26,60 +26,19 @@ export const breadcrumbsVariants = cva(
   }
 );
 
-export const separatorVariants = cva(
-  '',
-  {
-    variants: {
-      variant: {
-        default: '[&>svg]:fill-brand-40',
-        secondary: '[&>svg]:fill-gray-60',
-        },
-        size: {
-          l: '[&>svg]:size-[16px]',
-          m: '[&>svg]:size-[14px]',
-          s: '[&>svg]:size-[12px]',
-        },
-    },
-    defaultVariants: {
-      variant: 'default',
-      size: 'm',
-    },
-  }
-);
-
-export const pageVariants = cva(
-  '',
-  {
-    variants: {
-      variant: {
-        default:
-          'text-brand-80',
-        secondary:
-          'text-gray-100',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-    },
-  }
-);
-
-const BreadcrumbList = React.forwardRef<
+export const BreadcrumbList = React.forwardRef<
   HTMLOListElement,
   React.ComponentPropsWithoutRef<"ul">
 >(({ className, ...props }, ref) => (
   <ul
     ref={ref}
-    className={cn(
-      "flex flex-wrap items-center gap-[2px] break-words",
-      className
-    )}
+    className={cn("flex flex-wrap items-center gap-[2px] break-words", className)}
     {...props}
   />
 ));
 BreadcrumbList.displayName = "BreadcrumbList";
 
-const BreadcrumbItem = React.forwardRef<
+export const BreadcrumbItem = React.forwardRef<
   HTMLLIElement,
   React.ComponentPropsWithoutRef<"li">
 >(({ className, ...props }, ref) => (
@@ -91,7 +50,7 @@ const BreadcrumbItem = React.forwardRef<
 ));
 BreadcrumbItem.displayName = "BreadcrumbItem";
 
-const BreadcrumbLink = React.forwardRef<
+export const BreadcrumbLink = React.forwardRef<
   HTMLAnchorElement,
   React.ComponentPropsWithoutRef<"a"> & {
     asChild?: boolean
@@ -109,7 +68,7 @@ const BreadcrumbLink = React.forwardRef<
 });
 BreadcrumbLink.displayName = "BreadcrumbLink";
 
-const BreadcrumbPage = React.forwardRef<
+export const BreadcrumbPage = React.forwardRef<
   HTMLSpanElement,
   React.ComponentPropsWithoutRef<"span">
 >(({ className, ...props }, ref) => (
@@ -118,25 +77,19 @@ const BreadcrumbPage = React.forwardRef<
     role="link"
     aria-disabled="true"
     aria-current="page"
-    className={cn("page font-normal", className)}
     {...props}
   />
 ));
 BreadcrumbPage.displayName = "BreadcrumbPage";
 
-
-type BreadcrumbSeparatorProps = React.ComponentProps<"span"> & {separatorSize?: string};
-
-const BreadcrumbSeparator = ({
-  separatorSize,
+export const BreadcrumbSeparator = ({
   children,
   className,
   ...props
-}: BreadcrumbSeparatorProps) => (
+}: React.ComponentProps<"span">) => (
   <span
     role="presentation"
     aria-hidden="true"
-    className={cn(separatorSize, className)}
     {...props}
   >
     {children ?? <ChevronRight />}
@@ -144,16 +97,14 @@ const BreadcrumbSeparator = ({
 );
 BreadcrumbSeparator.displayName = "BreadcrumbSeparator";
 
-export type BreadcrumbsProps = VariantProps<typeof breadcrumbsVariants> & 
+export const Breadcrumbs = React.forwardRef<
+  HTMLElement, 
+  VariantProps<typeof breadcrumbsVariants> & 
 {
   breadcrumbs: breadcrumbLink[],
   asChild?: boolean,
   children?: JSX.IntrinsicElements
 }
-
-export const Breadcrumbs = React.forwardRef<
-  HTMLElement, 
-  BreadcrumbsProps
 >(({ variant, size, breadcrumbs, ...props }, ref) => (
   <nav ref={ref} aria-label="breadcrumb" {...props} className={cn(breadcrumbsVariants({ variant, size }))}>
     <BreadcrumbList>
@@ -166,11 +117,11 @@ export const Breadcrumbs = React.forwardRef<
               !isLastItem ? 
               (
               <>
-                <BreadcrumbLink href="/">{item.name}</BreadcrumbLink>
-                <BreadcrumbSeparator separatorSize={separatorVariants({ variant, size })}/>
+                <BreadcrumbLink href="/">{item.name} </BreadcrumbLink>
+                <BreadcrumbSeparator />
               </>
               )
-              : <BreadcrumbPage className={cn(pageVariants({ variant }))}>{item.name}</BreadcrumbPage>
+              : <BreadcrumbPage>{item.name}</BreadcrumbPage>
             }
           </BreadcrumbItem>
         )
@@ -179,3 +130,12 @@ export const Breadcrumbs = React.forwardRef<
   </nav>
 ));
 Breadcrumbs.displayName = "Breadcrumbs";
+
+export const BreadcrumbsRoot = React.forwardRef<
+HTMLElement,
+React.ComponentPropsWithoutRef<"nav"> &
+VariantProps<typeof breadcrumbsVariants> & {
+  separator?: React.ReactNode
+}
+>(({variant, size, ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} className={cn(breadcrumbsVariants({ variant, size }))}/>);
+BreadcrumbsRoot.displayName = "BreadcrumbsRoot";
