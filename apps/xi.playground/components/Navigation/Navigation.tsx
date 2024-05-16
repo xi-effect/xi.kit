@@ -23,6 +23,10 @@ const menuArray = [
     label: 'Button',
   },
   {
+    link: '/components/breadcrumbs',
+    label: 'Breadcrumbs',
+  },
+  {
     link: '/components/input',
     label: 'Input',
   },
