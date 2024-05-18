@@ -118,6 +118,9 @@ import { Conference } from './icons/Conference';
 import { Group } from './icons/Group';
 import { WhiteBoard } from './icons/WhiteBoard';
 import { Crown } from './icons/Crown';
+import { MicrophoneOff } from './icons/MicrophoneOff';
+import { CameraOff } from './icons/CameraOff';
+import { RedLine } from './icons/RedLine';
 import { icons } from './config';
 
 export {
@@ -241,6 +244,9 @@ export {
   Group,
   Crown,
   WhiteBoard,
+  MicrophoneOff,
+  CameraOff,
+  RedLine,
   icons,
 };
 

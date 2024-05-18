@@ -84,6 +84,9 @@ import {
   ChevronRight,
   ChevronLeft,
   WhiteBoard,
+  MicrophoneOff,
+  CameraOff,
+  RedLine,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -172,6 +175,9 @@ const iconsDict = [
   <Crown />,
   <CrossCircle />,
   <WhiteBoard />,
+  <MicrophoneOff />,
+  <CameraOff />,
+  <RedLine />,
 ];
 
 const iconsDictNames = [
@@ -260,6 +266,9 @@ const iconsDictNames = [
   'Crown',
   'CrossCircle',
   'WhiteBoard',
+  'MicrophoneOff',
+  'CameraOff',
+  'RedLine',
 ];
 
 const Icons = () => (
@@ -276,6 +285,17 @@ const Icons = () => (
           </div>
         );
       })}
+    </div>
+    <div className="flex flex-col p-4 mt-4">
+      <span className="p-1 text-sm"> Составные иконки </span>
+      <div className="relative p-4 m-2">
+        <MicrophoneOff className="absolute" />
+        <RedLine className="absolute fill-red-80" />
+      </div>
+      <div className="relative p-4 m-2">
+        <CameraOff className="absolute" />
+        <RedLine className="absolute fill-red-80" />
+      </div>
     </div>
   </div>
 );

@@ -121,7 +121,9 @@
     "icons/CaretUp.tsx",
     "icons/Conference.tsx",
     "icons/Group.tsx",
-    "icons/WhiteBoard.tsx"
+    "icons/WhiteBoard.tsx",
+    "icons/MicrophoneOff.tsx",
+    "icons/CameraOff.tsx"
   ],
   "exclude": ["dist", "build", "node_modules"]
 }
