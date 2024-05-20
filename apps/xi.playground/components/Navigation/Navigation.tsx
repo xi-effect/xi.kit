@@ -98,6 +98,10 @@ const menuArray = [
     link: '/components/popover',
     label: 'Popover',
   },
+  {
+    link: '/components/scrollarea',
+    label: 'ScrollArea',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
