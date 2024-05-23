@@ -26,7 +26,8 @@ const nextConfig = {
     '@xipkg/calendar',
     '@xipkg/utils',
     '@xipkg/popover',
-    '@xipkg/scrollarea'
+    '@xipkg/scrollarea',
+    '@xipkg/contextmenu'
   ],
   images: {
     remotePatterns: [

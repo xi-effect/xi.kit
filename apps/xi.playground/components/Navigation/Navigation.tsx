@@ -102,6 +102,10 @@ const menuArray = [
     link: '/components/scrollarea',
     label: 'ScrollArea',
   },
+  {
+    link: '/components/contextmenu',
+    label: 'ContextMenu',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
