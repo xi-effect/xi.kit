@@ -119,5 +119,6 @@ export const icons = [
   'TelegramFilled',
   'WhiteBoard',
   'MicrophoneOff',
-  'RedLine'
+  'RedLine',
+  'SpeakerHorizontal',
 ];

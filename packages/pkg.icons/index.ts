@@ -121,6 +121,7 @@ import { Crown } from './icons/Crown';
 import { MicrophoneOff } from './icons/MicrophoneOff';
 import { CameraOff } from './icons/CameraOff';
 import { RedLine } from './icons/RedLine';
+import { SpeakerHorizontal } from './icons/SpeakerHorizontal';
 import { icons } from './config';
 
 export {
@@ -247,6 +248,7 @@ export {
   MicrophoneOff,
   CameraOff,
   RedLine,
+  SpeakerHorizontal,
   icons,
 };
 
