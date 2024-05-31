@@ -122,6 +122,7 @@
     "icons/Conference.tsx",
     "icons/Group.tsx",
     "icons/WhiteBoard.tsx",
+    "icons/SpeakerHorizontal.tsx",
     "icons/MicrophoneOff.tsx",
     "icons/CameraOff.tsx"
   ],
