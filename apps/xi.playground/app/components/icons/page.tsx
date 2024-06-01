@@ -87,6 +87,7 @@ import {
   MicrophoneOff,
   CameraOff,
   RedLine,
+  SpeakerHorizontal,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -178,6 +179,7 @@ const iconsDict = [
   <MicrophoneOff />,
   <CameraOff />,
   <RedLine />,
+  <SpeakerHorizontal />,
 ];
 
 const iconsDictNames = [
@@ -269,6 +271,7 @@ const iconsDictNames = [
   'MicrophoneOff',
   'CameraOff',
   'RedLine',
+  'SpeakerHorizontal',
 ];
 
 const Icons = () => (
