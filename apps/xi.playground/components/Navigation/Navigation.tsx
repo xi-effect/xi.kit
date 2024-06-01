@@ -106,6 +106,10 @@ const menuArray = [
     link: '/components/contextmenu',
     label: 'ContextMenu',
   },
+  {
+    link: '/components/tooltip',
+    label: 'Tooltip',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
