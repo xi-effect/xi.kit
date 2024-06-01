@@ -190,7 +190,6 @@ export {
   Mail,
   Maximize,
   Microphone,
-  Minimize,
   Moon,
   MoreVert,
   Move,
@@ -249,6 +248,7 @@ export {
   CameraOff,
   RedLine,
   SpeakerHorizontal,
+  Minimize,
   icons,
 };
 
