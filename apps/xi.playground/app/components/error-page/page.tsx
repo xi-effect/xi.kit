@@ -8,9 +8,9 @@ export default function ErrorPageSample() {
     const { resolvedTheme } = useTheme();
 
     const additionalText = (
-        <p>Вернитесь 
-            <Link theme="brand" size="l" href="/">&nbsp;назад</Link> или
-            <Link theme="brand" size="l" href="/">&nbsp;на главную</Link>
+        <p>Вернитесь&nbsp; 
+            <Link theme="brand" size="l" href="/">назад</Link> или&nbsp;
+            <Link theme="brand" size="l" href="/">на главную</Link>
         </p>
     );
 
