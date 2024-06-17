@@ -110,6 +110,10 @@ const menuArray = [
     link: '/components/tooltip',
     label: 'Tooltip',
   },
+  {
+    link: '/components/error-page',
+    label: 'Error Page',
+  }
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
