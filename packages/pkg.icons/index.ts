@@ -61,6 +61,7 @@ import { Link } from './icons/Link';
 import { Locked } from './icons/Locked';
 import { LongAnswer } from './icons/LongAnswer';
 import { Mail } from './icons/Mail';
+import { MailRounded } from './icons/MailRounded';
 import { Maximize } from './icons/Maximize';
 import { Microphone } from './icons/Microphone';
 import { Minimize } from './icons/Minimize';
@@ -188,6 +189,7 @@ export {
   Locked,
   LongAnswer,
   Mail,
+  MailRounded,
   Maximize,
   Microphone,
   Moon,
