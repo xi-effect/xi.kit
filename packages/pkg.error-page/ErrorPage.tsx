@@ -1,10 +1,8 @@
-'use client';
-
 import React from 'react';
 import { Link } from '@xipkg/link';
 import { TelegramFilled, MailRounded } from '@xipkg/icons';
 
-type ErrorPageT = {
+export type ErrorPagePropsT = {
   title: string;
   errorCode: number;
   text: string;
@@ -14,7 +12,7 @@ type ErrorPageT = {
   additionalText?: React.ReactNode;
 };
 
-export const ErrorPage = ({ children, title, errorCode, text, tgLink, emailLink, additionalText } : ErrorPageT) =>
+export const ErrorPage = ({ children, title, errorCode, text, tgLink, emailLink, additionalText } : ErrorPagePropsT) =>
   <main className="mx-8 md:mx-[60px] lg:mx-[120px] 3xl:mx-[360px] h-[100vh] flex">
     {children && (
       <div className="absolute top-[64px] xl:top-[100px]">
