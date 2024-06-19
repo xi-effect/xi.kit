@@ -1,6 +1,7 @@
 'use client';
 
 import { Link } from "@xipkg/link";
+import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import { ErrorPage } from '@xipkg/error-page';
 
@@ -14,12 +15,22 @@ export default function ErrorPageSample() {
         </p>
     );
 
+    const logo = <Image 
+                    alt="xieffect logo" 
+                    src={resolvedTheme ? `/xiLogo${resolvedTheme}.svg` : "/xiLogolight.svg"} 
+                    width={201} 
+                    height={24} 
+                    className="xl:w-[269px] xl:h-[32px]"
+                />;
+
     return (
         <ErrorPage
-            resolvedTheme={resolvedTheme || 'light'}
             title='Страница не найдена'
             text='В адресе есть ошибка или страница удалена'
             errorCode={404}
+            children={logo}
+            tgLink='https://t.me/xieffect_support_bot'
+            emailLink='hello@xieffect.ru'
             additionalText={additionalText}
         />
     );
