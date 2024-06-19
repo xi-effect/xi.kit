@@ -18,6 +18,7 @@
     "@xipkg/calendar": "*",
     "@xipkg/checkbox": "*",
     "@xipkg/dropdown": "*",
+    "@xipkg/error-page": "*",
     "@xipkg/file": "*",
     "@xipkg/fileuploader": "*",
     "@xipkg/form": "*",
