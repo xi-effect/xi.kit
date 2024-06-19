@@ -28,10 +28,11 @@ export default function ErrorPageSample() {
             title='Страница не найдена'
             text='В адресе есть ошибка или страница удалена'
             errorCode={404}
-            children={logo}
             tgLink='https://t.me/xieffect_support_bot'
             emailLink='hello@xieffect.ru'
             additionalText={additionalText}
-        />
+        >
+            {logo}
+        </ErrorPage>
     );
 }
