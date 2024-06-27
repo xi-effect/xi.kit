@@ -24,7 +24,18 @@ const AvatarPage = () => (
         }}
         alt="@shadcn"
       />
-      <AvatarFallback>CN</AvatarFallback>
+      <AvatarFallback/>
+    </Avatar>
+    <Avatar size="l">
+      <AvatarImage
+        src={`https://auth.xieffect.ru/api/users/3/avatar.webp`}
+        imageProps={{
+          src: `https://auth.xieffect.ru/api/users/3/avatar.webp`,
+          alt: '@shadcn',
+        }}
+        alt="@shadcn"
+      />
+      <AvatarFallback/>
     </Avatar>
   </div>
 );
