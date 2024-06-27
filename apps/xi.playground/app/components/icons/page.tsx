@@ -43,6 +43,8 @@ import {
   Maximize,
   Microphone,
   Divider,
+  Mail,
+  MailRounded,
   Move,
   Movie,
   Music,
@@ -88,6 +90,7 @@ import {
   CameraOff,
   RedLine,
   SpeakerHorizontal,
+  Minimize,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -135,6 +138,8 @@ const iconsDict = [
   <PeopleInvite />,
   <Italic />,
   <Link />,
+  <Mail />,
+  <MailRounded />,
   <Maximize />,
   <Microphone />,
   <Divider />,
@@ -180,6 +185,7 @@ const iconsDict = [
   <CameraOff />,
   <RedLine />,
   <SpeakerHorizontal />,
+  <Minimize />,
 ];
 
 const iconsDictNames = [
@@ -227,6 +233,8 @@ const iconsDictNames = [
   'PeopleInvite',
   'Italic',
   'Link',
+  'Mail',
+  'MailRounded',
   'Maximize',
   'Microphone',
   'Divider',
@@ -272,6 +280,7 @@ const iconsDictNames = [
   'CameraOff',
   'RedLine',
   'SpeakerHorizontal',
+  'Minimize',
 ];
 
 const Icons = () => (

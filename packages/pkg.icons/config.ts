@@ -121,4 +121,5 @@ export const icons = [
   'MicrophoneOff',
   'RedLine',
   'SpeakerHorizontal',
+  'Minimize',
 ];
