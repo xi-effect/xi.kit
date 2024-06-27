@@ -63,12 +63,13 @@ const AvatarFallback = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Fallback>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback> & {
     size?: 'xxl' | 'xl' | 'l' | 'm' | 's';
+    loading?: boolean;
   }
->(({ className, size = 'l', ...props }, ref) => (
+>(({ className, size = 'l', loading, ...props }, ref) => (
   <AvatarPrimitive.Fallback
     ref={ref}
     className={cn(
-      `bg-gray-10 animate-pulse flex h-full w-full items-center justify-center rounded-full`,
+      `${loading ? 'bg-gray-10 animate-pulse' : 'bg-brand-80 text-gray-0'} flex h-full w-full items-center justify-center rounded-full`,
       className,
     )}
     {...props}

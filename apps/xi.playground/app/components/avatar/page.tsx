@@ -24,7 +24,7 @@ const AvatarPage = () => (
         }}
         alt="@shadcn"
       />
-      <AvatarFallback/>
+      <AvatarFallback />
     </Avatar>
     <Avatar size="l">
       <AvatarImage
@@ -35,7 +35,7 @@ const AvatarPage = () => (
         }}
         alt="@shadcn"
       />
-      <AvatarFallback/>
+      <AvatarFallback loading />
     </Avatar>
   </div>
 );
