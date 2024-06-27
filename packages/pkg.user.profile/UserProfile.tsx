@@ -24,9 +24,30 @@ export const userProfileTextVariants = cva('text-gray-100', {
       m: 'text-[14px]',
       s: 'text-[12px]',
     },
+    loading: {
+      true: '',
+    },
   },
+  compoundVariants: [
+    {
+      loading: true,
+      size: 'l',
+      class: 'bg-gray-10 h-[16px] w-[96px] animate-pulse rounded-[2px]',
+    },
+    {
+      loading: true,
+      size: 'm',
+      class: 'bg-gray-10 h-[14px] w-[96px] animate-pulse rounded-[2px]',
+    },
+    {
+      loading: true,
+      size: 's',
+      class: 'bg-gray-10 h-[12px] w-[64px] animate-pulse rounded-[2px]',
+    },
+  ],
   defaultVariants: {
     size: 'm',
+    loading: false,
   },
 });
 
@@ -37,9 +58,25 @@ export const userProfileLabelVariants = cva('font-normal text-gray-60 mt-[-2px]'
       m: 'text-[10px]',
       s: '',
     },
+    loading: {
+      true: '',
+    },
   },
+  compoundVariants: [
+    {
+      loading: true,
+      size: 'l',
+      class: 'bg-gray-10 h-[12px] w-[64px] animate-pulse rounded-[2px]',
+    },
+    {
+      loading: true,
+      size: 'm',
+      class: 'bg-gray-10 h-[10px] w-[64px] animate-pulse rounded-[2px]',
+    },
+  ],
   defaultVariants: {
     size: 'm',
+    loading: false,
   },
 });
 
@@ -68,13 +105,15 @@ export interface UserProfileProps extends React.HTMLAttributes<HTMLDivElement> {
   userId: number | null;
   color?: 'brand';
   withOutText?: boolean;
-  text: string;
+  text?: string;
   label?: string;
   classNameText?: string;
   classNameLabel?: string;
+  loading?: boolean;
 }
 
 export const UserProfile = ({
+  loading = false,
   className,
   classNameText,
   classNameLabel,
@@ -83,7 +122,7 @@ export const UserProfile = ({
   src,
   size = 'm',
   color = 'brand',
-  text = "X",
+  text = 'x',
   label,
   ...props
 }: UserProfileProps) => {
@@ -98,13 +137,21 @@ export const UserProfile = ({
           }}
           alt="user avatar"
         />
-        <AvatarFallback size={size}>{text[0].toUpperCase()}</AvatarFallback>
+        {loading ? (
+          <AvatarFallback size={size} loading />
+        ) : (
+          <AvatarFallback size={size}>{text[0].toUpperCase()}</AvatarFallback>
+        )}
       </Avatar>
-      {!withOutText && text && label && (
-        <div className="flex flex-col">
-          <span className={cn(userProfileTextVariants({ size }), classNameText)}>{text}</span>
+      {!withOutText && (
+        <div className={`flex flex-col ${loading && 'gap-1'}`}>
+          <span className={cn(userProfileTextVariants({ size, loading }), classNameText)}>
+            {!loading && text}
+          </span>
           {size !== 's' && (
-            <span className={cn(userProfileLabelVariants({ size }), classNameLabel)}>{label}</span>
+            <span className={cn(userProfileLabelVariants({ size, loading }), classNameLabel)}>
+              {label}
+            </span>
           )}
         </div>
       )}
