@@ -67,6 +67,10 @@ const menuArray = [
     label: 'Switcher',
   },
   {
+    link: '/components/slider',
+    label: 'Slider',
+  },
+  {
     link: '/components/toggle',
     label: 'Toggle',
   },
@@ -113,7 +117,7 @@ const menuArray = [
   {
     link: '/components/error-page',
     label: 'Error Page',
-  }
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
