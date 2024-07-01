@@ -122,4 +122,5 @@ export const icons = [
   'RedLine',
   'SpeakerHorizontal',
   'Minimize',
+  'Minus',
 ];
