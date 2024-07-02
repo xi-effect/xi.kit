@@ -124,7 +124,8 @@
     "icons/WhiteBoard.tsx",
     "icons/SpeakerHorizontal.tsx",
     "icons/MicrophoneOff.tsx",
-    "icons/CameraOff.tsx"
+    "icons/CameraOff.tsx",
+    "icons/Minus"
   ],
   "exclude": ["dist", "build", "node_modules"]
 }
