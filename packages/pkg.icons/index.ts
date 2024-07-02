@@ -123,6 +123,7 @@ import { MicrophoneOff } from './icons/MicrophoneOff';
 import { CameraOff } from './icons/CameraOff';
 import { RedLine } from './icons/RedLine';
 import { SpeakerHorizontal } from './icons/SpeakerHorizontal';
+import { Minus } from './icons/Minus';
 import { icons } from './config';
 
 export {
@@ -251,6 +252,7 @@ export {
   RedLine,
   SpeakerHorizontal,
   Minimize,
+  Minus,
   icons,
 };
 

@@ -91,6 +91,7 @@ import {
   RedLine,
   SpeakerHorizontal,
   Minimize,
+  Minus,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -173,6 +174,7 @@ const iconsDict = [
   <Key />,
   <SoundTwo />,
   <Plus />,
+  <Minus />,
   <Window />,
   <Laptop />,
   <CaretUp />,
@@ -268,6 +270,7 @@ const iconsDictNames = [
   'Key',
   'SoundTwo',
   'Plus',
+  'Minus',
   'Window',
   'Laptop',
   'CaretUp',
