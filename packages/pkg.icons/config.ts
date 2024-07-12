@@ -125,4 +125,9 @@ export const icons = [
   'Minus',
   'Cursor',
   'Sticker',
+  'TText',
+  'Figures',
+  'Arrow',
+  'Image',
+  'Eraser',
 ];

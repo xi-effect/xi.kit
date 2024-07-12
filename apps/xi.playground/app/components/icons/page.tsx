@@ -94,6 +94,11 @@ import {
   Minus,
   Cursor,
   Sticker,
+  TText,
+  Figures,
+  Arrow,
+  Image,
+  Eraser,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -192,6 +197,11 @@ const iconsDict = [
   <Minimize />,
   <Cursor />,
   <Sticker />,
+  <TText />,
+  <Figures />,
+  <Arrow />,
+  <Image />,
+  <Eraser />,
 ];
 
 const iconsDictNames = [
@@ -290,6 +300,11 @@ const iconsDictNames = [
   'Minimize',
   'Cursor',
   'Sticker',
+  'TText',
+  'Figures',
+  'Arrow',
+  'Image',
+  'Eraser',
 ];
 
 const Icons = () => (
