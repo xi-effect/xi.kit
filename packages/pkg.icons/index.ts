@@ -125,6 +125,7 @@ import { RedLine } from './icons/RedLine';
 import { SpeakerHorizontal } from './icons/SpeakerHorizontal';
 import { Minus } from './icons/Minus';
 import { Cursor } from './icons/Cursor';
+import { Sticker } from './icons/Sticker';
 import { icons } from './config';
 
 export {
@@ -255,6 +256,7 @@ export {
   Minimize,
   Minus,
   Cursor,
+  Sticker,
   icons,
 };
 

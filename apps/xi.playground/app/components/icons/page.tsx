@@ -93,6 +93,7 @@ import {
   Minimize,
   Minus,
   Cursor,
+  Sticker,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -190,6 +191,7 @@ const iconsDict = [
   <SpeakerHorizontal />,
   <Minimize />,
   <Cursor />,
+  <Sticker />,
 ];
 
 const iconsDictNames = [
@@ -287,6 +289,7 @@ const iconsDictNames = [
   'SpeakerHorizontal',
   'Minimize',
   'Cursor',
+  'Sticker',
 ];
 
 const Icons = () => (
