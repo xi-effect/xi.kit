@@ -92,6 +92,7 @@ import {
   SpeakerHorizontal,
   Minimize,
   Minus,
+  Cursor,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -188,6 +189,7 @@ const iconsDict = [
   <RedLine />,
   <SpeakerHorizontal />,
   <Minimize />,
+  <Cursor />,
 ];
 
 const iconsDictNames = [
@@ -284,6 +286,7 @@ const iconsDictNames = [
   'RedLine',
   'SpeakerHorizontal',
   'Minimize',
+  'Cursor',
 ];
 
 const Icons = () => (

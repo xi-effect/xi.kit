@@ -124,6 +124,7 @@ import { CameraOff } from './icons/CameraOff';
 import { RedLine } from './icons/RedLine';
 import { SpeakerHorizontal } from './icons/SpeakerHorizontal';
 import { Minus } from './icons/Minus';
+import { Cursor } from './icons/Cursor';
 import { icons } from './config';
 
 export {
@@ -253,6 +254,7 @@ export {
   SpeakerHorizontal,
   Minimize,
   Minus,
+  Cursor,
   icons,
 };
 

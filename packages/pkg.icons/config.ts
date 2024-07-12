@@ -123,4 +123,6 @@ export const icons = [
   'SpeakerHorizontal',
   'Minimize',
   'Minus',
+  'Cursor',
+  'Sticker',
 ];
