@@ -17,6 +17,16 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^1.6.1",
+    "@storybook/addon-themes": "^8.2.2",
+    "@storybook/addon-essentials": "^8.2.2",
+    "@storybook/addon-interactions": "^8.2.2",
+    "@storybook/addon-links": "^8.2.2",
+    "@storybook/addon-onboarding": "^8.2.2",
+    "@storybook/blocks": "^8.2.2",
+    "@storybook/nextjs": "^8.2.2",
+    "@storybook/react": "^8.2.2",
+    "@storybook/test": "^8.2.2",
     "@types/node": "^17.0.12",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
