@@ -1,5 +1,6 @@
 'use client';
 
+import { List, ListItem, ListItemButton, Stack } from '@mui/material';
 import { ColorButton } from 'components/ColorButton';
 import { useRouter } from 'next/navigation';
 import { ReactNode } from 'react';
@@ -123,8 +124,21 @@ export const Navigation = ({ children }: NavigationT) => {
   const router = useRouter();
 
   return (
-    <div>
-      {/* <Stack
+    <Stack
+      sx={{
+        p: 2,
+        height: '100%',
+        minHeight: '100vh',
+        width: '100vw',
+        overflow: 'auto',
+        position: 'relative',
+      }}
+      direction="row"
+      justifyContent="flex-start"
+      alignItems="flex-start"
+      spacing={2}
+    >
+      <Stack
         sx={{
           position: 'sticky',
           top: 0,
@@ -151,8 +165,8 @@ export const Navigation = ({ children }: NavigationT) => {
             </ListItem>
           ))}
         </List>
-      </Stack> */}
+      </Stack>
       <div className="min-h-screen h-fill w-fill">{children}</div>
-    </div>
+    </Stack>
   );
 };

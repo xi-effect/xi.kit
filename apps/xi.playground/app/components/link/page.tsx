@@ -1,6 +1,7 @@
 'use client';
 
 import { Link } from '@xipkg/link';
+import { Stack } from '@mui/material';
 
 export default function ButtonPage() {
   const shortAction = () => {
