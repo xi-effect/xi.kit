@@ -4,8 +4,6 @@ import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import * as SwitchPrimitives from '@radix-ui/react-switch';
 
-import { cn } from '@xipkg/utils';
-
 export const toggleVariants = cva(
   'peer inline-flex shrink-0 cursor-pointer items-center rounded-full border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-brand-80 data-[state=checked]:hover:bg-brand-100 data-[state=unchecked]:bg-gray-20 data-[state=unchecked]:hover:bg-gray-30',
   {
@@ -49,6 +47,7 @@ const Switch = React.forwardRef<React.ElementRef<typeof SwitchPrimitives.Root>, 
     </SwitchPrimitives.Root>
   ),
 );
+
 Switch.displayName = SwitchPrimitives.Root.displayName;
 
 export { Switch };
