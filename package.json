@@ -15,7 +15,6 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@storybook/cli": "^7.5.0-alpha.3",
     "@turbo/gen": "^1.10.7",
     "eslint": "^8.57.0",
     "lerna": "^7.0.0",
