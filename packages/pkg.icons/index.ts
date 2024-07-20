@@ -124,6 +124,15 @@ import { CameraOff } from './icons/CameraOff';
 import { RedLine } from './icons/RedLine';
 import { SpeakerHorizontal } from './icons/SpeakerHorizontal';
 import { Minus } from './icons/Minus';
+import { Cursor } from './icons/Cursor';
+import { Sticker } from './icons/Sticker';
+import { TText } from './icons/TText';
+import { Figures } from './icons/Figures';
+import { Arrow } from './icons/Arrow';
+import { Image } from './icons/Image';
+import { Eraser } from './icons/Eraser';
+import { Pen } from './icons/Pen';
+
 import { icons } from './config';
 
 export {
@@ -253,6 +262,14 @@ export {
   SpeakerHorizontal,
   Minimize,
   Minus,
+  Cursor,
+  Sticker,
+  TText,
+  Figures,
+  Arrow,
+  Image,
+  Eraser,
+  Pen,
   icons,
 };
 

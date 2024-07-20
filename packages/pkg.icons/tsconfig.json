@@ -125,7 +125,13 @@
     "icons/SpeakerHorizontal.tsx",
     "icons/MicrophoneOff.tsx",
     "icons/CameraOff.tsx",
-    "icons/Minus"
+    "icons/Minus",
+    "icons/Cursor.tsx",
+    "icons/Figures.tsx",
+    "icons/TText.tsx",
+    "icons/Image.tsx",
+    "icons/Eraser.tsx",
+    "icons/Pen.tsx"
   ],
   "exclude": ["dist", "build", "node_modules"]
 }

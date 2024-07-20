@@ -92,6 +92,14 @@ import {
   SpeakerHorizontal,
   Minimize,
   Minus,
+  Cursor,
+  Sticker,
+  TText,
+  Figures,
+  Arrow,
+  Image,
+  Eraser,
+  Pen,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -188,6 +196,14 @@ const iconsDict = [
   <RedLine />,
   <SpeakerHorizontal />,
   <Minimize />,
+  <Cursor />,
+  <Sticker />,
+  <TText />,
+  <Figures />,
+  <Arrow />,
+  <Image />,
+  <Eraser />,
+  <Pen />,
 ];
 
 const iconsDictNames = [
@@ -284,6 +300,14 @@ const iconsDictNames = [
   'RedLine',
   'SpeakerHorizontal',
   'Minimize',
+  'Cursor',
+  'Sticker',
+  'TText',
+  'Figures',
+  'Arrow',
+  'Image',
+  'Eraser',
+  'Pen',
 ];
 
 const Icons = () => (
