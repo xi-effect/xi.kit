@@ -125,6 +125,20 @@ module.exports = {
       },
     },
     extend: {
+      fontSize: {
+        'h1': ['56px', '64px'],
+        'h2': ['48px', '56px'],
+        'h3': ['40px', '48px'],
+        'h4': ['36px', '44px'],
+        'h5': ['32px', '40px'],
+        'h6': ['28px', '36px'],
+        'xl-base': ['24px', '32px'],
+        'l-base': ['20px', '28px'],
+        'm-base': ['16px', '20px'],
+        's-base': ['14px', '20px'],
+        'xs-base': ['12px', '16px'],
+        'xxs-base': ['10px', '14px'],
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',

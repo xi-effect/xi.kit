@@ -118,6 +118,10 @@ const menuArray = [
     link: '/components/error-page',
     label: 'Error Page',
   },
+  {
+    link: '/components/typography',
+    label: 'Typography',
+  },
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
