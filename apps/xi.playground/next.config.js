@@ -10,6 +10,7 @@ const nextConfig = {
     '@xipkg/icons',
     '@xipkg/link',
     '@xipkg/input', 
+    '@xipkg/label', 
     '@xipkg/badge',
     '@xipkg/breadcrumbs',
     '@xipkg/button',
