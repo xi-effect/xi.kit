@@ -131,6 +131,7 @@ import { Figures } from './icons/Figures';
 import { Arrow } from './icons/Arrow';
 import { Image } from './icons/Image';
 import { Eraser } from './icons/Eraser';
+import { Pen } from './icons/Pen';
 
 import { icons } from './config';
 
@@ -268,6 +269,7 @@ export {
   Arrow,
   Image,
   Eraser,
+  Pen,
   icons,
 };
 

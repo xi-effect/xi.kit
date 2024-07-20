@@ -130,7 +130,8 @@
     "icons/Figures.tsx",
     "icons/TText.tsx",
     "icons/Image.tsx",
-    "icons/Eraser.tsx"
+    "icons/Eraser.tsx",
+    "icons/Pen.tsx"
   ],
   "exclude": ["dist", "build", "node_modules"]
 }
