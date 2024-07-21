@@ -131,4 +131,5 @@ export const icons = [
   'Image',
   'Eraser',
   'Pen',
+  'Undo',
 ];
