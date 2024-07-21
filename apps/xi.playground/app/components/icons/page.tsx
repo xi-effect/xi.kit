@@ -101,6 +101,7 @@ import {
   Eraser,
   Pen,
   Undo,
+  Redo,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -206,6 +207,7 @@ const iconsDict = [
   <Eraser />,
   <Pen />,
   <Undo />,
+  <Redo />,
 ];
 
 const iconsDictNames = [
@@ -311,6 +313,7 @@ const iconsDictNames = [
   'Eraser',
   'Pen',
   'Undo',
+  'Redo',
 ];
 
 const Icons = () => (
