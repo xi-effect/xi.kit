@@ -131,7 +131,9 @@
     "icons/TText.tsx",
     "icons/Image.tsx",
     "icons/Eraser.tsx",
-    "icons/Pen.tsx"
+    "icons/Pen.tsx",
+    "icons/Undo.tsx",
+    "icons/Redo.tsx"
   ],
   "exclude": ["dist", "build", "node_modules"]
 }
