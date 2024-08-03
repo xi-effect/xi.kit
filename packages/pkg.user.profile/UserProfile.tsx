@@ -150,7 +150,7 @@ export const UserProfile = ({
           </span>
           {size !== 's' && (
             <span className={cn(userProfileLabelVariants({ size, loading }), classNameLabel)}>
-              {label}
+              {!loading && label}
             </span>
           )}
         </div>
