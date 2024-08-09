@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@xipkg/button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@xipkg/tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, TooltipArrow } from '@xipkg/tooltip';
 
 const TestComponent = () => (
   <>
@@ -11,7 +11,8 @@ const TestComponent = () => (
           <Button variant="secondary">Hover</Button>
         </TooltipTrigger>
         <TooltipContent>
-          <p>Add to library</p>
+          <p>Your text goes here</p>
+          <TooltipArrow />
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
