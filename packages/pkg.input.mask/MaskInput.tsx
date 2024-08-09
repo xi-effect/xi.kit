@@ -1,13 +1,13 @@
-import React, { ChangeEvent, useState, useEffect, useRef } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-import { setMask } from './MaskVariant';
-import { MaskType } from './types';
+import { MaskTypeT } from './types';
 import { cn } from '@xipkg/utils';
+import { useMask } from './useMask';
 
 type MaskInputPropsT = React.InputHTMLAttributes<HTMLInputElement> &
   VariantProps<typeof inputVariants> & {
-    mask?: MaskType;
+    mask?: MaskTypeT;
     placeholder?: string;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   };
@@ -37,13 +37,11 @@ export const MaskInput = ({
   className,
 }: MaskInputPropsT) => {
   const [value, setValue] = useState<string | undefined>('');
-  const [isFocused, setFocused] = React.useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [isFocused, setFocused] = useState(false);
+  const handleInputChange = useMask(mask);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newValue = setMask(mask, e);
-
-    setValue(newValue);
+    setValue(handleInputChange(e));
 
     if (onChange) {
       onChange(e);
@@ -52,7 +50,6 @@ export const MaskInput = ({
 
   return (
     <input
-      ref={inputRef}
       onChange={handleChange}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}

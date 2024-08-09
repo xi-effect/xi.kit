@@ -12,14 +12,12 @@
   },
   "dependencies": {
     "@xipkg/utils": "^1.0.1",
-    "cleave-zen": "^0.0.17",
-    "react-text-mask": "^5.5.0"
+    "cleave-zen": "^0.0.17"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
-    "@types/react-text-mask": "^5.4.14",
     "@xipkg/eslint": "^1.4.0",
     "@xipkg/typescript": "^0.0.6",
     "eslint": "^7.32.0",
