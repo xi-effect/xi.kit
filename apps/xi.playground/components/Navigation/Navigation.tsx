@@ -31,6 +31,10 @@ const menuArray = [
     label: 'Input',
   },
   {
+    link: '/components/inputmask',
+    label: 'InputMask',
+  },
+  {
     link: '/components/checkbox',
     label: 'Checkbox',
   },
