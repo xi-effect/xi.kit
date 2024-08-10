@@ -1,29 +1,44 @@
 import { MaskTypeT } from './types';
-import { mapToArray } from './utils';
+import { stringToMaskExpression } from './utils';
 
-export const maskPresets: Record<MaskTypeT, { placeholder: string; mask: (string | RegExp)[] }> = {
+export const maskPresets: Record<
+  MaskTypeT,
+  { placeholder: string; mask: (string | RegExp)[] | RegExp }
+> = {
   phone: {
-    placeholder: '+7 (000)-___-____',
-    mask: mapToArray('+7 (999)-999-9999'),
+    placeholder: '+7 (___)-___-____',
+    mask: stringToMaskExpression('+7 (999)-999-9999'),
+  },
+  inviteCodeUrl: {
+    placeholder: 'https://xieffect.ru/invite/______',
+    mask: stringToMaskExpression('https://xieffect.ru/invite/AAAAAAAAAAAA'),
   },
   inviteCode: {
-    placeholder: '______',
-    mask: mapToArray('AAAAAA'),
+    placeholder: '____________',
+    mask: stringToMaskExpression('AAAAAAAAAAAA'),
   },
   date: {
     placeholder: '__.__.____',
-    mask: mapToArray('99.99.9999'),
+    mask: stringToMaskExpression('99.99.9999'),
+  },
+  dateRange: {
+    placeholder: '__.__.____ – __.__.____',
+    mask: stringToMaskExpression('99.99.9999 – 99.99.9999'),
   },
   card: {
     placeholder: '____ ____ ____ ____',
-    mask: mapToArray('9999 9999 9999 9999'),
+    mask: stringToMaskExpression('9999 9999 9999 9999'),
   },
   time: {
     placeholder: '__:__',
-    mask: mapToArray('99:99'),
+    mask: stringToMaskExpression('99:99'),
   },
   passport: {
     placeholder: '__ __ ______',
-    mask: mapToArray('99 99 999999'),
+    mask: stringToMaskExpression('99 99 999999'),
+  },
+  any: {
+    placeholder: '',
+    mask: /^.+$/,
   },
 };

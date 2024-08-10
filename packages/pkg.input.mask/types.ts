@@ -1,1 +1,10 @@
-export type MaskTypeT = 'card' | 'passport' | 'phone' | 'inviteCode' | 'date' | 'time';
+export type MaskTypeT =
+  | 'card'
+  | 'passport'
+  | 'phone'
+  | 'inviteCode'
+  | 'inviteCodeUrl'
+  | 'date'
+  | 'time'
+  | 'dateRange'
+  | 'any';

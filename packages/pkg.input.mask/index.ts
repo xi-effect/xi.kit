@@ -1,1 +1,1 @@
-export { MaskInput } from './MaskInput';
+export { useMaskInput } from './useMaskInput';
