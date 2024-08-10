@@ -1,3 +1,1 @@
-export type MaskTypeT = GeneralMaskTypeT | MaskHandlersTypeT;
-export type GeneralMaskTypeT = 'card' | 'passport' | 'phone' | 'inviteCode';
-export type MaskHandlersTypeT = 'date' | 'time';
+export type MaskTypeT = 'card' | 'passport' | 'phone' | 'inviteCode' | 'date' | 'time';

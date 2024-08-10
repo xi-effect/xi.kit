@@ -7,36 +7,31 @@ export default function InputPage() {
     <div className="flex flex-col gap-4">
       <div>
         <label>Паспорт</label>
-        <MaskInput mask="passport" variant="s" placeholder="0000 000000" />
+        <MaskInput mask="passport" variant="s" />
       </div>
       <div>
         <label>Карта</label>
-        <MaskInput mask="card" variant="s" placeholder="0000 0000 0000 0000" />
+        <MaskInput mask="card" variant="s" />
       </div>
       <div>
         <label>Дата</label>
-        <MaskInput mask="date" variant="s" placeholder="01.01.2001" />
+        <MaskInput mask="date" variant="s" />
       </div>
       <div>
         <label>Код приглашения</label>
-        <MaskInput variant="s" mask="inviteCode" placeholder="AAAAAAAAAAA" />
+        <MaskInput variant="s" mask="inviteCode" />
       </div>
       <div>
         <label>Телефон</label>
-        <MaskInput mask="phone" variant="s" placeholder="9 (999) 999 9999" />
+        <MaskInput mask="phone" variant="s" />
       </div>
       <div>
         <label>Время</label>
-        <MaskInput mask="time" variant="s" placeholder="00:00" />
+        <MaskInput mask="time" variant="s" />
       </div>
       <div>
         <label>Время</label>
-        <MaskInput
-          mask="time"
-          variant="s"
-          placeholder="hh:mm"
-          onChange={(e) => console.log(e.currentTarget.value)}
-        />
+        <MaskInput mask="time" variant="s" onChange={(e) => console.log(e.currentTarget.value)} />
       </div>
       <div>
         <label></label>

@@ -3,7 +3,8 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { MaskTypeT } from './types';
 import { cn } from '@xipkg/utils';
-import { useMask } from './useMask';
+import { useMaskito } from '@maskito/react';
+import { options } from './MaskConfig';
 
 type MaskInputPropsT = React.InputHTMLAttributes<HTMLInputElement> &
   VariantProps<typeof inputVariants> & {
@@ -31,17 +32,17 @@ export const inputVariants = cva(
 export const MaskInput = ({
   onChange,
   placeholder,
-  mask,
+  mask = 'inviteCode',
   variant,
   error,
   className,
+  ...props
 }: MaskInputPropsT) => {
   const [value, setValue] = useState<string | undefined>('');
-  const [isFocused, setFocused] = useState(false);
-  const handleInputChange = useMask(mask);
+  const maskedInputRef = useMaskito({ options: options(mask) });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(handleInputChange(e));
+    setValue(e.target.value);
 
     if (onChange) {
       onChange(e);
@@ -50,12 +51,12 @@ export const MaskInput = ({
 
   return (
     <input
+      ref={maskedInputRef}
       onChange={handleChange}
-      onFocus={() => setFocused(true)}
-      onBlur={() => setFocused(false)}
-      placeholder={isFocused ? placeholder : ''}
       value={value}
+      placeholder={placeholder}
       className={cn(inputVariants({ variant, className, error }))}
+      {...props}
     />
   );
 };
