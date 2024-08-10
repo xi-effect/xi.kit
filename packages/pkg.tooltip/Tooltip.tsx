@@ -19,7 +19,7 @@ const TooltipArrow = React.forwardRef<
     ref={ref}
     width={width}
     height={height}
-    className={cn('fill-white', className)}
+    className={cn('fill-gray-0', className)}
     {...props}
   />
 ));
@@ -33,7 +33,7 @@ const TooltipContent = React.forwardRef<
     ref={ref}
     sideOffset={sideOffset}
     className={cn(
-      'bg-gray-0 animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 overflow-hidden max-w-[200px] rounded-md px-3 py-1.5 text-sm text-gray-100 font-semibold shadow-xl',
+      'bg-gray-0 animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 overflow-hidden max-w-[200px] rounded-md px-3 py-1.5 text-sm text-gray-100 font-semibold shadow-[rgba(100,100,111,0.3)_0px_7px_29px_0px]',
       className,
     )}
     {...props}
