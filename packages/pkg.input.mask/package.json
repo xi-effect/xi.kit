@@ -14,7 +14,6 @@
     "@maskito/kit": "^3.0.0",
     "@maskito/react": "^3.0.0",
     "@xipkg/utils": "^1.0.1",
-    "cleave-zen": "^0.0.17",
     "react": "^18.3.1"
   },
   "devDependencies": {
