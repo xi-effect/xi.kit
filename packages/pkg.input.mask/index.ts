@@ -1,0 +1,1 @@
+export { useMaskInput } from './useMaskInput';
