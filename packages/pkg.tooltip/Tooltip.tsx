@@ -19,9 +19,23 @@ const TooltipArrow = React.forwardRef<
     ref={ref}
     width={width}
     height={height}
+    asChild={true}
     className={cn('fill-gray-0', className)}
     {...props}
-  />
+  >
+    <svg
+      width="14"
+      height="5"
+      viewBox="0 0 14 5"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4.39683 3.76871C5.89479 5.05268 8.10521 5.05268 9.60316 3.76871L14 0H0L4.39683 3.76871Z"
+        className='fill-gray-0'
+      />
+    </svg>
+  </TooltipPrimitive.Arrow >
 ));
 TooltipArrow.displayName = TooltipPrimitive.Arrow.displayName;
 
@@ -37,8 +51,11 @@ const TooltipContent = React.forwardRef<
       className,
     )}
     {...props}
-  />
+  >
+    {props.children}
+    <TooltipArrow />
+  </TooltipPrimitive.Content>
 ));
 TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider, TooltipArrow };
+export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };
