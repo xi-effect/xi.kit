@@ -63,6 +63,7 @@ import { LongAnswer } from './icons/LongAnswer';
 import { Mail } from './icons/Mail';
 import { MailRounded } from './icons/MailRounded';
 import { Maximize } from './icons/Maximize';
+import { MenuDots } from './icons/MenuDots';
 import { Microphone } from './icons/Microphone';
 import { Minimize } from './icons/Minimize';
 import { Moon } from './icons/Moon';
@@ -89,6 +90,7 @@ import { Section } from './icons/Section';
 import { Send } from './icons/Send';
 import { Settings } from './icons/Settings';
 import { Shape } from './icons/Shape';
+import { Share } from './icons/Share';
 import { SimpleAnswer } from './icons/SimpleAnswer';
 import { Sort } from './icons/Sort';
 import { Stroke } from './icons/Stroke';
@@ -203,6 +205,7 @@ export {
   Mail,
   MailRounded,
   Maximize,
+  MenuDots,
   Microphone,
   Moon,
   MoreVert,
@@ -228,6 +231,7 @@ export {
   Send,
   Settings,
   Shape,
+  Share,
   SimpleAnswer,
   Sort,
   Soundoff,
