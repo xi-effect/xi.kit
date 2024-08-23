@@ -11,11 +11,14 @@ const List = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> & { classNameShadow?: string }
 >(({ className, classNameShadow = '', children, onClick, ...props }, ref) => {
   const shadowRef = React.useRef<HTMLDivElement | null>(null);
-	const shadowKey = React.useId()
+	const shadowKey = React.useId();
 
   React.useEffect(() => {
     if (!shadowRef.current) return;
-    const { offsetLeft, clientWidth } = shadowRef.current.nextSibling as HTMLElement;
+
+    const activeButton = Array.from(shadowRef.current.parentNode?.children ?? []).find(element => element.getAttribute('data-state') === 'active');
+
+    const { offsetLeft, clientWidth } = activeButton as HTMLElement;
     shadowRef.current.setAttribute('style', `left: ${offsetLeft}px; width: ${clientWidth}px`);
   }, []);
 
