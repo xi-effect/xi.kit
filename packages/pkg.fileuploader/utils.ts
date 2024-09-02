@@ -1,5 +1,5 @@
 export const validateFile = (file: File, extensions: string[]) => {
-  const fileExt = file.name.split('.').pop();
+  const fileExt = file.name.split('.').pop()?.toLowerCase();
   if (!fileExt) return;
   return extensions.includes(fileExt);
 };
