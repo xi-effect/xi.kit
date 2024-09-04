@@ -5,12 +5,12 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@xipkg
 
 const TooltipDemo = () => (
   <TooltipProvider>
-    <div className='flex flex-col gap-6'>
+    <div className="flex flex-col gap-6">
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="secondary">Hover | Bottom</Button>
         </TooltipTrigger>
-        <TooltipContent side='bottom'>
+        <TooltipContent side="bottom">
           <p>Your text goes here</p>
         </TooltipContent>
       </Tooltip>
@@ -26,7 +26,7 @@ const TooltipDemo = () => (
         <TooltipTrigger asChild>
           <Button variant="secondary">Hover | Left</Button>
         </TooltipTrigger>
-        <TooltipContent side='left'>
+        <TooltipContent side="left">
           <p>Your text goes here</p>
         </TooltipContent>
       </Tooltip>
@@ -34,7 +34,7 @@ const TooltipDemo = () => (
         <TooltipTrigger asChild>
           <Button variant="secondary">Hover | Right</Button>
         </TooltipTrigger>
-        <TooltipContent side='right'>
+        <TooltipContent side="right">
           <p>Your text goes here</p>
         </TooltipContent>
       </Tooltip>
@@ -43,7 +43,11 @@ const TooltipDemo = () => (
           <Button variant="secondary">Hover | With a lot text</Button>
         </TooltipTrigger>
         <TooltipContent>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco.
+          </p>
         </TooltipContent>
       </Tooltip>
     </div>

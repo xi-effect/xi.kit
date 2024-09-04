@@ -11,12 +11,14 @@ const List = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> & { classNameShadow?: string }
 >(({ className, classNameShadow = '', children, onClick, ...props }, ref) => {
   const shadowRef = React.useRef<HTMLDivElement | null>(null);
-	const shadowKey = React.useId();
+  const shadowKey = React.useId();
 
   React.useEffect(() => {
     if (!shadowRef.current) return;
 
-    const activeButton = Array.from(shadowRef.current.parentNode?.children ?? []).find(element => element.getAttribute('data-state') === 'active');
+    const activeButton = Array.from(shadowRef.current.parentNode?.children ?? []).find(
+      (element) => element.getAttribute('data-state') === 'active',
+    );
 
     const { offsetLeft, clientWidth } = activeButton as HTMLElement;
     shadowRef.current.setAttribute('style', `left: ${offsetLeft}px; width: ${clientWidth}px`);
@@ -43,7 +45,7 @@ const List = React.forwardRef<
       {...props}
     >
       <div
-				key={shadowKey}
+        key={shadowKey}
         ref={shadowRef}
         id="shadow"
         className={`bg-brand-80 absolute -bottom-0.5 h-0.5 rounded-md transition-[left,width] duration-300 ${classNameShadow}`}
