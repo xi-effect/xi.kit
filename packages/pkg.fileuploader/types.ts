@@ -1,5 +1,3 @@
-import { DEFAULT_EXTENSIONS } from './FileUploader';
-
 export type SizeType = 'large' | 'medium' | 'small';
 export type FileSizeType = 'medium' | 'small';
 
@@ -13,7 +11,7 @@ export type FileUploaderProps = {
   disabled?: boolean;
   descriptionText?: string;
   onChange: (files: File[]) => void;
-  extensions?: ((typeof DEFAULT_EXTENSIONS)[number] & string)[];
+  extensions: string[];
   bytesSizeLimit?: number;
   children?: React.ReactNode;
 };

@@ -69,11 +69,28 @@ const TestComponents = () => {
         ))}
       </div>
       <h2>Sync</h2>
-      <FileUploader disabled onChange={handleFilesChange} size="small" />
-      <FileUploader onChange={handleFilesChange} size="medium" />
-      <FileUploader onChange={handleFilesChange} multiple />
+      <FileUploader
+        extensions={['.jpg', '.png', '.gif', '.webp']}
+        disabled
+        onChange={handleFilesChange}
+        size="small"
+      />
+      <FileUploader
+        extensions={['.jpg', '.png', '.gif', '.webp']}
+        onChange={handleFilesChange}
+        size="medium"
+      />
+      <FileUploader
+        extensions={['.jpg', '.png', '.gif', '.webp']}
+        onChange={handleFilesChange}
+        multiple
+      />
       <h2>Sync Single</h2>
-      <FileUploader onChange={handleFilesChange} size="small">
+      <FileUploader
+        extensions={['.jpg', '.png', '.gif', '.webp']}
+        onChange={handleFilesChange}
+        size="small"
+      >
         {firstFileName && (
           <File
             name={firstFileName}
@@ -83,7 +100,11 @@ const TestComponents = () => {
         )}
       </FileUploader>
       <h2>Async Single</h2>
-      <FileUploader onChange={handleFilesChangeAsync} size="small">
+      <FileUploader
+        extensions={['.jpg', '.png', '.gif', '.webp']}
+        onChange={handleFilesChangeAsync}
+        size="small"
+      >
         {firstFileName && (
           <File
             error={errors[firstFileName]}
@@ -96,10 +117,23 @@ const TestComponents = () => {
         )}
       </FileUploader>
       <h2>Async</h2>
-      <FileUploader onChange={handleFilesChangeAsync} size="small" />
+      <FileUploader
+        extensions={['.jpg', '.png', '.gif', '.webp']}
+        onChange={handleFilesChangeAsync}
+        size="small"
+      />
       <h2>Async Multiple</h2>
-      <FileUploader onChange={handleFilesChangeAsync} multiple size="medium" />
-      <FileUploader onChange={handleFilesChangeAsync} multiple />
+      <FileUploader
+        extensions={['.jpg', '.png', '.gif', '.webp']}
+        onChange={handleFilesChangeAsync}
+        multiple
+        size="medium"
+      />
+      <FileUploader
+        extensions={['.jpg', '.png', '.gif', '.webp']}
+        onChange={handleFilesChangeAsync}
+        multiple
+      />
     </div>
   );
 };

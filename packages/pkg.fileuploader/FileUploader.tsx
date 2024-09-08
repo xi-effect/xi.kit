@@ -49,17 +49,6 @@ const titleStyles = cva('text-sm text-center', {
   },
 });
 
-export const DEFAULT_EXTENSIONS = [
-  'webp',
-  'jpg',
-  'jpeg',
-  'gif',
-  'png',
-  'svg',
-  'tiff',
-  'pdf',
-  'zip',
-] as const;
 const DEFAULT_SIZE_LIMIT = 6 * 1024 * 1024; // 6 MB
 
 const pluralFiles = ['файла', 'файлов', 'файлов'];
@@ -75,7 +64,7 @@ export const FileUploader = ({
   onChange,
   limit = 3,
   bytesSizeLimit = DEFAULT_SIZE_LIMIT,
-  extensions = DEFAULT_EXTENSIONS as any,
+  extensions,
   children,
 }: FileUploaderProps) => {
   const [isDragOver, setIsDragOver] = useState(false);
@@ -136,7 +125,7 @@ export const FileUploader = ({
   const fileInput = (
     <input
       id={id}
-      accept="image/*"
+      accept={extensions.join()}
       onChange={handleChange}
       multiple={multiple}
       ref={inputRef}

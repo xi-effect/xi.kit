@@ -1,7 +1,9 @@
 export const validateFile = (file: File, extensions: string[]) => {
+  const extTypes = extensions.map((ext) => ext.slice(1));
+
   const fileExt = file.name.split('.').pop()?.toLowerCase();
   if (!fileExt) return;
-  return extensions.includes(fileExt);
+  return extTypes.includes(fileExt);
 };
 
 export const validateSize = (files: File[], limitBytes: number) => {
