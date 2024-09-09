@@ -70,24 +70,20 @@ const TestComponents = () => {
       </div>
       <h2>Sync</h2>
       <FileUploader
-        extensions={['.jpg', '.png', '.gif', '.webp']}
+        extensions={['jpg', 'png', 'gif', 'webp']}
         disabled
         onChange={handleFilesChange}
         size="small"
       />
       <FileUploader
-        extensions={['.jpg', '.png', '.gif', '.webp']}
+        extensions={['jpg', 'png', 'gif', 'webp']}
         onChange={handleFilesChange}
         size="medium"
       />
-      <FileUploader
-        extensions={['.jpg', '.png', '.gif', '.webp']}
-        onChange={handleFilesChange}
-        multiple
-      />
+      <FileUploader extensions={['jpg', 'webp']} onChange={handleFilesChange} multiple />
       <h2>Sync Single</h2>
       <FileUploader
-        extensions={['.jpg', '.png', '.gif', '.webp']}
+        extensions={['jpg', 'png', 'gif', 'webp']}
         onChange={handleFilesChange}
         size="small"
       >
@@ -101,7 +97,7 @@ const TestComponents = () => {
       </FileUploader>
       <h2>Async Single</h2>
       <FileUploader
-        extensions={['.jpg', '.png', '.gif', '.webp']}
+        extensions={['jpg', 'png', 'gif', 'webp']}
         onChange={handleFilesChangeAsync}
         size="small"
       >
@@ -118,22 +114,18 @@ const TestComponents = () => {
       </FileUploader>
       <h2>Async</h2>
       <FileUploader
-        extensions={['.jpg', '.png', '.gif', '.webp']}
+        extensions={['jpg', 'png', 'gif', 'webp']}
         onChange={handleFilesChangeAsync}
         size="small"
       />
       <h2>Async Multiple</h2>
       <FileUploader
-        extensions={['.jpg', '.png', '.gif', '.webp']}
+        extensions={['jpg', 'png', 'gif', 'webp']}
         onChange={handleFilesChangeAsync}
         multiple
         size="medium"
       />
-      <FileUploader
-        extensions={['.jpg', '.png', '.gif', '.webp']}
-        onChange={handleFilesChangeAsync}
-        multiple
-      />
+      <FileUploader extensions={['jpg', 'png']} onChange={handleFilesChangeAsync} multiple />
     </div>
   );
 };
