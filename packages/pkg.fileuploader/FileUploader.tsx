@@ -2,8 +2,8 @@ import { Upload } from '@xipkg/icons';
 import { formatBytesSize, plural } from '@xipkg/utils';
 import { cva } from 'class-variance-authority';
 import { ChangeEvent, DragEvent, useId, useRef, useState } from 'react';
-import { FileUploaderProps } from './types';
-import { stopDefaultEvents, validateFile, validateSize } from './utils';
+import { FileUploaderProps, DefaultInputPropsT } from './types';
+import { stopDefaultEvents, validateSize } from './utils';
 
 const containerStyles = cva(
   'flex group items-center rounded-lg border border-dashed border-gray-40 bg-gray-0 transition-[outline_shadow] px-2 max-w-[500px] gap-3 focus-within:border-solid focus-within:border-gray-80',
@@ -49,8 +49,6 @@ const titleStyles = cva('text-sm text-center', {
   },
 });
 
-export const DEFAULT_EXTENSIONS = ['webp', 'jpg', 'gif', 'png'] as const;
-
 const DEFAULT_SIZE_LIMIT = 6 * 1024 * 1024; // 6 MB
 
 const pluralFiles = ['файла', 'файлов', 'файлов'];
@@ -58,26 +56,25 @@ const pluralFiles = ['файла', 'файлов', 'файлов'];
 export const FileUploader = ({
   withError = true,
   withLargeError = true,
-  size = 'large',
+  size = 'medium',
   descriptionText,
-  multiple,
   disabled,
   isWarning,
   onChange,
   limit = 3,
   bytesSizeLimit = DEFAULT_SIZE_LIMIT,
-  extensions = DEFAULT_EXTENSIONS as any,
   children,
-}: FileUploaderProps) => {
+  multiple,
+  validateBeforeUpload,
+  ...inputProps
+}: FileUploaderProps & DefaultInputPropsT) => {
   const [isDragOver, setIsDragOver] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState<string | undefined>('');
 
   const inputRef = useRef<HTMLInputElement>(null);
   const dragDeph = useRef(0);
 
   const id = useId();
-
-  const acceptedExtensions = extensions.map((ext) => `.${ext}`);
 
   const isLarge = size === 'large';
   const formatedSizeLimit = formatBytesSize(bytesSizeLimit);
@@ -93,17 +90,17 @@ export const FileUploader = ({
     if (!files || files.length == 0) return;
 
     const fileList = [...files];
-    if (
-      fileList.length > limit ||
-      fileList.some((file) => !validateFile(file, extensions)) ||
-      !validateSize(fileList, bytesSizeLimit)
-    ) {
+    if (fileList.length > limit || !validateSize(fileList, bytesSizeLimit)) {
       return setError(
         `Можно отправить не более ${limit} ${plural(
           pluralFiles,
           limit,
-        )} с расширением ${extensions.join(', ')} общим объёмом до ${formatedSizeLimit}`,
+        )} общим объёмом до ${formatedSizeLimit}`,
       );
+    }
+
+    if (validateBeforeUpload && validateBeforeUpload(fileList)) {
+      return setError(validateBeforeUpload(fileList));
     }
 
     onChange(fileList);
@@ -129,13 +126,12 @@ export const FileUploader = ({
   const fileInput = (
     <input
       id={id}
-      accept={acceptedExtensions.join(', ')}
       onChange={handleChange}
-      multiple={multiple}
       ref={inputRef}
       type="file"
       className="sr-only"
       disabled={disabled}
+      {...inputProps}
     />
   );
 
@@ -175,8 +171,7 @@ export const FileUploader = ({
 
             {isLarge && withLargeError && (
               <p className="group-hover:text-brand-60 text-brand-40 text-center text-xs">
-                {descriptionText ||
-                  `${extensions.map((el) => el.toUpperCase()).join(', ')} до ${formatedSizeLimit}`}
+                {descriptionText || ` до ${formatedSizeLimit}`}
               </p>
             )}
 
