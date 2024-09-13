@@ -102,7 +102,13 @@ const TestComponents = () => {
       <h2>Async</h2>
       <FileUploader onChange={handleFilesChangeAsync} size="small" accept="image/*" />
       <h2>Async Multiple</h2>
-      <FileUploader onChange={handleFilesChangeAsync} multiple accept="image/*" />
+      <FileUploader
+        onChange={handleFilesChangeAsync}
+        multiple
+        accept=".jpg, .jpeg, .png, .webp, .gif"
+        size="large"
+        fileTypesHint={['jpg', 'jpeg', 'png', 'webp', 'gif']}
+      />
       <h2>With validate error</h2>
       <FileUploader
         onChange={handleFilesChangeAsync}

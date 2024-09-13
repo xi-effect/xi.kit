@@ -66,6 +66,7 @@ export const FileUploader = ({
   children,
   multiple,
   validateBeforeUpload,
+  fileTypesHint,
   ...inputProps
 }: FileUploaderProps & DefaultInputPropsT) => {
   const [isDragOver, setIsDragOver] = useState(false);
@@ -169,9 +170,10 @@ export const FileUploader = ({
               )}
             </p>
 
-            {isLarge && withLargeError && (
+            {isLarge && fileTypesHint && withLargeError && (
               <p className="group-hover:text-brand-60 text-brand-40 text-center text-xs">
-                {descriptionText || ` до ${formatedSizeLimit}`}
+                {descriptionText ||
+                  `${fileTypesHint.map((el) => el.toUpperCase()).join(', ')} до ${formatedSizeLimit}`}
               </p>
             )}
 

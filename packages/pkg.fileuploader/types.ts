@@ -17,6 +17,7 @@ export type FileUploaderProps = {
   validateBeforeUpload?: (files: File[]) => string | undefined;
   bytesSizeLimit?: number;
   children?: React.ReactNode;
+  fileTypesHint?: string[];
 };
 
 export type FileProps = {
