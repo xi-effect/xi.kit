@@ -52,6 +52,10 @@ const TestComponents = () => {
 
   const firstFileName = files[0]?.name;
 
+  const validateFiles = (files: File[]) => {
+    return `У файла ${files[0].name} неверный формат`;
+  };
+
   return (
     <div className="flex flex-col gap-4 w-80">
       <h2>Files</h2>
@@ -69,11 +73,11 @@ const TestComponents = () => {
         ))}
       </div>
       <h2>Sync</h2>
-      <FileUploader disabled onChange={handleFilesChange} size="small" />
-      <FileUploader onChange={handleFilesChange} size="medium" />
-      <FileUploader onChange={handleFilesChange} multiple />
+      <FileUploader disabled onChange={handleFilesChange} size="small" accept="image/*" />
+      <FileUploader onChange={handleFilesChange} size="medium" accept="image/*" />
+      <FileUploader onChange={handleFilesChange} multiple accept="image/*" />
       <h2>Sync Single</h2>
-      <FileUploader onChange={handleFilesChange} size="small">
+      <FileUploader onChange={handleFilesChange} size="small" accept="image/*">
         {firstFileName && (
           <File
             name={firstFileName}
@@ -83,7 +87,7 @@ const TestComponents = () => {
         )}
       </FileUploader>
       <h2>Async Single</h2>
-      <FileUploader onChange={handleFilesChangeAsync} size="small">
+      <FileUploader onChange={handleFilesChangeAsync} size="small" accept="image/*">
         {firstFileName && (
           <File
             error={errors[firstFileName]}
@@ -96,10 +100,22 @@ const TestComponents = () => {
         )}
       </FileUploader>
       <h2>Async</h2>
-      <FileUploader onChange={handleFilesChangeAsync} size="small" />
+      <FileUploader onChange={handleFilesChangeAsync} size="small" accept="image/*" />
       <h2>Async Multiple</h2>
-      <FileUploader onChange={handleFilesChangeAsync} multiple size="medium" />
-      <FileUploader onChange={handleFilesChangeAsync} multiple />
+      <FileUploader
+        onChange={handleFilesChangeAsync}
+        multiple
+        accept=".jpg, .jpeg, .png, .webp, .gif"
+        size="large"
+        fileTypesHint={['jpg', 'jpeg', 'png', 'webp', 'gif']}
+      />
+      <h2>With validate error</h2>
+      <FileUploader
+        onChange={handleFilesChangeAsync}
+        multiple
+        accept=".png, .jpg"
+        validateBeforeUpload={validateFiles}
+      />
     </div>
   );
 };

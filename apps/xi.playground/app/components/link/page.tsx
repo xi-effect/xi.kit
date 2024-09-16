@@ -58,7 +58,11 @@ export default function ButtonPage() {
           Ссылка
         </Link>
       </Stack>
-      <Stack flexDirection="row" alignItems="center" sx={{ gap: '16px', bgcolor: 'var(--xi-brand-80)' }}>
+      <Stack
+        flexDirection="row"
+        alignItems="center"
+        sx={{ gap: '16px', bgcolor: 'var(--xi-brand-80)' }}
+      >
         <Link size="s" theme="white" variant="always" href="https://github.com">
           Ссылка
         </Link>

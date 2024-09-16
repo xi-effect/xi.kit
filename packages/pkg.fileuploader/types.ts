@@ -1,21 +1,23 @@
-import { DEFAULT_EXTENSIONS } from './FileUploader';
-
 export type SizeType = 'large' | 'medium' | 'small';
 export type FileSizeType = 'medium' | 'small';
+
+export type DefaultInputPropsT = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'onChange' | 'size'
+>;
 
 export type FileUploaderProps = {
   withError?: boolean;
   withLargeError?: boolean;
   size?: SizeType;
-  multiple?: boolean;
   limit?: number;
   isWarning?: boolean;
-  disabled?: boolean;
   descriptionText?: string;
   onChange: (files: File[]) => void;
-  extensions?: ((typeof DEFAULT_EXTENSIONS)[number] & string)[];
+  validateBeforeUpload?: (files: File[]) => string | undefined;
   bytesSizeLimit?: number;
   children?: React.ReactNode;
+  fileTypesHint?: string[];
 };
 
 export type FileProps = {
