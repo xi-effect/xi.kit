@@ -37,7 +37,7 @@ export const dialogContentVariants = cva(
       variant: {
         default:
           'max-h-[calc(100vh-16px)] w-[calc(100%-16px)] max-w-lg md:w-full rounded-[16px] shadow-xl',
-        full: 'w-[100vw] h-[100vh]',
+        full: 'w-[100vw] min-h-full',
       },
     },
     defaultVariants: {
