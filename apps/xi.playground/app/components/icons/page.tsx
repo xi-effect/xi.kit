@@ -104,6 +104,7 @@ import {
   Pen,
   Undo,
   Redo,
+  Pin,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -212,6 +213,7 @@ const iconsDict = [
   <Pen />,
   <Undo />,
   <Redo />,
+  <Pin />
 ];
 
 const iconsDictNames = [
@@ -320,6 +322,7 @@ const iconsDictNames = [
   'Pen',
   'Undo',
   'Redo',
+  'Pin'
 ];
 
 const Icons = () => (

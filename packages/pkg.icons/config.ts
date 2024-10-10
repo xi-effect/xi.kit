@@ -135,4 +135,5 @@ export const icons = [
   'Pen',
   'Undo',
   'Redo',
+  'Pin'
 ];
