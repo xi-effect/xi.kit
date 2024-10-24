@@ -29,7 +29,8 @@ const nextConfig = {
     '@xipkg/popover',
     '@xipkg/scrollarea',
     '@xipkg/contextmenu',
-    '@xipkg/tooltip'
+    '@xipkg/tooltip',
+    '@xipkg/sheet'
   ],
   images: {
     remotePatterns: [

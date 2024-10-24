@@ -126,6 +126,10 @@ const menuArray = [
     link: '/components/typography',
     label: 'Typography',
   },
+  {
+    link: '/components/sheet',
+    label: 'Sheet',
+  }
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
