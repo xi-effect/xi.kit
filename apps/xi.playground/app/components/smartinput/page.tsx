@@ -84,7 +84,7 @@ const SmartInputDemo = () => {
       <button onClick={() => setShowMarkdownToSlate(prev => !prev)} className="mt-6 mb-2"> Toggle </button>
       {showMarkdownToSlate && <div className="my-12">
         {JSON.stringify(markdownToSlate(markdown))}
-        {/* <SmartInput initialValue={markdownToSlate(markdown)} /> */}
+        <SmartInput initialValue={markdownToSlate(markdown)} />
       </div>}
     </>
   )

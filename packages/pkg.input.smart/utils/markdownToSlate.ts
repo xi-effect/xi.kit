@@ -1,6 +1,8 @@
 import { unified } from 'unified';
-import parse from 'remark-parse';
+import remarkParse from 'remark-parse';
+import remarkGfm from 'remark-gfm';
 import { visit } from 'unist-util-visit';
+import { Descendant } from 'slate';
 
 type CustomElement =
   | { type: 'paragraph'; children: CustomText[] }
@@ -12,77 +14,177 @@ type CustomText = {
   bold?: boolean;
   italic?: boolean;
   strikethrough?: boolean;
-  underlined?: boolean;
+  underline?: boolean;
+  beforeUnderline?: boolean;
+  afterUnderline?: boolean;
 };
 
-// Обновлённая функция для разбора и применения инлайн-стилей
-const parseInlineStyles = (text: string): CustomText[] => {
-  const result: CustomText[] = [];
-  const regex = /(\*\*[^*]+\*\*|\*[^*]+\*|~~[^~]+~~|_[^_]+_)/g;
-  let lastIndex = 0;
+const mergeTextWithFlags = (slateObjects: CustomElement[]): CustomElement[] => {
+  for (let i = 0; i < slateObjects.length; i++) {
+    const obj = slateObjects[i];
 
-  text.replace(regex, (match, _, offset) => {
-    if (offset > lastIndex) {
-      result.push({ text: text.slice(lastIndex, offset) });
+    if (obj.type === "paragraph") {
+      let beforeText = '';
+      let afterText = '';
+      let shouldMerge = false;
+
+      for (let j = 0; j < obj.children.length; j++) {
+        const child = obj.children[j];
+
+        if (child.beforeUnderline) {
+          beforeText += child.text;
+          shouldMerge = true;
+        } else if (child.afterUnderline) {
+          afterText = child.text;
+          shouldMerge = false;
+        } else if (shouldMerge) {
+          beforeText += child.text;
+        }
+      }
+
+      if (beforeText || afterText) {
+        // Удаляем старые флаги и текст "подчёркнутый"
+        obj.children = obj.children.filter(child => 
+          !child.beforeUnderline && 
+          !child.afterUnderline && 
+          child.text !== "подчёркнутый"
+        );
+
+        // Добавляем объединенный текст
+        obj.children.push({ text: `${beforeText}${afterText}` });
+      }
     }
+  }
 
-    const styledText = match.replace(/^\*\*|\*\*$|^\*|\*$|^~~|~~$|^_|_$/g, '');
-    const styledNode: CustomText = { text: styledText };
+  return slateObjects;
+}
 
-    if (match.startsWith('**')) styledNode.bold = true;
-    if (match.startsWith('*') && !match.startsWith('**')) styledNode.italic = true;
-    if (match.startsWith('~~')) styledNode.strikethrough = true;
-    if (match.startsWith('_') && !match.startsWith('**')) styledNode.underlined = true;
 
-    result.push(styledNode);
-    lastIndex = offset + match.length;
-    return '';
+// Плагин для замены `__текста__` на <u>текст</u>
+const formatMarkdown = (markdown: string) => {
+  return markdown.replace(/__(.*?)__/g, '<u>$1</u>');
+};
+
+// Функция для создания Markdown AST с учетом подчеркивания
+export const markdownToSlate = (markdown: string): CustomElement[] => {
+  const ast = unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    // .use(remarkUnderline)
+    .parse(formatMarkdown(markdown));
+
+  console.log('ast', ast);
+
+  const slateElements: CustomElement[] = [];
+
+  visit(ast, (node) => {
+    if (node.type === 'paragraph') {
+      slateElements.push({
+        type: 'paragraph',
+        children: node.children.map((child) => convertMarkdownNodeToSlateText(child)).flat(),
+      });
+    } else if (node.type === 'heading') {
+      slateElements.push({
+        type: 'heading',
+        level: node.depth as 1 | 2 | 3 | 4 | 5 | 6,
+        children: node.children.map((child) => convertMarkdownNodeToSlateText(child)).flat(),
+      });
+    } else if (node.type === 'code') {
+      slateElements.push({
+        type: 'codeBlock',
+        children: [{ text: node.value || '' }],
+      });
+    }
   });
 
-  if (lastIndex < text.length) {
-    result.push({ text: text.slice(lastIndex) });
-  }
+  const result = mergeTextWithFlags(slateElements);
 
   return result;
 };
 
-// Основная функция для преобразования Markdown в Slate
-export const markdownToSlate = (markdown: string): CustomElement[] => {
-  const tree = unified().use(parse).parse(markdown);
-  const slateNodes: CustomElement[] = [];
+const convertMarkdownNodeToSlateText = (node: any): CustomText[] => {
+  if (node.type === 'text') {
+    return [{ text: node.value || '' }];
+  }
 
-  visit(tree, 'root', (node) => {
-    node.children.forEach((child) => {
-      switch (child.type) {
-        case 'paragraph':
-          const paragraphChildren: CustomText[] = [];
-          child.children.forEach((textNode: any) => {
-            paragraphChildren.push(...parseInlineStyles(textNode.value || ''));
-          });
-          slateNodes.push({ type: 'paragraph', children: paragraphChildren });
-          break;
+  const children: CustomText[] = [];
 
-        case 'heading':
-          slateNodes.push({
-            type: 'heading',
-            level: child.depth,
-            children: child.children.map((textNode: any) => ({ text: textNode.value || '' })),
-          });
-          break;
-
-        case 'code':
-          slateNodes.push({
-            type: 'codeBlock',
-            language: child.lang || undefined,
-            children: [{ text: child.value || '' }],
-          });
-          break;
-
-        default:
-          break;
-      }
+  if (node.children) {
+    node.children.forEach((child: any) => {
+      const childText = convertMarkdownNodeToSlateText(child);
+      children.push(...childText);
     });
-  });
+  }
 
-  return slateNodes;
+  let text = children.map((child) => child.text).join('');
+
+  if (node.type === 'html' && node.value === '<u>') {
+    text = `__`;
+    return [{ text, beforeUnderline: true }];
+  }
+
+  if (node.type === 'html' && node.value === '</u>') {
+    text = `__`;
+    return [{ text, afterUnderline: true }];
+  }
+
+
+  switch (node.type) {
+    case 'strong':
+      text = `**${text}**`;
+      break;
+    case 'emphasis':
+      text = `*${text}*`;
+      break;
+    case 'delete':
+      text = `~~${text}~~`;
+      break;
+    case 'underline':
+      text = `__${text}__`; // Markdown для подчеркивания
+      break;
+    default:
+      break;
+  }
+
+  return [{ text }];
 };
+
+// Функция для преобразования узлов Markdown в текст Slate с инлайн-стилями
+// const convertMarkdownNodeToSlateText = (node: any): CustomText[] => {
+//   console.log('node', node);
+//   if (node.type === 'text') {
+//     return [{ text: node.value || '' }]; // Просто текстовые узлы
+//   }
+
+//   const children: CustomText[] = [];
+
+//   if (node.children) {
+//     node.children.forEach((child: any) => {
+//       const childText = convertMarkdownNodeToSlateText(child);
+//       children.push(...childText);
+//     });
+//   }
+
+//   // Учитываем стили
+//   const customText: CustomText = { text: '' };
+
+//   if (node.bold) {
+//     customText.bold = true;
+//   }
+//   if (node.italic) {
+//     customText.italic = true;
+//   }
+//   if (node.strikethrough) {
+//     customText.strikethrough = true;
+//   }
+//   if (node.underline) {
+//     customText.underline = true;
+//   }
+
+//   if (children.length > 0) {
+//     customText.text = children.map(child => child.text).join('');
+//     return [customText, ...children]; // Возвращаем массив, включающий стиль и дочерние узлы
+//   }
+
+//   return children; // Если детей нет, возвращаем пустой массив
+// };
