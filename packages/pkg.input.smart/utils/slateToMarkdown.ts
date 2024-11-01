@@ -20,8 +20,6 @@ export const slateToMarkdown = (value: CustomElement[]): string => {
         return node.children.map(child => applyInlineStyles(child)).join('') + '\n\n';
       case 'heading':
         return `${'#'.repeat(node.level)} ${node.children.map(child => applyInlineStyles(child)).join('')}\n\n`;
-      // case 'codeBlock':
-      //   return `\`\`\`${node.language || ''}\n${node.children.map(child => child.text).join('')}\n\`\`\`\n\n`;
       default:
         return '';
     }
