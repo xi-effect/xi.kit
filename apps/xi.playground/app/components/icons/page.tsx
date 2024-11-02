@@ -105,6 +105,12 @@ import {
   Undo,
   Redo,
   Pin,
+  Hint,
+  DoubleBottomArrows,
+  DoubleUpArrows,
+  SimpleAnswertTest,
+  DetailedAnswerTest,
+  OptionSelectionTest,
 } from '@xipkg/icons';
 
 const iconsDict = [
@@ -213,7 +219,13 @@ const iconsDict = [
   <Pen />,
   <Undo />,
   <Redo />,
-  <Pin />
+  <Pin />,
+  <Hint />,
+  <DoubleBottomArrows />,
+  <DoubleUpArrows />,
+  <SimpleAnswertTest />,
+  <DetailedAnswerTest />,
+  <OptionSelectionTest />,
 ];
 
 const iconsDictNames = [
@@ -322,7 +334,13 @@ const iconsDictNames = [
   'Pen',
   'Undo',
   'Redo',
-  'Pin'
+  'Pin',
+  'Hint',
+  'DoubleBottomArrows',
+  'DoubleUpArrows',
+  'SimpleAnswertTest',
+  'DetailedAnswerTest',
+  'OptionSelectionTest',
 ];
 
 const Icons = () => (
