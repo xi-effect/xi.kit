@@ -1,0 +1,34 @@
+{
+  "name": "@xipkg/textarea",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup index.ts --format cjs --dts",
+    "start": "npm run build -- --watch",
+    "dev": "npm run build -- --watch",
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "dependencies": {
+    "@xipkg/utils": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@xipkg/eslint": "^1.4.0",
+    "@xipkg/typescript": "^0.0.6",
+    "eslint": "^7.32.0",
+    "typescript": "^5.5.3"
+  },
+  "peerDependencies": {
+    "react": "^18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "xi.effect",
+  "description": "",
+  "gitHead": "33022d3bd6e72a5ccc9097b187742f9139f7d905"
+}

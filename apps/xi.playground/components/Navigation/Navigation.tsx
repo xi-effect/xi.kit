@@ -129,6 +129,10 @@ const menuArray = [
   {
     link: '/components/sheet',
     label: 'Sheet',
+  },
+  {
+    link: '/components/textarea',
+    label: 'Textarea',
   }
 ];
 
