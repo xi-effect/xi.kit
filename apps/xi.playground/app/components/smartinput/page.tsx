@@ -68,11 +68,11 @@ const SmartInputDemo = () => {
 
   const handleChange = (value) => {
     setValue(value);
-    console.log('value', value);
+    // console.log('value', value);
     setMarkdown(slateToMarkdown(value))
   }
 
-  console.log('markdown', markdown);
+  // console.log('markdown', markdown);
 
   return (
     <>

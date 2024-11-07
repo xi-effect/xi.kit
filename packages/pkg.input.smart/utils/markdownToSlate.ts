@@ -69,10 +69,7 @@ export const markdownToSlate = (markdown: string): CustomElement[] => {
   const ast = unified()
     .use(remarkParse)
     .use(remarkGfm)
-    // .use(remarkUnderline)
     .parse(formatMarkdown(markdown));
-
-  console.log('ast', ast);
 
   const slateElements: CustomElement[] = [];
 
@@ -147,43 +144,3 @@ const convertMarkdownNodeToSlateText = (node: any): CustomText[] => {
 
   return [{ text }];
 };
-
-// Функция для преобразования узлов Markdown в текст Slate с инлайн-стилями
-// const convertMarkdownNodeToSlateText = (node: any): CustomText[] => {
-//   console.log('node', node);
-//   if (node.type === 'text') {
-//     return [{ text: node.value || '' }]; // Просто текстовые узлы
-//   }
-
-//   const children: CustomText[] = [];
-
-//   if (node.children) {
-//     node.children.forEach((child: any) => {
-//       const childText = convertMarkdownNodeToSlateText(child);
-//       children.push(...childText);
-//     });
-//   }
-
-//   // Учитываем стили
-//   const customText: CustomText = { text: '' };
-
-//   if (node.bold) {
-//     customText.bold = true;
-//   }
-//   if (node.italic) {
-//     customText.italic = true;
-//   }
-//   if (node.strikethrough) {
-//     customText.strikethrough = true;
-//   }
-//   if (node.underline) {
-//     customText.underline = true;
-//   }
-
-//   if (children.length > 0) {
-//     customText.text = children.map(child => child.text).join('');
-//     return [customText, ...children]; // Возвращаем массив, включающий стиль и дочерние узлы
-//   }
-
-//   return children; // Если детей нет, возвращаем пустой массив
-// };

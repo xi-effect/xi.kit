@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-closing-tag-location */
 /* eslint-disable react/jsx-no-useless-fragment */
 import React, { useEffect, useState, KeyboardEvent } from 'react';
-
-import { Editor } from 'slate';
+import { Editor, Transforms, Range } from 'slate';
 import { useSlate } from 'slate-react';
 import { Bold, Italic, Underline, Stroke } from '@xipkg/icons';
 import { Button } from '@xipkg/button';
@@ -18,6 +17,37 @@ import {
   FloatingDelayGroup,
 } from '@floating-ui/react';
 import { Tooltip, TooltipTrigger, TooltipContent } from './Tooltip';
+
+export const toggleMarkdownInlineStyle = (editor: Editor, marker: "**" | "__" | "~~") => {
+  const { selection } = editor;
+
+  if (!selection || Range.isCollapsed(selection)) {
+    return; // Ничего не делаем, если нет выделения или выделен один символ
+  }
+
+  // Получаем текущий выделенный текст
+  const selectedText = Editor.string(editor, selection);
+
+  // Определяем позиции маркеров относительно выделенного текста
+  const rangeWithMarkers = {
+    anchor: { ...selection.anchor, offset: selection.anchor.offset - marker.length },
+    focus: { ...selection.focus, offset: selection.focus.offset + marker.length }
+  };
+
+  // Проверяем, окружён ли текст маркерами
+  const textWithMarkers = Editor.string(editor, rangeWithMarkers);
+  const hasMarker = textWithMarkers.startsWith(marker) && textWithMarkers.endsWith(marker);
+
+  if (hasMarker) {
+    // Убираем маркеры
+    Transforms.delete(editor, { at: rangeWithMarkers.anchor, distance: marker.length });
+    Transforms.delete(editor, { at: rangeWithMarkers.focus, distance: marker.length, reverse: true });
+  } else {
+    // Добавляем маркеры
+    Transforms.insertText(editor, marker, { at: selection.focus });
+    Transforms.insertText(editor, marker, { at: selection.anchor });
+  }
+}
 
 const toggleFormat = (editor: Editor, format: string) => {
   const isActive = isFormatActive(editor, format);
@@ -126,7 +156,8 @@ export const InlineToolbar = () => {
 
     const selection = window.getSelection();
     if (typeof selection?.rangeCount === 'number') {
-      if (isBold) toggleFormat(editor, 'bold');
+      console.log('isBold', isBold);
+      if (isBold) toggleMarkdownInlineStyle(editor, '**');
       if (isItalic) toggleFormat(editor, 'italic');
       if (isUnderline) toggleFormat(editor, 'underlined');
       if (isStroke) toggleFormat(editor, 'stroke');

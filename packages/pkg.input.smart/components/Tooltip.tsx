@@ -35,7 +35,7 @@ export function useTooltip({
   placement = 'top',
   open: controlledOpen,
   onOpenChange: setControlledOpen,
-}: TooltipOptions = {}) {
+}: TooltipOptions): any {
   const arrowRef = useRef(null);
 
   const [uncontrolledOpen, setUncontrolledOpen] = React.useState(initialOpen);
@@ -91,7 +91,7 @@ type ContextType = ReturnType<typeof useTooltip> | null;
 
 const TooltipContext = React.createContext<ContextType>(null);
 
-export const useTooltipState = () => {
+export const useTooltipState = (): any => {
   const context = React.useContext(TooltipContext);
 
   if (context == null) {

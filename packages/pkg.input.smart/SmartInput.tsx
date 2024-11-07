@@ -22,12 +22,12 @@ type CustomRange = BaseRange & {
 
 const getLength = (token: any) => {
   if (typeof token === 'string') {
-      return token.length; // Если токен — строка, возвращаем его длину
+    return token.length; // Если токен — строка, возвращаем его длину
   } else if (typeof token.content === 'string') {
-      return token.content.length; // Если содержимое токена — строка, возвращаем его длину
+    return token.content.length; // Если содержимое токена — строка, возвращаем его длину
   } else if (Array.isArray(token.content)) {
-      // Если содержимое токена — массив, суммируем длины всех его элементов
-      return token.content.reduce((length: number, t: any) => length + getLength(t), 0);
+    // Если содержимое токена — массив, суммируем длины всех его элементов
+    return token.content.reduce((length: number, t: any) => length + getLength(t), 0);
   }
   return 0; // Если токен не является строкой или массивом, возвращаем 0
 };
@@ -90,69 +90,66 @@ export const SmartInput = ({ initialValue, onChange, readOnly = false }: SmartIn
     const ranges: CustomRange[] = [];
 
     if (!Text.isText(node)) {
-        return ranges;
+      return ranges;
     }
 
     const tokens = Prism.tokenize(node.text, Prism.languages.markdown);
     let start = 0;
 
     for (const token of tokens) {
-        const length = typeof token === 'string' ? token.length : getLength(token);
-        const end = start + length;
+      const length = typeof token === 'string' ? token.length : getLength(token);
+      const end = start + length;
 
-        // Проверяем, является ли токен строкой или объектом с типом
-        if (typeof token === 'string') {
-            start = end; // Пропускаем обычный текст
-            continue;
+      // Проверяем, является ли токен строкой или объектом с типом
+      if (typeof token === 'string') {
+        start = end; // Пропускаем обычный текст
+        continue;
+      }
+
+      // Обрабатываем форматирование, избегая применения стилей к символам форматирования
+      if (token.type) {
+        const { type } = token;
+        const tokenLength = token.content ? getLength(token.content) : length;
+
+        // Добавляем диапазон для форматированного текста, исключая символы форматирования
+        if (type === 'bold') {
+          ranges.push({
+            bold: true,
+            anchor: { path, offset: start + 2 }, // Пропускаем 2 символа для '**'
+            focus: { path, offset: end - 2 } // Пропускаем 2 символа для '**'
+          });
+        } else if (type === 'italic') {
+          ranges.push({
+            italic: true,
+            anchor: { path, offset: start + 1 }, // Пропускаем 1 символ для '*'
+            focus: { path, offset: end - 1 } // Пропускаем 1 символ для '*'
+          });
+        } else if (type === 'underline') {
+          ranges.push({
+            underline: true,
+            anchor: { path, offset: start + 2 }, // Пропускаем 2 символа для '__'
+            focus: { path, offset: end - 2 } // Пропускаем 2 символа для '__'
+          });
+        } else if (type === 'strikethrough') {
+          ranges.push({
+            strikethrough: true,
+            anchor: { path, offset: start + 2 }, // Пропускаем 2 символа для '~~'
+            focus: { path, offset: end - 2 } // Пропускаем 2 символа для '~~'
+          });
+        } else if (type === 'code') {
+          ranges.push({
+            code: true,
+            anchor: { path, offset: start + 1 }, // Пропускаем 1 символ для '`'
+            focus: { path, offset: end - 1 } // Пропускаем 1 символ для '`'
+          });
         }
+      }
 
-        // Обрабатываем форматирование, избегая применения стилей к символам форматирования
-        if (token.type) {
-            const { type } = token;
-            const tokenLength = token.content ? getLength(token.content) : length;
-
-            // Добавляем диапазон для форматированного текста, исключая символы форматирования
-            if (type === 'bold') {
-                ranges.push({
-                    bold: true,
-                    anchor: { path, offset: start + 2 }, // Пропускаем 2 символа для '**'
-                    focus: { path, offset: end - 2 } // Пропускаем 2 символа для '**'
-                });
-            } else if (type === 'italic') {
-                ranges.push({
-                    italic: true,
-                    anchor: { path, offset: start + 1 }, // Пропускаем 1 символ для '*'
-                    focus: { path, offset: end - 1 } // Пропускаем 1 символ для '*'
-                });
-            } else if (type === 'underline') {
-                ranges.push({
-                    underline: true,
-                    anchor: { path, offset: start + 2 }, // Пропускаем 2 символа для '__'
-                    focus: { path, offset: end - 2 } // Пропускаем 2 символа для '__'
-                });
-            } else if (type === 'strikethrough') {
-                ranges.push({
-                    strikethrough: true,
-                    anchor: { path, offset: start + 2 }, // Пропускаем 2 символа для '~~'
-                    focus: { path, offset: end - 2 } // Пропускаем 2 символа для '~~'
-                });
-            } else if (type === 'code') {
-                ranges.push({
-                    code: true,
-                    anchor: { path, offset: start + 1 }, // Пропускаем 1 символ для '`'
-                    focus: { path, offset: end - 1 } // Пропускаем 1 символ для '`'
-                });
-            }
-        }
-
-        start = end; // Обновляем начальную позицию
+      start = end; // Обновляем начальную позицию
     }
 
     return ranges;
-}, []);
-
-
-
+  }, []);
 
   const handleChange = (value: Descendant[]) => {
     if (onChange) {
