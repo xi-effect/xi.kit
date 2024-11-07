@@ -37,6 +37,7 @@
     "@xipkg/contextmenu": "*",
     "@xipkg/tooltip": "*",
     "@xipkg/sheet": "*",
+    "@xipkg/inputsmart": "*",
     "next": "^13.5.6",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",

@@ -131,9 +131,12 @@ const menuArray = [
     label: 'Sheet',
   },
   {
+    link: '/components/smartinput',
+    label: 'Smart Input',
+  },
+  {
     link: '/components/textarea',
     label: 'Textarea',
-  }
 ];
 
 export const Navigation = ({ children }: NavigationT) => {
