@@ -17,8 +17,20 @@ import {
   FloatingDelayGroup,
 } from '@floating-ui/react';
 import { Tooltip, TooltipTrigger, TooltipContent } from './Tooltip';
+import { MarkdownFormat, MarkdownFormatValueT } from '../config';
 
-export const toggleMarkdownInlineStyle = (editor: Editor, marker: "**" | "__" | "~~") => {
+type KeyToMdT = {
+  [key: string]: MarkdownFormatValueT;
+};
+
+const keyToMd: KeyToMdT = {
+  'b': MarkdownFormat.Bold,
+  'u': MarkdownFormat.Underline,
+  'i': MarkdownFormat.Italic,
+  's': MarkdownFormat.Strikethrough,
+};
+
+export const toggleMarkdownInlineStyle = (editor: Editor, marker: MarkdownFormatValueT) => {
   const { selection } = editor;
 
   if (!selection || Range.isCollapsed(selection)) {
@@ -48,24 +60,6 @@ export const toggleMarkdownInlineStyle = (editor: Editor, marker: "**" | "__" | 
     Transforms.insertText(editor, marker, { at: selection.anchor });
   }
 }
-
-const toggleFormat = (editor: Editor, format: string) => {
-  const isActive = isFormatActive(editor, format);
-
-  if (isActive) {
-    Editor.removeMark(editor, format);
-  } else {
-    Editor.addMark(editor, format, true);
-  }
-};
-
-const isFormatActive = (editor: Editor, format: string) => {
-  const [match] = Editor.nodes(editor, {
-    match: (n) => (n as any)?.[format] === true,
-    mode: 'all',
-  });
-  return !!match;
-};
 
 export const InlineToolbar = () => {
   const editor = useSlate();
@@ -140,34 +134,18 @@ export const InlineToolbar = () => {
   }, [refs]);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
-    const isBold =
-      (isMac && event.metaKey && event.key === 'b') ||
-      (!isMac && event.ctrlKey && event.key === 'b');
-    const isItalic =
-      (isMac && event.metaKey && event.key === 'i') ||
-      (!isMac && event.ctrlKey && event.key === 'i');
-    const isUnderline =
-      (isMac && event.metaKey && event.key === 'u') ||
-      (!isMac && event.ctrlKey && event.key === 'u');
-    const isStroke =
-      (isMac && event.metaKey && event.key === 's') ||
-      (!isMac && event.ctrlKey && event.key === 's');
 
+    if (!event.metaKey || !event.ctrlKey) return;
     const selection = window.getSelection();
     if (typeof selection?.rangeCount === 'number') {
-      console.log('isBold', isBold);
-      if (isBold) toggleMarkdownInlineStyle(editor, '**');
-      if (isItalic) toggleFormat(editor, 'italic');
-      if (isUnderline) toggleFormat(editor, 'underlined');
-      if (isStroke) toggleFormat(editor, 'stroke');
+      toggleMarkdownInlineStyle(editor, keyToMd[event.key]);
     }
   };
 
   useEffect(() => {
     const handleDocumentKeyDown = (event: KeyboardEvent) => {
       if (
-        event.key === 's' &&
+        event.key === 's' || event.key === 'b' &&
         (/Mac|iPod|iPhone|iPad/.test(navigator.platform) ? event.metaKey : event.ctrlKey)
       ) {
         event.preventDefault(); // Prevent default save action
@@ -204,7 +182,7 @@ export const InlineToolbar = () => {
               <Tooltip placement="bottom">
                 <TooltipTrigger>
                   <FormatButton
-                    format="bold"
+                    format={MarkdownFormat.Bold}
                     icon={<Bold className="group-hover:fill-brand-100 h-4 w-4 fill-gray-100" />}
                   />
                 </TooltipTrigger>
@@ -220,7 +198,7 @@ export const InlineToolbar = () => {
               <Tooltip placement="bottom">
                 <TooltipTrigger>
                   <FormatButton
-                    format="italic"
+                    format={MarkdownFormat.Italic}
                     icon={<Italic className="group-hover:fill-brand-100 h-4 w-4 fill-gray-100" />}
                   />
                 </TooltipTrigger>
@@ -236,7 +214,7 @@ export const InlineToolbar = () => {
               <Tooltip placement="bottom">
                 <TooltipTrigger>
                   <FormatButton
-                    format="underlined"
+                    format={MarkdownFormat.Underline}
                     icon={
                       <Underline className="group-hover:fill-brand-100 h-4 w-4 fill-gray-100" />
                     }
@@ -254,7 +232,7 @@ export const InlineToolbar = () => {
               <Tooltip placement="bottom">
                 <TooltipTrigger>
                   <FormatButton
-                    format="strikethrough"
+                    format={MarkdownFormat.Strikethrough}
                     icon={<Stroke className="group-hover:fill-brand-100 h-4 w-4 fill-gray-100" />}
                   />
                 </TooltipTrigger>
@@ -267,11 +245,6 @@ export const InlineToolbar = () => {
                   </div>
                 </TooltipContent>
               </Tooltip>
-              {/* <FormatButton
-              onClick={handleLinkClick}
-              format="link"
-              icon={<Link className="group-hover:fill-brand-100 h-4 w-4 fill-gray-100" />}
-            /> */}
             </FloatingDelayGroup>
           </div>
         </FloatingFocusManager>
@@ -285,25 +258,22 @@ const FormatButton = ({
   icon,
   onClick,
 }: {
-  format: string;
+  format: MarkdownFormatValueT;
   icon: React.ReactNode;
   onClick?: () => void;
 }) => {
   const editor = useSlate();
-  const isActive = isFormatActive(editor, format);
 
   return (
     <Button
-      className={`${isActive ? 'bg-brand-0 *:fill-brand-100' : 'bg-gray-0'} hover:bg-brand-0 hover:fill-brand-100 group h-6 w-6 rounded-sm p-0`}
+      className="bg-gray-0 hover:bg-brand-0 hover:fill-brand-100 group h-6 w-6 rounded-sm p-0"
       variant="ghost"
       onMouseDown={(event) => {
         event.preventDefault();
         if (onClick) {
           onClick();
-          toggleFormat(editor, format);
-        } else {
-          toggleFormat(editor, format);
         }
+        toggleMarkdownInlineStyle(editor, format);
       }}
     >
       {icon}
