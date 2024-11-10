@@ -1,7 +1,4 @@
-/* eslint-disable react/jsx-closing-tag-location */
-/* eslint-disable react/jsx-no-useless-fragment */
 import React, { useEffect, useState, KeyboardEvent } from 'react';
-import { Editor, Transforms, Range } from 'slate';
 import { useSlate } from 'slate-react';
 import { Bold, Italic, Underline, Stroke } from '@xipkg/icons';
 import { Button } from '@xipkg/button';
@@ -18,6 +15,7 @@ import {
 } from '@floating-ui/react';
 import { Tooltip, TooltipTrigger, TooltipContent } from './Tooltip';
 import { MarkdownFormat, MarkdownFormatValueT } from '../config';
+import { toggleMarkdownInlineStyle } from '../utils';
 
 type KeyToMdT = {
   [key: string]: MarkdownFormatValueT;
@@ -29,37 +27,6 @@ const keyToMd: KeyToMdT = {
   'i': MarkdownFormat.Italic,
   's': MarkdownFormat.Strikethrough,
 };
-
-export const toggleMarkdownInlineStyle = (editor: Editor, marker: MarkdownFormatValueT) => {
-  const { selection } = editor;
-
-  if (!selection || Range.isCollapsed(selection)) {
-    return; // Ничего не делаем, если нет выделения или выделен один символ
-  }
-
-  // Получаем текущий выделенный текст
-  const selectedText = Editor.string(editor, selection);
-
-  // Определяем позиции маркеров относительно выделенного текста
-  const rangeWithMarkers = {
-    anchor: { ...selection.anchor, offset: selection.anchor.offset - marker.length },
-    focus: { ...selection.focus, offset: selection.focus.offset + marker.length }
-  };
-
-  // Проверяем, окружён ли текст маркерами
-  const textWithMarkers = Editor.string(editor, rangeWithMarkers);
-  const hasMarker = textWithMarkers.startsWith(marker) && textWithMarkers.endsWith(marker);
-
-  if (hasMarker) {
-    // Убираем маркеры
-    Transforms.delete(editor, { at: rangeWithMarkers.anchor, distance: marker.length });
-    Transforms.delete(editor, { at: rangeWithMarkers.focus, distance: marker.length, reverse: true });
-  } else {
-    // Добавляем маркеры
-    Transforms.insertText(editor, marker, { at: selection.focus });
-    Transforms.insertText(editor, marker, { at: selection.anchor });
-  }
-}
 
 export const InlineToolbar = () => {
   const editor = useSlate();
@@ -134,8 +101,10 @@ export const InlineToolbar = () => {
   }, [refs]);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (!(event.metaKey || event.ctrlKey)) return;
 
-    if (!event.metaKey || !event.ctrlKey) return;
+    event.preventDefault();
+
     const selection = window.getSelection();
     if (typeof selection?.rangeCount === 'number') {
       toggleMarkdownInlineStyle(editor, keyToMd[event.key]);

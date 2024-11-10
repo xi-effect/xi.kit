@@ -5,27 +5,39 @@ import React from "react";
 import { SmartInput, MarkdownPreview, slateToMarkdown, markdownToSlate } from "@xipkg/inputsmart";
 
 const initialValue = [
-  {
-    type: 'paragraph',
-    children: [ { text: 'Slate' }
-    ],
-  },
-  {
-    type: 'paragraph',
-    children: [
-      { text: 'жирным', bold: true },
-      { text: ' ', },
-      { text: 'курсивом', italic: true },
-      { text: ' ', },
-      { text: 'зачёркнуто', strikethrough: true },
-      { text: ' ', },
-      { text: 'подчёркнутый', underline: true },
-    ],
-  },
+  // {
+  //   type: 'paragraph',
+  //   children: [ { text: 'Slate' }
+  //   ],
+  // },
+  // {
+  //   type: 'paragraph',
+  //   children: [
+  //     { text: 'жирным', bold: true },
+  //     { text: ' ', },
+  //     { text: 'курсивом', italic: true },
+  //     { text: ' ', },
+  //     { text: 'зачёркнуто', strikethrough: true },
+  //     { text: ' ', },
+  //     { text: 'подчёркнутый', underline: true },
+  //   ],
+  // },
   {
     type: 'paragraph',
     children: [
       { text: ' ' },
+    ],
+  },
+  {
+    type: 'paragraph',
+    children: [
+      { text: 'Markdown' },
+    ],
+  },
+  {
+    type: 'paragraph',
+    children: [
+      { text: 'Markdown' },
     ],
   },
   {
