@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback, ComponentProps } from 'react';
 import { Slate, Editable, withReact } from 'slate-react';
 import { createEditor, Descendant, Text, Range, BaseRange } from 'slate';
 import { withHistory } from 'slate-history';
@@ -9,7 +9,8 @@ import 'prismjs/components/prism-markdown';
 export type SmartInputPropsT = {
   initialValue?: Descendant[];
   onChange?: (value: Descendant[]) => void;
-  readOnly?: boolean;
+  editableProps?: ComponentProps<typeof Editable>;
+  slateProps?: ComponentProps<typeof Slate>;
 };
 
 type CustomRange = BaseRange & {
@@ -83,7 +84,7 @@ Prism.languages.markdown = {
   }
 };
 
-export const SmartInput = ({ initialValue, onChange, readOnly = false }: SmartInputPropsT) => {
+export const SmartInput = ({ initialValue, onChange, editableProps, slateProps }: SmartInputPropsT) => {
   const editor = useMemo(() => withHistory(withReact(createEditor())), []);
 
   const decorate = useCallback(([node, path]: any) => {
@@ -158,12 +159,13 @@ export const SmartInput = ({ initialValue, onChange, readOnly = false }: SmartIn
   }
 
   return (
-    <Slate editor={editor} initialValue={initialValue ?? []} onChange={handleChange}>
+    <Slate editor={editor} initialValue={initialValue ?? []} onChange={handleChange} {...slateProps}>
       <InlineToolbar />
       <Editable
         decorate={decorate}
         className="flex flex-col gap-2 p-2 text-gray-100 focus-visible:outline-none focus-visible:[&_*]:outline-none"
         renderLeaf={(props) => <Leaf {...props} />}
+        {...editableProps}
       />
     </Slate>
   );
