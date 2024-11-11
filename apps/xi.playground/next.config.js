@@ -30,7 +30,8 @@ const nextConfig = {
     '@xipkg/scrollarea',
     '@xipkg/contextmenu',
     '@xipkg/tooltip',
-    '@xipkg/sheet'
+    '@xipkg/sheet',
+    '@xipkg/inputsmart'
   ],
   images: {
     remotePatterns: [

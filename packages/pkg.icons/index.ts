@@ -137,6 +137,12 @@ import { Pen } from './icons/Pen';
 import { Undo } from './icons/Undo';
 import { Redo } from './icons/Redo';
 import { Pin } from './icons/Pin';
+import { Hint } from './icons/Hint';
+import { DoubleBottomArrows } from './icons/DoubleBottomArrows';
+import { DoubleUpArrows } from './icons/DoubleUpArrows';
+import { SimpleAnswertTest } from './icons/SimpleAnswertTest';
+import { DetailedAnswerTest } from './icons/DetailedAnswerTest';
+import { OptionSelectionTest } from './icons/OptionSelectionTest';
 
 import { icons } from './config';
 
@@ -280,6 +286,12 @@ export {
   Undo,
   Redo,
   Pin,
+  Hint,
+  DoubleBottomArrows,
+  DoubleUpArrows,
+  SimpleAnswertTest,
+  DetailedAnswerTest,
+  OptionSelectionTest,
   icons,
 };
 
