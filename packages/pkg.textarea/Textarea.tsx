@@ -28,6 +28,8 @@ export const textareaVariants = cva(
   },
 );
 
+const maxRows = 16;
+
 export interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement>,
   VariantProps<typeof textareaVariants> { }
@@ -45,7 +47,6 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     },
     ref,
   ) => {
-    const maxRows = 16
     const lineHeight = variant === 'm' ? 24 : 21;
 
     const textareaRef = React.useRef<HTMLTextAreaElement | null>(null);
@@ -60,19 +61,20 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     const autoResize = () => {
       const textarea = textareaRef.current;
-      if (textarea) {
-        textarea.style.height = 'auto';
 
-        const scrollHeight = textarea.scrollHeight;
+      if (!textarea) return
 
-        const currentRows = Math.ceil(scrollHeight / lineHeight);
-        const newRows = Math.min(currentRows + 1, maxRows);
+      textarea.style.height = 'auto';
 
-        const newHeight = newRows * lineHeight;
-        textarea.style.height = `${newHeight}px`;
+      const scrollHeight = textarea.scrollHeight;
 
-        textarea.style.overflowY = newRows >= maxRows ? 'scroll' : 'hidden';
-      }
+      const currentRows = Math.ceil(scrollHeight / lineHeight);
+      const newRows = Math.min(currentRows + 1, maxRows);
+
+      const newHeight = newRows * lineHeight;
+      textarea.style.height = `${newHeight}px`;
+
+      textarea.style.overflowY = newRows >= maxRows ? 'scroll' : 'hidden';
     };
 
     const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -120,6 +122,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     );
   }
 );
+
 Textarea.displayName = 'Textarea';
 
 export { Textarea };
