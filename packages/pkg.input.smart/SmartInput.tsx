@@ -1,14 +1,20 @@
-import React, { useMemo, useCallback, ComponentProps } from 'react';
+import React, { useMemo, useCallback, ComponentProps, useEffect } from 'react';
 import { Slate, Editable, withReact } from 'slate-react';
-import { createEditor, Descendant, Text, Range, BaseRange } from 'slate';
+import { createEditor, Descendant, Text, Range, BaseRange, Transforms, Editor } from 'slate';
 import { withHistory } from 'slate-history';
 import { InlineToolbar, Leaf } from './components';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-markdown';
+import { cn } from '@xipkg/utils';
+import { getLength, markdownToSlate, slateToMarkdown } from './utils';
+import { prismMarkdown } from './config';
+
+Prism.languages.markdown = prismMarkdown;
 
 export type SmartInputPropsT = {
   initialValue?: Descendant[];
   onChange?: (value: Descendant[]) => void;
+  editableClassName?: string;
   editableProps?: ComponentProps<typeof Editable>;
   slateProps?: ComponentProps<typeof Slate>;
 };
@@ -21,70 +27,7 @@ type CustomRange = BaseRange & {
   underline?: boolean; // Добавляем поддержку underline
 };
 
-const getLength = (token: any) => {
-  if (typeof token === 'string') {
-    return token.length; // Если токен — строка, возвращаем его длину
-  } else if (typeof token.content === 'string') {
-    return token.content.length; // Если содержимое токена — строка, возвращаем его длину
-  } else if (Array.isArray(token.content)) {
-    // Если содержимое токена — массив, суммируем длины всех его элементов
-    return token.content.reduce((length: number, t: any) => length + getLength(t), 0);
-  }
-  return 0; // Если токен не является строкой или массивом, возвращаем 0
-};
-
-
-Prism.languages.markdown = {
-  // Жирный текст
-  'bold': {
-    pattern: /\*\*([^*]+)\*\*/g,
-    alias: 'strong',
-    inside: {
-      'text': {
-        pattern: /[^*]+/, // Не оборачиваем сами звёздочки
-        inside: Prism.languages.markdown
-      }
-    }
-  },
-
-  // Курсив
-  'italic': {
-    pattern: /\*([^*]+)\*/g,
-    alias: 'em',
-    inside: {
-      'text': {
-        pattern: /[^*]+/, // Не оборачиваем сами звёздочки
-        inside: Prism.languages.markdown
-      }
-    }
-  },
-
-  // Подчёркнутый текст
-  'underline': {
-    pattern: /__([^_]+)__/g,
-    alias: 'u',
-    inside: {
-      'text': {
-        pattern: /[^_]+/, // Не оборачиваем сами нижние подчеркивания
-        inside: Prism.languages.markdown
-      }
-    }
-  },
-
-  // Перечёркнутый текст
-  'strikethrough': {
-    pattern: /~~([^~]+)~~/g,
-    alias: 's',
-    inside: {
-      'text': {
-        pattern: /[^~]+/, // Не оборачиваем сами тильды
-        inside: Prism.languages.markdown
-      }
-    }
-  }
-};
-
-export const SmartInput = ({ initialValue, onChange, editableProps, slateProps }: SmartInputPropsT) => {
+export const SmartInput = ({ initialValue, onChange, editableClassName, editableProps, slateProps }: SmartInputPropsT) => {
   const editor = useMemo(() => withHistory(withReact(createEditor())), []);
 
   const decorate = useCallback(([node, path]: any) => {
@@ -158,12 +101,50 @@ export const SmartInput = ({ initialValue, onChange, editableProps, slateProps }
     }
   }
 
+  const handleCopy = useCallback((event: ClipboardEvent) => {
+    const { selection } = editor;
+
+    if (!event || !event.clipboardData) return;
+
+    if (selection) {
+      // Получаем выделенный текст и форматируем в Markdown
+      const value = Editor.fragment(editor, selection);
+      console.log('value', value);
+
+      const markdownText = slateToMarkdown(value as any);
+
+      // Копируем markdownText в буфер обмена
+      event.clipboardData.setData('text/plain', markdownText);
+      event.preventDefault();
+    }
+  }, [editor]);
+
+  const handlePaste = useCallback((event: ClipboardEvent) => {
+    if (!event || !event.clipboardData || !editor.selection) return;
+
+    const pastedText = event.clipboardData.getData('text/plain');
+
+    Transforms.insertText(editor, pastedText, { at: editor.selection });
+
+    event.preventDefault();
+  }, [editor]);
+
+  useEffect(() => {
+    document.addEventListener('copy', handleCopy);
+    document.addEventListener('paste', handlePaste);
+
+    return () => {
+      document.removeEventListener('copy', handleCopy);
+      document.removeEventListener('paste', handlePaste);
+    };
+  }, [handleCopy, handlePaste]);
+
   return (
     <Slate editor={editor} initialValue={initialValue ?? []} onChange={handleChange} {...slateProps}>
       <InlineToolbar />
       <Editable
         decorate={decorate}
-        className="flex flex-col gap-2 p-2 text-gray-100 focus-visible:outline-none focus-visible:[&_*]:outline-none"
+        className={cn("text-gray-100 focus-visible:outline-none focus-visible:[&_*]:outline-none", editableClassName)}
         renderLeaf={(props) => <Leaf {...props} />}
         {...editableProps}
       />

@@ -103,8 +103,6 @@ export const InlineToolbar = () => {
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (!(event.metaKey || event.ctrlKey)) return;
 
-    event.preventDefault();
-
     const selection = window.getSelection();
     if (typeof selection?.rangeCount === 'number') {
       toggleMarkdownInlineStyle(editor, keyToMd[event.key]);
@@ -112,17 +110,12 @@ export const InlineToolbar = () => {
   };
 
   useEffect(() => {
-    const handleDocumentKeyDown = (event: KeyboardEvent) => {
-      if (
-        event.key === 's' || event.key === 'b' &&
-        (/Mac|iPod|iPhone|iPad/.test(navigator.platform) ? event.metaKey : event.ctrlKey)
-      ) {
+    const handleDocumentKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if ((event.key === 's' || event.key === 'b') && (event.metaKey || event.ctrlKey)) {
         event.preventDefault(); // Prevent default save action
       }
 
-      if (event && event.target) {
-        handleKeyDown(event as KeyboardEvent<HTMLDivElement>);
-      }
+      handleKeyDown(event as KeyboardEvent<HTMLDivElement>);
     };
 
     // TODO: разобраться с типизацией
