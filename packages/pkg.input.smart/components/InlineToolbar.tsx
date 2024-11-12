@@ -130,7 +130,7 @@ export const InlineToolbar = () => {
   return (
     <>
       {isOpen && (
-        <FloatingFocusManager context={context}>
+        <FloatingFocusManager initialFocus={-1} context={context}>
           <div
             ref={refs.setFloating}
             style={{
