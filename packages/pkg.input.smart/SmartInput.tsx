@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, ComponentProps, useEffect } from 'react';
+import React, { useMemo, useCallback, ComponentProps, useEffect, useRef } from 'react';
 import { Slate, Editable, withReact } from 'slate-react';
 import { createEditor, Descendant, Text, Range, BaseRange, Transforms, Editor } from 'slate';
 import { withHistory } from 'slate-history';
@@ -139,10 +139,13 @@ export const SmartInput = ({ initialValue, onChange, editableClassName, editable
     };
   }, [handleCopy, handlePaste]);
 
+  const editableRef = useRef(null);
+
   return (
     <Slate editor={editor} initialValue={initialValue ?? []} onChange={handleChange} {...slateProps}>
-      <InlineToolbar />
+      <InlineToolbar editableRef={editableRef} />
       <Editable
+        ref={editableRef}
         decorate={decorate}
         className={cn("text-gray-100 focus-visible:outline-none focus-visible:[&_*]:outline-none", editableClassName)}
         renderLeaf={(props) => <Leaf {...props} />}

@@ -1,4 +1,5 @@
-import React, { useEffect, useState, KeyboardEvent } from 'react';
+import React, { useEffect, useState, KeyboardEvent, RefObject } from 'react';
+import { Range } from 'slate';
 import { useSlate } from 'slate-react';
 import { Bold, Italic, Underline, Stroke } from '@xipkg/icons';
 import { Button } from '@xipkg/button';
@@ -28,7 +29,11 @@ const keyToMd: KeyToMdT = {
   's': MarkdownFormat.Strikethrough,
 };
 
-export const InlineToolbar = () => {
+type InlineToolbarPropsT = {
+  editableRef: RefObject<HTMLDivElement>;
+};
+
+export const InlineToolbar = ({ editableRef }: InlineToolbarPropsT) => {
   const editor = useSlate();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +42,7 @@ export const InlineToolbar = () => {
     placement: 'top',
     open: isOpen,
     onOpenChange: setIsOpen,
-    middleware: [flip(), inline(), shift()],
+    middleware: [flip(), shift(), inline()],
     whileElementsMounted: autoUpdate,
   });
 
@@ -46,59 +51,44 @@ export const InlineToolbar = () => {
   const { getFloatingProps } = useInteractions([dismiss]);
 
   useEffect(() => {
-    const handleMouseUp = (event: MouseEvent) => {
+    const handleSelectionChange = () => {
+      const selection = window.getSelection();
+
       if (
-        event &&
-        event?.target &&
-        refs.floating.current?.contains(event?.target as Element | null)
+        selection &&
+        !selection.isCollapsed && editableRef && editableRef.current &&
+        editableRef.current?.contains(selection.anchorNode)
       ) {
-        return;
-      }
+        const range = selection.getRangeAt(0);
 
-      setTimeout(() => {
-        const selection = window.getSelection();
-        const range =
-          typeof selection?.rangeCount === 'number' && selection.rangeCount > 0
-            ? selection.getRangeAt(0)
-            : null;
-
-        if (selection?.isCollapsed) {
-          setIsOpen(false);
-          return;
-        }
-
-        if (range) {
-          refs.setReference({
-            getBoundingClientRect: () => range.getBoundingClientRect(),
-            getClientRects: () => range.getClientRects(),
-          });
-          setIsOpen(true);
-        }
-      });
-    };
-
-    const handleMouseDown = (event: MouseEvent) => {
-      if (
-        event &&
-        event?.target &&
-        refs.floating.current?.contains(event.target as Element | null)
-      ) {
-        return;
-      }
-
-      if (window.getSelection()?.isCollapsed) {
+        refs.setReference({
+          getBoundingClientRect: () => range.getBoundingClientRect(),
+          getClientRects: () => range.getClientRects(),
+        });
+        setIsOpen(true);
+      } else {
         setIsOpen(false);
       }
     };
 
-    window.addEventListener('mouseup', handleMouseUp);
-    window.addEventListener('mousedown', handleMouseDown);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        refs.floating.current &&
+        !refs.floating.current.contains(event.target as Node) && editableRef && editableRef.current &&
+        !editableRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('selectionchange', handleSelectionChange);
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-      window.removeEventListener('mouseup', handleMouseUp);
-      window.removeEventListener('mousedown', handleMouseDown);
+      document.removeEventListener('selectionchange', handleSelectionChange);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [refs]);
+  }, [refs, editableRef]);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (!(event.metaKey || event.ctrlKey)) return;
