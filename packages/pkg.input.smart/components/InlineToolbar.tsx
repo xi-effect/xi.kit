@@ -35,8 +35,8 @@ type InlineToolbarPropsT = {
 
 export const InlineToolbar = ({ editableRef }: InlineToolbarPropsT) => {
   const editor = useSlate();
-
   const [isOpen, setIsOpen] = useState(false);
+  const [initialPosition, setInitialPosition] = useState<DOMRect | null>(null);
 
   const { refs, floatingStyles, context } = useFloating({
     placement: 'top',
@@ -47,7 +47,6 @@ export const InlineToolbar = ({ editableRef }: InlineToolbarPropsT) => {
   });
 
   const dismiss = useDismiss(context);
-
   const { getFloatingProps } = useInteractions([dismiss]);
 
   useEffect(() => {
@@ -56,28 +55,39 @@ export const InlineToolbar = ({ editableRef }: InlineToolbarPropsT) => {
 
       if (
         selection &&
-        !selection.isCollapsed && editableRef && editableRef.current &&
-        editableRef.current?.contains(selection.anchorNode)
+        !selection.isCollapsed &&
+        editableRef?.current &&
+        editableRef.current.contains(selection.anchorNode)
       ) {
         const range = selection.getRangeAt(0);
+        const boundingRect = range.getBoundingClientRect();
+
+        if (!isOpen) {
+          // Запоминаем начальную позицию при первом открытии
+          setInitialPosition(boundingRect);
+        }
 
         refs.setReference({
-          getBoundingClientRect: () => range.getBoundingClientRect(),
-          getClientRects: () => range.getClientRects(),
+          getBoundingClientRect: () => (initialPosition || boundingRect),
+          getClientRects: () => (initialPosition ? [initialPosition] : range.getClientRects()),
         });
+
         setIsOpen(true);
       } else {
         setIsOpen(false);
+        setInitialPosition(null); // Сброс начальной позиции при закрытии
       }
     };
 
     const handleClickOutside = (event: MouseEvent) => {
       if (
         refs.floating.current &&
-        !refs.floating.current.contains(event.target as Node) && editableRef && editableRef.current &&
+        !refs.floating.current.contains(event.target as Node) &&
+        editableRef?.current &&
         !editableRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
+        setInitialPosition(null); // Сброс начальной позиции при закрытии
       }
     };
 
@@ -88,7 +98,7 @@ export const InlineToolbar = ({ editableRef }: InlineToolbarPropsT) => {
       document.removeEventListener('selectionchange', handleSelectionChange);
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [refs, editableRef]);
+  }, [refs, editableRef, isOpen, initialPosition]);
 
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (!(event.metaKey || event.ctrlKey)) return;
