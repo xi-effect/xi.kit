@@ -32,7 +32,13 @@ const maxRows = 16;
 
 export interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-  VariantProps<typeof textareaVariants> { }
+  VariantProps<typeof textareaVariants> {
+  onChange?: (
+    event: React.ChangeEvent<HTMLTextAreaElement> 
+    & { isMaxLengthExceeded?: boolean } // Если максимальная длина была превышена
+  ) => void;
+  threshold?: number; // Порог для появления счетчика символов
+}
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
@@ -43,6 +49,8 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       warning,
       rows = 2,
       maxLength = 0,
+      onChange,
+      threshold = 0,
       ...props
     },
     ref,
@@ -62,7 +70,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const autoResize = () => {
       const textarea = textareaRef.current;
 
-      if (!textarea) return
+      if (!textarea) return;
 
       textarea.style.height = 'auto';
 
@@ -77,9 +85,21 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       textarea.style.overflowY = newRows >= maxRows ? 'scroll' : 'hidden';
     };
 
-    const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setCharCount(e.target.value.length);
+    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      const newCharCount = e.target.value.length;
+      setCharCount(newCharCount);
       autoResize();
+
+      if (onChange) {
+        const isMaxLengthExceeded = maxLength > 0 && newCharCount > maxLength;
+
+        const customEvent = {
+          ...e,
+          isMaxLengthExceeded,
+        };
+
+        onChange(customEvent);
+      }
     };
 
     return (
@@ -104,10 +124,10 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           rows={rows}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          onInput={handleInput}
+          onChange={handleChange}
           {...props}
         />
-        {maxLength > 0 && isFocused && (
+        {maxLength > 0 && isFocused && charCount >= threshold && (
           <div
             className={cn(
               "absolute right-2 bottom-2 text-sm",
