@@ -13,13 +13,15 @@ type CustomText = {
 };
 
 // Функция для преобразования Slate в Markdown
-export const slateToMarkdown = (value: CustomElement[]): string => {
+export const slateToMarkdown = (value: CustomElement[], withLinebreak: boolean = true): string => {
+  const linebreak = withLinebreak ? '\n\n' : '';
+
   return value.map(node => {
     switch (node.type) {
       case 'paragraph':
-        return node.children.map(child => applyInlineStyles(child)).join('') + '\n\n';
+        return node.children.map(child => applyInlineStyles(child)).join('') + linebreak;
       case 'heading':
-        return `${'#'.repeat(node.level)} ${node.children.map(child => applyInlineStyles(child)).join('')}\n\n`;
+        return `${'#'.repeat(node.level)} ${node.children.map(child => applyInlineStyles(child)).join('')}` + linebreak;
       default:
         return '';
     }

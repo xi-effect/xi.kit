@@ -109,9 +109,8 @@ export const SmartInput = ({ initialValue, onChange, editableClassName, editable
     if (selection) {
       // Получаем выделенный текст и форматируем в Markdown
       const value = Editor.fragment(editor, selection);
-      console.log('value', value);
 
-      const markdownText = slateToMarkdown(value as any);
+      const markdownText = slateToMarkdown(value as any, false);
 
       // Копируем markdownText в буфер обмена
       event.clipboardData.setData('text/plain', markdownText);
