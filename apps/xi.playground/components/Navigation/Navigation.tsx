@@ -133,6 +133,10 @@ const menuArray = [
   {
     link: '/components/smartinput',
     label: 'Smart Input',
+  },
+  {
+    link: '/components/textarea',
+    label: 'Textarea',
   }
 ];
 
