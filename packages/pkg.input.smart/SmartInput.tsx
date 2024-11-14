@@ -1,12 +1,12 @@
 import React, { useMemo, useCallback, ComponentProps, useEffect, useRef } from 'react';
 import { Slate, Editable, withReact } from 'slate-react';
-import { createEditor, Descendant, Text, Range, BaseRange, Transforms, Editor } from 'slate';
+import { createEditor, Descendant, Text, BaseRange, Transforms, Editor } from 'slate';
 import { withHistory } from 'slate-history';
 import { InlineToolbar, Leaf } from './components';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-markdown';
 import { cn } from '@xipkg/utils';
-import { getLength, markdownToSlate, slateToMarkdown } from './utils';
+import { getLength, slateToMarkdown } from './utils';
 import { prismMarkdown } from './config';
 
 Prism.languages.markdown = prismMarkdown;
