@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, ComponentProps, useEffect, useRef } from 'react';
+import React, { useMemo, useCallback, ComponentProps, useEffect, useRef, useImperativeHandle } from 'react';
 import { Slate, Editable, withReact } from 'slate-react';
 import { createEditor, Descendant, Text, BaseRange, Transforms, Editor } from 'slate';
 import { withHistory } from 'slate-history';
@@ -12,6 +12,7 @@ import { prismMarkdown } from './config';
 Prism.languages.markdown = prismMarkdown;
 
 export type SmartInputPropsT = {
+  editorRef?: React.MutableRefObject<Editor | null>;
   initialValue?: Descendant[];
   onChange?: (value: Descendant[]) => void;
   editableClassName?: string;
@@ -27,7 +28,7 @@ type CustomRange = BaseRange & {
   underline?: boolean; // Добавляем поддержку underline
 };
 
-export const SmartInput = ({ initialValue, onChange, editableClassName, editableProps, slateProps }: SmartInputPropsT) => {
+export const SmartInput = ({ editorRef, initialValue, onChange, editableClassName, editableProps, slateProps }: SmartInputPropsT) => {
   const editor = useMemo(() => withHistory(withReact(createEditor())), []);
 
   const decorate = useCallback(([node, path]: any) => {
@@ -139,6 +140,29 @@ export const SmartInput = ({ initialValue, onChange, editableClassName, editable
   }, [handleCopy, handlePaste]);
 
   const editableRef = useRef(null);
+
+  // Используем useImperativeHandle для предоставления методов через ref
+  useImperativeHandle(editorRef, () => ({
+    ...editor,
+    resetContent: () => {
+      editor.children = [
+        {
+          type: 'paragraph',
+          children: [{ text: ' ' }],
+        },
+      ]
+      editor.normalizeNode([editor, []])
+      editor.deselect();
+      editor.onChange();
+    },
+    setContent: (nodes: Descendant[]) => {
+      editor.children = nodes;
+      editor.normalizeNode([editor, []])
+      editor.deselect();
+      editor.onChange();
+    },
+  }));
+
 
   return (
     <Slate editor={editor} initialValue={initialValue ?? []} onChange={handleChange} {...slateProps}>

@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { SmartInput, MarkdownPreview, slateToMarkdown, markdownToSlate } from "@xipkg/inputsmart";
+import { SmartInput, MarkdownPreview, slateToMarkdown, markdownToSlate, CustomEditor } from "@xipkg/inputsmart";
 
 const initialValue = [
   // {
@@ -73,6 +73,8 @@ const initialValue = [
 
 
 const SmartInputDemo = () => {
+  const editorRef = React.useRef<CustomEditor | null>(null);
+
   const [value, setValue] = React.useState([]);
   const [markdown, setMarkdown] = React.useState('');
 
@@ -86,9 +88,16 @@ const SmartInputDemo = () => {
 
   // console.log('markdown', markdown);
 
+  const handleReset = () => {
+    if (!editorRef || !editorRef.current) return;
+
+    editorRef.current?.resetContent();
+  }
+
   return (
     <>
-      <SmartInput initialValue={initialValue} onChange={handleChange} />
+      <button onClick={handleReset}> Reset </button>
+      <SmartInput editorRef={editorRef} initialValue={initialValue} onChange={handleChange} />
       <div className="my-12">
         {JSON.stringify(value)}
       </div>
