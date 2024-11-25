@@ -1,4 +1,4 @@
 module.exports = {
   root: true,
-  extends: ['@xipkg/eslint'],
+  extends: ['@xipkg/eslint', 'plugin:storybook/recommended'],
 };
