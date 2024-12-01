@@ -1,24 +1,23 @@
 import '../tailwind.css';
 // import '@xipkg/tailwind/index.css';
-
-
+import { themes } from '@storybook/theming';
 import type { Preview } from '@storybook/react';
+import { withThemeByClassName } from '@storybook/addon-themes';
 
 const preview: Preview = {
-  globalTypes: {
-    theme: {
-      description: 'Global theme for components',
-      toolbar: {
-        title: 'Theme',
-        icon: 'circlehollow',
-        items: ['light', 'dark'],
-        dynamicTitle: true,
-      },
+  parameters: {
+    docs: { 
     },
   },
-  initialGlobals: {
-    theme: 'dark',
-  },
+  decorators: [
+    withThemeByClassName({
+      themes: {
+        light: 'light-theme',
+        dark: 'dark-theme',
+      },
+      defaultTheme: 'light',
+    }),
+  ],
 };
- 
+
 export default preview;
