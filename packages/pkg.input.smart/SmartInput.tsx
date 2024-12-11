@@ -148,7 +148,7 @@ export const SmartInput = ({ editorRef, initialValue, onChange, editableClassNam
       editor.children = [
         {
           type: 'paragraph',
-          children: [{ text: ' ' }],
+          children: [{ text: '' }],
         },
       ]
       editor.normalizeNode([editor, []])
@@ -163,6 +163,30 @@ export const SmartInput = ({ editorRef, initialValue, onChange, editableClassNam
     },
   }));
 
+  const userKeyDownHandler = editableProps?.onKeyDown;
+
+  const handleKeyDown = useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
+    // Сначала внутренняя логика
+    if (event.key === 'Enter') {
+      if (!event.shiftKey) {
+        // Нажатие Enter без Shift не делает ничего
+        event.preventDefault();
+      } else {
+        // Нажатие Shift+Enter вставляет перенос строки
+        event.preventDefault();
+        Transforms.insertNodes(editor, {
+          type: 'paragraph',
+          children: [{ text: '' }],
+        });
+      }
+    }
+
+    // Затем вызываем переданный извне обработчик, если он есть
+    if (userKeyDownHandler) {
+      userKeyDownHandler(event);
+    }
+  }, [editor, userKeyDownHandler]);
+
 
   return (
     <Slate editor={editor} initialValue={initialValue ?? []} onChange={handleChange} {...slateProps}>
@@ -172,6 +196,7 @@ export const SmartInput = ({ editorRef, initialValue, onChange, editableClassNam
         decorate={decorate}
         className={cn("text-gray-100 focus-visible:outline-none focus-visible:[&_*]:outline-none", editableClassName)}
         renderLeaf={(props) => <Leaf {...props} />}
+        onKeyDown={handleKeyDown}
         {...editableProps}
       />
     </Slate>
