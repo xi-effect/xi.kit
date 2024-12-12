@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback, ComponentProps, useEffect, useRef, useImperativeHandle } from 'react';
-import { Slate, Editable, withReact } from 'slate-react';
+import { Slate, Editable, withReact, ReactEditor } from 'slate-react';
 import { createEditor, Descendant, Text, BaseRange, Transforms, Editor } from 'slate';
 import { withHistory } from 'slate-history';
 import { InlineToolbar, Leaf } from './components';
@@ -160,6 +160,16 @@ export const SmartInput = ({ editorRef, initialValue, onChange, editableClassNam
       editor.normalizeNode([editor, []])
       editor.deselect();
       editor.onChange();
+    },
+    focus: () => {
+      // Устанавливаем фокус через ReactEditor
+      ReactEditor.focus(editor);
+
+      // Если нужно установить курсор в конец текста
+      if (!editor.selection) {
+        const end = Editor.end(editor, []);
+        Transforms.select(editor, end);
+      }
     },
   }));
 
