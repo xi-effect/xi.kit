@@ -5,6 +5,7 @@ export type CustomEditor = BaseEditor &
 ReactEditor & {
   resetContent: () => void;
   setContent: (nodes: Descendant[]) => void;
+  focus: () => void;
 };
 
 type CustomElement =
