@@ -11,12 +11,14 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@maskito/kit": "^3.0.0",
-    "@maskito/react": "^3.0.0",
+    "@maskito/kit": "^3.2.0",
+    "@maskito/react": "^3.2.0",
     "@xipkg/utils": "^1.0.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
+    "@types/react": "19.0.2",
+    "@types/react-dom": "19.0.2",
     "@xipkg/eslint": "^1.4.0",
     "@xipkg/typescript": "^0.0.6",
     "eslint": "^7.32.0",
