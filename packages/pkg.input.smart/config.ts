@@ -1,61 +1,61 @@
-import Prism from "prismjs";
+import Prism from 'prismjs';
 
 export enum MarkdownFormat {
   Bold = '**',
   Italic = '*',
   Strikethrough = '~~',
   Code = '`',
-  Underline = '__'
-};
+  Underline = '__',
+}
 
 export type MarkdownFormatValueT = (typeof MarkdownFormat)[keyof typeof MarkdownFormat];
 
 export const prismMarkdown = {
   // Жирный текст
-  'bold': {
+  bold: {
     pattern: /\*\*([^*]+)\*\*/g,
     alias: 'strong',
     inside: {
-      'text': {
+      text: {
         pattern: /[^*]+/, // Не оборачиваем сами звёздочки
-        inside: Prism.languages.markdown
-      }
-    }
+        inside: Prism.languages.markdown,
+      },
+    },
   },
 
   // Курсив
-  'italic': {
+  italic: {
     pattern: /\*([^*]+)\*/g,
     alias: 'em',
     inside: {
-      'text': {
+      text: {
         pattern: /[^*]+/, // Не оборачиваем сами звёздочки
-        inside: Prism.languages.markdown
-      }
-    }
+        inside: Prism.languages.markdown,
+      },
+    },
   },
 
   // Подчёркнутый текст
-  'underline': {
+  underline: {
     pattern: /__([^_]+)__/g,
     alias: 'u',
     inside: {
-      'text': {
+      text: {
         pattern: /[^_]+/, // Не оборачиваем сами нижние подчеркивания
-        inside: Prism.languages.markdown
-      }
-    }
+        inside: Prism.languages.markdown,
+      },
+    },
   },
 
   // Перечёркнутый текст
-  'strikethrough': {
+  strikethrough: {
     pattern: /~~([^~]+)~~/g,
     alias: 's',
     inside: {
-      'text': {
+      text: {
         pattern: /[^~]+/, // Не оборачиваем сами тильды
-        inside: Prism.languages.markdown
-      }
-    }
-  }
+        inside: Prism.languages.markdown,
+      },
+    },
+  },
 };

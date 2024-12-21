@@ -2,45 +2,53 @@ module.exports = {
   env: {
     browser: true,
     commonjs: true,
-    es6: true,
+    es2021: true,
     node: true,
   },
   parser: '@typescript-eslint/parser',
   extends: [
-    'next',
+    'next/core-web-vitals', // next 12+ требует core-web-vitals для актуальных проверок
     'turbo',
     'prettier',
     'eslint:recommended',
     'airbnb',
     'airbnb/hooks',
-    'plugin:import/errors',
-    'plugin:import/warnings',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'plugin:jsx-a11y/recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
   ignorePatterns: ['sw.js', 'workbox-*.js', 'fallback-*.js', 'templates/**/*.tsx|ts|js'],
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
   rules: {
-    semi: 'off',
-    '@typescript-eslint/semi': 'error',
-    // NextJs specific fix: suppress errors for missing 'import React' in files for nextjs
-    'react/react-in-jsx-scope': 'off',
-    // NextJs specific fix: allow jsx syntax in js files
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }], // should add ".ts" if typescript project
-    'react/display-name': 1,
+    '@typescript-eslint/semi': ['error', 'always'],
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'react/react-in-jsx-scope': 'off', // не нужно для Next.js
+    'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts', '.jsx', '.js'] }],
+    'react/display-name': 'warn',
     'react/jsx-props-no-spreading': 'off',
-    'react/no-array-index-key': 'off',
-    'no-console': 'off',
+    'react/no-array-index-key': 'warn',
     'react/function-component-definition': 'off',
     'import/prefer-default-export': 'off',
-    'import/extensions': 'off',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
     'import/no-unresolved': 'off',
     'no-restricted-syntax': 'off',
     'no-use-before-define': 'off',
     'react/require-default-props': 'off',
     'no-shadow': 'off',
-    'react-hooks/exhaustive-deps': 'off',
+    'react-hooks/exhaustive-deps': 'warn',
     'jsx-a11y/anchor-is-valid': 'off',
-    '@typescript-eslint/no-unused-vars': ['error'],
-    'linebreak-style': 0,
+    'linebreak-style': 'off',
     'import/no-cycle': 'off',
     'object-curly-newline': 'off',
     'implicit-arrow-linebreak': 'off',
@@ -54,5 +62,14 @@ module.exports = {
     'function-paren-newline': 'off',
     'newline-per-chained-call': 'off',
     '@next/next/no-html-link-for-pages': 'off',
+    '@next/next/no-duplicate-head': 'off',
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+      typescript: {}, // Для корректного резолва ts путей
+    },
   },
 };

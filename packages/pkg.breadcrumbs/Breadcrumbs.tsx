@@ -80,7 +80,7 @@ export const Breadcrumbs = React.forwardRef<
   VariantProps<typeof breadcrumbsVariants> & {
     breadcrumbs: breadcrumbLink[];
     asChild?: boolean;
-    children?: JSX.IntrinsicElements;
+    children?: React.JSX.IntrinsicElements;
   }
 >(({ variant, size, breadcrumbs, ...props }, ref) => (
   <nav

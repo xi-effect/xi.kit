@@ -2,11 +2,11 @@ import { BaseEditor, Descendant } from 'slate';
 import { ReactEditor } from 'slate-react';
 
 export type CustomEditor = BaseEditor &
-ReactEditor & {
-  resetContent: () => void;
-  setContent: (nodes: Descendant[]) => void;
-  focus: () => void;
-};
+  ReactEditor & {
+    resetContent: () => void;
+    setContent: (nodes: Descendant[]) => void;
+    focus: () => void;
+  };
 
 type CustomElement =
   | { type: 'paragraph' | 'mention' | 'link'; url?: string; children: CustomText[] }

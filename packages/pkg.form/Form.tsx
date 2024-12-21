@@ -32,8 +32,8 @@ const FormField = <
 }: ControllerProps<TFieldValues, TName>) => {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
-      { /** TODO: разобраться с проблемой */ }
-      { /** @ts-ignore */ }
+      {/** TODO: разобраться с проблемой */}
+      {/** @ts-ignore */}
       <Controller {...props} />
     </FormFieldContext.Provider>
   );
