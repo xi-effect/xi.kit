@@ -21,7 +21,7 @@ module.exports = {
   ignorePatterns: ['sw.js', 'workbox-*.js', 'fallback-*.js', 'templates/**/*.tsx|ts|js'],
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
   rules: {
-    '@typescript-eslint/semi': ['error', 'always'],
+    'semi': ['error', 'always'],
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/react-in-jsx-scope': 'off', // не нужно для Next.js
