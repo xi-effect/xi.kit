@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/eslint",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "main": "index.js",
   "files": [
     "./index.js"
@@ -10,6 +10,7 @@
     "@typescript-eslint/parser": "^8.18.1",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-next": "15.1.2",
+    "eslint-config-prettier": "9.1.0",
     "eslint-config-turbo": "latest",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-react": "7.37.2",
