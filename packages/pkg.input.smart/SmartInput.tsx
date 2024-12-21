@@ -139,7 +139,7 @@ export const SmartInput = ({ editorRef, initialValue, onChange, editableClassNam
     };
   }, [handleCopy, handlePaste]);
 
-  const editableRef = useRef(null);
+  const editableRef = useRef<HTMLDivElement>(null);
 
   // Используем useImperativeHandle для предоставления методов через ref
   useImperativeHandle(editorRef, () => ({

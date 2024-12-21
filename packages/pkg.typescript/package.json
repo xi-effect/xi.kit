@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/typescript",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "files": [
     "base.json",
     "nextjs.json",
@@ -12,9 +12,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@types/node": "^17.0.12",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
     "typescript": "^5.5.3"
   },
   "publishConfig": {

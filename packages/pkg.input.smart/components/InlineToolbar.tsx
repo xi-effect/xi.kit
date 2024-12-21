@@ -30,7 +30,7 @@ const keyToMd: KeyToMdT = {
 };
 
 type InlineToolbarPropsT = {
-  editableRef: RefObject<HTMLDivElement>;
+  editableRef: RefObject<HTMLDivElement | null>;
 };
 
 export const InlineToolbar = ({ editableRef }: InlineToolbarPropsT) => {

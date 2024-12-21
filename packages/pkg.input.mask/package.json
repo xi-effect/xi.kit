@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/inputmask",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "typescript": "^5.5.3"
   },
   "peerDependencies": {
-    "react": "^18"
+    "react": "^19"
   },
   "publishConfig": {
     "access": "public"

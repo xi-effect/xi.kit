@@ -7,13 +7,6 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "publish": "npx lerna publish --no-git-tag-version"
   },
-  "dependencies": {
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "@mui/material": "^5.15.17",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
   "devDependencies": {
     "@turbo/gen": "^2.0.9",
     "eslint": "^8.57.0",
