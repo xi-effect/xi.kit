@@ -39,6 +39,10 @@ const menuArray = [
     label: 'Checkbox',
   },
   {
+    link: '/components/emojipicker',
+    label: 'EmojiPicker',
+  },
+  {
     link: '/components/file',
     label: 'File',
   },
