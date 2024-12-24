@@ -17,6 +17,7 @@
     "@xipkg/checkbox": "*",
     "@xipkg/dropdown": "*",
     "@xipkg/error-page": "*",
+    "@xipkg/emojipicker": "*",
     "@xipkg/file": "*",
     "@xipkg/fileuploader": "*",
     "@xipkg/form": "*",
