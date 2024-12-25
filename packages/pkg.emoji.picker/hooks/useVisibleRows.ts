@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
 export const useVisibleRows = (
-  containerRef: React.RefObject<HTMLDivElement>,
-  categoryRef: React.RefObject<HTMLDivElement>,
+  containerRef: React.RefObject<HTMLDivElement | null>,
+  categoryRef: React.RefObject<HTMLDivElement | null>,
   totalRows: number,
   rowHeight: number,
   bufferRows: number,

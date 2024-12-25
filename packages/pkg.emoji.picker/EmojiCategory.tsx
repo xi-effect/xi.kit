@@ -92,6 +92,7 @@ export const EmojiCategory = memo(
                 style={{
                   animationDelay: '10ms',
                   animationFillMode: 'forwards',
+                  fontFamily: 'Apple Color Emoji, Twemoji Mozilla, Noto Color Emoji, Android Emoji',
                 }}
               >
                 {emoji.char}
