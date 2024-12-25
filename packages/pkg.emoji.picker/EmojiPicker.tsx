@@ -149,7 +149,7 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
               onChange={handleSearchEmoji}
             />
             <div
-              className="h-full overflow-y-auto "
+              className="h-full overflow-y-auto"
               ref={scrollContainerRef}
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >

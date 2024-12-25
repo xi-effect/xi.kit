@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, RefObject } from 'react';
 
 type UseIntersectionObserverOptionsT = {
-  root?: Element | Document | RefObject<Element | Document>;
+  root?: Element | Document | RefObject<Element | Document | null>;
   rootMargin?: string;
   threshold?: number | number[];
   enabled?: boolean;

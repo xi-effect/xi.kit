@@ -11,7 +11,7 @@ type EmojiCategoryPropsT = {
   currentIndex: number;
   setActiveCategory: React.Dispatch<React.SetStateAction<number>>;
   handleEmojiClick: (emoji: string) => void;
-  containerRef: React.RefObject<HTMLDivElement>;
+  containerRef: React.RefObject<HTMLDivElement | null>;
 };
 
 export const EmojiCategory = memo(
