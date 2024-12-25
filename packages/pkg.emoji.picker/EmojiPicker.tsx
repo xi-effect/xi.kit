@@ -25,7 +25,7 @@ import { unicodeToNative } from './utils/unicodeToNative';
 import emojisData from './emojis.json';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@xipkg/tooltip';
 
-const icons = [
+const categoryIcons = [
   { icon: Clock, name: 'Последние' },
   { icon: Emotions, name: 'Лица и эмоции' },
   { icon: Nature, name: 'Природа' },
@@ -113,7 +113,7 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
         <div className="flex h-[296px] w-[276px] rounded-lg">
           <div className="bg-gray-5 flex flex-col gap-2 p-2">
             <TooltipProvider>
-              {icons.map(({ icon: Icon, name }, index) => (
+              {categoryIcons.map(({ icon: Icon, name }, index) => (
                 <Tooltip key={index}>
                   <TooltipTrigger asChild>
                     <Button
@@ -164,11 +164,11 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
                 />
               ) : (
                 emojiCategories &&
-                emojiCategories.map((emo, index) => (
+                emojiCategories.map((emojis, index) => (
                   <EmojiCategory
                     key={index}
                     setActiveCategory={setActiveCategoryIndex}
-                    category={emo}
+                    category={emojis}
                     currentIndex={index}
                     handleEmojiClick={handleEmojiClick}
                     containerRef={scrollContainerRef}
