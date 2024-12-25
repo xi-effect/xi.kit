@@ -23,14 +23,14 @@ type KeyToMdT = {
 };
 
 const keyToMd: KeyToMdT = {
-  'b': MarkdownFormat.Bold,
-  'u': MarkdownFormat.Underline,
-  'i': MarkdownFormat.Italic,
-  's': MarkdownFormat.Strikethrough,
+  b: MarkdownFormat.Bold,
+  u: MarkdownFormat.Underline,
+  i: MarkdownFormat.Italic,
+  s: MarkdownFormat.Strikethrough,
 };
 
 type InlineToolbarPropsT = {
-  editableRef: RefObject<HTMLDivElement>;
+  editableRef: RefObject<HTMLDivElement | null>;
 };
 
 export const InlineToolbar = ({ editableRef }: InlineToolbarPropsT) => {
@@ -68,7 +68,7 @@ export const InlineToolbar = ({ editableRef }: InlineToolbarPropsT) => {
         }
 
         refs.setReference({
-          getBoundingClientRect: () => (initialPosition || boundingRect),
+          getBoundingClientRect: () => initialPosition || boundingRect,
           getClientRects: () => (initialPosition ? [initialPosition] : range.getClientRects()),
         });
 

@@ -16,16 +16,21 @@ type CustomText = {
 export const slateToMarkdown = (value: CustomElement[], withLinebreak: boolean = true): string => {
   const linebreak = withLinebreak ? '\n\n' : '';
 
-  return value.map(node => {
-    switch (node.type) {
-      case 'paragraph':
-        return node.children.map(child => applyInlineStyles(child)).join('') + linebreak;
-      case 'heading':
-        return `${'#'.repeat(node.level)} ${node.children.map(child => applyInlineStyles(child)).join('')}` + linebreak;
-      default:
-        return '';
-    }
-  }).join('');
+  return value
+    .map((node) => {
+      switch (node.type) {
+        case 'paragraph':
+          return node.children.map((child) => applyInlineStyles(child)).join('') + linebreak;
+        case 'heading':
+          return (
+            `${'#'.repeat(node.level)} ${node.children.map((child) => applyInlineStyles(child)).join('')}` +
+            linebreak
+          );
+        default:
+          return '';
+      }
+    })
+    .join('');
 };
 
 // Функция для применения инлайн-стилей

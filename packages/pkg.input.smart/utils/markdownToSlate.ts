@@ -22,7 +22,7 @@ const mergeTextWithFlags = (slateObjects: CustomElement[]): CustomElement[] => {
   for (let i = 0; i < slateObjects.length; i++) {
     const obj = slateObjects[i];
 
-    if (obj.type === "paragraph") {
+    if (obj.type === 'paragraph') {
       let beforeText = '';
       let afterText = '';
       let shouldMerge = false;
@@ -43,10 +43,9 @@ const mergeTextWithFlags = (slateObjects: CustomElement[]): CustomElement[] => {
 
       if (beforeText || afterText) {
         // Удаляем старые флаги и текст "подчёркнутый"
-        obj.children = obj.children.filter(child => 
-          !child.beforeUnderline && 
-          !child.afterUnderline && 
-          child.text !== "подчёркнутый"
+        obj.children = obj.children.filter(
+          (child) =>
+            !child.beforeUnderline && !child.afterUnderline && child.text !== 'подчёркнутый',
         );
 
         // Добавляем объединенный текст
@@ -56,8 +55,7 @@ const mergeTextWithFlags = (slateObjects: CustomElement[]): CustomElement[] => {
   }
 
   return slateObjects;
-}
-
+};
 
 // Плагин для замены `__текста__` на <u>текст</u>
 const formatMarkdown = (markdown: string) => {
@@ -66,10 +64,7 @@ const formatMarkdown = (markdown: string) => {
 
 // Функция для создания Markdown AST с учетом подчеркивания
 export const markdownToSlate = (markdown: string): CustomElement[] => {
-  const ast = unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .parse(formatMarkdown(markdown));
+  const ast = unified().use(remarkParse).use(remarkGfm).parse(formatMarkdown(markdown));
 
   const slateElements: CustomElement[] = [];
 
@@ -77,13 +72,13 @@ export const markdownToSlate = (markdown: string): CustomElement[] => {
     if (node.type === 'paragraph') {
       slateElements.push({
         type: 'paragraph',
-        children: node.children.map((child) => convertMarkdownNodeToSlateText(child)).flat(),
+        children: node.children.map((child: any) => convertMarkdownNodeToSlateText(child)).flat(),
       });
     } else if (node.type === 'heading') {
       slateElements.push({
         type: 'heading',
         level: node.depth as 1 | 2 | 3 | 4 | 5 | 6,
-        children: node.children.map((child) => convertMarkdownNodeToSlateText(child)).flat(),
+        children: node.children.map((child: any) => convertMarkdownNodeToSlateText(child)).flat(),
       });
     } else if (node.type === 'code') {
       slateElements.push({
@@ -123,7 +118,6 @@ const convertMarkdownNodeToSlateText = (node: any): CustomText[] => {
     text = `__`;
     return [{ text, afterUnderline: true }];
   }
-
 
   switch (node.type) {
     case 'strong':

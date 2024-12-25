@@ -1,8 +1,14 @@
 'use client';
 
-import React from "react";
+import React from 'react';
 
-import { SmartInput, MarkdownPreview, slateToMarkdown, markdownToSlate, CustomEditor } from "@xipkg/inputsmart";
+import {
+  SmartInput,
+  MarkdownPreview,
+  slateToMarkdown,
+  markdownToSlate,
+  CustomEditor,
+} from '@xipkg/inputsmart';
 
 const initialValue = [
   // {
@@ -24,37 +30,29 @@ const initialValue = [
   // },
   {
     type: 'paragraph',
-    children: [
-      { text: ' ' },
-    ],
+    children: [{ text: ' ' }],
   },
   {
     type: 'paragraph',
-    children: [
-      { text: 'Markdown' },
-    ],
+    children: [{ text: 'Markdown' }],
   },
   {
     type: 'paragraph',
-    children: [
-      { text: 'Markdown' },
-    ],
+    children: [{ text: 'Markdown' }],
   },
   {
     type: 'paragraph',
-    children: [
-      { text: 'Markdown' },
-    ],
+    children: [{ text: 'Markdown' }],
   },
   {
     type: 'paragraph',
     children: [
       { text: '**жирным**' },
-      { text: ' ', },
+      { text: ' ' },
       { text: '*курсивом*' },
-      { text: ' ', },
+      { text: ' ' },
       { text: '~~зачёркнуто~~' },
-      { text: ' ', },
+      { text: ' ' },
       { text: '__подчёркнутый__' },
     ],
   },
@@ -71,7 +69,6 @@ const initialValue = [
   // }
 ];
 
-
 const SmartInputDemo = () => {
   const editorRef = React.useRef<CustomEditor | null>(null);
 
@@ -83,8 +80,8 @@ const SmartInputDemo = () => {
   const handleChange = (value) => {
     setValue(value);
     // console.log('value', value);
-    setMarkdown(slateToMarkdown(value))
-  }
+    setMarkdown(slateToMarkdown(value));
+  };
 
   // console.log('markdown', markdown);
 
@@ -92,23 +89,26 @@ const SmartInputDemo = () => {
     if (!editorRef || !editorRef.current) return;
 
     editorRef.current?.resetContent();
-  }
+  };
 
   return (
     <>
       <button onClick={handleReset}> Reset </button>
       <SmartInput editorRef={editorRef} initialValue={initialValue} onChange={handleChange} />
-      <div className="my-12">
-        {JSON.stringify(value)}
-      </div>
+      <div className="my-12">{JSON.stringify(value)}</div>
       <MarkdownPreview markdown={markdown} />
-      <button onClick={() => setShowMarkdownToSlate(prev => !prev)} className="mt-6 mb-2"> Toggle </button>
-      {showMarkdownToSlate && <div className="my-12">
-        {JSON.stringify(markdownToSlate(markdown))}
-        <SmartInput initialValue={markdownToSlate(markdown)} />
-      </div>}
+      <button onClick={() => setShowMarkdownToSlate((prev) => !prev)} className="mt-6 mb-2">
+        {' '}
+        Toggle{' '}
+      </button>
+      {showMarkdownToSlate && (
+        <div className="my-12">
+          {JSON.stringify(markdownToSlate(markdown))}
+          <SmartInput initialValue={markdownToSlate(markdown)} />
+        </div>
+      )}
     </>
-  )
+  );
 };
 
 export default SmartInputDemo;
