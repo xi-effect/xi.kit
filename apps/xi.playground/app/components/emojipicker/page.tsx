@@ -7,11 +7,6 @@ import { useState } from 'react';
 const EmojiPickerPage = () => {
   const [selectedEmojis, setSelectedEmojis] = useState<string>('');
 
-  const recentEmojis = [
-    { unicode: '1F600', char: '😀', name: 'grinning' },
-    { unicode: '1F603', char: '😃', name: 'smiley' },
-  ];
-
   const handleEmojiSelect = (emoji: string) => {
     setSelectedEmojis((prev) => prev + emoji);
   };
@@ -23,7 +18,7 @@ const EmojiPickerPage = () => {
         onChange={(e) => setSelectedEmojis(e.target.value)}
         placeholder="Введите сообщение"
         className="border w-full"
-        after={<EmojiPicker recentEmojis={recentEmojis} onEmojiSelect={handleEmojiSelect} />}
+        after={<EmojiPicker onEmojiSelect={handleEmojiSelect} />}
       />
     </div>
   );

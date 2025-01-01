@@ -25,8 +25,9 @@ import { unicodeToNative } from './utils/unicodeToNative';
 import emojisData from './emojis.json';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@xipkg/tooltip';
 
+const recentIcon = { icon: Clock, name: 'Последние' };
+
 const categoryIcons = [
-  { icon: Clock, name: 'Последние' },
   { icon: Emotions, name: 'Лица и эмоции' },
   { icon: Nature, name: 'Природа' },
   { icon: Food, name: 'Еда и напитки' },
@@ -60,15 +61,30 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
     };
   }, [categories, searchQuery]);
 
-  const animateScroll = (container: HTMLElement, target: HTMLElement, margin: number = 0) => {
-    const targetOffset =
-      target.getBoundingClientRect().top -
-      container.getBoundingClientRect().top +
-      container.scrollTop -
-      margin;
+  const matchedEmojis = useMemo(() => {
+    if (!categories || !recentEmojis) return [];
 
-    container.scrollTo({
-      top: targetOffset,
+    return categories.flatMap((category) =>
+      category.emojis.filter((emoji) => recentEmojis.includes(emoji.unicode)),
+    );
+  }, [categories, recentEmojis]);
+
+  const emojiCategoriesIcons =
+    matchedEmojis.length > 0 ? [recentIcon, ...categoryIcons] : categoryIcons;
+
+  const emojiCategories: CategoryT[] = useMemo(() => {
+    if (!categories) {
+      return [];
+    }
+    return matchedEmojis.length > 0
+      ? [{ emojis: matchedEmojis, name: 'recent' }, ...categories]
+      : categories;
+  }, [categories, matchedEmojis]);
+
+  const scrollToCategory = (target: HTMLElement) => {
+    target.scrollIntoView({
+      block: 'start',
+      inline: 'nearest',
     });
   };
 
@@ -76,14 +92,14 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
     setSearchQuery('');
     setTimeout(() => {
       setActiveCategoryIndex(index);
-    }, 10);
+    }, 50);
 
     const container = scrollContainerRef.current;
     if (!container) return;
 
     const categoryEl = container.querySelector<HTMLElement>(`#emoji-category-${index}`);
     if (categoryEl) {
-      animateScroll(container, categoryEl);
+      scrollToCategory(categoryEl);
     }
   };
 
@@ -94,13 +110,6 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
     },
     [onEmojiSelect],
   );
-
-  const emojiCategories: CategoryT[] | undefined = useMemo(() => {
-    if (!categories) {
-      return;
-    }
-    return recentEmojis ? [{ emojis: recentEmojis, name: 'recent' }, ...categories] : categories;
-  }, [categories, recentEmojis]);
 
   return (
     <DropdownMenu>
@@ -113,30 +122,32 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
         <div className="flex h-[296px] w-[276px] rounded-lg">
           <div className="bg-gray-5 flex flex-col gap-2 p-2">
             <TooltipProvider>
-              {categoryIcons.map(({ icon: Icon, name }, index) => (
-                <Tooltip key={index}>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      className={cn(
-                        'hover:bg-brand-0 group h-auto rounded-none bg-transparent p-1',
-                        index === activeCategoryIndex
-                          ? 'bg-brand-0 text-brand-100 focus:bg-brand-0'
-                          : 'text-brand-50',
-                      )}
-                      onClick={() => selectCategory(index)}
-                    >
-                      <Icon
-                        size="s"
-                        className="fill-current group-hover:fill-current group-focus:fill-current"
-                      />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent side="right" className="z-[99]">
-                    <p>{name}</p>
-                  </TooltipContent>
-                </Tooltip>
-              ))}
+              {emojiCategoriesIcons.map(({ icon: Icon, name }, index) => {
+                return (
+                  <Tooltip key={index}>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        className={cn(
+                          'hover:bg-brand-0 group h-auto rounded-none bg-transparent p-1',
+                          index === activeCategoryIndex
+                            ? 'bg-brand-0 text-brand-100 focus:bg-brand-0'
+                            : 'text-brand-50',
+                        )}
+                        onClick={() => selectCategory(index)}
+                      >
+                        <Icon
+                          size="s"
+                          className="fill-current group-hover:fill-current group-focus:fill-current"
+                        />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent side="right" className="z-[99]">
+                      <p>{name}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                );
+              })}
             </TooltipProvider>
           </div>
           <div className="bg-gray-0 flex w-full flex-col gap-2 p-2">
@@ -163,7 +174,7 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
                   isIntersectionEnabled={false}
                 />
               ) : (
-                emojiCategories &&
+                emojiCategories.length > 0 &&
                 emojiCategories.map((emojis, index) => (
                   <EmojiCategory
                     key={index}

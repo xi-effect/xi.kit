@@ -16,6 +16,6 @@ export type FormattedEmojiDataT = {
 };
 
 export type EmojiPickerPropsT = {
-  recentEmojis: EmojiT[];
+  recentEmojis?: string[];
   onEmojiSelect: (emoji: string) => void;
 };
