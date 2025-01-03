@@ -1,0 +1,39 @@
+{
+  "name": "@xipkg/emojipicker",
+  "version": "0.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup index.ts --format cjs --dts",
+    "start": "npm run build -- --watch",
+    "dev": "npm run build -- --watch",
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "dependencies": {
+    "@xipkg/button": "^2.2.0",
+    "@xipkg/dropdown": "^2.5.0",
+    "@xipkg/icons": "^1.6.0",
+    "@xipkg/input": "^1.2.0",
+    "@xipkg/tooltip": "^1.3.0",
+    "@xipkg/utils": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@xipkg/eslint": "^1.4.0",
+    "@xipkg/typescript": "^0.0.6",
+    "eslint": "^9.17.0",
+    "typescript": "^5.5.3"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "xi.effect",
+  "description": "",
+  "gitHead": ""
+}

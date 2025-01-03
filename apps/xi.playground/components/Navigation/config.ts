@@ -28,6 +28,10 @@ export const config = [
     label: 'Checkbox',
   },
   {
+    link: '/components/emojipicker',
+    label: 'EmojiPicker',
+  },
+  {
     link: '/components/file',
     label: 'File',
   },
