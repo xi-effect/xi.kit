@@ -230,6 +230,7 @@ export const SmartInput = ({
       <InlineToolbar editableRef={editableRef} />
       <Editable
         ref={editableRef}
+        // @ts-ignore
         decorate={decorate}
         className={cn(
           'text-gray-100 focus-visible:outline-none focus-visible:[&_*]:outline-none',
