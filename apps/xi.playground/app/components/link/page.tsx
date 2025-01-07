@@ -1,78 +1,44 @@
 'use client';
 
 import { Link } from '@xipkg/link';
-import { Stack } from '@mui/material';
 
 export default function ButtonPage() {
-  const shortAction = () => {
-    console.log('shor action is completed');
-  };
-
-  const longAction = () =>
-    new Promise((resolve) => {
-      setTimeout(() => {
-        console.log('long action is completed');
-        resolve('completed');
-      }, 3000);
-    });
-
   return (
-    <Stack spacing={2}>
-      <Stack flexDirection="row" alignItems="center" sx={{ gap: '16px' }}>
+    <div className="flex flex-col gap-2">
+      {/* Первая строка ссылок */}
+      <div className="flex flex-row items-center gap-4">
         <Link href="https://github.com">Ссылка</Link>
         <Link href="https://github.com">Ссылка</Link>
         <Link href="https://github.com">Ссылка</Link>
-      </Stack>
+      </div>
 
-      <Stack flexDirection="row" alignItems="center" sx={{ gap: '16px' }}>
-        <Link size="l" href="https://github.com">
-          Ссылка
-        </Link>
-        <Link size="l" href="https://github.com">
-          Ссылка
-        </Link>
-        <Link size="l" href="https://github.com">
-          Ссылка
-        </Link>
-      </Stack>
+      {/* Вторая строка ссылок с размером l */}
+      <div className="flex flex-row items-center gap-4">
+        <Link size="l" href="https://github.com">Ссылка</Link>
+        <Link size="l" href="https://github.com">Ссылка</Link>
+        <Link size="l" href="https://github.com">Ссылка</Link>
+      </div>
 
-      <Stack flexDirection="row" alignItems="center" sx={{ gap: '16px' }}>
-        <Link size="s" theme="brand" href="https://github.com">
-          Ссылка
-        </Link>
-        <Link size="s" theme="brand" href="https://github.com">
-          Ссылка
-        </Link>
-        <Link size="s" theme="brand" href="https://github.com">
-          Ссылка
-        </Link>
-      </Stack>
-      <Stack flexDirection="row" alignItems="center" sx={{ gap: '16px' }}>
-        <Link size="s" theme="brand" variant="always" href="https://github.com">
-          Ссылка
-        </Link>
-        <Link size="s" theme="brand" variant="none" href="https://github.com">
-          Ссылка
-        </Link>
-        <Link size="s" theme="brand" variant="hover" href="https://github.com">
-          Ссылка
-        </Link>
-      </Stack>
-      <Stack
-        flexDirection="row"
-        alignItems="center"
-        sx={{ gap: '16px', bgcolor: 'var(--xi-brand-80)' }}
-      >
-        <Link size="s" theme="white" variant="always" href="https://github.com">
-          Ссылка
-        </Link>
-        <Link size="s" theme="white" variant="none" href="https://github.com">
-          Ссылка
-        </Link>
-        <Link size="s" theme="white" variant="hover" href="https://github.com">
-          Ссылка
-        </Link>
-      </Stack>
-    </Stack>
+      {/* Третья строка ссылок с размером s и темой brand */}
+      <div className="flex flex-row items-center gap-4">
+        <Link size="s" theme="brand" href="https://github.com">Ссылка</Link>
+        <Link size="s" theme="brand" href="https://github.com">Ссылка</Link>
+        <Link size="s" theme="brand" href="https://github.com">Ссылка</Link>
+      </div>
+
+      {/* Четвертая строка с разными вариантами */}
+      <div className="flex flex-row items-center gap-4">
+        <Link size="s" theme="brand" variant="always" href="https://github.com">Ссылка</Link>
+        <Link size="s" theme="brand" variant="none" href="https://github.com">Ссылка</Link>
+        <Link size="s" theme="brand" variant="hover" href="https://github.com">Ссылка</Link>
+      </div>
+
+      {/* Пятая строка с белой темой и фоном */}
+      <div className="flex flex-row items-center gap-4 bg-[var(--xi-brand-80)]">
+        <Link size="s" theme="white" variant="always" href="https://github.com">Ссылка</Link>
+        <Link size="s" theme="white" variant="none" href="https://github.com">Ссылка</Link>
+        <Link size="s" theme="white" variant="hover" href="https://github.com">Ссылка</Link>
+      </div>
+    </div>
   );
 }
