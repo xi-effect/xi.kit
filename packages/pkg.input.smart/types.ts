@@ -1,4 +1,4 @@
-import { BaseEditor, Descendant } from 'slate';
+import { BaseEditor, BaseText, Descendant } from 'slate';
 import { ReactEditor } from 'slate-react';
 
 export type CustomEditor = BaseEditor &
@@ -8,7 +8,7 @@ export type CustomEditor = BaseEditor &
     focus: () => void;
   };
 
-type CustomElement =
+export type CustomElement =
   | { type: 'paragraph' | 'mention' | 'link'; url?: string; children: CustomText[] }
   | { type: 'link'; url: string; children: CustomText[] };
 
@@ -22,13 +22,4 @@ export type CustomText = BaseText & {
   link?: boolean;
   type?: 'link';
   url?: string;
-  bold?: boolean;
 };
-
-declare module 'slate' {
-  interface CustomTypes {
-    Editor: CustomEditor;
-    Element: CustomElement;
-    Text: CustomText;
-  }
-}

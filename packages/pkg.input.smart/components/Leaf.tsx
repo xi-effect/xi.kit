@@ -1,6 +1,6 @@
 import React from 'react';
 import { RenderLeafProps } from 'slate-react';
-import { CustomText } from '../slate';
+import { CustomText } from '../types';
 
 type LeafPropsT = {
   leaf: CustomText;

@@ -131,5 +131,6 @@ export const toggleMarkdownInlineStyle = (
   }
 
   // Сохраняем фокус в редакторе
+  // @ts-ignore
   ReactEditor.focus(editor);
 };
