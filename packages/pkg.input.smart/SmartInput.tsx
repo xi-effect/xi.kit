@@ -15,12 +15,11 @@ import 'prismjs/components/prism-markdown';
 import { cn } from '@xipkg/utils';
 import { getLength, slateToMarkdown } from './utils';
 import { prismMarkdown } from './config';
-import { CustomEditorT } from './types';
 
 Prism.languages.markdown = prismMarkdown;
 
 export type SmartInputPropsT = {
-  editorRef?: React.MutableRefObject<Editor | null>;
+  editorRef?: React.RefObject<Editor | null>;
   initialValue?: Descendant[];
   onChange?: (value: Descendant[]) => void;
   editableClassName?: string;
@@ -44,7 +43,7 @@ export const SmartInput = ({
   editableProps,
   slateProps,
 }: SmartInputPropsT) => {
-  const editor = useMemo(() => withHistory(withReact(createEditor())), []) as unknown as CustomEditorT;
+  const editor = useMemo(() => withHistory(withReact(createEditor())), []);
 
   const decorate = useCallback(([node, path]: any) => {
     const ranges: CustomRange[] = [];
@@ -168,7 +167,6 @@ export const SmartInput = ({
     resetContent: () => {
       editor.children = [
         {
-          // @ts-ignore
           type: 'paragraph',
           children: [{ text: '' }],
         },
@@ -208,7 +206,6 @@ export const SmartInput = ({
           // Нажатие Shift+Enter вставляет перенос строки
           event.preventDefault();
           Transforms.insertNodes(editor, {
-            // @ts-ignore
             type: 'paragraph',
             children: [{ text: '' }],
           });
@@ -233,7 +230,6 @@ export const SmartInput = ({
       <InlineToolbar editableRef={editableRef} />
       <Editable
         ref={editableRef}
-        // @ts-ignore
         decorate={decorate}
         className={cn(
           'text-gray-100 focus-visible:outline-none focus-visible:[&_*]:outline-none',
