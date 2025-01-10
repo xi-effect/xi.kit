@@ -15,7 +15,7 @@ import 'prismjs/components/prism-markdown';
 import { cn } from '@xipkg/utils';
 import { getLength, slateToMarkdown } from './utils';
 import { prismMarkdown } from './config';
-import { CustomEditor } from './types';
+import { CustomEditorT } from './types';
 
 Prism.languages.markdown = prismMarkdown;
 
@@ -44,7 +44,7 @@ export const SmartInput = ({
   editableProps,
   slateProps,
 }: SmartInputPropsT) => {
-  const editor = useMemo(() => withHistory(withReact(createEditor())), []) as unknown as CustomEditor;
+  const editor = useMemo(() => withHistory(withReact(createEditor())), []) as unknown as CustomEditorT;
 
   const decorate = useCallback(([node, path]: any) => {
     const ranges: CustomRange[] = [];
