@@ -1,6 +1,8 @@
-import { BaseText } from 'slate';
+import { ReactNode } from 'react';
+import { BaseRange, BaseText } from 'slate';
 import { BaseEditor, Descendant } from 'slate';
 import { ReactEditor } from 'slate-react';
+import { HistoryEditor } from "slate-history";
 
 // Типизация Инпута в чатах pkg.editor
 export type CustomEditorSI = BaseEditor &
@@ -172,3 +174,5 @@ declare module 'slate' {
     };
   }
 }
+
+export {};

@@ -1,11 +1,7 @@
 {
   "name": "@xipkg/slatetypes",
   "version": "0.0.0",
-  "files": [
-    "slate.d.ts"
-  ],
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "types": "./slate.d.ts",
   "license": "MIT",
   "scripts": {
     "build": "tsup index.ts --format cjs --dts",
@@ -16,7 +12,8 @@
   "dependencies": {
     "slate": "0.112.0",
     "slate-react": "0.112.0",
-    "slate-dom": "0.111.0"
+    "slate-dom": "0.111.0",
+    "slate-history": "0.110.3"
   },
   "devDependencies": {
     "@xipkg/typescript": "^0.0.6",
