@@ -183,6 +183,7 @@ export const SmartInput = ({
     },
     focus: () => {
       // Устанавливаем фокус через ReactEditor
+      // @ts-ignore
       ReactEditor.focus(editor);
 
       // Если нужно установить курсор в конец текста

@@ -20,38 +20,47 @@ export default function InputMaskPage() {
     <div className="flex flex-col gap-4">
       <div>
         <label>Паспорт</label>
+        {/** @ts-ignore */}
         <Input variant="s" ref={passportMask} />
       </div>
       <div>
         <label>Карта</label>
+        {/** @ts-ignore */}
         <Input variant="s" ref={cardMask} />
       </div>
       <div>
         <label>Дата</label>
+        {/** @ts-ignore */}
         <Input variant="s" ref={dateMask} />
       </div>
       <div>
         <label>Код приглашения</label>
+        {/** @ts-ignore */}
         <Input variant="s" ref={inviteCodeMask} />
       </div>
       <div>
         <label>Код приглашения</label>
+        {/** @ts-ignore */}
         <Input variant="s" ref={inviteCodeUrlMask} />
       </div>
       <div>
         <label>Телефон</label>
+        {/** @ts-ignore */}
         <Input variant="s" ref={phoneMask} />
       </div>
       <div>
         <label>Время</label>
+        {/** @ts-ignore */}
         <Input variant="s" ref={timeMask} />
       </div>
       <div>
         <label>Время</label>
+        {/** @ts-ignore */}
         <Input variant="s" ref={dateRangeMask} />
       </div>
       <div>
         <label>Любое значение</label>
+        {/** @ts-ignore */}
         <Input ref={anyValue} />
       </div>
     </div>

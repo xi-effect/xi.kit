@@ -11,7 +11,7 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@xipkg/icons": "^0.8.2",
+    "@xipkg/icons": "^1.6.0",
     "@xipkg/utils": "^1.1.0"
   },
   "devDependencies": {

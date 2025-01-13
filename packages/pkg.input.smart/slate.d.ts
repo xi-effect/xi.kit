@@ -1,3 +1,4 @@
+import { BaseText } from 'slate';
 import { BaseEditor, Descendant } from 'slate';
 import { ReactEditor } from 'slate-react';
 
@@ -22,7 +23,6 @@ export type CustomText = BaseText & {
   link?: boolean;
   type?: 'link';
   url?: string;
-  bold?: boolean;
 };
 
 declare module 'slate' {

@@ -11,8 +11,9 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@maskito/kit": "^3.2.0",
-    "@maskito/react": "^3.2.0",
+    "@maskito/kit": "^3.2.1",
+    "@maskito/react": "^3.2.1",
+    "@maskito/core": "3.2.1",
     "@xipkg/utils": "^1.0.1"
   },
   "devDependencies": {

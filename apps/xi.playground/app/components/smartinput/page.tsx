@@ -7,10 +7,9 @@ import {
   MarkdownPreview,
   slateToMarkdown,
   markdownToSlate,
-  CustomEditor,
 } from '@xipkg/inputsmart';
 
-const initialValue = [
+const initialValue: any = [
   // {
   //   type: 'paragraph',
   //   children: [ { text: 'Slate' }
@@ -70,7 +69,7 @@ const initialValue = [
 ];
 
 const SmartInputDemo = () => {
-  const editorRef = React.useRef<CustomEditor | null>(null);
+  const editorRef = React.useRef<any | null>(null);
 
   const [value, setValue] = React.useState([]);
   const [markdown, setMarkdown] = React.useState('');
@@ -104,7 +103,7 @@ const SmartInputDemo = () => {
       {showMarkdownToSlate && (
         <div className="my-12">
           {JSON.stringify(markdownToSlate(markdown))}
-          <SmartInput initialValue={markdownToSlate(markdown)} />
+          <SmartInput initialValue={markdownToSlate(markdown) as any} />
         </div>
       )}
     </>

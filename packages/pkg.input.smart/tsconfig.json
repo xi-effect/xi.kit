@@ -1,6 +1,6 @@
 {
   "extends": "@xipkg/typescript/react-library.json",
-  "include": ["*"],
+  "include": ["*", "slate.d.ts"],
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
     "jsx": "react",

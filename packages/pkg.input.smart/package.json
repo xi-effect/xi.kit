@@ -14,6 +14,7 @@
     "@xipkg/utils": "^1.0.1",
     "slate": "0.112.0",
     "slate-react": "0.112.0",
+    "slate-dom": "0.111.0",
     "slate-history": "0.110.3",
     "@floating-ui/react": "0.26.25",
     "prismjs": "1.29.0",

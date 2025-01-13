@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "1.1.2",
-    "@xipkg/icons": "^0.8.2",
+    "@xipkg/icons": "^1.6.0",
     "@xipkg/utils": "^1.0.1",
     "lucide-react": "0.276.0"
   },
