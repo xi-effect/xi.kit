@@ -1,13 +1,13 @@
 {
   "name": "@xipkg/slatetypes",
-  "version": "0.0.1",
-  "types": "./slate.d.ts",
+  "version": "0.0.2",
+  "types": "slate.d.ts",
+  "files": [
+    "slate.d.ts"
+  ],
   "license": "MIT",
   "scripts": {
-    "build": "tsup index.ts --format cjs --dts",
-    "start": "npm run build -- --watch",
-    "dev": "npm run build -- --watch",
-    "lint": "eslint \"**/*.ts*\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "slate": "0.112.0",
