@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/inputsmart",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -23,7 +23,8 @@
     "remark-gfm": "4.0.0",
     "react-markdown": "9.0.1",
     "rehype-raw": "7.0.0",
-    "rehype-react": "8.0.0"
+    "rehype-react": "8.0.0",
+    "@xipkg/slatetypes": "0.0.3"
   },
   "devDependencies": {
     "@types/prismjs": "1.26.5",

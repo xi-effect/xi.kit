@@ -1,9 +1,9 @@
 import React from 'react';
 import { RenderLeafProps } from 'slate-react';
-import { CustomText } from '../slate';
+import { CustomTextSI } from '@xipkg/slatetypes';
 
 type LeafPropsT = {
-  leaf: CustomText;
+  leaf: CustomTextSI;
   children: React.ReactNode;
   attributes: RenderLeafProps['attributes'];
 };

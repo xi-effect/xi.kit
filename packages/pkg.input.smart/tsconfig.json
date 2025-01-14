@@ -1,12 +1,12 @@
 {
   "extends": "@xipkg/typescript/react-library.json",
-  "include": ["*", "slate.d.ts"],
+  "include": ["*"],
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {
     "jsx": "react",
     "lib": ["ES5", "ES2015", "ES2016", "DOM", "ES2015.Promise"],
     "module": "esnext",
     "moduleResolution": "node",
-    "typeRoots": ["./node_modules/@types"] // Исключает все глобальные типы из вашего пакета
+    "types": ["node", "@xipkg/slatetypes"]
   }
 }

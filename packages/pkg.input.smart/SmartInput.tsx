@@ -15,6 +15,7 @@ import 'prismjs/components/prism-markdown';
 import { cn } from '@xipkg/utils';
 import { getLength, slateToMarkdown } from './utils';
 import { prismMarkdown } from './config';
+import { CustomTextSI } from '@xipkg/slatetypes';
 
 Prism.languages.markdown = prismMarkdown;
 
@@ -237,7 +238,7 @@ export const SmartInput = ({
           'text-gray-100 focus-visible:outline-none focus-visible:[&_*]:outline-none',
           editableClassName,
         )}
-        renderLeaf={(props) => <Leaf {...props} />}
+        renderLeaf={({ leaf, ...props }) => <Leaf leaf={leaf as CustomTextSI} {...props} />}
         onKeyDown={handleKeyDown}
         {...editableProps}
       />
