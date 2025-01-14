@@ -152,7 +152,7 @@ export type CommonCustomElementType =
 type CustomElementType = CommonCustomElementType['type'];
 
 export type CustomText = {
-  id: string;
+  id?: string;
   type?: string;
   text: string;
   bold?: true;
