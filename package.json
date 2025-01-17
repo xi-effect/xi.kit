@@ -4,6 +4,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev --concurrency 50",
     "lint": "turbo run lint",
+    "storybook": "turbo run storybook",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "publish": "npx lerna publish --no-git-tag-version"
   },

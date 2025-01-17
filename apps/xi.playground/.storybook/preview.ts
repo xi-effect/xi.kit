@@ -1,12 +1,17 @@
-import '../tailwind.css';
-// import '@xipkg/tailwind/index.css';
-import { themes } from '@storybook/theming';
 import type { Preview } from '@storybook/react';
+import { Inter } from 'next/font/google';
 import { withThemeByClassName } from '@storybook/addon-themes';
+
+import '@xipkg/tailwind/index.css';
+import '../tailwind.css';
 
 const preview: Preview = {
   parameters: {
-    docs: { 
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/i,
+      },
     },
   },
   decorators: [
