@@ -3,7 +3,6 @@ const plugins = [];
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: [
-    'tailwind',
     '@xipkg/modal',
     '@xipkg/tailwind',
     '@xipkg/typescript',

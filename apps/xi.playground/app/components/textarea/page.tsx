@@ -4,10 +4,10 @@ import { Textarea } from '@xipkg/textarea';
 import React, { useState } from 'react';
 
 export default function InputPage() {
-  const [text, setText] = useState<string>('')
+  const [text, setText] = useState<string>('');
 
   const handleTextareaChange = (
-    e: React.ChangeEvent<HTMLTextAreaElement> & { isMaxLengthExceeded?: boolean }
+    e: React.ChangeEvent<HTMLTextAreaElement> & { isMaxLengthExceeded?: boolean },
   ) => {
     setText(e.target.value);
 
@@ -17,18 +17,11 @@ export default function InputPage() {
   };
 
   return (
-    <div className='flex flex-col gap-4'>
+    <div className="flex flex-col gap-4">
       <Textarea />
       <Textarea variant={'s'} />
-      <Textarea
-        maxLength={50}
-        onChange={handleTextareaChange}
-        value={text}
-      />
-      <Textarea
-        variant={'s'}
-        maxLength={50}
-      />
+      <Textarea maxLength={50} onChange={handleTextareaChange} value={text} />
+      <Textarea variant={'s'} maxLength={50} />
       <Textarea placeholder="Многострочное поле" />
       <Textarea variant={'s'} placeholder="Многострочное поле" />
       <Textarea error />

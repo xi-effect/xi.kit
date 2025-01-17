@@ -1,12 +1,12 @@
 import React from 'react';
 import { RenderLeafProps } from 'slate-react';
-import { CustomText } from '../slate';
+import { CustomTextSI } from '@xipkg/slatetypes';
 
 type LeafPropsT = {
-  leaf: CustomText;
+  leaf: CustomTextSI;
   children: React.ReactNode;
-  attributes: RenderLeafProps["attributes"];
-}
+  attributes: RenderLeafProps['attributes'];
+};
 
 export const Leaf = ({ attributes, children, leaf }: LeafPropsT) => {
   let modifiedChildren = children;
@@ -28,7 +28,19 @@ export const Leaf = ({ attributes, children, leaf }: LeafPropsT) => {
   }
 
   if (leaf.code) {
-    modifiedChildren = <code className='bg-gray-10' style={{ backgroundColor: '', fontFamily: 'monospace', padding: '0.2em 0.4em', borderRadius: '4px' }}>{modifiedChildren}</code>;
+    modifiedChildren = (
+      <code
+        className="bg-gray-10"
+        style={{
+          backgroundColor: '',
+          fontFamily: 'monospace',
+          padding: '0.2em 0.4em',
+          borderRadius: '4px',
+        }}
+      >
+        {modifiedChildren}
+      </code>
+    );
   }
 
   return <span {...attributes}>{modifiedChildren}</span>;

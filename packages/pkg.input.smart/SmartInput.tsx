@@ -1,5 +1,12 @@
-import React, { useMemo, useCallback, ComponentProps, useEffect, useRef, useImperativeHandle } from 'react';
-import { Slate, Editable, withReact } from 'slate-react';
+import React, {
+  useMemo,
+  useCallback,
+  ComponentProps,
+  useEffect,
+  useRef,
+  useImperativeHandle,
+} from 'react';
+import { Slate, Editable, withReact, ReactEditor } from 'slate-react';
 import { createEditor, Descendant, Text, BaseRange, Transforms, Editor } from 'slate';
 import { withHistory } from 'slate-history';
 import { InlineToolbar, Leaf } from './components';
@@ -8,11 +15,12 @@ import 'prismjs/components/prism-markdown';
 import { cn } from '@xipkg/utils';
 import { getLength, slateToMarkdown } from './utils';
 import { prismMarkdown } from './config';
+import { CustomTextSI } from '@xipkg/slatetypes';
 
 Prism.languages.markdown = prismMarkdown;
 
 export type SmartInputPropsT = {
-  editorRef?: React.MutableRefObject<Editor | null>;
+  editorRef?: React.RefObject<Editor | null>;
   initialValue?: Descendant[];
   onChange?: (value: Descendant[]) => void;
   editableClassName?: string;
@@ -28,7 +36,14 @@ type CustomRange = BaseRange & {
   underline?: boolean; // Добавляем поддержку underline
 };
 
-export const SmartInput = ({ editorRef, initialValue, onChange, editableClassName, editableProps, slateProps }: SmartInputPropsT) => {
+export const SmartInput = ({
+  editorRef,
+  initialValue,
+  onChange,
+  editableClassName,
+  editableProps,
+  slateProps,
+}: SmartInputPropsT) => {
   const editor = useMemo(() => withHistory(withReact(createEditor())), []);
 
   const decorate = useCallback(([node, path]: any) => {
@@ -61,31 +76,31 @@ export const SmartInput = ({ editorRef, initialValue, onChange, editableClassNam
           ranges.push({
             bold: true,
             anchor: { path, offset: start + 2 }, // Пропускаем 2 символа для '**'
-            focus: { path, offset: end - 2 } // Пропускаем 2 символа для '**'
+            focus: { path, offset: end - 2 }, // Пропускаем 2 символа для '**'
           });
         } else if (type === 'italic') {
           ranges.push({
             italic: true,
             anchor: { path, offset: start + 1 }, // Пропускаем 1 символ для '*'
-            focus: { path, offset: end - 1 } // Пропускаем 1 символ для '*'
+            focus: { path, offset: end - 1 }, // Пропускаем 1 символ для '*'
           });
         } else if (type === 'underline') {
           ranges.push({
             underline: true,
             anchor: { path, offset: start + 2 }, // Пропускаем 2 символа для '__'
-            focus: { path, offset: end - 2 } // Пропускаем 2 символа для '__'
+            focus: { path, offset: end - 2 }, // Пропускаем 2 символа для '__'
           });
         } else if (type === 'strikethrough') {
           ranges.push({
             strikethrough: true,
             anchor: { path, offset: start + 2 }, // Пропускаем 2 символа для '~~'
-            focus: { path, offset: end - 2 } // Пропускаем 2 символа для '~~'
+            focus: { path, offset: end - 2 }, // Пропускаем 2 символа для '~~'
           });
         } else if (type === 'code') {
           ranges.push({
             code: true,
             anchor: { path, offset: start + 1 }, // Пропускаем 1 символ для '`'
-            focus: { path, offset: end - 1 } // Пропускаем 1 символ для '`'
+            focus: { path, offset: end - 1 }, // Пропускаем 1 символ для '`'
           });
         }
       }
@@ -98,36 +113,42 @@ export const SmartInput = ({ editorRef, initialValue, onChange, editableClassNam
 
   const handleChange = (value: Descendant[]) => {
     if (onChange) {
-      onChange(value)
+      onChange(value);
     }
-  }
+  };
 
-  const handleCopy = useCallback((event: ClipboardEvent) => {
-    const { selection } = editor;
+  const handleCopy = useCallback(
+    (event: ClipboardEvent) => {
+      const { selection } = editor;
 
-    if (!event || !event.clipboardData) return;
+      if (!event || !event.clipboardData) return;
 
-    if (selection) {
-      // Получаем выделенный текст и форматируем в Markdown
-      const value = Editor.fragment(editor, selection);
+      if (selection) {
+        // Получаем выделенный текст и форматируем в Markdown
+        const value = Editor.fragment(editor, selection);
 
-      const markdownText = slateToMarkdown(value as any, false);
+        const markdownText = slateToMarkdown(value as any, false);
 
-      // Копируем markdownText в буфер обмена
-      event.clipboardData.setData('text/plain', markdownText);
+        // Копируем markdownText в буфер обмена
+        event.clipboardData.setData('text/plain', markdownText);
+        event.preventDefault();
+      }
+    },
+    [editor],
+  );
+
+  const handlePaste = useCallback(
+    (event: ClipboardEvent) => {
+      if (!event || !event.clipboardData || !editor.selection) return;
+
+      const pastedText = event.clipboardData.getData('text/plain');
+
+      Transforms.insertText(editor, pastedText, { at: editor.selection });
+
       event.preventDefault();
-    }
-  }, [editor]);
-
-  const handlePaste = useCallback((event: ClipboardEvent) => {
-    if (!event || !event.clipboardData || !editor.selection) return;
-
-    const pastedText = event.clipboardData.getData('text/plain');
-
-    Transforms.insertText(editor, pastedText, { at: editor.selection });
-
-    event.preventDefault();
-  }, [editor]);
+    },
+    [editor],
+  );
 
   useEffect(() => {
     document.addEventListener('copy', handleCopy);
@@ -139,7 +160,7 @@ export const SmartInput = ({ editorRef, initialValue, onChange, editableClassNam
     };
   }, [handleCopy, handlePaste]);
 
-  const editableRef = useRef(null);
+  const editableRef = useRef<HTMLDivElement>(null);
 
   // Используем useImperativeHandle для предоставления методов через ref
   useImperativeHandle(editorRef, () => ({
@@ -148,30 +169,77 @@ export const SmartInput = ({ editorRef, initialValue, onChange, editableClassNam
       editor.children = [
         {
           type: 'paragraph',
-          children: [{ text: ' ' }],
+          children: [{ text: '' }],
         },
-      ]
-      editor.normalizeNode([editor, []])
+      ];
+      editor.normalizeNode([editor, []]);
       editor.deselect();
       editor.onChange();
     },
     setContent: (nodes: Descendant[]) => {
       editor.children = nodes;
-      editor.normalizeNode([editor, []])
+      editor.normalizeNode([editor, []]);
       editor.deselect();
       editor.onChange();
     },
+    focus: () => {
+      // Устанавливаем фокус через ReactEditor
+      // @ts-ignore
+      ReactEditor.focus(editor);
+
+      // Если нужно установить курсор в конец текста
+      if (!editor.selection) {
+        const end = Editor.end(editor, []);
+        Transforms.select(editor, end);
+      }
+    },
   }));
 
+  const userKeyDownHandler = editableProps?.onKeyDown;
+
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLDivElement>) => {
+      // Сначала внутренняя логика
+      if (event.key === 'Enter') {
+        if (!event.shiftKey) {
+          // Нажатие Enter без Shift не делает ничего
+          event.preventDefault();
+        } else {
+          // Нажатие Shift+Enter вставляет перенос строки
+          event.preventDefault();
+          Transforms.insertNodes(editor, {
+            type: 'paragraph',
+            children: [{ text: '' }],
+          });
+        }
+      }
+
+      // Затем вызываем переданный извне обработчик, если он есть
+      if (userKeyDownHandler) {
+        userKeyDownHandler(event);
+      }
+    },
+    [editor, userKeyDownHandler],
+  );
 
   return (
-    <Slate editor={editor} initialValue={initialValue ?? []} onChange={handleChange} {...slateProps}>
+    <Slate
+      editor={editor}
+      initialValue={initialValue ?? []}
+      onChange={handleChange}
+      {...slateProps}
+    >
       <InlineToolbar editableRef={editableRef} />
       <Editable
         ref={editableRef}
+        // @ts-ignore
         decorate={decorate}
-        className={cn("text-gray-100 focus-visible:outline-none focus-visible:[&_*]:outline-none", editableClassName)}
-        renderLeaf={(props) => <Leaf {...props} />}
+        className={cn(
+          'text-gray-100 focus-visible:outline-none focus-visible:[&_*]:outline-none',
+          editableClassName,
+        )}
+        renderLeaf={({ leaf, ...props }) => <Leaf leaf={leaf as CustomTextSI} {...props} />}
+        onKeyDown={handleKeyDown}
         {...editableProps}
       />
     </Slate>

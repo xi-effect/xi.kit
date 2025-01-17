@@ -32,10 +32,9 @@ const maxRows = 16;
 
 export interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-  VariantProps<typeof textareaVariants> {
+    VariantProps<typeof textareaVariants> {
   onChange?: (
-    event: React.ChangeEvent<HTMLTextAreaElement> 
-    & { isMaxLengthExceeded?: boolean } // Если максимальная длина была превышена
+    event: React.ChangeEvent<HTMLTextAreaElement> & { isMaxLengthExceeded?: boolean }, // Если максимальная длина была превышена
   ) => void;
   threshold?: number; // Порог для появления счетчика символов
 }
@@ -111,8 +110,8 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
               error,
               warning,
               className,
-            }),)
-          }
+            }),
+          )}
           ref={(el) => {
             textareaRef.current = el;
             if (typeof ref === 'function') {
@@ -130,17 +129,16 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         {maxLength > 0 && isFocused && charCount >= threshold && (
           <div
             className={cn(
-              "absolute right-2 bottom-2 text-sm",
-              charCount > maxLength ? 'text-red-80' : 'text-gray-50'
+              'absolute bottom-2 right-2 text-sm',
+              charCount > maxLength ? 'text-red-80' : 'text-gray-50',
             )}
           >
             {maxLength - charCount}
           </div>
         )}
-
       </div>
     );
-  }
+  },
 );
 
 Textarea.displayName = 'Textarea';

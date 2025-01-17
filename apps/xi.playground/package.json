@@ -20,6 +20,7 @@
     "@xipkg/contextmenu": "*",
     "@xipkg/dropdown": "*",
     "@xipkg/error-page": "*",
+    "@xipkg/emojipicker": "*",
     "@xipkg/file": "*",
     "@xipkg/fileuploader": "*",
     "@xipkg/form": "*",
@@ -38,12 +39,17 @@
     "@xipkg/tabs": "*",
     "@xipkg/tailwind": "*",
     "@xipkg/toggle": "*",
-    "@xipkg/tooltip": "*",
     "@xipkg/userprofile": "*",
-    "next": "^13.5.6",
+    "@xipkg/scrollarea": "*",
+    "@xipkg/contextmenu": "*",
+    "@xipkg/tooltip": "*",
+    "@xipkg/sheet": "*",
+    "@xipkg/inputsmart": "*",
+    "next": "^15.1.2",
     "next-themes": "^0.2.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "slate-react": "0.112.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
@@ -58,8 +64,8 @@
     "@storybook/test": "^8.5.0",
     "@storybook/theming": "^8.5.0",
     "@types/node": "^20.4.0",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
     "@xipkg/eslint": "latest",
     "@xipkg/typescript": "latest",
     "autoprefixer": "^10.4.14",
@@ -68,7 +74,10 @@
     "postcss": "^8.4.24",
     "storybook": "^8.5.0",
     "tailwindcss": "^3.3.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "@eslint/eslintrc": "^3.2.0",
+    "@eslint/js": "^9.17.0",
+    "eslint": "^9.17.0"
   },
   "engines": {
     "node": ">=18.7.1"

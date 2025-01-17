@@ -9,7 +9,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@xipkg/sheet";
+} from '@xipkg/sheet';
 
 export default function SheetDemo() {
   return (
@@ -20,8 +20,8 @@ export default function SheetDemo() {
           <SheetHeader>
             <SheetTitle>Are you absolutely sure?</SheetTitle>
             <SheetDescription>
-              This action cannot be undone. This will permanently delete your account
-              and remove your data from our servers.
+              This action cannot be undone. This will permanently delete your account and remove
+              your data from our servers.
             </SheetDescription>
           </SheetHeader>
         </SheetContent>

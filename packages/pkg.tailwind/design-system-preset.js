@@ -126,12 +126,12 @@ module.exports = {
     },
     extend: {
       fontSize: {
-        'h1': ['56px', '64px'],
-        'h2': ['48px', '56px'],
-        'h3': ['40px', '48px'],
-        'h4': ['36px', '44px'],
-        'h5': ['32px', '40px'],
-        'h6': ['28px', '36px'],
+        h1: ['56px', '64px'],
+        h2: ['48px', '56px'],
+        h3: ['40px', '48px'],
+        h4: ['36px', '44px'],
+        h5: ['32px', '40px'],
+        h6: ['28px', '36px'],
         'xl-base': ['24px', '32px'],
         'l-base': ['20px', '28px'],
         'm-base': ['16px', '20px'],
@@ -219,24 +219,29 @@ module.exports = {
         },
       },
       animation: {
-        'shake': 'shake 0.82s cubic-bezier(.36,.07,.19,.97) both',
+        shake: 'shake 0.82s cubic-bezier(.36,.07,.19,.97) both',
+        'fade-in': 'fade-in 0.3s ease-in-out',
       },
       keyframes: {
-        'shake': {
+        shake: {
           '10%, 90%': {
-            transform: 'translate3d(-1px, 0, 0)'
+            transform: 'translate3d(-1px, 0, 0)',
           },
           '20%, 80%': {
-            transform: 'translate3d(2px, 0, 0)'
+            transform: 'translate3d(2px, 0, 0)',
           },
           '30%, 50%, 70%': {
-            transform: 'translate3d(-4px, 0, 0)'
+            transform: 'translate3d(-4px, 0, 0)',
           },
           '40%, 60%': {
-            transform: 'translate3d(4px, 0, 0)'
-          }
-        }
-      }
+            transform: 'translate3d(4px, 0, 0)',
+          },
+        },
+        'fade-in': {
+          '0%': { opacity: 0, transform: 'translateY(10px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
+      },
     },
   },
 };
