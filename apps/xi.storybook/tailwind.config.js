@@ -2,9 +2,8 @@
 module.exports = {
   darkMode: ['class', '[data-theme="dark"]'],
   content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    '../../packages/!(*node_modules)/**/*.{js,ts,jsx,tsx,mdx}',
-    '../../node_modules/@xipkg/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/stories/**/*.{js,ts,jsx,tsx,mdx}',
+    '../../packages/**/!(*node_modules)/**/*.{jsx,tsx}',
   ],
   presets: [require('@xipkg/tailwind')],
 };
