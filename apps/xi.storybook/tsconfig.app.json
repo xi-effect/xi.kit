@@ -8,7 +8,7 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@xipkg/*": ["../../packages/pkg.*"]
+      "@xipkg/*": ["../../packages/pkg.*/index.ts"]
     },
 
     /* Bundler mode */
