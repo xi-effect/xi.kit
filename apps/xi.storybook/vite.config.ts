@@ -4,10 +4,7 @@ import react from '@vitejs/plugin-react';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  resolve: {
-    preserveSymlinks: true,
-  },
   optimizeDeps: {
-    include: ['@xipkg/button', '@xipkg/tailwind'],
+    exclude: ['@storybook/addon-docs'],
   },
 });
