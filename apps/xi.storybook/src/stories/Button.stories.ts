@@ -9,6 +9,35 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
+  argTypes: {
+    variant: {
+      control: 'select',
+      options: [
+        'default',
+        'secondary',
+        'ghost',
+        'error',
+        'success',
+        'secondary-error',
+        'default-spinner',
+        'secondary-spinner',
+        'ghost-spinner',
+      ],
+      description: 'Определяет стиль кнопки',
+      defaultValue: 'default',
+    },
+    size: {
+      control: 'select',
+      options: ['l', 'm', 's'],
+      description: 'Определяет размер кнопки',
+      defaultValue: 'm',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Отключает кнопку',
+      defaultValue: false,
+    },
+  },
   args: {
     size: 'l',
     children: 'Button',
