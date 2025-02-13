@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/inputsmart",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
@@ -28,6 +28,7 @@
     "@xipkg/slatetypes": "0.0.3"
   },
   "devDependencies": {
+    "tsup": "^8.3.5",
     "@types/prismjs": "1.26.5",
     "@types/node": "^17.0.12",
     "@types/react": "^19.0.2",
