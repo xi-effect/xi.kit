@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-import NextLink from 'next/link';
 import { cn } from '@xipkg/utils';
 
 export const linkVariants = cva(
@@ -39,20 +38,19 @@ export const linkVariants = cva(
 );
 
 export interface LinkProps
-  extends React.ComponentProps<typeof NextLink>,
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
     VariantProps<typeof linkVariants> {}
 
 export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ className, theme, variant, size, href, children, ...props }, ref) => {
+  ({ className, theme, variant, size, children, ...props }, ref) => {
     return (
-      <NextLink
-        href={href}
+      <a
         className={cn(linkVariants({ theme, variant, size, className }))}
         ref={ref}
         {...props}
       >
         {children}
-      </NextLink>
+      </a>
     );
   },
 );

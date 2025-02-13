@@ -1,7 +1,5 @@
 import { Close, File as FileIcon } from '@xipkg/icons';
 import { cn, formatBytesSize } from '@xipkg/utils';
-import Image from 'next/image';
-import Link from 'next/link';
 
 export type FileProps = {
   /* File name */
@@ -24,13 +22,13 @@ export const File = ({ name, url, size, icon, onDelete, className }: FileProps) 
         className,
       )}
     >
-      <Link
+      <a
         href={url}
         download={name}
         className="text-decoration-none flex w-full items-center gap-2 py-2 pl-3 pr-[14px]"
       >
         <div className="relative flex h-12 w-12 shrink-0 items-center justify-center">
-          {!icon ? <FileIcon /> : <Image src={icon} alt={name} className="rounded" fill />}
+          {!icon ? <FileIcon /> : <img src={icon} alt={name} className="rounded" />}
         </div>
 
         <div className="flex grow flex-col overflow-hidden text-left">
@@ -48,7 +46,7 @@ export const File = ({ name, url, size, icon, onDelete, className }: FileProps) 
             <Close />
           </button>
         )}
-      </Link>
+      </a>
     </div>
   );
 };
