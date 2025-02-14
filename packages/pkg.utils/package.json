@@ -1,8 +1,9 @@
 {
   "name": "@xipkg/utils",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "xi.utils",
-  "main": "index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup index.ts --format cjs --dts",
     "prepare": "npm run build",
