@@ -1,12 +1,18 @@
 {
   "name": "@xipkg/button",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "main": "./dist/index.js",
-  "module": "/index.ts",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
   "license": "MIT",
   "scripts": {
-    "build": "tsup index.ts --format cjs --dts",
+    "build": "tsup index.ts --format esm --dts",
     "prepare": "npm run build",
     "start": "npm run build -- --watch",
     "dev": "npm run build -- --watch",
@@ -14,7 +20,7 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.1",
-    "@xipkg/utils": "^1.5.3",
+    "@xipkg/utils": "^1.6.1",
     "class-variance-authority": "^0.7.1"
   },
   "devDependencies": {
