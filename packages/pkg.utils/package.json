@@ -1,9 +1,16 @@
 {
   "name": "@xipkg/utils",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "xi.utils",
   "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
   "scripts": {
     "build": "tsup index.ts --format esm --dts",
     "prepare": "npm run build",
