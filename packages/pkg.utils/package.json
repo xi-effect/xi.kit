@@ -1,11 +1,11 @@
 {
   "name": "@xipkg/utils",
-  "version": "1.5.3",
+  "version": "1.6.0",
   "description": "xi.utils",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup index.ts --format cjs --dts",
+    "build": "tsup index.ts --format esm --dts",
     "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
