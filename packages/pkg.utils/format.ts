@@ -1,4 +1,4 @@
-import { plural } from '@xipkg/utils';
+import { plural } from './index';
 
 const FILE_SIZES = ['байт', 'Кб', 'Мб', 'Гб', 'Тб'];
 const pluralByteForms = ['байт', 'байта', 'байтов'];
