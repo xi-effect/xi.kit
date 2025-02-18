@@ -1,11 +1,11 @@
 {
   "name": "@xipkg/popover",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "tsup index.ts --format cjs --dts",
+    "build": "tsup index.ts --format esm --dts",
     "prepare": "npm run build",
     "start": "npm run build -- --watch",
     "dev": "npm run build -- --watch",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@xipkg/icons": "^0.8.2",
-    "@xipkg/utils": "^1.5.3",
+    "@xipkg/utils": "^1.6.2",
     "@radix-ui/react-popover": "1.1.4"
   },
   "devDependencies": {

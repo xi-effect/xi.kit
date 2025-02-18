@@ -1,11 +1,11 @@
 {
   "name": "@xipkg/scrollarea",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "tsup index.ts --format cjs --dts",
+    "build": "tsup index.ts --format esm --dts",
     "prepare": "npm run build",
     "start": "npm run build -- --watch",
     "dev": "npm run build -- --watch",
