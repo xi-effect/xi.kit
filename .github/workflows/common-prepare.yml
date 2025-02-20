@@ -30,4 +30,4 @@ jobs:
     if: needs.analyze_files.outputs.lintable == 'true'
     uses: xi-effect/xi.actions/.github/workflows/front-lint-and-format.yml@main
     with:
-      node-version: 18
+      node-version: 20
