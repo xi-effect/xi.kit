@@ -1,81 +1,25 @@
-# Turborepo starter
+# Дизайн-система команды xi.team
 
-This is an official starter Turborepo.
+Привет! Вы находитесь в репозитории дизайн-системы и React-компонентов, созданных для команды xi.team и платформы xieffect.
 
-## Using this example
+## Для начала работы
 
-Run the following command:
+Выполните установку зависимостей, запустив команду в корне репозитория:
 
-```sh
-npx create-turbo@latest
+```bash
+npm i
 ```
 
-## What's inside?
+> Если зависимости не устанавливаются, возможно, потребуется использовать флаг --legacy-peer-deps.
 
-This Turborepo includes the following packages/apps:
+Запустите следующую команду в корне репозитория для начала локальной разработки компонентов:
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```bash
+npm run dev
 ```
 
-### Develop
+> Запустится Storybook из xi.storybook на порту 6006 и среда тестирования компонентов из xi.playground на порту 3600, а также все компоненты перейдут в режим HMR.
 
-To develop all apps and packages, run the following command:
+## Публикация пакетов
 
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+Пакеты публикуются автоматически с помощью GitHub Actions. Перед публикацией убедитесь, что версия пакета в файле package.json обновлена в соответствии с внесёнными изменениями (соблюдая SemVer). Перед отправкой изменений не забудьте выполнить npm i в корне репозитория.
