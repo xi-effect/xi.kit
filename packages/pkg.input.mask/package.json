@@ -1,8 +1,15 @@
 {
   "name": "@xipkg/inputmask",
-  "version": "2.0.5",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "version": "2.0.6",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    }
+  },
   "license": "MIT",
   "scripts": {
     "build": "tsup index.ts --format esm --dts",
@@ -15,7 +22,7 @@
     "@maskito/kit": "^3.2.1",
     "@maskito/react": "^3.2.1",
     "@maskito/core": "3.2.1",
-    "@xipkg/utils": "^1.6.0"
+    "@xipkg/utils": "^1.6.3"
   },
   "devDependencies": {
     "tsup": "^8.3.5",

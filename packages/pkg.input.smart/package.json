@@ -1,8 +1,15 @@
 {
   "name": "@xipkg/inputsmart",
-  "version": "2.0.6",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "version": "2.0.7",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    }
+  },
   "license": "MIT",
   "scripts": {
     "build": "tsup index.ts --format esm --dts",
@@ -12,9 +19,9 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@xipkg/icons": "2.0.1",
-    "@xipkg/button": "3.0.1",
-    "@xipkg/utils": "^1.6.2",
+    "@xipkg/icons": "2.0.8",
+    "@xipkg/button": "3.0.9",
+    "@xipkg/utils": "^1.6.3",
     "slate": "0.112.0",
     "slate-react": "0.112.0",
     "slate-dom": "0.111.0",
