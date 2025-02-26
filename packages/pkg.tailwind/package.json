@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/tailwind",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Tailwind config",
   "main": "./design-system-preset.js",
   "scripts": {
@@ -23,6 +23,7 @@
       "import": "./design-system-preset.js",
       "require": "./design-system-preset.js"
     },
+    "./design-system-preset.js": "./design-system-preset.js",
     "./index.css": "./index.css"
   },
   "author": "xi.effect",
