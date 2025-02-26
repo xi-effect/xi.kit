@@ -1,7 +1,5 @@
 @import 'tailwindcss';
 
-@config './design-system-preset.js';
-
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -189,6 +187,163 @@ svg {
   --xi-cyan-100: #33a4cc;
 }
 
+@theme {
+  /* Шрифты */
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-inter);
+
+  /* Типография */
+  --font-h1-size: 56px;
+  --font-h1-line-height: 64px;
+  
+  --font-h2-size: 48px;
+  --font-h2-line-height: 56px;
+  
+  --font-h3-size: 40px;
+  --font-h3-line-height: 48px;
+  
+  --font-h4-size: 36px;
+  --font-h4-line-height: 44px;
+  
+  --font-h5-size: 32px;
+  --font-h5-line-height: 40px;
+  
+  --font-h6-size: 28px;
+  --font-h6-line-height: 36px;
+  
+  --font-xl-base-size: 24px;
+  --font-xl-base-line-height: 32px;
+  
+  --font-l-base-size: 20px;
+  --font-l-base-line-height: 28px;
+  
+  --font-m-base-size: 16px;
+  --font-m-base-line-height: 20px;
+  
+  --font-s-base-size: 14px;
+  --font-s-base-line-height: 20px;
+  
+  --font-xs-base-size: 12px;
+  --font-xs-base-line-height: 16px;
+  
+  --font-xxs-base-size: 10px;
+  --font-xxs-base-line-height: 14px;
+
+  /* Брейкопоинты */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 720px;
+  --breakpoint-md: 960px;
+  --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1440px;
+  --breakpoint-2xl: 1680px;
+  --breakpoint-3xl: 1920px;
+
+  /* Цвета */
+  /* gray */
+  --color-gray-0: var(--xi-gray-0);
+  --color-gray-5: var(--xi-gray-5);
+  --color-gray-10: var(--xi-gray-10);
+  --color-gray-20: var(--xi-gray-20);
+  --color-gray-30: var(--xi-gray-30);
+  --color-gray-40: var(--xi-gray-40);
+  --color-gray-50: var(--xi-gray-50);
+  --color-gray-60: var(--xi-gray-60);
+  --color-gray-70: var(--xi-gray-70);
+  --color-gray-80: var(--xi-gray-80);
+  --color-gray-90: var(--xi-gray-90);
+  --color-gray-100: var(--xi-gray-100);
+
+  /* brand */
+  --color-brand-0: var(--xi-brand-0);
+  --color-brand-20: var(--xi-brand-20);
+  --color-brand-40: var(--xi-brand-40);
+  --color-brand-60: var(--xi-brand-60);
+  --color-brand-80: var(--xi-brand-80);
+  --color-brand-100: var(--xi-brand-100);
+
+  /* background */
+  --color-bkgd-main: var(--xi-bkgd-main);
+  --color-bkgd-block: var(--xi-bkgd-block);
+
+  /* moscow */
+  --color-red-0: var(--xi-red-0);
+  --color-red-20: var(--xi-red-20);
+  --color-red-40: var(--xi-red-40);
+  --color-red-60: var(--xi-red-60);
+  --color-red-80: var(--xi-red-80);
+  --color-red-100: var(--xi-red-100);
+
+  /* ekaterinburg */
+  --color-green-0: var(--xi-green-0);
+  --color-green-20: var(--xi-green-20);
+  --color-green-40: var(--xi-green-40);
+  --color-green-60: var(--xi-green-60);
+  --color-green-80: var(--xi-green-80);
+  --color-green-100: var(--xi-green-100);
+
+  /* kungur */
+  --color-orange-0: var(--xi-orange-0);
+  --color-orange-20: var(--xi-orange-20);
+  --color-orange-40: var(--xi-orange-40);
+  --color-orange-60: var(--xi-orange-60);
+  --color-orange-80: var(--xi-orange-80);
+  --color-orange-100: var(--xi-orange-100);
+
+  /* arkhangelsk */
+  --color-yellow-20: var(--xi-yellow-20);
+  --color-yellow-40: var(--xi-yellow-40);
+  --color-yellow-60: var(--xi-yellow-60);
+  --color-yellow-100: var(--xi-yellow-100);
+
+  /* vladivostok */
+  --color-violet-20: var(--xi-violet-20);
+  --color-violet-40: var(--xi-violet-40);
+  --color-violet-60: var(--xi-violet-60);
+  --color-violet-100: var(--xi-violet-100);
+
+  /* volgograd */
+  --color-pink-20: var(--xi-pink-20);
+  --color-pink-40: var(--xi-pink-40);
+  --color-pink-60: var(--xi-pink-60);
+  --color-pink-100: var(--xi-pink-100);
+
+  /* saratov */
+  --color-cyan-20: var(--xi-cyan-20);
+  --color-cyan-40: var(--xi-cyan-40);
+  --color-cyan-60: var(--xi-cyan-60);
+  --color-cyan-100: var(--xi-cyan-100);
+
+  /* Анимации */
+  --animation-shake: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+  --animation-fade-in: fade-in 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+};
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -206,374 +361,4 @@ svg {
 ::before,
 ::after {
   --tw-content: '';
-}
-
-/*
-1. Use a consistent sensible line-height in all browsers.
-2. Prevent adjustments of font size after orientation changes in iOS.
-3. Use a more readable tab size.
-4. Use the user's configured `sans` font-family by default.
-*/
-
-html {
-  line-height: 1.5; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -moz-tab-size: 4; /* 3 */
-  tab-size: 4; /* 3 */
-  font-family: var(--font-sans, ui-sans-serif,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    'Noto Sans',
-    sans-serif,
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    'Noto Color Emoji'
-  ); /* 4 */
-}
-
-/*
-1. Remove the margin in all browsers.
-2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
-*/
-
-body {
-  margin: 0; /* 1 */
-  line-height: inherit; /* 2 */
-  overflow-x: hidden;
-}
-
-/*
-1. Add the correct height in Firefox.
-2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
-3. Ensure horizontal rules are visible by default.
-*/
-
-hr {
-  height: 0; /* 1 */
-  color: inherit; /* 2 */
-  border-top-width: 1px; /* 3 */
-}
-
-/*
-Add the correct text decoration in Chrome, Edge, and Safari.
-*/
-
-abbr:where([title]) {
-  text-decoration: underline dotted;
-}
-
-/*
-Remove the default font size and weight for headings.
-*/
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
-}
-
-/*
-Reset links to optimize for opt-in styling instead of opt-out.
-*/
-
-a {
-  color: inherit;
-  text-decoration: inherit;
-}
-
-/*
-Add the correct font weight in Edge and Safari.
-*/
-
-b,
-strong {
-  font-weight: bolder;
-}
-
-/*
-1. Use the user's configured `mono` font family by default.
-2. Correct the odd `em` font sizing in all browsers.
-*/
-
-code,
-kbd,
-samp,
-pre {
-  font-family: var(--font-mono, ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    Monaco,
-    Consolas,
-    'Liberation Mono',
-    'Courier New',
-    monospace
-  ); /* 1 */
-  font-size: 1em; /* 2 */
-}
-
-/*
-Add the correct font size in all browsers.
-*/
-
-small {
-  font-size: 80%;
-}
-
-/*
-Prevent `sub` and `sup` elements from affecting the line height in all browsers.
-*/
-
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-/*
-1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
-2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
-3. Remove gaps between table borders by default.
-*/
-
-table {
-  text-indent: 0; /* 1 */
-  border-color: inherit; /* 2 */
-  border-collapse: collapse; /* 3 */
-}
-
-/*
-1. Change the font styles in all browsers.
-2. Remove the margin in Firefox and Safari.
-3. Remove default padding in all browsers.
-*/
-
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit; /* 1 */
-  font-size: 100%; /* 1 */
-  line-height: inherit; /* 1 */
-  margin: 0; /* 2 */
-  padding: 0; /* 3 */
-}
-
-/*
-Remove the inheritance of text transform in Edge and Firefox.
-*/
-
-button,
-select {
-  text-transform: none;
-}
-
-/*
-1. Correct the inability to style clickable types in iOS and Safari.
-2. Remove default button styles.
-*/
-
-button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
-  -webkit-appearance: button; /* 1 */
-  background-image: none; /* 2 */
-}
-
-/*
-Use the modern Firefox focus style for all focusable elements.
-*/
-
-:-moz-focusring {
-  outline: auto;
-}
-
-/*
-Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
-*/
-
-:-moz-ui-invalid {
-  box-shadow: none;
-}
-
-/*
-Add the correct vertical alignment in Chrome and Firefox.
-*/
-
-progress {
-  vertical-align: baseline;
-}
-
-/*
-Correct the cursor style of increment and decrement buttons in Safari.
-*/
-
-::-webkit-inner-spin-button,
-::-webkit-outer-spin-button {
-  height: auto;
-}
-
-/*
-1. Correct the odd appearance in Chrome and Safari.
-2. Correct the outline style in Safari.
-*/
-
-[type='search'] {
-  -webkit-appearance: textfield; /* 1 */
-  outline-offset: -2px; /* 2 */
-}
-
-/*
-Remove the inner padding in Chrome and Safari on macOS.
-*/
-
-::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/*
-1. Correct the inability to style clickable types in iOS and Safari.
-2. Change font properties to `inherit` in Safari.
-*/
-
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/*
-Add the correct display in Chrome and Safari.
-*/
-
-summary {
-  display: list-item;
-}
-
-/*
-Removes the default spacing and border for appropriate elements.
-*/
-
-blockquote,
-dl,
-dd,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-hr,
-figure,
-p,
-pre {
-  margin: 0;
-}
-
-fieldset {
-  margin: 0;
-  padding: 0;
-}
-
-legend {
-  padding: 0;
-}
-
-ol,
-ul,
-menu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/*
-Prevent resizing textareas horizontally by default.
-*/
-
-textarea {
-  resize: vertical;
-}
-
-/*
-1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
-2. Set the default placeholder color to the user's configured gray 40 color.
-*/
-
-input::placeholder,
-textarea::placeholder {
-  opacity: 1; /* 1 */
-  color: var(--xi-gray-40); /* 2 */
-}
-
-/*
-Set the default cursor for buttons.
-*/
-
-button,
-[role='button'] {
-  cursor: pointer;
-}
-
-/*
-Make sure disabled buttons don't get the pointer cursor.
-*/
-:disabled {
-  cursor: default;
-}
-
-/*
-1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
-2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
-   This can trigger a poorly considered lint error in some tools but is included by design.
-*/
-
-img,
-svg,
-video,
-canvas,
-audio,
-iframe,
-embed,
-object {
-  display: block; /* 1 */
-  vertical-align: middle; /* 2 */
-}
-
-/*
-Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
-*/
-
-img,
-video {
-  max-width: 100%;
-  height: auto;
-}
-
-/*
-Ensure the default browser behavior of the `hidden` attribute.
-*/
-
-[hidden] {
-  display: none;
 }
