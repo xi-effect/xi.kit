@@ -191,41 +191,41 @@ svg {
   --font-mono: var(--font-inter);
 
   /* Типография */
-  --font-h1-size: 56px;
-  --font-h1-line-height: 64px;
+  --text-h1-size: 56px;
+  --text-h1-line-height: 64px;
   
-  --font-h2-size: 48px;
-  --font-h2-line-height: 56px;
+  --text-h2-size: 48px;
+  --text-h2-line-height: 56px;
   
-  --font-h3-size: 40px;
-  --font-h3-line-height: 48px;
+  --text-h3-size: 40px;
+  --text-h3-line-height: 48px;
   
-  --font-h4-size: 36px;
-  --font-h4-line-height: 44px;
+  --text-h4-size: 36px;
+  --text-h4-line-height: 44px;
   
-  --font-h5-size: 32px;
-  --font-h5-line-height: 40px;
+  --text-h5-size: 32px;
+  --text-h5-line-height: 40px;
   
-  --font-h6-size: 28px;
-  --font-h6-line-height: 36px;
+  --text-h6-size: 28px;
+  --text-h6-line-height: 36px;
   
-  --font-xl-base-size: 24px;
-  --font-xl-base-line-height: 32px;
+  --text-xl-base-size: 24px;
+  --text-xl-base-line-height: 32px;
   
-  --font-l-base-size: 20px;
-  --font-l-base-line-height: 28px;
+  --text-l-base-size: 20px;
+  --text-l-base-line-height: 28px;
   
-  --font-m-base-size: 16px;
-  --font-m-base-line-height: 20px;
+  --text-m-base-size: 16px;
+  --text-m-base-line-height: 20px;
   
-  --font-s-base-size: 14px;
-  --font-s-base-line-height: 20px;
+  --text-s-base-size: 14px;
+  --text-s-base-line-height: 20px;
   
-  --font-xs-base-size: 12px;
-  --font-xs-base-line-height: 16px;
+  --text-xs-base-size: 12px;
+  --text-xs-base-line-height: 16px;
   
-  --font-xxs-base-size: 10px;
-  --font-xxs-base-line-height: 14px;
+  --text-xxs-base-size: 10px;
+  --text-xxs-base-line-height: 14px;
 
   /* Брейкопоинты */
   --breakpoint-xs: 480px;
