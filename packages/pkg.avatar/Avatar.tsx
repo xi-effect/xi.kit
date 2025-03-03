@@ -7,10 +7,22 @@ import { cn } from '@xipkg/utils';
 import Image, { ImageProps } from 'next/image';
 
 type SizeMapT = {
+  [key in 'xxl' | 'xl' | 'l' | 'm' | 's']: string | number;
+};
+
+type SizeMapImgT = {
   [key in 'xxl' | 'xl' | 'l' | 'm' | 's']: number;
 };
 
 const sizeMap: SizeMapT = {
+  xxl: 'h-[128px] w-[128px]',
+  xl: 'h-[64px] w-[64px]',
+  l: 'h-[48px] w-[48px]',
+  m: 'h-[32px] w-[32px]',
+  s: 'h-[24px] w-[24px]',
+};
+
+const sizeMapImg: SizeMapImgT = {
   xxl: 128,
   xl: 64,
   l: 48,
@@ -27,7 +39,7 @@ const Avatar = React.forwardRef<
   <AvatarPrimitive.Root
     ref={ref}
     className={cn(
-      `relative flex h-[${sizeMap[size]}px] w-[${sizeMap[size]}px] shrink-0 overflow-hidden rounded-full`,
+      `relative flex shrink-0 overflow-hidden rounded-full ${sizeMap[size]}`,
       className,
     )}
     {...props}
@@ -50,8 +62,8 @@ const AvatarImage = React.forwardRef<
   >
     <Image
       {...imageProps}
-      width={sizeMap[size] ?? 48}
-      height={sizeMap[size] ?? 48}
+      width={sizeMapImg[size] ?? 48}
+      height={sizeMapImg[size] ?? 48}
       quality={100}
       alt="user avatar"
     />

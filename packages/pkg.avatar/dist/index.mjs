@@ -37,6 +37,13 @@ import { cn } from "@xipkg/utils";
 import Image2 from "next/image";
 import { jsx } from "react/jsx-runtime";
 var sizeMap = {
+  xxl: "h-[128px] w-[128px]",
+  xl: "h-[64px] w-[64px]",
+  l: "h-[48px] w-[48px]",
+  m: "h-[32px] w-[32px]",
+  s: "h-[24px] w-[24px]"
+};
+var sizeMapImg = {
   xxl: 128,
   xl: 64,
   l: 48,
@@ -50,7 +57,7 @@ var Avatar = React.forwardRef((_a, ref) => {
     __spreadValues({
       ref,
       className: cn(
-        `relative flex h-[${sizeMap[size]}px] w-[${sizeMap[size]}px] shrink-0 overflow-hidden rounded-full`,
+        `relative flex shrink-0 overflow-hidden rounded-full ${sizeMap[size]}`,
         className
       )
     }, props)
@@ -70,8 +77,8 @@ var AvatarImage = React.forwardRef((_a, ref) => {
       children: /* @__PURE__ */ jsx(
         Image2,
         __spreadProps(__spreadValues({}, imageProps), {
-          width: (_a2 = sizeMap[size]) != null ? _a2 : 48,
-          height: (_b2 = sizeMap[size]) != null ? _b2 : 48,
+          width: (_a2 = sizeMapImg[size]) != null ? _a2 : 48,
+          height: (_b2 = sizeMapImg[size]) != null ? _b2 : 48,
           quality: 100,
           alt: "user avatar"
         })

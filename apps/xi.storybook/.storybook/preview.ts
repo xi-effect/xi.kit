@@ -1,7 +1,6 @@
 import type { Preview } from '@storybook/react';
 
 import '../src/index.css';
-import '@xipkg/tailwind/index.css';
 import { themeDecorator } from './themeDecorators';
 
 export const globalTypes: Preview['globalTypes'] = {

@@ -1,7 +1,7 @@
 'use client';
 
 import { FileUploader } from '@xipkg/fileuploader';
-import { File } from '@xipkg/fileuploader/File';
+import { File } from '@xipkg/fileuploader';
 import { useState } from 'react';
 
 const TestComponents = () => {

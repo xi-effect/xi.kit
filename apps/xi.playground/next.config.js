@@ -30,7 +30,8 @@ const nextConfig = {
     '@xipkg/contextmenu',
     '@xipkg/tooltip',
     '@xipkg/sheet',
-    '@xipkg/inputsmart'
+    '@xipkg/inputsmart',
+    'slate-dom'
   ],
   images: {
     remotePatterns: [

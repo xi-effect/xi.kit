@@ -6,7 +6,7 @@
 
 @import '@xipkg/tailwind/index.css';
 
-@source "../src";
+@source "../app";
 @source "../../../node_modules";
 @source "../../../packages";
 

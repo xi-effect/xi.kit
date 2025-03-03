@@ -1,6 +1,7 @@
-import '@xipkg/tailwind/index.css';
 import { Inter } from 'next/font/google';
 import { Providers } from './providers';
+
+import './index.css';
 
 const inter = Inter({
   weight: ['400', '500', '600', '700'],
