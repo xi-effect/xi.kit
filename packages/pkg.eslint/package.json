@@ -7,7 +7,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@typescript-eslint/parser": "^8.18.1",
+    "@typescript-eslint/parser": "^8.26.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-next": "15.1.2",
     "eslint-config-prettier": "9.1.0",
