@@ -115,75 +115,68 @@ export interface InputProps
   afterProps?: React.HTMLAttributes<HTMLDivElement>;
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      className,
-      variant,
-      error,
-      warning,
-      type,
-      before,
-      after,
-      beforeClassName,
-      afterClassName,
-      beforeProps,
-      afterProps,
-      ...props
-    },
-    ref,
-  ) => {
-    return (
-      <div className="relative">
-        {!!before && (
-          <div
-            className={cn(
-              addsVariants({
-                variant,
-                beforeBool: !!before,
-                afterBool: !!after,
-                className: beforeClassName,
-              }),
-            )}
-            {...beforeProps}
-          >
-            {before}
-          </div>
-        )}
-        <input
-          type={type}
+export function Input({
+  className,
+  variant,
+  error,
+  warning,
+  type,
+  before,
+  after,
+  beforeClassName,
+  afterClassName,
+  beforeProps,
+  afterProps,
+  ...props
+}: InputProps) {
+  return (
+    <div className="relative">
+      {!!before && (
+        <div
           className={cn(
-            inputVariants({
+            addsVariants({
               variant,
-              error,
-              warning,
               beforeBool: !!before,
               afterBool: !!after,
-              className,
+              className: beforeClassName,
             }),
           )}
-          ref={ref}
-          {...props}
-        />
-        {!!after && (
-          <div
-            className={cn(
-              addsVariants({
-                variant,
-                beforeBool: !!before,
-                afterBool: !!after,
-                className: afterClassName,
-              }),
-            )}
-            {...afterProps}
-          >
-            {after}
-          </div>
+          {...beforeProps}
+        >
+          {before}
+        </div>
+      )}
+      <input
+        type={type}
+        className={cn(
+          inputVariants({
+            variant,
+            error,
+            warning,
+            beforeBool: !!before,
+            afterBool: !!after,
+            className,
+          }),
         )}
-      </div>
-    );
-  },
-);
-Input.displayName = 'Input';
+        {...props}
+      />
+      {!!after && (
+        <div
+          className={cn(
+            addsVariants({
+              variant,
+              beforeBool: !!before,
+              afterBool: !!after,
+              className: afterClassName,
+            }),
+          )}
+          {...afterProps}
+        >
+          {after}
+        </div>
+      )}
+    </div>
+  );
+}
 
-export { Input };
+Input.displayName = 'Input';
