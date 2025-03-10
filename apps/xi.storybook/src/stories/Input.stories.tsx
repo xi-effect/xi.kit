@@ -26,11 +26,11 @@ const meta = {
     },
     before: {
       control: 'boolean',
-      description: 'До',
+      description: 'Состояние до, показывает иконку слева от поля ввода',
     },
     after: {
       control: 'boolean',
-      description: 'После',
+      description: 'Состояние после, показывает иконку справа от поля ввода',
     },
   },
 } satisfies Meta<typeof Input>;

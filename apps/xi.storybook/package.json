@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@xipkg/button": "*",
-    "@xipkg/icons": "^2.0.8",
+    "@xipkg/icons": "*",
     "@xipkg/tailwind": "*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
