@@ -17,6 +17,9 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, Varian
     beforeProps?: React.HTMLAttributes<HTMLDivElement>;
     afterProps?: React.HTMLAttributes<HTMLDivElement>;
 }
-declare const Input: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
+declare function Input({ className, variant, error, warning, type, before, after, beforeClassName, afterClassName, beforeProps, afterProps, ...props }: InputProps): React.JSX.Element;
+declare namespace Input {
+    var displayName: string;
+}
 
 export { Input, type InputProps };

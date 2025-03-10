@@ -130,78 +130,75 @@ var addsVariants = cva("absolute flex items-center z-50", {
     afterBool: false
   }
 });
-var Input = React.forwardRef(
-  (_a, ref) => {
-    var _b = _a, {
-      className,
-      variant,
-      error,
-      warning,
+function Input(_a) {
+  var _b = _a, {
+    className,
+    variant,
+    error,
+    warning,
+    type,
+    before,
+    after,
+    beforeClassName,
+    afterClassName,
+    beforeProps,
+    afterProps
+  } = _b, props = __objRest(_b, [
+    "className",
+    "variant",
+    "error",
+    "warning",
+    "type",
+    "before",
+    "after",
+    "beforeClassName",
+    "afterClassName",
+    "beforeProps",
+    "afterProps"
+  ]);
+  return /* @__PURE__ */ React.createElement("div", { className: "relative" }, !!before && /* @__PURE__ */ React.createElement(
+    "div",
+    __spreadValues({
+      className: cn(
+        addsVariants({
+          variant,
+          beforeBool: !!before,
+          afterBool: !!after,
+          className: beforeClassName
+        })
+      )
+    }, beforeProps),
+    before
+  ), /* @__PURE__ */ React.createElement(
+    "input",
+    __spreadValues({
       type,
-      before,
-      after,
-      beforeClassName,
-      afterClassName,
-      beforeProps,
-      afterProps
-    } = _b, props = __objRest(_b, [
-      "className",
-      "variant",
-      "error",
-      "warning",
-      "type",
-      "before",
-      "after",
-      "beforeClassName",
-      "afterClassName",
-      "beforeProps",
-      "afterProps"
-    ]);
-    return /* @__PURE__ */ React.createElement("div", { className: "relative" }, !!before && /* @__PURE__ */ React.createElement(
-      "div",
-      __spreadValues({
-        className: cn(
-          addsVariants({
-            variant,
-            beforeBool: !!before,
-            afterBool: !!after,
-            className: beforeClassName
-          })
-        )
-      }, beforeProps),
-      before
-    ), /* @__PURE__ */ React.createElement(
-      "input",
-      __spreadValues({
-        type,
-        className: cn(
-          inputVariants({
-            variant,
-            error,
-            warning,
-            beforeBool: !!before,
-            afterBool: !!after,
-            className
-          })
-        ),
-        ref
-      }, props)
-    ), !!after && /* @__PURE__ */ React.createElement(
-      "div",
-      __spreadValues({
-        className: cn(
-          addsVariants({
-            variant,
-            beforeBool: !!before,
-            afterBool: !!after,
-            className: afterClassName
-          })
-        )
-      }, afterProps),
-      after
-    ));
-  }
-);
+      className: cn(
+        inputVariants({
+          variant,
+          error,
+          warning,
+          beforeBool: !!before,
+          afterBool: !!after,
+          className
+        })
+      )
+    }, props)
+  ), !!after && /* @__PURE__ */ React.createElement(
+    "div",
+    __spreadValues({
+      className: cn(
+        addsVariants({
+          variant,
+          beforeBool: !!before,
+          afterBool: !!after,
+          className: afterClassName
+        })
+      )
+    }, afterProps),
+    after
+  ));
+}
 Input.displayName = "Input";
 export {
   Input
