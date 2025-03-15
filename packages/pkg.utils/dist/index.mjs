@@ -102,6 +102,24 @@ var convertSnakeToCamelCase = (dict, conversionRules) => {
   }
   return result;
 };
+
+// useMediaQuery.ts
+import { useCallback, useSyncExternalStore } from "react";
+var getServerSnapshot = () => false;
+var useMediaQuery = (query) => {
+  const subscribe = useCallback(
+    (callback) => {
+      const matchMedia = window.matchMedia(query);
+      matchMedia.addEventListener("change", callback);
+      return () => {
+        matchMedia.removeEventListener("change", callback);
+      };
+    },
+    [query]
+  );
+  const getSnapshot = () => window.matchMedia(query).matches;
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+};
 export {
   cn,
   convertSnakeToCamelCase,
@@ -109,5 +127,6 @@ export {
   plural,
   useDebounce,
   useDebouncedFunction,
+  useMediaQuery,
   useSessionStorage
 };

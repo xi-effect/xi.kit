@@ -46,4 +46,10 @@ declare const formatBytesSize: (size: number) => string;
 declare const convertSnakeToCamelCase: <T extends Record<string, any>>(dict: T, conversionRules?: Record<string, string>) => Record<string, any>;
 type CamelCase<S extends string> = S extends `${infer P1}_${infer P2}${infer P3}` ? `${P1}${Capitalize<P2>}${CamelCase<P3>}` : S;
 
-export { type CamelCase, cn, convertSnakeToCamelCase, formatBytesSize, plural, useDebounce, useDebouncedFunction, useSessionStorage };
+/**
+ * @example
+ * const matches = useMediaQuery('(max-width: 768px)');
+ */
+declare const useMediaQuery: (query: string) => boolean;
+
+export { type CamelCase, cn, convertSnakeToCamelCase, formatBytesSize, plural, useDebounce, useDebouncedFunction, useMediaQuery, useSessionStorage };
