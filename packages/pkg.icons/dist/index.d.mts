@@ -10,6 +10,8 @@ declare const svgVariants: (props?: ({
 interface IconProps extends React.SVGProps<SVGSVGElement>, VariantProps<typeof svgVariants> {
 }
 
+declare const Materials: ({ ...props }: IconProps) => react_jsx_runtime.JSX.Element;
+
 declare const Account: ({ ...props }: IconProps) => react_jsx_runtime.JSX.Element;
 
 declare const Activity: ({ ...props }: IconProps) => react_jsx_runtime.JSX.Element;
@@ -300,6 +302,10 @@ declare const DetailedAnswerTest: ({ ...props }: IconProps) => react_jsx_runtime
 
 declare const OptionSelectionTest: ({ ...props }: IconProps) => react_jsx_runtime.JSX.Element;
 
+declare const Payments: ({ ...props }: IconProps) => react_jsx_runtime.JSX.Element;
+
+declare const FAQ: ({ ...props }: IconProps) => react_jsx_runtime.JSX.Element;
+
 declare const icons: string[];
 
-export { Account, Activity, Add, Announce, Arrow, ArrowBottom, ArrowLeft, ArrowRight, ArrowUp, Bold, Brush, Burger, Calendar, Camera, CameraOff, CaretUp, CategoryAdd, ChannelAdd, Chat, Check, ChevronBottom, ChevronLeft, ChevronRight, ChevronSmallBottom, ChevronSmallLeft, ChevronSmallRight, ChevronSmallTop, ChevronUp, Cite, Clip, Clock, Close, Code, Collapse, ColorPicker, Conference, Copy, CrossCircle, Crown, Cursor, DetailedAnswerTest, Divider, DoubleBottomArrows, DoubleUpArrows, Download, Edit, Emotions, Endcall, Eraser, Exit, External, Eyeoff, Eyeon, Figures, File, FileSmall, Filter, Flag, Folder, Food, Grid, Group, H1, H2, H3, Hand, Heart, Hint, Home, type IconProps, Image, Italic, Key, Laptop, Link, Locked, LongAnswer, Mail, MailRounded, Maximize, MenuDots, Microphone, MicrophoneOff, Minimize, Minus, Moon, MoreVert, Move, Movie, Music, Nature, Notification, Objects, Ol, OptionSelectionTest, Palette, Pen, PeopleInvite, Photo, Picture, Pin, Places, Play, Plus, Presentation, PushPin, RedLine, Redo, Reply, Screenshare, Search, Section, Send, Settings, Shape, Share, SimpleAnswer, SimpleAnswertTest, Sort, SoundOn, SoundTwo, Soundoff, Speaker, SpeakerHorizontal, Sticker, Stroke, Sun, TText, Task, TaskFile, Telegram, TelegramFilled, Text, ThinArrowRight, Trash, Ul, Underline, Undo, Unlocked, Updates, Upload, Users, VariantSelect, Video, WhiteBoard, Window, icons };
+export { Account, Activity, Add, Announce, Arrow, ArrowBottom, ArrowLeft, ArrowRight, ArrowUp, Bold, Brush, Burger, Calendar, Camera, CameraOff, CaretUp, CategoryAdd, ChannelAdd, Chat, Check, ChevronBottom, ChevronLeft, ChevronRight, ChevronSmallBottom, ChevronSmallLeft, ChevronSmallRight, ChevronSmallTop, ChevronUp, Cite, Clip, Clock, Close, Code, Collapse, ColorPicker, Conference, Copy, CrossCircle, Crown, Cursor, DetailedAnswerTest, Divider, DoubleBottomArrows, DoubleUpArrows, Download, Edit, Emotions, Endcall, Eraser, Exit, External, Eyeoff, Eyeon, FAQ, Figures, File, FileSmall, Filter, Flag, Folder, Food, Grid, Group, H1, H2, H3, Hand, Heart, Hint, Home, type IconProps, Image, Italic, Key, Laptop, Link, Locked, LongAnswer, Mail, MailRounded, Materials, Maximize, MenuDots, Microphone, MicrophoneOff, Minimize, Minus, Moon, MoreVert, Move, Movie, Music, Nature, Notification, Objects, Ol, OptionSelectionTest, Palette, Payments, Pen, PeopleInvite, Photo, Picture, Pin, Places, Play, Plus, Presentation, PushPin, RedLine, Redo, Reply, Screenshare, Search, Section, Send, Settings, Shape, Share, SimpleAnswer, SimpleAnswertTest, Sort, SoundOn, SoundTwo, Soundoff, Speaker, SpeakerHorizontal, Sticker, Stroke, Sun, TText, Task, TaskFile, Telegram, TelegramFilled, Text, ThinArrowRight, Trash, Ul, Underline, Undo, Unlocked, Updates, Upload, Users, VariantSelect, Video, WhiteBoard, Window, icons };
