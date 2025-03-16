@@ -666,19 +666,9 @@ var SidebarInset = React3.forwardRef(
   }
 );
 SidebarInset.displayName = "SidebarInset";
-var SidebarInput = React3.forwardRef((_a, ref) => {
+var SidebarInput = React3.forwardRef((_a) => {
   var _b = _a, { className } = _b, props = __objRest(_b, ["className"]);
-  return /* @__PURE__ */ jsx150(
-    Input,
-    __spreadValues({
-      ref,
-      "data-sidebar": "input",
-      className: cn2(
-        "bg-background focus-visible:ring-sidebar-ring h-8 w-full shadow-none focus-visible:ring-2",
-        className
-      )
-    }, props)
-  );
+  return /* @__PURE__ */ jsx150(Input, __spreadValues({ "data-sidebar": "input", className: cn2("h-8 w-full", className) }, props));
 });
 SidebarInput.displayName = "SidebarInput";
 var SidebarHeader = React3.forwardRef(
