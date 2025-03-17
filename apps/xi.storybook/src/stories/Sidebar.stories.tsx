@@ -10,6 +10,12 @@ import {
   SidebarMenuButton,
   SidebarFooter,
   useSidebar,
+  SidebarTrigger,
+  SidebarGroupAction,
+  SidebarMenuAction,
+  SidebarMenuSub,
+  SidebarMenuSubItem,
+  SidebarMenuSubButton,
 } from '@xipkg/sidebar';
 
 import {
@@ -88,13 +94,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 function CustomTrigger() {
-  const { toggleSidebar, open } = useSidebar();
-
   return (
     <div className="flex items-center gap-4 p-4">
-      <button className="bg-transparent p-2" onClick={toggleSidebar}>
-        {open ? <Close /> : <Burger />}
-      </button>
+      <SidebarTrigger />
       <img src="/logo.svg" className="h-4" />
     </div>
   );
@@ -120,6 +122,7 @@ const Template: Story['render'] = (args) => {
                           <span className="text-base">{item.title}</span>
                         </a>
                       </SidebarMenuButton>
+                      <SidebarMenuAction>2</SidebarMenuAction>
                     </SidebarMenuItem>
                   ))}
                 </SidebarMenu>
