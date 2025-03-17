@@ -20,9 +20,8 @@
   },
   "dependencies": {
     "@xipkg/button": "^3.0.9",
-    "@xipkg/input": "^2.0.7",
+    "@xipkg/icons": "^2.0.8",
     "@xipkg/sheet": "^1.0.6",
-    "@xipkg/tooltip": "^2.0.5",
     "@xipkg/utils": "^1.6.3"
   },
   "devDependencies": {

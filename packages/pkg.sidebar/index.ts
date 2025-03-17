@@ -1,13 +1,12 @@
 export {
   Sidebar,
   SidebarContent,
+  SidebarHeader,
   SidebarFooter,
   SidebarGroup,
   SidebarGroupAction,
   SidebarGroupContent,
   SidebarGroupLabel,
-  SidebarHeader,
-  SidebarInput,
   SidebarInset,
   SidebarMenu,
   SidebarMenuAction,
@@ -17,8 +16,7 @@ export {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-  SidebarProvider,
-  SidebarRail,
   SidebarTrigger,
-  useSidebar,
-} from './Sidebar';
+} from './components';
+
+export { SidebarProvider, useSidebar } from './context';
