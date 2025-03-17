@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { cn } from '@xipkg/utils';
 
 export const SidebarInset = ({ className, ref, ...props }: React.ComponentProps<'main'>) => {

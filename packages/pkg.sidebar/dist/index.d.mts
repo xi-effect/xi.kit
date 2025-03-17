@@ -1,5 +1,4 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
-import React from 'react';
 import * as class_variance_authority_dist_types from 'class-variance-authority/dist/types';
 import { TooltipContent } from '@xipkg/tooltip';
 import { VariantProps } from 'class-variance-authority';
@@ -68,11 +67,11 @@ declare const SidebarMenuSubItem: ({ ref, ...props }: React.ComponentProps<"li">
 
 declare const SidebarTrigger: ({ className, ref, onClick, ...props }: React.ComponentProps<typeof Button>) => react_jsx_runtime.JSX.Element;
 
-declare const SidebarProvider: React.ForwardRefExoticComponent<Omit<React.ClassAttributes<HTMLDivElement> & React.HTMLAttributes<HTMLDivElement> & {
+declare const SidebarProvider: ({ defaultOpen, open: openProp, onOpenChange: setOpenProp, className, style, children, ref, ...props }: React.ComponentProps<"div"> & {
     defaultOpen?: boolean;
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
-}, "ref"> & React.RefAttributes<HTMLDivElement>>;
+}) => react_jsx_runtime.JSX.Element;
 
 type SidebarContextT = {
     state: 'expanded' | 'collapsed';

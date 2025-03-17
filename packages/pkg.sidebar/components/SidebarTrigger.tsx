@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Burger, Close } from '@xipkg/icons';
 import { Button } from '@xipkg/button';
 import { cn } from '@xipkg/utils';

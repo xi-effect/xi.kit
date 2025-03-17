@@ -1,5 +1,4 @@
 import { cn } from '@xipkg/utils';
-import React from 'react';
 
 export const SidebarFooter = ({ className, ref, ...props }: React.ComponentProps<'div'>) => {
   return (

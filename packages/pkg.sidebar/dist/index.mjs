@@ -83,7 +83,7 @@ var __async = (__this, __arguments, generator) => {
 var require_react_dom_production = __commonJS({
   "../../node_modules/react-dom/cjs/react-dom.production.js"(exports) {
     "use strict";
-    var React24 = __require("react");
+    var React20 = __require("react");
     function formatProdErrorMessage(code) {
       var url = "https://react.dev/errors/" + code;
       if (1 < arguments.length) {
@@ -123,7 +123,7 @@ var require_react_dom_production = __commonJS({
         implementation
       };
     }
-    var ReactSharedInternals = React24.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+    var ReactSharedInternals = React20.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
     function getCrossOriginStringAs(as, input) {
       if ("font" === as) return "";
       if ("string" === typeof input)
@@ -277,7 +277,7 @@ var require_react_dom_development = __commonJS({
         return dispatcher;
       }
       "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-      var React24 = __require("react"), Internals = {
+      var React20 = __require("react"), Internals = {
         d: {
           f: noop,
           r: function() {
@@ -295,7 +295,7 @@ var require_react_dom_development = __commonJS({
         },
         p: 0,
         findDOMNode: null
-      }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React24.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+      }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React20.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
       "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error(
         "React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"
       );
@@ -499,2510 +499,18 @@ var require_react_dom = __commonJS({
 });
 
 // context/SidebarContext.ts
-import React from "react";
-var SidebarContext = React.createContext(null);
+import { createContext, useContext } from "react";
+var SidebarContext = createContext(null);
 function useSidebar() {
-  const context = React.useContext(SidebarContext);
+  const context = useContext(SidebarContext);
   if (!context) {
     throw new Error("useSidebar must be used within a SidebarProvider.");
   }
   return context;
 }
 
-// ../../node_modules/tailwind-merge/dist/lib/tw-join.mjs
-function twJoin() {
-  var index2 = 0;
-  var argument;
-  var resolvedValue;
-  var string = "";
-  while (index2 < arguments.length) {
-    if (argument = arguments[index2++]) {
-      if (resolvedValue = toValue(argument)) {
-        string && (string += " ");
-        string += resolvedValue;
-      }
-    }
-  }
-  return string;
-}
-function toValue(mix) {
-  if (typeof mix === "string") {
-    return mix;
-  }
-  var resolvedValue;
-  var string = "";
-  for (var k = 0; k < mix.length; k++) {
-    if (mix[k]) {
-      if (resolvedValue = toValue(mix[k])) {
-        string && (string += " ");
-        string += resolvedValue;
-      }
-    }
-  }
-  return string;
-}
-
-// ../../node_modules/tailwind-merge/dist/lib/class-utils.mjs
-var CLASS_PART_SEPARATOR = "-";
-function createClassUtils(config) {
-  var classMap = createClassMap(config);
-  var conflictingClassGroups = config.conflictingClassGroups, _config$conflictingCl = config.conflictingClassGroupModifiers, conflictingClassGroupModifiers = _config$conflictingCl === void 0 ? {} : _config$conflictingCl;
-  function getClassGroupId(className) {
-    var classParts = className.split(CLASS_PART_SEPARATOR);
-    if (classParts[0] === "" && classParts.length !== 1) {
-      classParts.shift();
-    }
-    return getGroupRecursive(classParts, classMap) || getGroupIdForArbitraryProperty(className);
-  }
-  function getConflictingClassGroupIds(classGroupId, hasPostfixModifier) {
-    var conflicts = conflictingClassGroups[classGroupId] || [];
-    if (hasPostfixModifier && conflictingClassGroupModifiers[classGroupId]) {
-      return [].concat(conflicts, conflictingClassGroupModifiers[classGroupId]);
-    }
-    return conflicts;
-  }
-  return {
-    getClassGroupId,
-    getConflictingClassGroupIds
-  };
-}
-function getGroupRecursive(classParts, classPartObject) {
-  var _a;
-  if (classParts.length === 0) {
-    return classPartObject.classGroupId;
-  }
-  var currentClassPart = classParts[0];
-  var nextClassPartObject = classPartObject.nextPart.get(currentClassPart);
-  var classGroupFromNextClassPart = nextClassPartObject ? getGroupRecursive(classParts.slice(1), nextClassPartObject) : void 0;
-  if (classGroupFromNextClassPart) {
-    return classGroupFromNextClassPart;
-  }
-  if (classPartObject.validators.length === 0) {
-    return void 0;
-  }
-  var classRest = classParts.join(CLASS_PART_SEPARATOR);
-  return (_a = classPartObject.validators.find(function(_ref) {
-    var validator = _ref.validator;
-    return validator(classRest);
-  })) == null ? void 0 : _a.classGroupId;
-}
-var arbitraryPropertyRegex = /^\[(.+)\]$/;
-function getGroupIdForArbitraryProperty(className) {
-  if (arbitraryPropertyRegex.test(className)) {
-    var arbitraryPropertyClassName = arbitraryPropertyRegex.exec(className)[1];
-    var property = arbitraryPropertyClassName == null ? void 0 : arbitraryPropertyClassName.substring(0, arbitraryPropertyClassName.indexOf(":"));
-    if (property) {
-      return "arbitrary.." + property;
-    }
-  }
-}
-function createClassMap(config) {
-  var theme = config.theme, prefix = config.prefix;
-  var classMap = {
-    nextPart: /* @__PURE__ */ new Map(),
-    validators: []
-  };
-  var prefixedClassGroupEntries = getPrefixedClassGroupEntries(Object.entries(config.classGroups), prefix);
-  prefixedClassGroupEntries.forEach(function(_ref2) {
-    var classGroupId = _ref2[0], classGroup = _ref2[1];
-    processClassesRecursively(classGroup, classMap, classGroupId, theme);
-  });
-  return classMap;
-}
-function processClassesRecursively(classGroup, classPartObject, classGroupId, theme) {
-  classGroup.forEach(function(classDefinition) {
-    if (typeof classDefinition === "string") {
-      var classPartObjectToEdit = classDefinition === "" ? classPartObject : getPart(classPartObject, classDefinition);
-      classPartObjectToEdit.classGroupId = classGroupId;
-      return;
-    }
-    if (typeof classDefinition === "function") {
-      if (isThemeGetter(classDefinition)) {
-        processClassesRecursively(classDefinition(theme), classPartObject, classGroupId, theme);
-        return;
-      }
-      classPartObject.validators.push({
-        validator: classDefinition,
-        classGroupId
-      });
-      return;
-    }
-    Object.entries(classDefinition).forEach(function(_ref3) {
-      var key = _ref3[0], classGroup2 = _ref3[1];
-      processClassesRecursively(classGroup2, getPart(classPartObject, key), classGroupId, theme);
-    });
-  });
-}
-function getPart(classPartObject, path) {
-  var currentClassPartObject = classPartObject;
-  path.split(CLASS_PART_SEPARATOR).forEach(function(pathPart) {
-    if (!currentClassPartObject.nextPart.has(pathPart)) {
-      currentClassPartObject.nextPart.set(pathPart, {
-        nextPart: /* @__PURE__ */ new Map(),
-        validators: []
-      });
-    }
-    currentClassPartObject = currentClassPartObject.nextPart.get(pathPart);
-  });
-  return currentClassPartObject;
-}
-function isThemeGetter(func) {
-  return func.isThemeGetter;
-}
-function getPrefixedClassGroupEntries(classGroupEntries, prefix) {
-  if (!prefix) {
-    return classGroupEntries;
-  }
-  return classGroupEntries.map(function(_ref4) {
-    var classGroupId = _ref4[0], classGroup = _ref4[1];
-    var prefixedClassGroup = classGroup.map(function(classDefinition) {
-      if (typeof classDefinition === "string") {
-        return prefix + classDefinition;
-      }
-      if (typeof classDefinition === "object") {
-        return Object.fromEntries(Object.entries(classDefinition).map(function(_ref5) {
-          var key = _ref5[0], value = _ref5[1];
-          return [prefix + key, value];
-        }));
-      }
-      return classDefinition;
-    });
-    return [classGroupId, prefixedClassGroup];
-  });
-}
-
-// ../../node_modules/tailwind-merge/dist/lib/lru-cache.mjs
-function createLruCache(maxCacheSize) {
-  if (maxCacheSize < 1) {
-    return {
-      get: function get() {
-        return void 0;
-      },
-      set: function set() {
-      }
-    };
-  }
-  var cacheSize = 0;
-  var cache = /* @__PURE__ */ new Map();
-  var previousCache = /* @__PURE__ */ new Map();
-  function update(key, value) {
-    cache.set(key, value);
-    cacheSize++;
-    if (cacheSize > maxCacheSize) {
-      cacheSize = 0;
-      previousCache = cache;
-      cache = /* @__PURE__ */ new Map();
-    }
-  }
-  return {
-    get: function get(key) {
-      var value = cache.get(key);
-      if (value !== void 0) {
-        return value;
-      }
-      if ((value = previousCache.get(key)) !== void 0) {
-        update(key, value);
-        return value;
-      }
-    },
-    set: function set(key, value) {
-      if (cache.has(key)) {
-        cache.set(key, value);
-      } else {
-        update(key, value);
-      }
-    }
-  };
-}
-
-// ../../node_modules/tailwind-merge/dist/lib/modifier-utils.mjs
-var IMPORTANT_MODIFIER = "!";
-function createSplitModifiers(config) {
-  var separator = config.separator || ":";
-  var isSeparatorSingleCharacter = separator.length === 1;
-  var firstSeparatorCharacter = separator[0];
-  var separatorLength = separator.length;
-  return function splitModifiers(className) {
-    var modifiers = [];
-    var bracketDepth = 0;
-    var modifierStart = 0;
-    var postfixModifierPosition;
-    for (var index2 = 0; index2 < className.length; index2++) {
-      var currentCharacter = className[index2];
-      if (bracketDepth === 0) {
-        if (currentCharacter === firstSeparatorCharacter && (isSeparatorSingleCharacter || className.slice(index2, index2 + separatorLength) === separator)) {
-          modifiers.push(className.slice(modifierStart, index2));
-          modifierStart = index2 + separatorLength;
-          continue;
-        }
-        if (currentCharacter === "/") {
-          postfixModifierPosition = index2;
-          continue;
-        }
-      }
-      if (currentCharacter === "[") {
-        bracketDepth++;
-      } else if (currentCharacter === "]") {
-        bracketDepth--;
-      }
-    }
-    var baseClassNameWithImportantModifier = modifiers.length === 0 ? className : className.substring(modifierStart);
-    var hasImportantModifier = baseClassNameWithImportantModifier.startsWith(IMPORTANT_MODIFIER);
-    var baseClassName = hasImportantModifier ? baseClassNameWithImportantModifier.substring(1) : baseClassNameWithImportantModifier;
-    var maybePostfixModifierPosition = postfixModifierPosition && postfixModifierPosition > modifierStart ? postfixModifierPosition - modifierStart : void 0;
-    return {
-      modifiers,
-      hasImportantModifier,
-      baseClassName,
-      maybePostfixModifierPosition
-    };
-  };
-}
-function sortModifiers(modifiers) {
-  if (modifiers.length <= 1) {
-    return modifiers;
-  }
-  var sortedModifiers = [];
-  var unsortedModifiers = [];
-  modifiers.forEach(function(modifier) {
-    var isArbitraryVariant = modifier[0] === "[";
-    if (isArbitraryVariant) {
-      sortedModifiers.push.apply(sortedModifiers, unsortedModifiers.sort().concat([modifier]));
-      unsortedModifiers = [];
-    } else {
-      unsortedModifiers.push(modifier);
-    }
-  });
-  sortedModifiers.push.apply(sortedModifiers, unsortedModifiers.sort());
-  return sortedModifiers;
-}
-
-// ../../node_modules/tailwind-merge/dist/lib/config-utils.mjs
-function createConfigUtils(config) {
-  return __spreadValues({
-    cache: createLruCache(config.cacheSize),
-    splitModifiers: createSplitModifiers(config)
-  }, createClassUtils(config));
-}
-
-// ../../node_modules/tailwind-merge/dist/lib/merge-classlist.mjs
-var SPLIT_CLASSES_REGEX = /\s+/;
-function mergeClassList(classList, configUtils) {
-  var splitModifiers = configUtils.splitModifiers, getClassGroupId = configUtils.getClassGroupId, getConflictingClassGroupIds = configUtils.getConflictingClassGroupIds;
-  var classGroupsInConflict = /* @__PURE__ */ new Set();
-  return classList.trim().split(SPLIT_CLASSES_REGEX).map(function(originalClassName) {
-    var _splitModifiers = splitModifiers(originalClassName), modifiers = _splitModifiers.modifiers, hasImportantModifier = _splitModifiers.hasImportantModifier, baseClassName = _splitModifiers.baseClassName, maybePostfixModifierPosition = _splitModifiers.maybePostfixModifierPosition;
-    var classGroupId = getClassGroupId(maybePostfixModifierPosition ? baseClassName.substring(0, maybePostfixModifierPosition) : baseClassName);
-    var hasPostfixModifier = Boolean(maybePostfixModifierPosition);
-    if (!classGroupId) {
-      if (!maybePostfixModifierPosition) {
-        return {
-          isTailwindClass: false,
-          originalClassName
-        };
-      }
-      classGroupId = getClassGroupId(baseClassName);
-      if (!classGroupId) {
-        return {
-          isTailwindClass: false,
-          originalClassName
-        };
-      }
-      hasPostfixModifier = false;
-    }
-    var variantModifier = sortModifiers(modifiers).join(":");
-    var modifierId = hasImportantModifier ? variantModifier + IMPORTANT_MODIFIER : variantModifier;
-    return {
-      isTailwindClass: true,
-      modifierId,
-      classGroupId,
-      originalClassName,
-      hasPostfixModifier
-    };
-  }).reverse().filter(function(parsed) {
-    if (!parsed.isTailwindClass) {
-      return true;
-    }
-    var modifierId = parsed.modifierId, classGroupId = parsed.classGroupId, hasPostfixModifier = parsed.hasPostfixModifier;
-    var classId = modifierId + classGroupId;
-    if (classGroupsInConflict.has(classId)) {
-      return false;
-    }
-    classGroupsInConflict.add(classId);
-    getConflictingClassGroupIds(classGroupId, hasPostfixModifier).forEach(function(group) {
-      return classGroupsInConflict.add(modifierId + group);
-    });
-    return true;
-  }).reverse().map(function(parsed) {
-    return parsed.originalClassName;
-  }).join(" ");
-}
-
-// ../../node_modules/tailwind-merge/dist/lib/create-tailwind-merge.mjs
-function createTailwindMerge() {
-  for (var _len = arguments.length, createConfig = new Array(_len), _key = 0; _key < _len; _key++) {
-    createConfig[_key] = arguments[_key];
-  }
-  var configUtils;
-  var cacheGet;
-  var cacheSet;
-  var functionToCall = initTailwindMerge;
-  function initTailwindMerge(classList) {
-    var firstCreateConfig = createConfig[0], restCreateConfig = createConfig.slice(1);
-    var config = restCreateConfig.reduce(function(previousConfig, createConfigCurrent) {
-      return createConfigCurrent(previousConfig);
-    }, firstCreateConfig());
-    configUtils = createConfigUtils(config);
-    cacheGet = configUtils.cache.get;
-    cacheSet = configUtils.cache.set;
-    functionToCall = tailwindMerge;
-    return tailwindMerge(classList);
-  }
-  function tailwindMerge(classList) {
-    var cachedResult = cacheGet(classList);
-    if (cachedResult) {
-      return cachedResult;
-    }
-    var result = mergeClassList(classList, configUtils);
-    cacheSet(classList, result);
-    return result;
-  }
-  return function callTailwindMerge() {
-    return functionToCall(twJoin.apply(null, arguments));
-  };
-}
-
-// ../../node_modules/tailwind-merge/dist/lib/from-theme.mjs
-function fromTheme(key) {
-  var themeGetter = function themeGetter2(theme) {
-    return theme[key] || [];
-  };
-  themeGetter.isThemeGetter = true;
-  return themeGetter;
-}
-
-// ../../node_modules/tailwind-merge/dist/lib/validators.mjs
-var arbitraryValueRegex = /^\[(?:([a-z-]+):)?(.+)\]$/i;
-var fractionRegex = /^\d+\/\d+$/;
-var stringLengths = /* @__PURE__ */ new Set(["px", "full", "screen"]);
-var tshirtUnitRegex = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/;
-var lengthUnitRegex = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/;
-var shadowRegex = /^-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/;
-function isLength(value) {
-  return isNumber(value) || stringLengths.has(value) || fractionRegex.test(value) || isArbitraryLength(value);
-}
-function isArbitraryLength(value) {
-  return getIsArbitraryValue(value, "length", isLengthOnly);
-}
-function isArbitrarySize(value) {
-  return getIsArbitraryValue(value, "size", isNever);
-}
-function isArbitraryPosition(value) {
-  return getIsArbitraryValue(value, "position", isNever);
-}
-function isArbitraryUrl(value) {
-  return getIsArbitraryValue(value, "url", isUrl);
-}
-function isArbitraryNumber(value) {
-  return getIsArbitraryValue(value, "number", isNumber);
-}
-function isNumber(value) {
-  return !Number.isNaN(Number(value));
-}
-function isPercent(value) {
-  return value.endsWith("%") && isNumber(value.slice(0, -1));
-}
-function isInteger(value) {
-  return isIntegerOnly(value) || getIsArbitraryValue(value, "number", isIntegerOnly);
-}
-function isArbitraryValue(value) {
-  return arbitraryValueRegex.test(value);
-}
-function isAny() {
-  return true;
-}
-function isTshirtSize(value) {
-  return tshirtUnitRegex.test(value);
-}
-function isArbitraryShadow(value) {
-  return getIsArbitraryValue(value, "", isShadow);
-}
-function getIsArbitraryValue(value, label, testValue) {
-  var result = arbitraryValueRegex.exec(value);
-  if (result) {
-    if (result[1]) {
-      return result[1] === label;
-    }
-    return testValue(result[2]);
-  }
-  return false;
-}
-function isLengthOnly(value) {
-  return lengthUnitRegex.test(value);
-}
-function isNever() {
-  return false;
-}
-function isUrl(value) {
-  return value.startsWith("url(");
-}
-function isIntegerOnly(value) {
-  return Number.isInteger(Number(value));
-}
-function isShadow(value) {
-  return shadowRegex.test(value);
-}
-
-// ../../node_modules/tailwind-merge/dist/lib/default-config.mjs
-function getDefaultConfig() {
-  var colors = fromTheme("colors");
-  var spacing = fromTheme("spacing");
-  var blur = fromTheme("blur");
-  var brightness = fromTheme("brightness");
-  var borderColor = fromTheme("borderColor");
-  var borderRadius = fromTheme("borderRadius");
-  var borderSpacing = fromTheme("borderSpacing");
-  var borderWidth = fromTheme("borderWidth");
-  var contrast = fromTheme("contrast");
-  var grayscale = fromTheme("grayscale");
-  var hueRotate = fromTheme("hueRotate");
-  var invert = fromTheme("invert");
-  var gap = fromTheme("gap");
-  var gradientColorStops = fromTheme("gradientColorStops");
-  var gradientColorStopPositions = fromTheme("gradientColorStopPositions");
-  var inset = fromTheme("inset");
-  var margin = fromTheme("margin");
-  var opacity = fromTheme("opacity");
-  var padding = fromTheme("padding");
-  var saturate = fromTheme("saturate");
-  var scale = fromTheme("scale");
-  var sepia = fromTheme("sepia");
-  var skew = fromTheme("skew");
-  var space = fromTheme("space");
-  var translate = fromTheme("translate");
-  var getOverscroll = function getOverscroll2() {
-    return ["auto", "contain", "none"];
-  };
-  var getOverflow = function getOverflow2() {
-    return ["auto", "hidden", "clip", "visible", "scroll"];
-  };
-  var getSpacingWithAutoAndArbitrary = function getSpacingWithAutoAndArbitrary2() {
-    return ["auto", isArbitraryValue, spacing];
-  };
-  var getSpacingWithArbitrary = function getSpacingWithArbitrary2() {
-    return [isArbitraryValue, spacing];
-  };
-  var getLengthWithEmpty = function getLengthWithEmpty2() {
-    return ["", isLength];
-  };
-  var getNumberWithAutoAndArbitrary = function getNumberWithAutoAndArbitrary2() {
-    return ["auto", isNumber, isArbitraryValue];
-  };
-  var getPositions = function getPositions2() {
-    return ["bottom", "center", "left", "left-bottom", "left-top", "right", "right-bottom", "right-top", "top"];
-  };
-  var getLineStyles = function getLineStyles2() {
-    return ["solid", "dashed", "dotted", "double", "none"];
-  };
-  var getBlendModes = function getBlendModes2() {
-    return ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity", "plus-lighter"];
-  };
-  var getAlign = function getAlign2() {
-    return ["start", "end", "center", "between", "around", "evenly", "stretch"];
-  };
-  var getZeroAndEmpty = function getZeroAndEmpty2() {
-    return ["", "0", isArbitraryValue];
-  };
-  var getBreaks = function getBreaks2() {
-    return ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"];
-  };
-  var getNumber = function getNumber2() {
-    return [isNumber, isArbitraryNumber];
-  };
-  var getNumberAndArbitrary = function getNumberAndArbitrary2() {
-    return [isNumber, isArbitraryValue];
-  };
-  return {
-    cacheSize: 500,
-    theme: {
-      colors: [isAny],
-      spacing: [isLength],
-      blur: ["none", "", isTshirtSize, isArbitraryValue],
-      brightness: getNumber(),
-      borderColor: [colors],
-      borderRadius: ["none", "", "full", isTshirtSize, isArbitraryValue],
-      borderSpacing: getSpacingWithArbitrary(),
-      borderWidth: getLengthWithEmpty(),
-      contrast: getNumber(),
-      grayscale: getZeroAndEmpty(),
-      hueRotate: getNumberAndArbitrary(),
-      invert: getZeroAndEmpty(),
-      gap: getSpacingWithArbitrary(),
-      gradientColorStops: [colors],
-      gradientColorStopPositions: [isPercent, isArbitraryLength],
-      inset: getSpacingWithAutoAndArbitrary(),
-      margin: getSpacingWithAutoAndArbitrary(),
-      opacity: getNumber(),
-      padding: getSpacingWithArbitrary(),
-      saturate: getNumber(),
-      scale: getNumber(),
-      sepia: getZeroAndEmpty(),
-      skew: getNumberAndArbitrary(),
-      space: getSpacingWithArbitrary(),
-      translate: getSpacingWithArbitrary()
-    },
-    classGroups: {
-      // Layout
-      /**
-       * Aspect Ratio
-       * @see https://tailwindcss.com/docs/aspect-ratio
-       */
-      aspect: [{
-        aspect: ["auto", "square", "video", isArbitraryValue]
-      }],
-      /**
-       * Container
-       * @see https://tailwindcss.com/docs/container
-       */
-      container: ["container"],
-      /**
-       * Columns
-       * @see https://tailwindcss.com/docs/columns
-       */
-      columns: [{
-        columns: [isTshirtSize]
-      }],
-      /**
-       * Break After
-       * @see https://tailwindcss.com/docs/break-after
-       */
-      "break-after": [{
-        "break-after": getBreaks()
-      }],
-      /**
-       * Break Before
-       * @see https://tailwindcss.com/docs/break-before
-       */
-      "break-before": [{
-        "break-before": getBreaks()
-      }],
-      /**
-       * Break Inside
-       * @see https://tailwindcss.com/docs/break-inside
-       */
-      "break-inside": [{
-        "break-inside": ["auto", "avoid", "avoid-page", "avoid-column"]
-      }],
-      /**
-       * Box Decoration Break
-       * @see https://tailwindcss.com/docs/box-decoration-break
-       */
-      "box-decoration": [{
-        "box-decoration": ["slice", "clone"]
-      }],
-      /**
-       * Box Sizing
-       * @see https://tailwindcss.com/docs/box-sizing
-       */
-      box: [{
-        box: ["border", "content"]
-      }],
-      /**
-       * Display
-       * @see https://tailwindcss.com/docs/display
-       */
-      display: ["block", "inline-block", "inline", "flex", "inline-flex", "table", "inline-table", "table-caption", "table-cell", "table-column", "table-column-group", "table-footer-group", "table-header-group", "table-row-group", "table-row", "flow-root", "grid", "inline-grid", "contents", "list-item", "hidden"],
-      /**
-       * Floats
-       * @see https://tailwindcss.com/docs/float
-       */
-      "float": [{
-        "float": ["right", "left", "none"]
-      }],
-      /**
-       * Clear
-       * @see https://tailwindcss.com/docs/clear
-       */
-      clear: [{
-        clear: ["left", "right", "both", "none"]
-      }],
-      /**
-       * Isolation
-       * @see https://tailwindcss.com/docs/isolation
-       */
-      isolation: ["isolate", "isolation-auto"],
-      /**
-       * Object Fit
-       * @see https://tailwindcss.com/docs/object-fit
-       */
-      "object-fit": [{
-        object: ["contain", "cover", "fill", "none", "scale-down"]
-      }],
-      /**
-       * Object Position
-       * @see https://tailwindcss.com/docs/object-position
-       */
-      "object-position": [{
-        object: [].concat(getPositions(), [isArbitraryValue])
-      }],
-      /**
-       * Overflow
-       * @see https://tailwindcss.com/docs/overflow
-       */
-      overflow: [{
-        overflow: getOverflow()
-      }],
-      /**
-       * Overflow X
-       * @see https://tailwindcss.com/docs/overflow
-       */
-      "overflow-x": [{
-        "overflow-x": getOverflow()
-      }],
-      /**
-       * Overflow Y
-       * @see https://tailwindcss.com/docs/overflow
-       */
-      "overflow-y": [{
-        "overflow-y": getOverflow()
-      }],
-      /**
-       * Overscroll Behavior
-       * @see https://tailwindcss.com/docs/overscroll-behavior
-       */
-      overscroll: [{
-        overscroll: getOverscroll()
-      }],
-      /**
-       * Overscroll Behavior X
-       * @see https://tailwindcss.com/docs/overscroll-behavior
-       */
-      "overscroll-x": [{
-        "overscroll-x": getOverscroll()
-      }],
-      /**
-       * Overscroll Behavior Y
-       * @see https://tailwindcss.com/docs/overscroll-behavior
-       */
-      "overscroll-y": [{
-        "overscroll-y": getOverscroll()
-      }],
-      /**
-       * Position
-       * @see https://tailwindcss.com/docs/position
-       */
-      position: ["static", "fixed", "absolute", "relative", "sticky"],
-      /**
-       * Top / Right / Bottom / Left
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      inset: [{
-        inset: [inset]
-      }],
-      /**
-       * Right / Left
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      "inset-x": [{
-        "inset-x": [inset]
-      }],
-      /**
-       * Top / Bottom
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      "inset-y": [{
-        "inset-y": [inset]
-      }],
-      /**
-       * Start
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      start: [{
-        start: [inset]
-      }],
-      /**
-       * End
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      end: [{
-        end: [inset]
-      }],
-      /**
-       * Top
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      top: [{
-        top: [inset]
-      }],
-      /**
-       * Right
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      right: [{
-        right: [inset]
-      }],
-      /**
-       * Bottom
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      bottom: [{
-        bottom: [inset]
-      }],
-      /**
-       * Left
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      left: [{
-        left: [inset]
-      }],
-      /**
-       * Visibility
-       * @see https://tailwindcss.com/docs/visibility
-       */
-      visibility: ["visible", "invisible", "collapse"],
-      /**
-       * Z-Index
-       * @see https://tailwindcss.com/docs/z-index
-       */
-      z: [{
-        z: ["auto", isInteger]
-      }],
-      // Flexbox and Grid
-      /**
-       * Flex Basis
-       * @see https://tailwindcss.com/docs/flex-basis
-       */
-      basis: [{
-        basis: getSpacingWithAutoAndArbitrary()
-      }],
-      /**
-       * Flex Direction
-       * @see https://tailwindcss.com/docs/flex-direction
-       */
-      "flex-direction": [{
-        flex: ["row", "row-reverse", "col", "col-reverse"]
-      }],
-      /**
-       * Flex Wrap
-       * @see https://tailwindcss.com/docs/flex-wrap
-       */
-      "flex-wrap": [{
-        flex: ["wrap", "wrap-reverse", "nowrap"]
-      }],
-      /**
-       * Flex
-       * @see https://tailwindcss.com/docs/flex
-       */
-      flex: [{
-        flex: ["1", "auto", "initial", "none", isArbitraryValue]
-      }],
-      /**
-       * Flex Grow
-       * @see https://tailwindcss.com/docs/flex-grow
-       */
-      grow: [{
-        grow: getZeroAndEmpty()
-      }],
-      /**
-       * Flex Shrink
-       * @see https://tailwindcss.com/docs/flex-shrink
-       */
-      shrink: [{
-        shrink: getZeroAndEmpty()
-      }],
-      /**
-       * Order
-       * @see https://tailwindcss.com/docs/order
-       */
-      order: [{
-        order: ["first", "last", "none", isInteger]
-      }],
-      /**
-       * Grid Template Columns
-       * @see https://tailwindcss.com/docs/grid-template-columns
-       */
-      "grid-cols": [{
-        "grid-cols": [isAny]
-      }],
-      /**
-       * Grid Column Start / End
-       * @see https://tailwindcss.com/docs/grid-column
-       */
-      "col-start-end": [{
-        col: ["auto", {
-          span: ["full", isInteger]
-        }, isArbitraryValue]
-      }],
-      /**
-       * Grid Column Start
-       * @see https://tailwindcss.com/docs/grid-column
-       */
-      "col-start": [{
-        "col-start": getNumberWithAutoAndArbitrary()
-      }],
-      /**
-       * Grid Column End
-       * @see https://tailwindcss.com/docs/grid-column
-       */
-      "col-end": [{
-        "col-end": getNumberWithAutoAndArbitrary()
-      }],
-      /**
-       * Grid Template Rows
-       * @see https://tailwindcss.com/docs/grid-template-rows
-       */
-      "grid-rows": [{
-        "grid-rows": [isAny]
-      }],
-      /**
-       * Grid Row Start / End
-       * @see https://tailwindcss.com/docs/grid-row
-       */
-      "row-start-end": [{
-        row: ["auto", {
-          span: [isInteger]
-        }, isArbitraryValue]
-      }],
-      /**
-       * Grid Row Start
-       * @see https://tailwindcss.com/docs/grid-row
-       */
-      "row-start": [{
-        "row-start": getNumberWithAutoAndArbitrary()
-      }],
-      /**
-       * Grid Row End
-       * @see https://tailwindcss.com/docs/grid-row
-       */
-      "row-end": [{
-        "row-end": getNumberWithAutoAndArbitrary()
-      }],
-      /**
-       * Grid Auto Flow
-       * @see https://tailwindcss.com/docs/grid-auto-flow
-       */
-      "grid-flow": [{
-        "grid-flow": ["row", "col", "dense", "row-dense", "col-dense"]
-      }],
-      /**
-       * Grid Auto Columns
-       * @see https://tailwindcss.com/docs/grid-auto-columns
-       */
-      "auto-cols": [{
-        "auto-cols": ["auto", "min", "max", "fr", isArbitraryValue]
-      }],
-      /**
-       * Grid Auto Rows
-       * @see https://tailwindcss.com/docs/grid-auto-rows
-       */
-      "auto-rows": [{
-        "auto-rows": ["auto", "min", "max", "fr", isArbitraryValue]
-      }],
-      /**
-       * Gap
-       * @see https://tailwindcss.com/docs/gap
-       */
-      gap: [{
-        gap: [gap]
-      }],
-      /**
-       * Gap X
-       * @see https://tailwindcss.com/docs/gap
-       */
-      "gap-x": [{
-        "gap-x": [gap]
-      }],
-      /**
-       * Gap Y
-       * @see https://tailwindcss.com/docs/gap
-       */
-      "gap-y": [{
-        "gap-y": [gap]
-      }],
-      /**
-       * Justify Content
-       * @see https://tailwindcss.com/docs/justify-content
-       */
-      "justify-content": [{
-        justify: ["normal"].concat(getAlign())
-      }],
-      /**
-       * Justify Items
-       * @see https://tailwindcss.com/docs/justify-items
-       */
-      "justify-items": [{
-        "justify-items": ["start", "end", "center", "stretch"]
-      }],
-      /**
-       * Justify Self
-       * @see https://tailwindcss.com/docs/justify-self
-       */
-      "justify-self": [{
-        "justify-self": ["auto", "start", "end", "center", "stretch"]
-      }],
-      /**
-       * Align Content
-       * @see https://tailwindcss.com/docs/align-content
-       */
-      "align-content": [{
-        content: ["normal"].concat(getAlign(), ["baseline"])
-      }],
-      /**
-       * Align Items
-       * @see https://tailwindcss.com/docs/align-items
-       */
-      "align-items": [{
-        items: ["start", "end", "center", "baseline", "stretch"]
-      }],
-      /**
-       * Align Self
-       * @see https://tailwindcss.com/docs/align-self
-       */
-      "align-self": [{
-        self: ["auto", "start", "end", "center", "stretch", "baseline"]
-      }],
-      /**
-       * Place Content
-       * @see https://tailwindcss.com/docs/place-content
-       */
-      "place-content": [{
-        "place-content": [].concat(getAlign(), ["baseline"])
-      }],
-      /**
-       * Place Items
-       * @see https://tailwindcss.com/docs/place-items
-       */
-      "place-items": [{
-        "place-items": ["start", "end", "center", "baseline", "stretch"]
-      }],
-      /**
-       * Place Self
-       * @see https://tailwindcss.com/docs/place-self
-       */
-      "place-self": [{
-        "place-self": ["auto", "start", "end", "center", "stretch"]
-      }],
-      // Spacing
-      /**
-       * Padding
-       * @see https://tailwindcss.com/docs/padding
-       */
-      p: [{
-        p: [padding]
-      }],
-      /**
-       * Padding X
-       * @see https://tailwindcss.com/docs/padding
-       */
-      px: [{
-        px: [padding]
-      }],
-      /**
-       * Padding Y
-       * @see https://tailwindcss.com/docs/padding
-       */
-      py: [{
-        py: [padding]
-      }],
-      /**
-       * Padding Start
-       * @see https://tailwindcss.com/docs/padding
-       */
-      ps: [{
-        ps: [padding]
-      }],
-      /**
-       * Padding End
-       * @see https://tailwindcss.com/docs/padding
-       */
-      pe: [{
-        pe: [padding]
-      }],
-      /**
-       * Padding Top
-       * @see https://tailwindcss.com/docs/padding
-       */
-      pt: [{
-        pt: [padding]
-      }],
-      /**
-       * Padding Right
-       * @see https://tailwindcss.com/docs/padding
-       */
-      pr: [{
-        pr: [padding]
-      }],
-      /**
-       * Padding Bottom
-       * @see https://tailwindcss.com/docs/padding
-       */
-      pb: [{
-        pb: [padding]
-      }],
-      /**
-       * Padding Left
-       * @see https://tailwindcss.com/docs/padding
-       */
-      pl: [{
-        pl: [padding]
-      }],
-      /**
-       * Margin
-       * @see https://tailwindcss.com/docs/margin
-       */
-      m: [{
-        m: [margin]
-      }],
-      /**
-       * Margin X
-       * @see https://tailwindcss.com/docs/margin
-       */
-      mx: [{
-        mx: [margin]
-      }],
-      /**
-       * Margin Y
-       * @see https://tailwindcss.com/docs/margin
-       */
-      my: [{
-        my: [margin]
-      }],
-      /**
-       * Margin Start
-       * @see https://tailwindcss.com/docs/margin
-       */
-      ms: [{
-        ms: [margin]
-      }],
-      /**
-       * Margin End
-       * @see https://tailwindcss.com/docs/margin
-       */
-      me: [{
-        me: [margin]
-      }],
-      /**
-       * Margin Top
-       * @see https://tailwindcss.com/docs/margin
-       */
-      mt: [{
-        mt: [margin]
-      }],
-      /**
-       * Margin Right
-       * @see https://tailwindcss.com/docs/margin
-       */
-      mr: [{
-        mr: [margin]
-      }],
-      /**
-       * Margin Bottom
-       * @see https://tailwindcss.com/docs/margin
-       */
-      mb: [{
-        mb: [margin]
-      }],
-      /**
-       * Margin Left
-       * @see https://tailwindcss.com/docs/margin
-       */
-      ml: [{
-        ml: [margin]
-      }],
-      /**
-       * Space Between X
-       * @see https://tailwindcss.com/docs/space
-       */
-      "space-x": [{
-        "space-x": [space]
-      }],
-      /**
-       * Space Between X Reverse
-       * @see https://tailwindcss.com/docs/space
-       */
-      "space-x-reverse": ["space-x-reverse"],
-      /**
-       * Space Between Y
-       * @see https://tailwindcss.com/docs/space
-       */
-      "space-y": [{
-        "space-y": [space]
-      }],
-      /**
-       * Space Between Y Reverse
-       * @see https://tailwindcss.com/docs/space
-       */
-      "space-y-reverse": ["space-y-reverse"],
-      // Sizing
-      /**
-       * Width
-       * @see https://tailwindcss.com/docs/width
-       */
-      w: [{
-        w: ["auto", "min", "max", "fit", isArbitraryValue, spacing]
-      }],
-      /**
-       * Min-Width
-       * @see https://tailwindcss.com/docs/min-width
-       */
-      "min-w": [{
-        "min-w": ["min", "max", "fit", isArbitraryValue, isLength]
-      }],
-      /**
-       * Max-Width
-       * @see https://tailwindcss.com/docs/max-width
-       */
-      "max-w": [{
-        "max-w": ["0", "none", "full", "min", "max", "fit", "prose", {
-          screen: [isTshirtSize]
-        }, isTshirtSize, isArbitraryValue]
-      }],
-      /**
-       * Height
-       * @see https://tailwindcss.com/docs/height
-       */
-      h: [{
-        h: [isArbitraryValue, spacing, "auto", "min", "max", "fit"]
-      }],
-      /**
-       * Min-Height
-       * @see https://tailwindcss.com/docs/min-height
-       */
-      "min-h": [{
-        "min-h": ["min", "max", "fit", isArbitraryValue, isLength]
-      }],
-      /**
-       * Max-Height
-       * @see https://tailwindcss.com/docs/max-height
-       */
-      "max-h": [{
-        "max-h": [isArbitraryValue, spacing, "min", "max", "fit"]
-      }],
-      // Typography
-      /**
-       * Font Size
-       * @see https://tailwindcss.com/docs/font-size
-       */
-      "font-size": [{
-        text: ["base", isTshirtSize, isArbitraryLength]
-      }],
-      /**
-       * Font Smoothing
-       * @see https://tailwindcss.com/docs/font-smoothing
-       */
-      "font-smoothing": ["antialiased", "subpixel-antialiased"],
-      /**
-       * Font Style
-       * @see https://tailwindcss.com/docs/font-style
-       */
-      "font-style": ["italic", "not-italic"],
-      /**
-       * Font Weight
-       * @see https://tailwindcss.com/docs/font-weight
-       */
-      "font-weight": [{
-        font: ["thin", "extralight", "light", "normal", "medium", "semibold", "bold", "extrabold", "black", isArbitraryNumber]
-      }],
-      /**
-       * Font Family
-       * @see https://tailwindcss.com/docs/font-family
-       */
-      "font-family": [{
-        font: [isAny]
-      }],
-      /**
-       * Font Variant Numeric
-       * @see https://tailwindcss.com/docs/font-variant-numeric
-       */
-      "fvn-normal": ["normal-nums"],
-      /**
-       * Font Variant Numeric
-       * @see https://tailwindcss.com/docs/font-variant-numeric
-       */
-      "fvn-ordinal": ["ordinal"],
-      /**
-       * Font Variant Numeric
-       * @see https://tailwindcss.com/docs/font-variant-numeric
-       */
-      "fvn-slashed-zero": ["slashed-zero"],
-      /**
-       * Font Variant Numeric
-       * @see https://tailwindcss.com/docs/font-variant-numeric
-       */
-      "fvn-figure": ["lining-nums", "oldstyle-nums"],
-      /**
-       * Font Variant Numeric
-       * @see https://tailwindcss.com/docs/font-variant-numeric
-       */
-      "fvn-spacing": ["proportional-nums", "tabular-nums"],
-      /**
-       * Font Variant Numeric
-       * @see https://tailwindcss.com/docs/font-variant-numeric
-       */
-      "fvn-fraction": ["diagonal-fractions", "stacked-fractons"],
-      /**
-       * Letter Spacing
-       * @see https://tailwindcss.com/docs/letter-spacing
-       */
-      tracking: [{
-        tracking: ["tighter", "tight", "normal", "wide", "wider", "widest", isArbitraryValue]
-      }],
-      /**
-       * Line Clamp
-       * @see https://tailwindcss.com/docs/line-clamp
-       */
-      "line-clamp": [{
-        "line-clamp": ["none", isNumber, isArbitraryNumber]
-      }],
-      /**
-       * Line Height
-       * @see https://tailwindcss.com/docs/line-height
-       */
-      leading: [{
-        leading: ["none", "tight", "snug", "normal", "relaxed", "loose", isArbitraryValue, isLength]
-      }],
-      /**
-       * List Style Image
-       * @see https://tailwindcss.com/docs/list-style-image
-       */
-      "list-image": [{
-        "list-image": ["none", isArbitraryValue]
-      }],
-      /**
-       * List Style Type
-       * @see https://tailwindcss.com/docs/list-style-type
-       */
-      "list-style-type": [{
-        list: ["none", "disc", "decimal", isArbitraryValue]
-      }],
-      /**
-       * List Style Position
-       * @see https://tailwindcss.com/docs/list-style-position
-       */
-      "list-style-position": [{
-        list: ["inside", "outside"]
-      }],
-      /**
-       * Placeholder Color
-       * @deprecated since Tailwind CSS v3.0.0
-       * @see https://tailwindcss.com/docs/placeholder-color
-       */
-      "placeholder-color": [{
-        placeholder: [colors]
-      }],
-      /**
-       * Placeholder Opacity
-       * @see https://tailwindcss.com/docs/placeholder-opacity
-       */
-      "placeholder-opacity": [{
-        "placeholder-opacity": [opacity]
-      }],
-      /**
-       * Text Alignment
-       * @see https://tailwindcss.com/docs/text-align
-       */
-      "text-alignment": [{
-        text: ["left", "center", "right", "justify", "start", "end"]
-      }],
-      /**
-       * Text Color
-       * @see https://tailwindcss.com/docs/text-color
-       */
-      "text-color": [{
-        text: [colors]
-      }],
-      /**
-       * Text Opacity
-       * @see https://tailwindcss.com/docs/text-opacity
-       */
-      "text-opacity": [{
-        "text-opacity": [opacity]
-      }],
-      /**
-       * Text Decoration
-       * @see https://tailwindcss.com/docs/text-decoration
-       */
-      "text-decoration": ["underline", "overline", "line-through", "no-underline"],
-      /**
-       * Text Decoration Style
-       * @see https://tailwindcss.com/docs/text-decoration-style
-       */
-      "text-decoration-style": [{
-        decoration: [].concat(getLineStyles(), ["wavy"])
-      }],
-      /**
-       * Text Decoration Thickness
-       * @see https://tailwindcss.com/docs/text-decoration-thickness
-       */
-      "text-decoration-thickness": [{
-        decoration: ["auto", "from-font", isLength]
-      }],
-      /**
-       * Text Underline Offset
-       * @see https://tailwindcss.com/docs/text-underline-offset
-       */
-      "underline-offset": [{
-        "underline-offset": ["auto", isArbitraryValue, isLength]
-      }],
-      /**
-       * Text Decoration Color
-       * @see https://tailwindcss.com/docs/text-decoration-color
-       */
-      "text-decoration-color": [{
-        decoration: [colors]
-      }],
-      /**
-       * Text Transform
-       * @see https://tailwindcss.com/docs/text-transform
-       */
-      "text-transform": ["uppercase", "lowercase", "capitalize", "normal-case"],
-      /**
-       * Text Overflow
-       * @see https://tailwindcss.com/docs/text-overflow
-       */
-      "text-overflow": ["truncate", "text-ellipsis", "text-clip"],
-      /**
-       * Text Indent
-       * @see https://tailwindcss.com/docs/text-indent
-       */
-      indent: [{
-        indent: getSpacingWithArbitrary()
-      }],
-      /**
-       * Vertical Alignment
-       * @see https://tailwindcss.com/docs/vertical-align
-       */
-      "vertical-align": [{
-        align: ["baseline", "top", "middle", "bottom", "text-top", "text-bottom", "sub", "super", isArbitraryValue]
-      }],
-      /**
-       * Whitespace
-       * @see https://tailwindcss.com/docs/whitespace
-       */
-      whitespace: [{
-        whitespace: ["normal", "nowrap", "pre", "pre-line", "pre-wrap", "break-spaces"]
-      }],
-      /**
-       * Word Break
-       * @see https://tailwindcss.com/docs/word-break
-       */
-      "break": [{
-        "break": ["normal", "words", "all", "keep"]
-      }],
-      /**
-       * Hyphens
-       * @see https://tailwindcss.com/docs/hyphens
-       */
-      hyphens: [{
-        hyphens: ["none", "manual", "auto"]
-      }],
-      /**
-       * Content
-       * @see https://tailwindcss.com/docs/content
-       */
-      content: [{
-        content: ["none", isArbitraryValue]
-      }],
-      // Backgrounds
-      /**
-       * Background Attachment
-       * @see https://tailwindcss.com/docs/background-attachment
-       */
-      "bg-attachment": [{
-        bg: ["fixed", "local", "scroll"]
-      }],
-      /**
-       * Background Clip
-       * @see https://tailwindcss.com/docs/background-clip
-       */
-      "bg-clip": [{
-        "bg-clip": ["border", "padding", "content", "text"]
-      }],
-      /**
-       * Background Opacity
-       * @deprecated since Tailwind CSS v3.0.0
-       * @see https://tailwindcss.com/docs/background-opacity
-       */
-      "bg-opacity": [{
-        "bg-opacity": [opacity]
-      }],
-      /**
-       * Background Origin
-       * @see https://tailwindcss.com/docs/background-origin
-       */
-      "bg-origin": [{
-        "bg-origin": ["border", "padding", "content"]
-      }],
-      /**
-       * Background Position
-       * @see https://tailwindcss.com/docs/background-position
-       */
-      "bg-position": [{
-        bg: [].concat(getPositions(), [isArbitraryPosition])
-      }],
-      /**
-       * Background Repeat
-       * @see https://tailwindcss.com/docs/background-repeat
-       */
-      "bg-repeat": [{
-        bg: ["no-repeat", {
-          repeat: ["", "x", "y", "round", "space"]
-        }]
-      }],
-      /**
-       * Background Size
-       * @see https://tailwindcss.com/docs/background-size
-       */
-      "bg-size": [{
-        bg: ["auto", "cover", "contain", isArbitrarySize]
-      }],
-      /**
-       * Background Image
-       * @see https://tailwindcss.com/docs/background-image
-       */
-      "bg-image": [{
-        bg: ["none", {
-          "gradient-to": ["t", "tr", "r", "br", "b", "bl", "l", "tl"]
-        }, isArbitraryUrl]
-      }],
-      /**
-       * Background Color
-       * @see https://tailwindcss.com/docs/background-color
-       */
-      "bg-color": [{
-        bg: [colors]
-      }],
-      /**
-       * Gradient Color Stops From Position
-       * @see https://tailwindcss.com/docs/gradient-color-stops
-       */
-      "gradient-from-pos": [{
-        from: [gradientColorStopPositions]
-      }],
-      /**
-       * Gradient Color Stops Via Position
-       * @see https://tailwindcss.com/docs/gradient-color-stops
-       */
-      "gradient-via-pos": [{
-        via: [gradientColorStopPositions]
-      }],
-      /**
-       * Gradient Color Stops To Position
-       * @see https://tailwindcss.com/docs/gradient-color-stops
-       */
-      "gradient-to-pos": [{
-        to: [gradientColorStopPositions]
-      }],
-      /**
-       * Gradient Color Stops From
-       * @see https://tailwindcss.com/docs/gradient-color-stops
-       */
-      "gradient-from": [{
-        from: [gradientColorStops]
-      }],
-      /**
-       * Gradient Color Stops Via
-       * @see https://tailwindcss.com/docs/gradient-color-stops
-       */
-      "gradient-via": [{
-        via: [gradientColorStops]
-      }],
-      /**
-       * Gradient Color Stops To
-       * @see https://tailwindcss.com/docs/gradient-color-stops
-       */
-      "gradient-to": [{
-        to: [gradientColorStops]
-      }],
-      // Borders
-      /**
-       * Border Radius
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      rounded: [{
-        rounded: [borderRadius]
-      }],
-      /**
-       * Border Radius Start
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-s": [{
-        "rounded-s": [borderRadius]
-      }],
-      /**
-       * Border Radius End
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-e": [{
-        "rounded-e": [borderRadius]
-      }],
-      /**
-       * Border Radius Top
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-t": [{
-        "rounded-t": [borderRadius]
-      }],
-      /**
-       * Border Radius Right
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-r": [{
-        "rounded-r": [borderRadius]
-      }],
-      /**
-       * Border Radius Bottom
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-b": [{
-        "rounded-b": [borderRadius]
-      }],
-      /**
-       * Border Radius Left
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-l": [{
-        "rounded-l": [borderRadius]
-      }],
-      /**
-       * Border Radius Start Start
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-ss": [{
-        "rounded-ss": [borderRadius]
-      }],
-      /**
-       * Border Radius Start End
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-se": [{
-        "rounded-se": [borderRadius]
-      }],
-      /**
-       * Border Radius End End
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-ee": [{
-        "rounded-ee": [borderRadius]
-      }],
-      /**
-       * Border Radius End Start
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-es": [{
-        "rounded-es": [borderRadius]
-      }],
-      /**
-       * Border Radius Top Left
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-tl": [{
-        "rounded-tl": [borderRadius]
-      }],
-      /**
-       * Border Radius Top Right
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-tr": [{
-        "rounded-tr": [borderRadius]
-      }],
-      /**
-       * Border Radius Bottom Right
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-br": [{
-        "rounded-br": [borderRadius]
-      }],
-      /**
-       * Border Radius Bottom Left
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-bl": [{
-        "rounded-bl": [borderRadius]
-      }],
-      /**
-       * Border Width
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w": [{
-        border: [borderWidth]
-      }],
-      /**
-       * Border Width X
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-x": [{
-        "border-x": [borderWidth]
-      }],
-      /**
-       * Border Width Y
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-y": [{
-        "border-y": [borderWidth]
-      }],
-      /**
-       * Border Width Start
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-s": [{
-        "border-s": [borderWidth]
-      }],
-      /**
-       * Border Width End
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-e": [{
-        "border-e": [borderWidth]
-      }],
-      /**
-       * Border Width Top
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-t": [{
-        "border-t": [borderWidth]
-      }],
-      /**
-       * Border Width Right
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-r": [{
-        "border-r": [borderWidth]
-      }],
-      /**
-       * Border Width Bottom
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-b": [{
-        "border-b": [borderWidth]
-      }],
-      /**
-       * Border Width Left
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-l": [{
-        "border-l": [borderWidth]
-      }],
-      /**
-       * Border Opacity
-       * @see https://tailwindcss.com/docs/border-opacity
-       */
-      "border-opacity": [{
-        "border-opacity": [opacity]
-      }],
-      /**
-       * Border Style
-       * @see https://tailwindcss.com/docs/border-style
-       */
-      "border-style": [{
-        border: [].concat(getLineStyles(), ["hidden"])
-      }],
-      /**
-       * Divide Width X
-       * @see https://tailwindcss.com/docs/divide-width
-       */
-      "divide-x": [{
-        "divide-x": [borderWidth]
-      }],
-      /**
-       * Divide Width X Reverse
-       * @see https://tailwindcss.com/docs/divide-width
-       */
-      "divide-x-reverse": ["divide-x-reverse"],
-      /**
-       * Divide Width Y
-       * @see https://tailwindcss.com/docs/divide-width
-       */
-      "divide-y": [{
-        "divide-y": [borderWidth]
-      }],
-      /**
-       * Divide Width Y Reverse
-       * @see https://tailwindcss.com/docs/divide-width
-       */
-      "divide-y-reverse": ["divide-y-reverse"],
-      /**
-       * Divide Opacity
-       * @see https://tailwindcss.com/docs/divide-opacity
-       */
-      "divide-opacity": [{
-        "divide-opacity": [opacity]
-      }],
-      /**
-       * Divide Style
-       * @see https://tailwindcss.com/docs/divide-style
-       */
-      "divide-style": [{
-        divide: getLineStyles()
-      }],
-      /**
-       * Border Color
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color": [{
-        border: [borderColor]
-      }],
-      /**
-       * Border Color X
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color-x": [{
-        "border-x": [borderColor]
-      }],
-      /**
-       * Border Color Y
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color-y": [{
-        "border-y": [borderColor]
-      }],
-      /**
-       * Border Color Top
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color-t": [{
-        "border-t": [borderColor]
-      }],
-      /**
-       * Border Color Right
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color-r": [{
-        "border-r": [borderColor]
-      }],
-      /**
-       * Border Color Bottom
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color-b": [{
-        "border-b": [borderColor]
-      }],
-      /**
-       * Border Color Left
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color-l": [{
-        "border-l": [borderColor]
-      }],
-      /**
-       * Divide Color
-       * @see https://tailwindcss.com/docs/divide-color
-       */
-      "divide-color": [{
-        divide: [borderColor]
-      }],
-      /**
-       * Outline Style
-       * @see https://tailwindcss.com/docs/outline-style
-       */
-      "outline-style": [{
-        outline: [""].concat(getLineStyles())
-      }],
-      /**
-       * Outline Offset
-       * @see https://tailwindcss.com/docs/outline-offset
-       */
-      "outline-offset": [{
-        "outline-offset": [isArbitraryValue, isLength]
-      }],
-      /**
-       * Outline Width
-       * @see https://tailwindcss.com/docs/outline-width
-       */
-      "outline-w": [{
-        outline: [isLength]
-      }],
-      /**
-       * Outline Color
-       * @see https://tailwindcss.com/docs/outline-color
-       */
-      "outline-color": [{
-        outline: [colors]
-      }],
-      /**
-       * Ring Width
-       * @see https://tailwindcss.com/docs/ring-width
-       */
-      "ring-w": [{
-        ring: getLengthWithEmpty()
-      }],
-      /**
-       * Ring Width Inset
-       * @see https://tailwindcss.com/docs/ring-width
-       */
-      "ring-w-inset": ["ring-inset"],
-      /**
-       * Ring Color
-       * @see https://tailwindcss.com/docs/ring-color
-       */
-      "ring-color": [{
-        ring: [colors]
-      }],
-      /**
-       * Ring Opacity
-       * @see https://tailwindcss.com/docs/ring-opacity
-       */
-      "ring-opacity": [{
-        "ring-opacity": [opacity]
-      }],
-      /**
-       * Ring Offset Width
-       * @see https://tailwindcss.com/docs/ring-offset-width
-       */
-      "ring-offset-w": [{
-        "ring-offset": [isLength]
-      }],
-      /**
-       * Ring Offset Color
-       * @see https://tailwindcss.com/docs/ring-offset-color
-       */
-      "ring-offset-color": [{
-        "ring-offset": [colors]
-      }],
-      // Effects
-      /**
-       * Box Shadow
-       * @see https://tailwindcss.com/docs/box-shadow
-       */
-      shadow: [{
-        shadow: ["", "inner", "none", isTshirtSize, isArbitraryShadow]
-      }],
-      /**
-       * Box Shadow Color
-       * @see https://tailwindcss.com/docs/box-shadow-color
-       */
-      "shadow-color": [{
-        shadow: [isAny]
-      }],
-      /**
-       * Opacity
-       * @see https://tailwindcss.com/docs/opacity
-       */
-      opacity: [{
-        opacity: [opacity]
-      }],
-      /**
-       * Mix Blend Mode
-       * @see https://tailwindcss.com/docs/mix-blend-mode
-       */
-      "mix-blend": [{
-        "mix-blend": getBlendModes()
-      }],
-      /**
-       * Background Blend Mode
-       * @see https://tailwindcss.com/docs/background-blend-mode
-       */
-      "bg-blend": [{
-        "bg-blend": getBlendModes()
-      }],
-      // Filters
-      /**
-       * Filter
-       * @deprecated since Tailwind CSS v3.0.0
-       * @see https://tailwindcss.com/docs/filter
-       */
-      filter: [{
-        filter: ["", "none"]
-      }],
-      /**
-       * Blur
-       * @see https://tailwindcss.com/docs/blur
-       */
-      blur: [{
-        blur: [blur]
-      }],
-      /**
-       * Brightness
-       * @see https://tailwindcss.com/docs/brightness
-       */
-      brightness: [{
-        brightness: [brightness]
-      }],
-      /**
-       * Contrast
-       * @see https://tailwindcss.com/docs/contrast
-       */
-      contrast: [{
-        contrast: [contrast]
-      }],
-      /**
-       * Drop Shadow
-       * @see https://tailwindcss.com/docs/drop-shadow
-       */
-      "drop-shadow": [{
-        "drop-shadow": ["", "none", isTshirtSize, isArbitraryValue]
-      }],
-      /**
-       * Grayscale
-       * @see https://tailwindcss.com/docs/grayscale
-       */
-      grayscale: [{
-        grayscale: [grayscale]
-      }],
-      /**
-       * Hue Rotate
-       * @see https://tailwindcss.com/docs/hue-rotate
-       */
-      "hue-rotate": [{
-        "hue-rotate": [hueRotate]
-      }],
-      /**
-       * Invert
-       * @see https://tailwindcss.com/docs/invert
-       */
-      invert: [{
-        invert: [invert]
-      }],
-      /**
-       * Saturate
-       * @see https://tailwindcss.com/docs/saturate
-       */
-      saturate: [{
-        saturate: [saturate]
-      }],
-      /**
-       * Sepia
-       * @see https://tailwindcss.com/docs/sepia
-       */
-      sepia: [{
-        sepia: [sepia]
-      }],
-      /**
-       * Backdrop Filter
-       * @deprecated since Tailwind CSS v3.0.0
-       * @see https://tailwindcss.com/docs/backdrop-filter
-       */
-      "backdrop-filter": [{
-        "backdrop-filter": ["", "none"]
-      }],
-      /**
-       * Backdrop Blur
-       * @see https://tailwindcss.com/docs/backdrop-blur
-       */
-      "backdrop-blur": [{
-        "backdrop-blur": [blur]
-      }],
-      /**
-       * Backdrop Brightness
-       * @see https://tailwindcss.com/docs/backdrop-brightness
-       */
-      "backdrop-brightness": [{
-        "backdrop-brightness": [brightness]
-      }],
-      /**
-       * Backdrop Contrast
-       * @see https://tailwindcss.com/docs/backdrop-contrast
-       */
-      "backdrop-contrast": [{
-        "backdrop-contrast": [contrast]
-      }],
-      /**
-       * Backdrop Grayscale
-       * @see https://tailwindcss.com/docs/backdrop-grayscale
-       */
-      "backdrop-grayscale": [{
-        "backdrop-grayscale": [grayscale]
-      }],
-      /**
-       * Backdrop Hue Rotate
-       * @see https://tailwindcss.com/docs/backdrop-hue-rotate
-       */
-      "backdrop-hue-rotate": [{
-        "backdrop-hue-rotate": [hueRotate]
-      }],
-      /**
-       * Backdrop Invert
-       * @see https://tailwindcss.com/docs/backdrop-invert
-       */
-      "backdrop-invert": [{
-        "backdrop-invert": [invert]
-      }],
-      /**
-       * Backdrop Opacity
-       * @see https://tailwindcss.com/docs/backdrop-opacity
-       */
-      "backdrop-opacity": [{
-        "backdrop-opacity": [opacity]
-      }],
-      /**
-       * Backdrop Saturate
-       * @see https://tailwindcss.com/docs/backdrop-saturate
-       */
-      "backdrop-saturate": [{
-        "backdrop-saturate": [saturate]
-      }],
-      /**
-       * Backdrop Sepia
-       * @see https://tailwindcss.com/docs/backdrop-sepia
-       */
-      "backdrop-sepia": [{
-        "backdrop-sepia": [sepia]
-      }],
-      // Tables
-      /**
-       * Border Collapse
-       * @see https://tailwindcss.com/docs/border-collapse
-       */
-      "border-collapse": [{
-        border: ["collapse", "separate"]
-      }],
-      /**
-       * Border Spacing
-       * @see https://tailwindcss.com/docs/border-spacing
-       */
-      "border-spacing": [{
-        "border-spacing": [borderSpacing]
-      }],
-      /**
-       * Border Spacing X
-       * @see https://tailwindcss.com/docs/border-spacing
-       */
-      "border-spacing-x": [{
-        "border-spacing-x": [borderSpacing]
-      }],
-      /**
-       * Border Spacing Y
-       * @see https://tailwindcss.com/docs/border-spacing
-       */
-      "border-spacing-y": [{
-        "border-spacing-y": [borderSpacing]
-      }],
-      /**
-       * Table Layout
-       * @see https://tailwindcss.com/docs/table-layout
-       */
-      "table-layout": [{
-        table: ["auto", "fixed"]
-      }],
-      /**
-       * Caption Side
-       * @see https://tailwindcss.com/docs/caption-side
-       */
-      caption: [{
-        caption: ["top", "bottom"]
-      }],
-      // Transitions and Animation
-      /**
-       * Tranisition Property
-       * @see https://tailwindcss.com/docs/transition-property
-       */
-      transition: [{
-        transition: ["none", "all", "", "colors", "opacity", "shadow", "transform", isArbitraryValue]
-      }],
-      /**
-       * Transition Duration
-       * @see https://tailwindcss.com/docs/transition-duration
-       */
-      duration: [{
-        duration: getNumberAndArbitrary()
-      }],
-      /**
-       * Transition Timing Function
-       * @see https://tailwindcss.com/docs/transition-timing-function
-       */
-      ease: [{
-        ease: ["linear", "in", "out", "in-out", isArbitraryValue]
-      }],
-      /**
-       * Transition Delay
-       * @see https://tailwindcss.com/docs/transition-delay
-       */
-      delay: [{
-        delay: getNumberAndArbitrary()
-      }],
-      /**
-       * Animation
-       * @see https://tailwindcss.com/docs/animation
-       */
-      animate: [{
-        animate: ["none", "spin", "ping", "pulse", "bounce", isArbitraryValue]
-      }],
-      // Transforms
-      /**
-       * Transform
-       * @see https://tailwindcss.com/docs/transform
-       */
-      transform: [{
-        transform: ["", "gpu", "none"]
-      }],
-      /**
-       * Scale
-       * @see https://tailwindcss.com/docs/scale
-       */
-      scale: [{
-        scale: [scale]
-      }],
-      /**
-       * Scale X
-       * @see https://tailwindcss.com/docs/scale
-       */
-      "scale-x": [{
-        "scale-x": [scale]
-      }],
-      /**
-       * Scale Y
-       * @see https://tailwindcss.com/docs/scale
-       */
-      "scale-y": [{
-        "scale-y": [scale]
-      }],
-      /**
-       * Rotate
-       * @see https://tailwindcss.com/docs/rotate
-       */
-      rotate: [{
-        rotate: [isInteger, isArbitraryValue]
-      }],
-      /**
-       * Translate X
-       * @see https://tailwindcss.com/docs/translate
-       */
-      "translate-x": [{
-        "translate-x": [translate]
-      }],
-      /**
-       * Translate Y
-       * @see https://tailwindcss.com/docs/translate
-       */
-      "translate-y": [{
-        "translate-y": [translate]
-      }],
-      /**
-       * Skew X
-       * @see https://tailwindcss.com/docs/skew
-       */
-      "skew-x": [{
-        "skew-x": [skew]
-      }],
-      /**
-       * Skew Y
-       * @see https://tailwindcss.com/docs/skew
-       */
-      "skew-y": [{
-        "skew-y": [skew]
-      }],
-      /**
-       * Transform Origin
-       * @see https://tailwindcss.com/docs/transform-origin
-       */
-      "transform-origin": [{
-        origin: ["center", "top", "top-right", "right", "bottom-right", "bottom", "bottom-left", "left", "top-left", isArbitraryValue]
-      }],
-      // Interactivity
-      /**
-       * Accent Color
-       * @see https://tailwindcss.com/docs/accent-color
-       */
-      accent: [{
-        accent: ["auto", colors]
-      }],
-      /**
-       * Appearance
-       * @see https://tailwindcss.com/docs/appearance
-       */
-      appearance: ["appearance-none"],
-      /**
-       * Cursor
-       * @see https://tailwindcss.com/docs/cursor
-       */
-      cursor: [{
-        cursor: ["auto", "default", "pointer", "wait", "text", "move", "help", "not-allowed", "none", "context-menu", "progress", "cell", "crosshair", "vertical-text", "alias", "copy", "no-drop", "grab", "grabbing", "all-scroll", "col-resize", "row-resize", "n-resize", "e-resize", "s-resize", "w-resize", "ne-resize", "nw-resize", "se-resize", "sw-resize", "ew-resize", "ns-resize", "nesw-resize", "nwse-resize", "zoom-in", "zoom-out", isArbitraryValue]
-      }],
-      /**
-       * Caret Color
-       * @see https://tailwindcss.com/docs/just-in-time-mode#caret-color-utilities
-       */
-      "caret-color": [{
-        caret: [colors]
-      }],
-      /**
-       * Pointer Events
-       * @see https://tailwindcss.com/docs/pointer-events
-       */
-      "pointer-events": [{
-        "pointer-events": ["none", "auto"]
-      }],
-      /**
-       * Resize
-       * @see https://tailwindcss.com/docs/resize
-       */
-      resize: [{
-        resize: ["none", "y", "x", ""]
-      }],
-      /**
-       * Scroll Behavior
-       * @see https://tailwindcss.com/docs/scroll-behavior
-       */
-      "scroll-behavior": [{
-        scroll: ["auto", "smooth"]
-      }],
-      /**
-       * Scroll Margin
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-m": [{
-        "scroll-m": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Margin X
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-mx": [{
-        "scroll-mx": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Margin Y
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-my": [{
-        "scroll-my": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Margin Start
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-ms": [{
-        "scroll-ms": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Margin End
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-me": [{
-        "scroll-me": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Margin Top
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-mt": [{
-        "scroll-mt": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Margin Right
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-mr": [{
-        "scroll-mr": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Margin Bottom
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-mb": [{
-        "scroll-mb": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Margin Left
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-ml": [{
-        "scroll-ml": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Padding
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-p": [{
-        "scroll-p": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Padding X
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-px": [{
-        "scroll-px": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Padding Y
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-py": [{
-        "scroll-py": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Padding Start
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-ps": [{
-        "scroll-ps": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Padding End
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-pe": [{
-        "scroll-pe": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Padding Top
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-pt": [{
-        "scroll-pt": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Padding Right
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-pr": [{
-        "scroll-pr": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Padding Bottom
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-pb": [{
-        "scroll-pb": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Padding Left
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-pl": [{
-        "scroll-pl": getSpacingWithArbitrary()
-      }],
-      /**
-       * Scroll Snap Align
-       * @see https://tailwindcss.com/docs/scroll-snap-align
-       */
-      "snap-align": [{
-        snap: ["start", "end", "center", "align-none"]
-      }],
-      /**
-       * Scroll Snap Stop
-       * @see https://tailwindcss.com/docs/scroll-snap-stop
-       */
-      "snap-stop": [{
-        snap: ["normal", "always"]
-      }],
-      /**
-       * Scroll Snap Type
-       * @see https://tailwindcss.com/docs/scroll-snap-type
-       */
-      "snap-type": [{
-        snap: ["none", "x", "y", "both"]
-      }],
-      /**
-       * Scroll Snap Type Strictness
-       * @see https://tailwindcss.com/docs/scroll-snap-type
-       */
-      "snap-strictness": [{
-        snap: ["mandatory", "proximity"]
-      }],
-      /**
-       * Touch Action
-       * @see https://tailwindcss.com/docs/touch-action
-       */
-      touch: [{
-        touch: ["auto", "none", "pinch-zoom", "manipulation", {
-          pan: ["x", "left", "right", "y", "up", "down"]
-        }]
-      }],
-      /**
-       * User Select
-       * @see https://tailwindcss.com/docs/user-select
-       */
-      select: [{
-        select: ["none", "text", "all", "auto"]
-      }],
-      /**
-       * Will Change
-       * @see https://tailwindcss.com/docs/will-change
-       */
-      "will-change": [{
-        "will-change": ["auto", "scroll", "contents", "transform", isArbitraryValue]
-      }],
-      // SVG
-      /**
-       * Fill
-       * @see https://tailwindcss.com/docs/fill
-       */
-      fill: [{
-        fill: [colors, "none"]
-      }],
-      /**
-       * Stroke Width
-       * @see https://tailwindcss.com/docs/stroke-width
-       */
-      "stroke-w": [{
-        stroke: [isLength, isArbitraryNumber]
-      }],
-      /**
-       * Stroke
-       * @see https://tailwindcss.com/docs/stroke
-       */
-      stroke: [{
-        stroke: [colors, "none"]
-      }],
-      // Accessibility
-      /**
-       * Screen Readers
-       * @see https://tailwindcss.com/docs/screen-readers
-       */
-      sr: ["sr-only", "not-sr-only"]
-    },
-    conflictingClassGroups: {
-      overflow: ["overflow-x", "overflow-y"],
-      overscroll: ["overscroll-x", "overscroll-y"],
-      inset: ["inset-x", "inset-y", "start", "end", "top", "right", "bottom", "left"],
-      "inset-x": ["right", "left"],
-      "inset-y": ["top", "bottom"],
-      flex: ["basis", "grow", "shrink"],
-      gap: ["gap-x", "gap-y"],
-      p: ["px", "py", "ps", "pe", "pt", "pr", "pb", "pl"],
-      px: ["pr", "pl"],
-      py: ["pt", "pb"],
-      m: ["mx", "my", "ms", "me", "mt", "mr", "mb", "ml"],
-      mx: ["mr", "ml"],
-      my: ["mt", "mb"],
-      "font-size": ["leading"],
-      "fvn-normal": ["fvn-ordinal", "fvn-slashed-zero", "fvn-figure", "fvn-spacing", "fvn-fraction"],
-      "fvn-ordinal": ["fvn-normal"],
-      "fvn-slashed-zero": ["fvn-normal"],
-      "fvn-figure": ["fvn-normal"],
-      "fvn-spacing": ["fvn-normal"],
-      "fvn-fraction": ["fvn-normal"],
-      rounded: ["rounded-s", "rounded-e", "rounded-t", "rounded-r", "rounded-b", "rounded-l", "rounded-ss", "rounded-se", "rounded-ee", "rounded-es", "rounded-tl", "rounded-tr", "rounded-br", "rounded-bl"],
-      "rounded-s": ["rounded-ss", "rounded-es"],
-      "rounded-e": ["rounded-se", "rounded-ee"],
-      "rounded-t": ["rounded-tl", "rounded-tr"],
-      "rounded-r": ["rounded-tr", "rounded-br"],
-      "rounded-b": ["rounded-br", "rounded-bl"],
-      "rounded-l": ["rounded-tl", "rounded-bl"],
-      "border-spacing": ["border-spacing-x", "border-spacing-y"],
-      "border-w": ["border-w-s", "border-w-e", "border-w-t", "border-w-r", "border-w-b", "border-w-l"],
-      "border-w-x": ["border-w-r", "border-w-l"],
-      "border-w-y": ["border-w-t", "border-w-b"],
-      "border-color": ["border-color-t", "border-color-r", "border-color-b", "border-color-l"],
-      "border-color-x": ["border-color-r", "border-color-l"],
-      "border-color-y": ["border-color-t", "border-color-b"],
-      "scroll-m": ["scroll-mx", "scroll-my", "scroll-ms", "scroll-me", "scroll-mt", "scroll-mr", "scroll-mb", "scroll-ml"],
-      "scroll-mx": ["scroll-mr", "scroll-ml"],
-      "scroll-my": ["scroll-mt", "scroll-mb"],
-      "scroll-p": ["scroll-px", "scroll-py", "scroll-ps", "scroll-pe", "scroll-pt", "scroll-pr", "scroll-pb", "scroll-pl"],
-      "scroll-px": ["scroll-pr", "scroll-pl"],
-      "scroll-py": ["scroll-pt", "scroll-pb"]
-    },
-    conflictingClassGroupModifiers: {
-      "font-size": ["leading"]
-    }
-  };
-}
-
-// ../../node_modules/tailwind-merge/dist/lib/tw-merge.mjs
-var twMerge = /* @__PURE__ */ createTailwindMerge(getDefaultConfig);
-
-// ../pkg.utils/dist/index.mjs
-import { useState, useEffect } from "react";
-import { useRef } from "react";
-import { useEffect as useEffect2, useState as useState2 } from "react";
-import { useCallback, useSyncExternalStore } from "react";
-function cn(...inputs) {
-  return twMerge(inputs);
-}
-
 // components/Sidebar.tsx
+import { cn } from "@xipkg/utils";
 import { jsx, jsxs } from "react/jsx-runtime";
 var Sidebar = (_a) => {
   var _b = _a, {
@@ -3059,7 +567,7 @@ var Sidebar = (_a) => {
           "div",
           __spreadProps(__spreadValues({
             className: cn(
-              "fixed inset-y-0 z-10 flex h-full w-[--sidebar-width] transition-[left,right,width] duration-200 ease-linear",
+              "fixed inset-y-0 z-10 flex h-full w-[--sidebar-width] px-4 pb-4 transition-[left,right,width] duration-200 ease-linear",
               side === "left" ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]" : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
               // Adjust the padding for floating and inset variants.
               variant === "floating" || variant === "inset" ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]" : "group-data-[collapsible=icon]:w-[--sidebar-width-icon]x",
@@ -3082,6 +590,7 @@ var Sidebar = (_a) => {
 };
 
 // components/SidebarContent.tsx
+import { cn as cn2 } from "@xipkg/utils";
 import { jsx as jsx2 } from "react/jsx-runtime";
 var SidebarContent = (_a) => {
   var _b = _a, { className, ref } = _b, props = __objRest(_b, ["className", "ref"]);
@@ -3090,7 +599,7 @@ var SidebarContent = (_a) => {
     __spreadValues({
       ref,
       "data-sidebar": "content",
-      className: cn(
+      className: cn2(
         "flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
         className
       )
@@ -3099,6 +608,7 @@ var SidebarContent = (_a) => {
 };
 
 // components/SidebarHeader.tsx
+import { cn as cn3 } from "@xipkg/utils";
 import { jsx as jsx3 } from "react/jsx-runtime";
 var SidebarHeader = (_a) => {
   var _b = _a, { className, ref } = _b, props = __objRest(_b, ["className", "ref"]);
@@ -3107,12 +617,13 @@ var SidebarHeader = (_a) => {
     __spreadValues({
       ref,
       "data-sidebar": "header",
-      className: cn("flex flex-col gap-2 p-2", className)
+      className: cn3("flex flex-col gap-2 p-2", className)
     }, props)
   );
 };
 
 // components/SidebarFooter.tsx
+import { cn as cn4 } from "@xipkg/utils";
 import { jsx as jsx4 } from "react/jsx-runtime";
 var SidebarFooter = (_a) => {
   var _b = _a, { className, ref } = _b, props = __objRest(_b, ["className", "ref"]);
@@ -3121,12 +632,13 @@ var SidebarFooter = (_a) => {
     __spreadValues({
       ref,
       "data-sidebar": "footer",
-      className: cn("flex flex-col gap-2", className)
+      className: cn4("flex flex-col gap-2", className)
     }, props)
   );
 };
 
 // components/SidebarGroup.tsx
+import { cn as cn5 } from "@xipkg/utils";
 import { jsx as jsx5 } from "react/jsx-runtime";
 var SidebarGroup = (_a) => {
   var _b = _a, { className, ref } = _b, props = __objRest(_b, ["className", "ref"]);
@@ -3135,16 +647,19 @@ var SidebarGroup = (_a) => {
     __spreadValues({
       ref,
       "data-sidebar": "group",
-      className: cn("relative flex w-full min-w-0 flex-col", className)
+      className: cn5("relative flex w-full min-w-0 flex-col", className)
     }, props)
   );
 };
 
+// components/SidebarGroupAction.tsx
+import { cn as cn6 } from "@xipkg/utils";
+
 // ../../node_modules/@radix-ui/react-slot/dist/index.mjs
-import * as React3 from "react";
+import * as React2 from "react";
 
 // ../../node_modules/@radix-ui/react-compose-refs/dist/index.mjs
-import * as React2 from "react";
+import * as React from "react";
 function setRef(ref, value) {
   if (typeof ref === "function") {
     return ref(value);
@@ -3177,48 +692,48 @@ function composeRefs(...refs) {
   };
 }
 function useComposedRefs(...refs) {
-  return React2.useCallback(composeRefs(...refs), refs);
+  return React.useCallback(composeRefs(...refs), refs);
 }
 
 // ../../node_modules/@radix-ui/react-slot/dist/index.mjs
 import { Fragment as Fragment2, jsx as jsx6 } from "react/jsx-runtime";
-var Slot = React3.forwardRef((props, forwardedRef) => {
+var Slot = React2.forwardRef((props, forwardedRef) => {
   const _a = props, { children } = _a, slotProps = __objRest(_a, ["children"]);
-  const childrenArray = React3.Children.toArray(children);
+  const childrenArray = React2.Children.toArray(children);
   const slottable = childrenArray.find(isSlottable);
   if (slottable) {
     const newElement = slottable.props.children;
     const newChildren = childrenArray.map((child) => {
       if (child === slottable) {
-        if (React3.Children.count(newElement) > 1) return React3.Children.only(null);
-        return React3.isValidElement(newElement) ? newElement.props.children : null;
+        if (React2.Children.count(newElement) > 1) return React2.Children.only(null);
+        return React2.isValidElement(newElement) ? newElement.props.children : null;
       } else {
         return child;
       }
     });
-    return /* @__PURE__ */ jsx6(SlotClone, __spreadProps(__spreadValues({}, slotProps), { ref: forwardedRef, children: React3.isValidElement(newElement) ? React3.cloneElement(newElement, void 0, newChildren) : null }));
+    return /* @__PURE__ */ jsx6(SlotClone, __spreadProps(__spreadValues({}, slotProps), { ref: forwardedRef, children: React2.isValidElement(newElement) ? React2.cloneElement(newElement, void 0, newChildren) : null }));
   }
   return /* @__PURE__ */ jsx6(SlotClone, __spreadProps(__spreadValues({}, slotProps), { ref: forwardedRef, children }));
 });
 Slot.displayName = "Slot";
-var SlotClone = React3.forwardRef((props, forwardedRef) => {
+var SlotClone = React2.forwardRef((props, forwardedRef) => {
   const _a = props, { children } = _a, slotProps = __objRest(_a, ["children"]);
-  if (React3.isValidElement(children)) {
+  if (React2.isValidElement(children)) {
     const childrenRef = getElementRef(children);
     const props2 = mergeProps(slotProps, children.props);
-    if (children.type !== React3.Fragment) {
+    if (children.type !== React2.Fragment) {
       props2.ref = forwardedRef ? composeRefs(forwardedRef, childrenRef) : childrenRef;
     }
-    return React3.cloneElement(children, props2);
+    return React2.cloneElement(children, props2);
   }
-  return React3.Children.count(children) > 1 ? React3.Children.only(null) : null;
+  return React2.Children.count(children) > 1 ? React2.Children.only(null) : null;
 });
 SlotClone.displayName = "SlotClone";
 var Slottable = ({ children }) => {
   return /* @__PURE__ */ jsx6(Fragment2, { children });
 };
 function isSlottable(child) {
-  return React3.isValidElement(child) && child.type === Slottable;
+  return React2.isValidElement(child) && child.type === Slottable;
 }
 function mergeProps(slotProps, childProps) {
   const overrideProps = __spreadValues({}, childProps);
@@ -3276,8 +791,8 @@ var SidebarGroupAction = (_a) => {
     __spreadValues({
       ref,
       "data-sidebar": "group-action",
-      className: cn(
-        "ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground absolute top-3.5 right-3 flex aspect-square w-5 items-center justify-center rounded-md p-0 transition-transform outline-none focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+      className: cn6(
+        "ring-sidebar-ring hover:bg-sidebar-accent hover:text-gray-80 absolute top-3.5 right-3 flex aspect-square w-5 items-center justify-center rounded-md p-0 transition-transform outline-none focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         // Increases the hit area of the button on mobile.
         "after:absolute after:-inset-2 after:md:hidden",
         "group-data-[collapsible=icon]:hidden",
@@ -3288,13 +803,15 @@ var SidebarGroupAction = (_a) => {
 };
 
 // components/SidebarGroupContent.tsx
+import { cn as cn7 } from "@xipkg/utils";
 import { jsx as jsx8 } from "react/jsx-runtime";
 var SidebarGroupContent = (_a) => {
   var _b = _a, { className, ref } = _b, props = __objRest(_b, ["className", "ref"]);
-  return /* @__PURE__ */ jsx8("div", __spreadValues({ ref, "data-sidebar": "group-content", className: cn("w-full", className) }, props));
+  return /* @__PURE__ */ jsx8("div", __spreadValues({ ref, "data-sidebar": "group-content", className: cn7("w-full", className) }, props));
 };
 
 // components/SidebarGroupLabel.tsx
+import { cn as cn8 } from "@xipkg/utils";
 import { jsx as jsx9 } from "react/jsx-runtime";
 var SidebarGroupLabel = (_a) => {
   var _b = _a, {
@@ -3312,7 +829,7 @@ var SidebarGroupLabel = (_a) => {
     __spreadValues({
       ref,
       "data-sidebar": "group-label",
-      className: cn(
+      className: cn8(
         "ring-sidebar-ring flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium transition-[margin,opacity] duration-200 ease-linear outline-none focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0",
         className
@@ -3322,6 +839,7 @@ var SidebarGroupLabel = (_a) => {
 };
 
 // components/SidebarInset.tsx
+import { cn as cn9 } from "@xipkg/utils";
 import { jsx as jsx10 } from "react/jsx-runtime";
 var SidebarInset = (_a) => {
   var _b = _a, { className, ref } = _b, props = __objRest(_b, ["className", "ref"]);
@@ -3329,7 +847,7 @@ var SidebarInset = (_a) => {
     "main",
     __spreadValues({
       ref,
-      className: cn(
+      className: cn9(
         "bg-gray-0 relative flex w-full flex-1 flex-col",
         "md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2",
         className
@@ -3339,6 +857,7 @@ var SidebarInset = (_a) => {
 };
 
 // components/SidebarMenu.tsx
+import { cn as cn10 } from "@xipkg/utils";
 import { jsx as jsx11 } from "react/jsx-runtime";
 var SidebarMenu = (_a) => {
   var _b = _a, { className, ref } = _b, props = __objRest(_b, ["className", "ref"]);
@@ -3347,12 +866,13 @@ var SidebarMenu = (_a) => {
     __spreadValues({
       ref,
       "data-sidebar": "menu",
-      className: cn("flex w-full min-w-0 flex-col gap-1", className)
+      className: cn10("flex w-full min-w-0 flex-col gap-1", className)
     }, props)
   );
 };
 
 // components/SidebarMenuAction.tsx
+import { cn as cn11 } from "@xipkg/utils";
 import { jsx as jsx12 } from "react/jsx-runtime";
 var SidebarMenuAction = (_a) => {
   var _b = _a, {
@@ -3372,7 +892,7 @@ var SidebarMenuAction = (_a) => {
     __spreadValues({
       ref,
       "data-sidebar": "menu-action",
-      className: cn(
+      className: cn11(
         "hover:bg-grand-80 hover:text-gray-80 peer-hover/menu-button:text-gray-80 absolute top-1/2 right-1 flex aspect-square w-5 -translate-y-1/2 items-center justify-center rounded-md p-0 transition-transform outline-none focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         // Increases the hit area of the button on mobile.
         "after:absolute after:-inset-2 after:md:hidden",
@@ -3389,6 +909,7 @@ var SidebarMenuAction = (_a) => {
 };
 
 // components/SidebarMenuBadge.tsx
+import { cn as cn12 } from "@xipkg/utils";
 import { jsx as jsx13 } from "react/jsx-runtime";
 var SidebarMenuBadge = (_a) => {
   var _b = _a, { className, ref } = _b, props = __objRest(_b, ["className", "ref"]);
@@ -3397,7 +918,7 @@ var SidebarMenuBadge = (_a) => {
     __spreadValues({
       ref,
       "data-sidebar": "menu-badge",
-      className: cn(
+      className: cn12(
         "text-gray-80 pointer-events-none absolute right-1 flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums select-none",
         "peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active=true]/menu-button:text-gray-80",
         "peer-data-[size=sm]/menu-button:top-1",
@@ -3411,10 +932,10 @@ var SidebarMenuBadge = (_a) => {
 };
 
 // ../pkg.tooltip/dist/index.mjs
-import * as React20 from "react";
+import * as React19 from "react";
 
 // ../../node_modules/@radix-ui/react-tooltip/dist/index.mjs
-import * as React19 from "react";
+import * as React18 from "react";
 
 // ../../node_modules/@radix-ui/primitive/dist/index.mjs
 function composeEventHandlers(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
@@ -3427,26 +948,26 @@ function composeEventHandlers(originalEventHandler, ourEventHandler, { checkForD
 }
 
 // ../../node_modules/@radix-ui/react-context/dist/index.mjs
-import * as React4 from "react";
+import * as React3 from "react";
 import { jsx as jsx14 } from "react/jsx-runtime";
 function createContextScope(scopeName, createContextScopeDeps = []) {
   let defaultContexts = [];
-  function createContext3(rootComponentName, defaultContext) {
-    const BaseContext = React4.createContext(defaultContext);
+  function createContext32(rootComponentName, defaultContext) {
+    const BaseContext = React3.createContext(defaultContext);
     const index2 = defaultContexts.length;
     defaultContexts = [...defaultContexts, defaultContext];
     const Provider2 = (props) => {
       var _b;
       const _a = props, { scope, children } = _a, context = __objRest(_a, ["scope", "children"]);
       const Context = ((_b = scope == null ? void 0 : scope[scopeName]) == null ? void 0 : _b[index2]) || BaseContext;
-      const value = React4.useMemo(() => context, Object.values(context));
+      const value = React3.useMemo(() => context, Object.values(context));
       return /* @__PURE__ */ jsx14(Context.Provider, { value, children });
     };
     Provider2.displayName = rootComponentName + "Provider";
     function useContext22(consumerName, scope) {
       var _a;
       const Context = ((_a = scope == null ? void 0 : scope[scopeName]) == null ? void 0 : _a[index2]) || BaseContext;
-      const context = React4.useContext(Context);
+      const context = React3.useContext(Context);
       if (context) return context;
       if (defaultContext !== void 0) return defaultContext;
       throw new Error(`\`${consumerName}\` must be used within \`${rootComponentName}\``);
@@ -3455,18 +976,18 @@ function createContextScope(scopeName, createContextScopeDeps = []) {
   }
   const createScope = () => {
     const scopeContexts = defaultContexts.map((defaultContext) => {
-      return React4.createContext(defaultContext);
+      return React3.createContext(defaultContext);
     });
     return function useScope(scope) {
       const contexts = (scope == null ? void 0 : scope[scopeName]) || scopeContexts;
-      return React4.useMemo(
+      return React3.useMemo(
         () => ({ [`__scope${scopeName}`]: __spreadProps(__spreadValues({}, scope), { [scopeName]: contexts }) }),
         [scope, contexts]
       );
     };
   };
   createScope.scopeName = scopeName;
-  return [createContext3, composeContextScopes(createScope, ...createContextScopeDeps)];
+  return [createContext32, composeContextScopes(createScope, ...createContextScopeDeps)];
 }
 function composeContextScopes(...scopes) {
   const baseScope = scopes[0];
@@ -3482,7 +1003,7 @@ function composeContextScopes(...scopes) {
         const currentScope = scopeProps[`__scope${scopeName}`];
         return __spreadValues(__spreadValues({}, nextScopes2), currentScope);
       }, {});
-      return React4.useMemo(() => ({ [`__scope${baseScope.scopeName}`]: nextScopes }), [nextScopes]);
+      return React3.useMemo(() => ({ [`__scope${baseScope.scopeName}`]: nextScopes }), [nextScopes]);
     };
   };
   createScope.scopeName = baseScope.scopeName;
@@ -3490,11 +1011,11 @@ function composeContextScopes(...scopes) {
 }
 
 // ../../node_modules/@radix-ui/react-dismissable-layer/dist/index.mjs
-import * as React8 from "react";
+import * as React7 from "react";
 
 // ../../node_modules/@radix-ui/react-primitive/dist/index.mjs
 var ReactDOM = __toESM(require_react_dom(), 1);
-import * as React5 from "react";
+import * as React4 from "react";
 import { jsx as jsx15 } from "react/jsx-runtime";
 var NODES = [
   "a",
@@ -3515,7 +1036,7 @@ var NODES = [
   "ul"
 ];
 var Primitive = NODES.reduce((primitive, node) => {
-  const Node2 = React5.forwardRef((props, forwardedRef) => {
+  const Node2 = React4.forwardRef((props, forwardedRef) => {
     const _a = props, { asChild } = _a, primitiveProps = __objRest(_a, ["asChild"]);
     const Comp = asChild ? Slot : node;
     if (typeof window !== "undefined") {
@@ -3531,23 +1052,23 @@ function dispatchDiscreteCustomEvent(target, event) {
 }
 
 // ../../node_modules/@radix-ui/react-use-callback-ref/dist/index.mjs
-import * as React6 from "react";
+import * as React5 from "react";
 function useCallbackRef(callback) {
-  const callbackRef = React6.useRef(callback);
-  React6.useEffect(() => {
+  const callbackRef = React5.useRef(callback);
+  React5.useEffect(() => {
     callbackRef.current = callback;
   });
-  return React6.useMemo(() => (...args) => {
+  return React5.useMemo(() => (...args) => {
     var _a;
     return (_a = callbackRef.current) == null ? void 0 : _a.call(callbackRef, ...args);
   }, []);
 }
 
 // ../../node_modules/@radix-ui/react-use-escape-keydown/dist/index.mjs
-import * as React7 from "react";
+import * as React6 from "react";
 function useEscapeKeydown(onEscapeKeyDownProp, ownerDocument = globalThis == null ? void 0 : globalThis.document) {
   const onEscapeKeyDown = useCallbackRef(onEscapeKeyDownProp);
-  React7.useEffect(() => {
+  React6.useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
         onEscapeKeyDown(event);
@@ -3565,12 +1086,12 @@ var CONTEXT_UPDATE = "dismissableLayer.update";
 var POINTER_DOWN_OUTSIDE = "dismissableLayer.pointerDownOutside";
 var FOCUS_OUTSIDE = "dismissableLayer.focusOutside";
 var originalBodyPointerEvents;
-var DismissableLayerContext = React8.createContext({
+var DismissableLayerContext = React7.createContext({
   layers: /* @__PURE__ */ new Set(),
   layersWithOutsidePointerEventsDisabled: /* @__PURE__ */ new Set(),
   branches: /* @__PURE__ */ new Set()
 });
-var DismissableLayer = React8.forwardRef(
+var DismissableLayer = React7.forwardRef(
   (props, forwardedRef) => {
     var _b;
     const _a = props, {
@@ -3588,10 +1109,10 @@ var DismissableLayer = React8.forwardRef(
       "onInteractOutside",
       "onDismiss"
     ]);
-    const context = React8.useContext(DismissableLayerContext);
-    const [node, setNode] = React8.useState(null);
+    const context = React7.useContext(DismissableLayerContext);
+    const [node, setNode] = React7.useState(null);
     const ownerDocument = (_b = node == null ? void 0 : node.ownerDocument) != null ? _b : globalThis == null ? void 0 : globalThis.document;
-    const [, force] = React8.useState({});
+    const [, force] = React7.useState({});
     const composedRefs = useComposedRefs(forwardedRef, (node2) => setNode(node2));
     const layers = Array.from(context.layers);
     const [highestLayerWithOutsidePointerEventsDisabled] = [...context.layersWithOutsidePointerEventsDisabled].slice(-1);
@@ -3624,7 +1145,7 @@ var DismissableLayer = React8.forwardRef(
         onDismiss();
       }
     }, ownerDocument);
-    React8.useEffect(() => {
+    React7.useEffect(() => {
       if (!node) return;
       if (disableOutsidePointerEvents) {
         if (context.layersWithOutsidePointerEventsDisabled.size === 0) {
@@ -3641,7 +1162,7 @@ var DismissableLayer = React8.forwardRef(
         }
       };
     }, [node, ownerDocument, disableOutsidePointerEvents, context]);
-    React8.useEffect(() => {
+    React7.useEffect(() => {
       return () => {
         if (!node) return;
         context.layers.delete(node);
@@ -3649,7 +1170,7 @@ var DismissableLayer = React8.forwardRef(
         dispatchUpdate();
       };
     }, [node, context]);
-    React8.useEffect(() => {
+    React7.useEffect(() => {
       const handleUpdate = () => force({});
       document.addEventListener(CONTEXT_UPDATE, handleUpdate);
       return () => document.removeEventListener(CONTEXT_UPDATE, handleUpdate);
@@ -3673,11 +1194,11 @@ var DismissableLayer = React8.forwardRef(
 );
 DismissableLayer.displayName = DISMISSABLE_LAYER_NAME;
 var BRANCH_NAME = "DismissableLayerBranch";
-var DismissableLayerBranch = React8.forwardRef((props, forwardedRef) => {
-  const context = React8.useContext(DismissableLayerContext);
-  const ref = React8.useRef(null);
+var DismissableLayerBranch = React7.forwardRef((props, forwardedRef) => {
+  const context = React7.useContext(DismissableLayerContext);
+  const ref = React7.useRef(null);
   const composedRefs = useComposedRefs(forwardedRef, ref);
-  React8.useEffect(() => {
+  React7.useEffect(() => {
     const node = ref.current;
     if (node) {
       context.branches.add(node);
@@ -3691,10 +1212,10 @@ var DismissableLayerBranch = React8.forwardRef((props, forwardedRef) => {
 DismissableLayerBranch.displayName = BRANCH_NAME;
 function usePointerDownOutside(onPointerDownOutside, ownerDocument = globalThis == null ? void 0 : globalThis.document) {
   const handlePointerDownOutside = useCallbackRef(onPointerDownOutside);
-  const isPointerInsideReactTreeRef = React8.useRef(false);
-  const handleClickRef = React8.useRef(() => {
+  const isPointerInsideReactTreeRef = React7.useRef(false);
+  const handleClickRef = React7.useRef(() => {
   });
-  React8.useEffect(() => {
+  React7.useEffect(() => {
     const handlePointerDown = (event) => {
       if (event.target && !isPointerInsideReactTreeRef.current) {
         let handleAndDispatchPointerDownOutsideEvent2 = function() {
@@ -3735,8 +1256,8 @@ function usePointerDownOutside(onPointerDownOutside, ownerDocument = globalThis 
 }
 function useFocusOutside(onFocusOutside, ownerDocument = globalThis == null ? void 0 : globalThis.document) {
   const handleFocusOutside = useCallbackRef(onFocusOutside);
-  const isFocusInsideReactTreeRef = React8.useRef(false);
-  React8.useEffect(() => {
+  const isFocusInsideReactTreeRef = React7.useRef(false);
+  React7.useEffect(() => {
     const handleFocus = (event) => {
       if (event.target && !isFocusInsideReactTreeRef.current) {
         const eventDetail = { originalEvent: event };
@@ -3769,18 +1290,18 @@ function handleAndDispatchCustomEvent(name, handler, detail, { discrete }) {
 }
 
 // ../../node_modules/@radix-ui/react-id/dist/index.mjs
-import * as React10 from "react";
+import * as React9 from "react";
 
 // ../../node_modules/@radix-ui/react-use-layout-effect/dist/index.mjs
-import * as React9 from "react";
-var useLayoutEffect2 = Boolean(globalThis == null ? void 0 : globalThis.document) ? React9.useLayoutEffect : () => {
+import * as React8 from "react";
+var useLayoutEffect2 = Boolean(globalThis == null ? void 0 : globalThis.document) ? React8.useLayoutEffect : () => {
 };
 
 // ../../node_modules/@radix-ui/react-id/dist/index.mjs
-var useReactId = React10["useId".toString()] || (() => void 0);
+var useReactId = React9["useId".toString()] || (() => void 0);
 var count = 0;
 function useId(deterministicId) {
-  const [id, setId] = React10.useState(useReactId());
+  const [id, setId] = React9.useState(useReactId());
   useLayoutEffect2(() => {
     if (!deterministicId) setId((reactId) => reactId != null ? reactId : String(count++));
   }, [deterministicId]);
@@ -3788,7 +1309,7 @@ function useId(deterministicId) {
 }
 
 // ../../node_modules/@radix-ui/react-popper/dist/index.mjs
-import * as React14 from "react";
+import * as React13 from "react";
 
 // ../../node_modules/@floating-ui/utils/dist/floating-ui.utils.mjs
 var sides = ["top", "right", "bottom", "left"];
@@ -5381,9 +2902,9 @@ var computePosition2 = (reference, floating, options) => {
 
 // ../../node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.mjs
 var ReactDOM2 = __toESM(require_react_dom(), 1);
-import * as React11 from "react";
-import { useLayoutEffect as useLayoutEffect3, useEffect as useEffect6 } from "react";
-var index = typeof document !== "undefined" ? useLayoutEffect3 : useEffect6;
+import * as React10 from "react";
+import { useLayoutEffect as useLayoutEffect3, useEffect as useEffect4 } from "react";
+var index = typeof document !== "undefined" ? useLayoutEffect3 : useEffect4;
 function deepEqual(a, b) {
   if (a === b) {
     return true;
@@ -5443,7 +2964,7 @@ function roundByDPR(element, value) {
   return Math.round(value * dpr) / dpr;
 }
 function useLatestRef(value) {
-  const ref = React11.useRef(value);
+  const ref = React10.useRef(value);
   index(() => {
     ref.current = value;
   });
@@ -5466,7 +2987,7 @@ function useFloating(options) {
     whileElementsMounted,
     open
   } = options;
-  const [data, setData] = React11.useState({
+  const [data, setData] = React10.useState({
     x: 0,
     y: 0,
     strategy,
@@ -5474,19 +2995,19 @@ function useFloating(options) {
     middlewareData: {},
     isPositioned: false
   });
-  const [latestMiddleware, setLatestMiddleware] = React11.useState(middleware);
+  const [latestMiddleware, setLatestMiddleware] = React10.useState(middleware);
   if (!deepEqual(latestMiddleware, middleware)) {
     setLatestMiddleware(middleware);
   }
-  const [_reference, _setReference] = React11.useState(null);
-  const [_floating, _setFloating] = React11.useState(null);
-  const setReference = React11.useCallback((node) => {
+  const [_reference, _setReference] = React10.useState(null);
+  const [_floating, _setFloating] = React10.useState(null);
+  const setReference = React10.useCallback((node) => {
     if (node !== referenceRef.current) {
       referenceRef.current = node;
       _setReference(node);
     }
   }, []);
-  const setFloating = React11.useCallback((node) => {
+  const setFloating = React10.useCallback((node) => {
     if (node !== floatingRef.current) {
       floatingRef.current = node;
       _setFloating(node);
@@ -5494,14 +3015,14 @@ function useFloating(options) {
   }, []);
   const referenceEl = externalReference || _reference;
   const floatingEl = externalFloating || _floating;
-  const referenceRef = React11.useRef(null);
-  const floatingRef = React11.useRef(null);
-  const dataRef = React11.useRef(data);
+  const referenceRef = React10.useRef(null);
+  const floatingRef = React10.useRef(null);
+  const dataRef = React10.useRef(data);
   const hasWhileElementsMounted = whileElementsMounted != null;
   const whileElementsMountedRef = useLatestRef(whileElementsMounted);
   const platformRef = useLatestRef(platform2);
   const openRef = useLatestRef(open);
-  const update = React11.useCallback(() => {
+  const update = React10.useCallback(() => {
     if (!referenceRef.current || !floatingRef.current) {
       return;
     }
@@ -5537,7 +3058,7 @@ function useFloating(options) {
       }));
     }
   }, [open]);
-  const isMountedRef = React11.useRef(false);
+  const isMountedRef = React10.useRef(false);
   index(() => {
     isMountedRef.current = true;
     return () => {
@@ -5554,17 +3075,17 @@ function useFloating(options) {
       update();
     }
   }, [referenceEl, floatingEl, update, whileElementsMountedRef, hasWhileElementsMounted]);
-  const refs = React11.useMemo(() => ({
+  const refs = React10.useMemo(() => ({
     reference: referenceRef,
     floating: floatingRef,
     setReference,
     setFloating
   }), [setReference, setFloating]);
-  const elements = React11.useMemo(() => ({
+  const elements = React10.useMemo(() => ({
     reference: referenceEl,
     floating: floatingEl
   }), [referenceEl, floatingEl]);
-  const floatingStyles = React11.useMemo(() => {
+  const floatingStyles = React10.useMemo(() => {
     const initialStyles = {
       position: strategy,
       left: 0,
@@ -5588,7 +3109,7 @@ function useFloating(options) {
       top: y
     };
   }, [strategy, transform, elements.floating, data.x, data.y]);
-  return React11.useMemo(() => __spreadProps(__spreadValues({}, data), {
+  return React10.useMemo(() => __spreadProps(__spreadValues({}, data), {
     update,
     refs,
     elements,
@@ -5649,10 +3170,10 @@ var arrow3 = (options, deps) => __spreadProps(__spreadValues({}, arrow$1(options
 });
 
 // ../../node_modules/@radix-ui/react-arrow/dist/index.mjs
-import * as React12 from "react";
+import * as React11 from "react";
 import { jsx as jsx17 } from "react/jsx-runtime";
 var NAME = "Arrow";
-var Arrow = React12.forwardRef((props, forwardedRef) => {
+var Arrow = React11.forwardRef((props, forwardedRef) => {
   const _a = props, { children, width = 10, height = 5 } = _a, arrowProps = __objRest(_a, ["children", "width", "height"]);
   return /* @__PURE__ */ jsx17(
     Primitive.svg,
@@ -5670,9 +3191,9 @@ Arrow.displayName = NAME;
 var Root = Arrow;
 
 // ../../node_modules/@radix-ui/react-use-size/dist/index.mjs
-import * as React13 from "react";
+import * as React12 from "react";
 function useSize(element) {
-  const [size4, setSize] = React13.useState(void 0);
+  const [size4, setSize] = React12.useState(void 0);
   useLayoutEffect2(() => {
     if (element) {
       setSize({ width: element.offsetWidth, height: element.offsetHeight });
@@ -5713,18 +3234,18 @@ var [createPopperContext, createPopperScope] = createContextScope(POPPER_NAME);
 var [PopperProvider, usePopperContext] = createPopperContext(POPPER_NAME);
 var Popper = (props) => {
   const { __scopePopper, children } = props;
-  const [anchor, setAnchor] = React14.useState(null);
+  const [anchor, setAnchor] = React13.useState(null);
   return /* @__PURE__ */ jsx18(PopperProvider, { scope: __scopePopper, anchor, onAnchorChange: setAnchor, children });
 };
 Popper.displayName = POPPER_NAME;
 var ANCHOR_NAME = "PopperAnchor";
-var PopperAnchor = React14.forwardRef(
+var PopperAnchor = React13.forwardRef(
   (props, forwardedRef) => {
     const _a = props, { __scopePopper, virtualRef } = _a, anchorProps = __objRest(_a, ["__scopePopper", "virtualRef"]);
     const context = usePopperContext(ANCHOR_NAME, __scopePopper);
-    const ref = React14.useRef(null);
+    const ref = React13.useRef(null);
     const composedRefs = useComposedRefs(forwardedRef, ref);
-    React14.useEffect(() => {
+    React13.useEffect(() => {
       context.onAnchorChange((virtualRef == null ? void 0 : virtualRef.current) || ref.current);
     });
     return virtualRef ? null : /* @__PURE__ */ jsx18(Primitive.div, __spreadProps(__spreadValues({}, anchorProps), { ref: composedRefs }));
@@ -5733,7 +3254,7 @@ var PopperAnchor = React14.forwardRef(
 PopperAnchor.displayName = ANCHOR_NAME;
 var CONTENT_NAME = "PopperContent";
 var [PopperContentProvider, useContentContext] = createPopperContext(CONTENT_NAME);
-var PopperContent = React14.forwardRef(
+var PopperContent = React13.forwardRef(
   (props, forwardedRef) => {
     var _b, _c, _d, _e, _f, _g, _h, _i;
     const _a = props, {
@@ -5766,9 +3287,9 @@ var PopperContent = React14.forwardRef(
       "onPlaced"
     ]);
     const context = usePopperContext(CONTENT_NAME, __scopePopper);
-    const [content, setContent] = React14.useState(null);
+    const [content, setContent] = React13.useState(null);
     const composedRefs = useComposedRefs(forwardedRef, (node) => setContent(node));
-    const [arrow4, setArrow] = React14.useState(null);
+    const [arrow4, setArrow] = React13.useState(null);
     const arrowSize = useSize(arrow4);
     const arrowWidth = (_b = arrowSize == null ? void 0 : arrowSize.width) != null ? _b : 0;
     const arrowHeight = (_c = arrowSize == null ? void 0 : arrowSize.height) != null ? _c : 0;
@@ -5828,7 +3349,7 @@ var PopperContent = React14.forwardRef(
     const arrowX = (_d = middlewareData.arrow) == null ? void 0 : _d.x;
     const arrowY = (_e = middlewareData.arrow) == null ? void 0 : _e.y;
     const cannotCenterArrow = ((_f = middlewareData.arrow) == null ? void 0 : _f.centerOffset) !== 0;
-    const [contentZIndex, setContentZIndex] = React14.useState();
+    const [contentZIndex, setContentZIndex] = React13.useState();
     useLayoutEffect2(() => {
       if (content) setContentZIndex(window.getComputedStyle(content).zIndex);
     }, [content]);
@@ -5888,7 +3409,7 @@ var OPPOSITE_SIDE = {
   bottom: "top",
   left: "right"
 };
-var PopperArrow = React14.forwardRef(function PopperArrow2(props, forwardedRef) {
+var PopperArrow = React13.forwardRef(function PopperArrow2(props, forwardedRef) {
   const _a = props, { __scopePopper } = _a, arrowProps = __objRest(_a, ["__scopePopper"]);
   const contentContext = useContentContext(ARROW_NAME, __scopePopper);
   const baseSide = OPPOSITE_SIDE[contentContext.placedSide];
@@ -5980,13 +3501,13 @@ var Arrow2 = PopperArrow;
 
 // ../../node_modules/@radix-ui/react-portal/dist/index.mjs
 var import_react_dom2 = __toESM(require_react_dom(), 1);
-import * as React15 from "react";
+import * as React14 from "react";
 import { jsx as jsx19 } from "react/jsx-runtime";
 var PORTAL_NAME = "Portal";
-var Portal = React15.forwardRef((props, forwardedRef) => {
+var Portal = React14.forwardRef((props, forwardedRef) => {
   var _b;
   const _a = props, { container: containerProp } = _a, portalProps = __objRest(_a, ["container"]);
-  const [mounted, setMounted] = React15.useState(false);
+  const [mounted, setMounted] = React14.useState(false);
   useLayoutEffect2(() => setMounted(true), []);
   const container = containerProp || mounted && ((_b = globalThis == null ? void 0 : globalThis.document) == null ? void 0 : _b.body);
   return container ? import_react_dom2.default.createPortal(/* @__PURE__ */ jsx19(Primitive.div, __spreadProps(__spreadValues({}, portalProps), { ref: forwardedRef })), container) : null;
@@ -5995,9 +3516,9 @@ Portal.displayName = PORTAL_NAME;
 
 // ../../node_modules/@radix-ui/react-presence/dist/index.mjs
 import * as React22 from "react";
-import * as React16 from "react";
+import * as React15 from "react";
 function useStateMachine(initialState, machine) {
-  return React16.useReducer((state, event) => {
+  return React15.useReducer((state, event) => {
     const nextState = machine[state][event];
     return nextState != null ? nextState : state;
   }, initialState);
@@ -6122,7 +3643,7 @@ function getElementRef2(element) {
 }
 
 // ../../node_modules/@radix-ui/react-use-controllable-state/dist/index.mjs
-import * as React17 from "react";
+import * as React16 from "react";
 function useControllableState({
   prop,
   defaultProp,
@@ -6133,7 +3654,7 @@ function useControllableState({
   const isControlled = prop !== void 0;
   const value = isControlled ? prop : uncontrolledProp;
   const handleChange = useCallbackRef(onChange);
-  const setValue = React17.useCallback(
+  const setValue = React16.useCallback(
     (nextValue) => {
       if (isControlled) {
         const setter = nextValue;
@@ -6151,11 +3672,11 @@ function useUncontrolledState({
   defaultProp,
   onChange
 }) {
-  const uncontrolledState = React17.useState(defaultProp);
+  const uncontrolledState = React16.useState(defaultProp);
   const [value] = uncontrolledState;
-  const prevValueRef = React17.useRef(value);
+  const prevValueRef = React16.useRef(value);
   const handleChange = useCallbackRef(onChange);
-  React17.useEffect(() => {
+  React16.useEffect(() => {
     if (prevValueRef.current !== value) {
       handleChange(value);
       prevValueRef.current = value;
@@ -6165,10 +3686,10 @@ function useUncontrolledState({
 }
 
 // ../../node_modules/@radix-ui/react-visually-hidden/dist/index.mjs
-import * as React18 from "react";
+import * as React17 from "react";
 import { jsx as jsx20 } from "react/jsx-runtime";
 var NAME2 = "VisuallyHidden";
-var VisuallyHidden = React18.forwardRef(
+var VisuallyHidden = React17.forwardRef(
   (props, forwardedRef) => {
     return /* @__PURE__ */ jsx20(
       Primitive.span,
@@ -6212,10 +3733,10 @@ var TooltipProvider = (props) => {
     disableHoverableContent = false,
     children
   } = props;
-  const [isOpenDelayed, setIsOpenDelayed] = React19.useState(true);
-  const isPointerInTransitRef = React19.useRef(false);
-  const skipDelayTimerRef = React19.useRef(0);
-  React19.useEffect(() => {
+  const [isOpenDelayed, setIsOpenDelayed] = React18.useState(true);
+  const isPointerInTransitRef = React18.useRef(false);
+  const skipDelayTimerRef = React18.useRef(0);
+  React18.useEffect(() => {
     const skipDelayTimer = skipDelayTimerRef.current;
     return () => window.clearTimeout(skipDelayTimer);
   }, []);
@@ -6225,11 +3746,11 @@ var TooltipProvider = (props) => {
       scope: __scopeTooltip,
       isOpenDelayed,
       delayDuration,
-      onOpen: React19.useCallback(() => {
+      onOpen: React18.useCallback(() => {
         window.clearTimeout(skipDelayTimerRef.current);
         setIsOpenDelayed(false);
       }, []),
-      onClose: React19.useCallback(() => {
+      onClose: React18.useCallback(() => {
         window.clearTimeout(skipDelayTimerRef.current);
         skipDelayTimerRef.current = window.setTimeout(
           () => setIsOpenDelayed(true),
@@ -6237,7 +3758,7 @@ var TooltipProvider = (props) => {
         );
       }, [skipDelayDuration]),
       isPointerInTransitRef,
-      onPointerInTransitChange: React19.useCallback((inTransit) => {
+      onPointerInTransitChange: React18.useCallback((inTransit) => {
         isPointerInTransitRef.current = inTransit;
       }, []),
       disableHoverableContent,
@@ -6260,12 +3781,12 @@ var Tooltip = (props) => {
   } = props;
   const providerContext = useTooltipProviderContext(TOOLTIP_NAME, props.__scopeTooltip);
   const popperScope = usePopperScope(__scopeTooltip);
-  const [trigger, setTrigger] = React19.useState(null);
+  const [trigger, setTrigger] = React18.useState(null);
   const contentId = useId();
-  const openTimerRef = React19.useRef(0);
+  const openTimerRef = React18.useRef(0);
   const disableHoverableContent = disableHoverableContentProp != null ? disableHoverableContentProp : providerContext.disableHoverableContent;
   const delayDuration = delayDurationProp != null ? delayDurationProp : providerContext.delayDuration;
-  const wasOpenDelayedRef = React19.useRef(false);
+  const wasOpenDelayedRef = React18.useRef(false);
   const [open = false, setOpen] = useControllableState({
     prop: openProp,
     defaultProp: defaultOpen,
@@ -6279,21 +3800,21 @@ var Tooltip = (props) => {
       onOpenChange == null ? void 0 : onOpenChange(open2);
     }
   });
-  const stateAttribute = React19.useMemo(() => {
+  const stateAttribute = React18.useMemo(() => {
     return open ? wasOpenDelayedRef.current ? "delayed-open" : "instant-open" : "closed";
   }, [open]);
-  const handleOpen = React19.useCallback(() => {
+  const handleOpen = React18.useCallback(() => {
     window.clearTimeout(openTimerRef.current);
     openTimerRef.current = 0;
     wasOpenDelayedRef.current = false;
     setOpen(true);
   }, [setOpen]);
-  const handleClose = React19.useCallback(() => {
+  const handleClose = React18.useCallback(() => {
     window.clearTimeout(openTimerRef.current);
     openTimerRef.current = 0;
     setOpen(false);
   }, [setOpen]);
-  const handleDelayedOpen = React19.useCallback(() => {
+  const handleDelayedOpen = React18.useCallback(() => {
     window.clearTimeout(openTimerRef.current);
     openTimerRef.current = window.setTimeout(() => {
       wasOpenDelayedRef.current = true;
@@ -6301,7 +3822,7 @@ var Tooltip = (props) => {
       openTimerRef.current = 0;
     }, delayDuration);
   }, [delayDuration, setOpen]);
-  React19.useEffect(() => {
+  React18.useEffect(() => {
     return () => {
       if (openTimerRef.current) {
         window.clearTimeout(openTimerRef.current);
@@ -6318,11 +3839,11 @@ var Tooltip = (props) => {
       stateAttribute,
       trigger,
       onTriggerChange: setTrigger,
-      onTriggerEnter: React19.useCallback(() => {
+      onTriggerEnter: React18.useCallback(() => {
         if (providerContext.isOpenDelayed) handleDelayedOpen();
         else handleOpen();
       }, [providerContext.isOpenDelayed, handleDelayedOpen, handleOpen]),
-      onTriggerLeave: React19.useCallback(() => {
+      onTriggerLeave: React18.useCallback(() => {
         if (disableHoverableContent) {
           handleClose();
         } else {
@@ -6339,18 +3860,18 @@ var Tooltip = (props) => {
 };
 Tooltip.displayName = TOOLTIP_NAME;
 var TRIGGER_NAME = "TooltipTrigger";
-var TooltipTrigger = React19.forwardRef(
+var TooltipTrigger = React18.forwardRef(
   (props, forwardedRef) => {
     const _a = props, { __scopeTooltip } = _a, triggerProps = __objRest(_a, ["__scopeTooltip"]);
     const context = useTooltipContext(TRIGGER_NAME, __scopeTooltip);
     const providerContext = useTooltipProviderContext(TRIGGER_NAME, __scopeTooltip);
     const popperScope = usePopperScope(__scopeTooltip);
-    const ref = React19.useRef(null);
+    const ref = React18.useRef(null);
     const composedRefs = useComposedRefs(forwardedRef, ref, context.onTriggerChange);
-    const isPointerDownRef = React19.useRef(false);
-    const hasPointerMoveOpenedRef = React19.useRef(false);
-    const handlePointerUp = React19.useCallback(() => isPointerDownRef.current = false, []);
-    React19.useEffect(() => {
+    const isPointerDownRef = React18.useRef(false);
+    const hasPointerMoveOpenedRef = React18.useRef(false);
+    const handlePointerUp = React18.useCallback(() => isPointerDownRef.current = false, []);
+    React18.useEffect(() => {
       return () => document.removeEventListener("pointerup", handlePointerUp);
     }, [handlePointerUp]);
     return /* @__PURE__ */ jsx21(Anchor, __spreadProps(__spreadValues({ asChild: true }, popperScope), { children: /* @__PURE__ */ jsx21(
@@ -6396,7 +3917,7 @@ var TooltipPortal = (props) => {
 };
 TooltipPortal.displayName = PORTAL_NAME2;
 var CONTENT_NAME2 = "TooltipContent";
-var TooltipContent = React19.forwardRef(
+var TooltipContent = React18.forwardRef(
   (props, forwardedRef) => {
     const portalContext = usePortalContext(CONTENT_NAME2, props.__scopeTooltip);
     const _a = props, { forceMount = portalContext.forceMount, side = "top" } = _a, contentProps = __objRest(_a, ["forceMount", "side"]);
@@ -6404,20 +3925,20 @@ var TooltipContent = React19.forwardRef(
     return /* @__PURE__ */ jsx21(Presence, { present: forceMount || context.open, children: context.disableHoverableContent ? /* @__PURE__ */ jsx21(TooltipContentImpl, __spreadProps(__spreadValues({ side }, contentProps), { ref: forwardedRef })) : /* @__PURE__ */ jsx21(TooltipContentHoverable, __spreadProps(__spreadValues({ side }, contentProps), { ref: forwardedRef })) });
   }
 );
-var TooltipContentHoverable = React19.forwardRef((props, forwardedRef) => {
+var TooltipContentHoverable = React18.forwardRef((props, forwardedRef) => {
   const context = useTooltipContext(CONTENT_NAME2, props.__scopeTooltip);
   const providerContext = useTooltipProviderContext(CONTENT_NAME2, props.__scopeTooltip);
-  const ref = React19.useRef(null);
+  const ref = React18.useRef(null);
   const composedRefs = useComposedRefs(forwardedRef, ref);
-  const [pointerGraceArea, setPointerGraceArea] = React19.useState(null);
+  const [pointerGraceArea, setPointerGraceArea] = React18.useState(null);
   const { trigger, onClose } = context;
   const content = ref.current;
   const { onPointerInTransitChange } = providerContext;
-  const handleRemoveGraceArea = React19.useCallback(() => {
+  const handleRemoveGraceArea = React18.useCallback(() => {
     setPointerGraceArea(null);
     onPointerInTransitChange(false);
   }, [onPointerInTransitChange]);
-  const handleCreateGraceArea = React19.useCallback(
+  const handleCreateGraceArea = React18.useCallback(
     (event, hoverTarget) => {
       const currentTarget = event.currentTarget;
       const exitPoint = { x: event.clientX, y: event.clientY };
@@ -6430,10 +3951,10 @@ var TooltipContentHoverable = React19.forwardRef((props, forwardedRef) => {
     },
     [onPointerInTransitChange]
   );
-  React19.useEffect(() => {
+  React18.useEffect(() => {
     return () => handleRemoveGraceArea();
   }, [handleRemoveGraceArea]);
-  React19.useEffect(() => {
+  React18.useEffect(() => {
     if (trigger && content) {
       const handleTriggerLeave = (event) => handleCreateGraceArea(event, content);
       const handleContentLeave = (event) => handleCreateGraceArea(event, trigger);
@@ -6445,7 +3966,7 @@ var TooltipContentHoverable = React19.forwardRef((props, forwardedRef) => {
       };
     }
   }, [trigger, content, handleCreateGraceArea, handleRemoveGraceArea]);
-  React19.useEffect(() => {
+  React18.useEffect(() => {
     if (pointerGraceArea) {
       const handleTrackPointerGrace = (event) => {
         const target = event.target;
@@ -6466,7 +3987,7 @@ var TooltipContentHoverable = React19.forwardRef((props, forwardedRef) => {
   return /* @__PURE__ */ jsx21(TooltipContentImpl, __spreadProps(__spreadValues({}, props), { ref: composedRefs }));
 });
 var [VisuallyHiddenContentContextProvider, useVisuallyHiddenContentContext] = createTooltipContext(TOOLTIP_NAME, { isInside: false });
-var TooltipContentImpl = React19.forwardRef(
+var TooltipContentImpl = React18.forwardRef(
   (props, forwardedRef) => {
     const _a = props, {
       __scopeTooltip,
@@ -6484,11 +4005,11 @@ var TooltipContentImpl = React19.forwardRef(
     const context = useTooltipContext(CONTENT_NAME2, __scopeTooltip);
     const popperScope = usePopperScope(__scopeTooltip);
     const { onClose } = context;
-    React19.useEffect(() => {
+    React18.useEffect(() => {
       document.addEventListener(TOOLTIP_OPEN, onClose);
       return () => document.removeEventListener(TOOLTIP_OPEN, onClose);
     }, [onClose]);
-    React19.useEffect(() => {
+    React18.useEffect(() => {
       if (context.trigger) {
         const handleScroll = (event) => {
           const target = event.target;
@@ -6532,7 +4053,7 @@ var TooltipContentImpl = React19.forwardRef(
 );
 TooltipContent.displayName = CONTENT_NAME2;
 var ARROW_NAME2 = "TooltipArrow";
-var TooltipArrow = React19.forwardRef(
+var TooltipArrow = React18.forwardRef(
   (props, forwardedRef) => {
     const _a = props, { __scopeTooltip } = _a, arrowProps = __objRest(_a, ["__scopeTooltip"]);
     const popperScope = usePopperScope(__scopeTooltip);
@@ -6632,8 +4153,8 @@ function getHullPresorted(points) {
     const p = points[i];
     while (upperHull.length >= 2) {
       const q = upperHull[upperHull.length - 1];
-      const r2 = upperHull[upperHull.length - 2];
-      if ((q.x - r2.x) * (p.y - r2.y) >= (q.y - r2.y) * (p.x - r2.x)) upperHull.pop();
+      const r = upperHull[upperHull.length - 2];
+      if ((q.x - r.x) * (p.y - r.y) >= (q.y - r.y) * (p.x - r.x)) upperHull.pop();
       else break;
     }
     upperHull.push(p);
@@ -6644,8 +4165,8 @@ function getHullPresorted(points) {
     const p = points[i];
     while (lowerHull.length >= 2) {
       const q = lowerHull[lowerHull.length - 1];
-      const r2 = lowerHull[lowerHull.length - 2];
-      if ((q.x - r2.x) * (p.y - r2.y) >= (q.y - r2.y) * (p.x - r2.x)) lowerHull.pop();
+      const r = lowerHull[lowerHull.length - 2];
+      if ((q.x - r.x) * (p.y - r.y) >= (q.y - r.y) * (p.x - r.x)) lowerHull.pop();
       else break;
     }
     lowerHull.push(p);
@@ -6664,6 +4185,7 @@ var Content2 = TooltipContent;
 var Arrow22 = TooltipArrow;
 
 // ../pkg.tooltip/dist/index.mjs
+import { cn as cn13 } from "@xipkg/utils";
 import { jsx as jsx22, jsxs as jsxs3 } from "react/jsx-runtime";
 var __defProp2 = Object.defineProperty;
 var __defProps2 = Object.defineProperties;
@@ -6699,7 +4221,7 @@ var __objRest2 = (source, exclude) => {
 var TooltipProvider2 = Provider;
 var Tooltip2 = Root32;
 var TooltipTrigger2 = Trigger;
-var TooltipArrow2 = React20.forwardRef((_a, ref) => {
+var TooltipArrow2 = React19.forwardRef((_a, ref) => {
   var _b = _a, { className, width = 15, height = 6 } = _b, props = __objRest2(_b, ["className", "width", "height"]);
   return /* @__PURE__ */ jsx22(
     Arrow22,
@@ -6708,7 +4230,7 @@ var TooltipArrow2 = React20.forwardRef((_a, ref) => {
       width,
       height,
       asChild: true,
-      className: cn("fill-gray-0", className)
+      className: cn13("fill-gray-0", className)
     }, props), {
       children: /* @__PURE__ */ jsx22("svg", { width: "14", height: "5", viewBox: "0 0 14 5", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: /* @__PURE__ */ jsx22(
         "path",
@@ -6721,14 +4243,14 @@ var TooltipArrow2 = React20.forwardRef((_a, ref) => {
   );
 });
 TooltipArrow2.displayName = Arrow22.displayName;
-var TooltipContent2 = React20.forwardRef((_a, ref) => {
+var TooltipContent2 = React19.forwardRef((_a, ref) => {
   var _b = _a, { className, sideOffset = 2 } = _b, props = __objRest2(_b, ["className", "sideOffset"]);
   return /* @__PURE__ */ jsxs3(
     Content2,
     __spreadProps2(__spreadValues2({
       ref,
       sideOffset,
-      className: cn(
+      className: cn13(
         "bg-gray-0 animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-w-[200px] overflow-hidden rounded-md px-3 py-1.5 text-sm font-semibold text-gray-100 shadow-[rgba(100,100,111,0.3)_0px_7px_29px_0px]",
         className
       )
@@ -6742,58 +4264,9 @@ var TooltipContent2 = React20.forwardRef((_a, ref) => {
 });
 TooltipContent2.displayName = Content2.displayName;
 
-// ../../node_modules/clsx/dist/clsx.mjs
-function r(e) {
-  var t, f, n = "";
-  if ("string" == typeof e || "number" == typeof e) n += e;
-  else if ("object" == typeof e) if (Array.isArray(e)) {
-    var o = e.length;
-    for (t = 0; t < o; t++) e[t] && (f = r(e[t])) && (n && (n += " "), n += f);
-  } else for (f in e) e[f] && (n && (n += " "), n += f);
-  return n;
-}
-function clsx() {
-  for (var e, t, f = 0, n = "", o = arguments.length; f < o; f++) (e = arguments[f]) && (t = r(e)) && (n && (n += " "), n += t);
-  return n;
-}
-
-// ../../node_modules/class-variance-authority/dist/index.mjs
-var falsyToString = (value) => typeof value === "boolean" ? `${value}` : value === 0 ? "0" : value;
-var cx = clsx;
-var cva = (base, config) => (props) => {
-  var _config_compoundVariants;
-  if ((config === null || config === void 0 ? void 0 : config.variants) == null) return cx(base, props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
-  const { variants, defaultVariants } = config;
-  const getVariantClassNames = Object.keys(variants).map((variant) => {
-    const variantProp = props === null || props === void 0 ? void 0 : props[variant];
-    const defaultVariantProp = defaultVariants === null || defaultVariants === void 0 ? void 0 : defaultVariants[variant];
-    if (variantProp === null) return null;
-    const variantKey = falsyToString(variantProp) || falsyToString(defaultVariantProp);
-    return variants[variant][variantKey];
-  });
-  const propsWithoutUndefined = props && Object.entries(props).reduce((acc, param) => {
-    let [key, value] = param;
-    if (value === void 0) {
-      return acc;
-    }
-    acc[key] = value;
-    return acc;
-  }, {});
-  const getCompoundVariantClassNames = config === null || config === void 0 ? void 0 : (_config_compoundVariants = config.compoundVariants) === null || _config_compoundVariants === void 0 ? void 0 : _config_compoundVariants.reduce((acc, param) => {
-    let _a = param, { class: cvClass, className: cvClassName } = _a, compoundVariantOptions = __objRest(_a, ["class", "className"]);
-    return Object.entries(compoundVariantOptions).every((param2) => {
-      let [key, value] = param2;
-      return Array.isArray(value) ? value.includes(__spreadValues(__spreadValues({}, defaultVariants), propsWithoutUndefined)[key]) : __spreadValues(__spreadValues({}, defaultVariants), propsWithoutUndefined)[key] === value;
-    }) ? [
-      ...acc,
-      cvClass,
-      cvClassName
-    ] : acc;
-  }, []);
-  return cx(base, getVariantClassNames, getCompoundVariantClassNames, props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
-};
-
 // components/SidebarMenuButton.tsx
+import { cn as cn14 } from "@xipkg/utils";
+import { cva } from "class-variance-authority";
 import { jsx as jsx23, jsxs as jsxs4 } from "react/jsx-runtime";
 var sidebarMenuButtonVariants = cva(
   "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-none transition-[width,height,padding] focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50  data-[active=true]:font-medium group-data-[collapsible=icon]:!size-10 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:shrink-0",
@@ -6842,7 +4315,7 @@ var SidebarMenuButton = (_a) => {
       "data-sidebar": "menu-button",
       "data-size": size4,
       "data-active": isActive,
-      className: cn(sidebarMenuButtonVariants({ variant, size: size4 }), className)
+      className: cn14(sidebarMenuButtonVariants({ variant, size: size4 }), className)
     }, props)
   );
   if (!tooltip) {
@@ -6860,6 +4333,7 @@ var SidebarMenuButton = (_a) => {
 };
 
 // components/SidebarMenuItem.tsx
+import { cn as cn15 } from "@xipkg/utils";
 import { jsx as jsx24 } from "react/jsx-runtime";
 var SidebarMenuItem = (_a) => {
   var _b = _a, { className, ref } = _b, props = __objRest(_b, ["className", "ref"]);
@@ -6868,12 +4342,13 @@ var SidebarMenuItem = (_a) => {
     __spreadValues({
       ref,
       "data-sidebar": "menu-item",
-      className: cn("group/menu-item relative", className)
+      className: cn15("group/menu-item relative", className)
     }, props)
   );
 };
 
 // components/SidebarMenuSub.tsx
+import { cn as cn16 } from "@xipkg/utils";
 import { jsx as jsx25 } from "react/jsx-runtime";
 var SidebarMenuSub = (_a) => {
   var _b = _a, { className, ref } = _b, props = __objRest(_b, ["className", "ref"]);
@@ -6882,7 +4357,7 @@ var SidebarMenuSub = (_a) => {
     __spreadValues({
       ref,
       "data-sidebar": "menu-sub",
-      className: cn(
+      className: cn16(
         "border-sidebar-border mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l px-2.5 py-0.5",
         "group-data-[collapsible=icon]:hidden",
         className
@@ -6892,6 +4367,7 @@ var SidebarMenuSub = (_a) => {
 };
 
 // components/SidebarMenuSubButton.tsx
+import { cn as cn17 } from "@xipkg/utils";
 import { jsx as jsx26 } from "react/jsx-runtime";
 var SidebarMenuSubButton = (_a) => {
   var _b = _a, {
@@ -6915,7 +4391,7 @@ var SidebarMenuSubButton = (_a) => {
       "data-sidebar": "menu-sub-button",
       "data-size": size4,
       "data-active": isActive,
-      className: cn(
+      className: cn17(
         "hover:bg-gray-0 hover:gray-80 active:bg-gray-0 active:text-brand-80 [&>svg]:text-gray-80 flex h-8 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
         "data-[active=true]:bg-gray-0 data-[active=true]:text-gray-80",
         size4 === "sm" && "text-xs",
@@ -6934,319 +4410,11 @@ var SidebarMenuSubItem = (_a) => {
   return /* @__PURE__ */ jsx27("li", __spreadValues({ ref }, props));
 };
 
-// ../pkg.icons/dist/index.mjs
-import { jsx as jsx28 } from "react/jsx-runtime";
-import { jsx as jsx29 } from "react/jsx-runtime";
-import { jsx as jsx32 } from "react/jsx-runtime";
-import { jsx as jsx42 } from "react/jsx-runtime";
-import { jsx as jsx52 } from "react/jsx-runtime";
-import { jsx as jsx62 } from "react/jsx-runtime";
-import { jsx as jsx72 } from "react/jsx-runtime";
-import { jsx as jsx82 } from "react/jsx-runtime";
-import { jsx as jsx92 } from "react/jsx-runtime";
-import { jsx as jsx102 } from "react/jsx-runtime";
-import { jsx as jsx112 } from "react/jsx-runtime";
-import { jsx as jsx122 } from "react/jsx-runtime";
-import { jsx as jsx132 } from "react/jsx-runtime";
-import { jsx as jsx142 } from "react/jsx-runtime";
-import { jsx as jsx152, jsxs as jsxs5 } from "react/jsx-runtime";
-import { jsx as jsx162 } from "react/jsx-runtime";
-import { jsx as jsx172 } from "react/jsx-runtime";
-import { jsx as jsx182 } from "react/jsx-runtime";
-import { jsx as jsx192 } from "react/jsx-runtime";
-import { jsx as jsx202 } from "react/jsx-runtime";
-import { jsx as jsx212 } from "react/jsx-runtime";
-import { jsx as jsx222 } from "react/jsx-runtime";
-import { jsx as jsx232 } from "react/jsx-runtime";
-import { jsx as jsx242 } from "react/jsx-runtime";
-import { jsx as jsx252 } from "react/jsx-runtime";
-import { jsx as jsx262 } from "react/jsx-runtime";
-import { jsx as jsx272 } from "react/jsx-runtime";
-import { jsx as jsx282 } from "react/jsx-runtime";
-import { jsx as jsx292 } from "react/jsx-runtime";
-import { jsx as jsx30 } from "react/jsx-runtime";
-import { jsx as jsx31 } from "react/jsx-runtime";
-import { jsx as jsx322 } from "react/jsx-runtime";
-import { jsx as jsx33 } from "react/jsx-runtime";
-import { jsx as jsx34 } from "react/jsx-runtime";
-import { jsx as jsx35 } from "react/jsx-runtime";
-import { jsx as jsx36 } from "react/jsx-runtime";
-import { jsx as jsx37 } from "react/jsx-runtime";
-import { jsx as jsx38 } from "react/jsx-runtime";
-import { jsx as jsx39 } from "react/jsx-runtime";
-import { jsx as jsx40 } from "react/jsx-runtime";
-import { jsx as jsx41 } from "react/jsx-runtime";
-import { jsx as jsx422 } from "react/jsx-runtime";
-import { jsx as jsx43 } from "react/jsx-runtime";
-import { jsx as jsx44 } from "react/jsx-runtime";
-import { jsx as jsx45 } from "react/jsx-runtime";
-import { jsx as jsx46 } from "react/jsx-runtime";
-import { jsx as jsx47 } from "react/jsx-runtime";
-import { jsx as jsx48 } from "react/jsx-runtime";
-import { jsx as jsx49 } from "react/jsx-runtime";
-import { jsx as jsx50 } from "react/jsx-runtime";
-import { jsx as jsx51 } from "react/jsx-runtime";
-import { jsx as jsx522 } from "react/jsx-runtime";
-import { jsx as jsx53 } from "react/jsx-runtime";
-import { jsx as jsx54 } from "react/jsx-runtime";
-import { jsx as jsx55 } from "react/jsx-runtime";
-import { jsx as jsx56 } from "react/jsx-runtime";
-import { jsx as jsx57 } from "react/jsx-runtime";
-import { jsx as jsx58 } from "react/jsx-runtime";
-import { jsx as jsx59 } from "react/jsx-runtime";
-import { jsx as jsx60, jsxs as jsxs22 } from "react/jsx-runtime";
-import { jsx as jsx61 } from "react/jsx-runtime";
-import { jsx as jsx622, jsxs as jsxs32 } from "react/jsx-runtime";
-import { jsx as jsx63 } from "react/jsx-runtime";
-import { jsx as jsx64 } from "react/jsx-runtime";
-import { jsx as jsx65 } from "react/jsx-runtime";
-import { jsx as jsx66 } from "react/jsx-runtime";
-import { jsx as jsx67 } from "react/jsx-runtime";
-import { jsx as jsx68, jsxs as jsxs42 } from "react/jsx-runtime";
-import { jsx as jsx69 } from "react/jsx-runtime";
-import { jsx as jsx70 } from "react/jsx-runtime";
-import { jsx as jsx71 } from "react/jsx-runtime";
-import { jsx as jsx722 } from "react/jsx-runtime";
-import { jsx as jsx73 } from "react/jsx-runtime";
-import { jsx as jsx74 } from "react/jsx-runtime";
-import { jsx as jsx75 } from "react/jsx-runtime";
-import { jsx as jsx76 } from "react/jsx-runtime";
-import { jsx as jsx77 } from "react/jsx-runtime";
-import { jsx as jsx78 } from "react/jsx-runtime";
-import { jsx as jsx79 } from "react/jsx-runtime";
-import { jsx as jsx80 } from "react/jsx-runtime";
-import { jsx as jsx81 } from "react/jsx-runtime";
-import { jsx as jsx822 } from "react/jsx-runtime";
-import { jsx as jsx83 } from "react/jsx-runtime";
-import { jsx as jsx84 } from "react/jsx-runtime";
-import { jsx as jsx85 } from "react/jsx-runtime";
-import { jsx as jsx86 } from "react/jsx-runtime";
-import { jsx as jsx87 } from "react/jsx-runtime";
-import { jsx as jsx88 } from "react/jsx-runtime";
-import { jsx as jsx89 } from "react/jsx-runtime";
-import { jsx as jsx90 } from "react/jsx-runtime";
-import { jsx as jsx91 } from "react/jsx-runtime";
-import { jsx as jsx922 } from "react/jsx-runtime";
-import { jsx as jsx93 } from "react/jsx-runtime";
-import { jsx as jsx94 } from "react/jsx-runtime";
-import { jsx as jsx95 } from "react/jsx-runtime";
-import { jsx as jsx96 } from "react/jsx-runtime";
-import { jsx as jsx97 } from "react/jsx-runtime";
-import { jsx as jsx98 } from "react/jsx-runtime";
-import { jsx as jsx99 } from "react/jsx-runtime";
-import { jsx as jsx100 } from "react/jsx-runtime";
-import { jsx as jsx101 } from "react/jsx-runtime";
-import { jsx as jsx1022 } from "react/jsx-runtime";
-import { jsx as jsx103 } from "react/jsx-runtime";
-import { jsx as jsx104 } from "react/jsx-runtime";
-import { jsx as jsx105 } from "react/jsx-runtime";
-import { jsx as jsx106 } from "react/jsx-runtime";
-import { jsx as jsx107 } from "react/jsx-runtime";
-import { jsx as jsx108 } from "react/jsx-runtime";
-import { jsx as jsx109 } from "react/jsx-runtime";
-import { jsx as jsx110 } from "react/jsx-runtime";
-import { jsx as jsx111 } from "react/jsx-runtime";
-import { jsx as jsx1122 } from "react/jsx-runtime";
-import { jsx as jsx113 } from "react/jsx-runtime";
-import { jsx as jsx114 } from "react/jsx-runtime";
-import { jsx as jsx115 } from "react/jsx-runtime";
-import { jsx as jsx116 } from "react/jsx-runtime";
-import { jsx as jsx117 } from "react/jsx-runtime";
-import { jsx as jsx118 } from "react/jsx-runtime";
-import { jsx as jsx119, jsxs as jsxs52 } from "react/jsx-runtime";
-import { jsx as jsx120, jsxs as jsxs6 } from "react/jsx-runtime";
-import { jsx as jsx121 } from "react/jsx-runtime";
-import { jsx as jsx1222, jsxs as jsxs7 } from "react/jsx-runtime";
-import { jsx as jsx123, jsxs as jsxs8 } from "react/jsx-runtime";
-import { jsx as jsx124 } from "react/jsx-runtime";
-import { jsx as jsx125, jsxs as jsxs9 } from "react/jsx-runtime";
-import { jsx as jsx126 } from "react/jsx-runtime";
-import { jsx as jsx127 } from "react/jsx-runtime";
-import { jsx as jsx128 } from "react/jsx-runtime";
-import { jsx as jsx129, jsxs as jsxs10 } from "react/jsx-runtime";
-import { jsx as jsx130 } from "react/jsx-runtime";
-import { jsx as jsx131 } from "react/jsx-runtime";
-import { jsx as jsx1322 } from "react/jsx-runtime";
-import { jsx as jsx133 } from "react/jsx-runtime";
-import { jsx as jsx134 } from "react/jsx-runtime";
-import { jsx as jsx135 } from "react/jsx-runtime";
-import { jsx as jsx136 } from "react/jsx-runtime";
-import { jsx as jsx137 } from "react/jsx-runtime";
-import { jsx as jsx138 } from "react/jsx-runtime";
-import { jsx as jsx139 } from "react/jsx-runtime";
-import { jsx as jsx140 } from "react/jsx-runtime";
-import { jsx as jsx141, jsxs as jsxs11 } from "react/jsx-runtime";
-import { jsx as jsx1422 } from "react/jsx-runtime";
-import { jsx as jsx143 } from "react/jsx-runtime";
-import { jsx as jsx144 } from "react/jsx-runtime";
-import { jsx as jsx145 } from "react/jsx-runtime";
-import { jsx as jsx146 } from "react/jsx-runtime";
-import { jsx as jsx147 } from "react/jsx-runtime";
-import { jsx as jsx148, jsxs as jsxs12 } from "react/jsx-runtime";
-import { jsx as jsx149 } from "react/jsx-runtime";
-var __defProp3 = Object.defineProperty;
-var __defProps3 = Object.defineProperties;
-var __getOwnPropDescs3 = Object.getOwnPropertyDescriptors;
-var __getOwnPropSymbols3 = Object.getOwnPropertySymbols;
-var __hasOwnProp3 = Object.prototype.hasOwnProperty;
-var __propIsEnum3 = Object.prototype.propertyIsEnumerable;
-var __defNormalProp3 = (obj, key, value) => key in obj ? __defProp3(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues3 = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp3.call(b, prop))
-      __defNormalProp3(a, prop, b[prop]);
-  if (__getOwnPropSymbols3)
-    for (var prop of __getOwnPropSymbols3(b)) {
-      if (__propIsEnum3.call(b, prop))
-        __defNormalProp3(a, prop, b[prop]);
-    }
-  return a;
-};
-var __spreadProps3 = (a, b) => __defProps3(a, __getOwnPropDescs3(b));
-var __objRest3 = (source, exclude) => {
-  var target = {};
-  for (var prop in source)
-    if (__hasOwnProp3.call(source, prop) && exclude.indexOf(prop) < 0)
-      target[prop] = source[prop];
-  if (source != null && __getOwnPropSymbols3)
-    for (var prop of __getOwnPropSymbols3(source)) {
-      if (exclude.indexOf(prop) < 0 && __propIsEnum3.call(source, prop))
-        target[prop] = source[prop];
-    }
-  return target;
-};
-var svgVariants = cva("", {
-  variants: {
-    theme: {
-      default: "fill-gray-80"
-    },
-    size: {
-      default: "h-[24px] w-[24px]",
-      l: "h-[32px] w-[32px]",
-      m: "h-[20px] w-[20px]",
-      s: "h-[16px] w-[16px]"
-    }
-  },
-  defaultVariants: {
-    theme: "default",
-    size: "default"
-  }
-});
-var Svg = (_a) => {
-  var _b = _a, { theme, size: size4, className, children } = _b, rest = __objRest3(_b, ["theme", "size", "className", "children"]);
-  return /* @__PURE__ */ jsx28("svg", __spreadProps3(__spreadValues3({ viewBox: "0 0 24 24", className: cn(svgVariants({ theme, size: size4, className })) }, rest), { children }));
-};
-var Burger = (_a) => {
-  var props = __objRest3(_a, []);
-  return /* @__PURE__ */ jsx132(Svg, __spreadProps3(__spreadValues3({}, props), { children: /* @__PURE__ */ jsx132(
-    "path",
-    {
-      d: "M3.117 4.054c-.412.112-.798.446-.99.859-.09.192-.106.282-.106.588-.001.327.011.386.129.624.156.317.442.598.761.748l.229.107h17.72l.229-.107a1.67 1.67 0 0 0 .761-.748c.118-.238.13-.298.13-.625s-.012-.387-.13-.625a1.67 1.67 0 0 0-.761-.748l-.229-.107-8.78-.008c-6.873-.005-8.82.004-8.963.042m-.168 6.563c-.45.185-.768.544-.887 1.002a1.27 1.27 0 0 0 0 .762c.121.465.467.847.92 1.016l.222.084 8.848-.011 8.848-.01.229-.108a1.505 1.505 0 0 0 .704-2.026c-.123-.255-.428-.549-.704-.678l-.229-.108-8.86-.009-8.86-.009-.231.095m.168 6.437c-.412.112-.798.446-.99.859-.09.192-.106.282-.106.588-.001.327.011.386.129.624.156.317.442.598.761.748l.229.107h17.72l.229-.107a1.67 1.67 0 0 0 .761-.748c.118-.238.13-.298.13-.625s-.012-.387-.13-.625a1.67 1.67 0 0 0-.761-.748l-.229-.107-8.78-.008c-6.873-.005-8.82.004-8.963.042",
-      fillRule: "evenodd"
-    }
-  ) }));
-};
-var Close = (_a) => {
-  var props = __objRest3(_a, []);
-  return /* @__PURE__ */ jsx31(Svg, __spreadProps3(__spreadValues3({}, props), { children: /* @__PURE__ */ jsx31(
-    "path",
-    {
-      d: "M6.213 5.442a.97.97 0 0 0-.756.701.891.891 0 0 0 .068.711c.055.11.926 1.011 2.568 2.656L10.579 12l-2.503 2.51c-1.547 1.551-2.528 2.564-2.568 2.653a.999.999 0 0 0 .627 1.377.883.883 0 0 0 .719-.065c.11-.055 1.011-.926 2.656-2.568L12 13.421l2.49 2.486c1.645 1.642 2.546 2.513 2.656 2.568.4.199.822.129 1.14-.189a.948.948 0 0 0 .189-1.14c-.055-.11-.926-1.011-2.568-2.656L13.421 12l2.486-2.49c1.642-1.645 2.513-2.546 2.568-2.656a.891.891 0 0 0 .068-.711 1.02 1.02 0 0 0-.529-.626 1.059 1.059 0 0 0-.856.002c-.125.062-.919.829-2.668 2.574L12 10.579 9.51 8.093C7.898 6.484 6.964 5.58 6.86 5.53c-.2-.098-.431-.13-.647-.088",
-      fillRule: "evenodd"
-    }
-  ) }));
-};
-
-// ../pkg.button/dist/index.mjs
-import * as React21 from "react";
-import { jsx as jsx150 } from "react/jsx-runtime";
-var __defProp4 = Object.defineProperty;
-var __defProps4 = Object.defineProperties;
-var __getOwnPropDescs4 = Object.getOwnPropertyDescriptors;
-var __getOwnPropSymbols4 = Object.getOwnPropertySymbols;
-var __hasOwnProp4 = Object.prototype.hasOwnProperty;
-var __propIsEnum4 = Object.prototype.propertyIsEnumerable;
-var __defNormalProp4 = (obj, key, value) => key in obj ? __defProp4(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-var __spreadValues4 = (a, b) => {
-  for (var prop in b || (b = {}))
-    if (__hasOwnProp4.call(b, prop))
-      __defNormalProp4(a, prop, b[prop]);
-  if (__getOwnPropSymbols4)
-    for (var prop of __getOwnPropSymbols4(b)) {
-      if (__propIsEnum4.call(b, prop))
-        __defNormalProp4(a, prop, b[prop]);
-    }
-  return a;
-};
-var __spreadProps4 = (a, b) => __defProps4(a, __getOwnPropDescs4(b));
-var __objRest4 = (source, exclude) => {
-  var target = {};
-  for (var prop in source)
-    if (__hasOwnProp4.call(source, prop) && exclude.indexOf(prop) < 0)
-      target[prop] = source[prop];
-  if (source != null && __getOwnPropSymbols4)
-    for (var prop of __getOwnPropSymbols4(source)) {
-      if (exclude.indexOf(prop) < 0 && __propIsEnum4.call(source, prop))
-        target[prop] = source[prop];
-    }
-  return target;
-};
-var spinner = 'before:content-[""] before:animate-spin before:rounded-full before:border-gray-60 before:border-2 before:border-t-transparent disabled:opacity-100';
-var buttonVariants = cva(
-  "inline-flex border-box justify-center items-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
-  {
-    variants: {
-      variant: {
-        default: "text-gray-0 dark:text-gray-100 bg-brand-80 hover:bg-brand-100 active:bg-brand-100 focus:bg-brand-100",
-        secondary: "bg-gray-0 text-gray-100 border-gray-30 border-2 hover:bg-gray-5 active:bg-gray-5 focus:bg-gray-5",
-        ghost: "text-gray-100 bg-gray-0 border-0 hover:bg-gray-5 active:bg-gray-5 focus:bg-gray-5",
-        error: "bg-red-80 text-gray-0 hover:bg-red-100 active:bg-red-100 focus:bg-red-100",
-        success: "bg-green-80 text-gray-0 hover:bg-green-100 active:bg-green-100 focus:bg-green-100",
-        "secondary-error": "bg-red-0 text-red-100 border-2 border-red-100 disabled:text-red-20 disabled:border-red-20 hover:bg-red-20 active:bg-red-20 focus:bg-red-20",
-        "default-spinner": `bg-gray-10 ${spinner}`,
-        "secondary-spinner": `bg-gray-0 border-gray-30 border-2 ${spinner}`,
-        "ghost-spinner": `bg-gray-0 border-0 ${spinner}`
-      },
-      size: {
-        l: "h-14 rounded-xl px-8 text-[20px] pb-[3px]",
-        m: "h-12 rounded-lg px-4 text-[16px] pb-[2px]",
-        s: "h-8 rounded-md px-3 text-[14px] pb-[2px]"
-      }
-    },
-    compoundVariants: [
-      {
-        variant: ["default-spinner", "secondary-spinner", "ghost-spinner"],
-        size: "l",
-        class: "before:w-8 before:h-8 p-0"
-      },
-      {
-        variant: ["default-spinner", "secondary-spinner", "ghost-spinner"],
-        size: "m",
-        class: "before:w-6 before:h-6 p-0"
-      },
-      {
-        variant: ["default-spinner", "secondary-spinner", "ghost-spinner"],
-        size: "s",
-        class: "before:w-4 before:h-4 p-0"
-      }
-    ],
-    defaultVariants: {
-      variant: "default",
-      size: "m"
-    }
-  }
-);
-var Button = React21.forwardRef(
-  (_a, ref) => {
-    var _b = _a, { className, variant, size: size4, asChild = false, children } = _b, props = __objRest4(_b, ["className", "variant", "size", "asChild", "children"]);
-    const Comp = asChild ? Slot : "button";
-    return /* @__PURE__ */ jsx150(Comp, __spreadProps4(__spreadValues4({ className: cn(buttonVariants({ variant, size: size4, className })), ref }, props), { children }));
-  }
-);
-Button.displayName = "Button";
-
 // components/SidebarTrigger.tsx
-import { jsx as jsx151, jsxs as jsxs13 } from "react/jsx-runtime";
+import { Burger, Close } from "@xipkg/icons";
+import { Button } from "@xipkg/button";
+import { cn as cn18 } from "@xipkg/utils";
+import { jsx as jsx28, jsxs as jsxs5 } from "react/jsx-runtime";
 var SidebarTrigger = (_a) => {
   var _b = _a, {
     className,
@@ -7258,14 +4426,14 @@ var SidebarTrigger = (_a) => {
     "onClick"
   ]);
   const { toggleSidebar, open } = useSidebar();
-  return /* @__PURE__ */ jsxs13(
+  return /* @__PURE__ */ jsxs5(
     Button,
     __spreadProps(__spreadValues({
       ref,
       "data-sidebar": "trigger",
       variant: "ghost",
       size: "m",
-      className: cn(
+      className: cn18(
         "h-10 w-10 bg-transparent px-0 focus:bg-transparent active:bg-transparent",
         className
       ),
@@ -7275,98 +4443,96 @@ var SidebarTrigger = (_a) => {
       }
     }, props), {
       children: [
-        open ? /* @__PURE__ */ jsx151(Close, {}) : /* @__PURE__ */ jsx151(Burger, {}),
-        /* @__PURE__ */ jsx151("span", { className: "sr-only", children: "Toggle Sidebar" })
+        open ? /* @__PURE__ */ jsx28(Close, {}) : /* @__PURE__ */ jsx28(Burger, {}),
+        /* @__PURE__ */ jsx28("span", { className: "sr-only", children: "Toggle Sidebar" })
       ]
     })
   );
 };
 
-// context/SidebarProvider.tsx
-import React23 from "react";
-
 // const.ts
 var SIDEBAR_COOKIE_NAME = "sidebar_state";
 var SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
-var SIDEBAR_WIDTH = "16rem";
+var SIDEBAR_WIDTH = "20rem";
 var SIDEBAR_WIDTH_ICON = "3rem";
 var SIDEBAR_KEYBOARD_SHORTCUT = "b";
 
 // context/SidebarProvider.tsx
-import { jsx as jsx153 } from "react/jsx-runtime";
-var SidebarProvider = React23.forwardRef(
-  (_a, ref) => {
-    var _b = _a, {
-      defaultOpen = true,
-      open: openProp,
-      onOpenChange: setOpenProp,
-      className,
-      style,
+import { cn as cn19 } from "@xipkg/utils";
+import { useCallback as useCallback6, useEffect as useEffect9, useMemo as useMemo5, useState as useState10 } from "react";
+import { jsx as jsx29 } from "react/jsx-runtime";
+var SidebarProvider = (_a) => {
+  var _b = _a, {
+    defaultOpen = true,
+    open: openProp,
+    onOpenChange: setOpenProp,
+    className,
+    style,
+    children,
+    ref
+  } = _b, props = __objRest(_b, [
+    "defaultOpen",
+    "open",
+    "onOpenChange",
+    "className",
+    "style",
+    "children",
+    "ref"
+  ]);
+  const [_open, _setOpen] = useState10(defaultOpen);
+  const open = openProp != null ? openProp : _open;
+  const setOpen = useCallback6(
+    (value) => {
+      const openState = typeof value === "function" ? value(open) : value;
+      if (setOpenProp) {
+        setOpenProp(openState);
+      } else {
+        _setOpen(openState);
+      }
+      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+    },
+    [setOpenProp, open]
+  );
+  const toggleSidebar = useCallback6(() => {
+    return setOpen((open2) => !open2);
+  }, [setOpen]);
+  useEffect9(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === SIDEBAR_KEYBOARD_SHORTCUT && (event.metaKey || event.ctrlKey)) {
+        event.preventDefault();
+        toggleSidebar();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [toggleSidebar]);
+  const state = open ? "expanded" : "collapsed";
+  const contextValue = useMemo5(
+    () => ({
+      state,
+      open,
+      setOpen,
+      toggleSidebar
+    }),
+    [state, open, setOpen, toggleSidebar]
+  );
+  return /* @__PURE__ */ jsx29(SidebarContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsx29(TooltipProvider2, { delayDuration: 0, children: /* @__PURE__ */ jsx29(
+    "div",
+    __spreadProps(__spreadValues({
+      style: __spreadValues({
+        "--sidebar-width": SIDEBAR_WIDTH,
+        "--sidebar-width-icon": SIDEBAR_WIDTH_ICON
+      }, style),
+      className: cn19(
+        "group/sidebar-wrapper has-[[data-variant=inset]]:bg-sidebar flex min-h-svh w-full",
+        className
+      ),
+      ref
+    }, props), {
       children
-    } = _b, props = __objRest(_b, [
-      "defaultOpen",
-      "open",
-      "onOpenChange",
-      "className",
-      "style",
-      "children"
-    ]);
-    const [_open, _setOpen] = React23.useState(defaultOpen);
-    const open = openProp != null ? openProp : _open;
-    const setOpen = React23.useCallback(
-      (value) => {
-        const openState = typeof value === "function" ? value(open) : value;
-        if (setOpenProp) {
-          setOpenProp(openState);
-        } else {
-          _setOpen(openState);
-        }
-        document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
-      },
-      [setOpenProp, open]
-    );
-    const toggleSidebar = React23.useCallback(() => {
-      return setOpen((open2) => !open2);
-    }, [setOpen]);
-    React23.useEffect(() => {
-      const handleKeyDown = (event) => {
-        if (event.key === SIDEBAR_KEYBOARD_SHORTCUT && (event.metaKey || event.ctrlKey)) {
-          event.preventDefault();
-          toggleSidebar();
-        }
-      };
-      window.addEventListener("keydown", handleKeyDown);
-      return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [toggleSidebar]);
-    const state = open ? "expanded" : "collapsed";
-    const contextValue = React23.useMemo(
-      () => ({
-        state,
-        open,
-        setOpen,
-        toggleSidebar
-      }),
-      [state, open, setOpen, toggleSidebar]
-    );
-    return /* @__PURE__ */ jsx153(SidebarContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsx153(TooltipProvider2, { delayDuration: 0, children: /* @__PURE__ */ jsx153(
-      "div",
-      __spreadProps(__spreadValues({
-        style: __spreadValues({
-          "--sidebar-width": SIDEBAR_WIDTH,
-          "--sidebar-width-icon": SIDEBAR_WIDTH_ICON
-        }, style),
-        className: cn(
-          "group/sidebar-wrapper has-[[data-variant=inset]]:bg-sidebar flex min-h-svh w-full",
-          className
-        ),
-        ref
-      }, props), {
-        children
-      })
-    ) }) });
-  }
-);
-SidebarProvider.displayName = "SidebarProvider";
+    })
+  ) }) });
+};
 export {
   Sidebar,
   SidebarContent,

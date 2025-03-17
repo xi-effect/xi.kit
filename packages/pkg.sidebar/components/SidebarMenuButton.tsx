@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Tooltip, TooltipContent, TooltipTrigger } from '@xipkg/tooltip';
 
 import { cn } from '@xipkg/utils';

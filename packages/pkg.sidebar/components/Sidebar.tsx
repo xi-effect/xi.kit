@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSidebar } from '../context/SidebarContext';
 
 import { cn } from '@xipkg/utils';
@@ -56,7 +55,7 @@ export const Sidebar = ({
       />
       <div
         className={cn(
-          'fixed inset-y-0 z-10 flex h-full w-[--sidebar-width] transition-[left,right,width] duration-200 ease-linear',
+          'fixed inset-y-0 z-10 flex h-full w-[--sidebar-width] px-4 pb-4 transition-[left,right,width] duration-200 ease-linear',
           side === 'left'
             ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
             : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',

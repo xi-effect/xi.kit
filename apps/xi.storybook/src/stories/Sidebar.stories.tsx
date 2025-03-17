@@ -9,52 +9,36 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarFooter,
-  useSidebar,
   SidebarTrigger,
-  SidebarGroupAction,
-  SidebarMenuAction,
-  SidebarMenuSub,
-  SidebarMenuSubItem,
-  SidebarMenuSubButton,
 } from '@xipkg/sidebar';
 
-import {
-  Home,
-  Calendar,
-  Group,
-  TelegramFilled,
-  Burger,
-  Close,
-  Payments,
-  Materials,
-  FAQ,
-} from '@xipkg/icons';
+import { Home, Calendar, Group, TelegramFilled, Payments, Materials, FAQ } from '@xipkg/icons';
 import { useMediaQuery } from '@xipkg/utils';
 
 const items = [
   {
     title: 'Главная',
-    url: '/active',
+    url: '#',
     icon: Home,
   },
   {
     title: 'Календарь',
-    url: '*',
+    url: '#',
     icon: Calendar,
   },
   {
     title: 'Ученики',
-    url: '*',
+    url: '#',
     icon: Group,
   },
   {
     title: 'Материалы',
-    url: '*',
+    url: '#',
     icon: Materials,
   },
   {
     title: 'Оплаты',
-    url: '*',
+    url: '#',
     icon: Payments,
   },
 ];
@@ -62,12 +46,12 @@ const items = [
 const footerMenu = [
   {
     title: 'Поддержка',
-    url: '*',
+    url: '#',
     icon: TelegramFilled,
   },
   {
     title: 'FAQ',
-    url: '*',
+    url: '#',
     icon: FAQ,
   },
 ];
@@ -86,7 +70,7 @@ const meta = {
     },
   },
   args: {
-    className: 'w-full md:w-[350px] absolute px-4 pb-4',
+    className: 'w-full md:w-[350px] absolute',
   },
 } satisfies Meta<typeof Sidebar>;
 
@@ -116,13 +100,12 @@ const Template: Story['render'] = (args) => {
                 <SidebarMenu>
                   {items.map((item) => (
                     <SidebarMenuItem key={item.title}>
-                      <SidebarMenuButton asChild isActive={item.url === '/active'}>
+                      <SidebarMenuButton asChild isActive={item.title === 'Главная'}>
                         <a href={item.url}>
                           <item.icon className="h-6 w-6" />
                           <span className="text-base">{item.title}</span>
                         </a>
                       </SidebarMenuButton>
-                      <SidebarMenuAction>2</SidebarMenuAction>
                     </SidebarMenuItem>
                   ))}
                 </SidebarMenu>
@@ -152,11 +135,4 @@ const Template: Story['render'] = (args) => {
 export const Default: Story = {
   render: Template,
   args: {},
-};
-
-export const CustomStyles: Story = {
-  render: Template,
-  args: {
-    className: 'absolute',
-  },
 };

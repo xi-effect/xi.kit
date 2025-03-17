@@ -22,7 +22,8 @@
     "@xipkg/button": "^3.0.9",
     "@xipkg/icons": "^2.0.8",
     "@xipkg/sheet": "^1.0.6",
-    "@xipkg/utils": "^1.6.3"
+    "@xipkg/utils": "^1.6.3",
+    "class-variance-authority": "^0.7.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
