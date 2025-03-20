@@ -34,6 +34,14 @@ const config: StorybookConfig = {
             find: '@xipkg/utils',
             replacement: resolve(__dirname, '../../../packages/pkg.utils/index.ts'),
           },
+          {
+            find: '@xipkg/input',
+            replacement: resolve(__dirname, '../../../packages/pkg.input/index.ts'),
+          },
+          {
+            find: '@xipkg/icons',
+            replacement: resolve(__dirname, '../../../packages/pkg.icons/index.ts'),
+          },
         ],
       },
     };
