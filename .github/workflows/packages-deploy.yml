@@ -60,6 +60,10 @@ jobs:
       - name: Perform clean install
         run: npm ci
         working-directory: packages/${{ matrix.package }}
+      
+      - name: Build the package
+        run: npm run build
+        working-directory: packages/${{ matrix.package }}
 
       - name: Publish the package
         run: npm publish

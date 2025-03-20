@@ -25,14 +25,14 @@ export const File = ({ name, url, size, icon, onDelete, className }: FileProps) 
       <a
         href={url}
         download={name}
-        className="text-decoration-none flex w-full items-center gap-2 py-2 pl-3 pr-[14px]"
+        className="text-decoration-none flex w-full items-center gap-2 py-2 pr-[14px] pl-3"
       >
         <div className="relative flex h-12 w-12 shrink-0 items-center justify-center">
           {!icon ? <FileIcon /> : <img src={icon} alt={name} className="rounded" />}
         </div>
 
         <div className="flex grow flex-col overflow-hidden text-left">
-          <p className="truncate font-medium leading-[22px] text-gray-100">{name}</p>
+          <p className="truncate leading-[22px] font-medium text-gray-100">{name}</p>
           <p className="text-gray-80 mt-0.5 text-sm leading-[20px]">{formatBytesSize(size)}</p>
         </div>
         {onDelete && (

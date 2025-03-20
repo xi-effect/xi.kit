@@ -2,12 +2,7 @@
 
 import React from 'react';
 
-import {
-  SmartInput,
-  MarkdownPreview,
-  slateToMarkdown,
-  markdownToSlate,
-} from '@xipkg/inputsmart';
+import { SmartInput, MarkdownPreview, slateToMarkdown, markdownToSlate } from '@xipkg/inputsmart';
 
 const initialValue: any = [
   // {

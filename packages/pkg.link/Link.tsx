@@ -44,11 +44,7 @@ export interface LinkProps
 export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
   ({ className, theme, variant, size, children, ...props }, ref) => {
     return (
-      <a
-        className={cn(linkVariants({ theme, variant, size, className }))}
-        ref={ref}
-        {...props}
-      >
+      <a className={cn(linkVariants({ theme, variant, size, className }))} ref={ref} {...props}>
         {children}
       </a>
     );

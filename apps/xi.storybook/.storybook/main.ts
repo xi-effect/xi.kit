@@ -23,16 +23,16 @@ const config: StorybookConfig = {
     // customize the Vite config here
     return {
       ...config,
-      define: { "process.env": {} },
+      define: { 'process.env': {} },
       resolve: {
         alias: [
           {
-            find: "@xipkg/button",
-            replacement: resolve(__dirname, "../../../packages/pkg.button/index.ts"),
+            find: '@xipkg/button',
+            replacement: resolve(__dirname, '../../../packages/pkg.button/index.ts'),
           },
           {
-            find: "@xipkg/utils",
-            replacement: resolve(__dirname, "../../../packages/pkg.utils/index.ts"),
+            find: '@xipkg/utils',
+            replacement: resolve(__dirname, '../../../packages/pkg.utils/index.ts'),
           },
         ],
       },
