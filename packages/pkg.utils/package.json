@@ -11,6 +11,9 @@
       "default": "./dist/index.mjs"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup index.ts --format esm --dts",
     "prepare": "npm run build",

@@ -1,7 +1,7 @@
 {
   "name": "@xipkg/userprofile",
   "version": "4.0.6",
-"main": "./dist/index.mjs",
+  "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "exports": {
@@ -10,6 +10,9 @@
       "default": "./dist/index.mjs"
     }
   },
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "tsup index.ts --format esm --dts",

@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/input",
-  "version": "2.1.0",
+  "version": "2.2.1",
 "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -10,6 +10,9 @@
       "default": "./dist/index.mjs"
     }
   },
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "tsup index.ts --format esm --dts",
