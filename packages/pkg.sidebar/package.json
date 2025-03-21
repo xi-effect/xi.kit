@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/sidebar",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -10,6 +10,9 @@
       "default": "./dist/index.mjs"
     }
   },
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "tsup index.ts --format esm --dts",
@@ -19,7 +22,7 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@xipkg/button": "^3.0.9",
+    "@xipkg/button": "^3.1.2",
     "@xipkg/icons": "^2.1.0",
     "@xipkg/sheet": "^1.0.6",
     "@xipkg/utils": "^1.7.0",
