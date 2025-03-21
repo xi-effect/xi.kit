@@ -35,78 +35,78 @@ svg {
 
 :root {
   /* gray */
-  --xi-gray-0: #ffffff;	
-  --xi-gray-5: #f7f7f7;
-  --xi-gray-10: #e8e8e8;
-  --xi-gray-20: #cfcfcf;
-  --xi-gray-30: #b8b8b8;
-  --xi-gray-40: #9f9f9f;
-  --xi-gray-50: #888888;
-  --xi-gray-60: #707070;
-  --xi-gray-70: #585858;
-  --xi-gray-80: #404040;
-  --xi-gray-90: #282828;
-  --xi-gray-100: #101010;
+  --xi-gray-0: #FFFFFF;	
+  --xi-gray-5: #F7F7F7;
+  --xi-gray-10: #E7E7E9;
+  --xi-gray-20: #CDCDD1;
+  --xi-gray-30: #B4B5BC;
+  --xi-gray-40: #9A9BA4;
+  --xi-gray-50: #82838E;
+  --xi-gray-60: #6A6C76;
+  --xi-gray-70: #54555C;
+  --xi-gray-80: #3D3E43;
+  --xi-gray-90: #26262A;
+  --xi-gray-100: #0F0F11;
 
   /* brand */
-  --xi-brand-0: #edefff;
-  --xi-brand-20: #b4bdff;
-  --xi-brand-40: #8f9cff;
-  --xi-brand-60: #697bff;
-  --xi-brand-80: #445aff;
-  --xi-brand-100: #3546bd;
+  --xi-brand-0: #F3F4FC;
+  --xi-brand-20: #C5CAEE;
+  --xi-brand-40: #9CA4E2;
+  --xi-brand-60: #7580D7;
+  --xi-brand-80: #4554C9;
+  --xi-brand-100: #3140AA;
 
   /* background */
   --xi-bkgd-main: #edefff;
   --xi-bkgd-block: #ffffff;
 
   /* moscow */
-  --xi-red-0: #fce9e9;
-  --xi-red-20: #f19e9e;
-  --xi-red-40: #eb6e6d;
-  --xi-red-60: #e43d3d;
-  --xi-red-80: #dd0d0c;
-  --xi-red-100: #be0d0c;
+  --xi-red-0: #FAEBEB;
+  --xi-red-20: #F1C5C5;
+  --xi-red-40: #E89E9E;
+  --xi-red-60: #DC6F6F;
+  --xi-red-80: #C23939;
+  --xi-red-100: #942424;
 
   /* ekaterinburg */
-  --xi-green-0: #e4f6e9;
-  --xi-green-20: #99dcab;
-  --xi-green-40: #66cb80;
-  --xi-green-60: #33b956;
-  --xi-green-80: #00a82c;
-  --xi-green-100: #029127;
+  --xi-green-0: #ECF8EC;
+  --xi-green-20: #B4E4B4;
+  --xi-green-40: #8ED78E;
+  --xi-green-60: #68CA68;
+  --xi-green-80: #2E842E;
+  --xi-green-100: #287128;
 
   /* kungur */
-  --xi-orange-0: #fce8de;
-  --xi-orange-20: #f7bc9e;
-  --xi-orange-40: #f49a6e;
-  --xi-orange-60: #f0793e;
-  --xi-orange-80: #ec570e;
-  --xi-orange-100: #cb4c0e;
+  --xi-orange-0: #FBF3EE;
+  --xi-orange-20: #EDC1AB;
+  --xi-orange-40: #E4A281;
+  --xi-orange-60: #DB8457;
+  --xi-orange-80: #B85727;
+  --xi-orange-100: #93471F;
 
   /* arkhangelsk */
-  --xi-yellow-20: #fff5d7;
-  --xi-yellow-40: #ffebaf;
-  --xi-yellow-60: #ffe187;
-  --xi-yellow-100: #ffcd37;
+  --xi-yellow-20: #FDF8E7;
+  --xi-yellow-40: #FAE8B4;
+  --xi-yellow-60: #F7DD8F;
+  --xi-yellow-100: #F3C94C;
 
   /* vladivostok */
-  --xi-violet-20: #efdffb;
-  --xi-violet-40: #cd9cf3;
-  --xi-violet-60: #b46bed;
-  --xi-violet-100: #8208e1;
+  --xi-violet-20: #F3EBFA;
+  --xi-violet-40: #CCA6E9;
+  --xi-violet-60: #B27ADE;
+  --xi-violet-100: #8330C4;
 
   /* volgograd */
-  --xi-pink-20: #fbe0f8;
-  --xi-pink-40: #f19de9;
-  --xi-pink-60: #eb6bde;
-  --xi-pink-100: #dd09c8;
+  --xi-pink-20: #FBE9F9;
+  --xi-pink-40: #EF9FE8;
+  --xi-pink-60: #E76FDB;
+  --xi-pink-100: #BA1FAB;
 
   /* saratov */
-  --xi-cyan-20: #dff4fc;
-  --xi-cyan-40: #9cdef6;
-  --xi-cyan-60: #6bcef1;
-  --xi-cyan-100: #09aee8;
+  --xi-cyan-20: #EAF6FA;
+  --xi-cyan-40: #A8D8EA;
+  --xi-cyan-60: #7DC6DF;
+  --xi-cyan-100: #257D9C;
 }
 
 [data-theme='dark'] {

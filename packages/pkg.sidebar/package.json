@@ -23,6 +23,7 @@
     "@xipkg/icons": "^2.1.0",
     "@xipkg/sheet": "^1.0.6",
     "@xipkg/utils": "^1.7.0",
+    "@xipkg/tooltip": "^2.0.5",
     "class-variance-authority": "^0.7.1"
   },
   "devDependencies": {

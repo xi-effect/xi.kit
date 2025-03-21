@@ -129,7 +129,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         {maxLength > 0 && isFocused && charCount >= threshold && (
           <div
             className={cn(
-              'absolute bottom-2 right-2 text-sm',
+              'absolute right-2 bottom-2 text-sm',
               charCount > maxLength ? 'text-red-80' : 'text-gray-50',
             )}
           >

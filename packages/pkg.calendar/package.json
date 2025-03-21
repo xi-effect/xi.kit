@@ -10,6 +10,9 @@
       "default": "./dist/index.mjs"
     }
   },
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "tsup index.ts --format esm --dts",

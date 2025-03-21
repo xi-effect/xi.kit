@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/button",
-  "version": "3.0.9",
+  "version": "3.1.2",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -10,6 +10,9 @@
       "default": "./dist/index.mjs"
     }
   },
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "tsup index.ts --format esm --dts",

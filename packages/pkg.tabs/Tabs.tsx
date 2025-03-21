@@ -63,7 +63,7 @@ const Trigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      'text-gray-80 flex grow cursor-pointer items-center justify-center whitespace-nowrap bg-transparent pb-1 text-center disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-100 data-[state=active]:hover:cursor-default',
+      'text-gray-80 flex grow cursor-pointer items-center justify-center bg-transparent pb-1 text-center whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-100 data-[state=active]:hover:cursor-default',
       className,
     )}
     {...props}
@@ -78,7 +78,7 @@ const Content = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      'ring-offset-background focus-visible:ring-ring mt-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+      'ring-offset-background focus-visible:ring-ring mt-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
       className,
     )}
     {...props}

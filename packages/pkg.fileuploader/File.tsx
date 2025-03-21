@@ -37,7 +37,7 @@ export const File: FC<FileProps> = ({
     <div className={containerStyles({ size })}>
       <p
         className={cn(
-          'truncate break-all pr-2.5 transition',
+          'truncate pr-2.5 break-all transition',
           !!error ? 'text-red-80' : 'text-gray-90',
         )}
       >
