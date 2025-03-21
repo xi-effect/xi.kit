@@ -136,4 +136,7 @@ export const icons = [
   'Undo',
   'Redo',
   'Pin',
+  'Payments',
+  'Materials',
+  'FAQ',
 ];
