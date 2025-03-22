@@ -3,8 +3,9 @@
 import * as React from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
 
+import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@xipkg/utils';
-import { CaretUp } from '@xipkg/icons';
+import { CaretUp, Folder } from '@xipkg/icons';
 
 const Select = SelectPrimitive.Root;
 
@@ -12,16 +13,57 @@ const SelectGroup = SelectPrimitive.Group;
 
 const SelectValue = SelectPrimitive.Value;
 
-function SelectTrigger({ className, children, ...props }: React.ComponentProps<typeof SelectPrimitive.Trigger>) {
+export const selectTriggerVariants = cva(
+  'border-gray-30 outline-gray-80 focus:border-gray-80 focus-visible:border-gray-80 bg-gray-0 placeholder:text-gray-30 disabled:bg-gray-10 disabled:border-gray-10 flex w-[250px] items-center justify-between text-base hover:border-gray-50 disabled:cursor-not-allowed',
+  {
+    variants: {
+      size: {
+        m: 'h-12 p-3 border-2 rounded-lg text-[16px]',
+        s: 'h-8 p-2 border rounded-md text-[14px]',
+      },
+      error: {
+        true: 'border-red-80 hover:border-red-80 active:border-red-80 focus:border-red-80 outline-red-80',
+        false: '',
+      },
+      warning: {
+        true: 'border-orange-80 hover:border-orange-80 active:border-orange-80 focus:border-orange-80 outline-orange-80',
+        false: '',
+      },
+    },
+    defaultVariants: {
+      size: 'm',
+      error: false,
+      warning: false,
+    },
+  },
+);
+
+interface SelectTriggerProps extends React.ComponentProps<typeof SelectPrimitive.Trigger>, VariantProps<typeof selectTriggerVariants>{
+  before?: React.ReactNode;
+}
+
+function SelectTrigger({ className, children, size, error, warning, before, ...props }:       SelectTriggerProps) {
   return (
     <SelectPrimitive.Trigger
       className={cn(
-        'border-gray-30 outline-gray-80 focus:border-gray-80 focus-visible:border-gray-80 bg-gray-0 placeholder:text-gray-30 disabled:bg-gray-10 disabled:border-gray-10 flex h-12 w-[250px] items-center justify-between rounded-lg border-2 p-3 text-base hover:border-gray-50 disabled:cursor-not-allowed',
-        className,
+        selectTriggerVariants({
+          size,
+          error,
+          warning,
+          className,
+        }),
       )}
       {...props}
     >
-      {children}
+      <div className='flex items-center gap-2'>
+        {!!before && (
+          <SelectPrimitive.Icon asChild>
+            {before}
+          </SelectPrimitive.Icon>
+        )}
+        {children}
+      </div>
+
       <SelectPrimitive.Icon asChild>
         <CaretUp className="fill-gray-80 size-5 rotate-180" />
       </SelectPrimitive.Icon>
@@ -100,4 +142,5 @@ export {
   SelectLabel,
   SelectItem,
   SelectSeparator,
+  type SelectTriggerProps,
 };

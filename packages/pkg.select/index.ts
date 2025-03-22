@@ -7,4 +7,5 @@ export {
   SelectLabel,
   SelectItem,
   SelectSeparator,
+  type SelectTriggerProps,
 } from './Select';
