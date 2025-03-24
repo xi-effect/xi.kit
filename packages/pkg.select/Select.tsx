@@ -55,17 +55,20 @@ function SelectTrigger({ className, children, size, error, warning, before, ...p
       )}
       {...props}
     >
-      <div className='flex items-center gap-2'>
+      
+      <div className='flex items-center gap-2 min-w-0 flex-1'>
         {!!before && (
           <SelectPrimitive.Icon asChild>
             {before}
           </SelectPrimitive.Icon>
         )}
-        {children}
+          <div className="overflow-hidden text-ellipsis whitespace-nowrap">
+            {children}
+          </div>
       </div>
 
       <SelectPrimitive.Icon asChild>
-        <CaretUp className="fill-gray-80 size-5 rotate-180" />
+        <CaretUp className="shrink-0 fill-gray-80 size-5 rotate-180" />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   )
@@ -103,7 +106,7 @@ function SelectContent (
 function SelectLabel({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.Label>) {
   return (
     <SelectPrimitive.Label
-      className={cn('py-1.5 pr-2 pl-8 text-sm font-semibold', className)}
+      className={cn('py-1.5 pr-2 pl-4 text-sm text-gray-40', className)}
       {...props}
     />
   )
