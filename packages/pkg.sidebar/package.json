@@ -1,7 +1,6 @@
 {
-  "name": "@xipkg/utils",
-  "version": "1.7.0",
-  "description": "xi.utils",
+  "name": "@xipkg/sidebar",
+  "version": "0.0.1",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -14,22 +13,31 @@
   "files": [
     "dist"
   ],
+  "license": "MIT",
   "scripts": {
     "build": "tsup index.ts --format esm --dts",
     "prepare": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run build -- --watch",
+    "dev": "npm run build -- --watch",
+    "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "clsx": "^2.0.0",
-    "tailwind-merge": "^1.14.0"
+    "@xipkg/button": "^3.1.2",
+    "@xipkg/icons": "^2.1.0",
+    "@xipkg/sheet": "^1.0.6",
+    "@xipkg/utils": "^1.7.0",
+    "@xipkg/tooltip": "^2.0.5",
+    "class-variance-authority": "^0.7.1"
   },
   "devDependencies": {
-    "tsup": "8.3.6",
     "@types/node": "^17.0.12",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
-    "typescript": "^5.5.3",
-    "@xipkg/typescript": "^0.1.0"
+    "@xipkg/eslint": "^1.4.0",
+    "@xipkg/typescript": "^0.0.6",
+    "eslint": "^9.17.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.5.3"
   },
   "peerDependencies": {
     "react": "^19"
@@ -38,6 +46,6 @@
     "access": "public"
   },
   "author": "xi.effect",
-  "license": "MIT",
-  "gitHead": "33022d3bd6e72a5ccc9097b187742f9139f7d905"
+  "description": "",
+  "gitHead": ""
 }

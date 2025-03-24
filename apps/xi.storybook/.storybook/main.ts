@@ -43,6 +43,10 @@ const config: StorybookConfig = {
             replacement: resolve(__dirname, '../../../packages/pkg.icons/index.ts'),
           },
           {
+            find: '@xipkg/sidebar',
+            replacement: resolve(__dirname, '../../../packages/pkg.sidebar/index.ts'),
+          },
+          {
             find: '@xipkg/select',
             replacement: resolve(__dirname, '../../../packages/pkg.select/index.ts'),
           },

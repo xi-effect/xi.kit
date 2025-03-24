@@ -1,3 +1,4 @@
+import { Materials } from './icons/Materials';
 import { Account } from './icons/Account';
 import { Activity } from './icons/Activity';
 import { Add } from './icons/Add';
@@ -143,6 +144,8 @@ import { DoubleUpArrows } from './icons/DoubleUpArrows';
 import { SimpleAnswertTest } from './icons/SimpleAnswertTest';
 import { DetailedAnswerTest } from './icons/DetailedAnswerTest';
 import { OptionSelectionTest } from './icons/OptionSelectionTest';
+import { Payments } from './icons/Payments';
+import { FAQ } from './icons/FAQ';
 
 import { icons } from './config';
 
@@ -292,6 +295,9 @@ export {
   SimpleAnswertTest,
   DetailedAnswerTest,
   OptionSelectionTest,
+  Payments,
+  Materials,
+  FAQ,
   icons,
 };
 
