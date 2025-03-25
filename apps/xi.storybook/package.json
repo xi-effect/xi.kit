@@ -17,6 +17,7 @@
     "@xipkg/sidebar": "*",
     "@xipkg/icons": "*",
     "@xipkg/tailwind": "*",
+    "@xipkg/select": "*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
