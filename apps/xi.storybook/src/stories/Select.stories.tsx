@@ -87,7 +87,7 @@ export const WithIcon: Story = {
   render: (args) => (
     <Select {...args}>
       <SelectTrigger 
-        {...{...defaultTriggerProps, before: <Folder /> }}
+        {...defaultTriggerProps} before={<Folder />}
       >
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
@@ -108,7 +108,7 @@ export const Small: Story = {
   },
   render: (args) => (
     <Select {...args}>
-      <SelectTrigger {...{...defaultTriggerProps, size: "s"}}>
+      <SelectTrigger {...defaultTriggerProps} size="s">
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>
@@ -129,12 +129,10 @@ export const SmallSelectWithIcon: Story = {
   render: (args) => (
     <Select {...args}>
       <SelectTrigger 
-        {...{
-          ...defaultTriggerProps, 
-          size: 's', 
-          before: <Folder className='w-[19px] h-[16px]' /> 
-        }}
-      >
+          {...defaultTriggerProps}
+          size='s'
+          before={<Folder className='w-[19px] h-[16px]' />}
+      > 
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>
@@ -154,7 +152,7 @@ export const Error: Story = {
   },
   render: (args) => (
     <Select {...args}>
-      <SelectTrigger {...{...defaultTriggerProps, error: true}}>
+      <SelectTrigger {...defaultTriggerProps} error={true}>
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>
@@ -174,7 +172,7 @@ export const Warning: Story = {
   },
   render: (args) => (
     <Select {...args}>
-      <SelectTrigger {...{...defaultTriggerProps, warning: true}}>
+      <SelectTrigger {...defaultTriggerProps} warning={true}>
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>

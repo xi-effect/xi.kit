@@ -5,7 +5,7 @@ import * as SelectPrimitive from '@radix-ui/react-select';
 
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@xipkg/utils';
-import { CaretUp, Folder } from '@xipkg/icons';
+import { CaretUp } from '@xipkg/icons';
 
 const Select = SelectPrimitive.Root;
 
@@ -42,7 +42,7 @@ interface SelectTriggerProps extends React.ComponentProps<typeof SelectPrimitive
   before?: React.ReactNode;
 }
 
-function SelectTrigger({ className, children, size, error, warning, before, ...props }:       SelectTriggerProps) {
+const SelectTrigger = ({ className, children, size, error, warning, before, ...props }:       SelectTriggerProps) => {
   return (
     <SelectPrimitive.Trigger
       className={cn(
@@ -74,9 +74,11 @@ function SelectTrigger({ className, children, size, error, warning, before, ...p
   )
 };
 
-function SelectContent (
+SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
+
+const SelectContent = (
   { className, children, position = 'popper', ...props }: React.ComponentProps<typeof SelectPrimitive.Content>
-) {
+) => {
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
@@ -103,7 +105,10 @@ function SelectContent (
   )
 };
 
-function SelectLabel({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.Label>) {
+SelectContent.displayName = SelectPrimitive.Content.displayName;
+
+const SelectLabel = ({ className, ...props }: 
+  React.ComponentProps<typeof SelectPrimitive.Label>) => {
   return (
     <SelectPrimitive.Label
       className={cn('py-1.5 pr-2 pl-4 text-sm text-gray-40', className)}
@@ -112,7 +117,10 @@ function SelectLabel({ className, ...props }: React.ComponentProps<typeof Select
   )
 };
 
-function SelectItem({ className, children, ...props }: React.ComponentProps<typeof SelectPrimitive.Item>) {
+SelectLabel.displayName = SelectPrimitive.Label.displayName;
+
+const SelectItem = ({ className, children, ...props }: 
+  React.ComponentProps<typeof SelectPrimitive.Item>) => {
   return (
     <SelectPrimitive.Item
       className={cn(
@@ -125,9 +133,11 @@ function SelectItem({ className, children, ...props }: React.ComponentProps<type
     </SelectPrimitive.Item>
   )
 };
-  
 
-function SelectSeparator({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.Separator>) {
+SelectItem.displayName = SelectPrimitive.Item.displayName;
+
+const SelectSeparator = ({ className, ...props }: 
+  React.ComponentProps<typeof SelectPrimitive.Separator>) => {
   return (
     <SelectPrimitive.Separator
       className={cn('bg-gray-10 -mx-3 my-1 h-px', className)}
@@ -135,6 +145,8 @@ function SelectSeparator({ className, ...props }: React.ComponentProps<typeof Se
     />
   )
 };
+
+SelectSeparator.displayName = SelectPrimitive.Separator.displayName;
 
 export {
   Select,
