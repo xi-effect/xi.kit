@@ -9,10 +9,11 @@
   "description": "These are base shared `tsconfig.json`s from which all other `tsconfig.json`'s inherit from.",
   "main": "index.js",
   "scripts": {
+    "build": "echo 'Typescript has no build'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "typescript": "^5.5.3"
+    "typescript": "^5.8.2"
   },
   "publishConfig": {
     "access": "public"

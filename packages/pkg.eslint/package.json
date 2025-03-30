@@ -27,6 +27,7 @@
   },
   "author": "xi.effect",
   "scripts": {
+    "build": "echo 'Eslint has no build'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "description": "",
