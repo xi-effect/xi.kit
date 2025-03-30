@@ -28,15 +28,16 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@xipkg
 const recentIcon = { icon: Clock, name: 'Последние' };
 
 const categoryIcons = [
-  { icon: Emotions, name: 'Лица и эмоции' },
+  { icon: Emotions, name: 'Лица и эмоции' },
   { icon: Nature, name: 'Природа' },
-  { icon: Food, name: 'Еда и напитки' },
+  { icon: Food, name: 'Еда и напитки' },
   { icon: Activity, name: 'Активности' },
-  { icon: Places, name: 'Путешествия и места' },
+  { icon: Places, name: 'Путешествия и места' },
   { icon: Objects, name: 'Объекты' },
   { icon: Heart, name: 'Символы' },
   { icon: Flag, name: 'Флаги' },
 ];
+
 export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) => {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -114,13 +115,13 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="bg-gray-0 h-auto rounded-[4px] p-1">
-          <Emotions />
+        <Button variant="ghost" className="bg-gray-0 dark:bg-gray-100 h-auto rounded-[4px] p-1">
+          <Emotions className="text-gray-80 dark:text-gray-0" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="p-0" align="end" sideOffset={8}>
         <div className="flex h-[296px] w-[276px] rounded-lg">
-          <div className="bg-gray-5 flex flex-col gap-2 p-2">
+          <div className="bg-gray-5 dark:bg-gray-90 flex flex-col gap-2 p-2">
             <TooltipProvider>
               {emojiCategoriesIcons.map(({ icon: Icon, name }, index) => {
                 return (
@@ -132,7 +133,7 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
                           'hover:bg-brand-0 group h-auto rounded-none bg-transparent p-1',
                           index === activeCategoryIndex
                             ? 'bg-brand-0 text-brand-100 focus:bg-brand-0'
-                            : 'text-brand-50',
+                            : 'text-brand-50 dark:text-brand-40',
                         )}
                         onClick={() => selectCategory(index)}
                       >
@@ -150,10 +151,10 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
               })}
             </TooltipProvider>
           </div>
-          <div className="bg-gray-0 flex w-full flex-col gap-2 p-2">
+          <div className="bg-gray-0 dark:bg-gray-100 flex w-full flex-col gap-2 p-2">
             <Input
               variant="s"
-              before={<Search size="s" />}
+              before={<Search size="s" className="text-gray-60 dark:text-gray-40" />}
               placeholder="Поиск"
               className="border"
               value={searchQuery}

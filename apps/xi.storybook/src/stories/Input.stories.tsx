@@ -1,129 +1,94 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Input } from '@xipkg/input';
-import { Close, Link } from '@xipkg/icons';
+import { Search, Eyeoff, Eyeon } from '@xipkg/icons';
+import { useState } from 'react';
 
 const meta = {
   title: 'Components/Input',
   component: Input,
-  tags: ['autodocs'],
   parameters: {
     layout: 'centered',
   },
-  argTypes: {
-    variant: {
-      control: 'select',
-      options: ['m', 's'],
-      description: 'Определяет размер поля ввода',
-      defaultValue: 'm',
-    },
-    error: {
-      control: 'boolean',
-      description: 'Состояние ошибки',
-    },
-    warning: {
-      control: 'boolean',
-      description: 'Состояние предупреждения',
-    },
-    before: {
-      control: 'boolean',
-      description: 'Состояние до, показывает иконку слева от поля ввода',
-    },
-    after: {
-      control: 'boolean',
-      description: 'Состояние после, показывает иконку справа от поля ввода',
-    },
-  },
+  tags: ['autodocs'],
 } satisfies Meta<typeof Input>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    variant: 'm',
-    error: false,
-    warning: false,
+  render: () => <Input placeholder="Введите текст" />,
+};
+
+export const WithIcons: Story = {
+  render: () => (
+    <Input
+      placeholder="Поиск"
+      before={<Search className="w-4 h-4 text-gray-60" />}
+    />
+  ),
+};
+
+export const WithPassword: Story = {
+  render: function WithPasswordStory() {
+    const [showPassword, setShowPassword] = useState(false);
+
+    return (
+      <Input
+        type={showPassword ? 'text' : 'password'}
+        placeholder="Введите пароль"
+        after={
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="text-gray-60 hover:text-gray-80 dark:text-gray-60 dark:hover:text-gray-0"
+          >
+            {showPassword ? (
+              <Eyeoff className="w-4 h-4" />
+            ) : (
+              <Eyeon className="w-4 h-4" />
+            )}
+          </button>
+        }
+      />
+    );
   },
 };
 
-export const DefaultSmall: Story = {
-  args: {
-    variant: 's',
-    error: false,
-    warning: false,
-  },
+export const WithError: Story = {
+  render: () => (
+    <Input
+      placeholder="Введите email"
+      error
+      defaultValue="invalid-email"
+    />
+  ),
 };
 
-export const Error: Story = {
-  args: {
-    variant: 'm',
-    error: true,
-  },
+export const WithWarning: Story = {
+  render: () => (
+    <Input
+      placeholder="Введите пароль"
+      warning
+      defaultValue="weak"
+    />
+  ),
 };
 
-export const Warning: Story = {
-  args: {
-    variant: 'm',
-    warning: true,
-  },
+export const Disabled: Story = {
+  render: () => (
+    <Input
+      placeholder="Отключенное поле"
+      disabled
+      defaultValue="Нельзя изменить"
+    />
+  ),
 };
 
-export const WithBeforeIcon: Story = {
-  args: {
-    variant: 'm',
-    before: <Link />,
-    className: 'pl-11',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Инпут с иконкой в начале',
-      },
-    },
-  },
-};
-
-export const WithBeforeSmallIcon: Story = {
-  args: {
-    variant: 's',
-    before: <Link />,
-    className: 'pl-7',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Инпут с иконкой в начале',
-      },
-    },
-  },
-};
-
-export const WithAfterIcon: Story = {
-  args: {
-    variant: 'm',
-    after: <Close />,
-    className: 'pr-11',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Инпут с иконкой в конце',
-      },
-    },
-  },
-};
-
-export const WithAfterSmallIcon: Story = {
-  args: {
-    variant: 's',
-    after: <Close />,
-    className: 'pr-7',
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Инпут с иконкой в конце',
-      },
-    },
-  },
+export const Small: Story = {
+  render: () => (
+    <Input
+      placeholder="Маленький размер"
+      variant="s"
+    />
+  ),
 };

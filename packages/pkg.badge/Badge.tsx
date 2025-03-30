@@ -8,16 +8,17 @@ export const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: 'border-transparent bg-gray-10 text-gray-90',
-        secondary:
-          'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        destructive:
-          'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
-        outline: 'text-foreground',
+        default: 'border-transparent bg-gray-10 text-gray-90 dark:bg-gray-80 dark:text-gray-10',
+        secondary: 'border-transparent bg-brand-20 text-brand-100 dark:bg-brand-80 dark:text-gray-0',
+        destructive: 'border-transparent bg-red-20 text-red-100 dark:bg-red-80 dark:text-gray-0',
+        success: 'border-transparent bg-green-20 text-green-100 dark:bg-green-80 dark:text-gray-0',
+        warning: 'border-transparent bg-yellow-20 text-yellow-100 dark:bg-yellow-80 dark:text-gray-0',
+        outline: 'text-gray-100 border-gray-30 dark:text-gray-0 dark:border-gray-70',
       },
       size: {
-        m: 'h-7 rounded-md text-[14px]',
-        s: 'h-5 rounded text-[12px]',
+        l: 'h-8 rounded-lg text-[16px] px-3',
+        m: 'h-7 rounded-md text-[14px] px-2.5',
+        s: 'h-5 rounded text-[12px] px-2',
       },
     },
     defaultVariants: {
@@ -29,7 +30,9 @@ export const badgeVariants = cva(
 
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
+    VariantProps<typeof badgeVariants> {
+  asChild?: boolean;
+}
 
 export const Badge = ({ className, variant, size, children, ...props }: BadgeProps) => {
   return (
@@ -38,3 +41,5 @@ export const Badge = ({ className, variant, size, children, ...props }: BadgePro
     </div>
   );
 };
+
+Badge.displayName = 'Badge';

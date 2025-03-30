@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/inputsmart",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -22,33 +22,33 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@xipkg/icons": "2.0.8",
-    "@xipkg/button": "3.0.9",
-    "@xipkg/utils": "^1.6.3",
+    "@xipkg/icons": "2.2.0",
+    "@xipkg/button": "3.1.2",
+    "@xipkg/utils": "^1.7.0",
     "slate": "0.112.0",
-    "slate-react": "0.112.0",
-    "slate-dom": "0.111.0",
+    "slate-react": "0.112.1",
+    "slate-dom": "0.112.2",
     "slate-history": "0.110.3",
-    "@floating-ui/react": "0.26.25",
-    "prismjs": "1.29.0",
+    "@floating-ui/react": "0.27.5",
+    "prismjs": "1.30.0",
     "unified": "11.0.5",
     "remark-parse": "11.0.0",
-    "remark-gfm": "4.0.0",
-    "react-markdown": "9.0.1",
+    "remark-gfm": "4.0.1",
+    "react-markdown": "10.1.0",
     "rehype-raw": "7.0.0",
     "rehype-react": "8.0.0",
     "@xipkg/slatetypes": "0.0.3"
   },
   "devDependencies": {
-    "tsup": "^8.3.5",
-    "@types/prismjs": "1.26.5",
-    "@types/node": "^17.0.12",
-    "@types/react": "^19.0.2",
-    "@types/react-dom": "^19.0.2",
-    "@xipkg/eslint": "^1.4.0",
-    "@xipkg/typescript": "^0.0.6",
-    "eslint": "^9.17.0",
-    "typescript": "^5.5.3"
+    "tsup": "^8.4.0",
+    "@types/node": "^22.13.14",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
+    "@xipkg/eslint": "^3.2.0",
+    "@xipkg/typescript": "^0.1.0",
+    "eslint": "^9.23.0",
+    "typescript": "^5.8.2",
+    "@types/prismjs": "1.26.5"
   },
   "peerDependencies": {
     "react": "^19"
@@ -57,6 +57,6 @@
     "access": "public"
   },
   "author": "xi.effect",
-  "description": "",
-  "gitHead": "33022d3bd6e72a5ccc9097b187742f9139f7d905"
+  "description": "Smart Input component for xi.effect design system",
+  "gitHead": ""
 }

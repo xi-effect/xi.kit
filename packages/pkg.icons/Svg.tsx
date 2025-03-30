@@ -3,16 +3,17 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@xipkg/utils';
 
-export const svgVariants = cva('', {
+const svgVariants = cva('', {
   variants: {
     theme: {
-      default: 'fill-gray-80',
+      default: 'text-gray-80 dark:text-gray-0',
+      brand: 'text-brand-60 dark:text-brand-40',
+      destructive: 'text-red-80 dark:text-red-40',
     },
     size: {
-      default: 'h-[24px] w-[24px]',
-      l: 'h-[32px] w-[32px]',
-      m: 'h-[20px] w-[20px]',
-      s: 'h-[16px] w-[16px]',
+      default: 'w-6 h-6',
+      sm: 'w-4 h-4',
+      lg: 'w-8 h-8',
     },
   },
   defaultVariants: {
