@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/sheet",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -23,18 +23,18 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",
-    "@xipkg/utils": "^1.7.0",
     "@xipkg/icons": "^2.2.0",
+    "@xipkg/utils": "^1.7.0",
     "class-variance-authority": "^0.7.1"
   },
   "devDependencies": {
-    "tsup": "^8.4.0",
     "@types/node": "^22.13.14",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "@xipkg/eslint": "^3.2.0",
     "@xipkg/typescript": "^0.1.0",
     "eslint": "^9.23.0",
+    "tsup": "^8.4.0",
     "typescript": "^5.8.2"
   },
   "peerDependencies": {

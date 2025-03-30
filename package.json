@@ -7,7 +7,10 @@
     "storybook": "turbo run storybook --filter=xi.storybook",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "format-check": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "publish": "npx lerna publish --no-git-tag-version"
+    "publish": "npx lerna publish --no-git-tag-version",
+    "up-all-patch": "lerna version patch --yes --no-git-tag-version --no-push",
+    "up-all-minor": "lerna version minor --yes --no-git-tag-version --no-push",
+    "up-all-major": "lerna version major --yes --no-git-tag-version --no-push"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

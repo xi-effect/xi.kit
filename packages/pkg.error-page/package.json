@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/error-page",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -26,13 +26,13 @@
     "@xipkg/link": "2.0.5"
   },
   "devDependencies": {
-    "tsup": "^8.4.0",
     "@types/node": "^22.13.14",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "@xipkg/eslint": "^3.2.0",
     "@xipkg/typescript": "^0.1.0",
     "eslint": "^9.23.0",
+    "tsup": "^8.4.0",
     "typescript": "^5.8.2"
   },
   "peerDependencies": {
