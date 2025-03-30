@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/sidebar",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -22,10 +22,10 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@xipkg/button": "^3.1.4",
+    "@xipkg/button": "^3.1.5",
     "@xipkg/icons": "^2.1.0",
     "@xipkg/sheet": "^1.0.6",
-    "@xipkg/tooltip": "^2.0.7",
+    "@xipkg/tooltip": "^2.0.8",
     "@xipkg/utils": "^1.7.0",
     "class-variance-authority": "^0.7.1"
   },

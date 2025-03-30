@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/file",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@xipkg/icons": "^2.2.0",
-    "@xipkg/utils": "^1.7.0"
+    "@xipkg/utils": "^1.7.1"
   },
   "devDependencies": {
     "@types/node": "^22.13.14",
