@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/emojipicker",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -22,11 +22,11 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@xipkg/button": "^3.1.5",
-    "@xipkg/dropdown": "^3.0.9",
+    "@xipkg/button": "^3.1.6",
+    "@xipkg/dropdown": "^3.0.10",
     "@xipkg/icons": "^2.2.0",
-    "@xipkg/input": "^2.2.6",
-    "@xipkg/tooltip": "^2.0.8",
+    "@xipkg/input": "^2.2.7",
+    "@xipkg/tooltip": "^2.0.9",
     "@xipkg/utils": "^1.7.0",
     "class-variance-authority": "^0.7.1",
     "emoji-mart": "^5.6.0"
