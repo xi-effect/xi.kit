@@ -129,12 +129,9 @@ export const UserProfile = ({
   return (
     <div className={cn(userProfileVariants({ size }), className)} {...props}>
       <Avatar size={size}>
+        {/* @ts-ignore */}
         <AvatarImage
           src={`https://auth.xieffect.ru/api/users/${userId}/avatar.webp`}
-          imageProps={{
-            src: `https://auth.xieffect.ru/api/users/${userId}/avatar.webp`,
-            alt: 'user avatar',
-          }}
           alt="user avatar"
         />
         {loading ? (

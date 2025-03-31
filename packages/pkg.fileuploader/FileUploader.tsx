@@ -6,28 +6,28 @@ import { FileUploaderProps, DefaultInputPropsT } from './types';
 import { stopDefaultEvents, validateSize } from './utils';
 
 const containerStyles = cva(
-  'flex group items-center rounded-lg border border-dashed border-gray-40 bg-gray-0 transition-[outline_shadow] px-2 max-w-[500px] gap-3 focus-within:border-solid focus-within:border-gray-80',
+  'flex group items-center rounded-lg border border-dashed border-gray-40 bg-gray-0 dark:border-gray-60 dark:bg-gray-100 transition-[outline_shadow] px-2 max-w-[500px] gap-3 focus-within:border-solid focus-within:border-gray-80 dark:focus-within:border-gray-40',
   {
     variants: {
       size: {
         large:
-          'h-[92px] p-6 justify-center flex-col gap-2 border-brand-60 bg-brand-0 hover:border-brand-80',
+          'h-[92px] p-6 justify-center flex-col gap-2 border-brand-60 bg-brand-0 hover:border-brand-80 dark:border-brand-40 dark:bg-brand-20 dark:hover:border-brand-60',
         medium:
-          'min-h-[48px] pt-3 pb-[14px] [&_svg]:w-6 [&_svg]:h-6 px-3 hover:bg-gray-5 hover:border-transparent',
+          'min-h-[48px] pt-3 pb-[14px] [&_svg]:w-6 [&_svg]:h-6 px-3 hover:bg-gray-5 dark:hover:bg-gray-90 hover:border-transparent',
         small:
-          'min-h-[32px] pt-[5px] pb-[7px] [&_svg]:w-4 [&_svg]:h-4 px-2 rounded-md hover:bg-gray-5 hover:border-transparent',
+          'min-h-[32px] pt-[5px] pb-[7px] [&_svg]:w-4 [&_svg]:h-4 px-2 rounded-md hover:bg-gray-5 dark:hover:bg-gray-90 hover:border-transparent',
       },
       isDragOver: {
-        true: 'shadow-[0px_0px_0px_4px_var(--xi-brand-80)] outline-offset-4 outline-4 outline-brand-20 outline border-transparent',
+        true: 'shadow-[0px_0px_0px_4px_var(--xi-brand-80)] outline-offset-4 outline-4 outline-brand-20 outline border-transparent dark:shadow-[0px_0px_0px_4px_var(--xi-brand-60)] dark:outline-brand-40',
       },
       isError: {
-        true: 'ring-2 ring-red-60 !border-transparent',
+        true: 'ring-2 ring-red-60 dark:ring-red-40 !border-transparent',
       },
       isWarning: {
-        true: 'ring-2 ring-orange-80 !border-transparent',
+        true: 'ring-2 ring-orange-80 dark:ring-orange-40 !border-transparent',
       },
       isDisabled: {
-        true: 'bg-gray-10 pointer-events-none border-gray-30',
+        true: 'bg-gray-10 dark:bg-gray-90 pointer-events-none border-gray-30 dark:border-gray-70',
       },
     },
   },
@@ -39,12 +39,12 @@ const titleStyles = cva('text-sm text-center', {
       true: 'pointer-events-none',
     },
     isDisabled: {
-      true: '!text-gray-30 [&_span]:text-gray-30',
+      true: '!text-gray-30 dark:!text-gray-60 [&_span]:text-gray-30 dark:[&_span]:text-gray-60',
     },
     size: {
-      large: 'text-brand-60 group-hover:text-brand-80 font-medium',
-      medium: 'text-base text-gray-80 group-hover:text-gray-100',
-      small: 'text-gray-80 group-hover:text-gray-100',
+      large: 'text-brand-60 group-hover:text-brand-80 dark:text-brand-40 dark:group-hover:text-brand-60 font-medium',
+      medium: 'text-base text-gray-80 group-hover:text-gray-100 dark:text-gray-40 dark:group-hover:text-gray-20',
+      small: 'text-gray-80 group-hover:text-gray-100 dark:text-gray-40 dark:group-hover:text-gray-20',
     },
   },
 });
@@ -93,10 +93,10 @@ export const FileUploader = ({
     const fileList = [...files];
     if (fileList.length > limit || !validateSize(fileList, bytesSizeLimit)) {
       return setError(
-        `Можно отправить не более ${limit} ${plural(
+        `Можно отправить не более ${limit} ${plural(
           pluralFiles,
           limit,
-        )} общим объёмом до ${formatedSizeLimit}`,
+        )} общим объёмом до ${formatedSizeLimit}`,
       );
     }
 
@@ -161,27 +161,27 @@ export const FileUploader = ({
             {fileInput}
             <p className={titleStyles({ isDragOver, size, isDisabled: disabled })}>
               {isLarge ? (
-                'Перетащите сюда или выберите файл'
+                'Перетащите сюда или выберите файл'
               ) : (
                 <>
-                  <span className="text-gray-90 group-hover:text-gray-100">Выберите файл</span> или
+                  <span className="text-gray-90 group-hover:text-gray-100 dark:text-gray-20 dark:group-hover:text-gray-0">Выберите файл</span> или
                   перетащите сюда
                 </>
               )}
             </p>
 
             {isLarge && fileTypesHint && withLargeError && (
-              <p className="group-hover:text-brand-60 text-brand-40 text-center text-xs">
+              <p className="group-hover:text-brand-60 dark:group-hover:text-brand-40 text-brand-40 dark:text-brand-60 text-center text-xs">
                 {descriptionText ||
                   `${fileTypesHint.map((el) => el.toUpperCase()).join(', ')} до ${formatedSizeLimit}`}
               </p>
             )}
 
-            {!isLarge && <Upload className="ml-auto" />}
+            {!isLarge && <Upload className="ml-auto text-gray-60 dark:text-gray-40" />}
           </div>
         )}
       </label>
-      {error && withError && <p className="mt-4 text-sm leading-5 text-gray-100">{error}</p>}
+      {error && withError && <p className="mt-4 text-sm leading-5 text-gray-100 dark:text-gray-0">{error}</p>}
     </div>
   );
 };

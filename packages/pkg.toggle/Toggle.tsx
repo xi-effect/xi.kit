@@ -38,16 +38,14 @@ export const toggleThumbVariants = cva(
 
 export interface SwitchProps
   extends React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>,
-    VariantProps<typeof toggleVariants> {}
+    VariantProps<typeof toggleVariants> {
+  ref?: React.Ref<React.ElementRef<typeof SwitchPrimitives.Root>>;
+}
 
-const Switch = React.forwardRef<React.ElementRef<typeof SwitchPrimitives.Root>, SwitchProps>(
-  ({ size, className, ...props }, ref) => (
-    <SwitchPrimitives.Root className={toggleVariants({ size, className })} {...props} ref={ref}>
-      <SwitchPrimitives.Thumb className={toggleThumbVariants({ size })} />
-    </SwitchPrimitives.Root>
-  ),
+const Switch = ({ size, className, ref, ...props }: SwitchProps) => (
+  <SwitchPrimitives.Root className={toggleVariants({ size, className })} {...props} ref={ref}>
+    <SwitchPrimitives.Thumb className={toggleThumbVariants({ size })} />
+  </SwitchPrimitives.Root>
 );
-
-Switch.displayName = SwitchPrimitives.Root.displayName;
 
 export { Switch };

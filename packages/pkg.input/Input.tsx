@@ -4,7 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@xipkg/utils';
 
 export const inputVariants = cva(
-  'flex w-full rounded-md border-2 border-gray-30 bg-gray-0 text-gray-80 hover:border-gray-50 active:border-gray-30 focus:border-gray-80 focus-visible:outline-none px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-30 disabled:cursor-not-allowed disabled:bg-gray-10',
+  'flex w-full rounded-md border-2 border-gray-30 bg-gray-0 text-gray-80 hover:border-gray-50 active:border-gray-30 focus:border-gray-80 focus-visible:outline-none px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-30 disabled:cursor-not-allowed disabled:bg-gray-10 dark:bg-gray-100 dark:text-gray-0 dark:border-gray-70 dark:hover:border-gray-60 dark:active:border-gray-70 dark:focus:border-gray-40 dark:placeholder:text-gray-60 dark:disabled:bg-gray-90',
   {
     variants: {
       variant: {
@@ -12,11 +12,11 @@ export const inputVariants = cva(
         s: 'h-8 px-2 rounded-md text-[14px]',
       },
       error: {
-        true: 'border-red-80 hover:border-red-80 active:border-red-80 focus:border-red-80',
+        true: 'border-red-80 hover:border-red-80 active:border-red-80 focus:border-red-80 dark:border-red-40 dark:hover:border-red-40 dark:active:border-red-40 dark:focus:border-red-40',
         false: '',
       },
       warning: {
-        true: 'border-orange-80 hover:border-orange-80 active:border-orange-80 focus:border-orange-80',
+        true: 'border-orange-80 hover:border-orange-80 active:border-orange-80 focus:border-orange-80 dark:border-orange-40 dark:hover:border-orange-40 dark:active:border-orange-40 dark:focus:border-orange-40',
         false: '',
       },
       beforeBool: {

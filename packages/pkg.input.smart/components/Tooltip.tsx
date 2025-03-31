@@ -106,14 +106,16 @@ export function Tooltip({ children, ...options }: { children: React.ReactNode } 
   return <TooltipContext.Provider value={tooltip}>{children}</TooltipContext.Provider>;
 }
 
-export const TooltipTrigger = React.forwardRef<
-  HTMLElement,
-  React.HTMLProps<HTMLElement> & { asChild?: boolean }
->(({ children, asChild = false, ...props }, propRef) => {
+interface TooltipTriggerProps extends React.HTMLProps<HTMLElement> {
+  asChild?: boolean;
+  ref?: React.Ref<HTMLElement>;
+}
+
+export const TooltipTrigger = ({ children, asChild = false, ...props }: TooltipTriggerProps) => {
   const state = useTooltipState();
 
   const childrenRef = (children as any).ref;
-  const ref = useMergeRefs([state.refs.setReference, propRef, childrenRef]);
+  const ref = useMergeRefs([state.refs.setReference, props.ref, childrenRef]);
 
   if (asChild && React.isValidElement(children)) {
     return React.cloneElement(
@@ -138,7 +140,7 @@ export const TooltipTrigger = React.forwardRef<
       {children}
     </span>
   );
-});
+};
 
 TooltipTrigger.displayName = 'TooltipTrigger';
 

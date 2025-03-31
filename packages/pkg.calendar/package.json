@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/calendar",
-  "version": "2.0.5",
+  "version": "2.0.11",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -22,22 +22,23 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.1.1",
-    "@xipkg/utils": "^1.6.3",
-    "class-variance-authority": "^0.7.0",
-    "react-day-picker": "9.4.4",
-    "@xipkg/icons": "2.0.8",
-    "@xipkg/button": "3.0.9"
+    "@radix-ui/react-slot": "^1.1.2",
+    "@xipkg/button": "^3.1.7",
+    "@xipkg/icons": "^2.2.0",
+    "@xipkg/utils": "^1.7.0",
+    "class-variance-authority": "^0.7.1",
+    "date-fns": "^4.1.0",
+    "react-day-picker": "^9.6.4"
   },
   "devDependencies": {
-    "tsup": "^8.3.5",
-    "@types/node": "^17.0.12",
-    "@types/react": "^19.0.2",
-    "@types/react-dom": "^19.0.2",
-    "@xipkg/eslint": "^1.4.0",
-    "@xipkg/typescript": "^0.0.6",
-    "eslint": "^9.17.0",
-    "typescript": "^5.5.3"
+    "@types/node": "^22.13.14",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
+    "@xipkg/eslint": "^3.2.0",
+    "@xipkg/typescript": "^0.1.0",
+    "eslint": "^9.23.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2"
   },
   "peerDependencies": {
     "react": "^19"
@@ -46,6 +47,6 @@
     "access": "public"
   },
   "author": "xi.effect",
-  "description": "",
+  "description": "Calendar component for xi.effect design system",
   "gitHead": "33022d3bd6e72a5ccc9097b187742f9139f7d905"
 }

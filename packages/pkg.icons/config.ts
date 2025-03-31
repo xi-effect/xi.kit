@@ -139,4 +139,4 @@ export const icons = [
   'Payments',
   'Materials',
   'FAQ',
-];
+] as const;

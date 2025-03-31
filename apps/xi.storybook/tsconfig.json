@@ -1,4 +1,34 @@
 {
-  "files": [],
-  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
+  "extends": "@xipkg/typescript/react-library.json",
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@xipkg/avatar": ["../../packages/pkg.avatar/src"],
+      "@xipkg/button": ["../../packages/pkg.button/src"],
+      "@xipkg/checkbox": ["../../packages/pkg.checkbox/src"],
+      "@xipkg/icons": ["../../packages/pkg.icons/src"],
+      "@xipkg/input": ["../../packages/pkg.input/src"],
+      "@xipkg/inputmask": ["../../packages/pkg.inputmask/src"],
+      "@xipkg/inputsmart": ["../../packages/pkg.inputsmart/src"],
+      "@xipkg/label": ["../../packages/pkg.label/src"],
+      "@xipkg/link": ["../../packages/pkg.link/src"],
+      "@xipkg/modal": ["../../packages/pkg.modal/src"],
+      "@xipkg/popover": ["../../packages/pkg.popover/src"],
+      "@xipkg/radio": ["../../packages/pkg.radio/src"],
+      "@xipkg/scrollarea": ["../../packages/pkg.scrollarea/src"],
+      "@xipkg/select": ["../../packages/pkg.select/src"],
+      "@xipkg/sheet": ["../../packages/pkg.sheet/src"],
+      "@xipkg/sidebar": ["../../packages/pkg.sidebar/src"],
+      "@xipkg/slider": ["../../packages/pkg.slider/src"],
+      "@xipkg/switcher": ["../../packages/pkg.switcher/src"],
+      "@xipkg/tabs": ["../../packages/pkg.tabs/src"],
+      "@xipkg/textarea": ["../../packages/pkg.textarea/src"],
+      "@xipkg/toggle": ["../../packages/pkg.toggle/src"],
+      "@xipkg/tooltip": ["../../packages/pkg.tooltip/src"],
+      "@xipkg/userprofile": ["../../packages/pkg.userprofile/src"],
+      "@xipkg/utils": ["../../packages/pkg.utils/src"]
+    }
+  }
 }

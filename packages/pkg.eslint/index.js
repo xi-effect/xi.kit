@@ -1,75 +1,29 @@
-module.exports = {
-  env: {
-    browser: true,
-    commonjs: true,
-    es2021: true,
-    node: true,
-  },
-  parser: '@typescript-eslint/parser',
-  extends: [
-    'next/core-web-vitals', // next 12+ требует core-web-vitals для актуальных проверок
-    'turbo',
-    'prettier',
-    'eslint:recommended',
-    'airbnb',
-    'airbnb/hooks',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
-    'plugin:jsx-a11y/recommended',
-    'plugin:@typescript-eslint/recommended',
-  ],
-  ignorePatterns: ['sw.js', 'workbox-*.js', 'fallback-*.js', 'templates/**/*.tsx|ts|js'],
-  plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
-  rules: {
-    'semi': ['error', 'always'],
-    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    'react/react-in-jsx-scope': 'off', // не нужно для Next.js
-    'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts', '.jsx', '.js'] }],
-    'react/display-name': 'warn',
-    'react/jsx-props-no-spreading': 'off',
-    'react/no-array-index-key': 'warn',
-    'react/function-component-definition': 'off',
-    'import/prefer-default-export': 'off',
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        js: 'never',
-        jsx: 'never',
-        ts: 'never',
-        tsx: 'never',
-      },
-    ],
-    'import/no-unresolved': 'off',
-    'no-restricted-syntax': 'off',
-    'no-use-before-define': 'off',
-    'react/require-default-props': 'off',
-    'no-shadow': 'off',
-    'react-hooks/exhaustive-deps': 'warn',
-    'jsx-a11y/anchor-is-valid': 'off',
-    'linebreak-style': 'off',
-    'import/no-cycle': 'off',
-    'object-curly-newline': 'off',
-    'implicit-arrow-linebreak': 'off',
-    indent: 'off',
-    'react/jsx-wrap-multilines': 'off',
-    'react/jsx-curly-newline': 'off',
-    'react/jsx-one-expression-per-line': 'off',
-    'no-irregular-whitespace': 'off',
-    'operator-linebreak': 'off',
-    'no-confusing-arrow': 'off',
-    'function-paren-newline': 'off',
-    'newline-per-chained-call': 'off',
-    '@next/next/no-html-link-for-pages': 'off',
-    '@next/next/no-duplicate-head': 'off',
-  },
-  settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
-      typescript: {}, // Для корректного резолва ts путей
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import tseslint from 'typescript-eslint';
+
+export default tseslint.config(
+  { ignores: ['dist'] },
+  {
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+      'semi': ['error', 'always'],
     },
   },
-};
+);

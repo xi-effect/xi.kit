@@ -3,10 +3,10 @@
 import * as ScrollAreaPrimitive from '@radix-ui/react-scroll-area';
 import { cn } from '@xipkg/utils';
 
-type ScrollAreaProps = ScrollAreaPrimitive.ScrollAreaProps & {
+interface ScrollAreaProps extends ScrollAreaPrimitive.ScrollAreaProps {
   className?: string;
   ref?: React.Ref<HTMLDivElement>;
-};
+}
 
 const ScrollArea = ({ className, children, ref, ...props }: ScrollAreaProps) => {
   return (
@@ -24,10 +24,10 @@ const ScrollArea = ({ className, children, ref, ...props }: ScrollAreaProps) => 
   );
 };
 
-type ScrollBarProps = ScrollAreaPrimitive.ScrollAreaScrollbarProps & {
+interface ScrollBarProps extends ScrollAreaPrimitive.ScrollAreaScrollbarProps {
   className?: string;
   ref?: React.Ref<HTMLDivElement>;
-};
+}
 
 const ScrollBar = ({ className, orientation = 'vertical', ref, ...props }: ScrollBarProps) => {
   return (
@@ -36,13 +36,13 @@ const ScrollBar = ({ className, orientation = 'vertical', ref, ...props }: Scrol
       ref={ref}
       orientation={orientation}
       className={cn(
-        'flex touch-none transition-colors select-none',
+        'flex touch-none select-none transition-colors',
         orientation === 'vertical' && 'h-full w-2.5 border-l border-l-transparent p-[1px]',
         orientation === 'horizontal' && 'h-2.5 flex-col border-t border-t-transparent p-[1px]',
         className,
       )}
     >
-      <ScrollAreaPrimitive.ScrollAreaThumb className="bg-gray-20 relative flex-1 rounded-full" />
+      <ScrollAreaPrimitive.ScrollAreaThumb className="relative flex-1 rounded-full bg-gray-20" />
     </ScrollAreaPrimitive.ScrollAreaScrollbar>
   );
 };

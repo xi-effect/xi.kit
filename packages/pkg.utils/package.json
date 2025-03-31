@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/utils",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "xi.utils",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
@@ -24,12 +24,12 @@
     "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
-    "tsup": "8.3.6",
     "@types/node": "^17.0.12",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
-    "typescript": "^5.5.3",
-    "@xipkg/typescript": "^0.1.0"
+    "@xipkg/typescript": "^0.1.0",
+    "tsup": "8.3.6",
+    "typescript": "^5.5.3"
   },
   "peerDependencies": {
     "react": "^19"
