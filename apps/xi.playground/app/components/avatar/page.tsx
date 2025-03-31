@@ -7,10 +7,6 @@ const AvatarPage = () => (
     <Avatar size="l">
       <AvatarImage
         src={`https://auth.xieffect.ru/api/users/3/avatar.webp`}
-        imageProps={{
-          src: `https://auth.xieffect.ru/api/users/3/avatar.webp`,
-          alt: '@shadcn',
-        }}
         alt="@shadcn"
       />
       <AvatarFallback>CN</AvatarFallback>
@@ -18,10 +14,6 @@ const AvatarPage = () => (
     <Avatar size="l">
       <AvatarImage
         src={`https://auth.xieffect.ru/api/users/2/avatar.webp`}
-        imageProps={{
-          src: `https://auth.xieffect.ru/api/users/2/avatar.webp`,
-          alt: '@shadcn',
-        }}
         alt="@shadcn"
       />
       <AvatarFallback />
@@ -29,11 +21,7 @@ const AvatarPage = () => (
     <Avatar size="l">
       <AvatarImage
         src={`https://auth.xieffect.ru/api/users/3/avatar.webp`}
-        imageProps={{
-          src: `https://auth.xieffect.ru/api/users/3/avatar.webp`,
-          alt: '@shadcn',
-        }}
-        alt="@shadcn"
+        alt={'@shadcn'}
       />
       <AvatarFallback loading />
     </Avatar>
