@@ -1,0 +1,64 @@
+'use client';
+
+import * as React from 'react';
+import * as DialogPrimitive from '@radix-ui/react-dialog';
+
+import { cn } from '@xipkg/utils';
+import { cva, type VariantProps } from 'class-variance-authority';
+import  { ModalOverlay } from './index';
+
+const Dialog = DialogPrimitive.Root;
+
+const DialogTrigger = DialogPrimitive.Trigger;
+
+const DialogPortal = ({ ...props }: DialogPrimitive.DialogPortalProps) => (
+  <DialogPrimitive.Portal {...props} />
+);
+DialogPortal.displayName = DialogPrimitive.Portal.displayName;
+
+export const dialogContentVariants = cva(
+  'z-50 grid bg-gray-0 duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] m-auto relative',
+  {
+    variants: {
+      variant: {
+        default:
+          'w-[calc(100%-16px)] max-w-lg md:w-full rounded-[16px] shadow-xl',
+        full: 'min-w-full min-h-dvh absolute top-0 left-0',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  },
+);
+
+export interface DialogContentProps
+  extends React.ComponentProps<typeof DialogPrimitive.Content>,
+    VariantProps<typeof dialogContentVariants> {
+  outsideClose?: boolean
+}
+
+const handleOutsideClose = (outsideClose: boolean, e: React.MouseEvent) => {
+  return outsideClose? () => e.preventDefault() : () => {}
+}
+
+const DialogContent = ({ variant, className, children, outsideClose, ...props }: DialogContentProps) => (
+  <DialogPortal>
+    <ModalOverlay overlayVariant={variant}>
+      <DialogPrimitive.Content
+        className={cn(dialogContentVariants({ variant, className }))}
+        {...props}
+        onPointerDownOutside={outsideClose? undefined : (e) => e.preventDefault()}
+      >
+        {children}
+      </DialogPrimitive.Content>
+    </ModalOverlay>
+  </DialogPortal>
+);
+DialogContent.displayName = DialogPrimitive.Content.displayName;
+
+export {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+};
