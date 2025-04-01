@@ -31,6 +31,7 @@ const nextConfig = {
     '@xipkg/tooltip',
     '@xipkg/sheet',
     '@xipkg/inputsmart',
+    '@xipkg/inputtoken',
     'slate-dom'
   ],
   images: {
