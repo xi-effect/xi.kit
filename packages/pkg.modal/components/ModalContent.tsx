@@ -5,7 +5,7 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 
 import { cn } from '@xipkg/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import  { ModalOverlay } from './index';
+import { ModalOverlay } from './index';
 
 const Dialog = DialogPrimitive.Root;
 
@@ -21,8 +21,7 @@ export const dialogContentVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          'w-[calc(100%-16px)] max-w-lg md:w-full rounded-[16px] shadow-xl',
+        default: 'w-[calc(100%-16px)] max-w-lg md:w-full rounded-[16px] shadow-xl',
         full: 'min-w-full min-h-dvh absolute top-0 left-0',
       },
     },
@@ -35,20 +34,22 @@ export const dialogContentVariants = cva(
 export interface DialogContentProps
   extends React.ComponentProps<typeof DialogPrimitive.Content>,
     VariantProps<typeof dialogContentVariants> {
-  outsideClose?: boolean
+  outsideClose?: boolean;
 }
 
-const handleOutsideClose = (outsideClose: boolean, e: React.MouseEvent) => {
-  return outsideClose? () => e.preventDefault() : () => {}
-}
-
-const DialogContent = ({ variant, className, children, outsideClose, ...props }: DialogContentProps) => (
+const DialogContent = ({
+  variant,
+  className,
+  children,
+  outsideClose,
+  ...props
+}: DialogContentProps) => (
   <DialogPortal>
     <ModalOverlay overlayVariant={variant}>
       <DialogPrimitive.Content
         className={cn(dialogContentVariants({ variant, className }))}
         {...props}
-        onPointerDownOutside={outsideClose? undefined : (e) => e.preventDefault()}
+        onPointerDownOutside={outsideClose ? undefined : (e) => e.preventDefault()}
       >
         {children}
       </DialogPrimitive.Content>
@@ -57,8 +58,4 @@ const DialogContent = ({ variant, className, children, outsideClose, ...props }:
 );
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
-export {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-};
+export { Dialog, DialogTrigger, DialogContent };
