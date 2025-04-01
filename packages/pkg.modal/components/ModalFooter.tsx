@@ -16,8 +16,8 @@ export const modalFooterVariants = cva('border-gray-5 rounded-b-[16px] border-t 
 
 export interface ModalFooterProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof modalFooterVariants>{};
+    VariantProps<typeof modalFooterVariants> {}
 
 export const ModalFooter = ({ footerVariant, className, ...props }: ModalFooterProps) => (
-    <div className={cn(modalFooterVariants({ footerVariant, className }))} {...props} />
+  <div className={cn(modalFooterVariants({ footerVariant, className }))} {...props} />
 );
