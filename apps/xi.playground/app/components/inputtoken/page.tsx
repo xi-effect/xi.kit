@@ -25,8 +25,9 @@ export default function InputTokenPage() {
         <MultipleSelector
           defaultOptions={OPTIONS}
           placeholder="Выберите фреймворк который вам нравится..."
+          creatable
           emptyIndicator={
-            <p className="text-center rounded-md text-xl leading-10 text-gray-30 dark:text-gray-400 h-8">
+            <p className="text-center rounded-md text-m-base text-gray-30 dark:text-gray-400 h-8 ">
               Не найдено
             </p>
           }

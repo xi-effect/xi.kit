@@ -132,9 +132,8 @@ const CommandEmpty = forwardRef<
 
 CommandEmpty.displayName = 'CommandEmpty';
 
-//border-input border-gray-30 bg-gray-0 text-gray-80 min-h-10 rounded-md border-2 text-base md:text-sm
 export const inputTokenVariants = cva(
-  'rounded-md border-2 border-gray-30 bg-gray-0 min-h-10 text-sm text-gray-80 hover:border-gray-50 active:border-gray-30 focus:border-gray-80 focus-visible:outline-none  file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-30 disabled:cursor-not-allowed disabled:bg-gray-10',
+  'rounded-md border-2 border-gray-30 bg-gray-0 min-h-10 text-sm text-gray-80 hover:border-gray-50 active:border-gray-30 focus:border-gray-80 focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-30 disabled:cursor-not-allowed disabled:bg-gray-10',
   {
     variants: {
       variant: {
@@ -355,7 +354,10 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
             onChange?.(newOptions);
           }}
         >
-          {`Create "${inputValue}"`}
+          <div className="bg-gray-5 flex w-full flex-col rounded-lg p-2">
+            <div className="text-sm font-normal">{`Добавить "${inputValue}"`}</div>
+            <div className="text-gray-60 text-xs">Нажмите запятую или пробел</div>
+          </div>
         </CommandItem>
       );
 
