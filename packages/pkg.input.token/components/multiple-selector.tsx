@@ -480,6 +480,19 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
                 setInputValue(value);
                 inputProps?.onValueChange?.(value);
               }}
+              onKeyDown={(e) => {
+                if ((e.key === ',' || e.key === ' ') && inputValue && creatable) {
+                  e.preventDefault();
+                  if (selected.length >= maxSelected) {
+                    onMaxSelected?.(selected.length);
+                    return;
+                  }
+                  const newOptions = [...selected, { value: inputValue, label: inputValue }];
+                  setSelected(newOptions);
+                  onChange?.(newOptions);
+                  setInputValue('');
+                }
+              }}
               onBlur={(event) => {
                 if (!onScrollbar) {
                   setOpen(false);
