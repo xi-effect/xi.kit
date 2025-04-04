@@ -22,7 +22,7 @@ export const dialogContentVariants = cva(
     variants: {
       variant: {
         default: 'w-[calc(100%-16px)] max-w-lg md:w-full rounded-[16px] shadow-xl',
-        full: 'min-w-full min-h-dvh absolute top-0 left-0',
+        full: 'min-w-full min-h-dvh absolute top-0 left-0 flex flex-col',
       },
     },
     defaultVariants: {

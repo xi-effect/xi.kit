@@ -9,7 +9,7 @@ export const modalOverlayVariants = cva(
     variants: {
       overlayVariant: {
         default:
-          'dark:bg-gray-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-gray-100/40 flex overflow-y-auto py-10',
+          'dark:bg-gray-0 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-gray-100/40 flex overflow-y-auto py-10 border-b-0',
         full: 'p-0 max-w-dvw bg-violet-100',
       },
     },
