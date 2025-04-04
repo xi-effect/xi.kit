@@ -57,7 +57,7 @@ const contentVariants = cva(
   {
     variants: {
       contentHeight: {
-        default: 'h-[400px]',
+        default: 'h-[100px]',
         scrollable: 'h-[2400px]',
       },
     },
