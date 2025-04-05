@@ -26,7 +26,7 @@ export default function ContextMenuDemo() {
         </ContextMenuTrigger>
         <ContextMenuContent className="w-64">
           <ContextMenuItem>
-            <Trash className="mr-2" size="m" /> Back
+            <Trash className="mr-2" size="sm" /> Back
             <ContextMenuShortcut>⌘[</ContextMenuShortcut>
           </ContextMenuItem>
           <ContextMenuItem inset disabled>

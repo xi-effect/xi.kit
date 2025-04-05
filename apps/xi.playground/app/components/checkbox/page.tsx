@@ -27,10 +27,10 @@ export default function CheckboxDemo() {
       <Checkbox size="l" checked disabled>
         Peepepe
       </Checkbox>
-      <Checkbox state="varning" size="l">
+      <Checkbox state="warning" size="l">
         Peepepe
       </Checkbox>
-      <Checkbox state="varning" checked size="l">
+      <Checkbox state="warning" checked size="l">
         Peepepe
       </Checkbox>
       <Checkbox state="error" size="l">

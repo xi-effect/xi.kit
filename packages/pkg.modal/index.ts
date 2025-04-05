@@ -2,9 +2,18 @@ export {
   Dialog as Modal,
   DialogTrigger as ModalTrigger,
   DialogContent as ModalContent,
-  DialogHeader as ModalHeader,
-  DialogFooter as ModalFooter,
-  DialogTitle as ModalTitle,
-  DialogDescription as ModalDescription,
-  DialogCloseButton as ModalCloseButton,
-} from './Modal';
+} from './components/ModalContent';
+export {
+  ModalBody,
+  ModalCloseButton,
+  ModalDescription,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  ModalTitle,
+} from './components/index';
+export {
+  type DialogContentProps,
+  type ModalFooterProps,
+  type ModalHeaderProps,
+} from './components/index';

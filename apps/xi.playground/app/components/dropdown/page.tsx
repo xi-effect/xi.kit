@@ -117,7 +117,7 @@ const TestComponents = () => (
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <span>Пригласить людей</span>
-                <PeopleInvite size="s" className="ml-auto h-4 w-4" />
+                <PeopleInvite size="sm" className="ml-auto h-4 w-4" />
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <PeopleInvite className="mr-2 h-4 w-4" />
