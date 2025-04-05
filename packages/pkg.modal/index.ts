@@ -10,5 +10,10 @@ export {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  ModalTitle
+  ModalTitle,
+} from './components/index';
+export {
+  type DialogContentProps,
+  type ModalFooterProps,
+  type ModalHeaderProps,
 } from './components/index';

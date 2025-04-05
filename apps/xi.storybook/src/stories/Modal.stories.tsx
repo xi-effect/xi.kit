@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { cn } from '@xipkg/utils';
-import { cva } from 'class-variance-authority';
+import { cva, VariantProps } from 'class-variance-authority';
 import {
   Modal,
   ModalContent,
@@ -11,6 +11,9 @@ import {
   ModalTrigger,
   ModalDescription,
   ModalCloseButton,
+  DialogContentProps,
+  ModalHeaderProps,
+  ModalFooterProps,
 } from '@xipkg/modal';
 import { Button } from '@xipkg/button';
 
@@ -67,12 +70,10 @@ const contentVariants = cva(
   },
 );
 
-type ModalStoryArgs = {
-  variant?: 'default' | 'full';
-  headerVariant?: 'default' | 'sticky';
-  footerVariant?: 'default' | 'sticky';
-  outsideClose?: boolean;
-} & { contentHeight: 'default' | 'scrollable' };
+type ModalStoryArgs = DialogContentProps &
+  ModalHeaderProps &
+  ModalFooterProps &
+  VariantProps<typeof contentVariants>;
 
 const Template = (args: ModalStoryArgs) => {
   const contentHeight = args.contentHeight;
