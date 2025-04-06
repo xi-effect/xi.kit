@@ -19,7 +19,7 @@ export const modalCloseButtonVariants = cva(
   },
 );
 
-export const IconVariants = cva('', {
+export const iconVariants = cva('', {
   variants: {
     variant: {
       default: 'fill-gray-80 sm:fill-gray-0 dark:fill-gray-80',
@@ -44,7 +44,7 @@ export const ModalCloseButton = ({
   ...props
 }: ModalCloseButtonProps) => (
   <DialogClose className={cn(modalCloseButtonVariants({ variant, className }))} {...props}>
-    {children || <Close className={cn(IconVariants({ variant, className }))} />}
+    {children || <Close className={cn(iconVariants({ variant, className }))} />}
   </DialogClose>
 );
 ModalCloseButton.displayName = 'ModalCloseButton';

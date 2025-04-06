@@ -33,23 +33,14 @@ export const dialogContentVariants = cva(
 
 export interface DialogContentProps
   extends React.ComponentProps<typeof DialogPrimitive.Content>,
-    VariantProps<typeof dialogContentVariants> {
-  outsideClose?: boolean;
-}
+    VariantProps<typeof dialogContentVariants> {}
 
-const DialogContent = ({
-  variant,
-  className,
-  children,
-  outsideClose,
-  ...props
-}: DialogContentProps) => (
+const DialogContent = ({ variant, className, children, ...props }: DialogContentProps) => (
   <DialogPortal>
     <ModalOverlay overlayVariant={variant}>
       <DialogPrimitive.Content
         className={cn(dialogContentVariants({ variant, className }))}
         {...props}
-        onPointerDownOutside={outsideClose ? undefined : (e) => e.preventDefault()}
       >
         {children}
       </DialogPrimitive.Content>

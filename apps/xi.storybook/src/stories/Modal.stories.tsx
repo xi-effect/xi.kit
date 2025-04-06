@@ -43,12 +43,6 @@ const meta = {
       defaultValue: 'default',
       type: 'string',
     },
-    outsideClose: {
-      connstrol: 'boolean',
-      description: 'Закрывает окно по клику на оверлей',
-      defaultValue: 'false',
-      type: 'boolean',
-    },
   },
 } as Meta;
 
@@ -75,32 +69,28 @@ type ModalStoryArgs = DialogContentProps &
   ModalFooterProps &
   VariantProps<typeof contentVariants>;
 
-const Template = (args: ModalStoryArgs) => {
-  const contentHeight = args.contentHeight;
-
-  return (
-    <div style={{ display: 'flex', gap: '12px' }}>
-      <Modal>
-        <ModalTrigger asChild>
-          <Button size="s">Открыть окно</Button>
-        </ModalTrigger>
-        <ModalContent variant={args.variant} outsideClose={args.outsideClose}>
-          <ModalHeader headerVariant={args.headerVariant}>
-            <ModalTitle>Заголовок</ModalTitle>
-            <ModalDescription>Подзаголовок</ModalDescription>
-            <ModalCloseButton variant={args.variant} />
-          </ModalHeader>
-          <ModalBody>
-            <div className={cn(contentVariants({ contentHeight }))}>Content Area</div>
-          </ModalBody>
-          <ModalFooter footerVariant={args.footerVariant}>
-            <Button type="submit">Save changes</Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </div>
-  );
-};
+const Template = ({ contentHeight, variant, headerVariant, footerVariant }: ModalStoryArgs) => (
+  <div style={{ display: 'flex', gap: '12px' }}>
+    <Modal>
+      <ModalTrigger asChild>
+        <Button size="s">Открыть окно</Button>
+      </ModalTrigger>
+      <ModalContent variant={variant}>
+        <ModalHeader headerVariant={headerVariant}>
+          <ModalTitle>Заголовок</ModalTitle>
+          <ModalDescription>Подзаголовок</ModalDescription>
+          <ModalCloseButton variant={variant} />
+        </ModalHeader>
+        <ModalBody>
+          <div className={cn(contentVariants({ contentHeight }))}>Content Area</div>
+        </ModalBody>
+        <ModalFooter footerVariant={footerVariant}>
+          <Button type="submit">Save changes</Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  </div>
+);
 
 export const Default: Story = {
   render: (args) => <Template {...args} contentHeight="default" />,
