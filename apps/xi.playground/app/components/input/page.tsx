@@ -30,13 +30,13 @@ export default function InputPage() {
         />
       </div>
       <div className="w-[250px] p-4">
-        <Input variant="s" before={<Link size="s" />} />
+        <Input variant="s" before={<Link size="sm" />} />
       </div>
       <div className="w-[250px] p-4">
         <Input after={<CrossCircle />} />
       </div>
       <div className="w-[250px] p-4">
-        <Input variant="s" after={<CrossCircle size="s" />} />
+        <Input variant="s" after={<CrossCircle size="sm" />} />
       </div>
       <div className="w-[250px] p-4">
         <Label>Username</Label>
