@@ -435,7 +435,7 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
             inputRef?.current?.focus();
           }}
         >
-          <div className="relative flex h-12 flex-wrap items-center gap-1">
+          <div className="relative flex h-full flex-wrap items-center gap-1">
             {selected.map((option) => {
               return (
                 <Badge
