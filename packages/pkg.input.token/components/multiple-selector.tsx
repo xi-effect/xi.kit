@@ -133,7 +133,7 @@ const CommandEmpty = forwardRef<
 CommandEmpty.displayName = 'CommandEmpty';
 
 export const inputTokenVariants = cva(
-  'rounded-md border-2 border-gray-30 bg-gray-0 min-h-10 text-sm text-gray-80 hover:border-gray-50 active:border-gray-30 focus:border-gray-80 focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-30 disabled:cursor-not-allowed disabled:bg-gray-10',
+  'rounded-md border-2 border-gray-30 bg-gray-0 min-h-10 text-sm text-gray-80 hover:border-gray-50 active:border-gray-30 focus:border-gray-80 focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-30 disabled:cursor-not-allowed disabled:!bg-gray-10 disabled:!text-gray-30 disabled:!border-0 disabled:active:!border-0',
   {
     variants: {
       variant: {
@@ -142,6 +142,10 @@ export const inputTokenVariants = cva(
       },
       error: {
         true: 'border-red-80 hover:border-red-80 active:border-red-80 focus:border-red-80',
+        false: '',
+      },
+      disable: {
+        true: '!bg-gray-10 active:border-0 !text-gray-30',
         false: '',
       },
     },
@@ -427,6 +431,7 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
             {
               'px-3': selected.length !== 0,
               'cursor-text': !disabled && selected.length !== 0,
+              'disabled!border-0 bg-gray-10 border-0': disabled,
             },
             className,
           )}
@@ -441,14 +446,19 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
                 <Badge
                   key={option.value}
                   className={cn(
-                    'bg-gray-5 data-[disabled]:bg-muted-foreground data-[disabled]:text-muted data-[disabled]:hover:bg-muted-foreground flex gap-2 rounded-lg text-[16px]',
+                    'bg-gray-5 data-[disabled]:bg-muted-foreground data-[disabled]:text-muted data-[disabled] :hover:bg-muted-foreground flex gap-2 rounded-lg text-[16px]',
                     'data-[fixed]:bg-muted-foreground data-[fixed]:text-muted data-[fixed]:hover:bg-muted-foreground',
+                    { '!bg-gray-10 !text-gray-30': disabled },
                     badgeClassName,
                   )}
                   data-fixed={option.fixed}
                   data-disabled={disabled || undefined}
                 >
-                  <div className="bg-brand-80 h-4 w-4"></div>
+                  <div
+                    className={cn('bg-brand-80 h-4 w-4', {
+                      '!bg-gray-30 border-0': disabled,
+                    })}
+                  ></div>
                   {option.label}
                   <button
                     className={cn(
