@@ -12,7 +12,7 @@ const TestComponents = () => {
   const [date, setDate] = React.useState<Date>();
 
   return (
-    <DatePicker mode="single" selected={date} onSelect={setDate}>
+    <DatePicker>
       <Input
         value={date ? format(date, 'PPP', { locale: ru }) : ''}
         variant="m"
