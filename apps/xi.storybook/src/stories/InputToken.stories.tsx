@@ -77,6 +77,7 @@ export const Small: Story = {
     variant: 's',
     error: false,
     creatable: true,
+    disabled: false,
     placeholder: 'Выберите фреймворк...',
     emptyIndicator: React.createElement(
       'p',
@@ -92,6 +93,7 @@ export const WithError: Story = {
     variant: 'm',
     error: true,
     creatable: true,
+    disabled: false,
     placeholder: 'Выберите фреймворк...',
     emptyIndicator: React.createElement(
       'p',
@@ -116,6 +118,7 @@ export const WithMaxSelected: Story = {
   args: {
     variant: 'm',
     creatable: true,
+    disabled: false,
     placeholder: 'Выберите максимум 2 фреймворка...',
     emptyIndicator: React.createElement(
       'p',

@@ -25,19 +25,19 @@
     "@xipkg/utils": "^1.6.3",
     "class-variance-authority": "^0.7.0",
     "cmdk": "^1.1.1",
-    "react": "^18.0.0"
+    "react": "^19.1.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
     "eslint": "^9.17.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "tsup": "^8.3.5",
-    "typescript": "^5.5.3",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "typescript": "^5.5.3"
   },
   "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "publishConfig": {
     "access": "public"

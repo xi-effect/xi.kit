@@ -431,7 +431,7 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
             {
               'px-3': selected.length !== 0,
               'cursor-text': !disabled && selected.length !== 0,
-              'disabled!border-0 bg-gray-10 border-0': disabled,
+              'bg-gray-10 border-0': disabled,
             },
             className,
           )}
