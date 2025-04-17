@@ -12,12 +12,12 @@ type SidebarMenuButtonPropsT = React.ComponentProps<'button'> & {
 } & VariantProps<typeof sidebarMenuButtonVariants>;
 
 const sidebarMenuButtonVariants = cva(
-  'peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-none transition-[width,height,padding] focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50  data-[active=true]:font-medium group-data-[collapsible=icon]:!size-10 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:shrink-0',
+  'peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left outline-none transition-[width,height,padding] focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 group-data-[collapsible=icon]:!size-10 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:shrink-0',
   {
     variants: {
       variant: {
         default:
-          'hover:bg-brand-0 bg-transparent hover:text-brand-80 text-gray-80 hover:[&>svg]:fill-brand-80 data-[active=true]:text-brand-80 data-[active=true]:[&>svg]:fill-brand-80',
+          'bg-transparent text-gray-80 [&>svg]:fill-gray-80 hover:bg-gray-5 hover:text-gray-100 hover:[&>svg]:fill-gray-100 data-[active=true]:bg-brand-0 data-[active=true]:text-brand-80 data-[active=true]:[&>svg]:fill-brand-80 data-[active=true]:hover:text-brand-100 data-[active=true]:hover:[&>svg]:fill-brand-100',
         ghost:
           'hover:bg-transparent active:bg-transparent focus:bg-transparent text-gray-50 [&>svg]:fill-gray-50',
       },
