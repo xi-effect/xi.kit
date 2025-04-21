@@ -1,7 +1,7 @@
 'use client';
 
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-import { cva, VariantProps } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { Check } from 'lucide-react';
 import * as React from 'react';
 
@@ -19,12 +19,13 @@ const checkboxVariants = cva(
       state: {
         default:
           'data-[state=checked]:group-hover:bg-brand-100 group-hover:bg-gray-5 group-hover:border-gray-30',
-        varning:
+        warning:
           'border-orange-80 data-[state=checked]:!bg-orange-80 data-[state=checked]:!border-orange-80',
         error: 'border-red-80 data-[state=checked]:!bg-red-80 data-[state=checked]:!border-red-80',
       },
     },
     defaultVariants: {
+      size: 'm',
       state: 'default',
     },
   },
@@ -40,20 +41,19 @@ const labelVariants = cva(
         s: 'gap-1 text-xs',
       },
     },
+    defaultVariants: {
+      size: 'm',
+    },
   },
 );
 
 interface CheckboxProps
-  extends React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>,
+  extends React.ComponentProps<typeof CheckboxPrimitive.Root>,
     VariantProps<typeof labelVariants & typeof checkboxVariants> {}
 
-export const Checkbox = React.forwardRef<
-  React.ElementRef<typeof CheckboxPrimitive.Root>,
-  CheckboxProps
->(({ className, children = null, size, state, ...props }, ref) => (
+export const Checkbox = ({ className, children = null, size, state, ...props }: CheckboxProps) => (
   <label className={cn(labelVariants({ size }), !props.disabled && 'hover:cursor-pointer')}>
     <CheckboxPrimitive.Root
-      ref={ref}
       className={cn(checkboxVariants({ size, state }), className)}
       {...props}
     >
@@ -63,5 +63,6 @@ export const Checkbox = React.forwardRef<
     </CheckboxPrimitive.Root>
     {children && <span className="pb-[0.125rem] peer-disabled:text-gray-50">{children}</span>}
   </label>
-));
+);
+
 Checkbox.displayName = CheckboxPrimitive.Root.displayName;

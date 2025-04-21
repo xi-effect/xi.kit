@@ -19,7 +19,7 @@ export const SidebarTrigger = ({
       variant="ghost"
       size="m"
       className={cn(
-        'h-10 w-10 bg-transparent px-0 focus:bg-transparent active:bg-transparent',
+        'h-10 w-10 min-w-10 bg-transparent p-0 flex items-center justify-center focus:bg-transparent active:bg-transparent',
         className,
       )}
       onClick={(event) => {

@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/routerurl",
-  "version": "1.1.0",
+  "version": "1.1.4",
   "main": "./index.tsx",
   "types": "./index.tsx",
   "license": "MIT",
@@ -8,17 +8,17 @@
     "lint": "eslint \"**/*.{ts,tsx}\""
   },
   "devDependencies": {
-    "eslint-config-custom": "*",
     "@types/node": "^20.3.1",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "@xipkg/eslint": "1.4.0",
     "@xipkg/typescript": "latest",
+    "eslint-config-custom": "*",
     "typescript": "^5.4.2"
   },
   "peerDependencies": {
-    "react": "^19",
-    "next": "^15"
+    "next": "^15",
+    "react": "^19"
   },
   "publishConfig": {
     "access": "public"

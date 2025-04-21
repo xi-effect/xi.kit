@@ -6,10 +6,12 @@ import * as React from 'react';
 
 const Root = TabsPrimitive.Root;
 
-const List = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> & { classNameShadow?: string }
->(({ className, classNameShadow = '', children, onClick, ...props }, ref) => {
+interface ListProps extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> {
+  classNameShadow?: string;
+  ref?: React.Ref<React.ElementRef<typeof TabsPrimitive.List>>;
+}
+
+const List = ({ className, classNameShadow = '', children, onClick, ...props }: ListProps) => {
   const shadowRef = React.useRef<HTMLDivElement | null>(null);
   const shadowKey = React.useId();
 
@@ -39,7 +41,6 @@ const List = React.forwardRef<
 
   return (
     <TabsPrimitive.List
-      ref={ref}
       onClick={handleOnClick}
       className={cn('border-gray-10 relative flex items-center border-b-2', className)}
       {...props}
@@ -53,37 +54,34 @@ const List = React.forwardRef<
       {children}
     </TabsPrimitive.List>
   );
-});
-List.displayName = TabsPrimitive.List.displayName;
+};
 
-const Trigger = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->(({ className, ...props }, ref) => (
+interface TriggerProps extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> {
+  ref?: React.Ref<React.ElementRef<typeof TabsPrimitive.Trigger>>;
+}
+
+const Trigger = ({ className, ...props }: TriggerProps) => (
   <TabsPrimitive.Trigger
-    ref={ref}
     className={cn(
       'text-gray-80 flex grow cursor-pointer items-center justify-center bg-transparent pb-1 text-center whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-100 data-[state=active]:hover:cursor-default',
       className,
     )}
     {...props}
   />
-));
-Trigger.displayName = TabsPrimitive.Trigger.displayName;
+);
 
-const Content = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->(({ className, ...props }, ref) => (
+interface ContentProps extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content> {
+  ref?: React.Ref<React.ElementRef<typeof TabsPrimitive.Content>>;
+}
+
+const Content = ({ className, ...props }: ContentProps) => (
   <TabsPrimitive.Content
-    ref={ref}
     className={cn(
       'ring-offset-background focus-visible:ring-ring mt-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
       className,
     )}
     {...props}
   />
-));
-Content.displayName = TabsPrimitive.Content.displayName;
+);
 
 export { Content, List, Root, Trigger };

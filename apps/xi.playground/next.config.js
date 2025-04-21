@@ -6,6 +6,7 @@ const nextConfig = {
     '@xipkg/modal',
     '@xipkg/tailwind',
     '@xipkg/typescript',
+    '@xipkg/emojipicker',
     '@xipkg/icons',
     '@xipkg/link',
     '@xipkg/input', 

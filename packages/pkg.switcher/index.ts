@@ -1,1 +1,1 @@
-export { Tabs, TabsList, TabsTrigger, TabsContent } from './Switcher';
+export { Switch } from './Switcher';

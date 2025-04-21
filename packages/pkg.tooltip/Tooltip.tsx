@@ -11,10 +11,11 @@ const Tooltip = TooltipPrimitive.Root;
 
 const TooltipTrigger = TooltipPrimitive.Trigger;
 
-const TooltipArrow = React.forwardRef<
-  React.ElementRef<typeof TooltipPrimitive.Arrow>,
-  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Arrow>
->(({ className, width = 15, height = 6, ...props }, ref) => (
+interface TooltipArrowProps extends React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Arrow> {
+  ref?: React.Ref<React.ElementRef<typeof TooltipPrimitive.Arrow>>;
+}
+
+const TooltipArrow = ({ className, width = 15, height = 6, ref, ...props }: TooltipArrowProps) => (
   <TooltipPrimitive.Arrow
     ref={ref}
     width={width}
@@ -30,13 +31,13 @@ const TooltipArrow = React.forwardRef<
       />
     </svg>
   </TooltipPrimitive.Arrow>
-));
-TooltipArrow.displayName = TooltipPrimitive.Arrow.displayName;
+);
 
-const TooltipContent = React.forwardRef<
-  React.ElementRef<typeof TooltipPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
->(({ className, sideOffset = 2, ...props }, ref) => (
+interface TooltipContentProps extends React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content> {
+  ref?: React.Ref<React.ElementRef<typeof TooltipPrimitive.Content>>;
+}
+
+const TooltipContent = ({ className, sideOffset = 2, ref, ...props }: TooltipContentProps) => (
   <TooltipPrimitive.Content
     ref={ref}
     sideOffset={sideOffset}
@@ -49,7 +50,6 @@ const TooltipContent = React.forwardRef<
     {props.children}
     <TooltipArrow />
   </TooltipPrimitive.Content>
-));
-TooltipContent.displayName = TooltipPrimitive.Content.displayName;
+);
 
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };

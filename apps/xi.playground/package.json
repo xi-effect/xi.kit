@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev-playground": "next dev --port=3600",
     "dev": "next dev --port=3600",
     "build": "next build",
     "start": "next start",
@@ -26,6 +27,7 @@
     "@xipkg/input": "*",
     "@xipkg/inputsmart": "*",
     "@xipkg/inputtoken": "^0.0.0",
+    "@xipkg/inputmask": "*",
     "@xipkg/label": "*",
     "@xipkg/link": "*",
     "@xipkg/modal": "*",
@@ -40,6 +42,7 @@
     "@xipkg/toggle": "*",
     "@xipkg/tooltip": "*",
     "@xipkg/userprofile": "*",
+    "@xipkg/slider": "*",
     "next": "^15.1.2",
     "next-themes": "^0.2.1",
     "react": "^19.0.0",

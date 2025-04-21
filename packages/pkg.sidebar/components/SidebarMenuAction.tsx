@@ -18,7 +18,7 @@ export const SidebarMenuAction = ({
       ref={ref}
       data-sidebar="menu-action"
       className={cn(
-        'hover:bg-grand-80 hover:text-gray-80 peer-hover/menu-button:text-gray-80 absolute top-1/2 right-1 flex aspect-square w-5 -translate-y-1/2 items-center justify-center rounded-md p-0 transition-transform outline-none focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
+        'peer-hover/menu-button:text-gray-100 absolute top-1/2 right-1 flex aspect-square w-5 -translate-y-1/2 items-center justify-center rounded-md p-0 transition-transform outline-none focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
         // Increases the hit area of the button on mobile.
         'after:absolute after:-inset-2 after:md:hidden',
         'peer-data-[size=sm]/menu-button:top-1',
@@ -27,7 +27,7 @@ export const SidebarMenuAction = ({
         'group-data-[collapsible=icon]:hidden',
         'group-data-[collapsible=offcanvas]:hidden',
         showOnHover &&
-          'peer-data-[active=true]/menu-button:text-gray-80 group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0',
+          'peer-data-[active=true]/menu-button:text-brand-80 peer-data-[active=true]:hover/menu-button:text-brand-100 group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0',
         className,
       )}
       {...props}

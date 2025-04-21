@@ -1,3 +1,4 @@
+import React from 'react';
 import { useSidebar } from '../context/SidebarContext';
 
 import { cn } from '@xipkg/utils';
@@ -24,7 +25,7 @@ export const Sidebar = ({
   if (collapsible === 'none') {
     return (
       <div
-        className={cn('bg-gray-0 flex h-full w-[--sidebar-width] flex-col', className)}
+        className={cn('bg-gray-0 flex h-full w-(--sidebar-width) flex-col', className)}
         ref={ref}
         {...props}
       >
@@ -45,24 +46,24 @@ export const Sidebar = ({
       {/* This is what handles the sidebar gap on desktop */}
       <div
         className={cn(
-          'relative w-[--sidebar-width] bg-transparent transition-[width] duration-200 ease-linear',
+          'relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear',
           'group-data-[collapsible=offcanvas]:w-0',
           'group-data-[side=right]:rotate-180',
           variant === 'floating' || variant === 'inset'
             ? 'group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4))]'
-            : 'group-data-[collapsible=icon]:w-[--sidebar-width-icon]',
+            : 'group-data-[collapsible=icon]:w-(--sidebar-width-icon)',
         )}
       />
       <div
         className={cn(
-          'fixed inset-y-0 z-10 flex h-full w-[--sidebar-width] px-4 pb-4 transition-[left,right,width] duration-200 ease-linear',
+          'fixed inset-y-0 z-10 flex h-full w-(--sidebar-width) px-4 pb-4 transition-[left,right,width] duration-200 ease-linear',
           side === 'left'
             ? 'left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]'
             : 'right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]',
           // Adjust the padding for floating and inset variants.
           variant === 'floating' || variant === 'inset'
             ? 'p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)_+_theme(spacing.4)_+2px)]'
-            : 'group-data-[collapsible=icon]:w-[--sidebar-width-icon]x',
+            : 'group-data-[collapsible=icon]:w-(--sidebar-width-icon)',
           className,
         )}
         {...props}
