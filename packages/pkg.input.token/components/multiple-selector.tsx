@@ -2,12 +2,12 @@
 import React, { forwardRef, useEffect } from 'react';
 
 import { Command as CommandPrimitive, useCommandState } from 'cmdk';
-import { X } from 'lucide-react';
+import { Button } from '@xipkg/button';
 import { cn } from '../lib/utils';
 import { Badge } from '../components/badge';
 import { Command, CommandGroup, CommandItem, CommandList } from '../components/command';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { CrossCircle } from '@xipkg/icons';
+import { CrossCircle, Plus } from '@xipkg/icons';
 
 export interface Option {
   value: string;
@@ -46,7 +46,6 @@ interface MultipleSelectorProps extends VariantProps<typeof inputTokenVariants> 
     React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>,
     'value' | 'placeholder' | 'disabled'
   >;
-  hideClearAllButton?: boolean;
   variant?: 'm' | 's';
   error?: boolean;
 }
@@ -181,7 +180,6 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
       triggerSearchOnFocus = false,
       commandProps,
       inputProps,
-      hideClearAllButton = false,
       variant,
       error,
     }: MultipleSelectorProps,
@@ -455,7 +453,7 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
                   data-disabled={disabled || undefined}
                 >
                   <div
-                    className={cn('bg-brand-80 h-4 w-4', {
+                    className={cn('bg-brand-100 h-4 w-4', {
                       '!bg-gray-30 border-0': disabled,
                     })}
                   ></div>
@@ -524,23 +522,14 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
                 inputProps?.className,
               )}
             />
-            <button
-              type="button"
-              onClick={() => {
-                setSelected(selected.filter((s) => s.fixed));
-                onChange?.(selected.filter((s) => s.fixed));
-              }}
+            <Button
+              variant={'ghost'}
               className={cn(
-                'absolute right-0 h-6 w-6 p-0',
-                (hideClearAllButton ||
-                  disabled ||
-                  selected.length < 1 ||
-                  selected.filter((s) => s.fixed).length === selected.length) &&
-                  'hidden',
+                'text-brand-0 fill-brand-0 bg-brand-80 hover:bg-brand-80 right-0 h-8 w-8 p-0',
               )}
             >
-              <X />
-            </button>
+              <Plus className="fill-brand-0 text-brand-20 h-5 w-5" />
+            </Button>
           </div>
         </div>
         <div className="relative">
