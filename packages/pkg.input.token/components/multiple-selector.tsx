@@ -29,6 +29,7 @@ interface MultipleSelectorProps extends VariantProps<typeof inputTokenVariants> 
   emptyIndicator?: React.ReactNode;
   delay?: number;
   triggerSearchOnFocus?: boolean;
+  showButtonPlus?: boolean;
   onSearch?: (value: string) => Promise<Option[]>;
   onSearchSync?: (value: string) => Option[];
   onChange?: (options: Option[]) => void;
@@ -132,12 +133,12 @@ const CommandEmpty = forwardRef<
 CommandEmpty.displayName = 'CommandEmpty';
 
 export const inputTokenVariants = cva(
-  'rounded-md border-2 border-gray-30 bg-gray-0 min-h-10 text-sm text-gray-80 hover:border-gray-50 active:border-gray-30 focus:border-gray-80 focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-30 disabled:cursor-not-allowed disabled:!bg-gray-10 disabled:!text-gray-30 disabled:!border-0 disabled:active:!border-0',
+  'rounded-md border-2 border-gray-30 bg-gray-0 text-sm text-gray-80 hover:border-gray-50 active:border-gray-30 focus:border-gray-80 focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-30 disabled:cursor-not-allowed disabled:!bg-gray-10 disabled:!text-gray-30 disabled:!border-0 disabled:active:!border-0',
   {
     variants: {
       variant: {
-        m: 'h-12 px-3 rounded-lg text-[16px]',
-        s: 'h-8 px-2 rounded-md text-[14px]',
+        m: 'min-h-10 px-2 py-1.5 rounded-lg text-[16px]',
+        s: 'min-h-6 px-1 py-1 rounded-md text-[14px]',
       },
       error: {
         true: 'border-red-80 hover:border-red-80 active:border-red-80 focus:border-red-80',
@@ -145,6 +146,30 @@ export const inputTokenVariants = cva(
       },
       disable: {
         true: '!bg-gray-10 active:border-0 !text-gray-30',
+        false: '',
+      },
+    },
+    defaultVariants: {
+      variant: 'm',
+      error: false,
+    },
+  },
+);
+
+export const badgeVariants = cva(
+  'bg-gray-5 data-[disabled]:bg-muted-foreground data-[disabled]:text-muted data-[disabled] :hover:bg-muted-foreground flex gap-2 rounded-lg text-[14px]',
+  {
+    variants: {
+      variant: {
+        m: 'h-8',
+        s: 'h-6 px-1.5',
+      },
+      error: {
+        true: 'border-red-80 hover:border-red-80 active:border-red-80 focus:border-red-80',
+        false: '',
+      },
+      disable: {
+        true: '!bg-gray-10 !text-gray-30',
         false: '',
       },
     },
@@ -178,6 +203,7 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
       selectFirstItem = true,
       creatable = false,
       triggerSearchOnFocus = false,
+      showButtonPlus = false,
       commandProps,
       inputProps,
       variant,
@@ -444,7 +470,10 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
                 <Badge
                   key={option.value}
                   className={cn(
-                    'bg-gray-5 data-[disabled]:bg-muted-foreground data-[disabled]:text-muted data-[disabled] :hover:bg-muted-foreground flex gap-2 rounded-lg text-[16px]',
+                    badgeVariants({
+                      variant,
+                      error,
+                    }),
                     'data-[fixed]:bg-muted-foreground data-[fixed]:text-muted data-[fixed]:hover:bg-muted-foreground',
                     { '!bg-gray-10 !text-gray-30': disabled },
                     badgeClassName,
@@ -453,7 +482,9 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
                   data-disabled={disabled || undefined}
                 >
                   <div
-                    className={cn('bg-brand-100 h-4 w-4', {
+                    className={cn('bg-brand-100', {
+                      'h-4 w-4': variant === 'm',
+                      'h-3 w-3': variant === 's',
                       '!bg-gray-30 border-0': disabled,
                     })}
                   ></div>
@@ -461,6 +492,10 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
                   <button
                     className={cn(
                       'ring-offset-background focus:ring-ring ml-2 rounded-full outline-none focus:ring-2 focus:ring-offset-2',
+                      {
+                        'ml-2': variant === 'm',
+                        'ml-1': variant === 's',
+                      },
                       (disabled || option.fixed) && 'hidden',
                     )}
                     onKeyDown={(e) => {
@@ -474,7 +509,12 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
                     }}
                     onClick={() => handleUnselect(option)}
                   >
-                    <CrossCircle className="text-muted-foreground hover:text-foreground h-4 w-4" />
+                    <CrossCircle
+                      className={cn('text-muted-foreground hover:text-foreground', {
+                        'h-4 w-4': variant === 'm',
+                        'h-2.5 w-2.5': variant === 's',
+                      })}
+                    />
                   </button>
                 </Badge>
               );
@@ -516,7 +556,6 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
                 'placeholder:text-muted-foreground flex-1 bg-transparent outline-none',
                 {
                   'w-full': hidePlaceholderWhenSelected,
-                  'px-3 py-2': selected.length === 0,
                   'ml-1': selected.length !== 0,
                 },
                 inputProps?.className,
@@ -524,9 +563,11 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
             />
             <Button
               variant={'ghost'}
-              className={cn(
-                'text-brand-0 fill-brand-0 bg-brand-80 hover:bg-brand-80 right-0 h-8 w-8 p-0',
-              )}
+              className={
+                showButtonPlus
+                  ? 'text-brand-0 fill-brand-0 bg-brand-80 hover:bg-brand-80 absolute top-0 right-0 h-8 w-8 p-0'
+                  : 'hidden'
+              }
             >
               <Plus className="fill-brand-0 text-brand-20 h-5 w-5" />
             </Button>
