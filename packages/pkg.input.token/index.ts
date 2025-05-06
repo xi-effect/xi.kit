@@ -1,2 +1,2 @@
-export { MultipleSelector } from './components/multiple-selector';
-export type { Option } from './components/multiple-selector';
+export { MultipleSelector } from './components/MultipleSelector';
+export type { Option } from './components/MultipleSelector';
