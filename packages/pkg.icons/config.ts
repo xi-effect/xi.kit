@@ -119,6 +119,7 @@ export const icons = [
   'Group',
   'ThinArrowRight',
   'TelegramFilled',
+  'WhatsAppFilled',
   'WhiteBoard',
   'MicrophoneOff',
   'RedLine',

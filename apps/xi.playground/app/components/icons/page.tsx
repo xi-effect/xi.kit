@@ -98,6 +98,7 @@ import {
   Minimize,
   Minus,
   Cursor,
+  WhatsAppFilled,
   Sticker,
   TText,
   Figures,
@@ -229,6 +230,7 @@ const iconsDict = [
   <SimpleAnswertTest />,
   <DetailedAnswerTest />,
   <OptionSelectionTest />,
+  <WhatsAppFilled />,
 ];
 
 const iconsDictNames = [
@@ -344,6 +346,7 @@ const iconsDictNames = [
   'SimpleAnswertTest',
   'DetailedAnswerTest',
   'OptionSelectionTest',
+  'WhatsAppFilled',
 ];
 
 const Icons = () => (
