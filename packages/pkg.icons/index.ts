@@ -146,6 +146,7 @@ import { DetailedAnswerTest } from './icons/DetailedAnswerTest';
 import { OptionSelectionTest } from './icons/OptionSelectionTest';
 import { Payments } from './icons/Payments';
 import { FAQ } from './icons/FAQ';
+import { WhatsAppFilled } from './icons/WhatsAppFilled';
 
 import { icons } from './config';
 
@@ -298,6 +299,7 @@ export {
   Payments,
   Materials,
   FAQ,
+  WhatsAppFilled,
   icons,
 };
 
