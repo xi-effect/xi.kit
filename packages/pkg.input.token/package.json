@@ -1,0 +1,48 @@
+{
+  "name": "@xipkg/inputtoken",
+  "version": "0.0.0",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup index.ts --format esm --dts",
+    "prepare": "npm run build",
+    "start": "npm run build -- --watch",
+    "dev": "npm run build -- --watch",
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "dependencies": {
+    "@xipkg/modal": "^4.1.0",
+    "@xipkg/utils": "^1.6.3",
+    "class-variance-authority": "^0.7.0",
+    "cmdk": "^1.1.1",
+    "react": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "eslint": "^9.17.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.5.3"
+  },
+  "peerDependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "xi.effect",
+  "description": "Token input package"
+}
