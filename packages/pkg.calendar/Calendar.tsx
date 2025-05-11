@@ -14,8 +14,8 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
   const navigationButtonStyles = cn(
     buttonVariants({ variant: 'ghost' }),
     'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 z-10',
-    '[&_svg]:text-gray-500',
-    'dark:[&_svg]:text-gray-300'
+    '[&_svg]:text-gray-100',
+    'dark:[&_svg]:text-gray-100'
   );
 
   // Стили для месяцев
@@ -78,10 +78,10 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
   const ChevronIcon = ({ orientation }: { orientation?: 'left' | 'right' | 'up' | 'down' }) => (
     <ThinArrowRight
       className={cn(
-        orientation === 'left' ? '-scale-x-100' : '',
+        orientation === 'left' ? '-scale-x-100 mr-1' : 'ml-1',
         'stroke-current',
         'transform origin-center',
-        'text-gray-500 dark:text-gray-300'
+        'mt-1'
       )}
       strokeWidth={1.5}
     />
