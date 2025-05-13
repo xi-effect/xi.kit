@@ -24,6 +24,10 @@ export const config = [
     label: 'InputMask',
   },
   {
+    link: '/components/inputtoken',
+    label: 'InputToken',
+  },
+  {
     link: '/components/checkbox',
     label: 'Checkbox',
   },
