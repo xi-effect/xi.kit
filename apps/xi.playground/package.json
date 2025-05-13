@@ -26,7 +26,7 @@
     "@xipkg/icons": "*",
     "@xipkg/input": "*",
     "@xipkg/inputsmart": "*",
-    "@xipkg/inputtoken": "^0.0.0",
+    "@xipkg/inputtoken": "*",
     "@xipkg/inputmask": "*",
     "@xipkg/label": "*",
     "@xipkg/link": "*",
