@@ -30,6 +30,7 @@
     "@xipkg/input": "*",
     "@xipkg/inputmask": "*",
     "@xipkg/inputsmart": "*",
+    "@xipkg/inputtoken": "*",
     "@xipkg/label": "*",
     "@xipkg/link": "*",
     "@xipkg/modal": "*",
