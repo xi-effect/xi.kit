@@ -367,7 +367,7 @@ export const InputToken = React.forwardRef<InputTokenRef, InputTokenProps>(
         <CommandItem
           value={inputValue}
           className="cursor-pointer"
-          onMouseDown={(e) => {
+          onMouseDown={(e: React.MouseEvent<HTMLDivElement>) => {
             e.preventDefault();
             e.stopPropagation();
           }}
@@ -436,7 +436,7 @@ export const InputToken = React.forwardRef<InputTokenRef, InputTokenProps>(
       <Command
         ref={dropdownRef}
         {...commandProps}
-        onKeyDown={(e) => {
+        onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
           handleKeyDown(e);
           commandProps?.onKeyDown?.(e);
         }}
@@ -498,12 +498,12 @@ export const InputToken = React.forwardRef<InputTokenRef, InputTokenProps>(
                       },
                       (disabled || option.fixed) && 'hidden',
                     )}
-                    onKeyDown={(e) => {
+                    onKeyDown={(e: React.KeyboardEvent<HTMLButtonElement>) => {
                       if (e.key === 'Enter') {
                         handleUnselect(option);
                       }
                     }}
-                    onMouseDown={(e) => {
+                    onMouseDown={(e: React.MouseEvent<HTMLButtonElement>) => {
                       e.preventDefault();
                       e.stopPropagation();
                     }}
@@ -605,7 +605,7 @@ export const InputToken = React.forwardRef<InputTokenRef, InputTokenProps>(
                               key={option.value}
                               value={option.label}
                               disabled={option.disable}
-                              onMouseDown={(e) => {
+                              onMouseDown={(e: React.MouseEvent<HTMLDivElement>) => {
                                 e.preventDefault();
                                 e.stopPropagation();
                               }}
