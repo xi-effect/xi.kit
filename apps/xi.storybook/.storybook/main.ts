@@ -37,6 +37,7 @@ const config: StorybookConfig = {
         '@xipkg/input': resolve(__dirname, '../../../packages/pkg.input/index.ts'),
         '@xipkg/inputmask': resolve(__dirname, '../../../packages/pkg.input.mask/index.ts'),
         '@xipkg/inputsmart': resolve(__dirname, '../../../packages/pkg.input.smart/index.ts'),
+        '@xipkg/inputtoken': resolve(__dirname, '../../../packages/pkg.input.token/index.ts'),
         '@xipkg/label': resolve(__dirname, '../../../packages/pkg.label/index.ts'),
         '@xipkg/link': resolve(__dirname, '../../../packages/pkg.link/index.ts'),
         '@xipkg/modal': resolve(__dirname, '../../../packages/pkg.modal/index.ts'),
