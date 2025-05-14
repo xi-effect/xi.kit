@@ -3,9 +3,9 @@ import React, { forwardRef, useEffect } from 'react';
 
 import { Command as CommandPrimitive, useCommandState } from 'cmdk';
 import { Button } from '@xipkg/button';
-import { cn } from '../lib/utils';
+import { cn } from './lib/utils';
 import { Badge } from '@xipkg/badge';
-import { Command, CommandGroup, CommandItem, CommandList } from '.';
+import { Command, CommandGroup, CommandItem, CommandList } from './Command';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { CrossCircle, Plus } from '@xipkg/icons';
 
