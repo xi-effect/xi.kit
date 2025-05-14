@@ -1,13 +1,13 @@
 {
   "name": "@xipkg/inputtoken",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "default": "./dist/index.mjs"
     }
   },
   "files": [
@@ -25,20 +25,21 @@
     "@xipkg/modal": "^4.1.0",
     "@xipkg/utils": "^1.6.3",
     "class-variance-authority": "^0.7.0",
-    "cmdk": "^1.1.1",
-    "react": "^19.1.0"
+    "cmdk": "^1.1.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
+    "@xipkg/eslint": "^3.2.0",
+    "@xipkg/typescript": "^0.1.0",
     "eslint": "^9.17.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
     "tsup": "^8.3.5",
     "typescript": "^5.5.3"
   },
   "peerDependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^19",
+    "react-dom": "^19"
   },
   "publishConfig": {
     "access": "public"
