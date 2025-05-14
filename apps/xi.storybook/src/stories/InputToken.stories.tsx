@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { MultipleSelector } from '@xipkg/inputtoken';
+import { InputToken } from '@xipkg/inputtoken';
 import type { Option } from '@xipkg/inputtoken';
 
 const OPTIONS: Option[] = [
@@ -17,9 +17,9 @@ const OPTIONS: Option[] = [
   { label: 'Astro', value: 'astro' },
 ];
 
-const meta = {
+const meta: Meta<typeof InputToken> = {
   title: 'Components/InputToken',
-  component: MultipleSelector,
+  component: InputToken,
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
@@ -52,7 +52,7 @@ const meta = {
       description: 'Максимальное количество выбранных элементов',
     },
   },
-} satisfies Meta<typeof MultipleSelector>;
+} satisfies Meta<typeof InputToken>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -20,7 +20,7 @@ interface GroupOption {
   [key: string]: Option[];
 }
 
-interface MultipleSelectorProps extends VariantProps<typeof inputTokenVariants> {
+interface InputTokenProps extends VariantProps<typeof inputTokenVariants> {
   value?: Option[];
   defaultOptions?: Option[];
   options?: Option[];
@@ -51,7 +51,7 @@ interface MultipleSelectorProps extends VariantProps<typeof inputTokenVariants> 
   error?: boolean;
 }
 
-export interface MultipleSelectorRef {
+export interface InputTokenRef {
   selectedValue: Option[];
   input: HTMLInputElement;
   focus: () => void;
@@ -180,7 +180,7 @@ export const badgeVariants = cva(
   },
 );
 
-export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSelectorProps>(
+export const InputToken = React.forwardRef<InputTokenRef, InputTokenProps>(
   (
     {
       value,
@@ -208,8 +208,8 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
       inputProps,
       variant,
       error,
-    }: MultipleSelectorProps,
-    ref: React.Ref<MultipleSelectorRef>,
+    }: InputTokenProps,
+    ref: React.Ref<InputTokenRef>,
   ) => {
     const inputRef = React.useRef<HTMLInputElement>(null);
     const [open, setOpen] = React.useState(false);
@@ -644,4 +644,4 @@ export const MultipleSelector = React.forwardRef<MultipleSelectorRef, MultipleSe
   },
 );
 
-MultipleSelector.displayName = 'MultipleSelector';
+InputToken.displayName = 'InputToken';

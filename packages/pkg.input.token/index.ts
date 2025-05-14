@@ -1,2 +1,2 @@
-export { MultipleSelector } from './components/MultipleSelector';
-export type { Option } from './components/MultipleSelector';
+export { InputToken } from './components';
+export type { Option } from './components';
