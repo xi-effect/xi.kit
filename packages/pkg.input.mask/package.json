@@ -22,9 +22,9 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@maskito/core": "3.5.0",
-    "@maskito/kit": "^3.5.0",
-    "@maskito/react": "^3.5.0",
+    "@maskito/core": "3.8.0",
+    "@maskito/kit": "^3.8.0",
+    "@maskito/react": "^3.8.0",
     "@xipkg/utils": "^1.7.0"
   },
   "devDependencies": {

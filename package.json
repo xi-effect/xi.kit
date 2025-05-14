@@ -37,6 +37,7 @@
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "^4.38.0",
     "@esbuild/darwin-arm64": "^0.25.4",
-    "@tailwindcss/oxide-linux-x64-gnu": "^4.1.6"
+    "@tailwindcss/oxide-linux-x64-gnu": "^4.1.6",
+    "lightningcss-linux-x64-gnu": "^1.25.0"
   }
 }
