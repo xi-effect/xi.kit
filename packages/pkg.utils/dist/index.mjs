@@ -2,8 +2,9 @@ var __pow = Math.pow;
 
 // cn.ts
 import { twMerge } from "tailwind-merge";
+import { clsx } from "clsx";
 function cn(...inputs) {
-  return twMerge(inputs);
+  return twMerge(clsx(inputs));
 }
 
 // useDebounce.ts

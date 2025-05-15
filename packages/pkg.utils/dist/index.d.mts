@@ -1,4 +1,6 @@
-declare function cn(...inputs: any): string;
+import { ClassValue } from 'clsx';
+
+declare function cn(...inputs: ClassValue[]): string;
 
 declare const useDebounce: (value: any, delay: number) => any;
 

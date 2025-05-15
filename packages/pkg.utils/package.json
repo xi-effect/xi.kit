@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/utils",
-  "version": "1.7.1",
+  "version": "1.8.0",
   "description": "xi.utils",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
@@ -20,8 +20,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "clsx": "^2.0.0",
-    "tailwind-merge": "^1.14.0"
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
