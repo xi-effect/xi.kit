@@ -75,20 +75,6 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
     hidden: 'invisible'
   };
 
-  const ChevronIcon = ({ orientation }: { orientation?: 'left' | 'right' | 'up' | 'down' }) => (
-    <ThinArrowRight
-      className={cn(
-        orientation === 'left' ? '-scale-x-100 mr-1' : 'ml-1',
-        'stroke-current',
-        'transform origin-center',
-        'mt-1'
-      )}
-      strokeWidth={1.5}
-    />
-  );
-
-  console.log(props)
-
   return (
     <DayPicker
       locale={ru}
@@ -103,7 +89,15 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
         ...classNames
       }}
       components={{
-        Chevron: ({ orientation }) => <ChevronIcon orientation={orientation} />
+        Chevron: ({ orientation }) => <ThinArrowRight
+          className={cn(
+            orientation === 'left' ? '-scale-x-100 mr-1' : 'ml-1',
+            'stroke-current',
+            'transform origin-center',
+            'mt-1'
+          )}
+          strokeWidth={1.5}
+        />
       }}
       {...props}
     />
