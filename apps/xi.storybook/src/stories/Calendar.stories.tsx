@@ -15,12 +15,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    mode: 'single',
+  },
 };
 
 export const Selected: Story = {
   args: {
-    selected: new Date(),
+    mode: 'single',
+    selected: addDays(new Date(), 2),
   },
 };
 
@@ -36,6 +39,7 @@ export const WithRange: Story = {
 
 export const WithDisabledDays: Story = {
   args: {
+    mode: 'single',
     disabled: [
       { from: new Date(), to: addDays(new Date(), 5) },
       { from: addDays(new Date(), 10), to: addDays(new Date(), 15) },
@@ -52,4 +56,4 @@ export const WithFooter: Story = {
     },
     footer: 'Выберите диапазон дат',
   },
-}; 
+};
