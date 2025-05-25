@@ -9,34 +9,6 @@ import { buttonVariants } from '@xipkg/button';
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
-const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: CalendarProps) => (
-  <DayPicker
-    locale={ru}
-    weekStartsOn={1}
-    showOutsideDays={showOutsideDays}
-    className={cn('p-3', className)}
-    classNames={{
-      ...monthClasses,
-      ...weekClasses,
-      ...dayClasses,
-      ...miscClasses,
-      ...classNames
-    }}
-    components={{
-      Chevron: ({ orientation }) => <ThinArrowRight
-        className={cn(
-          orientation === 'left' ? '-scale-x-100 mr-1' : 'ml-1',
-          'stroke-current',
-          'transform origin-center',
-          'mt-1'
-        )}
-        strokeWidth={1.5}
-      />
-    }}
-    {...props}
-  />
-);
-
 // Общие стили для кнопок
 const navigationButtonStyles = cn(
   buttonVariants({ variant: 'ghost' }),
@@ -51,7 +23,7 @@ const monthClasses = {
   month: 'space-y-4',
   month_caption: 'flex justify-center pt-1 relative items-center',
   caption_label: 'text-sm font-medium',
-  nav: 'flex items-center justify-between absolute inset-x-0',
+  nav: 'flex items-center justify-between absolute px-1 inset-x-0',
   button_previous: navigationButtonStyles,
   button_next: navigationButtonStyles,
   month_grid: 'w-full border-collapse space-y-1'
@@ -101,5 +73,31 @@ const dayClasses = {
 const miscClasses = {
   hidden: 'invisible'
 };
+
+const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: CalendarProps) => (
+  <DayPicker
+    locale={ru}
+    weekStartsOn={1}
+    showOutsideDays={showOutsideDays}
+    className={cn('p-3', className)}
+    classNames={{
+      ...monthClasses,
+      ...weekClasses,
+      ...dayClasses,
+      ...miscClasses,
+      ...classNames
+    }}
+    components={{
+      Chevron: ({ orientation }) => <ThinArrowRight
+        className={cn(
+          orientation === 'left' ? '-scale-x-100 mr-1' : 'ml-1',
+          'stroke-current transform origin-center mt-1',
+        )}
+        // strokeWidth={1.5}
+      />
+    }}
+    {...props}
+  />
+);
 
 export { Calendar };
