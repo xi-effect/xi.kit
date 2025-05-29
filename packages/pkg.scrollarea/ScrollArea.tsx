@@ -6,9 +6,10 @@ import { cn } from '@xipkg/utils';
 interface ScrollAreaProps extends ScrollAreaPrimitive.ScrollAreaProps {
   className?: string;
   ref?: React.Ref<HTMLDivElement>;
+  scrollBarProps?: ScrollBarProps;
 }
 
-const ScrollArea = ({ className, children, ref, ...props }: ScrollAreaProps) => {
+const ScrollArea = ({ className, children, ref, scrollBarProps, ...props }: ScrollAreaProps) => {
   return (
     <ScrollAreaPrimitive.Root
       {...props}
@@ -18,7 +19,7 @@ const ScrollArea = ({ className, children, ref, ...props }: ScrollAreaProps) => 
       <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit] [&>div]:!block">
         {children}
       </ScrollAreaPrimitive.Viewport>
-      <ScrollBar />
+      <ScrollBar {...scrollBarProps} />
       <ScrollAreaPrimitive.Corner />
     </ScrollAreaPrimitive.Root>
   );
