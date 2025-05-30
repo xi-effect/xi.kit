@@ -7,16 +7,17 @@ interface ScrollAreaProps extends ScrollAreaPrimitive.ScrollAreaProps {
   className?: string;
   ref?: React.Ref<HTMLDivElement>;
   scrollBarProps?: ScrollBarProps;
+  scrollViewportProps?: ScrollAreaPrimitive.ScrollAreaViewportProps;
 }
 
-const ScrollArea = ({ className, children, ref, scrollBarProps, ...props }: ScrollAreaProps) => {
+const ScrollArea = ({ className, children, ref, scrollBarProps, scrollViewportProps, ...props }: ScrollAreaProps) => {
   return (
     <ScrollAreaPrimitive.Root
       {...props}
       ref={ref}
       className={cn('relative overflow-hidden', className)}
     >
-      <ScrollAreaPrimitive.Viewport className="h-full w-full rounded-[inherit] [&>div]:!block">
+      <ScrollAreaPrimitive.Viewport {...scrollViewportProps} className="h-full w-full rounded-[inherit] [&>div]:!block">
         {children}
       </ScrollAreaPrimitive.Viewport>
       <ScrollBar {...scrollBarProps} />
