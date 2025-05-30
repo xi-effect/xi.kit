@@ -13,16 +13,49 @@ const List = ({ className, classNameShadow = '', children, onClick, ...props }: 
   const shadowRef = React.useRef<HTMLDivElement | null>(null);
   const shadowKey = React.useId();
 
-  React.useEffect(() => {
+  const updateShadowPosition = React.useCallback(() => {
     if (!shadowRef.current) return;
 
     const activeButton = Array.from(shadowRef.current.parentNode?.children ?? []).find(
       (element) => element.getAttribute('data-state') === 'active',
     );
 
-    const { offsetLeft, clientWidth } = activeButton as HTMLElement;
-    shadowRef.current.setAttribute('style', `left: ${offsetLeft}px; width: ${clientWidth}px`);
+    if (activeButton) {
+      const { offsetLeft, clientWidth } = activeButton as HTMLElement;
+      shadowRef.current.setAttribute('style', `left: ${offsetLeft}px; width: ${clientWidth}px`);
+    }
   }, []);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      updateShadowPosition();
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, [updateShadowPosition]);
+
+  React.useEffect(() => {
+    if (!shadowRef.current?.parentNode) return;
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-state') {
+          updateShadowPosition();
+        }
+      });
+    });
+
+    const parent = shadowRef.current.parentNode;
+    const buttons = Array.from(parent.children);
+    
+    buttons.forEach((button) => {
+      observer.observe(button, { attributes: true });
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [updateShadowPosition]);
 
   const handleOnClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if ((event.target as HTMLButtonElement).type !== 'button') return;
