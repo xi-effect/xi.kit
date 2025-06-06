@@ -7,7 +7,7 @@ export const DrawerTitle = ({
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Title>) => (
   <DrawerPrimitive.Title
-    className={cn('text-lg leading-none font-semibold tracking-tight', className)}
+    className={cn('text-xl leading-none font-semibold tracking-tight', className)}
     {...props}
   />
 );
