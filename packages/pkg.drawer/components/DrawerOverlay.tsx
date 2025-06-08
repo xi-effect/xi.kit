@@ -6,5 +6,8 @@ export const DrawerOverlay = ({
   className,
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Overlay>) => (
-  <DrawerPrimitive.Overlay className={cn('fixed inset-0 z-50 bg-black/80', className)} {...props} />
+  <DrawerPrimitive.Overlay
+    className={cn('fixed inset-0 z-50 bg-gray-100/40', className)}
+    {...props}
+  />
 );

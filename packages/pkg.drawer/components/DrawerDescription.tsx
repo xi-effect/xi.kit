@@ -6,8 +6,5 @@ export const DrawerDescription = ({
   className,
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Description>) => (
-  <DrawerPrimitive.Description
-    className={cn('text-muted-foreground text-sm', className)}
-    {...props}
-  />
+  <DrawerPrimitive.Description className={cn('bg-gray-100/40 text-sm', className)} {...props} />
 );
