@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/drawer",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -22,7 +22,8 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "vaul": "^1.1.2"
+    "vaul": "^1.1.2",
+    "@xipkg/utils": "1.8.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
