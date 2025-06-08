@@ -22,6 +22,7 @@
     "@xipkg/contextmenu": "*",
     "@xipkg/datepicker": "*",
     "@xipkg/dropdown": "*",
+    "@xipkg/drawer": "*",
     "@xipkg/emojipicker": "*",
     "@xipkg/file": "*",
     "@xipkg/fileuploader": "*",
