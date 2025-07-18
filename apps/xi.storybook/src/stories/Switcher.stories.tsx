@@ -39,4 +39,12 @@ export const WithLabel: Story = {
       </label>
     </div>
   ),
-}; 
+};
+
+export const Small: Story = {
+  render: () => (
+    <Switch
+      size="s"
+    />
+  ),
+};
