@@ -131,7 +131,7 @@ export const UserProfile = ({
       <Avatar size={size}>
         {/* @ts-ignore */}
         <AvatarImage
-          src={`https://auth.xieffect.ru/api/users/${userId}/avatar.webp`}
+          src={src || `https://api.xieffect.ru/files/users/${userId}/avatar.webp`}
           alt="user avatar"
         />
         {loading ? (
