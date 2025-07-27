@@ -16,13 +16,18 @@ export const modalHeaderVariants = cva('', {
 
 export interface ModalHeaderProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof modalHeaderVariants> {}
+  VariantProps<typeof modalHeaderVariants> {
+  innerClassName?: string;
+}
 
-export const ModalHeader = ({ headerVariant, className, ...props }: ModalHeaderProps) => (
+export const ModalHeader = ({ headerVariant, className, innerClassName, ...props }: ModalHeaderProps) => (
   <div className={cn(modalHeaderVariants({ headerVariant, className }))}>
     <div
       {...props}
-      className="border-gray-5 bg-gray-0 flex flex-col space-y-2 rounded-t-[16px] border-b p-6 text-left"
+      className={cn(
+        'border-gray-5 bg-gray-0 flex flex-col space-y-2 rounded-t-[16px] border-b p-6 text-left',
+        innerClassName,
+      )}
     />
   </div>
 );
