@@ -37,22 +37,23 @@ interface AvatarImageProps extends React.ComponentPropsWithoutRef<typeof AvatarP
   size?: 'xxl' | 'xl' | 'l' | 'm' | 's';
 }
 
-const AvatarImage = ({ className, size = 'l', src, alt = 'user avatar', ...props }: AvatarImageProps) => (
+const AvatarImage = ({
+  className,
+  size = 'l',
+  src,
+  alt = 'user avatar',
+  ...props
+}: AvatarImageProps) => (
   <AvatarPrimitive.Image
     className={cn('aspect-square h-full w-full', className)}
     {...props}
-  >
-    <img
-      src={src}
-      alt={alt}
-      width={sizeMap[size] as number}
-      height={sizeMap[size] as number}
-      className="h-full w-full object-cover"
-    />
-  </AvatarPrimitive.Image>
+    src={src}
+    alt={alt}
+  />
 );
 
-interface AvatarFallbackProps extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback> {
+interface AvatarFallbackProps
+  extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback> {
   size?: 'xxl' | 'xl' | 'l' | 'm' | 's';
   loading?: boolean;
 }
@@ -68,3 +69,4 @@ const AvatarFallback = ({ className, size = 'l', loading, ...props }: AvatarFall
 );
 
 export { Avatar, AvatarImage, AvatarFallback };
+export type { AvatarProps, AvatarImageProps, AvatarFallbackProps };
