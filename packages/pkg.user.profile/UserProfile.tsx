@@ -129,9 +129,8 @@ export const UserProfile = ({
   return (
     <div className={cn(userProfileVariants({ size }), className)} {...props}>
       <Avatar size={size}>
-        {/* @ts-ignore */}
         <AvatarImage
-          src={src || `https://api.xieffect.ru/files/users/${userId}/avatar.webp`}
+          src={src || `https://api.sovlium.ru/files/users/${userId}/avatar.webp`}
           alt="user avatar"
         />
         {loading ? (
