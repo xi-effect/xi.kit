@@ -138,7 +138,7 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
                         onClick={() => selectCategory(index)}
                       >
                         <Icon
-                          size="s"
+                          size="sm"
                           className="fill-current group-hover:fill-current group-focus:fill-current"
                         />
                       </Button>
@@ -154,7 +154,7 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
           <div className="bg-gray-0 dark:bg-gray-100 flex w-full flex-col gap-2 p-2">
             <Input
               variant="s"
-              before={<Search size="s" className="text-gray-60 dark:text-gray-40" />}
+              before={<Search size="sm" className="text-gray-60 dark:text-gray-40" />}
               placeholder="Поиск"
               className="border"
               value={searchQuery}

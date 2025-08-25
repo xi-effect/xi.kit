@@ -140,4 +140,11 @@ export const icons = [
   'Payments',
   'Materials',
   'FAQ',
+  'Rectangle',
+  'Circle',
+  'Triangle',
+  'Star',
+  'Trapezoid',
+  'RoundedRectangle',
+  'Diamond',
 ] as const;
