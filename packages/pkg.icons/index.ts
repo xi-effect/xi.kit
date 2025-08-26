@@ -1,3 +1,10 @@
+import { Diamond } from './icons/Diamond';
+import { Rectangle } from './icons/Rectangle';
+import { Circle } from './icons/Circle';
+import { Triangle } from './icons/Triangle';
+import { Star } from './icons/Star';
+import { Trapezoid } from './icons/Trapezoid';
+import { RoundedRectangle } from './icons/RoundedRectangle';
 import { Materials } from './icons/Materials';
 import { Account } from './icons/Account';
 import { Activity } from './icons/Activity';
@@ -301,6 +308,13 @@ export {
   FAQ,
   WhatsAppFilled,
   icons,
+  Rectangle,
+  Circle,
+  Triangle,
+  Star,
+  Trapezoid,
+  RoundedRectangle,
+  Diamond,
 };
 
 export type { IconProps } from './Svg';
