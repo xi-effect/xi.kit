@@ -5,6 +5,8 @@ import {
   useWatch,
   useFormState,
   useFieldArray,
+  Controller,
+  Control,
 } from 'react-hook-form';
 
 import {
@@ -33,4 +35,6 @@ export {
   useWatch,
   useFormState,
   useFieldArray,
+  Controller,
+  type Control,
 };
