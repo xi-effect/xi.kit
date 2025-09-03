@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/button",
-  "version": "3.1.8",
+  "version": "3.2.0",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",

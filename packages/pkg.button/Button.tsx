@@ -15,6 +15,8 @@ export const buttonVariants = cva(
         default:
           'text-gray-0 dark:text-gray-100 bg-brand-80 hover:bg-brand-100 active:bg-brand-100 focus:bg-brand-100',
         secondary:
+          'text-brand-100 dark:text-brand-80 bg-brand-0 hover:bg-brand-80 hover:text-brand-0 dark:hover:bg-brand-80 active:bg-brand-20 dark:active:bg-brand-20 focus:bg-brand-20 dark:focus:bg-brand-20',
+        border:
           'bg-gray-0 text-gray-100 border-gray-30 border-2 hover:bg-gray-5 active:bg-gray-5 focus:bg-gray-5',
         ghost: 'text-gray-100 bg-gray-0 border-0 hover:bg-gray-5 active:bg-gray-5 focus:bg-gray-5',
         error: 'bg-red-80 text-gray-0 hover:bg-red-100 active:bg-red-100 focus:bg-red-100',
