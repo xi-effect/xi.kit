@@ -8,7 +8,7 @@ import {
   SelectLabel,
   SelectItem,
   SelectSeparator,
-  type SelectTriggerProps
+  type SelectTriggerProps,
 } from '@xipkg/select';
 import { Folder } from '@xipkg/icons';
 
@@ -25,8 +25,8 @@ const meta = {
   },
 } satisfies Meta<typeof Select>;
 
-const defaultTriggerProps:SelectTriggerProps = {
-  size: "m",
+const defaultTriggerProps: SelectTriggerProps = {
+  size: 'm',
   error: false,
   warning: false,
 };
@@ -86,9 +86,7 @@ export const WithIcon: Story = {
   },
   render: (args) => (
     <Select {...args}>
-      <SelectTrigger 
-        {...defaultTriggerProps} before={<Folder />}
-      >
+      <SelectTrigger {...defaultTriggerProps} before={<Folder />}>
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>
@@ -128,11 +126,11 @@ export const SmallSelectWithIcon: Story = {
   },
   render: (args) => (
     <Select {...args}>
-      <SelectTrigger 
-          {...defaultTriggerProps}
-          size='s'
-          before={<Folder className='w-[19px] h-[16px]' />}
-      > 
+      <SelectTrigger
+        {...defaultTriggerProps}
+        size="s"
+        before={<Folder className="h-[16px] w-[19px]" />}
+      >
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>

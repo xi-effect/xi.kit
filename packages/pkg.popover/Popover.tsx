@@ -9,11 +9,17 @@ const Popover = PopoverPrimitive.Root;
 
 const PopoverTrigger = PopoverPrimitive.Trigger;
 
-interface PopoverContentProps extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> {
+interface PopoverContentProps
+  extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> {
   ref?: React.Ref<React.ElementRef<typeof PopoverPrimitive.Content>>;
 }
 
-const PopoverContent = ({ className, align = 'center', sideOffset = 4, ...props }: PopoverContentProps) => (
+const PopoverContent = ({
+  className,
+  align = 'center',
+  sideOffset = 4,
+  ...props
+}: PopoverContentProps) => (
   <PopoverPrimitive.Portal>
     <PopoverPrimitive.Content
       align={align}

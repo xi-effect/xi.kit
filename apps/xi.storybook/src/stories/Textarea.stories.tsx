@@ -14,12 +14,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => (
-    <Textarea
-      placeholder="Введите текст..."
-      className="min-h-[100px]"
-    />
-  ),
+  render: () => <Textarea placeholder="Введите текст..." className="min-h-[100px]" />,
 };
 
 export const WithMaxLength: Story = {
@@ -34,43 +29,19 @@ export const WithMaxLength: Story = {
 };
 
 export const WithError: Story = {
-  render: () => (
-    <Textarea
-      placeholder="Введите текст..."
-      error
-      className="min-h-[100px]"
-    />
-  ),
+  render: () => <Textarea placeholder="Введите текст..." error className="min-h-[100px]" />,
 };
 
 export const WithWarning: Story = {
-  render: () => (
-    <Textarea
-      placeholder="Введите текст..."
-      warning
-      className="min-h-[100px]"
-    />
-  ),
+  render: () => <Textarea placeholder="Введите текст..." warning className="min-h-[100px]" />,
 };
 
 export const Small: Story = {
-  render: () => (
-    <Textarea
-      placeholder="Введите текст..."
-      variant="s"
-      className="min-h-[100px]"
-    />
-  ),
+  render: () => <Textarea placeholder="Введите текст..." variant="s" className="min-h-[100px]" />,
 };
 
 export const Disabled: Story = {
-  render: () => (
-    <Textarea
-      placeholder="Введите текст..."
-      disabled
-      className="min-h-[100px]"
-    />
-  ),
+  render: () => <Textarea placeholder="Введите текст..." disabled className="min-h-[100px]" />,
 };
 
 export const WithValue: Story = {
@@ -81,4 +52,4 @@ export const WithValue: Story = {
       className="min-h-[100px]"
     />
   ),
-}; 
+};

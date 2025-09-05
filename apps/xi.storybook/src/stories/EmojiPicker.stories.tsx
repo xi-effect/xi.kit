@@ -21,11 +21,7 @@ export const Default: Story = {
     return (
       <div className="flex flex-col items-center gap-4">
         <EmojiPicker onEmojiSelect={setSelectedEmoji} />
-        {selectedEmoji && (
-          <div className="text-2xl">
-            Выбранный эмодзи: {selectedEmoji}
-          </div>
-        )}
+        {selectedEmoji && <div className="text-2xl">Выбранный эмодзи: {selectedEmoji}</div>}
       </div>
     );
   },
@@ -38,16 +34,9 @@ export const WithRecentEmojis: Story = {
 
     return (
       <div className="flex flex-col items-center gap-4">
-        <EmojiPicker
-          onEmojiSelect={setSelectedEmoji}
-          recentEmojis={recentEmojis}
-        />
-        {selectedEmoji && (
-          <div className="text-2xl">
-            Выбранный эмодзи: {selectedEmoji}
-          </div>
-        )}
+        <EmojiPicker onEmojiSelect={setSelectedEmoji} recentEmojis={recentEmojis} />
+        {selectedEmoji && <div className="text-2xl">Выбранный эмодзи: {selectedEmoji}</div>}
       </div>
     );
   },
-}; 
+};

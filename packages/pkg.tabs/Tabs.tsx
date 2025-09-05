@@ -47,7 +47,7 @@ const List = ({ className, classNameShadow = '', children, onClick, ...props }: 
 
     const parent = shadowRef.current.parentNode;
     const buttons = Array.from(parent.children);
-    
+
     buttons.forEach((button) => {
       observer.observe(button, { attributes: true });
     });

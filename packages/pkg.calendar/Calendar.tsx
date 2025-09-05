@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { ThinArrowRight } from '@xipkg/icons';
-import { ru } from "react-day-picker/locale";
+import { ru } from 'react-day-picker/locale';
 import { DayPicker } from 'react-day-picker';
 import { cn } from '@xipkg/utils';
 import { buttonVariants } from '@xipkg/button';
@@ -14,7 +14,7 @@ const navigationButtonStyles = cn(
   buttonVariants({ variant: 'ghost' }),
   'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 z-10',
   '[&_svg]:text-gray-100',
-  'dark:[&_svg]:text-gray-100'
+  'dark:[&_svg]:text-gray-100',
 );
 
 // Стили для месяцев
@@ -26,14 +26,14 @@ const monthClasses = {
   nav: 'flex items-center justify-between absolute px-1 inset-x-0',
   button_previous: navigationButtonStyles,
   button_next: navigationButtonStyles,
-  month_grid: 'w-full border-collapse space-y-1'
+  month_grid: 'w-full border-collapse space-y-1',
 };
 
 // Стили для недель
 const weekClasses = {
   weekdays: 'flex',
   weekday: 'text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]',
-  week: 'flex w-full mt-2'
+  week: 'flex w-full mt-2',
 };
 
 // Стили для дней
@@ -45,7 +45,7 @@ const dayClasses = {
     '[&:has([aria-selected])]:bg-accent',
     'first:[&:has([aria-selected])]:rounded-l-md',
     'last:[&:has([aria-selected])]:rounded-r-md',
-    'focus-within:relative focus-within:z-20'
+    'focus-within:relative focus-within:z-20',
   ),
   day_button: cn(
     buttonVariants({ variant: 'ghost' }),
@@ -63,15 +63,16 @@ const dayClasses = {
     '[&_button]:bg-gray-10 [&_button]:text-gray-100',
     'dark:[&_button]:bg-gray-80 dark:[&_button]:text-gray-0',
   ),
-  outside: 'day-outside text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30',
+  outside:
+    'day-outside text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30',
   disabled: 'text-muted-foreground opacity-50',
   range_middle: 'aria-selected:bg-accent aria-selected:text-accent-foreground',
-  range_end: 'day-range-end'
+  range_end: 'day-range-end',
 };
 
 // Прочие стили
 const miscClasses = {
-  hidden: 'invisible'
+  hidden: 'invisible',
 };
 
 const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: CalendarProps) => (
@@ -85,16 +86,18 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
       ...weekClasses,
       ...dayClasses,
       ...miscClasses,
-      ...classNames
+      ...classNames,
     }}
     components={{
-      Chevron: ({ orientation }) => <ThinArrowRight
-        className={cn(
-          orientation === 'left' ? '-scale-x-100 mr-1' : 'ml-1',
-          'stroke-current transform origin-center mt-1',
-        )}
-        // strokeWidth={1.5}
-      />
+      Chevron: ({ orientation }) => (
+        <ThinArrowRight
+          className={cn(
+            orientation === 'left' ? 'mr-1 -scale-x-100' : 'ml-1',
+            'mt-1 origin-center transform stroke-current',
+          )}
+          // strokeWidth={1.5}
+        />
+      ),
     }}
     {...props}
   />

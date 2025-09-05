@@ -40,18 +40,14 @@ export const WithDescription: Story = {
           <RadioItem value="option1" id="option1" />
           <label htmlFor="option1">Опция 1</label>
         </div>
-        <p className="text-sm text-gray-60 dark:text-gray-40 pl-6">
-          Это описание для первой опции
-        </p>
+        <p className="text-gray-60 dark:text-gray-40 pl-6 text-sm">Это описание для первой опции</p>
       </div>
       <div className="space-y-2">
         <div className="flex items-center space-x-2">
           <RadioItem value="option2" id="option2" />
           <label htmlFor="option2">Опция 2</label>
         </div>
-        <p className="text-sm text-gray-60 dark:text-gray-40 pl-6">
-          Это описание для второй опции
-        </p>
+        <p className="text-gray-60 dark:text-gray-40 pl-6 text-sm">Это описание для второй опции</p>
       </div>
     </Radio>
   ),
@@ -72,4 +68,4 @@ export const Disabled: Story = {
       </div>
     </Radio>
   ),
-}; 
+};

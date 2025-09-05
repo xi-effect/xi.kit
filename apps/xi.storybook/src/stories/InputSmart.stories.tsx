@@ -24,7 +24,7 @@ const SmartInputDemo = () => {
 
   return (
     <div className="w-full max-w-2xl">
-      <div className="mb-4 text-sm text-gray-60 dark:text-gray-40">
+      <div className="text-gray-60 dark:text-gray-40 mb-4 text-sm">
         Используйте следующие сочетания клавиш для форматирования:
         <ul className="mt-2 list-disc pl-4">
           <li>Ctrl/Cmd + B для жирного текста</li>
@@ -36,7 +36,7 @@ const SmartInputDemo = () => {
       <SmartInput
         value={value}
         onChange={setValue}
-        className="min-h-[200px] p-4 border rounded-lg bg-white dark:bg-gray-100"
+        className="min-h-[200px] rounded-lg border bg-white p-4 dark:bg-gray-100"
       />
     </div>
   );
@@ -65,7 +65,7 @@ export const WithInitialValue: Story = {
           ],
         },
       ]}
-      className="min-h-[200px] p-4 border rounded-lg bg-white dark:bg-gray-100"
+      className="min-h-[200px] rounded-lg border bg-white p-4 dark:bg-gray-100"
     />
   ),
-}; 
+};

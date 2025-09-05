@@ -18,7 +18,7 @@ export const SidebarMenuAction = ({
       ref={ref}
       data-sidebar="menu-action"
       className={cn(
-        'peer-hover/menu-button:text-gray-100 absolute top-1/2 right-1 flex aspect-square w-5 -translate-y-1/2 items-center justify-center rounded-md p-0 transition-transform outline-none focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
+        'absolute top-1/2 right-1 flex aspect-square w-5 -translate-y-1/2 items-center justify-center rounded-md p-0 transition-transform outline-none peer-hover/menu-button:text-gray-100 focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
         // Increases the hit area of the button on mobile.
         'after:absolute after:-inset-2 after:md:hidden',
         'peer-data-[size=sm]/menu-button:top-1',

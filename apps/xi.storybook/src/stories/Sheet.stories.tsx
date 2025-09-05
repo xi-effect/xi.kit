@@ -55,13 +55,13 @@ export const WithContent: Story = {
         <div className="grid gap-4 py-4">
           <div className="space-y-2">
             <h4 className="text-sm font-medium">Профиль</h4>
-            <p className="text-sm text-gray-60 dark:text-gray-40">
+            <p className="text-gray-60 dark:text-gray-40 text-sm">
               Настройте информацию о вашем профиле и как другие пользователи видят вас в системе.
             </p>
           </div>
           <div className="space-y-2">
             <h4 className="text-sm font-medium">Уведомления</h4>
-            <p className="text-sm text-gray-60 dark:text-gray-40">
+            <p className="text-gray-60 dark:text-gray-40 text-sm">
               Выберите, какие уведомления вы хотите получать.
             </p>
           </div>
@@ -80,15 +80,13 @@ export const WithFooter: Story = {
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Подтверждение</SheetTitle>
-          <SheetDescription>
-            Вы уверены, что хотите выполнить это действие?
-          </SheetDescription>
+          <SheetDescription>Вы уверены, что хотите выполнить это действие?</SheetDescription>
         </SheetHeader>
-        <div className="flex justify-end space-x-2 mt-4">
+        <div className="mt-4 flex justify-end space-x-2">
           <Button variant="outline">Отмена</Button>
           <Button>Подтвердить</Button>
         </div>
       </SheetContent>
     </Sheet>
   ),
-}; 
+};

@@ -80,4 +80,4 @@ export const LongPath: Story = {
       { name: 'iPhone 15 Pro Max' },
     ],
   },
-}; 
+};

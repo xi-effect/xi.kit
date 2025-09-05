@@ -9,10 +9,12 @@ export const badgeVariants = cva(
     variants: {
       variant: {
         default: 'border-transparent bg-gray-10 text-gray-90 dark:bg-gray-80 dark:text-gray-10',
-        secondary: 'border-transparent bg-brand-20 text-brand-100 dark:bg-brand-80 dark:text-gray-0',
+        secondary:
+          'border-transparent bg-brand-20 text-brand-100 dark:bg-brand-80 dark:text-gray-0',
         destructive: 'border-transparent bg-red-20 text-red-100 dark:bg-red-80 dark:text-gray-0',
         success: 'border-transparent bg-green-20 text-green-100 dark:bg-green-80 dark:text-gray-0',
-        warning: 'border-transparent bg-yellow-20 text-yellow-100 dark:bg-yellow-80 dark:text-gray-0',
+        warning:
+          'border-transparent bg-yellow-20 text-yellow-100 dark:bg-yellow-80 dark:text-gray-0',
         outline: 'text-gray-100 border-gray-30 dark:text-gray-0 dark:border-gray-70',
       },
       size: {

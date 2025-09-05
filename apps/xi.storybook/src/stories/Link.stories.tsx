@@ -14,11 +14,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => (
-    <Link href="https://xieffect.ru">
-      Перейти на xi.effect
-    </Link>
-  ),
+  render: () => <Link href="https://xieffect.ru">Перейти на xi.effect</Link>,
 };
 
 export const Brand: Story = {
@@ -67,4 +63,4 @@ export const Disabled: Story = {
       Disabled Link
     </Link>
   ),
-}; 
+};

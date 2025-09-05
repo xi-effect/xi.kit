@@ -16,11 +16,16 @@ export const modalHeaderVariants = cva('', {
 
 export interface ModalHeaderProps
   extends React.HTMLAttributes<HTMLDivElement>,
-  VariantProps<typeof modalHeaderVariants> {
+    VariantProps<typeof modalHeaderVariants> {
   innerClassName?: string;
 }
 
-export const ModalHeader = ({ headerVariant, className, innerClassName, ...props }: ModalHeaderProps) => (
+export const ModalHeader = ({
+  headerVariant,
+  className,
+  innerClassName,
+  ...props
+}: ModalHeaderProps) => (
   <div className={cn(modalHeaderVariants({ headerVariant, className }))}>
     <div
       {...props}

@@ -59,4 +59,4 @@ export const Small: Story = {
     children: 'Small checkbox',
     size: 's',
   },
-}; 
+};

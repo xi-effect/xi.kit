@@ -59,4 +59,4 @@ export const Disabled: Story = {
     disabled: true,
     onChange: (files) => console.log('Selected files:', files),
   },
-}; 
+};
