@@ -21,25 +21,24 @@ type Story = StoryObj<DatePickerProps>;
 export const Default: Story = {
   args: {
     children: (
-      <Button variant="secondary" className="w-[280px] justify-start text-left font-normal">
+      <Button variant="ghost" className="w-[280px] justify-start text-left font-normal">
         Выберите дату
       </Button>
     ),
-    calendarProps: { mode: 'single', selected: addDays(new Date(), 2), onSelect: () => {} },
+    calendarProps: { mode: 'single', selected: addDays(new Date(), 2) },
   },
 };
 
 export const WithRange: Story = {
   args: {
     children: (
-      <Button variant="secondary" className="w-[280px] justify-start text-left font-normal">
+      <Button variant="ghost" className="w-[280px] justify-start text-left font-normal">
         Выберите дату
       </Button>
     ),
     calendarProps: {
       mode: 'range',
       selected: { from: new Date(), to: addDays(new Date(), 2) },
-      onSelect: () => {},
     },
   },
 };
@@ -47,14 +46,13 @@ export const WithRange: Story = {
 export const WithDisabledDates: Story = {
   args: {
     children: (
-      <Button variant="secondary" className="w-[280px] justify-start text-left font-normal">
+      <Button variant="ghost" className="w-[280px] justify-start text-left font-normal">
         Выберите дату
       </Button>
     ),
     calendarProps: {
       mode: 'single',
       selected: addDays(new Date(), 2),
-      onSelect: () => {},
       disabled: (date) => date > new Date() || date < new Date('1900-01-01'),
     },
   },

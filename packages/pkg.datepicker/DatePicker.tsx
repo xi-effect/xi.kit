@@ -24,7 +24,7 @@ const DatePicker = ({
   popoverProps,
   popoverTriggerProps,
   popoverContentProps,
-  ...calendarProps
+  calendarProps
 }: DatePickerProps) => {
   return (
     <Popover {...popoverProps}>

@@ -27,7 +27,7 @@
     "@xipkg/calendar": "^2.1.0",
     "@xipkg/icons": "^2.2.0",
     "@xipkg/popover": "^3.0.5",
-    "@xipkg/utils": "^1.7.0",
+    "@xipkg/utils": "^1.8.0",
     "class-variance-authority": "^0.7.1",
     "date-fns": "^4.1.0",
     "react-day-picker": "^9.6.4"
