@@ -26,7 +26,7 @@
     "@xipkg/button": "3.1.2",
     "@xipkg/icons": "2.2.0",
     "@xipkg/slatetypes": "^0.0.3",
-    "@xipkg/utils": "^1.7.0",
+    "@xipkg/utils": "^1.8.0",
     "prismjs": "1.30.0",
     "react-markdown": "10.1.0",
     "rehype-raw": "7.0.0",
