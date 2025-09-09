@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/inputmask",
-  "version": "2.0.12",
+  "version": "2.1.0",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -22,9 +22,9 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@maskito/core": "3.8.0",
-    "@maskito/kit": "^3.8.0",
-    "@maskito/react": "^3.8.0",
+    "@maskito/core": "3.10.3",
+    "@maskito/kit": "^3.10.3",
+    "@maskito/react": "^3.10.3",
     "@xipkg/utils": "^1.7.0"
   },
   "devDependencies": {
