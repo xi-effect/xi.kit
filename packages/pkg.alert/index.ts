@@ -1,6 +1,11 @@
 export {
-  Dialog as Modal,
-  DialogTrigger as ModalTrigger,
-  DialogContent as ModalContent,
-} from './components/ModalContent';
-
+  Alert,
+  AlertTitle,
+  AlertDescription,
+  AlertIcon,
+  alertVariants,
+  type AlertProps,
+  type AlertTitleProps,
+  type AlertDescriptionProps,
+  type AlertIconProps,
+} from './components';
