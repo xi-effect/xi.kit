@@ -14,7 +14,8 @@ const RadioGroup = ({ className, ...props }: RadioGroupProps) => {
   return <RadioGroupPrimitive.Root className={cn('grid gap-2', className)} {...props} />;
 };
 
-interface RadioGroupItemProps extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> {
+interface RadioGroupItemProps
+  extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> {
   ref?: React.Ref<React.ElementRef<typeof RadioGroupPrimitive.Item>>;
 }
 

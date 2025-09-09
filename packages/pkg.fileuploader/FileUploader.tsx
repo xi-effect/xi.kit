@@ -42,9 +42,12 @@ const titleStyles = cva('text-sm text-center', {
       true: '!text-gray-30 dark:!text-gray-60 [&_span]:text-gray-30 dark:[&_span]:text-gray-60',
     },
     size: {
-      large: 'text-brand-60 group-hover:text-brand-80 dark:text-brand-40 dark:group-hover:text-brand-60 font-medium',
-      medium: 'text-base text-gray-80 group-hover:text-gray-100 dark:text-gray-40 dark:group-hover:text-gray-20',
-      small: 'text-gray-80 group-hover:text-gray-100 dark:text-gray-40 dark:group-hover:text-gray-20',
+      large:
+        'text-brand-60 group-hover:text-brand-80 dark:text-brand-40 dark:group-hover:text-brand-60 font-medium',
+      medium:
+        'text-base text-gray-80 group-hover:text-gray-100 dark:text-gray-40 dark:group-hover:text-gray-20',
+      small:
+        'text-gray-80 group-hover:text-gray-100 dark:text-gray-40 dark:group-hover:text-gray-20',
     },
   },
 });
@@ -164,8 +167,10 @@ export const FileUploader = ({
                 'Перетащите сюда или выберите файл'
               ) : (
                 <>
-                  <span className="text-gray-90 group-hover:text-gray-100 dark:text-gray-20 dark:group-hover:text-gray-0">Выберите файл</span> или
-                  перетащите сюда
+                  <span className="text-gray-90 dark:text-gray-20 dark:group-hover:text-gray-0 group-hover:text-gray-100">
+                    Выберите файл
+                  </span>{' '}
+                  или перетащите сюда
                 </>
               )}
             </p>
@@ -177,11 +182,13 @@ export const FileUploader = ({
               </p>
             )}
 
-            {!isLarge && <Upload className="ml-auto text-gray-60 dark:text-gray-40" />}
+            {!isLarge && <Upload className="text-gray-60 dark:text-gray-40 ml-auto" />}
           </div>
         )}
       </label>
-      {error && withError && <p className="mt-4 text-sm leading-5 text-gray-100 dark:text-gray-0">{error}</p>}
+      {error && withError && (
+        <p className="dark:text-gray-0 mt-4 text-sm leading-5 text-gray-100">{error}</p>
+      )}
     </div>
   );
 };

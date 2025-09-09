@@ -19,7 +19,7 @@ export const Default: Story = {
   render: () => (
     <ScrollArea className="h-[200px] w-[350px] rounded-md border p-4">
       <div className="space-y-4">
-        <h4 className="text-sm font-medium leading-none">Теги</h4>
+        <h4 className="text-sm leading-none font-medium">Теги</h4>
         <div className="text-sm">
           {TAGS.map((tag) => (
             <div key={tag} className="mb-2">
@@ -36,13 +36,14 @@ export const WithCustomContent: Story = {
   render: () => (
     <ScrollArea className="h-[300px] w-[400px] rounded-md border p-4">
       <div className="space-y-4">
-        <h4 className="text-sm font-medium leading-none">Длинный контент</h4>
+        <h4 className="text-sm leading-none font-medium">Длинный контент</h4>
         <div className="space-y-4">
           {Array.from({ length: 20 }).map((_, i) => (
             <div key={i} className="space-y-2">
               <h5 className="text-sm font-medium">Заголовок {i + 1}</h5>
-              <p className="text-sm text-gray-60 dark:text-gray-40">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              <p className="text-gray-60 dark:text-gray-40 text-sm">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua.
               </p>
             </div>
           ))}
@@ -56,14 +57,14 @@ export const WithTable: Story = {
   render: () => (
     <ScrollArea className="h-[300px] w-[600px] rounded-md border">
       <div className="p-4">
-        <h4 className="text-sm font-medium leading-none mb-4">Таблица с прокруткой</h4>
+        <h4 className="mb-4 text-sm leading-none font-medium">Таблица с прокруткой</h4>
         <table className="w-full">
           <thead>
             <tr className="border-b">
-              <th className="text-left py-2">ID</th>
-              <th className="text-left py-2">Имя</th>
-              <th className="text-left py-2">Email</th>
-              <th className="text-left py-2">Статус</th>
+              <th className="py-2 text-left">ID</th>
+              <th className="py-2 text-left">Имя</th>
+              <th className="py-2 text-left">Email</th>
+              <th className="py-2 text-left">Статус</th>
             </tr>
           </thead>
           <tbody>
@@ -80,4 +81,4 @@ export const WithTable: Story = {
       </div>
     </ScrollArea>
   ),
-}; 
+};

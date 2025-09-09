@@ -14,35 +14,15 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => (
-    <UserProfile
-      userId={1}
-      text="Иван Иванов"
-      label="Разработчик"
-    />
-  ),
+  render: () => <UserProfile userId={1} text="Иван Иванов" label="Разработчик" />,
 };
 
 export const Sizes: Story = {
   render: () => (
     <div className="flex items-center gap-4">
-      <UserProfile
-        size="l"
-        userId={1}
-        text="Иван Иванов"
-        label="Разработчик"
-      />
-      <UserProfile
-        size="m"
-        userId={2}
-        text="Петр Петров"
-        label="Дизайнер"
-      />
-      <UserProfile
-        size="s"
-        userId={3}
-        text="Анна Аннова"
-      />
+      <UserProfile size="l" userId={1} text="Иван Иванов" label="Разработчик" />
+      <UserProfile size="m" userId={2} text="Петр Петров" label="Дизайнер" />
+      <UserProfile size="s" userId={3} text="Анна Аннова" />
     </div>
   ),
 };
@@ -50,39 +30,15 @@ export const Sizes: Story = {
 export const Loading: Story = {
   render: () => (
     <div className="flex items-center gap-4">
-      <UserProfile
-        loading
-        size="l"
-        userId={1}
-        text="Иван Иванов"
-        label="Разработчик"
-      />
-      <UserProfile
-        loading
-        size="m"
-        userId={2}
-        text="Петр Петров"
-        label="Дизайнер"
-      />
-      <UserProfile
-        loading
-        size="s"
-        userId={3}
-        text="Анна Аннова"
-      />
+      <UserProfile loading size="l" userId={1} text="Иван Иванов" label="Разработчик" />
+      <UserProfile loading size="m" userId={2} text="Петр Петров" label="Дизайнер" />
+      <UserProfile loading size="s" userId={3} text="Анна Аннова" />
     </div>
   ),
 };
 
 export const WithoutText: Story = {
-  render: () => (
-    <UserProfile
-      withOutText
-      userId={1}
-      text="Иван Иванов"
-      label="Разработчик"
-    />
-  ),
+  render: () => <UserProfile withOutText userId={1} text="Иван Иванов" label="Разработчик" />,
 };
 
 export const WithCustomAvatar: Story = {
@@ -94,4 +50,4 @@ export const WithCustomAvatar: Story = {
       src="https://example.com/avatar.jpg"
     />
   ),
-}; 
+};

@@ -84,7 +84,8 @@ const SheetTitle = ({ className, ...props }: SheetTitleProps) => (
   />
 );
 
-interface SheetDescriptionProps extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description> {
+interface SheetDescriptionProps
+  extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Description> {
   ref?: React.Ref<React.ElementRef<typeof SheetPrimitive.Description>>;
 }
 

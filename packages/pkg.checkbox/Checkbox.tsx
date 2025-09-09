@@ -53,10 +53,7 @@ interface CheckboxProps
 
 export const Checkbox = ({ className, children = null, size, state, ...props }: CheckboxProps) => (
   <label className={cn(labelVariants({ size }), !props.disabled && 'hover:cursor-pointer')}>
-    <CheckboxPrimitive.Root
-      className={cn(checkboxVariants({ size, state }), className)}
-      {...props}
-    >
+    <CheckboxPrimitive.Root className={cn(checkboxVariants({ size, state }), className)} {...props}>
       <CheckboxPrimitive.Indicator className={cn('flex items-center justify-center text-current')}>
         <Check className="h-full w-full" />
       </CheckboxPrimitive.Indicator>

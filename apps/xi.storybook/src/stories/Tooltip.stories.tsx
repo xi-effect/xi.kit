@@ -41,7 +41,10 @@ export const WithLongContent: Story = {
         <Button variant="outline">Наведите курсор</Button>
       </TooltipTrigger>
       <TooltipContent>
-        <p>Это длинная подсказка с дополнительной информацией, которая может занимать несколько строк.</p>
+        <p>
+          Это длинная подсказка с дополнительной информацией, которая может занимать несколько
+          строк.
+        </p>
       </TooltipContent>
     </Tooltip>
   ),
@@ -87,4 +90,4 @@ export const DifferentPositions: Story = {
       </Tooltip>
     </div>
   ),
-}; 
+};

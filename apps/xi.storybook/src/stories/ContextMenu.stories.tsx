@@ -29,7 +29,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <ContextMenu>
-      <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-gray-30 bg-gray-0 text-sm">
+      <ContextMenuTrigger className="border-gray-30 bg-gray-0 flex h-[150px] w-[300px] items-center justify-center rounded-md border text-sm">
         Right click here
       </ContextMenuTrigger>
       <ContextMenuContent>
@@ -46,7 +46,7 @@ export const Default: Story = {
 export const WithCheckbox: Story = {
   render: () => (
     <ContextMenu>
-      <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-gray-30 bg-gray-0 text-sm">
+      <ContextMenuTrigger className="border-gray-30 bg-gray-0 flex h-[150px] w-[300px] items-center justify-center rounded-md border text-sm">
         Right click here
       </ContextMenuTrigger>
       <ContextMenuContent>
@@ -62,7 +62,7 @@ export const WithCheckbox: Story = {
 export const WithRadioGroup: Story = {
   render: () => (
     <ContextMenu>
-      <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-gray-30 bg-gray-0 text-sm">
+      <ContextMenuTrigger className="border-gray-30 bg-gray-0 flex h-[150px] w-[300px] items-center justify-center rounded-md border text-sm">
         Right click here
       </ContextMenuTrigger>
       <ContextMenuContent>
@@ -81,7 +81,7 @@ export const WithRadioGroup: Story = {
 export const WithSubMenu: Story = {
   render: () => (
     <ContextMenu>
-      <ContextMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-gray-30 bg-gray-0 text-sm">
+      <ContextMenuTrigger className="border-gray-30 bg-gray-0 flex h-[150px] w-[300px] items-center justify-center rounded-md border text-sm">
         Right click here
       </ContextMenuTrigger>
       <ContextMenuContent>
@@ -100,4 +100,4 @@ export const WithSubMenu: Story = {
       </ContextMenuContent>
     </ContextMenu>
   ),
-}; 
+};

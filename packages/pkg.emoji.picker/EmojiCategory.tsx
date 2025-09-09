@@ -63,8 +63,10 @@ export const EmojiCategory = memo(
     return (
       <div id={`emoji-category-${currentIndex}`} ref={categoryRef} className="mb-4">
         {category.name_rus && (
-          <div className="bg-gray-0 dark:bg-gray-100 pb-2">
-            <h6 className="text-s-base first-letter:uppercase text-gray-80 dark:text-gray-0">{category.name_rus}</h6>
+          <div className="bg-gray-0 pb-2 dark:bg-gray-100">
+            <h6 className="text-s-base text-gray-80 dark:text-gray-0 first-letter:uppercase">
+              {category.name_rus}
+            </h6>
           </div>
         )}
         <div

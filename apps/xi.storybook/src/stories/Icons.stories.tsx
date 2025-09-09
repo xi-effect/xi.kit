@@ -22,7 +22,7 @@ const IconsDemo = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredIcons = iconNames.filter((iconName) =>
-    String(iconName).toLowerCase().includes(searchQuery.toLowerCase())
+    String(iconName).toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (
@@ -41,10 +41,10 @@ const IconsDemo = () => {
           return (
             <div
               key={String(iconName)}
-              className="flex flex-col items-center justify-center p-4 border rounded-lg hover:bg-gray-10 dark:hover:bg-gray-90"
+              className="hover:bg-gray-10 dark:hover:bg-gray-90 flex flex-col items-center justify-center rounded-lg border p-4"
             >
-              <Icon className="w-6 h-6 mb-2" />
-              <span className="text-xs text-center text-gray-60 dark:text-gray-40">
+              <Icon className="mb-2 h-6 w-6" />
+              <span className="text-gray-60 dark:text-gray-40 text-center text-xs">
                 {String(iconName)}
               </span>
             </div>
@@ -57,4 +57,4 @@ const IconsDemo = () => {
 
 export const Default: Story = {
   render: () => <IconsDemo />,
-}; 
+};

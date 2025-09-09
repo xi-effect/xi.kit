@@ -24,11 +24,7 @@ type Story = StoryObj<typeof meta>;
 export const WithImage: Story = {
   render: (args) => (
     <Avatar {...args}>
-      <AvatarImage
-        src="https://github.com/shadcn.png"
-        alt="User avatar"
-        size={args.size}
-      />
+      <AvatarImage src="https://github.com/shadcn.png" alt="User avatar" size={args.size} />
       <AvatarFallback size={args.size}>CN</AvatarFallback>
     </Avatar>
   ),
@@ -55,11 +51,7 @@ export const Loading: Story = {
 export const XXL: Story = {
   render: (args) => (
     <Avatar {...args} size="xxl">
-      <AvatarImage
-        src="https://github.com/shadcn.png"
-        alt="User avatar"
-        size="xxl"
-      />
+      <AvatarImage src="https://github.com/shadcn.png" alt="User avatar" size="xxl" />
       <AvatarFallback size="xxl">CN</AvatarFallback>
     </Avatar>
   ),
@@ -68,11 +60,7 @@ export const XXL: Story = {
 export const XL: Story = {
   render: (args) => (
     <Avatar {...args} size="xl">
-      <AvatarImage
-        src="https://github.com/shadcn.png"
-        alt="User avatar"
-        size="xl"
-      />
+      <AvatarImage src="https://github.com/shadcn.png" alt="User avatar" size="xl" />
       <AvatarFallback size="xl">CN</AvatarFallback>
     </Avatar>
   ),
@@ -81,11 +69,7 @@ export const XL: Story = {
 export const Large: Story = {
   render: (args) => (
     <Avatar {...args} size="l">
-      <AvatarImage
-        src="https://github.com/shadcn.png"
-        alt="User avatar"
-        size="l"
-      />
+      <AvatarImage src="https://github.com/shadcn.png" alt="User avatar" size="l" />
       <AvatarFallback size="l">CN</AvatarFallback>
     </Avatar>
   ),
@@ -94,11 +78,7 @@ export const Large: Story = {
 export const Medium: Story = {
   render: (args) => (
     <Avatar {...args} size="m">
-      <AvatarImage
-        src="https://github.com/shadcn.png"
-        alt="User avatar"
-        size="m"
-      />
+      <AvatarImage src="https://github.com/shadcn.png" alt="User avatar" size="m" />
       <AvatarFallback size="m">CN</AvatarFallback>
     </Avatar>
   ),
@@ -107,12 +87,8 @@ export const Medium: Story = {
 export const Small: Story = {
   render: (args) => (
     <Avatar {...args} size="s">
-      <AvatarImage
-        src="https://github.com/shadcn.png"
-        alt="User avatar"
-        size="s"
-      />
+      <AvatarImage src="https://github.com/shadcn.png" alt="User avatar" size="s" />
       <AvatarFallback size="s">CN</AvatarFallback>
     </Avatar>
   ),
-}; 
+};

@@ -45,4 +45,4 @@ export const LongFileName: Story = {
     url: 'https://example.com/very_long_file_name_that_should_be_truncated.pdf',
     size: 3 * 1024 * 1024, // 3MB
   },
-}; 
+};

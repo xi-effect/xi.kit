@@ -29,6 +29,7 @@ npm run dev
 3. Оптимизация через SVGO для удаления лишних атрибутов и конвертации из stroke в fill
 4. Создание нового файла в директории `packages/pkg.icons/icons/` с названием иконки в формате PascalCase (например, `NewIcon.tsx`)
 5. Использование базового шаблона для компонента иконки:
+
    ```tsx
    import { Svg, IconProps } from '../Svg';
 
@@ -38,6 +39,7 @@ npm run dev
      </Svg>
    );
    ```
+
 6. Добавление названия иконки в массив `icons` в файле `packages/pkg.icons/config.ts`
 7. Сборка пакета иконок командой `npm run build` в директории `packages/pkg.icons/`
 8. Проверка отображения иконки в Storybook

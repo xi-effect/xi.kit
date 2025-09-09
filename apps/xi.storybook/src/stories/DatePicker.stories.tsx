@@ -1,83 +1,59 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { DatePicker } from '@xipkg/datepicker';
+import { DatePicker, type DatePickerProps } from '@xipkg/datepicker';
 import { Button } from '@xipkg/button';
-import { format } from 'date-fns';
-import { ru } from 'date-fns/locale';
-import { useState } from 'react';
+import { addDays } from 'date-fns';
 
-const meta = {
+const meta: Meta<DatePickerProps> = {
   title: 'Components/DatePicker',
   component: DatePicker,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof DatePicker>;
+  args: {
+    children: 'Date Picker',
+  },
+} satisfies Meta<DatePickerProps>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<DatePickerProps>;
 
 export const Default: Story = {
-  render: () => {
-    const [date, setDate] = useState<Date>();
-
-    return (
-      <DatePicker date={date} onSelect={setDate}>
-        <Button variant="outline" className="w-[280px] justify-start text-left font-normal">
-          {date ? (
-            format(date, 'PPP', { locale: ru })
-          ) : (
-            <span className="text-gray-60">Выберите дату</span>
-          )}
-        </Button>
-      </DatePicker>
-    );
+  args: {
+    children: (
+      <Button variant="ghost" className="w-[280px] justify-start text-left font-normal">
+        Выберите дату
+      </Button>
+    ),
+    calendarProps: { mode: 'single', selected: addDays(new Date(), 2) },
   },
 };
 
 export const WithRange: Story = {
-  render: () => {
-    const [date, setDate] = useState<Date>();
-
-    return (
-      <DatePicker
-        date={date}
-        onSelect={setDate}
-        mode="range"
-        numberOfMonths={2}
-      >
-        <Button variant="outline" className="w-[280px] justify-start text-left font-normal">
-          {date ? (
-            format(date, 'PPP', { locale: ru })
-          ) : (
-            <span className="text-gray-60">Выберите диапазон дат</span>
-          )}
-        </Button>
-      </DatePicker>
-    );
+  args: {
+    children: (
+      <Button variant="ghost" className="w-[280px] justify-start text-left font-normal">
+        Выберите дату
+      </Button>
+    ),
+    calendarProps: {
+      mode: 'range',
+      selected: { from: new Date(), to: addDays(new Date(), 2) },
+    },
   },
 };
 
 export const WithDisabledDates: Story = {
-  render: () => {
-    const [date, setDate] = useState<Date>();
-
-    return (
-      <DatePicker
-        date={date}
-        onSelect={setDate}
-        disabled={(date) =>
-          date > new Date() || date < new Date('1900-01-01')
-        }
-      >
-        <Button variant="outline" className="w-[280px] justify-start text-left font-normal">
-          {date ? (
-            format(date, 'PPP', { locale: ru })
-          ) : (
-            <span className="text-gray-60">Выберите дату</span>
-          )}
-        </Button>
-      </DatePicker>
-    );
+  args: {
+    children: (
+      <Button variant="ghost" className="w-[280px] justify-start text-left font-normal">
+        Выберите дату
+      </Button>
+    ),
+    calendarProps: {
+      mode: 'single',
+      selected: addDays(new Date(), 2),
+      disabled: (date) => date > new Date() || date < new Date('1900-01-01'),
+    },
   },
-}; 
+};

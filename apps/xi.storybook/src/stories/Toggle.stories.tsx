@@ -56,9 +56,9 @@ export const WithDescription: Story = {
           Уведомления
         </label>
       </div>
-      <p className="text-sm text-gray-60 dark:text-gray-40">
+      <p className="text-gray-60 dark:text-gray-40 text-sm">
         Включите уведомления, чтобы получать обновления о новых сообщениях.
       </p>
     </div>
   ),
-}; 
+};

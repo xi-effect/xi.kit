@@ -20,12 +20,7 @@ export const Default: Story = {
 };
 
 export const WithIcons: Story = {
-  render: () => (
-    <Input
-      placeholder="Поиск"
-      before={<Search className="w-4 h-4 text-gray-60" />}
-    />
-  ),
+  render: () => <Input placeholder="Поиск" before={<Search className="text-gray-60 h-4 w-4" />} />,
 };
 
 export const WithPassword: Story = {
@@ -42,11 +37,7 @@ export const WithPassword: Story = {
             onClick={() => setShowPassword(!showPassword)}
             className="text-gray-60 hover:text-gray-80 dark:text-gray-60 dark:hover:text-gray-0"
           >
-            {showPassword ? (
-              <Eyeoff className="w-4 h-4" />
-            ) : (
-              <Eyeon className="w-4 h-4" />
-            )}
+            {showPassword ? <Eyeoff className="h-4 w-4" /> : <Eyeon className="h-4 w-4" />}
           </button>
         }
       />
@@ -55,40 +46,17 @@ export const WithPassword: Story = {
 };
 
 export const WithError: Story = {
-  render: () => (
-    <Input
-      placeholder="Введите email"
-      error
-      defaultValue="invalid-email"
-    />
-  ),
+  render: () => <Input placeholder="Введите email" error defaultValue="invalid-email" />,
 };
 
 export const WithWarning: Story = {
-  render: () => (
-    <Input
-      placeholder="Введите пароль"
-      warning
-      defaultValue="weak"
-    />
-  ),
+  render: () => <Input placeholder="Введите пароль" warning defaultValue="weak" />,
 };
 
 export const Disabled: Story = {
-  render: () => (
-    <Input
-      placeholder="Отключенное поле"
-      disabled
-      defaultValue="Нельзя изменить"
-    />
-  ),
+  render: () => <Input placeholder="Отключенное поле" disabled defaultValue="Нельзя изменить" />,
 };
 
 export const Small: Story = {
-  render: () => (
-    <Input
-      placeholder="Маленький размер"
-      variant="s"
-    />
-  ),
+  render: () => <Input placeholder="Маленький размер" variant="s" />,
 };

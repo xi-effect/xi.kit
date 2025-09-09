@@ -59,9 +59,7 @@ const FormDemo = () => {
               <FormControl>
                 <Input placeholder="Введите имя пользователя" {...field} />
               </FormControl>
-              <FormDescription>
-                Это имя будет отображаться в вашем профиле.
-              </FormDescription>
+              <FormDescription>Это имя будет отображаться в вашем профиле.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -75,16 +73,14 @@ const FormDemo = () => {
               <FormControl>
                 <Input placeholder="Введите email" {...field} />
               </FormControl>
-              <FormDescription>
-                Мы отправим вам подтверждение на этот email.
-              </FormDescription>
+              <FormDescription>Мы отправим вам подтверждение на этот email.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
         <button
           type="submit"
-          className="bg-brand-60 text-white px-4 py-2 rounded-lg hover:bg-brand-80 dark:bg-brand-40 dark:hover:bg-brand-60"
+          className="bg-brand-60 hover:bg-brand-80 dark:bg-brand-40 dark:hover:bg-brand-60 rounded-lg px-4 py-2 text-white"
         >
           Отправить
         </button>
@@ -95,4 +91,4 @@ const FormDemo = () => {
 
 export const Default: Story = {
   render: () => <FormDemo />,
-}; 
+};

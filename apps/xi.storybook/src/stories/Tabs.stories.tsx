@@ -82,4 +82,4 @@ export const Disabled: Story = {
       </Tabs.Content>
     </Tabs.Root>
   ),
-}; 
+};

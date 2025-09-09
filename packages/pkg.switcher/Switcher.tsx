@@ -22,7 +22,9 @@ const Switch = ({ className, size = 'm', ...props }: SwitchProps) => (
     <SwitchPrimitive.Thumb
       className={cn(
         'bg-gray-0 pointer-events-none block rounded-full shadow-lg ring-0 transition-transform data-[state=unchecked]:translate-x-0',
-        size === 's' ? 'h-2 w-2 data-[state=checked]:translate-x-3' : 'h-4 w-4 data-[state=checked]:translate-x-4',
+        size === 's'
+          ? 'h-2 w-2 data-[state=checked]:translate-x-3'
+          : 'h-4 w-4 data-[state=checked]:translate-x-4',
       )}
     />
   </SwitchPrimitive.Root>

@@ -10,14 +10,24 @@ interface ScrollAreaProps extends ScrollAreaPrimitive.ScrollAreaProps {
   scrollViewportProps?: ScrollAreaPrimitive.ScrollAreaViewportProps;
 }
 
-const ScrollArea = ({ className, children, ref, scrollBarProps, scrollViewportProps, ...props }: ScrollAreaProps) => {
+const ScrollArea = ({
+  className,
+  children,
+  ref,
+  scrollBarProps,
+  scrollViewportProps,
+  ...props
+}: ScrollAreaProps) => {
   return (
     <ScrollAreaPrimitive.Root
       {...props}
       ref={ref}
       className={cn('relative overflow-hidden', className)}
     >
-      <ScrollAreaPrimitive.Viewport {...scrollViewportProps} className="h-full w-full rounded-[inherit] [&>div]:!block">
+      <ScrollAreaPrimitive.Viewport
+        {...scrollViewportProps}
+        className="h-full w-full rounded-[inherit] [&>div]:!block"
+      >
         {children}
       </ScrollAreaPrimitive.Viewport>
       <ScrollBar {...scrollBarProps} />
@@ -38,13 +48,13 @@ const ScrollBar = ({ className, orientation = 'vertical', ref, ...props }: Scrol
       ref={ref}
       orientation={orientation}
       className={cn(
-        'flex touch-none select-none transition-colors',
+        'flex touch-none transition-colors select-none',
         orientation === 'vertical' && 'h-full w-2.5 border-l border-l-transparent p-[1px]',
         orientation === 'horizontal' && 'h-2.5 flex-col border-t border-t-transparent p-[1px]',
         className,
       )}
     >
-      <ScrollAreaPrimitive.ScrollAreaThumb className="relative flex-1 rounded-full bg-gray-20" />
+      <ScrollAreaPrimitive.ScrollAreaThumb className="bg-gray-20 relative flex-1 rounded-full" />
     </ScrollAreaPrimitive.ScrollAreaScrollbar>
   );
 };

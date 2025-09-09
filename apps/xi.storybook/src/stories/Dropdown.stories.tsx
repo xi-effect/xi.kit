@@ -29,7 +29,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-gray-30 bg-gray-0 text-sm">
+      <DropdownMenuTrigger className="border-gray-30 bg-gray-0 flex h-[150px] w-[300px] items-center justify-center rounded-md border text-sm">
         Click here
       </DropdownMenuTrigger>
       <DropdownMenuContent>
@@ -46,7 +46,7 @@ export const Default: Story = {
 export const WithCheckbox: Story = {
   render: () => (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-gray-30 bg-gray-0 text-sm">
+      <DropdownMenuTrigger className="border-gray-30 bg-gray-0 flex h-[150px] w-[300px] items-center justify-center rounded-md border text-sm">
         Click here
       </DropdownMenuTrigger>
       <DropdownMenuContent>
@@ -62,7 +62,7 @@ export const WithCheckbox: Story = {
 export const WithRadioGroup: Story = {
   render: () => (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-gray-30 bg-gray-0 text-sm">
+      <DropdownMenuTrigger className="border-gray-30 bg-gray-0 flex h-[150px] w-[300px] items-center justify-center rounded-md border text-sm">
         Click here
       </DropdownMenuTrigger>
       <DropdownMenuContent>
@@ -81,7 +81,7 @@ export const WithRadioGroup: Story = {
 export const WithSubMenu: Story = {
   render: () => (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-gray-30 bg-gray-0 text-sm">
+      <DropdownMenuTrigger className="border-gray-30 bg-gray-0 flex h-[150px] w-[300px] items-center justify-center rounded-md border text-sm">
         Click here
       </DropdownMenuTrigger>
       <DropdownMenuContent>
@@ -100,4 +100,4 @@ export const WithSubMenu: Story = {
       </DropdownMenuContent>
     </DropdownMenu>
   ),
-}; 
+};

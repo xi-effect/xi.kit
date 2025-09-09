@@ -29,9 +29,7 @@ export const WithValue: Story = {
     return (
       <div className="w-[300px] space-y-4">
         <Slider value={value} onValueChange={setValue} max={100} step={1} />
-        <div className="text-sm text-gray-60 dark:text-gray-40">
-          Значение: {value[0]}
-        </div>
+        <div className="text-gray-60 dark:text-gray-40 text-sm">Значение: {value[0]}</div>
       </div>
     );
   },
@@ -59,4 +57,4 @@ export const Disabled: Story = {
       <Slider defaultValue={[50]} max={100} step={1} disabled />
     </div>
   ),
-}; 
+};

@@ -28,7 +28,7 @@ export const WithDescription: Story = {
     <div className="grid w-full max-w-sm items-center gap-1.5">
       <Label htmlFor="password">Password</Label>
       <Input type="password" id="password" placeholder="Enter your password" />
-      <p className="text-sm text-gray-60 dark:text-gray-40">
+      <p className="text-gray-60 dark:text-gray-40 text-sm">
         Your password must be at least 8 characters long.
       </p>
     </div>
@@ -44,4 +44,4 @@ export const Disabled: Story = {
       <Input type="text" id="disabled" disabled placeholder="This input is disabled" />
     </div>
   ),
-}; 
+};

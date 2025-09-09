@@ -15,7 +15,20 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const MaskedInput = ({ mask }: { mask: 'phone' | 'card' | 'date' | 'time' | 'passport' | 'inviteCode' | 'inviteCodeUrl' | 'dateRange' | 'any' }) => {
+const MaskedInput = ({
+  mask,
+}: {
+  mask:
+    | 'phone'
+    | 'card'
+    | 'date'
+    | 'time'
+    | 'passport'
+    | 'inviteCode'
+    | 'inviteCodeUrl'
+    | 'dateRange'
+    | 'any';
+}) => {
   const [value, setValue] = useState('');
   const maskRef = useMaskInput(mask);
 
@@ -60,4 +73,4 @@ export const InviteCodeUrl: Story = {
 
 export const DateRange: Story = {
   render: () => <MaskedInput mask="dateRange" />,
-}; 
+};

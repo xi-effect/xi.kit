@@ -18,7 +18,7 @@ export const File = ({ name, url, size, icon, onDelete, className }: FileProps) 
   return (
     <div
       className={cn(
-        'border-gray-10 bg-gray-0 hover:bg-gray-10 dark:border-gray-70 dark:bg-gray-100 dark:hover:bg-gray-90 relative flex h-[4.5rem] max-w-[377px] items-center rounded-lg border transition',
+        'border-gray-10 bg-gray-0 hover:bg-gray-10 dark:border-gray-70 dark:hover:bg-gray-90 relative flex h-[4.5rem] max-w-[377px] items-center rounded-lg border transition dark:bg-gray-100',
         className,
       )}
     >
@@ -36,8 +36,12 @@ export const File = ({ name, url, size, icon, onDelete, className }: FileProps) 
         </div>
 
         <div className="flex grow flex-col overflow-hidden text-left">
-          <p className="truncate leading-[22px] font-medium text-gray-100 dark:text-gray-0">{name}</p>
-          <p className="text-gray-80 dark:text-gray-40 mt-0.5 text-sm leading-[20px]">{formatBytesSize(size)}</p>
+          <p className="dark:text-gray-0 truncate leading-[22px] font-medium text-gray-100">
+            {name}
+          </p>
+          <p className="text-gray-80 dark:text-gray-40 mt-0.5 text-sm leading-[20px]">
+            {formatBytesSize(size)}
+          </p>
         </div>
         {onDelete && (
           <button
@@ -45,7 +49,7 @@ export const File = ({ name, url, size, icon, onDelete, className }: FileProps) 
               e.preventDefault();
               onDelete(name);
             }}
-            className="hover:bg-gray-0 dark:hover:bg-gray-100 rounded-full bg-transparent p-1 transition"
+            className="hover:bg-gray-0 rounded-full bg-transparent p-1 transition dark:hover:bg-gray-100"
           >
             <Close className="text-gray-60 dark:text-gray-40" />
           </button>
