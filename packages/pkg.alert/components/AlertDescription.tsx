@@ -5,7 +5,7 @@ export interface AlertDescriptionProps extends React.HTMLAttributes<HTMLDivEleme
 
 const AlertDescription = React.forwardRef<HTMLDivElement, AlertDescriptionProps>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn('text-sm [&_p]:leading-relaxed', className)} {...props} />
+    <div ref={ref} className={cn('text-s-base font-normal', className)} {...props} />
   ),
 );
 AlertDescription.displayName = 'AlertDescription';
