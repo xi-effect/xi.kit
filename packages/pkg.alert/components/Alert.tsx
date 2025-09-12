@@ -8,11 +8,11 @@ const alertVariants = cva(
     variants: {
       variant: {
         default: '',
-        Moscow: 'text-red-100 bg-red-0 fill-red-100',
-        Ekaterinburg: 'text-green-100 bg-green-0 fill-green-100',
-        Kungur: 'text-orange-80 bg-orange-0 fill-orange-80',
-        Petersburg: 'text-gray-80 bg-gray-5 fill-gray-80',
-        Brand: 'text-brand-100 bg-brand-0 fill-brand-100',
+        error: 'text-red-100 bg-red-0 fill-red-100',
+        success: 'text-green-100 bg-green-0 fill-green-100',
+        warning: 'text-orange-80 bg-orange-0 fill-orange-80',
+        info: 'text-gray-80 bg-gray-5 fill-gray-80',
+        brand: 'text-brand-100 bg-brand-0 fill-brand-100',
       },
     },
     defaultVariants: {

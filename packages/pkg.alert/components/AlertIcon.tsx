@@ -8,18 +8,20 @@ import { alertVariants } from './Alert';
 
 export interface AlertIconProps extends React.HTMLAttributes<HTMLDivElement> {
   icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  variant?: 'default' | 'Moscow' | 'Ekaterinburg' | 'Kungur' | 'Petersburg' | 'Brand' | 'none';
+  variant?: VariantProps<typeof alertVariants>['variant'] | 'none';
 }
 
 const defaultIcons = {
   default: Clock,
-  Moscow: Clock,
-  Ekaterinburg: Clock,
-  Kungur: Clock,
-  Petersburg: Clock,
-  Brand: Clock,
+  error: Clock,
+  success: Clock,
+  warning: Clock,
+  info: Clock,
+  brand: Clock,
   none: null,
 } as const;
+
+type DefaultIconsKeys = keyof typeof defaultIcons;
 
 const AlertIcon = React.forwardRef<HTMLDivElement, AlertIconProps>(
   ({ className, variant = 'default', icon, ...props }, ref) => {
@@ -27,7 +29,15 @@ const AlertIcon = React.forwardRef<HTMLDivElement, AlertIconProps>(
       return null;
     }
 
-    const IconComponent = icon || defaultIcons[variant] || defaultIcons.default;
+    const IconComponent =
+      icon ||
+      (variant && variant in defaultIcons
+        ? defaultIcons[variant as DefaultIconsKeys]
+        : defaultIcons.default);
+
+    if (!IconComponent) {
+      return null;
+    }
 
     return (
       <div ref={ref} className={cn('flex items-center justify-center', className)} {...props}>
