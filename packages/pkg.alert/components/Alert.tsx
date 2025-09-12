@@ -3,7 +3,7 @@ import { cn } from '@xipkg/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 const alertVariants = cva(
-  'relative w-full max-w-[520px] flex items-start justify-start gap-4 rounded-[16px] p-[16px]',
+  'relative w-full max-w-[520px] flex items-start justify-start gap-4 rounded-2xl p-4',
   {
     variants: {
       variant: {
