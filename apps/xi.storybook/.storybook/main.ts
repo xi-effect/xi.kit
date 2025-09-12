@@ -20,6 +20,7 @@ const config: StorybookConfig = {
     if (config.resolve) {
       config.resolve.alias = {
         ...config.resolve.alias,
+        '@xipkg/alert': resolve(__dirname, '../../../packages/pkg.alert/index.ts'),
         '@xipkg/avatar': resolve(__dirname, '../../../packages/pkg.avatar/index.ts'),
         '@xipkg/badge': resolve(__dirname, '../../../packages/pkg.badge/index.ts'),
         '@xipkg/breadcrumbs': resolve(__dirname, '../../../packages/pkg.breadcrumbs/index.ts'),

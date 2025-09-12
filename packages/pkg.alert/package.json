@@ -1,6 +1,6 @@
 {
-  "name": "@xipkg/sidebar",
-  "version": "0.2.0",
+  "name": "@xipkg/alert",
+  "version": "1.0.0",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -22,12 +22,9 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@xipkg/button": "^3.1.7",
     "@xipkg/icons": "^2.5.2",
-    "@xipkg/sheet": "^1.0.6",
-    "@xipkg/tooltip": "^2.0.10",
     "@xipkg/utils": "^1.8.0",
-    "class-variance-authority": "^0.7.1"
+    "class-variance-authority": "^0.7.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.12",
@@ -47,5 +44,5 @@
   },
   "author": "xi.effect",
   "description": "",
-  "gitHead": ""
+  "gitHead": "33022d3bd6e72a5ccc9097b187742f9139f7d905"
 }

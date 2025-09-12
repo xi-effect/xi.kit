@@ -22,8 +22,8 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@xipkg/icons": "^2.2.0",
-    "@xipkg/utils": "^1.7.0"
+    "@xipkg/icons": "^2.5.2",
+    "@xipkg/utils": "^1.8.0"
   },
   "devDependencies": {
     "@types/node": "^22.13.14",

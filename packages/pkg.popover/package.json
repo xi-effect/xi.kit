@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@radix-ui/react-popover": "^1.1.6",
-    "@xipkg/utils": "^1.7.0",
+    "@xipkg/utils": "^1.8.0",
     "class-variance-authority": "^0.7.1"
   },
   "devDependencies": {
