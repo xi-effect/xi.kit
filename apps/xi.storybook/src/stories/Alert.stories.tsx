@@ -19,7 +19,7 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'Moscow', 'Ekaterinburg', 'Kungur', 'Petersburg', 'Brand'],
+      options: ['default', 'error', 'success', 'warning', 'info', 'brand'],
     },
     className: {
       control: 'text',
@@ -36,34 +36,15 @@ export const Default: Story = {
     variant: 'default',
   },
   render: (args) => (
-    <>
-      <Alert {...args}>
-        <AlertIcon variant={args.variant || 'default'} />
+    <Alert {...args}>
+      <AlertIcon variant={args.variant || 'default'} />
 
-        <AlertContainer>
-          <AlertTitle>Заголовок</AlertTitle>
+      <AlertContainer>
+        <AlertTitle>Заголовок</AlertTitle>
 
-          <AlertDescription>Lorem ipsum dolor sit amet</AlertDescription>
-        </AlertContainer>
-      </Alert>
-
-      <Alert {...args}>
-        <AlertIcon variant={args.variant || 'default'} />
-
-        <AlertContainer>
-          <AlertTitle>Заголовок</AlertTitle>
-
-          <AlertDescription>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-            mollit anim id est laborum.
-          </AlertDescription>
-        </AlertContainer>
-      </Alert>
-    </>
+        <AlertDescription>Lorem ipsum dolor sit amet</AlertDescription>
+      </AlertContainer>
+    </Alert>
   ),
 };
 
@@ -79,8 +60,8 @@ export const Variants: Story = {
         </AlertContainer>
       </Alert>
 
-      <Alert variant="Moscow">
-        <AlertIcon variant="Moscow" />
+      <Alert variant="error">
+        <AlertIcon variant="error" />
         <AlertContainer>
           <AlertTitle>Moscow</AlertTitle>
           <AlertDescription>
@@ -90,8 +71,8 @@ export const Variants: Story = {
         </AlertContainer>
       </Alert>
 
-      <Alert variant="Ekaterinburg">
-        <AlertIcon variant="Ekaterinburg" />
+      <Alert variant="success">
+        <AlertIcon variant="success" />
         <AlertContainer>
           <AlertTitle>Ekaterinburg</AlertTitle>
           <AlertDescription>
@@ -100,8 +81,8 @@ export const Variants: Story = {
         </AlertContainer>
       </Alert>
 
-      <Alert variant="Kungur">
-        <AlertIcon variant="Kungur" />
+      <Alert variant="warning">
+        <AlertIcon variant="warning" />
         <AlertContainer>
           <AlertTitle>Kungur</AlertTitle>
           <AlertDescription>
@@ -110,8 +91,8 @@ export const Variants: Story = {
         </AlertContainer>
       </Alert>
 
-      <Alert variant="Petersburg">
-        <AlertIcon variant="Petersburg" />
+      <Alert variant="info">
+        <AlertIcon variant="info" />
         <AlertContainer>
           <AlertTitle>Petersburg</AlertTitle>
           <AlertDescription>
@@ -120,8 +101,8 @@ export const Variants: Story = {
         </AlertContainer>
       </Alert>
 
-      <Alert variant="Brand">
-        <AlertIcon variant="Brand" />
+      <Alert variant="brand">
+        <AlertIcon variant="brand" />
         <AlertContainer>
           <AlertTitle>Brand</AlertTitle>
           <AlertDescription>
@@ -136,7 +117,7 @@ export const Variants: Story = {
 // Без иконки
 export const WithoutIcon: Story = {
   render: () => (
-    <Alert variant="Brand">
+    <Alert variant="brand">
       <AlertIcon variant="none" />
       <AlertContainer>
         <AlertTitle>Без иконки</AlertTitle>
@@ -165,7 +146,7 @@ export const WithoutTitle: Story = {
 // Только описание
 export const DescriptionOnly: Story = {
   render: () => (
-    <Alert variant="Kungur">
+    <Alert variant="warning">
       <AlertIcon variant="none" />
       <AlertContainer>
         <AlertDescription>
@@ -207,8 +188,8 @@ export const CustomStyles: Story = {
 // Длинный контент
 export const LongContent: Story = {
   render: () => (
-    <Alert variant="Kungur">
-      <AlertIcon variant="Kungur" />
+    <Alert variant="warning">
+      <AlertIcon variant="warning" />
       <AlertContainer>
         <AlertTitle>Внимание: важная информация</AlertTitle>
         <AlertDescription>
@@ -242,11 +223,11 @@ const InteractiveAlertDemo = () => {
             aria-label="Выбор варианта Alert"
           >
             <option value="default">Default</option>
-            <option value="Moscow">Moscow</option>
-            <option value="Ekaterinburg">Ekaterinburg</option>
-            <option value="Kungur">Kungur</option>
-            <option value="Petersburg">Petersburg</option>
-            <option value="Brand">Brand</option>
+            <option value="error">error</option>
+            <option value="success">success</option>
+            <option value="warning">warning</option>
+            <option value="info">info</option>
+            <option value="brand">brand</option>
           </select>
         </div>
 
@@ -290,11 +271,11 @@ const InteractiveAlertDemo = () => {
           {showTitle && (
             <AlertTitle>
               {variant === 'default' && 'Default'}
-              {variant === 'Moscow' && 'Moscow'}
-              {variant === 'Ekaterinburg' && 'Ekaterinburg'}
-              {variant === 'Kungur' && 'Kungur'}
-              {variant === 'Petersburg' && 'Petersburg'}
-              {variant === 'Brand' && 'Brand'}
+              {variant === 'error' && 'error'}
+              {variant === 'success' && 'success'}
+              {variant === 'warning' && 'warning'}
+              {variant === 'info' && 'info'}
+              {variant === 'brand' && 'brand'}
             </AlertTitle>
           )}
           {showDescription && (
