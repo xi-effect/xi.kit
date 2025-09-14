@@ -9,6 +9,14 @@ import {
   type AlertProps,
 } from '@xipkg/alert';
 
+interface StoryArgs extends AlertProps {
+  showIcon: boolean;
+  showTitle: boolean;
+  showDescription: boolean;
+  title: string;
+  description: string;
+}
+
 const meta = {
   title: 'Components/Alert',
   component: Alert,
@@ -20,53 +28,82 @@ const meta = {
     variant: {
       control: 'select',
       options: ['default', 'error', 'success', 'warning', 'info', 'brand'],
+      description: 'Вариант внешнего вида Alert',
     },
     className: {
       control: 'text',
+      description: 'Дополнительные CSS классы',
+    },
+    showIcon: {
+      control: 'boolean',
+      description: 'Показать иконку',
+      defaultValue: true,
+    },
+    showTitle: {
+      control: 'boolean',
+      description: 'Показать заголовок',
+      defaultValue: true,
+    },
+    showDescription: {
+      control: 'boolean',
+      description: 'Показать описание',
+      defaultValue: true,
+    },
+    title: {
+      control: 'text',
+      description: 'Текст заголовка',
+      defaultValue: 'Заголовок',
+    },
+    description: {
+      control: 'text',
+      description: 'Текст описания',
+      defaultValue: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     },
   },
-} satisfies Meta<typeof Alert>;
+} satisfies Meta<StoryArgs>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<StoryArgs>;
 
-// Базовая история
 export const Default: Story = {
   args: {
     variant: 'default',
+    showIcon: true,
+    showTitle: true,
+    showDescription: true,
+    title: 'Title',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
-  render: (args) => (
-    <Alert {...args}>
-      <AlertIcon variant={args.variant || 'default'} />
-
+  render: (args: StoryArgs) => (
+    <Alert variant={args.variant} className={args.className}>
+      <AlertIcon variant={args.showIcon ? args.variant || 'default' : 'none'} />
       <AlertContainer>
-        <AlertTitle>Заголовок</AlertTitle>
-
-        <AlertDescription>Lorem ipsum dolor sit amet</AlertDescription>
+        {args.showTitle && <AlertTitle>{args.title}</AlertTitle>}
+        {args.showDescription && <AlertDescription>{args.description}</AlertDescription>}
       </AlertContainer>
     </Alert>
   ),
 };
 
-// Все варианты
 export const Variants: Story = {
   render: () => (
     <div className="space-y-4">
       <Alert variant="default">
         <AlertIcon variant="default" />
         <AlertContainer>
-          <AlertTitle>Default</AlertTitle>
-          <AlertDescription>Стандартное информационное сообщение.</AlertDescription>
+          <AlertTitle>Default variant</AlertTitle>
+          <AlertDescription>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          </AlertDescription>
         </AlertContainer>
       </Alert>
 
       <Alert variant="error">
         <AlertIcon variant="error" />
         <AlertContainer>
-          <AlertTitle>Moscow</AlertTitle>
+          <AlertTitle>Error variant</AlertTitle>
           <AlertDescription>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </AlertDescription>
         </AlertContainer>
       </Alert>
@@ -74,9 +111,9 @@ export const Variants: Story = {
       <Alert variant="success">
         <AlertIcon variant="success" />
         <AlertContainer>
-          <AlertTitle>Ekaterinburg</AlertTitle>
+          <AlertTitle>Success variant</AlertTitle>
           <AlertDescription>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.{' '}
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </AlertDescription>
         </AlertContainer>
       </Alert>
@@ -84,7 +121,7 @@ export const Variants: Story = {
       <Alert variant="warning">
         <AlertIcon variant="warning" />
         <AlertContainer>
-          <AlertTitle>Kungur</AlertTitle>
+          <AlertTitle>Warning variant</AlertTitle>
           <AlertDescription>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </AlertDescription>
@@ -94,7 +131,7 @@ export const Variants: Story = {
       <Alert variant="info">
         <AlertIcon variant="info" />
         <AlertContainer>
-          <AlertTitle>Petersburg</AlertTitle>
+          <AlertTitle>Info variant</AlertTitle>
           <AlertDescription>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </AlertDescription>
@@ -104,9 +141,9 @@ export const Variants: Story = {
       <Alert variant="brand">
         <AlertIcon variant="brand" />
         <AlertContainer>
-          <AlertTitle>Brand</AlertTitle>
+          <AlertTitle>Brand variant</AlertTitle>
           <AlertDescription>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.{' '}
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </AlertDescription>
         </AlertContainer>
       </Alert>
@@ -114,59 +151,53 @@ export const Variants: Story = {
   ),
 };
 
-// Без иконки
 export const WithoutIcon: Story = {
   render: () => (
     <Alert variant="brand">
       <AlertIcon variant="none" />
       <AlertContainer>
-        <AlertTitle>Без иконки</AlertTitle>
+        <AlertTitle>Without icon</AlertTitle>
         <AlertDescription>
-          Alert компонент без иконки. Используйте variant="none" для AlertIcon.
+          Alert component without icon. Use variant="none" for AlertIcon.
         </AlertDescription>
       </AlertContainer>
     </Alert>
   ),
 };
 
-// Без заголовка
 export const WithoutTitle: Story = {
   render: () => (
     <Alert variant="default">
       <AlertIcon variant="default" />
       <AlertContainer>
         <AlertDescription>
-          Простое сообщение без заголовка, только с иконкой и описанием.
+          Simple message without title, only with icon and description.
         </AlertDescription>
       </AlertContainer>
     </Alert>
   ),
 };
 
-// Только описание
 export const DescriptionOnly: Story = {
   render: () => (
     <Alert variant="warning">
       <AlertIcon variant="none" />
       <AlertContainer>
-        <AlertDescription>
-          Минималистичное уведомление с только описанием, без заголовка и иконки.
-        </AlertDescription>
+        <AlertDescription>Message with only description, without title and icon.</AlertDescription>
       </AlertContainer>
     </Alert>
   ),
 };
 
-// Кастомные стили
 export const CustomStyles: Story = {
   render: () => (
     <div className="space-y-4">
       <Alert variant="default" className="border-2 border-blue-500 bg-blue-50">
         <AlertIcon variant="default" />
         <AlertContainer>
-          <AlertTitle className="text-blue-800">Кастомные стили</AlertTitle>
+          <AlertTitle className="text-blue-800">Custom styles</AlertTitle>
           <AlertDescription className="text-blue-700">
-            Alert с пользовательскими стилями через className.
+            Alert with custom styles through className.
           </AlertDescription>
         </AlertContainer>
       </Alert>
@@ -175,9 +206,9 @@ export const CustomStyles: Story = {
         <AlertIcon />
 
         <AlertContainer>
-          <AlertTitle className="text-purple-800">Градиентный фон</AlertTitle>
+          <AlertTitle className="text-purple-800">Gradient background</AlertTitle>
           <AlertDescription className="text-purple-700">
-            Alert с градиентным фоном.
+            Alert with gradient background.
           </AlertDescription>
         </AlertContainer>
       </Alert>
@@ -185,112 +216,19 @@ export const CustomStyles: Story = {
   ),
 };
 
-// Длинный контент
 export const LongContent: Story = {
   render: () => (
     <Alert variant="warning">
       <AlertIcon variant="warning" />
       <AlertContainer>
-        <AlertTitle>Внимание: важная информация</AlertTitle>
+        <AlertTitle>Warning variant with long content</AlertTitle>
         <AlertDescription>
-          Это очень длинное сообщение, которое демонстрирует, как Alert обрабатывает многострочный
-          контент. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
         </AlertDescription>
       </AlertContainer>
     </Alert>
   ),
-};
-
-// Интерактивный компонент для демонстрации
-const InteractiveAlertDemo = () => {
-  const [variant, setVariant] = React.useState<AlertProps['variant']>('default');
-  const [showIcon, setShowIcon] = React.useState(true);
-  const [showTitle, setShowTitle] = React.useState(true);
-  const [showDescription, setShowDescription] = React.useState(true);
-
-  return (
-    <div className="space-y-4">
-      <div className="flex flex-wrap gap-4 rounded bg-gray-50 p-4">
-        <div>
-          <label className="mb-2 block text-sm font-medium">Вариант:</label>
-          <select
-            value={variant || 'default'}
-            onChange={(e) => setVariant(e.target.value as AlertProps['variant'])}
-            className="rounded border px-3 py-1"
-            aria-label="Выбор варианта Alert"
-          >
-            <option value="default">Default</option>
-            <option value="error">error</option>
-            <option value="success">success</option>
-            <option value="warning">warning</option>
-            <option value="info">info</option>
-            <option value="brand">brand</option>
-          </select>
-        </div>
-
-        <div>
-          <label className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              checked={showIcon}
-              onChange={(e) => setShowIcon(e.target.checked)}
-            />
-            Показать иконку
-          </label>
-        </div>
-
-        <div>
-          <label className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              checked={showTitle}
-              onChange={(e) => setShowTitle(e.target.checked)}
-            />
-            Показать заголовок
-          </label>
-        </div>
-
-        <div>
-          <label className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              checked={showDescription}
-              onChange={(e) => setShowDescription(e.target.checked)}
-            />
-            Показать описание
-          </label>
-        </div>
-      </div>
-
-      <Alert variant={variant}>
-        <AlertIcon variant={showIcon ? variant || 'default' : 'none'} />
-        <AlertContainer>
-          {showTitle && (
-            <AlertTitle>
-              {variant === 'default' && 'Default'}
-              {variant === 'error' && 'error'}
-              {variant === 'success' && 'success'}
-              {variant === 'warning' && 'warning'}
-              {variant === 'info' && 'info'}
-              {variant === 'brand' && 'brand'}
-            </AlertTitle>
-          )}
-          {showDescription && (
-            <AlertDescription>
-              Это интерактивный пример Alert компонента. Попробуйте изменить настройки выше, чтобы
-              увидеть различные варианты отображения с иконками и без них.
-            </AlertDescription>
-          )}
-        </AlertContainer>
-      </Alert>
-    </div>
-  );
-};
-
-// Интерактивный пример
-export const Interactive: Story = {
-  render: () => <InteractiveAlertDemo />,
 };
