@@ -28,6 +28,7 @@ const config: StorybookConfig = {
         '@xipkg/calendar': resolve(__dirname, '../../../packages/pkg.calendar/index.ts'),
         '@xipkg/checkbox': resolve(__dirname, '../../../packages/pkg.checkbox/index.ts'),
         '@xipkg/contextmenu': resolve(__dirname, '../../../packages/pkg.contextmenu/index.ts'),
+        '@xipkg/command': resolve(__dirname, '../../../packages/pkg.command/index.ts'),
         '@xipkg/datepicker': resolve(__dirname, '../../../packages/pkg.datepicker/index.ts'),
         '@xipkg/dropdown': resolve(__dirname, '../../../packages/pkg.dropdown/index.ts'),
         '@xipkg/emojipicker': resolve(__dirname, '../../../packages/pkg.emoji.picker/index.ts'),
