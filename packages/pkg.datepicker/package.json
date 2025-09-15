@@ -25,7 +25,7 @@
     "@radix-ui/react-slot": "^1.1.2",
     "@xipkg/button": "^3.1.7",
     "@xipkg/calendar": "^2.1.0",
-    "@xipkg/icons": "^2.2.0",
+    "@xipkg/icons": "^2.5.2",
     "@xipkg/popover": "^3.0.5",
     "@xipkg/utils": "^1.8.0",
     "class-variance-authority": "^0.7.1",

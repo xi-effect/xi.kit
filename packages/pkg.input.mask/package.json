@@ -25,7 +25,7 @@
     "@maskito/core": "3.10.3",
     "@maskito/kit": "^3.10.3",
     "@maskito/react": "^3.10.3",
-    "@xipkg/utils": "^1.7.0"
+    "@xipkg/utils": "^1.8.0"
   },
   "devDependencies": {
     "@types/node": "^22.13.14",
