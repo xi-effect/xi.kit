@@ -9,10 +9,11 @@ import {
 import { useState } from 'react';
 
 import { BaseButton } from './BaseButton';
+import { MenuItem } from './MenuItem';
 
 type ActionButtonPropsT = {
   buttonProps?: ButtonProps;
-  children?: (components: { DropdownMenuItem: typeof DropdownMenuItem }) => ReactNode;
+  children?: (components: { MenuItem: typeof DropdownMenuItem }) => ReactNode;
   onClick?: () => void;
 };
 
@@ -29,8 +30,8 @@ export const ActionButton = ({ children, buttonProps, onClick }: ActionButtonPro
       <DropdownMenuTrigger asChild>
         <BaseButton isOpen={isOpen} buttonProps={buttonProps} />
       </DropdownMenuTrigger>
-      <DropdownMenuContent side="top" sideOffset={8} align="end" className="w-[250px]">
-        {children({ DropdownMenuItem })}
+      <DropdownMenuContent side="top" sideOffset={8} align="end" className="w-[250px] rounded-xl">
+        {children({ MenuItem })}
       </DropdownMenuContent>
     </DropdownMenu>
   );

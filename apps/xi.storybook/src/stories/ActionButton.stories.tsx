@@ -24,10 +24,10 @@ export const Single: Story = {
 export const WithMenu: Story = {
   render: (args) => (
     <ActionButton {...args} buttonProps={{ className: 'relative' }}>
-      {({ DropdownMenuItem }) => (
+      {({ MenuItem }) => (
         <>
-          <DropdownMenuItem onClick={action('create')}>Создать группу</DropdownMenuItem>
-          <DropdownMenuItem onClick={action('invite')}>Пригласить ученика</DropdownMenuItem>
+          <MenuItem onClick={action('create')}>Создать группу</MenuItem>
+          <MenuItem onClick={action('invite')}>Пригласить ученика</MenuItem>
         </>
       )}
     </ActionButton>
