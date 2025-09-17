@@ -17,13 +17,13 @@ type Story = StoryObj<typeof meta>;
 export const Single: Story = {
   args: {
     onClick: action('single click'),
-    buttonProps: { className: 'relative' },
+    classname: 'relative',
   },
 };
 
 export const WithMenu: Story = {
   render: (args) => (
-    <ActionButton {...args} buttonProps={{ className: 'relative' }}>
+    <ActionButton {...args} classname="relative">
       {({ MenuItem }) => (
         <>
           <MenuItem onClick={action('create')}>Создать группу</MenuItem>
