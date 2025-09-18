@@ -17,6 +17,7 @@
     "@xipkg/badge": "*",
     "@xipkg/breadcrumbs": "*",
     "@xipkg/button": "*",
+    "@xipkg/actionbutton": "*",
     "@xipkg/calendar": "*",
     "@xipkg/checkbox": "*",
     "@xipkg/contextmenu": "*",

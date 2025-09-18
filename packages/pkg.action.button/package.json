@@ -1,0 +1,50 @@
+{
+  "name": "@xipkg/actionbutton",
+  "version": "1.0.0",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "tsup index.ts --format esm --dts",
+    "prepare": "npm run build",
+    "start": "npm run build -- --watch",
+    "dev": "npm run build -- --watch",
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "dependencies": {
+    "@xipkg/icons": "^2.5.2",
+    "@xipkg/utils": "^1.8.0",
+    "@xipkg/button": "^3.2.0",
+    "@xipkg/dropdown": "^3.0.12",
+    "class-variance-authority": "^0.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.12",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@xipkg/eslint": "^3.2.0",
+    "@xipkg/typescript": "^0.0.6",
+    "eslint": "^9.17.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.5.3"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "xi.effect",
+  "description": "",
+  "gitHead": "33022d3bd6e72a5ccc9097b187742f9139f7d905"
+}
