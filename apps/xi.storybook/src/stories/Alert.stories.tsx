@@ -8,6 +8,7 @@ import {
   AlertContainer,
   type AlertProps,
 } from '@xipkg/alert';
+import { InfoCircle } from '@xipkg/icons';
 
 interface StoryArgs extends AlertProps {
   showIcon: boolean;
@@ -33,11 +34,6 @@ const meta = {
     className: {
       control: 'text',
       description: 'Дополнительные CSS классы',
-    },
-    showIcon: {
-      control: 'boolean',
-      description: 'Показать иконку',
-      defaultValue: true,
     },
     showTitle: {
       control: 'boolean',
@@ -68,7 +64,6 @@ type Story = StoryObj<StoryArgs>;
 export const Default: Story = {
   args: {
     variant: 'default',
-    showIcon: true,
     showTitle: true,
     showDescription: true,
     title: 'Title',
@@ -76,7 +71,7 @@ export const Default: Story = {
   },
   render: (args: StoryArgs) => (
     <Alert variant={args.variant} className={args.className}>
-      <AlertIcon variant={args.showIcon ? args.variant || 'default' : 'none'} />
+      <AlertIcon />
       <AlertContainer>
         {args.showTitle && <AlertTitle>{args.title}</AlertTitle>}
         {args.showDescription && <AlertDescription>{args.description}</AlertDescription>}
@@ -89,7 +84,9 @@ export const Variants: Story = {
   render: () => (
     <div className="space-y-4">
       <Alert variant="default">
-        <AlertIcon variant="default" />
+        <AlertIcon>
+          <InfoCircle />
+        </AlertIcon>
         <AlertContainer>
           <AlertTitle>Default variant</AlertTitle>
           <AlertDescription>
@@ -99,7 +96,9 @@ export const Variants: Story = {
       </Alert>
 
       <Alert variant="error">
-        <AlertIcon variant="error" />
+        <AlertIcon>
+          <InfoCircle />
+        </AlertIcon>
         <AlertContainer>
           <AlertTitle>Error variant</AlertTitle>
           <AlertDescription>
@@ -109,7 +108,9 @@ export const Variants: Story = {
       </Alert>
 
       <Alert variant="success">
-        <AlertIcon variant="success" />
+        <AlertIcon>
+          <InfoCircle />
+        </AlertIcon>
         <AlertContainer>
           <AlertTitle>Success variant</AlertTitle>
           <AlertDescription>
@@ -119,7 +120,9 @@ export const Variants: Story = {
       </Alert>
 
       <Alert variant="warning">
-        <AlertIcon variant="warning" />
+        <AlertIcon>
+          <InfoCircle />
+        </AlertIcon>
         <AlertContainer>
           <AlertTitle>Warning variant</AlertTitle>
           <AlertDescription>
@@ -129,7 +132,9 @@ export const Variants: Story = {
       </Alert>
 
       <Alert variant="info">
-        <AlertIcon variant="info" />
+        <AlertIcon>
+          <InfoCircle />
+        </AlertIcon>
         <AlertContainer>
           <AlertTitle>Info variant</AlertTitle>
           <AlertDescription>
@@ -139,7 +144,9 @@ export const Variants: Story = {
       </Alert>
 
       <Alert variant="brand">
-        <AlertIcon variant="brand" />
+        <AlertIcon>
+          <InfoCircle />
+        </AlertIcon>
         <AlertContainer>
           <AlertTitle>Brand variant</AlertTitle>
           <AlertDescription>
@@ -154,7 +161,9 @@ export const Variants: Story = {
 export const WithoutIcon: Story = {
   render: () => (
     <Alert variant="brand">
-      <AlertIcon variant="none" />
+      <AlertIcon>
+        <InfoCircle />
+      </AlertIcon>
       <AlertContainer>
         <AlertTitle>Without icon</AlertTitle>
         <AlertDescription>
@@ -168,7 +177,9 @@ export const WithoutIcon: Story = {
 export const WithoutTitle: Story = {
   render: () => (
     <Alert variant="default">
-      <AlertIcon variant="default" />
+      <AlertIcon>
+        <InfoCircle />
+      </AlertIcon>
       <AlertContainer>
         <AlertDescription>
           Simple message without title, only with icon and description.
@@ -181,7 +192,9 @@ export const WithoutTitle: Story = {
 export const DescriptionOnly: Story = {
   render: () => (
     <Alert variant="warning">
-      <AlertIcon variant="none" />
+      <AlertIcon>
+        <InfoCircle />
+      </AlertIcon>
       <AlertContainer>
         <AlertDescription>Message with only description, without title and icon.</AlertDescription>
       </AlertContainer>
@@ -193,7 +206,9 @@ export const CustomStyles: Story = {
   render: () => (
     <div className="space-y-4">
       <Alert variant="default" className="border-2 border-blue-500 bg-blue-50">
-        <AlertIcon variant="default" />
+        <AlertIcon>
+          <InfoCircle />
+        </AlertIcon>
         <AlertContainer>
           <AlertTitle className="text-blue-800">Custom styles</AlertTitle>
           <AlertDescription className="text-blue-700">
@@ -203,7 +218,9 @@ export const CustomStyles: Story = {
       </Alert>
 
       <Alert className="border-purple-300 bg-gradient-to-r from-purple-100 to-pink-100">
-        <AlertIcon />
+        <AlertIcon>
+          <InfoCircle />
+        </AlertIcon>
 
         <AlertContainer>
           <AlertTitle className="text-purple-800">Gradient background</AlertTitle>
@@ -219,7 +236,9 @@ export const CustomStyles: Story = {
 export const LongContent: Story = {
   render: () => (
     <Alert variant="warning">
-      <AlertIcon variant="warning" />
+      <AlertIcon>
+        <InfoCircle />
+      </AlertIcon>
       <AlertContainer>
         <AlertTitle>Warning variant with long content</AlertTitle>
         <AlertDescription>

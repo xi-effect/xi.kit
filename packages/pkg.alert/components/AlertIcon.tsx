@@ -11,37 +11,12 @@ export interface AlertIconProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: VariantProps<typeof alertVariants>['variant'] | 'none';
 }
 
-const defaultIcons = {
-  default: Clock,
-  error: Clock,
-  success: Clock,
-  warning: Clock,
-  info: Clock,
-  brand: Clock,
-  none: null,
-} as const;
-
-type DefaultIconsKeys = keyof typeof defaultIcons;
-
 const AlertIcon = React.forwardRef<HTMLDivElement, AlertIconProps>(
-  ({ className, variant = 'default', icon, ...props }, ref) => {
-    if (variant === 'none') {
-      return null;
-    }
-
-    const IconComponent =
-      icon ||
-      (variant && variant in defaultIcons
-        ? defaultIcons[variant as DefaultIconsKeys]
-        : defaultIcons.default);
-
-    if (!IconComponent) {
-      return null;
-    }
+  ({ className, children, ...props }, ref) => {
 
     return (
       <div ref={ref} className={cn('flex items-center justify-center', className)} {...props}>
-        <IconComponent className="h-5 w-5" />
+        {children}
       </div>
     );
   },
