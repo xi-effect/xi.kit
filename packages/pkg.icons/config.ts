@@ -147,4 +147,5 @@ export const icons = [
   'Trapezoid',
   'RoundedRectangle',
   'Diamond',
+  'InfoCircle',
 ] as const;

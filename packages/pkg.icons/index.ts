@@ -154,6 +154,7 @@ import { OptionSelectionTest } from './icons/OptionSelectionTest';
 import { Payments } from './icons/Payments';
 import { FAQ } from './icons/FAQ';
 import { WhatsAppFilled } from './icons/WhatsAppFilled';
+import { InfoCircle } from './icons/InfoCircle';
 
 import { icons } from './config';
 
@@ -315,6 +316,7 @@ export {
   Trapezoid,
   RoundedRectangle,
   Diamond,
+  InfoCircle,
 };
 
 export type { IconProps } from './Svg';
