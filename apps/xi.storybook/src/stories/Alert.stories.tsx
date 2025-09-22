@@ -237,7 +237,7 @@ export const LongContent: Story = {
   render: () => (
     <Alert variant="warning">
       <AlertIcon>
-        <InfoCircle />
+        <InfoCircle className="fill-yellow-80" />
       </AlertIcon>
       <AlertContainer>
         <AlertTitle>Warning variant with long content</AlertTitle>
