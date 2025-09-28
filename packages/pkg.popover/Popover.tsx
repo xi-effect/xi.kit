@@ -12,15 +12,17 @@ const PopoverTrigger = PopoverPrimitive.Trigger;
 interface PopoverContentProps
   extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> {
   ref?: React.Ref<React.ElementRef<typeof PopoverPrimitive.Content>>;
+  container?: HTMLElement;
 }
 
 const PopoverContent = ({
   className,
   align = 'center',
   sideOffset = 4,
+  container,
   ...props
 }: PopoverContentProps) => (
-  <PopoverPrimitive.Portal>
+  <PopoverPrimitive.Portal container={container}>
     <PopoverPrimitive.Content
       align={align}
       sideOffset={sideOffset}
