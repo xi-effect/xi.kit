@@ -24,7 +24,7 @@ export const buttonVariants = cva(
         primary: `text-brand-0 bg-brand-80 hover:bg-brand-60 active:bg-brand-100 focus:bg-brand-100`,
         secondary: `text-brand-100 bg-gray-10 hover:text-brand-0 hover:bg-brand-60 active:text-brand-0 active:bg-brand-100 focus:text-brand-0 focus:bg-brand-100`,
         ghost: `
-          text-gray-100 bg-brand-0
+          text-gray-100 bg-brand-0 border border-transparent
           hover:border-[1px] hover:border-brand-80
           active:bg-gray-5 active:border-0 
           focus:bg-gray-5 focus:border-0
