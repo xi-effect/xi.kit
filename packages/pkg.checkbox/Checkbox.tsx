@@ -59,11 +59,10 @@ export const Checkbox = ({
   children = null,
   size,
   state,
+  disabled,
   ...props
 }: CheckboxProps) => (
-  <label
-    className={cn(labelVariants({ size }), className, !props.disabled && 'hover:cursor-pointer')}
-  >
+  <label className={cn(labelVariants({ size }), className, !disabled && 'hover:cursor-pointer')}>
     <CheckboxPrimitive.Root
       className={cn(checkboxVariants({ size, state }), checkboxStyles)}
       {...props}
