@@ -50,18 +50,30 @@ const labelVariants = cva(
 interface CheckboxProps
   extends React.ComponentProps<typeof CheckboxPrimitive.Root>,
     VariantProps<typeof labelVariants & typeof checkboxVariants> {
-      checkboxStyles?: string;
-    }
+  checkboxStyles?: string;
+}
 
-    export const Checkbox = ({ className, checkboxStyles, children = null, size, state, ...props }: CheckboxProps) => (
-      <label className={cn(labelVariants({ size }), className, !props.disabled && 'hover:cursor-pointer')}>
-        <CheckboxPrimitive.Root className={cn(checkboxVariants({ size, state }), checkboxStyles)} {...props}>
-          <CheckboxPrimitive.Indicator className={cn('flex items-center justify-center text-current')}>
-            <Check className="h-full w-full" />
-          </CheckboxPrimitive.Indicator>
-        </CheckboxPrimitive.Root>
-        {children && <span className="pb-[0.125rem] peer-disabled:text-gray-50">{children}</span>}
-      </label>
-    );
+export const Checkbox = ({
+  className,
+  checkboxStyles,
+  children = null,
+  size,
+  state,
+  ...props
+}: CheckboxProps) => (
+  <label
+    className={cn(labelVariants({ size }), className, !props.disabled && 'hover:cursor-pointer')}
+  >
+    <CheckboxPrimitive.Root
+      className={cn(checkboxVariants({ size, state }), checkboxStyles)}
+      {...props}
+    >
+      <CheckboxPrimitive.Indicator className={cn('flex items-center justify-center text-current')}>
+        <Check className="h-full w-full" />
+      </CheckboxPrimitive.Indicator>
+    </CheckboxPrimitive.Root>
+    {children && <span className="pb-[0.125rem] peer-disabled:text-gray-50">{children}</span>}
+  </label>
+);
 
 Checkbox.displayName = CheckboxPrimitive.Root.displayName;
