@@ -33,10 +33,18 @@ export const dialogContentVariants = cva(
 
 export interface DialogContentProps
   extends React.ComponentProps<typeof DialogPrimitive.Content>,
-    VariantProps<typeof dialogContentVariants> {}
+    VariantProps<typeof dialogContentVariants> {
+  portalProps?: React.ComponentProps<typeof DialogPrimitive.Portal>;
+}
 
-const DialogContent = ({ variant, className, children, ...props }: DialogContentProps) => (
-  <DialogPortal>
+const DialogContent = ({
+  variant,
+  className,
+  children,
+  portalProps = {},
+  ...props
+}: DialogContentProps) => (
+  <DialogPortal {...portalProps}>
     <ModalOverlay overlayVariant={variant}>
       <DialogPrimitive.Content
         className={cn(dialogContentVariants({ variant, className }))}
