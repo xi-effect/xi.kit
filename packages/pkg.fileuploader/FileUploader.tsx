@@ -64,6 +64,7 @@ export const FileUploader = ({
   disabled,
   isWarning,
   onChange,
+  isError,
   limit = 3,
   bytesSizeLimit = DEFAULT_SIZE_LIMIT,
   children,
@@ -91,10 +92,17 @@ export const FileUploader = ({
 
   const handleFilesChange = (files?: FileList | null) => {
     setError('');
+    isError = undefined;
     if (!files || files.length == 0) return;
 
     const fileList = [...files];
     if (fileList.length > limit || !validateSize(fileList, bytesSizeLimit)) {
+      if (isError) {
+        isError = `Можно отправить не более ${limit} ${plural(
+          pluralFiles,
+          limit,
+        )} общим объёмом до ${formatedSizeLimit}`;
+      }
       return setError(
         `Можно отправить не более ${limit} ${plural(
           pluralFiles,
