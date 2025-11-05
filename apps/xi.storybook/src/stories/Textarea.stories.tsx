@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => <Textarea placeholder="Введите текст..." className="min-h-[100px]" />,
+  render: () => <Textarea placeholder="Введите текст..." />,
 };
 
 export const WithMaxLength: Story = {
@@ -26,6 +26,10 @@ export const WithMaxLength: Story = {
       className="min-h-[100px]"
     />
   ),
+};
+
+export const WithMaxRows: Story = {
+  render: () => <Textarea placeholder="Введите текст длиннее 4 строк..." maxRows={4} />,
 };
 
 export const WithError: Story = {
