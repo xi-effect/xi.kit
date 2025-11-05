@@ -56,6 +56,13 @@ const DEFAULT_SIZE_LIMIT = 6 * 1024 * 1024; // 6 MB
 
 const pluralFiles = ['файла', 'файлов', 'файлов'];
 
+const readFile = (file: File) =>
+  new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => resolve(reader.result), false);
+    reader.readAsDataURL(file);
+  });
+
 export const FileUploader = ({
   withError = true,
   withLargeError = true,
@@ -64,7 +71,7 @@ export const FileUploader = ({
   disabled,
   isWarning,
   onChange,
-  isError,
+  isError = () => {},
   limit = 3,
   bytesSizeLimit = DEFAULT_SIZE_LIMIT,
   children,
@@ -88,27 +95,67 @@ export const FileUploader = ({
     stopDefaultEvents(e);
     setIsDragOver(false);
     handleFilesChange(e.dataTransfer.files);
+    handleFileChange(e.dataTransfer.files[0]);
+  };
+
+  const handleFileChange = async (file: File) => {
+    setError('');
+    isError(undefined);
+
+    if (!file) return;
+
+    if (file.size === 0) {
+      const errorMessage = 'Файл пустой. Пожалуйста, выберите другой файл';
+      setError(errorMessage);
+      isError(errorMessage);
+      return;
+    }
+
+    if (file.size > bytesSizeLimit) {
+      const errorMessage = `Фото слишком большое. Выберите фото до 1 Мб`;
+      setError(errorMessage);
+      isError(errorMessage);
+      return;
+    }
+
+    if (!file.type.startsWith('image/')) {
+      const errorMessage = 'Пожалуйста, загрузите изображение';
+      setError(errorMessage);
+      isError(errorMessage);
+      return;
+    }
+
+    const allowedTypes = ['image/png', 'image/jpeg'];
+    if (!allowedTypes.includes(file.type)) {
+      const errorMessage = 'Этот формат не поддерживается. Загрузите фото в PNG или JPEG';
+      setError(errorMessage);
+      isError(errorMessage);
+      return;
+    }
+
+    if (validateBeforeUpload) {
+      const validationError = validateBeforeUpload([file]);
+      if (validationError) {
+        setError(validationError);
+        isError(validationError);
+        return;
+      }
+    }
+
+    return await readFile(file);
   };
 
   const handleFilesChange = (files?: FileList | null) => {
     setError('');
-    isError = undefined;
     if (!files || files.length == 0) return;
 
     const fileList = [...files];
     if (fileList.length > limit || !validateSize(fileList, bytesSizeLimit)) {
-      if (isError) {
-        isError = `Можно отправить не более ${limit} ${plural(
-          pluralFiles,
-          limit,
-        )} общим объёмом до ${formatedSizeLimit}`;
-      }
-      return setError(
-        `Можно отправить не более ${limit} ${plural(
-          pluralFiles,
-          limit,
-        )} общим объёмом до ${formatedSizeLimit}`,
-      );
+      const errorMessage = `Можно отправить не более ${limit} ${plural(
+        pluralFiles,
+        limit,
+      )} общим объёмом до ${formatedSizeLimit}`;
+      return setError(errorMessage);
     }
 
     if (validateBeforeUpload && validateBeforeUpload(fileList)) {
@@ -120,6 +167,10 @@ export const FileUploader = ({
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      handleFileChange(e.target.files[0]);
+    }
+
     handleFilesChange(e.target.files);
   };
 

@@ -11,7 +11,7 @@ export type FileUploaderProps = {
   withLargeError?: boolean;
   size?: SizeType;
   limit?: number;
-  isError?: string;
+  isError?: (error: string | undefined) => void;
   isWarning?: boolean;
   descriptionText?: string;
   onChange: (files: File[]) => void;
