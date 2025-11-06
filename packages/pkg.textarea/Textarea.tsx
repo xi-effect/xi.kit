@@ -4,7 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@xipkg/utils';
 
 export const textareaVariants = cva(
-  'flex w-full min-w-[250px] max-w-[600px] rounded-md border-2 border-gray-30 bg-gray-0 text-gray-80 hover:border-gray-50 active:border-gray-30 focus:border-gray-80 focus-visible:outline-none px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-30 disabled:cursor-not-allowed disabled:bg-gray-10 resize-none',
+  'flex flex-1 w-full min-w-[250px] rounded-md border-2 border-gray-30 bg-gray-0 text-gray-80 hover:border-gray-50 active:border-gray-30 focus:border-gray-80 focus-visible:outline-none px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-30 disabled:cursor-not-allowed disabled:bg-gray-10 resize-none',
   {
     variants: {
       variant: {
@@ -28,8 +28,6 @@ export const textareaVariants = cva(
   },
 );
 
-const maxRows = 16;
-
 export interface TextareaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement>,
     VariantProps<typeof textareaVariants> {
@@ -38,18 +36,22 @@ export interface TextareaProps
   ) => void;
   threshold?: number;
   ref?: React.Ref<HTMLTextAreaElement>;
+  maxRows?: number;
+  containerClassName?: string;
 }
 
 const Textarea = ({
   className,
+  containerClassName,
   variant = 'm',
   error,
   warning,
-  rows = 2,
+  rows = 1,
   maxLength = 0,
   onChange,
   threshold = 0,
   ref,
+  maxRows,
   ...props
 }: TextareaProps) => {
   const lineHeight = variant === 'm' ? 24 : 21;
@@ -66,20 +68,25 @@ const Textarea = ({
 
   const autoResize = () => {
     const textarea = textareaRef.current;
-
     if (!textarea) return;
 
     textarea.style.height = 'auto';
 
+    const style = window.getComputedStyle(textarea);
+
+    const paddings = (parseFloat(style.paddingTop) || 0) + (parseFloat(style.paddingBottom) || 0);
+    const borders =
+      (parseFloat(style.borderTopWidth) || 0) + (parseFloat(style.borderBottomWidth) || 0);
+    const verticalExtras = paddings + borders;
+
     const scrollHeight = textarea.scrollHeight;
+    const currentRows = Math.ceil((scrollHeight - verticalExtras) / lineHeight);
 
-    const currentRows = Math.ceil(scrollHeight / lineHeight);
-    const newRows = Math.min(currentRows + 1, maxRows);
+    const newRows = maxRows ? Math.min(currentRows, maxRows) : currentRows;
 
-    const newHeight = newRows * lineHeight;
-    textarea.style.height = `${newHeight}px`;
+    textarea.style.height = `${newRows * lineHeight + verticalExtras}px`;
 
-    textarea.style.overflowY = newRows >= maxRows ? 'scroll' : 'hidden';
+    textarea.style.overflowY = maxRows && currentRows > maxRows ? 'scroll' : 'auto';
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -100,7 +107,7 @@ const Textarea = ({
   };
 
   return (
-    <div className="relative w-full max-w-[600px]">
+    <div className={cn('relative w-full', containerClassName)}>
       <textarea
         className={cn(
           textareaVariants({
@@ -115,7 +122,7 @@ const Textarea = ({
           if (typeof ref === 'function') {
             ref(el);
           } else if (ref) {
-            (ref as React.MutableRefObject<HTMLTextAreaElement | null>).current = el;
+            (ref as React.RefObject<HTMLTextAreaElement | null>).current = el;
           }
         }}
         rows={rows}
