@@ -37,10 +37,12 @@ export interface TextareaProps
   threshold?: number;
   ref?: React.Ref<HTMLTextAreaElement>;
   maxRows?: number;
+  containerClassName?: string;
 }
 
 const Textarea = ({
   className,
+  containerClassName,
   variant = 'm',
   error,
   warning,
@@ -105,7 +107,7 @@ const Textarea = ({
   };
 
   return (
-    <div className="relative w-full">
+    <div className={cn('relative w-full', containerClassName)}>
       <textarea
         className={cn(
           textareaVariants({
@@ -120,7 +122,7 @@ const Textarea = ({
           if (typeof ref === 'function') {
             ref(el);
           } else if (ref) {
-            (ref as React.MutableRefObject<HTMLTextAreaElement | null>).current = el;
+            (ref as React.RefObject<HTMLTextAreaElement | null>).current = el;
           }
         }}
         rows={rows}
