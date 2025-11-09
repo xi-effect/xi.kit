@@ -139,6 +139,7 @@ import { Sticker } from './icons/Sticker';
 import { TText } from './icons/TText';
 import { Figures } from './icons/Figures';
 import { Arrow } from './icons/Arrow';
+import { ArrowDouble } from './icons/ArrowDouble';
 import { Image } from './icons/Image';
 import { Eraser } from './icons/Eraser';
 import { Pen } from './icons/Pen';
@@ -317,6 +318,7 @@ export {
   RoundedRectangle,
   Diamond,
   InfoCircle,
+  ArrowDouble,
 };
 
 export type { IconProps } from './Svg';
