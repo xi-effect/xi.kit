@@ -20,9 +20,6 @@ const containerStyles = cva(
       isDragOver: {
         true: 'shadow-[0px_0px_0px_4px_var(--xi-brand-80)] outline-offset-4 outline-4 outline-brand-20 outline border-transparent dark:shadow-[0px_0px_0px_4px_var(--xi-brand-60)] dark:outline-brand-40',
       },
-      isError: {
-        true: 'ring-2 ring-red-60 dark:ring-red-40 !border-transparent',
-      },
       isWarning: {
         true: 'ring-2 ring-orange-80 dark:ring-orange-40 !border-transparent',
       },
@@ -57,23 +54,22 @@ const DEFAULT_SIZE_LIMIT = 6 * 1024 * 1024; // 6 MB
 const pluralFiles = ['файла', 'файлов', 'файлов'];
 
 export const FileUploader = ({
-  withError = true,
-  withLargeError = true,
   size = 'medium',
   descriptionText,
   disabled,
   isWarning,
   onChange,
+  onError,
+  enableErrorHandling = true,
   limit = 3,
   bytesSizeLimit = DEFAULT_SIZE_LIMIT,
   children,
-  multiple,
   validateBeforeUpload,
   fileTypesHint,
+  acceptedFileTypes,
   ...inputProps
 }: FileUploaderProps & DefaultInputPropsT) => {
   const [isDragOver, setIsDragOver] = useState(false);
-  const [error, setError] = useState<string | undefined>('');
 
   const inputRef = useRef<HTMLInputElement>(null);
   const dragDeph = useRef(0);
@@ -83,6 +79,76 @@ export const FileUploader = ({
   const isLarge = size === 'large';
   const formatedSizeLimit = formatBytesSize(bytesSizeLimit);
 
+  const handleError = (fileList: File[]): boolean => {
+    if (!enableErrorHandling || !onError) {
+      return false;
+    }
+
+    if (fileList.length > limit) {
+      onError(`Можно отправить не более ${limit} ${plural(
+        pluralFiles,
+        limit,
+      )} общим объёмом до ${formatedSizeLimit}`);
+      return true;
+    }
+
+    if (acceptedFileTypes && acceptedFileTypes.length > 0) {
+      const invalidTypeFile = fileList.find((file) => {
+        const fileType = file.type.toLowerCase();
+        const fileName = file.name.toLowerCase();
+
+        return !acceptedFileTypes.some((acceptedType) => {
+          const normalizedAcceptedType = acceptedType.toLowerCase().trim();
+
+          if (fileType === normalizedAcceptedType) {
+            return true;
+          }
+
+          if (normalizedAcceptedType.endsWith('/') && fileType.startsWith(normalizedAcceptedType)) {
+            return true;
+          }
+
+          if (normalizedAcceptedType.startsWith('.')) {
+            return fileName.endsWith(normalizedAcceptedType);
+          }
+
+          if (fileName.endsWith(`.${normalizedAcceptedType}`)) {
+            return true;
+          }
+
+          return false;
+        });
+      });
+
+      if (invalidTypeFile) {
+        const displayTypes = acceptedFileTypes
+          .map((type) => {
+            if (type.startsWith('.')) {
+              return type.toUpperCase();
+            }
+            if (type.includes('/')) {
+              return type.split('/')[1]?.toUpperCase() || type.toUpperCase();
+            }
+            return type.toUpperCase();
+          })
+          .join(', ');
+
+        onError(`Неподдерживаемый формат файла. Разрешены: ${displayTypes}`);
+        return true;
+      }
+    }
+
+    if (validateBeforeUpload) {
+      const validationError = validateBeforeUpload(fileList);
+      if (validationError) {
+        onError(validationError);
+        return true;
+      }
+    }
+
+    return false;
+  };
+
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     stopDefaultEvents(e);
     setIsDragOver(false);
@@ -90,21 +156,11 @@ export const FileUploader = ({
   };
 
   const handleFilesChange = (files?: FileList | null) => {
-    setError('');
     if (!files || files.length == 0) return;
 
     const fileList = [...files];
-    if (fileList.length > limit || !validateSize(fileList, bytesSizeLimit)) {
-      return setError(
-        `Можно отправить не более ${limit} ${plural(
-          pluralFiles,
-          limit,
-        )} общим объёмом до ${formatedSizeLimit}`,
-      );
-    }
-
-    if (validateBeforeUpload && validateBeforeUpload(fileList)) {
-      return setError(validateBeforeUpload(fileList));
+    if (handleError(fileList)) {
+      return;
     }
 
     onChange(fileList);
@@ -115,12 +171,12 @@ export const FileUploader = ({
     handleFilesChange(e.target.files);
   };
 
-  const handleDragEnter = (e: React.DragEvent<HTMLDivElement>) => {
+  const handleDragEnter = (_e: React.DragEvent<HTMLDivElement>) => {
     dragDeph.current++;
     setIsDragOver(true);
   };
 
-  const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+  const handleDragLeave = (_e: React.DragEvent<HTMLDivElement>) => {
     dragDeph.current--;
     if (dragDeph.current === 0) {
       setIsDragOver(false);
@@ -152,7 +208,6 @@ export const FileUploader = ({
             className={containerStyles({
               isDisabled: disabled,
               isDragOver,
-              isError: !!error,
               isWarning,
               size,
             })}
@@ -175,7 +230,7 @@ export const FileUploader = ({
               )}
             </p>
 
-            {isLarge && fileTypesHint && withLargeError && (
+            {isLarge && fileTypesHint && (
               <p className="group-hover:text-brand-60 dark:group-hover:text-brand-40 text-brand-40 dark:text-brand-60 text-center text-xs">
                 {descriptionText ||
                   `${fileTypesHint.map((el) => el.toUpperCase()).join(', ')} до ${formatedSizeLimit}`}
@@ -186,9 +241,6 @@ export const FileUploader = ({
           </div>
         )}
       </label>
-      {error && withError && (
-        <p className="dark:text-gray-0 mt-4 text-sm leading-5 text-gray-100">{error}</p>
-      )}
     </div>
   );
 };
