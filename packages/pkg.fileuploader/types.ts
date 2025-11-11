@@ -7,11 +7,10 @@ export type DefaultInputPropsT = Omit<
 >;
 
 export type FileUploaderProps = {
-  withError?: boolean;
-  withLargeError?: boolean;
   size?: SizeType;
   limit?: number;
-  isError?: (error: string | undefined) => void;
+  onError?: (error: string) => void;
+  enableErrorHandling?: boolean;
   isWarning?: boolean;
   descriptionText?: string;
   onChange: (files: File[]) => void;
@@ -19,6 +18,7 @@ export type FileUploaderProps = {
   bytesSizeLimit?: number;
   children?: React.ReactNode;
   fileTypesHint?: string[];
+  acceptedFileTypes?: string[];
 };
 
 export type FileProps = {
