@@ -156,6 +156,8 @@ import { Payments } from './icons/Payments';
 import { FAQ } from './icons/FAQ';
 import { WhatsAppFilled } from './icons/WhatsAppFilled';
 import { InfoCircle } from './icons/InfoCircle';
+import { Card } from './icons/Card';
+import { RubbleCircle } from './icons/RubbleCircle';
 
 import { icons } from './config';
 
@@ -171,6 +173,7 @@ export {
   Bold,
   Brush,
   Burger,
+  Card,
   Calendar,
   Camera,
   CategoryAdd,
@@ -245,6 +248,7 @@ export {
   Presentation,
   PushPin,
   Reply,
+  RubbleCircle,
   Screenshare,
   Search,
   Section,
