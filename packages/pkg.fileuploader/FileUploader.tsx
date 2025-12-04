@@ -59,7 +59,7 @@ export const FileUploader = ({
   disabled,
   isWarning,
   onChange,
-  onError,
+  onFileError,
   enableErrorHandling = true,
   limit = 3,
   bytesSizeLimit = DEFAULT_SIZE_LIMIT,
@@ -80,15 +80,17 @@ export const FileUploader = ({
   const formatedSizeLimit = formatBytesSize(bytesSizeLimit);
 
   const handleError = (fileList: File[]): boolean => {
-    if (!enableErrorHandling || !onError) {
+    if (!enableErrorHandling || !onFileError) {
       return false;
     }
 
     if (fileList.length > limit) {
-      onError(`Можно отправить не более ${limit} ${plural(
-        pluralFiles,
-        limit,
-      )} общим объёмом до ${formatedSizeLimit}`);
+      onFileError(
+        `Можно отправить не более ${limit} ${plural(
+          pluralFiles,
+          limit,
+        )} общим объёмом до ${formatedSizeLimit}`,
+      );
       return true;
     }
 
@@ -133,7 +135,7 @@ export const FileUploader = ({
           })
           .join(', ');
 
-        onError(`Неподдерживаемый формат файла. Разрешены: ${displayTypes}`);
+        onFileError(`Неподдерживаемый формат файла. Разрешены: ${displayTypes}`);
         return true;
       }
     }
@@ -141,7 +143,12 @@ export const FileUploader = ({
     if (validateBeforeUpload) {
       const validationError = validateBeforeUpload(fileList);
       if (validationError) {
-        onError(validationError);
+        if(typeof validationError === 'string'){
+          onFileError(validationError);
+        }else{
+          onFileError(validationError.titleError, validationError.subtitleError);
+        }
+        
         return true;
       }
     }
