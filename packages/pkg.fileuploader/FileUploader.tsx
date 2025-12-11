@@ -3,7 +3,7 @@ import { formatBytesSize, plural } from '@xipkg/utils';
 import { cva } from 'class-variance-authority';
 import { ChangeEvent, DragEvent, useId, useRef, useState } from 'react';
 import { FileUploaderProps, DefaultInputPropsT } from './types';
-import { stopDefaultEvents, validateSize } from './utils';
+import { stopDefaultEvents } from './utils';
 
 const containerStyles = cva(
   'flex group items-center rounded-lg border border-dashed border-gray-40 bg-gray-0 dark:border-gray-60 dark:bg-gray-100 transition-[outline_shadow] px-2 max-w-[500px] gap-3 focus-within:border-solid focus-within:border-gray-80 dark:focus-within:border-gray-40',
@@ -60,7 +60,6 @@ export const FileUploader = ({
   isWarning,
   onChange,
   onFileError,
-  enableErrorHandling = true,
   limit = 3,
   bytesSizeLimit = DEFAULT_SIZE_LIMIT,
   children,
@@ -80,10 +79,6 @@ export const FileUploader = ({
   const formatedSizeLimit = formatBytesSize(bytesSizeLimit);
 
   const handleError = (fileList: File[]): boolean => {
-    if (!enableErrorHandling || !onFileError) {
-      return false;
-    }
-
     if (fileList.length > limit) {
       onFileError(
         `Можно отправить не более ${limit} ${plural(
@@ -143,12 +138,7 @@ export const FileUploader = ({
     if (validateBeforeUpload) {
       const validationError = validateBeforeUpload(fileList);
       if (validationError) {
-        if(typeof validationError === 'string'){
-          onFileError(validationError);
-        }else{
-          onFileError(validationError.titleError, validationError.subtitleError);
-        }
-        
+        onFileError(validationError.titleError, validationError.subtitleError);
         return true;
       }
     }
