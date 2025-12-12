@@ -6,6 +6,10 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   prepare:
     uses: ./.github/workflows/common-prepare.yml

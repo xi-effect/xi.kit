@@ -69,7 +69,5 @@ jobs:
         working-directory: packages/${{ matrix.package }}
 
       - name: Publish the package
-        run: npm publish --access public
+        run: npm publish --access public --provenance
         working-directory: packages/${{ matrix.package }}
-        env:
-          NPM_CONFIG_PROVENANCE: "true"
