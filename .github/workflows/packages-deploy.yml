@@ -1,37 +1,10 @@
-name: Deploy all changed packages
-
-on:
-  workflow_call:
-  workflow_dispatch:
-
-jobs:
-  analyze-packages:
-    runs-on: ubuntu-latest
-
-    env:
-      filename: .github/workflows/generated-filters.yml
-
-    outputs:
-      packages: ${{ steps.package_filter.outputs.changes }}
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - id: script
-        name: Generate package filters
-        run: ./.github/workflows/generate-package-filters.sh
-        shell: bash
-
-      - name: Filter packages
-        uses: dorny/paths-filter@v2
-        id: package_filter
-        with:
-          filters: ${{ env.filename }}
-
   deploy-packages:
     needs: analyze-packages
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
 
     environment:  >-
       ${{
@@ -48,10 +21,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org
@@ -66,8 +39,7 @@ jobs:
         working-directory: packages/${{ matrix.package }}
 
       - name: Publish the package
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
         working-directory: packages/${{ matrix.package }}
-        # continue-on-error: true
+        env:
+          NPM_CONFIG_PROVENANCE: "true"
