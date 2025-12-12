@@ -6,15 +6,16 @@ export type DefaultInputPropsT = Omit<
   'onChange' | 'size'
 >;
 
+type ValidationError = { titleError: string; subtitleError: string };
+
 export type FileUploaderProps = {
   size?: SizeType;
   limit?: number;
-  onError?: (error: string) => void;
-  enableErrorHandling?: boolean;
+  onFileError: (titleError: string, subtitleError?: string) => void;
   isWarning?: boolean;
   descriptionText?: string;
   onChange: (files: File[]) => void;
-  validateBeforeUpload?: (files: File[]) => string | undefined;
+  validateBeforeUpload?: (files: File[]) => ValidationError;
   bytesSizeLimit?: number;
   children?: React.ReactNode;
   fileTypesHint?: string[];
