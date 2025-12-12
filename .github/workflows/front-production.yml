@@ -70,6 +70,14 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Upgrade npm (required for trusted publishing)
+        run: npm install -g npm@latest
+
+      - name: Verify Node/npm versions
+        run: |
+          node -v
+          npm -v
+
       - name: Perform clean install
         run: npm ci
         working-directory: packages/${{ matrix.package }}
@@ -79,5 +87,5 @@ jobs:
         working-directory: packages/${{ matrix.package }}
 
       - name: Publish the package
-        run: npm publish --access public --provenance --loglevel verbose
+        run: npm publish --access public --provenance
         working-directory: packages/${{ matrix.package }}
