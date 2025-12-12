@@ -58,7 +58,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: https://registry.npmjs.org
           cache: npm
 
       - name: Perform clean install
@@ -68,18 +67,6 @@ jobs:
       - name: Build the package
         run: npm run build
         working-directory: packages/${{ matrix.package }}
-
-      - name: Debug npm auth presence
-        shell: bash
-        run: |
-          echo "NODE_AUTH_TOKEN is ${NODE_AUTH_TOKEN:+SET}${NODE_AUTH_TOKEN:-UNSET}"
-          echo "NPM_TOKEN is ${NPM_TOKEN:+SET}${NPM_TOKEN:-UNSET}"
-          echo "NPM_CONFIG_USERCONFIG=${NPM_CONFIG_USERCONFIG:-<unset>}"
-          echo "User npmrc:"
-          test -f ~/.npmrc && (echo "FOUND ~/.npmrc" && sed 's/_authToken=.*/_authToken=***REDACTED***/' ~/.npmrc) || echo "NO ~/.npmrc"
-          echo "Repo npmrc:"
-          test -f .npmrc && (echo "FOUND .npmrc" && sed 's/_authToken=.*/_authToken=***REDACTED***/' .npmrc) || echo "NO .npmrc"
-          echo "npm config userconfig: $(npm config get userconfig)"
 
       - name: Publish the package
         run: npm publish --access public
