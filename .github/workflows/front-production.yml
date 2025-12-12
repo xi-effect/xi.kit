@@ -79,5 +79,5 @@ jobs:
         working-directory: packages/${{ matrix.package }}
 
       - name: Publish the package
-        run: npm publish --access public --provenance
+        run: npm publish --access public --provenance --loglevel verbose
         working-directory: packages/${{ matrix.package }}
