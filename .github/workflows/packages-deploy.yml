@@ -68,6 +68,12 @@ jobs:
         run: npm run build
         working-directory: packages/${{ matrix.package }}
 
+      - name: Check OIDC availability
+        shell: bash
+        run: |
+          echo "ACTIONS_ID_TOKEN_REQUEST_URL is ${ACTIONS_ID_TOKEN_REQUEST_URL:+SET}${ACTIONS_ID_TOKEN_REQUEST_URL:-UNSET}"
+          echo "ACTIONS_ID_TOKEN_REQUEST_TOKEN is ${ACTIONS_ID_TOKEN_REQUEST_TOKEN:+SET}${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-UNSET}"
+
       - name: Publish the package
         run: npm publish --access public --provenance
         working-directory: packages/${{ matrix.package }}
