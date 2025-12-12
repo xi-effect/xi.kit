@@ -78,9 +78,8 @@ jobs:
           node -v
           npm -v
 
-      - name: Perform clean install
+      - name: Install dependencies (workspace root)
         run: npm ci
-        working-directory: packages/${{ matrix.package }}
 
       - name: Build the package
         run: npm run build
