@@ -1,3 +1,34 @@
+name: Deploy all changed packages
+
+on:
+  workflow_call:
+  workflow_dispatch:
+
+jobs:
+  analyze-packages:
+    runs-on: ubuntu-latest
+
+    env:
+      filename: .github/workflows/generated-filters.yml
+
+    outputs:
+      packages: ${{ steps.package_filter.outputs.changes }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - id: script
+        name: Generate package filters
+        run: ./.github/workflows/generate-package-filters.sh
+        shell: bash
+
+      - name: Filter packages
+        uses: dorny/paths-filter@v2
+        id: package_filter
+        with:
+          filters: ${{ env.filename }}
+
   deploy-packages:
     needs: analyze-packages
     runs-on: ubuntu-latest
@@ -6,7 +37,7 @@
       contents: read
       id-token: write
 
-    environment:  >-
+    environment: >-
       ${{
         contains(fromJSON('["niqzart", "unknownproperty"]'), github.triggering_actor)
         && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
@@ -33,7 +64,7 @@
       - name: Perform clean install
         run: npm ci
         working-directory: packages/${{ matrix.package }}
-      
+
       - name: Build the package
         run: npm run build
         working-directory: packages/${{ matrix.package }}
