@@ -6,6 +6,10 @@
     "slate.d.ts"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xi-effect/xi.kit"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/inputmask",
-  "version": "2.3.0",
+  "version": "2.2.0",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -14,6 +14,10 @@
     "dist"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xi-effect/xi.kit"
+  },
   "scripts": {
     "build": "tsup index.ts --format esm --dts",
     "prepare": "npm run build",

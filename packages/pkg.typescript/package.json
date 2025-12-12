@@ -20,5 +20,9 @@
   },
   "author": "xi.effect",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xi-effect/xi.kit"
+  },
   "gitHead": "33022d3bd6e72a5ccc9097b187742f9139f7d905"
 }
