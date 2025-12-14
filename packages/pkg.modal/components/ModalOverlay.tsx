@@ -1,10 +1,10 @@
-import React from 'react';
+import { DialogOverlay } from '@radix-ui/react-dialog';
 import { cn } from '@xipkg/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { DialogOverlay } from '@radix-ui/react-dialog';
+import React from 'react';
 
 export const modalOverlayVariants = cva(
-  'border-gray-5 flex flex-col space-y-2 border-b p-6 text-left bg-gray-0',
+  'border-gray-5 flex flex-col space-y-2 border-b p-6 w-sm:p-4 text-left bg-gray-0',
   {
     variants: {
       overlayVariant: {
@@ -20,8 +20,7 @@ export const modalOverlayVariants = cva(
 );
 
 export interface ModalHeaderProps
-  extends React.ComponentProps<typeof DialogOverlay>,
-    VariantProps<typeof modalOverlayVariants> {}
+  extends React.ComponentProps<typeof DialogOverlay>, VariantProps<typeof modalOverlayVariants> {}
 
 export const ModalOverlay = ({ overlayVariant, className, ...props }: ModalHeaderProps) => (
   <DialogOverlay className={cn(modalOverlayVariants(), className)} {...props} />
