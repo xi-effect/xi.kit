@@ -4,7 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import React from 'react';
 
 export const modalOverlayVariants = cva(
-  'border-gray-5 flex flex-col space-y-2 border-b p-6 w-sm:p-4 text-left bg-gray-0',
+  'border-gray-5 flex flex-col space-y-2 border-b p-6 max-sm:p-4 text-left bg-gray-0',
   {
     variants: {
       overlayVariant: {
