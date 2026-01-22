@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/icons",
-  "version": "2.7.2",
+  "version": "3.0.0",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -19,6 +19,7 @@
     "url": "https://github.com/xi-effect/xi.kit"
   },
   "scripts": {
+    "generate": "node generate-icons.js",
     "build": "tsup index.ts --format esm --dts",
     "prepare": "npm run build",
     "start": "npm run build -- --watch",
