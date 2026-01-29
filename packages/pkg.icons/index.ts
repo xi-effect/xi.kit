@@ -159,6 +159,7 @@ import { Video } from './icons/Video';
 import { WhatsAppFilled } from './icons/WhatsAppFilled';
 import { WhiteBoard } from './icons/WhiteBoard';
 import { Window } from './icons/Window';
+import { ArrowUpRight } from './icons/ArrowUpRight';
 
 import { icons } from './config';
 
@@ -324,6 +325,7 @@ export {
   WhatsAppFilled,
   WhiteBoard,
   Window,
+  ArrowUpRight,
   icons,
 };
 

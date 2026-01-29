@@ -160,4 +160,5 @@ export const icons = [
   'WhatsAppFilled',
   'WhiteBoard',
   'Window',
+  'ArrowUpRight',
 ] as const;
