@@ -37,6 +37,7 @@ export const buttonVariants = cva(
         `,
         error: `text-red-0 bg-red-80 hover:bg-red-100 active:bg-red-100 focus:bg-red-100`,
         success: `text-green-0 bg-green-80 hover:bg-green-100 active:bg-green-100 focus:bg-green-100`,
+        none: 'bg-transparent border-none hover:bg-gray-5 focus:bg-gray-5 active:bg-gray-10',
       },
       size: {
         l: 'h-14 text-[20px] px-8 rounded-2xl',

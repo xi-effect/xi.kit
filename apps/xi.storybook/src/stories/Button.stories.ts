@@ -11,7 +11,7 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'ghost', 'error', 'success'],
+      options: ['primary', 'secondary', 'ghost', 'error', 'success', 'none'],
       description: 'Определяет стиль кнопки',
       defaultValue: 'primary',
     },
