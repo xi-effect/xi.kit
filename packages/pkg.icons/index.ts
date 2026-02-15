@@ -160,6 +160,8 @@ import { WhatsAppFilled } from './icons/WhatsAppFilled';
 import { WhiteBoard } from './icons/WhiteBoard';
 import { Window } from './icons/Window';
 import { ArrowUpRight } from './icons/ArrowUpRight';
+import { ZoomIn } from './icons/ZoomIn';
+import { ZoomOut } from './icons/ZoomOut';
 
 import { icons } from './config';
 
@@ -326,6 +328,8 @@ export {
   WhiteBoard,
   Window,
   ArrowUpRight,
+  ZoomIn,
+  ZoomOut,
   icons,
 };
 

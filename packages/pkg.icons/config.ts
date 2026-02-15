@@ -161,4 +161,6 @@ export const icons = [
   'WhiteBoard',
   'Window',
   'ArrowUpRight',
+  'ZoomIn',
+  'ZoomOut',
 ] as const;
