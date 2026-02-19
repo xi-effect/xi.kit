@@ -8,6 +8,7 @@ export const userProfileVariants = cva('flex flex-row items-center', {
   variants: {
     size: {
       l: 'h-[48px] gap-2',
+      '40': 'h-[40px] gap-2',
       m: 'h-[32px] gap-2',
       s: 'h-[24px] gap-1.5',
     },
@@ -21,6 +22,7 @@ export const userProfileTextVariants = cva('text-gray-100', {
   variants: {
     size: {
       l: 'text-[16px]',
+      '40': 'text-[14px]',
       m: 'text-[14px]',
       s: 'text-[12px]',
     },
@@ -33,6 +35,11 @@ export const userProfileTextVariants = cva('text-gray-100', {
       loading: true,
       size: 'l',
       class: 'bg-gray-10 h-[16px] w-[96px] animate-pulse rounded-[2px]',
+    },
+    {
+      loading: true,
+      size: '40',
+      class: 'bg-gray-10 h-[14px] w-[96px] animate-pulse rounded-[2px]',
     },
     {
       loading: true,
@@ -55,6 +62,7 @@ export const userProfileLabelVariants = cva('font-normal text-gray-60 mt-[-2px]'
   variants: {
     size: {
       l: 'text-[12px]',
+      '40': 'text-[11px]',
       m: 'text-[10px]',
       s: '',
     },
@@ -67,6 +75,11 @@ export const userProfileLabelVariants = cva('font-normal text-gray-60 mt-[-2px]'
       loading: true,
       size: 'l',
       class: 'bg-gray-10 h-[12px] w-[64px] animate-pulse rounded-[2px]',
+    },
+    {
+      loading: true,
+      size: '40',
+      class: 'bg-gray-10 h-[11px] w-[64px] animate-pulse rounded-[2px]',
     },
     {
       loading: true,
@@ -89,6 +102,7 @@ export const avatarVariants = cva('flex items-center justify-center font-semibol
       xxl: 'h-[128px] w-[128px] min-h-[128px] min-w-[128px] rounded-[64px] text-[48px]',
       xl: 'h-[64px] w-[64px] min-h-[64px] min-w-[64px] rounded-[32px] text-[24px]',
       l: 'h-[48px] w-[48px] min-h-[48px] min-w-[48px] rounded-[24px] text-[16px]',
+      '40': 'h-[40px] w-[40px] min-h-[40px] min-w-[40px] rounded-[20px] text-[14px]',
       m: 'h-[32px] w-[32px] min-h-[32px] min-w-[32px] rounded-[16px] text-[12px]',
       s: 'h-[24px] w-[24px] min-h-[24px] min-w-[24px] rounded-[12px] text-[10px]',
     },
@@ -100,7 +114,7 @@ export const avatarVariants = cva('flex items-center justify-center font-semibol
 });
 
 export interface UserProfileProps extends React.HTMLAttributes<HTMLDivElement> {
-  size?: 'l' | 'm' | 's';
+  size?: 'l' | '40' | 'm' | 's';
   src?: string;
   userId: number | null;
   color?: 'brand';
@@ -127,7 +141,15 @@ export const UserProfile = ({
   ...props
 }: UserProfileProps) => {
   return (
-    <div className={cn(userProfileVariants({ size }), className)} {...props}>
+    <div
+      className={cn(
+        userProfileVariants({ size }),
+        withOutText && 'gap-0',
+        'transition-[gap] duration-200 ease-linear',
+        className,
+      )}
+      {...props}
+    >
       <Avatar size={size}>
         <AvatarImage
           src={src || `https://api.sovlium.ru/files/users/${userId}/avatar.webp`}
@@ -139,18 +161,35 @@ export const UserProfile = ({
           <AvatarFallback size={size}>{text[0].toUpperCase()}</AvatarFallback>
         )}
       </Avatar>
-      {!withOutText && (
-        <div className={`flex flex-col ${loading && 'gap-1'}`}>
-          <span className={cn(userProfileTextVariants({ size, loading }), classNameText)}>
+      <div
+        className={cn(
+          'min-w-0 overflow-hidden transition-[max-width,opacity] duration-200 ease-linear',
+          withOutText ? 'max-w-0 opacity-0' : 'max-w-[16rem] opacity-100',
+        )}
+      >
+        <div className={`flex min-w-0 flex-col overflow-hidden ${loading && 'gap-1'}`}>
+          <span
+            className={cn(
+              'truncate whitespace-nowrap',
+              userProfileTextVariants({ size, loading }),
+              classNameText,
+            )}
+          >
             {!loading && text}
           </span>
           {size !== 's' && (
-            <span className={cn(userProfileLabelVariants({ size, loading }), classNameLabel)}>
+            <span
+              className={cn(
+                'truncate whitespace-nowrap',
+                userProfileLabelVariants({ size, loading }),
+                classNameLabel,
+              )}
+            >
               {!loading && label}
             </span>
           )}
         </div>
-      )}
+      </div>
     </div>
   );
 };

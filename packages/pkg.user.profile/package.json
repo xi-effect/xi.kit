@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/userprofile",
-  "version": "4.0.14",
+  "version": "4.1.0",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -26,7 +26,7 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@xipkg/avatar": "^3.0.10",
+    "@xipkg/avatar": "^3.1.0",
     "@xipkg/utils": "^1.8.0",
     "class-variance-authority": "^0.7.1"
   },
