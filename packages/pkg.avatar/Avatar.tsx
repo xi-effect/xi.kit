@@ -6,19 +6,20 @@ import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import { cn } from '@xipkg/utils';
 
 type SizeMapT = {
-  [key in 'xxl' | 'xl' | 'l' | 'm' | 's']: string | number;
+  [key in 'xxl' | 'xl' | 'l' | 'm' | 's' | '40']: string | number;
 };
 
 const sizeMap: SizeMapT = {
   xxl: 'h-[128px] w-[128px]',
   xl: 'h-[64px] w-[64px]',
   l: 'h-[48px] w-[48px]',
+  '40': 'h-[40px] w-[40px]',
   m: 'h-[32px] w-[32px]',
   s: 'h-[24px] w-[24px]',
 };
 
 interface AvatarProps extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root> {
-  size?: 'xxl' | 'xl' | 'l' | 'm' | 's';
+  size?: 'xxl' | 'xl' | 'l' | 'm' | 's' | '40';
 }
 
 const Avatar = ({ className, size = 'l', ...props }: AvatarProps) => (
@@ -34,7 +35,7 @@ const Avatar = ({ className, size = 'l', ...props }: AvatarProps) => (
 interface AvatarImageProps extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image> {
   src: string;
   alt?: string;
-  size?: 'xxl' | 'xl' | 'l' | 'm' | 's';
+  size?: 'xxl' | 'xl' | 'l' | 'm' | 's' | '40';
 }
 
 const AvatarImage = ({
@@ -54,7 +55,7 @@ const AvatarImage = ({
 
 interface AvatarFallbackProps
   extends React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback> {
-  size?: 'xxl' | 'xl' | 'l' | 'm' | 's';
+  size?: 'xxl' | 'xl' | 'l' | 'm' | 's' | '40';
   loading?: boolean;
 }
 
