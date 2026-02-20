@@ -162,6 +162,7 @@ import { Window } from './icons/Window';
 import { ArrowUpRight } from './icons/ArrowUpRight';
 import { ZoomIn } from './icons/ZoomIn';
 import { ZoomOut } from './icons/ZoomOut';
+import { UserPlus } from './icons/UserPlus';
 
 import { icons } from './config';
 
@@ -330,6 +331,7 @@ export {
   ArrowUpRight,
   ZoomIn,
   ZoomOut,
+  UserPlus,
   icons,
 };
 
