@@ -37,18 +37,33 @@ export interface DialogContentProps
   portalProps?: React.ComponentProps<typeof DialogPrimitive.Portal>;
 }
 
+/**
+ * Оверлей и контент рендерятся в одном портале (DialogPortal), чтобы клик по оверлею
+ * считался «снаружи» и вызывал onOpenChange(false). При portalProps.container оба в одном container.
+ * В onPointerDownOutside/onInteractOutside не вызываем preventDefault(), чтобы по умолчанию модалка
+ * закрывалась по клику снаружи; консьюмер может передать свои обработчики при необходимости.
+ */
 const DialogContent = ({
   variant,
   className,
   children,
   portalProps = {},
-  ...props
+  onPointerDownOutside,
+  onInteractOutside,
+  ...rest
 }: DialogContentProps) => (
   <DialogPortal {...portalProps}>
     <ModalOverlay overlayVariant={variant}>
       <DialogPrimitive.Content
         className={cn(dialogContentVariants({ variant, className }))}
-        {...props}
+        onPointerDownOutside={(e) => {
+          onPointerDownOutside?.(e);
+          // не вызываем e.preventDefault() — закрытие по оверлею сохраняется
+        }}
+        onInteractOutside={(e) => {
+          onInteractOutside?.(e);
+        }}
+        {...rest}
       >
         {children}
       </DialogPrimitive.Content>
