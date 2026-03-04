@@ -6,7 +6,7 @@ import * as SwitchPrimitive from '@radix-ui/react-switch';
 import { cn } from '@xipkg/utils';
 
 export interface ToggleProps extends React.ComponentPropsWithoutRef<typeof SwitchPrimitive.Root> {
-  ref?: React.Ref<React.ElementRef<typeof SwitchPrimitive.Root>>;
+  ref?: React.Ref<React.ComponentRef<typeof SwitchPrimitive.Root>>;
   size?: 's' | 'm';
 }
 
