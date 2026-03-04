@@ -1,46 +1,70 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Switch } from '@xipkg/switcher';
+import * as React from 'react';
+import {
+  Switcher,
+  SwitcherList,
+  SwitcherTrigger,
+} from '@xipkg/switcher';
 
 const meta = {
-  title: 'Components/Switch',
-  component: Switch,
+  title: 'Components/Switcher',
+  component: Switcher,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Switch>;
+} satisfies Meta<typeof Switcher>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => <Switch />,
-};
-
-export const Checked: Story = {
-  render: () => <Switch defaultChecked />,
-};
-
-export const Disabled: Story = {
   render: () => (
-    <div className="flex items-center gap-4">
-      <Switch disabled />
-      <Switch disabled defaultChecked />
-    </div>
+    <Switcher defaultValue="one">
+      <SwitcherList>
+        <SwitcherTrigger value="one">Один</SwitcherTrigger>
+        <SwitcherTrigger value="two">Два</SwitcherTrigger>
+        <SwitcherTrigger value="three">Три</SwitcherTrigger>
+      </SwitcherList>
+    </Switcher>
   ),
 };
 
-export const WithLabel: Story = {
+export const VariantLine: Story = {
   render: () => (
-    <div className="flex items-center gap-2">
-      <Switch id="airplane-mode" />
-      <label htmlFor="airplane-mode" className="text-sm font-medium">
-        Режим полета
-      </label>
-    </div>
+    <Switcher defaultValue="one">
+      <SwitcherList variant="line">
+        <SwitcherTrigger value="one">Один</SwitcherTrigger>
+        <SwitcherTrigger value="two">Два</SwitcherTrigger>
+        <SwitcherTrigger value="three">Три</SwitcherTrigger>
+      </SwitcherList>
+    </Switcher>
   ),
 };
 
-export const Small: Story = {
-  render: () => <Switch size="s" />,
+export const Vertical: Story = {
+  render: () => (
+    <Switcher defaultValue="one" orientation="vertical">
+      <SwitcherList>
+        <SwitcherTrigger value="one">Один</SwitcherTrigger>
+        <SwitcherTrigger value="two">Два</SwitcherTrigger>
+        <SwitcherTrigger value="three">Три</SwitcherTrigger>
+      </SwitcherList>
+    </Switcher>
+  ),
+};
+
+export const Controlled: Story = {
+  render: function ControlledStory() {
+    const [value, setValue] = React.useState('two');
+    return (
+      <Switcher value={value} onValueChange={setValue}>
+        <SwitcherList>
+          <SwitcherTrigger value="one">Один</SwitcherTrigger>
+          <SwitcherTrigger value="two">Два</SwitcherTrigger>
+          <SwitcherTrigger value="three">Три</SwitcherTrigger>
+        </SwitcherList>
+      </Switcher>
+    );
+  },
 };

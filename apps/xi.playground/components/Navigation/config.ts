@@ -64,12 +64,12 @@ export const config = [
     label: 'Select',
   },
   {
-    link: '/components/switcher',
-    label: 'Switcher',
-  },
-  {
     link: '/components/slider',
     label: 'Slider',
+  },
+  {
+    link: '/components/switcher',
+    label: 'Switcher',
   },
   {
     link: '/components/toggle',

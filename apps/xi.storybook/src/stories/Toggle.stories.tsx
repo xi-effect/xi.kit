@@ -17,12 +17,15 @@ export const Default: Story = {
   render: () => <Toggle />,
 };
 
-export const Sizes: Story = {
+export const Checked: Story = {
+  render: () => <Toggle defaultChecked />,
+};
+
+export const Disabled: Story = {
   render: () => (
     <div className="flex items-center gap-4">
-      <Toggle size="l" />
-      <Toggle size="m" />
-      <Toggle size="s" />
+      <Toggle disabled />
+      <Toggle disabled defaultChecked />
     </div>
   ),
 };
@@ -38,27 +41,6 @@ export const WithLabel: Story = {
   ),
 };
 
-export const Disabled: Story = {
-  render: () => (
-    <div className="flex items-center gap-4">
-      <Toggle disabled />
-      <Toggle disabled defaultChecked />
-    </div>
-  ),
-};
-
-export const WithDescription: Story = {
-  render: () => (
-    <div className="space-y-2">
-      <div className="flex items-center gap-2">
-        <Toggle id="notifications" />
-        <label htmlFor="notifications" className="text-sm font-medium">
-          Уведомления
-        </label>
-      </div>
-      <p className="text-gray-60 dark:text-gray-40 text-sm">
-        Включите уведомления, чтобы получать обновления о новых сообщениях.
-      </p>
-    </div>
-  ),
+export const Small: Story = {
+  render: () => <Toggle size="s" />,
 };
