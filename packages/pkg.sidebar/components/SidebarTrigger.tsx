@@ -5,12 +5,15 @@ import { cn } from '@xipkg/utils';
 import { useSidebar } from '../context/SidebarContext';
 
 export const SidebarTrigger = ({
+  children,
   className,
   ref,
   onClick,
   ...props
 }: React.ComponentProps<typeof Button>) => {
   const { toggleSidebar, open } = useSidebar();
+
+  const Icon = open ? Close : Burger;
 
   return (
     <Button
@@ -28,7 +31,7 @@ export const SidebarTrigger = ({
       }}
       {...props}
     >
-      {open ? <Close /> : <Burger />}
+      {children ? children : <Icon />}
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );
