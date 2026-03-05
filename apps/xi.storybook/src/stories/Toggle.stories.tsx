@@ -44,3 +44,7 @@ export const WithLabel: Story = {
 export const Small: Story = {
   render: () => <Toggle size="s" />,
 };
+
+export const Large: Story = {
+  render: () => <Toggle size="l" />,
+};
