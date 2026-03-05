@@ -51,6 +51,7 @@ const config: StorybookConfig = {
         '@xipkg/sidebar': resolve(__dirname, '../../../packages/pkg.sidebar/index.ts'),
         '@xipkg/slider': resolve(__dirname, '../../../packages/pkg.slider/index.ts'),
         '@xipkg/switcher': resolve(__dirname, '../../../packages/pkg.switcher/index.ts'),
+        '@xipkg/switcher-animate': resolve(__dirname, '../../../packages/pkg.switcher-animate/index.ts'),
         '@xipkg/tabs': resolve(__dirname, '../../../packages/pkg.tabs/index.ts'),
         '@xipkg/tailwind': resolve(__dirname, '../../../packages/pkg.tailwind'),
         '@xipkg/textarea': resolve(__dirname, '../../../packages/pkg.textarea/index.ts'),

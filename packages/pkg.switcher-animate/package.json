@@ -1,0 +1,51 @@
+{
+  "name": "@xipkg/switcher-animate",
+  "version": "1.0.0",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xi-effect/xi.kit"
+  },
+  "scripts": {
+    "build": "tsup index.ts --format esm --dts",
+    "prepare": "npm run build",
+    "start": "npm run build -- --watch",
+    "dev": "npm run build -- --watch",
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "dependencies": {
+    "@xipkg/utils": "^1.8.0",
+    "motion": "^11.15.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.14",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
+    "@xipkg/eslint": "^3.2.0",
+    "@xipkg/typescript": "^0.1.0",
+    "eslint": "^9.23.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "xi.effect",
+  "description": "Animated switcher (tabs) component with motion for xi.effect design system",
+  "gitHead": ""
+}

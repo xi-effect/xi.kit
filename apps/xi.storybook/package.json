@@ -44,6 +44,7 @@
     "@xipkg/sidebar": "*",
     "@xipkg/slider": "*",
     "@xipkg/switcher": "*",
+    "@xipkg/switcher-animate": "*",
     "@xipkg/tabs": "*",
     "@xipkg/tailwind": "*",
     "@xipkg/textarea": "*",
