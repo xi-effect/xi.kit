@@ -163,6 +163,7 @@ import { ArrowUpRight } from './icons/ArrowUpRight';
 import { ZoomIn } from './icons/ZoomIn';
 import { ZoomOut } from './icons/ZoomOut';
 import { UserPlus } from './icons/UserPlus';
+import { LayoutLeft } from './icons/LayoutLeft';
 
 import { icons } from './config';
 
@@ -332,6 +333,7 @@ export {
   ZoomIn,
   ZoomOut,
   UserPlus,
+  LayoutLeft,
   icons,
 };
 

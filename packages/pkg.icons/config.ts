@@ -164,4 +164,5 @@ export const icons = [
   'ZoomIn',
   'ZoomOut',
   'UserPlus',
+  'LayoutLeft',
 ] as const;
