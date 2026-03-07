@@ -28,8 +28,28 @@ export const WithMaxLength: Story = {
   ),
 };
 
+export const WithRows: Story = {
+  render: () => <Textarea placeholder="Минимум 3 строки..." rows={3} />,
+};
+
 export const WithMaxRows: Story = {
   render: () => <Textarea placeholder="Введите текст длиннее 4 строк..." maxRows={4} />,
+};
+
+export const WithRowsAndMaxRows: Story = {
+  render: () => (
+    <Textarea placeholder="От 3 до 6 строк..." rows={3} maxRows={6} />
+  ),
+};
+
+export const WithHiddenCounter: Story = {
+  render: () => (
+    <Textarea
+      placeholder="Счётчик скрыт..."
+      maxLength={100}
+      hideCounter
+    />
+  ),
 };
 
 export const WithError: Story = {

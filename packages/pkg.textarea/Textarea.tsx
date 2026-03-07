@@ -37,6 +37,7 @@ export interface TextareaProps
   threshold?: number;
   ref?: React.Ref<HTMLTextAreaElement>;
   maxRows?: number;
+  hideCounter?: boolean;
   containerClassName?: string;
 }
 
@@ -52,6 +53,7 @@ const Textarea = ({
   threshold = 0,
   ref,
   maxRows,
+  hideCounter = false,
   ...props
 }: TextareaProps) => {
   const lineHeight = variant === 'm' ? 24 : 21;
@@ -80,13 +82,14 @@ const Textarea = ({
     const verticalExtras = paddings + borders;
 
     const scrollHeight = textarea.scrollHeight;
-    const currentRows = Math.ceil((scrollHeight - verticalExtras) / lineHeight);
+    const contentRows = Math.ceil((scrollHeight - verticalExtras) / lineHeight);
 
-    const newRows = maxRows ? Math.min(currentRows, maxRows) : currentRows;
+    const clampedRows = maxRows ? Math.min(contentRows, maxRows) : contentRows;
+    const newRows = Math.max(rows, clampedRows);
 
     textarea.style.height = `${newRows * lineHeight + verticalExtras}px`;
 
-    textarea.style.overflowY = maxRows && currentRows > maxRows ? 'scroll' : 'auto';
+    textarea.style.overflowY = maxRows && contentRows > maxRows ? 'scroll' : 'hidden';
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -126,12 +129,13 @@ const Textarea = ({
           }
         }}
         rows={rows}
+        maxLength={maxLength > 0 ? maxLength : undefined}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         onChange={handleChange}
         {...props}
       />
-      {maxLength > 0 && isFocused && charCount >= threshold && (
+      {!hideCounter && maxLength > 0 && isFocused && charCount >= threshold && (
         <div
           className={cn(
             'absolute right-2 bottom-2 text-sm',
