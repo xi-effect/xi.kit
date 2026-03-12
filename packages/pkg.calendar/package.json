@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/calendar",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -27,11 +27,11 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.2",
-    "@xipkg/button": "^3.1.8",
-    "@xipkg/icons": "^2.5.2",
+    "@xipkg/button": "^4.1.0",
+    "@xipkg/icons": "^3.0.6",
     "@xipkg/utils": "^1.8.0",
     "class-variance-authority": "^0.7.1",
-    "react-day-picker": "^9.6.4"
+    "react-day-picker": "^9.14.0"
   },
   "devDependencies": {
     "@types/node": "^22.13.14",

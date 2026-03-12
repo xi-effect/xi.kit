@@ -57,3 +57,15 @@ export const WithFooter: Story = {
     footer: 'Выберите диапазон дат',
   },
 };
+
+/** Два месяца рядом (например, для выбора диапазона на несколько недель). Стрелки переключают пару месяцев. */
+export const TwoMonths: Story = {
+  args: {
+    mode: 'range',
+    numberOfMonths: 2,
+    selected: {
+      from: addDays(new Date(), 2),
+      to: addDays(new Date(), 25),
+    },
+  },
+};

@@ -9,6 +9,9 @@ import { buttonVariants } from '@xipkg/button';
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
+/** По умолчанию при показе двух месяцев включена постраничная навигация (переключение на 2 месяца). */
+const DEFAULT_PAGED_NAVIGATION_WHEN_TWO_MONTHS = true;
+
 // Общие стили для кнопок
 const navigationButtonStyles = cn(
   buttonVariants({ variant: 'ghost' }),
@@ -17,9 +20,9 @@ const navigationButtonStyles = cn(
   'dark:[&_svg]:text-gray-100',
 );
 
-// Стили для месяцев
+// Стили для месяцев (в т.ч. для режима с двумя месяцами — flex-row и отступ между ними)
 const monthClasses = {
-  months: 'flex flex-col sm:flex-row space-y-4 sm:space-y-0 relative',
+  months: 'flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:gap-6 relative',
   month: 'space-y-4',
   month_caption: 'flex justify-center pt-1 relative items-center',
   caption_label: 'text-sm font-medium',
@@ -36,38 +39,58 @@ const weekClasses = {
   week: 'flex w-full mt-2',
 };
 
+// Уникальный класс для середины диапазона — нужен для повышения специфичности (перебивает .selected)
+const RANGE_MIDDLE_CLASS = 'xipkg-calendar-range-middle';
+
+// Промежуточные дни диапазона: только мягкая заливка, без вида «кнопки»
+// Вариант [&.xipkg-calendar-range-middle]: даёт селектор из двух классов и перекрывает selectedButtonStyles
+const rangeBetweenButtonStyles = cn(
+  RANGE_MIDDLE_CLASS,
+  '[&.xipkg-calendar-range-middle]:[&_button]:!bg-brand-20/50',
+  '[&.xipkg-calendar-range-middle]:[&_button]:!text-gray-100',
+  '[&.xipkg-calendar-range-middle]:[&_button]:!rounded-none',
+  '[&.xipkg-calendar-range-middle]:[&_button]:hover:!bg-brand-30',
+  '[&.xipkg-calendar-range-middle]:[&_button]:focus:!bg-brand-30',
+  'dark:[&.xipkg-calendar-range-middle]:[&_button]:!bg-brand-10',
+  'dark:[&.xipkg-calendar-range-middle]:[&_button]:!text-gray-100',
+  'dark:[&.xipkg-calendar-range-middle]:[&_button]:hover:!bg-brand-20',
+  'dark:[&.xipkg-calendar-range-middle]:[&_button]:focus:!bg-brand-20',
+);
+
+// Стиль «активной кнопки» только для начала/конца диапазона и одиночной даты
+const selectedButtonStyles = cn(
+  '[&_button]:!bg-brand-80 [&_button]:!text-gray-0',
+  '[&_button]:hover:!bg-brand-100 [&_button]:focus:!bg-brand-100',
+  'dark:[&_button]:!bg-brand-20 dark:[&_button]:!text-gray-100',
+  'dark:[&_button]:hover:!bg-brand-40 dark:[&_button]:focus:!bg-brand-40',
+);
+
+
 // Стили для дней
 const dayClasses = {
   day: cn(
     'h-9 w-9 text-center text-sm p-0 relative',
-    '[&:has([aria-selected].day-range-end)]:rounded-r-md',
-    '[&:has([aria-selected].day-outside)]:bg-accent/50',
-    '[&:has([aria-selected])]:bg-accent',
-    'first:[&:has([aria-selected])]:rounded-l-md',
-    'last:[&:has([aria-selected])]:rounded-r-md',
+    'first:[&:has([aria-selected])]:[&_button]:rounded-l-md',
+    'last:[&:has([aria-selected])]:[&_button]:rounded-r-md',
+    '[&:has([aria-selected].day-range-end)]:[&_button]:rounded-r-md',
     'focus-within:relative focus-within:z-20',
   ),
   day_button: cn(
-    buttonVariants({ variant: 'ghost' }),
-    'h-9 w-9 p-0 font-normal aria-selected:opacity-100',
+    buttonVariants({ variant: 'none' }),
+    'h-9 w-9 p-0 font-normal rounded-md',
     'text-gray-100 dark:text-gray-100',
-    'hover:bg-brand-20 hover:text-accent-foreground',
-    'dark:hover:bg-primary dark:hover:text-gray-0',
-    'dark:[&_svg]:stroke-gray-300',
   ),
-  selected: cn(
-    '[&_button]:bg-brand-80 [&_button]:text-gray-0 [&_button]:hover:bg-brand-100 [&_button]:focus:bg-brand-100',
-    'dark:[&_button]:bg-brand-20 dark:[&_button]:text-gray-100 dark:[&_button]:hover:bg-brand-40 dark:[&_button]:focus:bg-brand-40',
-  ),
+  selected: selectedButtonStyles,
+  range_start: cn('[&_button]:rounded-r-none', selectedButtonStyles),
+  range_end: cn('[&_button]:rounded-l-none day-range-end', selectedButtonStyles),
+  range_middle: rangeBetweenButtonStyles,
   today: cn(
-    '[&_button]:bg-gray-10 [&_button]:text-gray-100',
+    '[&_button]:bg-brand-20 [&_button]:text-gray-100 [&_button]:font-medium',
     'dark:[&_button]:bg-gray-80 dark:[&_button]:text-gray-0',
   ),
   outside:
-    'day-outside text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30',
+    'day-outside text-muted-foreground opacity-50 [&:has([aria-selected])]:opacity-100',
   disabled: 'text-muted-foreground opacity-50',
-  range_middle: 'aria-selected:bg-accent aria-selected:text-accent-foreground',
-  range_end: 'day-range-end',
 };
 
 // Прочие стили
@@ -75,11 +98,23 @@ const miscClasses = {
   hidden: 'invisible',
 };
 
-const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: CalendarProps) => (
+const Calendar = ({
+  className,
+  classNames,
+  showOutsideDays = true,
+  numberOfMonths = 1,
+  pagedNavigation,
+  ...rest
+}: CalendarProps) => (
   <DayPicker
     locale={ru}
     weekStartsOn={1}
     showOutsideDays={showOutsideDays}
+    numberOfMonths={numberOfMonths}
+    pagedNavigation={
+      pagedNavigation ??
+      (DEFAULT_PAGED_NAVIGATION_WHEN_TWO_MONTHS && numberOfMonths > 1)
+    }
     className={cn('p-3', className)}
     classNames={{
       ...monthClasses,
@@ -99,7 +134,7 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
         />
       ),
     }}
-    {...props}
+    {...rest}
   />
 );
 

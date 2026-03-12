@@ -73,3 +73,9 @@ export const Success: Story = {
     variant: 'success',
   },
 };
+
+export const None: Story = {
+  args: {
+    variant: 'none',
+  },
+};
