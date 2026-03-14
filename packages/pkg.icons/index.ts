@@ -164,6 +164,7 @@ import { ZoomIn } from './icons/ZoomIn';
 import { ZoomOut } from './icons/ZoomOut';
 import { UserPlus } from './icons/UserPlus';
 import { LayoutLeft } from './icons/LayoutLeft';
+import { CornerUpRight } from './icons/CornerUpRight';
 
 import { icons } from './config';
 
@@ -334,6 +335,7 @@ export {
   ZoomOut,
   UserPlus,
   LayoutLeft,
+  CornerUpRight,
   icons,
 };
 
