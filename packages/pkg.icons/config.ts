@@ -166,4 +166,5 @@ export const icons = [
   'UserPlus',
   'LayoutLeft',
   'CornerUpRight',
+  'AlarmClock',
 ] as const;

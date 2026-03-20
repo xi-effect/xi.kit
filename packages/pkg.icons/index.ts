@@ -165,6 +165,7 @@ import { ZoomOut } from './icons/ZoomOut';
 import { UserPlus } from './icons/UserPlus';
 import { LayoutLeft } from './icons/LayoutLeft';
 import { CornerUpRight } from './icons/CornerUpRight';
+import { AlarmClock } from './icons/AlarmClock';
 
 import { icons } from './config';
 
@@ -336,6 +337,7 @@ export {
   UserPlus,
   LayoutLeft,
   CornerUpRight,
+  AlarmClock,
   icons,
 };
 
