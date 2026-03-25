@@ -166,6 +166,7 @@ import { UserPlus } from './icons/UserPlus';
 import { LayoutLeft } from './icons/LayoutLeft';
 import { CornerUpRight } from './icons/CornerUpRight';
 import { AlarmClock } from './icons/AlarmClock';
+import { HelpCircle } from './icons/HelpCircle';
 
 import { icons } from './config';
 
@@ -338,6 +339,7 @@ export {
   LayoutLeft,
   CornerUpRight,
   AlarmClock,
+  HelpCircle,
   icons,
 };
 
