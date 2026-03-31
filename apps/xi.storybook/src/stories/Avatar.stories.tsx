@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import {
   Avatar,
+  AvatarBadge,
   AvatarGroup,
   AvatarGroupCount,
   AvatarFallback,
@@ -99,6 +100,16 @@ export const Small: Story = {
   ),
 };
 
+export const WithOnlineBadge: Story = {
+  render: (args) => (
+    <Avatar {...args}>
+      <AvatarImage src="https://github.com/shadcn.png" alt="User avatar" size={args.size} />
+      <AvatarFallback size={args.size}>CN</AvatarFallback>
+      <AvatarBadge className="bg-green-80 dark:bg-green-60" title="В сети" aria-hidden />
+    </Avatar>
+  ),
+};
+
 export const Group: Story = {
   render: (args) => (
     <AvatarGroup>
@@ -133,6 +144,27 @@ export const GroupWithOverflowCount: Story = {
   ),
 };
 
+/** Три аватара, счётчик «ещё N», бейдж только на первом */
+export const GroupThreeWithCountAndBadge: Story = {
+  render: (args) => (
+    <AvatarGroup>
+      <Avatar {...args}>
+        <AvatarImage src="https://github.com/shadcn.png" alt="User 1" size={args.size} />
+        <AvatarFallback size={args.size}>A</AvatarFallback>
+        <AvatarBadge align="start" className="bg-green-80 dark:bg-green-60" title="В сети" aria-hidden />
+      </Avatar>
+      <Avatar {...args}>
+        <AvatarImage src="https://avatars.githubusercontent.com/u/67109487?v=4" alt="User 2" size={args.size} />
+        <AvatarFallback size={args.size}>B</AvatarFallback>
+      </Avatar>
+      <Avatar {...args}>
+        <AvatarFallback size={args.size}>C</AvatarFallback>
+      </Avatar>
+      <AvatarGroupCount>+12</AvatarGroupCount>
+    </AvatarGroup>
+  ),
+};
+
 export const GroupSmall: Story = {
   render: () => (
     <AvatarGroup>
@@ -144,6 +176,26 @@ export const GroupSmall: Story = {
         <AvatarFallback size="s">B</AvatarFallback>
       </Avatar>
       <AvatarGroupCount>+3</AvatarGroupCount>
+    </AvatarGroup>
+  ),
+};
+
+export const GroupWithBadges: Story = {
+  render: (args) => (
+    <AvatarGroup>
+      <Avatar {...args}>
+        <AvatarImage src="https://github.com/shadcn.png" alt="User 1" size={args.size} />
+        <AvatarFallback size={args.size}>A</AvatarFallback>
+        <AvatarBadge align="start" className="bg-green-80 dark:bg-green-60" title="В сети" aria-hidden />
+      </Avatar>
+      <Avatar {...args}>
+        <AvatarImage src="https://avatars.githubusercontent.com/u/67109487?v=4" alt="User 2" size={args.size} />
+        <AvatarFallback size={args.size}>B</AvatarFallback>
+      </Avatar>
+      <Avatar {...args}>
+        <AvatarFallback size={args.size}>C</AvatarFallback>
+        <AvatarBadge className="bg-orange-80 dark:bg-orange-60" title="Не беспокоить" aria-hidden />
+      </Avatar>
     </AvatarGroup>
   ),
 };

@@ -40,7 +40,8 @@ const Avatar = ({ className, size = 'l', ...props }: AvatarProps) => (
     data-slot="avatar"
     data-size={size}
     className={cn(
-      'group/avatar relative flex shrink-0 select-none overflow-hidden rounded-full',
+      /* overflow-visible: дочерний AvatarBadge в углу не обрезается (картинка обрезается в AvatarImage) */
+      'group/avatar relative flex shrink-0 select-none overflow-visible rounded-full',
       sizeMap[size],
       className,
     )}
@@ -63,7 +64,7 @@ const AvatarImage = ({
 }: AvatarImageProps) => (
   <AvatarPrimitive.Image
     data-slot="avatar-image"
-    className={cn('aspect-square h-full w-full', className)}
+    className={cn('aspect-square h-full w-full overflow-hidden rounded-full', className)}
     {...props}
     src={src}
     alt={alt}
@@ -92,8 +93,40 @@ const AvatarFallback = ({ className, size = 'l', loading, ...props }: AvatarFall
       loading
         ? 'animate-pulse bg-gray-10 dark:bg-gray-80'
         : 'bg-brand-80 text-gray-0 dark:bg-brand-20 dark:text-gray-100',
-      'flex h-full w-full items-center justify-center rounded-full',
+      'flex h-full w-full items-center justify-center overflow-hidden rounded-full',
       fallbackTextBySize[size],
+      className,
+    )}
+    {...props}
+  />
+);
+
+const avatarBadgeSizeClasses: Record<AvatarSize, string> = {
+  s: 'group-data-[size=s]/avatar:size-2 group-data-[size=s]/avatar:[&>svg]:hidden',
+  m: 'group-data-[size=m]/avatar:size-2 group-data-[size=m]/avatar:[&>svg]:size-2',
+  '40':
+    "group-data-[size='40']/avatar:size-2.5 group-data-[size='40']/avatar:[&>svg]:size-2",
+  l: 'group-data-[size=l]/avatar:size-2.5 group-data-[size=l]/avatar:[&>svg]:size-2',
+  xl: 'group-data-[size=xl]/avatar:size-3 group-data-[size=xl]/avatar:[&>svg]:size-2',
+  xxl: 'group-data-[size=xxl]/avatar:size-4 group-data-[size=xxl]/avatar:[&>svg]:size-3',
+};
+
+interface AvatarBadgeProps extends React.ComponentPropsWithoutRef<'span'> {
+  /**
+   * `end` — правый нижний угол (по умолчанию).
+   * В `AvatarGroup` у левых аватаров лучше `start`: следующий круг перекрывает правую часть предыдущего, и бейдж в `end` оказывается под соседом.
+   */
+  align?: 'start' | 'end';
+}
+
+const AvatarBadge = ({ className, align = 'end', ...props }: AvatarBadgeProps) => (
+  <span
+    data-slot="avatar-badge"
+    data-align={align}
+    className={cn(
+      'absolute bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-brand-80 text-gray-0 ring-2 ring-gray-0 select-none dark:bg-brand-60 dark:text-gray-0 dark:ring-gray-100',
+      align === 'end' ? 'right-0' : 'left-0',
+      Object.values(avatarBadgeSizeClasses),
       className,
     )}
     {...props}
@@ -128,11 +161,12 @@ const AvatarGroupCount = ({ className, ...props }: AvatarGroupCountProps) => (
   />
 );
 
-export { Avatar, AvatarImage, AvatarFallback, AvatarGroup, AvatarGroupCount };
+export { Avatar, AvatarImage, AvatarFallback, AvatarBadge, AvatarGroup, AvatarGroupCount };
 export type {
   AvatarProps,
   AvatarImageProps,
   AvatarFallbackProps,
+  AvatarBadgeProps,
   AvatarGroupProps,
   AvatarGroupCountProps,
 };
