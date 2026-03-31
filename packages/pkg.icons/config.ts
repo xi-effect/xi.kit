@@ -168,4 +168,6 @@ export const icons = [
   'CornerUpRight',
   'AlarmClock',
   'HelpCircle',
+  'FlipBackward',
+  'Podcast',
 ] as const;
