@@ -1,5 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Avatar, AvatarImage, AvatarFallback } from '@xipkg/avatar';
+import {
+  Avatar,
+  AvatarGroup,
+  AvatarGroupCount,
+  AvatarFallback,
+  AvatarImage,
+} from '@xipkg/avatar';
 
 const meta = {
   title: 'Components/Avatar',
@@ -90,5 +96,54 @@ export const Small: Story = {
       <AvatarImage src="https://github.com/shadcn.png" alt="User avatar" size="s" />
       <AvatarFallback size="s">CN</AvatarFallback>
     </Avatar>
+  ),
+};
+
+export const Group: Story = {
+  render: (args) => (
+    <AvatarGroup>
+      <Avatar {...args}>
+        <AvatarImage src="https://github.com/shadcn.png" alt="User 1" size={args.size} />
+        <AvatarFallback size={args.size}>A</AvatarFallback>
+      </Avatar>
+      <Avatar {...args}>
+        <AvatarImage src="https://avatars.githubusercontent.com/u/67109487?v=4" alt="User 2" size={args.size} />
+        <AvatarFallback size={args.size}>B</AvatarFallback>
+      </Avatar>
+      <Avatar {...args}>
+        <AvatarFallback size={args.size}>C</AvatarFallback>
+      </Avatar>
+    </AvatarGroup>
+  ),
+};
+
+export const GroupWithOverflowCount: Story = {
+  render: (args) => (
+    <AvatarGroup>
+      <Avatar {...args}>
+        <AvatarImage src="https://github.com/shadcn.png" alt="User 1" size={args.size} />
+        <AvatarFallback size={args.size}>A</AvatarFallback>
+      </Avatar>
+      <Avatar {...args}>
+        <AvatarImage src="https://avatars.githubusercontent.com/u/67109487?v=4" alt="User 2" size={args.size} />
+        <AvatarFallback size={args.size}>B</AvatarFallback>
+      </Avatar>
+      <AvatarGroupCount>+5</AvatarGroupCount>
+    </AvatarGroup>
+  ),
+};
+
+export const GroupSmall: Story = {
+  render: () => (
+    <AvatarGroup>
+      <Avatar size="s">
+        <AvatarImage src="https://github.com/shadcn.png" alt="User 1" size="s" />
+        <AvatarFallback size="s">A</AvatarFallback>
+      </Avatar>
+      <Avatar size="s">
+        <AvatarFallback size="s">B</AvatarFallback>
+      </Avatar>
+      <AvatarGroupCount>+3</AvatarGroupCount>
+    </AvatarGroup>
   ),
 };
