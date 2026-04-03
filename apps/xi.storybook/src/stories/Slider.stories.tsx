@@ -51,6 +51,78 @@ export const CustomSteps: Story = {
   ),
 };
 
+export const RestrictedMin: Story = {
+  render: () => {
+    const [value, setValue] = useState([40]);
+
+    return (
+      <div className="w-[300px] space-y-4">
+        <Slider
+          value={value}
+          onValueChange={setValue}
+          max={100}
+          step={1}
+          restrictedMin={20}
+        />
+        <div className="text-gray-60 dark:text-gray-40 text-sm">
+          Значение: {value[0]} (минимум: 20)
+        </div>
+      </div>
+    );
+  },
+};
+
+export const RestrictedMax: Story = {
+  render: () => {
+    const [value, setValue] = useState([60]);
+
+    return (
+      <div className="w-[300px] space-y-4">
+        <Slider
+          value={value}
+          onValueChange={setValue}
+          max={100}
+          step={1}
+          restrictedMax={80}
+        />
+        <div className="text-gray-60 dark:text-gray-40 text-sm">
+          Значение: {value[0]} (максимум: 80)
+        </div>
+      </div>
+    );
+  },
+};
+
+export const RestrictedMinMax: Story = {
+  render: () => {
+    const [value, setValue] = useState([50]);
+
+    return (
+      <div className="w-[300px] space-y-4">
+        <Slider
+          value={value}
+          onValueChange={setValue}
+          max={100}
+          step={1}
+          restrictedMin={20}
+          restrictedMax={80}
+        />
+        <div className="text-gray-60 dark:text-gray-40 text-sm">
+          Значение: {value[0]} (от 20 до 80)
+        </div>
+      </div>
+    );
+  },
+};
+
+export const RestrictedUncontrolled: Story = {
+  render: () => (
+    <div className="w-[300px]">
+      <Slider defaultValue={[50]} max={100} step={1} restrictedMin={20} restrictedMax={80} />
+    </div>
+  ),
+};
+
 export const Disabled: Story = {
   render: () => (
     <div className="w-[300px]">
