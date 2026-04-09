@@ -171,4 +171,5 @@ export const icons = [
   'FlipBackward',
   'Podcast',
   'MessageHeartCircle',
+  'VK',
 ] as const;

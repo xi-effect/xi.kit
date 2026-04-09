@@ -170,6 +170,7 @@ import { HelpCircle } from './icons/HelpCircle';
 import { FlipBackward } from './icons/FlipBackward';
 import { Podcast } from './icons/Podcast';
 import { MessageHeartCircle } from './icons/MessageHeartCircle';
+import { VK } from './icons/VK';
 import { icons } from './config';
 
 export {
@@ -345,6 +346,7 @@ export {
   FlipBackward,
   Podcast,
   MessageHeartCircle,
+  VK,
   icons,
 };
 
