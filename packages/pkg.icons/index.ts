@@ -169,6 +169,7 @@ import { AlarmClock } from './icons/AlarmClock';
 import { HelpCircle } from './icons/HelpCircle';
 import { FlipBackward } from './icons/FlipBackward';
 import { Podcast } from './icons/Podcast';
+import { MessageHeartCircle } from './icons/MessageHeartCircle';
 import { icons } from './config';
 
 export {
@@ -343,6 +344,7 @@ export {
   HelpCircle,
   FlipBackward,
   Podcast,
+  MessageHeartCircle,
   icons,
 };
 

@@ -170,4 +170,5 @@ export const icons = [
   'HelpCircle',
   'FlipBackward',
   'Podcast',
+  'MessageHeartCircle',
 ] as const;
