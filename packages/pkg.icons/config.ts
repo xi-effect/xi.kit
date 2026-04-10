@@ -172,4 +172,6 @@ export const icons = [
   'Podcast',
   'MessageHeartCircle',
   'VK',
+  'Shield',
+  'ShieldOff',
 ] as const;

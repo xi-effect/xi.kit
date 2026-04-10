@@ -171,6 +171,8 @@ import { FlipBackward } from './icons/FlipBackward';
 import { Podcast } from './icons/Podcast';
 import { MessageHeartCircle } from './icons/MessageHeartCircle';
 import { VK } from './icons/VK';
+import { Shield } from './icons/Shield';
+import { ShieldOff } from './icons/ShieldOff';
 import { icons } from './config';
 
 export {
@@ -347,6 +349,8 @@ export {
   Podcast,
   MessageHeartCircle,
   VK,
+  Shield,
+  ShieldOff,
   icons,
 };
 
