@@ -174,6 +174,7 @@ import { VK } from './icons/VK';
 import { Shield } from './icons/Shield';
 import { ShieldOff } from './icons/ShieldOff';
 import { icons } from './config';
+import { Frame } from './icons/Frame';
 
 export {
   Account,
@@ -242,6 +243,7 @@ export {
   Flag,
   Folder,
   Food,
+  Frame,
   Grid,
   Group,
   H1,
