@@ -173,6 +173,7 @@ import { MessageHeartCircle } from './icons/MessageHeartCircle';
 import { VK } from './icons/VK';
 import { Shield } from './icons/Shield';
 import { ShieldOff } from './icons/ShieldOff';
+import { Edit05 } from './icons/Edit05';
 import { icons } from './config';
 
 export {
@@ -351,6 +352,7 @@ export {
   VK,
   Shield,
   ShieldOff,
+  Edit05,
   icons,
 };
 

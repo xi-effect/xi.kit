@@ -174,4 +174,5 @@ export const icons = [
   'VK',
   'Shield',
   'ShieldOff',
+  'Edit05',
 ] as const;
