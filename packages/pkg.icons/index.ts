@@ -175,6 +175,7 @@ import { Shield } from './icons/Shield';
 import { ShieldOff } from './icons/ShieldOff';
 import { Edit05 } from './icons/Edit05';
 import { icons } from './config';
+import { Transform } from './icons/Transform';
 
 export {
   Account,
@@ -323,6 +324,7 @@ export {
   TelegramFilled,
   Text,
   ThinArrowRight,
+  Transform,
   Trapezoid,
   Trash,
   Triangle,
