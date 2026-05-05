@@ -115,7 +115,7 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="bg-gray-0 h-auto rounded-[4px] p-1 dark:bg-gray-100">
+        <Button variant="ghost" className="bg-gray-0 h-auto rounded-sm p-1 dark:bg-gray-100">
           <Emotions className="text-gray-80 dark:text-gray-0" />
         </Button>
       </DropdownMenuTrigger>
@@ -143,7 +143,7 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
                         />
                       </Button>
                     </TooltipTrigger>
-                    <TooltipContent side="right" className="z-[99]">
+                    <TooltipContent side="right" className="z-99">
                       <p>{name}</p>
                     </TooltipContent>
                   </Tooltip>
