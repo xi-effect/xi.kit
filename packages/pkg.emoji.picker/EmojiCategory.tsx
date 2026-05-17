@@ -86,7 +86,7 @@ export const EmojiCategory = memo(
                 title={`:${emoji.name}:`}
                 variant="ghost"
                 className="hover:bg-gray-10 dark:hover:bg-gray-90 h-6 w-6 rounded-sm p-1"
-                onClick={() => handleEmojiClick(emoji.unicode)}
+                onClick={() => handleEmojiClick(emoji.char)}
                 style={{
                   fontFamily: 'Apple Color Emoji, Twemoji Mozilla, Noto Color Emoji, Android Emoji',
                 }}
