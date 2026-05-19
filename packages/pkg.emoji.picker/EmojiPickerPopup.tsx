@@ -127,7 +127,11 @@ export const EmojiPickerPopup = ({ recentEmojis, onEmojiSelect }: TEmojiPopup) =
 
   return (
     <div className="flex h-[296px] w-[276px]">
-      <div className="bg-gray-5 dark:bg-gray-90 flex flex-col gap-2 rounded-l-lg p-2">
+      <div
+        tabIndex={0}
+        aria-label="Категории эмодзи"
+        className="bg-gray-5 dark:bg-gray-90 flex flex-col gap-2 rounded-l-lg p-2"
+      >
         <TooltipProvider>
           {emojiCategoriesIcons.map(({ icon: Icon, name }, index) => {
             return (
@@ -149,7 +153,7 @@ export const EmojiPickerPopup = ({ recentEmojis, onEmojiSelect }: TEmojiPopup) =
                     />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent side="right" className="z-99">
+                <TooltipContent side="left" className="z-99">
                   <p>{name}</p>
                 </TooltipContent>
               </Tooltip>
