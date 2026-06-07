@@ -1,3 +1,5 @@
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -12,7 +14,7 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--color-gray-20, currentColor);
   }
 }
 
@@ -179,6 +181,10 @@ svg {
   --xi-cyan-40: #214F5F;
   --xi-cyan-60: #276B82;
   --xi-cyan-100: #33A4CC;
+
+  /* background */
+  --xi-bkgd-main: #21222C;
+  --xi-bkgd-block: #1F1F1F;
 }
 
 @theme {
@@ -255,6 +261,12 @@ svg {
   --color-brand-80: var(--xi-brand-80);
   --color-brand-100: var(--xi-brand-100);
 
+  /* background */
+  --color-bkgd-main: var(--xi-bkgd-main);
+  --color-bkgd-block: var(--xi-bkgd-block);
+  --color-background: var(--xi-bkgd-main);
+  --color-ring: var(--xi-brand-80);
+
   /* moscow */
   --color-red-0: var(--xi-red-0);
   --color-red-20: var(--xi-red-20);
@@ -304,8 +316,8 @@ svg {
   --color-cyan-100: var(--xi-cyan-100);
 
   /* Анимации */
-  --animation-shake: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
-  --animation-fade-in: fade-in 0.3s ease-in-out;
+  --animate-shake: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+  --animate-fade-in: fade-in 0.3s ease-in-out;
 }
 
 

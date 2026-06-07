@@ -20,6 +20,9 @@ export const globalTypes: Preview['globalTypes'] = {
 };
 
 const preview: Preview = {
+  initialGlobals: {
+    theme: 'light',
+  },
   parameters: {
     controls: {
       matchers: {
@@ -28,6 +31,9 @@ const preview: Preview = {
       },
     },
     themes: {
+      disable: true,
+    },
+    backgrounds: {
       disable: true,
     },
   },

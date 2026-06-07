@@ -10,4 +10,19 @@
 @source "../../../node_modules";
 @source "../../../packages";
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+/* Единый фон превью — без content-sized подложки у декоратора */
+@layer base {
+  html,
+  body,
+  #storybook-root,
+  #storybook-docs,
+  .sb-show-main,
+  .sb-main-centered,
+  .sb-main-padded,
+  .sb-main-fullscreen,
+  .docs-story,
+  .innerZoomElementWrapper {
+    background-color: var(--xi-bkgd-main);
+    color: var(--xi-gray-100);
+  }
+}

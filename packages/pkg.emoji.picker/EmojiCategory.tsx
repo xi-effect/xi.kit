@@ -3,7 +3,6 @@ import { Button } from '@xipkg/button';
 import { useVisibleRows, useIntersectionObserver } from './hooks';
 import { BUFFER_ROWS, ROW_HEIGHT, ROW_SIZE, categoryIntersections } from './constants';
 import { CategoryT } from './types';
-import { cn } from '@xipkg/utils';
 
 type EmojiCategoryPropsT = {
   isIntersectionEnabled?: boolean;
@@ -63,8 +62,8 @@ export const EmojiCategory = memo(
     return (
       <div id={`emoji-category-${currentIndex}`} ref={categoryRef} className="mb-4">
         {category.name_rus && (
-          <div className="bg-gray-0 pb-2 dark:bg-gray-100">
-            <h6 className="text-s-base text-gray-80 dark:text-gray-0 first-letter:uppercase">
+          <div className="bg-gray-0 pb-2">
+            <h6 className="text-s-base text-gray-80 first-letter:uppercase">
               {category.name_rus}
             </h6>
           </div>
@@ -86,14 +85,9 @@ export const EmojiCategory = memo(
                 key={emoji.name + emoji.unicode}
                 title={`:${emoji.name}:`}
                 variant="ghost"
-                className={cn(
-                  'h-6 w-6 translate-y-4 rounded-[4px] p-1 opacity-0 transition-transform duration-300',
-                  'animate-fade-in hover:bg-gray-10 dark:hover:bg-gray-90',
-                )}
+                className="hover:bg-gray-10 h-6 w-6 rounded-[4px] border-transparent bg-transparent p-1 text-base leading-none hover:border-transparent focus:border-transparent"
                 onClick={() => handleEmojiClick(emoji.unicode)}
                 style={{
-                  animationDelay: '10ms',
-                  animationFillMode: 'forwards',
                   fontFamily: 'Apple Color Emoji, Twemoji Mozilla, Noto Color Emoji, Android Emoji',
                 }}
               >

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useMemo, useEffect, useCallback } from 'react';
+import { useState, useRef, useMemo, useCallback } from 'react';
 import { Button } from '@xipkg/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@xipkg/dropdown';
 import {
@@ -115,13 +115,16 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="bg-gray-0 h-auto rounded-[4px] p-1 dark:bg-gray-100">
-          <Emotions className="text-gray-80 dark:text-gray-0" />
+        <Button
+          variant="ghost"
+          className="h-auto rounded-[4px] border-transparent bg-transparent p-1 hover:border-transparent hover:bg-gray-5 focus:border-transparent focus:bg-gray-5"
+        >
+          <Emotions className="text-gray-80" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="p-0" align="end" sideOffset={8}>
         <div className="flex h-[296px] w-[276px] rounded-lg">
-          <div className="bg-gray-5 dark:bg-gray-90 flex flex-col gap-2 p-2">
+          <div className="bg-gray-5 flex flex-col gap-2 p-2">
             <TooltipProvider>
               {emojiCategoriesIcons.map(({ icon: Icon, name }, index) => {
                 return (
@@ -130,16 +133,18 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
                       <Button
                         variant="ghost"
                         className={cn(
-                          'hover:bg-brand-0 group h-auto rounded-none bg-transparent p-1',
+                          'group h-auto rounded-[4px] border-transparent p-1 hover:border-transparent focus:border-transparent',
                           index === activeCategoryIndex
-                            ? 'bg-brand-0 text-brand-100 focus:bg-brand-0'
-                            : 'text-brand-50 dark:text-brand-40',
+                            ? 'bg-brand-0 text-brand-100 hover:bg-brand-0'
+                            : 'bg-transparent text-brand-60 hover:bg-brand-0 hover:text-brand-80',
                         )}
                         onClick={() => selectCategory(index)}
                       >
                         <Icon
                           size="sm"
-                          className="fill-current group-hover:fill-current group-focus:fill-current"
+                          className={
+                            index === activeCategoryIndex ? 'text-brand-100' : 'text-brand-60'
+                          }
                         />
                       </Button>
                     </TooltipTrigger>
@@ -151,10 +156,10 @@ export const EmojiPicker = ({ recentEmojis, onEmojiSelect }: EmojiPickerPropsT) 
               })}
             </TooltipProvider>
           </div>
-          <div className="bg-gray-0 flex w-full flex-col gap-2 p-2 dark:bg-gray-100">
+          <div className="bg-gray-0 flex w-full flex-col gap-2 p-2">
             <Input
               variant="s"
-              before={<Search size="sm" className="text-gray-60 dark:text-gray-40" />}
+              before={<Search size="sm" className="text-gray-60" />}
               placeholder="Поиск"
               className="border"
               value={searchQuery}

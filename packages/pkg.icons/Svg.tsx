@@ -3,12 +3,15 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@xipkg/utils';
 
-const svgVariants = cva('', {
+const svgVariants = cva('shrink-0 fill-current', {
   variants: {
     theme: {
-      default: 'text-gray-80 dark:text-gray-0',
-      brand: 'text-brand-60 dark:text-brand-40',
-      destructive: 'text-red-80 dark:text-red-40',
+      default: 'text-gray-80',
+      muted: 'text-gray-60',
+      strong: 'text-gray-100',
+      brand: 'text-brand-60',
+      destructive: 'text-red-80',
+      onBrand: 'text-brand-0',
     },
     size: {
       default: 'w-6 h-6',
@@ -33,3 +36,5 @@ export const Svg = ({ theme, size, className, children, ...rest }: IconProps) =>
     </svg>
   );
 };
+
+export { svgVariants };
