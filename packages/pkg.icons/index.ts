@@ -359,3 +359,4 @@ export {
 };
 
 export type { IconProps } from './Svg';
+export { Svg, svgVariants } from './Svg';

@@ -127,15 +127,14 @@ export function SwitcherAnimate({
   const getTabStyles = (isActive: boolean) =>
     cn(
       'relative z-10 inline-flex flex-1 items-center justify-center gap-2 rounded-[10px] border-none border-transparent px-4 py-1 text-[16px] font-medium whitespace-nowrap transition-colors',
-      'bg-transparent text-gray-90',
-      'hover:text-gray-80 data-[state=active]:text-gray-0 data-[state=active]:hover:text-gray-10',
+      'bg-transparent text-gray-80',
+      'hover:text-gray-90',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-80/50 focus-visible:ring-offset-2',
       'disabled:pointer-events-none disabled:opacity-50',
       '[&_svg]:pointer-events-none [&_svg]:shrink-0',
       orientation === 'vertical' && 'w-full justify-start',
-      variant === 'default' && isActive && 'text-gray-0',
-      variant === 'line' &&
-        (isActive ? 'bg-transparent text-gray-100' : 'text-gray-80'),
+      variant === 'default' && isActive && 'text-gray-0 hover:text-gray-10',
+      variant === 'line' && isActive && 'text-gray-100 hover:text-gray-100',
     );
 
   const getIndicatorStyles = () =>

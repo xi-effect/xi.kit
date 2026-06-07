@@ -130,7 +130,7 @@ export const EmojiPickerPopup = ({ recentEmojis, onEmojiSelect }: TEmojiPopup) =
       <div
         tabIndex={0}
         aria-label="Категории эмодзи"
-        className="bg-gray-5 dark:bg-gray-90 flex flex-col gap-2 rounded-l-lg p-2"
+        className="bg-gray-5 flex flex-col gap-2 rounded-l-lg p-2"
       >
         <TooltipProvider>
           {emojiCategoriesIcons.map(({ icon: Icon, name }, index) => {
@@ -140,16 +140,18 @@ export const EmojiPickerPopup = ({ recentEmojis, onEmojiSelect }: TEmojiPopup) =
                   <Button
                     variant="ghost"
                     className={cn(
-                      'hover:bg-brand-0 group h-auto rounded-none bg-transparent p-1',
+                      'group h-auto rounded-[4px] border-transparent p-1 hover:border-transparent focus:border-transparent',
                       index === activeCategoryIndex
-                        ? 'bg-brand-0 text-brand-100 focus:bg-brand-0'
-                        : 'text-brand-50 dark:text-brand-40',
+                        ? 'bg-brand-0 text-brand-100 hover:bg-brand-0'
+                        : 'bg-transparent text-brand-60 hover:bg-brand-0 hover:text-brand-80',
                     )}
                     onClick={() => selectCategory(index)}
                   >
                     <Icon
                       size="sm"
-                      className="fill-current group-hover:fill-current group-focus:fill-current"
+                      className={
+                        index === activeCategoryIndex ? 'text-brand-100' : 'text-brand-60'
+                      }
                     />
                   </Button>
                 </TooltipTrigger>
@@ -161,10 +163,10 @@ export const EmojiPickerPopup = ({ recentEmojis, onEmojiSelect }: TEmojiPopup) =
           })}
         </TooltipProvider>
       </div>
-      <div className="bg-gray-0 flex w-full flex-col gap-2 rounded-r-lg p-2 dark:bg-gray-100">
+      <div className="bg-gray-0 flex w-full flex-col gap-2 rounded-r-lg p-2">
         <Input
           variant="s"
-          before={<Search size="sm" className="text-gray-60 dark:text-gray-40" />}
+          before={<Search size="sm" className="text-gray-60" />}
           placeholder="Поиск"
           className="border"
           value={searchQuery}

@@ -32,7 +32,7 @@ const checkboxVariants = cva(
 );
 
 const labelVariants = cva(
-  'inline-flex group focus-visible:ring-2 ring-brand-80 ring-offset-4 text-gray-100 items-center gap-2',
+  'inline-flex group focus-visible:ring-2 ring-brand-80 ring-offset-4 ring-offset-bkgd-main text-gray-100 items-center gap-2',
   {
     variants: {
       size: {
