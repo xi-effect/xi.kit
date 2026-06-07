@@ -36,7 +36,14 @@
   ],
   "optionalDependencies": {
     "@esbuild/darwin-arm64": "^0.25.4",
+    "@esbuild/linux-x64": "^0.25.4",
+    "@nx/nx-darwin-arm64": "^20.8.4",
+    "@nx/nx-linux-x64-gnu": "^20.8.4",
+    "@rollup/rollup-darwin-arm64": "^4.60.1",
+    "@rollup/rollup-linux-x64-gnu": "^4.60.1",
     "@tailwindcss/oxide-linux-x64-gnu": "^4.1.6",
+    "@turbo/darwin-arm64": "^2.9.3",
+    "@turbo/linux-64": "^2.9.3",
     "lightningcss-linux-x64-gnu": "^1.25.0"
   }
 }
