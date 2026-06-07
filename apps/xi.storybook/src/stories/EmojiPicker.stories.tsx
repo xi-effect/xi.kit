@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { EmojiPicker } from '@xipkg/emojipicker';
+import { EmojiPicker, EmojiPickerPopup } from '@xipkg/emojipicker';
 import { useState } from 'react';
 
 const meta = {
@@ -30,11 +30,32 @@ export const Default: Story = {
 export const WithRecentEmojis: Story = {
   render: () => {
     const [selectedEmoji, setSelectedEmoji] = useState<string>('');
-    const recentEmojis = ['1f600', '1f601', '1f602', '1f603', '1f604'];
+    const [recentEmojis, setRecentEmojis] = useState(['😂', '👽']);
+    const onEmojiSelectHandler = (emoji: string) => {
+      setSelectedEmoji(emoji);
+      setRecentEmojis([emoji, ...recentEmojis]);
+    };
 
     return (
       <div className="flex flex-col items-center gap-4">
-        <EmojiPicker onEmojiSelect={setSelectedEmoji} recentEmojis={recentEmojis} />
+        <EmojiPicker onEmojiSelect={onEmojiSelectHandler} recentEmojis={recentEmojis} />
+        {selectedEmoji && <div className="text-2xl">Выбранный эмодзи: {selectedEmoji}</div>}
+      </div>
+    );
+  },
+};
+
+export const WithCustomTriggerComponent: Story = {
+  render: () => {
+    const [selectedEmoji, setSelectedEmoji] = useState<string>('');
+    const [open, setOpen] = useState(false);
+
+    const setOpenHandle = () => setOpen(!open);
+
+    return (
+      <div className="flex flex-col items-center gap-4">
+        <span onClick={setOpenHandle}>Trigger</span>
+        {open && <EmojiPickerPopup onEmojiSelect={setSelectedEmoji} />}
         {selectedEmoji && <div className="text-2xl">Выбранный эмодзи: {selectedEmoji}</div>}
       </div>
     );
