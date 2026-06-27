@@ -27,7 +27,9 @@
   },
   "dependencies": {
     "@xipkg/icons": "2.2.0",
-    "@xipkg/link": "2.0.5"
+    "@xipkg/link": "^2.0.12",
+    "lerna": "6.6.2",
+    "next": "9.3.3"
   },
   "devDependencies": {
     "@types/node": "^22.13.14",
@@ -36,7 +38,7 @@
     "@xipkg/eslint": "^3.2.0",
     "@xipkg/typescript": "^0.1.0",
     "eslint": "^9.23.0",
-    "tsup": "^8.4.0",
+    "tsup": "8.5.1",
     "typescript": "^5.8.2"
   },
   "peerDependencies": {
