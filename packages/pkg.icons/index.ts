@@ -59,6 +59,7 @@ import { Eyeon } from './icons/Eyeon';
 import { FAQ } from './icons/FAQ';
 import { Figures } from './icons/Figures';
 import { File } from './icons/File';
+import { FilePlus } from './icons/FilePlus';
 import { FileSmall } from './icons/FileSmall';
 import { Filter } from './icons/Filter';
 import { Flag } from './icons/Flag';
@@ -240,6 +241,7 @@ export {
   FAQ,
   Figures,
   File,
+  FilePlus,
   FileSmall,
   Filter,
   Flag,
