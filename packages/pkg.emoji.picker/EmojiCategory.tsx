@@ -63,9 +63,7 @@ export const EmojiCategory = memo(
       <div id={`emoji-category-${currentIndex}`} ref={categoryRef} className="mb-4">
         {category.name_rus && (
           <div className="bg-gray-0 pb-2">
-            <h6 className="text-s-base text-gray-80 first-letter:uppercase">
-              {category.name_rus}
-            </h6>
+            <h6 className="text-s-base text-gray-80 first-letter:uppercase">{category.name_rus}</h6>
           </div>
         )}
         <div
@@ -85,7 +83,7 @@ export const EmojiCategory = memo(
                 key={emoji.name + emoji.unicode}
                 title={`:${emoji.name}:`}
                 variant="ghost"
-                className="hover:bg-gray-10 h-6 w-6 rounded-[4px] border-transparent bg-transparent p-1 text-base leading-none hover:border-transparent focus:border-transparent"
+                className="hover:bg-gray-10 h-6 w-6 rounded-sm border-transparent bg-transparent p-1 text-base leading-none hover:border-transparent focus:border-transparent"
                 onClick={() => handleEmojiClick(emoji.char)}
                 style={{
                   fontFamily: 'Apple Color Emoji, Twemoji Mozilla, Noto Color Emoji, Android Emoji',
