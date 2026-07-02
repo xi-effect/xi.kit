@@ -60,6 +60,7 @@ export const icons = [
   'FAQ',
   'Figures',
   'File',
+  'FilePlus',
   'FileSmall',
   'Filter',
   'Flag',
@@ -176,4 +177,5 @@ export const icons = [
   'ShieldOff',
   'Edit05',
   'Transform',
+  'Pinned',
 ] as const;
