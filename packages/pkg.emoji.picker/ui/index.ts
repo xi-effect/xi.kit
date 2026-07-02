@@ -1,0 +1,1 @@
+export { EmojiPickerPopup } from './EmojiPickerPopup';

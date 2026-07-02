@@ -138,6 +138,7 @@ export const WithStickers: Story = {
           stickers={stickers}
           onEmojiSelect={() => {}}
           onStickerSelect={(sticker) => setSelectedSticker(sticker.src)}
+          recentEmojis={recentEmojis}
         />
         {selectedSticker && (
           <div className="flex items-center gap-2 text-2xl">

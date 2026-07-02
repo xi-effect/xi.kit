@@ -1,8 +1,8 @@
 import React, { memo, useMemo, useRef } from 'react';
 import { Button } from '@xipkg/button';
-import { useVisibleRows, useIntersectionObserver } from './hooks';
-import { BUFFER_ROWS, ROW_HEIGHT, ROW_SIZE, categoryIntersections } from './constants';
-import { CategoryT } from './types';
+import { useVisibleRows, useIntersectionObserver } from '../hooks';
+import { BUFFER_ROWS, ROW_HEIGHT, ROW_SIZE, categoryIntersections } from '../constants';
+import { CategoryT } from '../types';
 
 type EmojiCategoryPropsT = {
   isIntersectionEnabled?: boolean;
@@ -61,9 +61,9 @@ export const EmojiCategory = memo(
 
     return (
       <div id={`emoji-category-${currentIndex}`} ref={categoryRef} className="mb-4">
-        {category.name_rus && (
+        {category.nameRus && (
           <div className="bg-gray-0 pb-2">
-            <h6 className="text-s-base text-gray-80 first-letter:uppercase">{category.name_rus}</h6>
+            <h6 className="text-s-base text-gray-80 first-letter:uppercase">{category.nameRus}</h6>
           </div>
         )}
         <div

@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/emojipicker",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -33,6 +33,7 @@
     "@xipkg/tooltip": "^2.0.10",
     "@xipkg/utils": "^1.8.0",
     "@xipkg/tabs": "^2.1.0",
+    "@xipkg/switcher-animate": "^1.0.6",
     "class-variance-authority": "^0.7.1",
     "emoji-mart": "^5.6.0"
   },

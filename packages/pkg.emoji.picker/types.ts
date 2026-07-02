@@ -12,7 +12,7 @@ export type StickerT = {
 
 export type CategoryT = {
   name: string;
-  name_rus?: string;
+  nameRus?: string;
   emojis: EmojiT[];
 };
 

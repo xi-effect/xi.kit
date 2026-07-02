@@ -1,7 +1,8 @@
 import { Button } from '@xipkg/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@xipkg/dropdown';
 import { Emotions } from '@xipkg/icons';
-import { EmojiPickerPopup } from './EmojiPickerPopup';
+
+import { EmojiPickerPopup } from './ui';
 import { TEmojiPickerPropsT } from './types';
 
 export const EmojiPicker = ({
