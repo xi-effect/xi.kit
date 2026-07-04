@@ -178,6 +178,7 @@ import { Edit05 } from './icons/Edit05';
 import { icons } from './config';
 import { Transform } from './icons/Transform';
 import { Pinned } from './icons/Pinned';
+import { Inbox } from './icons/Inbox';
 
 export {
   Account,
@@ -359,6 +360,7 @@ export {
   ShieldOff,
   Edit05,
   Pinned,
+  Inbox,
   icons,
 };
 

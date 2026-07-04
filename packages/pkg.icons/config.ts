@@ -178,4 +178,5 @@ export const icons = [
   'Edit05',
   'Transform',
   'Pinned',
+  'Inbox',
 ] as const;
