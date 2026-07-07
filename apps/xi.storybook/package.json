@@ -28,6 +28,7 @@
     "@xipkg/file": "*",
     "@xipkg/fileuploader": "*",
     "@xipkg/form": "*",
+    "@xipkg/gridvirtualizer": "*",
     "@xipkg/icons": "*",
     "@xipkg/input": "*",
     "@xipkg/inputmask": "*",
