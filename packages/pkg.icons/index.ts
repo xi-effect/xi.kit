@@ -1,5 +1,6 @@
 import { Account } from './icons/Account';
 import { Activity } from './icons/Activity';
+import {ActivityLine} from './icons/ActivityLine'
 import { Add } from './icons/Add';
 import { Announce } from './icons/Announce';
 import { Arrow } from './icons/Arrow';
@@ -180,6 +181,7 @@ import { Transform } from './icons/Transform';
 export {
   Account,
   Activity,
+  ActivityLine,
   Add,
   Announce,
   Arrow,
