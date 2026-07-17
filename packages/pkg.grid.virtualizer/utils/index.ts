@@ -1,0 +1,1 @@
+export { calculateColCount } from './calculateColCount';
