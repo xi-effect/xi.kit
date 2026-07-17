@@ -1,4 +1,4 @@
-type TCalculateColCount = {
+type CalculateColCountT = {
   width: number;
   maxColumns: number;
   gap: number;
@@ -10,6 +10,6 @@ export const calculateColCount = ({
   maxColumns,
   gap,
   itemWidth,
-}: TCalculateColCount): number => {
+}: CalculateColCountT): number => {
   return Math.min(maxColumns, Math.max(1, Math.floor((width + gap) / (itemWidth + gap))));
 };

@@ -2,24 +2,24 @@ import { useRef } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { GridVirtualizer } from '@xipkg/gridvirtualizer';
 
-type TMaterialItem = {
+type MaterialItemT = {
   id: number;
   title: string;
   color: string;
 };
 
-const generateItems = (count: number): TMaterialItem[] => {
-  const colors = [
-    '#FF6B6B',
-    '#4ECDC4',
-    '#45B7D1',
-    '#96CEB4',
-    '#FFEAA7',
-    '#DDA0DD',
-    '#FF8C94',
-    '#88D8A8',
-  ];
+const colors = [
+  '#FF6B6B',
+  '#4ECDC4',
+  '#45B7D1',
+  '#96CEB4',
+  '#FFEAA7',
+  '#DDA0DD',
+  '#FF8C94',
+  '#88D8A8',
+];
 
+const generateItems = (count: number): MaterialItemT[] => {
   return Array.from({ length: count }, (_, index) => ({
     id: index + 1,
     title: `Item ${index + 1}`,
@@ -76,18 +76,17 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-type TCard = {
+type CardT = {
   label: string;
 };
 
-const Card = ({ label }: TCard) => (
+const Card = ({ label }: CardT) => (
   <div className="hover:border-brand-80 border-gray-20 bg-gray-0 w-full cursor-pointer rounded-md border p-2 transition-all duration-200">
     <span>{label}</span>
   </div>
 );
 
 const DefaultGridVirtualizer = (args: React.ComponentProps<typeof GridVirtualizer>) => {
-  console.log('args', args);
   const parentRef = useRef<HTMLDivElement>(null);
   return (
     <div

@@ -1,12 +1,12 @@
-import { RefObject, useCallback, useLayoutEffect } from 'react';
+import { CSSProperties, Fragment, RefObject, useCallback, useLayoutEffect } from 'react';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { useResponsiveGrid } from './hooks';
 
-type TItem = {
+type ItemT = {
   id: number;
 };
 
-export type TGridVirtualizer<T> = {
+export type GridVirtualizerT<T> = {
   items: T[];
   renderItem: (item: T) => React.ReactNode;
   className?: string;
@@ -17,9 +17,10 @@ export type TGridVirtualizer<T> = {
   maxColumns?: number;
   isSingleColumn?: boolean;
   overscan?: number;
+  style?: CSSProperties | undefined;
 };
 
-export const GridVirtualizer = <T extends TItem>({
+export const GridVirtualizer = <T extends ItemT>({
   items,
   renderItem,
   className,
@@ -30,8 +31,9 @@ export const GridVirtualizer = <T extends TItem>({
   maxColumns = 1,
   isSingleColumn = false,
   overscan = 5,
+  style,
   ...props
-}: TGridVirtualizer<T>) => {
+}: GridVirtualizerT<T>) => {
   const { colCount: responsiveColCount } = useResponsiveGrid(
     parentRef,
     minItemWidth,
@@ -67,6 +69,7 @@ export const GridVirtualizer = <T extends TItem>({
         height: `${rowVirtualizer.getTotalSize()}px`,
         width: '100%',
         position: 'relative',
+        ...style,
       }}
       {...props}
     >
@@ -90,10 +93,11 @@ export const GridVirtualizer = <T extends TItem>({
               paddingBottom: gap,
               gridTemplateColumns: `repeat(${colCount}, minmax(${minItemWidth}px, 1fr)`,
               transform: `translateY(${virtualItem.start}px)`,
+              ...style,
             }}
           >
             {rowItems.map((item) => (
-              <div key={item.id}>{renderItem(item)}</div>
+              <Fragment key={item.id}>{renderItem(item)}</Fragment>
             ))}
           </div>
         );
