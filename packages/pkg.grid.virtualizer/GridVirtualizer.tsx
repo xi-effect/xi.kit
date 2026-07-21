@@ -3,7 +3,7 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 import { useResponsiveGrid } from './hooks';
 
 type ItemT = {
-  id: number;
+  id: number | string;
 };
 
 export type GridVirtualizerT<T> = {
