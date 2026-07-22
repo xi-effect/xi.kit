@@ -14,13 +14,75 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const stickers = [
+  {
+    id: '1',
+    name: 'brain',
+    src: '/stickers/0.webp',
+  },
+  {
+    id: '2',
+    name: 'brain',
+    src: '/stickers/0.webp',
+  },
+  {
+    id: '3',
+    name: 'brain',
+    src: '/stickers/0.webp',
+  },
+  {
+    id: '4',
+    name: 'brain',
+    src: '/stickers/0.webp',
+  },
+  {
+    id: '5',
+    name: 'brain',
+    src: '/stickers/0.webp',
+  },
+  {
+    id: '6',
+    name: 'brain',
+    src: '/stickers/0.webp',
+  },
+  {
+    id: '7',
+    name: 'brain',
+    src: '/stickers/0.webp',
+  },
+  {
+    id: '8',
+    name: 'brain',
+    src: '/stickers/0.webp',
+  },
+  {
+    id: '9',
+    name: 'brain',
+    src: '/stickers/0.webp',
+  },
+  {
+    id: '10',
+    name: 'brain',
+    src: '/stickers/0.webp',
+  },
+  {
+    id: '11',
+    name: 'brain',
+    src: '/stickers/0.webp',
+  },
+];
+
 export const Default: Story = {
   render: () => {
     const [selectedEmoji, setSelectedEmoji] = useState<string>('');
 
     return (
       <div className="flex flex-col items-center gap-4">
-        <EmojiPicker onEmojiSelect={setSelectedEmoji} />
+        <EmojiPicker
+          onEmojiSelect={setSelectedEmoji}
+          stickers={stickers}
+          onStickerSelect={(sticker) => setSelectedSticker(sticker.src)}
+        />
         {selectedEmoji && <div className="text-2xl">Выбранный эмодзи: {selectedEmoji}</div>}
       </div>
     );
@@ -38,7 +100,11 @@ export const WithRecentEmojis: Story = {
 
     return (
       <div className="flex flex-col items-center gap-4">
-        <EmojiPicker onEmojiSelect={onEmojiSelectHandler} recentEmojis={recentEmojis} />
+        <EmojiPicker
+          onEmojiSelect={onEmojiSelectHandler}
+          recentEmojis={recentEmojis}
+          stickers={stickers}
+        />
         {selectedEmoji && <div className="text-2xl">Выбранный эмодзи: {selectedEmoji}</div>}
       </div>
     );
@@ -55,8 +121,35 @@ export const WithCustomTriggerComponent: Story = {
     return (
       <div className="flex flex-col items-center gap-4">
         <span onClick={setOpenHandle}>Trigger</span>
-        {open && <EmojiPickerPopup onEmojiSelect={setSelectedEmoji} />}
+        {open && <EmojiPickerPopup onEmojiSelect={setSelectedEmoji} stickers={stickers} />}
         {selectedEmoji && <div className="text-2xl">Выбранный эмодзи: {selectedEmoji}</div>}
+      </div>
+    );
+  },
+};
+
+export const WithStickers: Story = {
+  render: () => {
+    const [selectedSticker, setSelectedSticker] = useState('');
+
+    return (
+      <div className="flex flex-col items-center gap-4">
+        <EmojiPicker
+          stickers={stickers}
+          onEmojiSelect={() => {}}
+          onStickerSelect={(sticker) => setSelectedSticker(sticker.src)}
+          recentEmojis={recentEmojis}
+        />
+        {selectedSticker && (
+          <div className="flex items-center gap-2 text-2xl">
+            Выбранный стикер:
+            <img
+              src={selectedSticker}
+              alt="Selected Sticker"
+              className="max-h-20 max-w-20 object-contain"
+            />
+          </div>
+        )}
       </div>
     );
   },

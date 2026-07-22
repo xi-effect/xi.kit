@@ -71,7 +71,9 @@ jobs:
           cache: npm
 
       - name: Upgrade npm (required for trusted publishing)
-        run: npm install -g npm@latest
+        # Pin to npm@11 (>=11.5 needed for OIDC). Avoid npm@latest self-upgrade
+        # race that fails with MODULE_NOT_FOUND: promise-retry.
+        run: npm install -g npm@11 --force
 
       - name: Verify Node/npm versions
         run: |

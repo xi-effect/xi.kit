@@ -1,2 +1,2 @@
 export { EmojiPicker } from './EmojiPicker';
-export { EmojiPickerPopup } from './EmojiPickerPopup';
+export { EmojiPickerPopup } from './ui/EmojiPickerPopup';

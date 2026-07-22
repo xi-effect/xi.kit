@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useMemo, useCallback } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Button } from '@xipkg/button';
 import {
   Clock,
@@ -16,14 +16,11 @@ import {
 } from '@xipkg/icons';
 import { Input } from '@xipkg/input';
 import { cn } from '@xipkg/utils';
-import { CategoryT, TEmojiPickerProps, EmojiT } from './types';
-import { EmojiCategory } from './EmojiCategory';
-import emojisData from './emojis.json';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@xipkg/tooltip';
 
-type TEmojiPopup = TEmojiPickerProps & {
-  className?: string;
-};
+import emojisData from '../emojis.json';
+import { EmojiCategory } from './EmojiCategory';
+import { CategoryT, EmojiT } from '../types';
 
 const recentIcon = { icon: Clock, name: 'Последние' };
 
@@ -38,29 +35,17 @@ const categoryIcons = [
   { icon: Flag, name: 'Флаги' },
 ];
 
-export const EmojiPickerPopup = ({ recentEmojis, onEmojiSelect }: TEmojiPopup) => {
-  const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [searchQuery, setSearchQuery] = useState<string>('');
+type Props = {
+  recentEmojis?: string[];
+  onEmojiSelect: (emoji: string) => void;
+};
 
+export const EmojiView = ({ recentEmojis, onEmojiSelect }: Props) => {
   const categories = emojisData;
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const handleSearchEmoji = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setActiveCategoryIndex(0);
-    setSearchQuery(e.target.value);
-  };
-
-  const filteredCategories = useMemo(() => {
-    if (!categories) return { name: 'empty', emojis: [] };
-
-    return {
-      name: 'search',
-      emojis: categories
-        .map((category) => category.emojis)
-        .flat()
-        .filter((emoji: EmojiT) => emoji.name.toLowerCase().includes(searchQuery.toLowerCase())),
-    };
-  }, [categories, searchQuery]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
 
   const matchedEmojis = useMemo(() => {
     if (!categories || !recentEmojis) return [];
@@ -96,26 +81,36 @@ export const EmojiPickerPopup = ({ recentEmojis, onEmojiSelect }: TEmojiPopup) =
       : categories;
   }, [categories, matchedEmojis]);
 
-  const scrollToCategory = (target: HTMLElement) => {
-    target.scrollIntoView({
-      block: 'start',
-      inline: 'nearest',
-    });
-  };
+  const filteredCategories = useMemo(() => {
+    if (!categories) return { name: 'empty', emojis: [] };
+
+    return {
+      name: 'search',
+      emojis: categories
+        .map((category) => category.emojis)
+        .flat()
+        .filter((emoji: EmojiT) => emoji.name.toLowerCase().includes(searchQuery.toLowerCase())),
+    };
+  }, [categories, searchQuery]);
 
   const selectCategory = (index: number) => {
     setSearchQuery('');
-    setTimeout(() => {
-      setActiveCategoryIndex(index);
-    }, 50);
 
     const container = scrollContainerRef.current;
     if (!container) return;
 
     const categoryEl = container.querySelector<HTMLElement>(`#emoji-category-${index}`);
-    if (categoryEl) {
-      scrollToCategory(categoryEl);
-    }
+
+    categoryEl?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+    setActiveCategoryIndex(index);
+  };
+
+  const handleSearchEmoji = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setActiveCategoryIndex(0);
+    setSearchQuery(e.target.value);
   };
 
   const handleEmojiClick = useCallback(
@@ -126,11 +121,11 @@ export const EmojiPickerPopup = ({ recentEmojis, onEmojiSelect }: TEmojiPopup) =
   );
 
   return (
-    <div className="flex h-[296px] w-[276px]">
+    <div className="relative flex min-h-0 w-full">
       <div
         tabIndex={0}
         aria-label="Категории эмодзи"
-        className="bg-gray-5 flex flex-col gap-2 rounded-l-lg p-2"
+        className="bg-gray-5 flex flex-col gap-2 rounded-bl-lg p-2"
       >
         <TooltipProvider>
           {emojiCategoriesIcons.map(({ icon: Icon, name }, index) => {
@@ -140,22 +135,18 @@ export const EmojiPickerPopup = ({ recentEmojis, onEmojiSelect }: TEmojiPopup) =
                   <Button
                     variant="ghost"
                     className={cn(
-                      'group h-auto rounded-[4px] border-transparent p-1 hover:border-transparent focus:border-transparent',
+                      'h-6.5 w-6.5 rounded-sm border-transparent p-1',
                       index === activeCategoryIndex
-                        ? 'bg-brand-0 text-brand-100 hover:bg-brand-0'
-                        : 'bg-transparent text-brand-60 hover:bg-brand-0 hover:text-brand-80',
+                        ? 'bg-gray-0 text-brand-100 focus:bg-gray-0'
+                        : 'bg-brand-0 text-brand-60 focus:bg-brand-0',
                     )}
                     onClick={() => selectCategory(index)}
                   >
-                    <Icon
-                      size="sm"
-                      className={
-                        index === activeCategoryIndex ? 'text-brand-100' : 'text-brand-60'
-                      }
-                    />
+                    <Icon size="sm" />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent side="left" className="z-99">
+
+                <TooltipContent side="left">
                   <p>{name}</p>
                 </TooltipContent>
               </Tooltip>
@@ -163,7 +154,8 @@ export const EmojiPickerPopup = ({ recentEmojis, onEmojiSelect }: TEmojiPopup) =
           })}
         </TooltipProvider>
       </div>
-      <div className="bg-gray-0 flex w-full flex-col gap-2 rounded-r-lg p-2">
+
+      <div className="bg-gray-0 absolute right-0 flex h-full min-h-0 flex-1 flex-col gap-2 rounded-r-lg p-2">
         <Input
           variant="s"
           before={<Search size="sm" className="text-gray-60" />}
@@ -172,12 +164,9 @@ export const EmojiPickerPopup = ({ recentEmojis, onEmojiSelect }: TEmojiPopup) =
           value={searchQuery}
           onChange={handleSearchEmoji}
         />
-        <div
-          className="h-full overflow-y-auto"
-          ref={scrollContainerRef}
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {filteredCategories && searchQuery ? (
+
+        <div ref={scrollContainerRef} className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto">
+          {searchQuery ? (
             <EmojiCategory
               setActiveCategory={setActiveCategoryIndex}
               category={filteredCategories}
@@ -187,12 +176,11 @@ export const EmojiPickerPopup = ({ recentEmojis, onEmojiSelect }: TEmojiPopup) =
               isIntersectionEnabled={false}
             />
           ) : (
-            emojiCategories.length > 0 &&
-            emojiCategories.map((emojis, index) => (
+            emojiCategories.map((category, index) => (
               <EmojiCategory
                 key={index}
                 setActiveCategory={setActiveCategoryIndex}
-                category={emojis}
+                category={category}
                 currentIndex={index}
                 handleEmojiClick={handleEmojiClick}
                 containerRef={scrollContainerRef}
