@@ -1,6 +1,7 @@
 export const icons = [
   'Account',
   'Activity',
+  'ActivityLine',
   'Add',
   'Announce',
   'Arrow',
