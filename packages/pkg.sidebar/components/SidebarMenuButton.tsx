@@ -17,9 +17,9 @@ const sidebarMenuButtonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-transparent text-gray-80 [&>svg]:fill-gray-80 hover:bg-gray-5 hover:text-gray-100 hover:[&>svg]:fill-gray-100 data-[active=true]:bg-brand-0 data-[active=true]:text-brand-80 data-[active=true]:[&>svg]:fill-brand-80 data-[active=true]:hover:text-brand-100 data-[active=true]:hover:[&>svg]:fill-brand-100',
+          'bg-transparent text-text-secondary [&>svg]:fill-icon-secondary hover:bg-background-subtle hover:text-text-primary hover:[&>svg]:fill-icon-primary data-[active=true]:bg-selection-background data-[active=true]:text-icon-brand data-[active=true]:[&>svg]:fill-icon-brand data-[active=true]:hover:text-text-link data-[active=true]:hover:[&>svg]:fill-text-link',
         ghost:
-          'hover:bg-transparent active:bg-transparent focus:bg-transparent text-gray-50 [&>svg]:fill-gray-50',
+          'hover:bg-transparent active:bg-transparent focus:bg-transparent text-text-muted [&>svg]:fill-icon-secondary',
       },
       size: {
         default: 'h-10 text-base',

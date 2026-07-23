@@ -8,11 +8,11 @@ const alertVariants = cva(
     variants: {
       variant: {
         default: '',
-        error: 'text-red-100 bg-red-0 fill-red-100',
-        success: 'text-green-100 bg-green-0 fill-green-100',
-        warning: 'text-orange-80 bg-orange-0 fill-orange-80',
-        info: 'text-gray-80 bg-gray-5 fill-gray-80',
-        brand: 'text-brand-100 bg-brand-0 fill-brand-100',
+        error: 'text-status-error-text bg-status-error-background fill-status-error-accent',
+        success: 'text-status-success-text bg-status-success-background fill-status-success-accent',
+        warning: 'text-status-warning-text bg-status-warning-background fill-status-warning-accent',
+        info: 'text-text-secondary bg-background-subtle fill-icon-secondary',
+        brand: 'text-status-info-text bg-status-info-background fill-status-info-accent',
       },
     },
     defaultVariants: {

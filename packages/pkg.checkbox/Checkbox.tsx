@@ -8,7 +8,7 @@ import * as React from 'react';
 import { cn } from '@xipkg/utils';
 
 const checkboxVariants = cva(
-  'shrink-0 p-0.5 peer data-[state=checked]:text-gray-0 data-[state=checked]:bg-brand-80 data-[state=checked]:border-brand-80 disabled:!cursor-not-allowed disabled:!bg-gray-10 disabled:!text-gray-30 disabled:!border-0 border bg-gray-0 border-gray-30',
+  'shrink-0 p-0.5 peer data-[state=checked]:text-action-primary-text data-[state=checked]:bg-action-primary-background-default data-[state=checked]:border-action-primary-background-default disabled:!cursor-not-allowed disabled:!bg-background-subtle disabled:!text-text-disabled disabled:!border-0 border bg-background-surface border-border-control',
   {
     variants: {
       size: {
@@ -18,10 +18,11 @@ const checkboxVariants = cva(
       },
       state: {
         default:
-          'data-[state=checked]:group-hover:bg-brand-100 group-hover:bg-gray-5 group-hover:border-gray-30',
+          'data-[state=checked]:group-hover:bg-action-primary-background-pressed group-hover:bg-background-subtle group-hover:border-border-control',
         warning:
-          'border-orange-80 data-[state=checked]:!bg-orange-80 data-[state=checked]:!border-orange-80',
-        error: 'border-red-80 data-[state=checked]:!bg-red-80 data-[state=checked]:!border-red-80',
+          'border-status-warning-accent data-[state=checked]:!bg-status-warning-accent data-[state=checked]:!border-status-warning-accent',
+        error:
+          'border-status-error-accent data-[state=checked]:!bg-status-error-accent data-[state=checked]:!border-status-error-accent',
       },
     },
     defaultVariants: {
@@ -32,7 +33,7 @@ const checkboxVariants = cva(
 );
 
 const labelVariants = cva(
-  'inline-flex group focus-visible:ring-2 ring-brand-80 ring-offset-4 ring-offset-bkgd-main text-gray-100 items-center gap-2',
+  'inline-flex group focus-visible:ring-2 ring-border-focus ring-offset-4 ring-offset-bkgd-main text-text-primary items-center gap-2',
   {
     variants: {
       size: {
@@ -71,7 +72,7 @@ export const Checkbox = ({
         <Check className="h-full w-full" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
-    {children && <span className="pb-[0.125rem] peer-disabled:text-gray-50">{children}</span>}
+    {children && <span className="pb-[0.125rem] peer-disabled:text-text-muted">{children}</span>}
   </label>
 );
 

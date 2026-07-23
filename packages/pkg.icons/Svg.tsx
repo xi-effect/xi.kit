@@ -6,12 +6,12 @@ import { cn } from '@xipkg/utils';
 const svgVariants = cva('shrink-0 fill-current', {
   variants: {
     theme: {
-      default: 'text-gray-80',
-      muted: 'text-gray-60',
-      strong: 'text-gray-100',
+      default: 'text-icon-primary',
+      muted: 'text-icon-secondary',
+      strong: 'text-text-primary',
       brand: 'text-brand-60',
-      destructive: 'text-red-80',
-      onBrand: 'text-brand-0',
+      destructive: 'text-status-error-accent',
+      onBrand: 'text-text-on-accent',
     },
     size: {
       default: 'w-6 h-6',

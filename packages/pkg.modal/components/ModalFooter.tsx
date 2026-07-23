@@ -2,7 +2,9 @@ import React from 'react';
 import { cn } from '@xipkg/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
-export const modalFooterVariants = cva('border-gray-5 rounded-b-[16px] border-t p-6 bg-gray-0', {
+export const modalFooterVariants = cva(
+  'border-border-default rounded-b-[16px] border-t p-6 bg-background-surface',
+  {
   variants: {
     footerVariant: {
       default: '',
@@ -12,7 +14,8 @@ export const modalFooterVariants = cva('border-gray-5 rounded-b-[16px] border-t 
   defaultVariants: {
     footerVariant: 'default',
   },
-});
+},
+);
 
 export interface ModalFooterProps
   extends React.HTMLAttributes<HTMLDivElement>,

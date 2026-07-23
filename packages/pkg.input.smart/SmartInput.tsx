@@ -235,7 +235,7 @@ export const SmartInput = ({
         // @ts-ignore
         decorate={decorate}
         className={cn(
-          'text-gray-100 focus-visible:outline-none focus-visible:[&_*]:outline-none',
+          'text-text-primary focus-visible:outline-none focus-visible:[&_*]:outline-none',
           editableClassName,
         )}
         renderLeaf={({ leaf, ...props }) => <Leaf leaf={leaf as CustomTextSI} {...props} />}

@@ -133,7 +133,7 @@ const CommandEmpty = forwardRef<
 CommandEmpty.displayName = 'CommandEmpty';
 
 export const inputTokenVariants = cva(
-  'rounded-md border-2 border-gray-30 bg-gray-0 text-sm text-gray-80 hover:border-gray-50 active:border-gray-30 focus:border-gray-80 focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-30 disabled:cursor-not-allowed disabled:!bg-gray-10 disabled:!text-gray-30 disabled:!border-0 disabled:active:!border-0',
+  'rounded-md border-2 border-border-control bg-background-surface text-sm text-text-primary hover:border-border-strong active:border-border-control focus:border-border-strong focus-visible:outline-none file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-text-disabled disabled:cursor-not-allowed disabled:!bg-background-subtle disabled:!text-text-disabled disabled:!border-0 disabled:active:!border-0',
   {
     variants: {
       variant: {
@@ -141,11 +141,11 @@ export const inputTokenVariants = cva(
         s: 'min-h-6 px-1 py-1 rounded-md text-[14px]',
       },
       error: {
-        true: 'border-red-80 hover:border-red-80 active:border-red-80 focus:border-red-80',
+        true: 'border-border-error hover:border-border-error active:border-border-error focus:border-border-error',
         false: '',
       },
       disable: {
-        true: '!bg-gray-10 active:border-0 !text-gray-30',
+        true: '!bg-background-subtle active:border-0 !text-text-disabled',
         false: '',
       },
     },
@@ -157,7 +157,7 @@ export const inputTokenVariants = cva(
 );
 
 export const badgeVariants = cva(
-  'bg-gray-5 data-[disabled]:bg-muted-foreground data-[disabled]:text-muted data-[disabled] :hover:bg-muted-foreground flex gap-2 rounded-lg text-[14px]',
+  'bg-background-subtle data-[disabled]:bg-muted-foreground data-[disabled]:text-muted data-[disabled] :hover:bg-muted-foreground flex gap-2 rounded-lg text-[14px]',
   {
     variants: {
       variant: {
@@ -165,11 +165,11 @@ export const badgeVariants = cva(
         s: 'h-6 px-1.5',
       },
       error: {
-        true: 'border-red-80 hover:border-red-80 active:border-red-80 focus:border-red-80',
+        true: 'border-border-error hover:border-border-error active:border-border-error focus:border-border-error',
         false: '',
       },
       disable: {
-        true: '!bg-gray-10 !text-gray-30',
+        true: '!bg-background-subtle !text-text-disabled',
         false: '',
       },
     },
@@ -382,9 +382,9 @@ export const InputToken = React.forwardRef<InputTokenRef, InputTokenProps>(
             onChange?.(newOptions);
           }}
         >
-          <div className="bg-gray-5 flex w-full flex-col rounded-lg p-2">
+          <div className="bg-background-subtle flex w-full flex-col rounded-lg p-2">
             <div className="text-sm font-normal">{`Добавить "${inputValue}"`}</div>
-            <div className="text-gray-60 text-xs">Нажмите запятую или пробел</div>
+            <div className="text-text-secondary text-xs">Нажмите запятую или пробел</div>
           </div>
         </CommandItem>
       );
@@ -455,7 +455,7 @@ export const InputToken = React.forwardRef<InputTokenRef, InputTokenProps>(
             {
               'px-3': selected.length !== 0,
               'cursor-text': !disabled && selected.length !== 0,
-              'bg-gray-10 border-0': disabled,
+              'bg-background-subtle border-0': disabled,
             },
             className,
           )}
@@ -475,7 +475,7 @@ export const InputToken = React.forwardRef<InputTokenRef, InputTokenProps>(
                       error,
                     }),
                     'data-[fixed]:bg-muted-foreground data-[fixed]:text-muted data-[fixed]:hover:bg-muted-foreground',
-                    { '!bg-gray-10 !text-gray-30': disabled },
+                    { '!bg-background-subtle !text-text-disabled': disabled },
                     badgeClassName,
                   )}
                   data-fixed={option.fixed}
@@ -485,7 +485,7 @@ export const InputToken = React.forwardRef<InputTokenRef, InputTokenProps>(
                     className={cn('bg-brand-100', {
                       'h-4 w-4': variant === 'm',
                       'h-3 w-3': variant === 's',
-                      '!bg-gray-30 border-0': disabled,
+                      '!bg-border-strong border-0': disabled,
                     })}
                   ></div>
                   {option.label}
@@ -565,11 +565,11 @@ export const InputToken = React.forwardRef<InputTokenRef, InputTokenProps>(
               variant={'ghost'}
               className={
                 showButtonPlus
-                  ? 'text-brand-0 fill-brand-0 bg-brand-80 hover:bg-brand-80 absolute top-0 right-0 h-8 w-8 p-0'
+                  ? 'text-action-primary-text fill-action-primary-text bg-action-primary-background-default hover:bg-action-primary-background-default absolute top-0 right-0 h-8 w-8 p-0'
                   : 'hidden'
               }
             >
-              <Plus className="fill-brand-0 text-brand-20 h-5 w-5" />
+              <Plus className="fill-action-primary-text text-brand-20 h-5 w-5" />
             </Button>
           </div>
         </div>
@@ -577,7 +577,7 @@ export const InputToken = React.forwardRef<InputTokenRef, InputTokenProps>(
           {open && (
             <CommandList
               className={cn(
-                'bg-popover text-popover-foreground animate-in border-gray-30 bg-gray-0 absolute top-1 z-10 w-full rounded-md border-2 shadow-md outline-none',
+                'bg-popover text-popover-foreground animate-in border-border-control bg-background-elevated absolute top-1 z-10 w-full rounded-md border-2 shadow-md outline-none',
               )}
               onMouseLeave={() => {
                 setOnScrollbar(false);
@@ -624,7 +624,7 @@ export const InputToken = React.forwardRef<InputTokenRef, InputTokenProps>(
                               className={cn(
                                 'cursor-pointer',
                                 option.disable && 'text-muted-foreground cursor-default',
-                                hoveredItem === option.value && 'bg-gray-5 rounded-md',
+                                hoveredItem === option.value && 'bg-background-subtle rounded-md',
                               )}
                             >
                               {option.label}

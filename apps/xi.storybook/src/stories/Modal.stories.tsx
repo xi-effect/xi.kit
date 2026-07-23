@@ -50,7 +50,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const contentVariants = cva(
-  'bg-violet-20 text-violet-100 text-opacity-40 p-4 rounded-[16px] flex items-center justify-center w-full',
+  'bg-background-subtle text-text-muted p-4 rounded-[16px] flex items-center justify-center w-full',
   {
     variants: {
       contentHeight: {

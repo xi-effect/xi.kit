@@ -18,7 +18,7 @@ export const File = ({ name, url, size, icon, onDelete, className }: FileProps) 
   return (
     <div
       className={cn(
-        'border-gray-10 bg-gray-0 hover:bg-gray-10 dark:border-gray-70 dark:hover:bg-gray-90 relative flex h-[4.5rem] max-w-[377px] items-center rounded-lg border transition dark:bg-gray-100',
+        'border-border-default bg-background-surface hover:bg-background-subtle relative flex h-[4.5rem] max-w-[377px] items-center rounded-lg border transition',
         className,
       )}
     >
@@ -29,17 +29,17 @@ export const File = ({ name, url, size, icon, onDelete, className }: FileProps) 
       >
         <div className="relative flex h-12 w-12 shrink-0 items-center justify-center">
           {!icon ? (
-            <FileIcon className="text-gray-60 dark:text-gray-40" />
+            <FileIcon className="text-text-secondary" />
           ) : (
             <img src={icon} alt={name} className="rounded" />
           )}
         </div>
 
         <div className="flex grow flex-col overflow-hidden text-left">
-          <p className="dark:text-gray-0 truncate leading-[22px] font-medium text-gray-100">
+          <p className="truncate leading-[22px] font-medium text-text-primary">
             {name}
           </p>
-          <p className="text-gray-80 dark:text-gray-40 mt-0.5 text-sm leading-[20px]">
+          <p className="text-text-secondary mt-0.5 text-sm leading-[20px]">
             {formatBytesSize(size)}
           </p>
         </div>
@@ -49,9 +49,9 @@ export const File = ({ name, url, size, icon, onDelete, className }: FileProps) 
               e.preventDefault();
               onDelete(name);
             }}
-            className="hover:bg-gray-0 rounded-full bg-transparent p-1 transition dark:hover:bg-gray-100"
+            className="hover:bg-background-surface rounded-full bg-transparent p-1 transition"
           >
-            <Close className="text-gray-60 dark:text-gray-40" />
+            <Close className="text-text-secondary" />
           </button>
         )}
       </a>

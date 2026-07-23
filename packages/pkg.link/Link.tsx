@@ -9,10 +9,10 @@ export const linkVariants = cva(
     variants: {
       theme: {
         default:
-          'decoration-gray-40 hover:decoration-gray-100 text-gray-90 hover:text-gray-100 disabled:text-gray-30',
+          'decoration-text-disabled hover:decoration-text-primary text-text-primary hover:text-text-primary disabled:text-text-disabled',
         sky: '',
         brand:
-          'decoration-brand-20 hover:decoration-brand-100 text-brand-80 hover:text-brand-100 disabled:text-gray-30',
+          'decoration-brand-20 hover:decoration-text-link text-icon-brand hover:text-text-link disabled:text-text-disabled',
         error: '',
         success: '',
         white:

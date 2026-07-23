@@ -8,14 +8,12 @@ export const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: 'border-transparent bg-gray-10 text-gray-90 dark:bg-gray-80 dark:text-gray-10',
-        secondary:
-          'border-transparent bg-brand-20 text-brand-100 dark:bg-brand-80 dark:text-gray-0',
-        destructive: 'border-transparent bg-red-20 text-red-100 dark:bg-red-80 dark:text-gray-0',
-        success: 'border-transparent bg-green-20 text-green-100 dark:bg-green-80 dark:text-gray-0',
-        warning:
-          'border-transparent bg-yellow-20 text-yellow-100 dark:bg-yellow-60 dark:text-gray-0',
-        outline: 'text-gray-100 border-gray-30 dark:text-gray-0 dark:border-gray-70',
+        default: 'border-transparent bg-background-subtle text-text-primary',
+        secondary: 'border-transparent bg-status-info-background text-status-info-text',
+        destructive: 'border-transparent bg-status-error-background text-status-error-text',
+        success: 'border-transparent bg-status-success-background text-status-success-text',
+        warning: 'border-transparent bg-status-warning-background text-status-warning-text',
+        outline: 'text-text-primary border-border-strong',
       },
       size: {
         l: 'h-8 rounded-lg text-[16px] px-3',

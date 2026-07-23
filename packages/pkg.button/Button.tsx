@@ -4,13 +4,13 @@ import { cn } from '@xipkg/utils';
 import * as React from 'react';
 
 const spinner =
-  'before:content-[""] before:animate-spin before:rounded-full before:border-gray-60 before:border-2 before:border-t-transparent disabled:opacity-100';
+  'before:content-[""] before:animate-spin before:rounded-full before:border-icon-secondary before:border-2 before:border-t-transparent disabled:opacity-100';
 
 export const buttonVariants = cva(
   `
     inline-flex border-box justify-center items-center whitespace-nowrap font-medium ring-offset-background transition-colors duration-300 ease-out
     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 
-    disabled:pointer-events-none disabled:bg-gray-5 disabled:text-gray-30 
+    disabled:pointer-events-none disabled:bg-background-subtle disabled:text-text-disabled 
     data-[loading=true]:pointer-events-none 
     data-[loading=true]:cursor-not-allowed
     data-[loading=true]:hover:bg-inherit
@@ -21,23 +21,23 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: `text-brand-0 bg-brand-80 hover:bg-brand-60 active:bg-brand-100 focus:bg-brand-100`,
-        secondary: `text-brand-100 bg-gray-10 hover:text-brand-0 hover:bg-brand-60 active:text-brand-0 active:bg-brand-100 focus:text-brand-0 focus:bg-brand-100`,
+        primary: `text-action-primary-text bg-action-primary-background-default hover:bg-action-primary-background-hover active:bg-action-primary-background-pressed focus:bg-action-primary-background-pressed`,
+        secondary: `text-text-link bg-background-subtle hover:text-action-primary-text hover:bg-brand-60 active:text-action-primary-text active:bg-action-primary-background-pressed focus:text-action-primary-text focus:bg-action-primary-background-pressed`,
         ghost: `
-          text-gray-100 bg-brand-0 border border-transparent
-          hover:border-[1px] hover:border-brand-80
-          active:bg-gray-5 active:border-0 
-          focus:bg-gray-5 focus:border-0
+          text-text-primary bg-status-info-background border border-transparent
+          hover:border-[1px] hover:border-border-focus
+          active:bg-background-subtle active:border-0 
+          focus:bg-background-subtle focus:border-0
           disabled:bg-gray-0 
-          dark:bg-brand-0  
-          dark:hover:border-[1px] dark:hover:border-brand-80
+          dark:bg-status-info-background  
+          dark:hover:border-[1px] dark:hover:border-border-focus
           dark:active:border-0
           dark:focus:border-0
           dark:disabled:bg-gray-0
         `,
         error: `text-red-0 bg-red-80 hover:bg-red-100 active:bg-red-100 focus:bg-red-100`,
         success: `text-green-0 bg-green-80 hover:bg-green-100 active:bg-green-100 focus:bg-green-100`,
-        none: 'bg-transparent border-none hover:bg-gray-5 focus:bg-gray-5 active:bg-gray-10',
+        none: 'bg-transparent border-none hover:bg-background-subtle focus:bg-background-subtle active:bg-background-subtle',
       },
       size: {
         l: 'h-14 text-[20px] px-8 rounded-2xl',
@@ -52,7 +52,7 @@ export const buttonVariants = cva(
       {
         variant: ['primary', 'error', 'success', 'secondary'],
         loading: true,
-        class: 'bg-gray-5',
+        class: 'bg-background-subtle',
       },
       {
         variant: 'ghost',

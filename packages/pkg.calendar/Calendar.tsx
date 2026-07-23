@@ -16,8 +16,7 @@ const DEFAULT_PAGED_NAVIGATION_WHEN_TWO_MONTHS = true;
 const navigationButtonStyles = cn(
   buttonVariants({ variant: 'ghost' }),
   'h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 z-10',
-  '[&_svg]:text-gray-100',
-  'dark:[&_svg]:text-gray-100',
+  '[&_svg]:text-text-primary',
 );
 
 // Стили для месяцев (в т.ч. для режима с двумя месяцами — flex-row и отступ между ними)
@@ -35,7 +34,7 @@ const monthClasses = {
 // Стили для недель
 const weekClasses = {
   weekdays: 'flex',
-  weekday: 'text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]',
+  weekday: 'text-text-muted rounded-md w-9 font-normal text-[0.8rem]',
   week: 'flex w-full mt-2',
 };
 
@@ -78,7 +77,7 @@ const dayClasses = {
   day_button: cn(
     buttonVariants({ variant: 'none' }),
     'h-9 w-9 p-0 font-normal rounded-md',
-    'text-gray-100 dark:text-gray-100',
+    'text-text-primary',
   ),
   selected: selectedButtonStyles,
   range_start: cn('[&_button]:rounded-r-none', selectedButtonStyles),
@@ -89,8 +88,8 @@ const dayClasses = {
     'dark:[&_button]:bg-gray-80 dark:[&_button]:text-gray-0',
   ),
   outside:
-    'day-outside text-muted-foreground opacity-50 [&:has([aria-selected])]:opacity-100',
-  disabled: 'text-muted-foreground opacity-50',
+    'day-outside text-text-muted opacity-50 [&:has([aria-selected])]:opacity-100',
+  disabled: 'text-text-muted opacity-50',
 };
 
 // Прочие стили

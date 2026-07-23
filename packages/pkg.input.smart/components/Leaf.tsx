@@ -30,7 +30,7 @@ export const Leaf = ({ attributes, children, leaf }: LeafPropsT) => {
   if (leaf.code) {
     modifiedChildren = (
       <code
-        className="bg-gray-10"
+        className="bg-background-subtle"
         style={{
           backgroundColor: '',
           fontFamily: 'monospace',

@@ -54,7 +54,7 @@ const ScrollBar = ({ className, orientation = 'vertical', ref, ...props }: Scrol
         className,
       )}
     >
-      <ScrollAreaPrimitive.ScrollAreaThumb className="bg-gray-20 relative flex-1 rounded-full" />
+      <ScrollAreaPrimitive.ScrollAreaThumb className="bg-border-default relative flex-1 rounded-full" />
     </ScrollAreaPrimitive.ScrollAreaScrollbar>
   );
 };

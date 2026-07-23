@@ -6,6 +6,6 @@ export const ModalDescription = ({
   className,
   ...props
 }: React.ComponentProps<typeof DialogDescription>) => (
-  <DialogDescription className={cn('text-gray-80 text-[16px]', className)} {...props} />
+  <DialogDescription className={cn('text-text-secondary text-[16px]', className)} {...props} />
 );
 ModalDescription.displayName = DialogDescription.displayName;

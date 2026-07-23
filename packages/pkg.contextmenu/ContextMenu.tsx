@@ -31,7 +31,7 @@ const ContextMenuSubTrigger = ({
 }: ContextMenuSubTriggerProps) => (
   <ContextMenuPrimitive.SubTrigger
     className={cn(
-      'focus:bg-brand-0 hover:bg-brand-0 hover:text-brand-80 hover:fill-brand-80 flex cursor-default items-center rounded px-2 py-1.5 text-sm outline-none select-none',
+      'focus:bg-selection-background hover:bg-selection-background hover:text-icon-brand hover:fill-icon-brand flex cursor-default items-center rounded px-2 py-1.5 text-sm outline-none select-none',
       inset && 'pl-8',
       className,
     )}
@@ -50,7 +50,7 @@ const ContextMenuSubContent = ({
 }: React.ComponentProps<typeof ContextMenuPrimitive.SubContent>) => (
   <ContextMenuPrimitive.SubContent
     className={cn(
-      'bg-gray-0 border-gray-10 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden rounded-md border p-1 shadow-md',
+      'bg-background-elevated border-border-default data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden rounded-md border p-1 shadow-md',
       className,
     )}
     {...props}
@@ -66,7 +66,7 @@ const ContextMenuContent = ({
   <ContextMenuPrimitive.Portal>
     <ContextMenuPrimitive.Content
       className={cn(
-        'bg-gray-0 border-gray-10 animate-in fade-in-80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden rounded-lg border p-1 shadow-md',
+        'bg-background-elevated border-border-default animate-in fade-in-80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] overflow-hidden rounded-lg border p-1 shadow-md',
         className,
       )}
       {...props}
@@ -83,7 +83,7 @@ interface ContextMenuItemProps extends React.ComponentProps<typeof ContextMenuPr
 const ContextMenuItem = ({ className, inset, ...props }: ContextMenuItemProps) => (
   <ContextMenuPrimitive.Item
     className={cn(
-      'focus:bg-brand-0 hover:bg-brand-0 hover:text-brand-80 hover:fill-brand-80 relative flex h-8 cursor-pointer items-center rounded px-2 py-1.5 text-sm outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'focus:bg-selection-background hover:bg-selection-background hover:text-icon-brand hover:fill-icon-brand relative flex h-8 cursor-pointer items-center rounded px-2 py-1.5 text-sm outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       inset && 'pl-8',
       className,
     )}
@@ -101,7 +101,7 @@ const ContextMenuCheckboxItem = ({
 }: React.ComponentProps<typeof ContextMenuPrimitive.CheckboxItem>) => (
   <ContextMenuPrimitive.CheckboxItem
     className={cn(
-      'focus:bg-brand-0 hover:bg-brand-0 hover:text-brand-80 hover:fill-brand-80 relative flex cursor-default items-center rounded py-1.5 pr-2 pl-8 text-sm outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'focus:bg-selection-background hover:bg-selection-background hover:text-icon-brand hover:fill-icon-brand relative flex cursor-default items-center rounded py-1.5 pr-2 pl-8 text-sm outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       className,
     )}
     checked={checked}
@@ -125,7 +125,7 @@ const ContextMenuRadioItem = ({
 }: React.ComponentProps<typeof ContextMenuPrimitive.RadioItem>) => (
   <ContextMenuPrimitive.RadioItem
     className={cn(
-      'focus:bg-brand-0 hover:bg-brand-0 hover:text-brand-80 hover:fill-brand-80 relative flex cursor-default items-center rounded py-1.5 pr-2 pl-8 text-sm outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'focus:bg-selection-background hover:bg-selection-background hover:text-icon-brand hover:fill-icon-brand relative flex cursor-default items-center rounded py-1.5 pr-2 pl-8 text-sm outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       className,
     )}
     {...props}
@@ -147,7 +147,7 @@ interface ContextMenuLabelProps extends React.ComponentProps<typeof ContextMenuP
 
 const ContextMenuLabel = ({ className, inset, ...props }: ContextMenuLabelProps) => (
   <ContextMenuPrimitive.Label
-    className={cn('px-2 py-1.5 text-sm font-semibold text-gray-100', inset && 'pl-8', className)}
+    className={cn('px-2 py-1.5 text-sm font-semibold text-text-primary', inset && 'pl-8', className)}
     {...props}
   />
 );
@@ -159,7 +159,7 @@ const ContextMenuSeparator = ({
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Separator>) => (
   <ContextMenuPrimitive.Separator
-    className={cn('bg-gray-10 mx-2 my-1 h-px', className)}
+    className={cn('bg-border-default mx-2 my-1 h-px', className)}
     {...props}
   />
 );
@@ -168,7 +168,7 @@ ContextMenuSeparator.displayName = ContextMenuPrimitive.Separator.displayName;
 
 const ContextMenuShortcut = ({ className, ...props }: React.HTMLAttributes<HTMLSpanElement>) => {
   return (
-    <span className={cn('text-gray-60 ml-auto text-xs tracking-widest', className)} {...props} />
+    <span className={cn('text-text-secondary ml-auto text-xs tracking-widest', className)} {...props} />
   );
 };
 

@@ -4,7 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@xipkg/utils';
 
 export const textareaVariants = cva(
-  'flex flex-1 w-full min-w-[250px] rounded-md border-2 border-gray-30 bg-gray-0 text-gray-80 hover:border-gray-50 active:border-gray-30 focus:border-gray-80 focus-visible:outline-none px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-30 disabled:cursor-not-allowed disabled:bg-gray-10 resize-none',
+  'flex flex-1 w-full min-w-[250px] rounded-md border-2 border-border-control bg-background-surface text-text-primary hover:border-border-strong active:border-border-control focus:border-border-strong focus-visible:outline-none px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-text-disabled disabled:cursor-not-allowed disabled:bg-background-subtle resize-none',
   {
     variants: {
       variant: {
@@ -12,11 +12,11 @@ export const textareaVariants = cva(
         s: 'rounded-md text-[14px]',
       },
       error: {
-        true: 'border-red-80 hover:border-red-80 active:border-red-80 focus:border-red-80',
+        true: 'border-border-error hover:border-border-error active:border-border-error focus:border-border-error',
         false: '',
       },
       warning: {
-        true: 'border-orange-80 hover:border-orange-80 active:border-orange-80 focus:border-orange-80',
+        true: 'border-status-warning-accent hover:border-status-warning-accent active:border-status-warning-accent focus:border-status-warning-accent',
         false: '',
       },
     },
@@ -139,7 +139,7 @@ const Textarea = ({
         <div
           className={cn(
             'absolute right-2 bottom-2 text-sm',
-            charCount > maxLength ? 'text-red-80' : 'text-gray-50',
+            charCount > maxLength ? 'text-status-error-accent' : 'text-text-muted',
           )}
         >
           {maxLength - charCount}

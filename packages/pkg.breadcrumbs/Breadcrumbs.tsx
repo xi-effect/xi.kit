@@ -9,9 +9,9 @@ export const breadcrumbsVariants = cva('', {
   variants: {
     variant: {
       default:
-        'text-brand-40 dark:text-brand-20 [&_svg]:fill-brand-40 dark:[&_svg]:fill-brand-20 [&_span]:text-brand-80 dark:[&_span]:text-brand-40',
+        'text-brand-40 dark:text-brand-20 [&_svg]:fill-brand-40 dark:[&_svg]:fill-brand-20 [&_span]:text-icon-brand',
       secondary:
-        'text-gray-60 dark:text-gray-40 [&_svg]:fill-gray-60 dark:[&_svg]:fill-gray-40 [&_span]:text-gray-100 dark:[&_span]:text-gray-0',
+        'text-text-secondary [&_svg]:fill-icon-secondary [&_span]:text-text-primary',
     },
     size: {
       l: 'text-[16px] [&_svg]:size-[16px]',

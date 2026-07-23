@@ -25,12 +25,12 @@ export const DrawerContent = ({
     <DrawerOverlay />
     <DrawerPrimitive.Content
       className={cn(
-        'bg-gray-0 fixed inset-x-0 bottom-0 z-50 flex h-auto flex-col gap-4 rounded-t-4xl p-4 pt-0',
+        'bg-background-surface fixed inset-x-0 bottom-0 z-50 flex h-auto flex-col gap-4 rounded-t-4xl p-4 pt-0',
         className,
       )}
       {...props}
     >
-      <div className="bg-gray-20 mx-auto mt-2 h-1 w-[80px] rounded-full" />
+      <div className="bg-border-default mx-auto mt-2 h-1 w-[80px] rounded-full" />
       {children}
     </DrawerPrimitive.Content>
   </DrawerPortal>

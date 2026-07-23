@@ -8,7 +8,7 @@ import { FileProps } from './types';
 import { stopDefaultEvents } from './utils';
 
 const containerStyles = cva(
-  'flex relative group hover:text-gray-80 hover:bg-gray-5 items-center transition justify-between bg-gray-0 focus-within:bg-gray-5',
+  'flex relative group hover:text-text-secondary hover:bg-background-subtle items-center transition justify-between bg-background-surface focus-within:bg-background-subtle',
   {
     variants: {
       size: {
@@ -38,12 +38,12 @@ export const File: FC<FileProps> = ({
       <p
         className={cn(
           'truncate pr-2.5 break-all transition',
-          !!error ? 'text-red-80' : 'text-gray-90',
+          !!error ? 'text-status-error-accent' : 'text-text-primary',
         )}
       >
         {error && (
           <>
-            <span className="text-gray-100">Выбран файл</span>
+            <span className="text-text-primary">Выбран файл</span>
             <Tooltip className="hidden group-hover:block" text={error} />
           </>
         )}{' '}

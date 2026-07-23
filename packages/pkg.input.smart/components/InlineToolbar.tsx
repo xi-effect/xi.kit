@@ -138,14 +138,14 @@ export const InlineToolbar = ({ editableRef }: InlineToolbarPropsT) => {
               zIndex: 1000,
             }}
             {...getFloatingProps()}
-            className="bg-gray-0 border-gray-10 box-border flex h-[40px] flex-row items-center justify-center gap-1 rounded-lg border px-2 drop-shadow-md"
+            className="bg-background-elevated border-border-default box-border flex h-[40px] flex-row items-center justify-center gap-1 rounded-lg border px-2 drop-shadow-md"
           >
             <FloatingDelayGroup delay={{ open: 1500, close: 0 }}>
               <Tooltip placement="bottom">
                 <TooltipTrigger>
                   <FormatButton
                     format={MarkdownFormat.Bold}
-                    icon={<Bold className="group-hover:fill-brand-100 h-4 w-4 fill-gray-100" />}
+                    icon={<Bold className="group-hover:fill-text-link h-4 w-4 fill-icon-primary" />}
                   />
                 </TooltipTrigger>
                 <TooltipContent>
@@ -161,7 +161,7 @@ export const InlineToolbar = ({ editableRef }: InlineToolbarPropsT) => {
                 <TooltipTrigger>
                   <FormatButton
                     format={MarkdownFormat.Italic}
-                    icon={<Italic className="group-hover:fill-brand-100 h-4 w-4 fill-gray-100" />}
+                    icon={<Italic className="group-hover:fill-text-link h-4 w-4 fill-icon-primary" />}
                   />
                 </TooltipTrigger>
                 <TooltipContent>
@@ -178,7 +178,7 @@ export const InlineToolbar = ({ editableRef }: InlineToolbarPropsT) => {
                   <FormatButton
                     format={MarkdownFormat.Underline}
                     icon={
-                      <Underline className="group-hover:fill-brand-100 h-4 w-4 fill-gray-100" />
+                      <Underline className="group-hover:fill-text-link h-4 w-4 fill-icon-primary" />
                     }
                   />
                 </TooltipTrigger>
@@ -195,7 +195,7 @@ export const InlineToolbar = ({ editableRef }: InlineToolbarPropsT) => {
                 <TooltipTrigger>
                   <FormatButton
                     format={MarkdownFormat.Strikethrough}
-                    icon={<Stroke className="group-hover:fill-brand-100 h-4 w-4 fill-gray-100" />}
+                    icon={<Stroke className="group-hover:fill-text-link h-4 w-4 fill-icon-primary" />}
                   />
                 </TooltipTrigger>
                 <TooltipContent>
@@ -228,7 +228,7 @@ const FormatButton = ({
 
   return (
     <Button
-      className="bg-gray-0 hover:bg-brand-0 hover:fill-brand-100 group h-6 w-6 rounded-sm p-0"
+      className="bg-background-surface hover:bg-status-info-background hover:fill-text-link group h-6 w-6 rounded-sm p-0"
       variant="ghost"
       onMouseDown={(event) => {
         event.preventDefault();

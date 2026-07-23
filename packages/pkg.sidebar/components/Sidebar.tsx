@@ -25,7 +25,7 @@ export const Sidebar = ({
   if (collapsible === 'none') {
     return (
       <div
-        className={cn('bg-gray-0 flex h-full w-(--sidebar-width) flex-col', className)}
+        className={cn('bg-background-surface flex h-full w-(--sidebar-width) flex-col', className)}
         ref={ref}
         {...props}
       >
@@ -70,7 +70,7 @@ export const Sidebar = ({
       >
         <div
           data-sidebar="sidebar"
-          className="bg-gray-0 flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:shadow"
+          className="bg-background-surface flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:shadow"
         >
           {children}
         </div>

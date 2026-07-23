@@ -9,8 +9,10 @@ export const modalCloseButtonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'sm:bg-gray-5 sm:right-[-56px] sm:bg-gray-80 dark:sm:bg-gray-5',
-        full: 'sm:right-6 sm:bg-gray-5',
+        // Outside the modal on sm+: inverse chip on the overlay (dark surface + light icon).
+        // Primitives are theme-fixed — gray-80 stays dark in both themes.
+        default: 'sm:right-[-56px] sm:bg-gray-80',
+        full: 'sm:right-6 sm:bg-background-subtle',
       },
     },
     defaultVariants: {
@@ -22,8 +24,8 @@ export const modalCloseButtonVariants = cva(
 export const iconVariants = cva('', {
   variants: {
     variant: {
-      default: 'fill-gray-80 sm:fill-gray-0 dark:fill-gray-80',
-      full: 'sm:fill-gray-80 md:fill-gray-80',
+      default: 'fill-icon-primary sm:fill-gray-0',
+      full: 'fill-icon-primary',
     },
   },
   defaultVariants: {

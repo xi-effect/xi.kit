@@ -115,20 +115,28 @@ export const Slider = ({
     >
       <SliderPrimitive.Track
         className={cn(
-          'bg-gray-30 relative h-1 w-full grow overflow-hidden rounded-lg',
+          'bg-border-control relative h-1 w-full grow overflow-hidden rounded-lg',
           trackClassName,
         )}
       >
-        <SliderPrimitive.Range className={cn('bg-brand-80 absolute h-full', rangeClassName)} />
+        <SliderPrimitive.Range
+          className={cn('bg-action-primary-background-default absolute h-full', rangeClassName)}
+        />
         {restrictedMinPercent !== undefined && (
           <div
-            className={cn('absolute left-0 top-0 z-1 h-full bg-gray-10', restrictedClassName)}
+            className={cn(
+              'absolute left-0 top-0 z-1 h-full bg-background-subtle',
+              restrictedClassName,
+            )}
             style={{ width: `${restrictedMinPercent}%` }}
           />
         )}
         {restrictedMaxPercent !== undefined && (
           <div
-            className={cn('absolute right-0 top-0 z-1 h-full bg-gray-10', restrictedClassName)}
+            className={cn(
+              'absolute right-0 top-0 z-1 h-full bg-background-subtle',
+              restrictedClassName,
+            )}
             style={{ width: `${restrictedMaxPercent}%` }}
           />
         )}
@@ -137,7 +145,7 @@ export const Slider = ({
         <SliderPrimitive.Thumb
           key={index}
           className={cn(
-            'bg-brand-80 ring-offset-background block h-4 w-4 cursor-pointer rounded-full transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
+            'bg-action-primary-background-default ring-offset-background block h-4 w-4 cursor-pointer rounded-full transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
             thumbClassName,
           )}
         />
