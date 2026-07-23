@@ -24,16 +24,11 @@ export const buttonVariants = cva(
         primary: `text-action-primary-text bg-action-primary-background-default hover:bg-action-primary-background-hover active:bg-action-primary-background-pressed focus:bg-action-primary-background-pressed`,
         secondary: `text-text-link bg-background-subtle hover:text-action-primary-text hover:bg-brand-60 active:text-action-primary-text active:bg-action-primary-background-pressed focus:text-action-primary-text focus:bg-action-primary-background-pressed`,
         ghost: `
-          text-text-primary bg-status-info-background border border-transparent
-          hover:border-[1px] hover:border-border-focus
-          active:bg-background-subtle active:border-0 
-          focus:bg-background-subtle focus:border-0
-          disabled:bg-gray-0 
-          dark:bg-status-info-background  
-          dark:hover:border-[1px] dark:hover:border-border-focus
-          dark:active:border-0
-          dark:focus:border-0
-          dark:disabled:bg-gray-0
+          text-text-primary bg-transparent border border-transparent
+          hover:border-border-focus
+          active:bg-background-subtle active:border-transparent
+          focus:bg-background-subtle focus:border-transparent
+          disabled:bg-transparent disabled:text-text-disabled
         `,
         error: `text-red-0 bg-red-80 hover:bg-red-100 active:bg-red-100 focus:bg-red-100`,
         success: `text-green-0 bg-green-80 hover:bg-green-100 active:bg-green-100 focus:bg-green-100`,
@@ -57,7 +52,7 @@ export const buttonVariants = cva(
       {
         variant: 'ghost',
         loading: true,
-        class: 'bg-gray-0 dark:bg-gray-0',
+        class: 'bg-transparent',
       },
       {
         loading: true,

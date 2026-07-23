@@ -7,6 +7,12 @@ type SidebarPropsT = React.ComponentProps<'div'> & {
   side?: 'left' | 'right';
   variant?: 'sidebar' | 'floating' | 'inset';
   collapsible?: 'offcanvas' | 'icon' | 'none';
+  /**
+   * Независимая цветовая схема сайдбара.
+   * Нужна для тёмного chrome при светлой странице: все semantic-токены
+   * и вложенные компоненты (@xipkg/button и т.д.) резолвятся в dark.
+   */
+  theme?: 'light' | 'dark';
   style?: React.CSSProperties;
 };
 
@@ -14,6 +20,7 @@ export const Sidebar = ({
   side = 'left',
   variant = 'sidebar',
   collapsible = 'offcanvas',
+  theme,
   className,
   children,
   style,
@@ -22,11 +29,18 @@ export const Sidebar = ({
 }: SidebarPropsT) => {
   const { state } = useSidebar();
 
+  const surfaceClassName = cn(
+    'bg-background-surface text-text-primary flex h-full w-full flex-col',
+    variant === 'floating' && 'rounded-lg shadow',
+  );
+
   if (collapsible === 'none') {
     return (
       <div
-        className={cn('bg-background-surface flex h-full w-(--sidebar-width) flex-col', className)}
+        className={cn('bg-background-surface text-text-primary flex h-full w-(--sidebar-width) flex-col', className)}
+        data-theme={theme}
         ref={ref}
+        style={style}
         {...props}
       >
         {children}
@@ -66,12 +80,10 @@ export const Sidebar = ({
             : 'group-data-[collapsible=icon]:w-(--sidebar-width-icon)',
           className,
         )}
+        style={style}
         {...props}
       >
-        <div
-          data-sidebar="sidebar"
-          className="bg-background-surface flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:shadow"
-        >
+        <div data-sidebar="sidebar" data-theme={theme} className={surfaceClassName}>
           {children}
         </div>
       </div>
