@@ -14,7 +14,7 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-20, currentColor);
+    border-color: var(--color-border-default, currentColor);
   }
 }
 
@@ -33,158 +33,278 @@ svg {
   pointer-events: none;
 }
 
-/* Palette */
+/* Palette — Primitives (theme-independent) */
 
 :root {
   /* gray */
-  --xi-gray-0: #FFFFFF;	
-  --xi-gray-5: #F7F7F7;
-  --xi-gray-10: #E7E7E9;
-  --xi-gray-20: #CDCDD1;
-  --xi-gray-30: #B4B5BC;
-  --xi-gray-40: #9A9BA4;
-  --xi-gray-50: #82838E;
-  --xi-gray-60: #6A6C76;
-  --xi-gray-70: #54555C;
-  --xi-gray-80: #3D3E43;
-  --xi-gray-90: #26262A;
-  --xi-gray-100: #0F0F11;
+  --xi-gray-0: #FFFFFF;
+  --xi-gray-5: #F7F8FA;
+  --xi-gray-10: #F0F1F4;
+  --xi-gray-20: #E1E3E8;
+  --xi-gray-30: #CDD0D7;
+  --xi-gray-40: #A8ACB7;
+  --xi-gray-50: #7D8290;
+  --xi-gray-60: #5E6370;
+  --xi-gray-70: #454A56;
+  --xi-gray-80: #30343C;
+  --xi-gray-90: #1E2127;
+  --xi-gray-100: #111318;
 
   /* brand */
-  --xi-brand-0: #F3F4FC;
-  --xi-brand-20: #C5CAEE;
-  --xi-brand-40: #9CA4E2;
-  --xi-brand-60: #7580D7;
-  --xi-brand-80: #4554C9;
-  --xi-brand-100: #3140AA;
+  --xi-brand-0: #F8F8FF;
+  --xi-brand-10: #F1F0FF;
+  --xi-brand-20: #E7E5FF;
+  --xi-brand-40: #C7C4F7;
+  --xi-brand-60: #9292E7;
+  --xi-brand-80: #5C5FD1;
+  --xi-brand-90: #5053BF;
+  --xi-brand-100: #4143A8;
 
-  /* background */
-  --xi-bkgd-main: #edefff;
-  --xi-bkgd-block: #ffffff;
+  /* red */
+  --xi-red-0: #FEF2F2;
+  --xi-red-20: #FECACA;
+  --xi-red-40: #FCA5A5;
+  --xi-red-60: #F87171;
+  --xi-red-80: #EF4444;
+  --xi-red-100: #B91C1C;
 
-  /* moscow */
-  --xi-red-0: #FAEBEB;
-  --xi-red-20: #F1C5C5;
-  --xi-red-40: #E89E9E;
-  --xi-red-60: #DC6F6F;
-  --xi-red-80: #C23939;
-  --xi-red-100: #942424;
+  /* green */
+  --xi-green-0: #ECFDF5;
+  --xi-green-20: #A7F3D0;
+  --xi-green-40: #6EE7B7;
+  --xi-green-60: #34D399;
+  --xi-green-80: #10B981;
+  --xi-green-100: #047857;
 
-  /* ekaterinburg */
-  --xi-green-0: #ECF8EC;
-  --xi-green-20: #B4E4B4;
-  --xi-green-40: #8ED78E;
-  --xi-green-60: #68CA68;
-  --xi-green-80: #2E842E;
-  --xi-green-100: #287128;
+  /* yellow */
+  --xi-yellow-20: #FEFCE8;
+  --xi-yellow-40: #FEF08A;
+  --xi-yellow-60: #FDE047;
+  --xi-yellow-100: #FACC15;
 
-  /* kungur */
-  --xi-orange-0: #FBF3EE;
-  --xi-orange-20: #EDC1AB;
-  --xi-orange-40: #E4A281;
-  --xi-orange-60: #DB8457;
-  --xi-orange-80: #B85727;
-  --xi-orange-100: #93471F;
+  /* orange */
+  --xi-orange-0: #FFF7ED;
+  --xi-orange-20: #FED7AA;
+  --xi-orange-40: #FDBA74;
+  --xi-orange-60: #FB923C;
+  --xi-orange-80: #F97316;
+  --xi-orange-100: #EA580C;
 
-  /* arkhangelsk */
-  --xi-yellow-20: #FDF8E7;
-  --xi-yellow-40: #FAE8B4;
-  --xi-yellow-60: #F7DD8F;
-  --xi-yellow-100: #F3C94C;
-
-  /* vladivostok */
+  /* violet */
   --xi-violet-20: #F3EBFA;
   --xi-violet-40: #CCA6E9;
   --xi-violet-60: #B27ADE;
   --xi-violet-100: #8330C4;
 
-  /* volgograd */
+  /* pink */
   --xi-pink-20: #FBE9F9;
   --xi-pink-40: #EF9FE8;
   --xi-pink-60: #E76FDB;
   --xi-pink-100: #BA1FAB;
 
-  /* saratov */
+  /* cyan */
   --xi-cyan-20: #EAF6FA;
   --xi-cyan-40: #A8D8EA;
   --xi-cyan-60: #7DC6DF;
   --xi-cyan-100: #257D9C;
+
+  /* alpha */
+  --xi-red-100-a20: rgb(220 38 38 / 0.2);
+  --xi-green-100-a20: rgb(5 150 105 / 0.2);
+  --xi-yellow-100-a20: rgb(250 204 21 / 0.2);
+  --xi-brand-100-a20: rgb(65 67 168 / 0.2);
+  --xi-brand-100-a30: rgb(65 67 168 / 0.3);
+  --xi-orange-100-a20: rgb(234 88 12 / 0.2);
+  --xi-violet-100-a20: rgb(131 48 196 / 0.2);
+  --xi-pink-100-a20: rgb(186 31 171 / 0.2);
+  --xi-cyan-100-a20: rgb(37 125 156 / 0.2);
+
+  /* Semantic — Light */
+  /* background */
+  --xi-background-page: var(--xi-gray-5);
+  --xi-background-surface: var(--xi-gray-0);
+  --xi-background-subtle: var(--xi-gray-10);
+  --xi-background-elevated: var(--xi-gray-0);
+  --xi-background-canvas: var(--xi-gray-0);
+  --xi-background-overlay: rgb(17 19 24 / 0.48);
+
+  /* text */
+  --xi-text-primary: var(--xi-gray-90);
+  --xi-text-secondary: var(--xi-gray-60);
+  --xi-text-muted: var(--xi-gray-50);
+  --xi-text-disabled: var(--xi-gray-40);
+  --xi-text-on-accent: var(--xi-gray-0);
+  --xi-text-link: var(--xi-brand-100);
+  --xi-text-danger: var(--xi-red-100);
+
+  /* icon */
+  --xi-icon-primary: var(--xi-gray-70);
+  --xi-icon-secondary: var(--xi-gray-50);
+  --xi-icon-disabled: var(--xi-gray-40);
+  --xi-icon-brand: var(--xi-brand-80);
+  --xi-icon-danger: var(--xi-red-80);
+
+  /* border */
+  --xi-border-default: var(--xi-gray-20);
+  --xi-border-control: var(--xi-gray-50);
+  --xi-border-strong: var(--xi-gray-60);
+  --xi-border-focus: var(--xi-brand-80);
+  --xi-border-selected: var(--xi-brand-80);
+  --xi-border-error: var(--xi-red-80);
+
+  /* action / primary */
+  --xi-action-primary-background-default: var(--xi-brand-80);
+  --xi-action-primary-background-hover: var(--xi-brand-90);
+  --xi-action-primary-background-pressed: var(--xi-brand-100);
+  --xi-action-primary-background-disabled: var(--xi-brand-20);
+  --xi-action-primary-text: var(--xi-gray-0);
+  --xi-action-primary-text-disabled: var(--xi-gray-50);
+
+  /* action / secondary */
+  --xi-action-secondary-background-default: var(--xi-gray-0);
+  --xi-action-secondary-background-hover: var(--xi-gray-10);
+  --xi-action-secondary-background-pressed: var(--xi-gray-20);
+  --xi-action-secondary-text: var(--xi-gray-90);
+  --xi-action-secondary-border: var(--xi-gray-20);
+
+  /* selection */
+  --xi-selection-background: var(--xi-brand-10);
+  --xi-selection-border: var(--xi-brand-80);
+  --xi-selection-icon: var(--xi-brand-80);
+
+  /* status / error */
+  --xi-status-error-background: var(--xi-red-0);
+  --xi-status-error-accent: var(--xi-red-80);
+  --xi-status-error-text: var(--xi-red-100);
+
+  /* status / success */
+  --xi-status-success-background: var(--xi-green-0);
+  --xi-status-success-accent: var(--xi-green-100);
+  --xi-status-success-text: var(--xi-green-100);
+
+  /* status / warning */
+  --xi-status-warning-background: var(--xi-yellow-20);
+  --xi-status-warning-accent: var(--xi-yellow-60);
+  --xi-status-warning-text: var(--xi-gray-90);
+
+  /* status / info */
+  --xi-status-info-background: var(--xi-brand-0);
+  --xi-status-info-accent: var(--xi-brand-80);
+  --xi-status-info-text: var(--xi-brand-100);
+
+  /* tags */
+  --xi-tag-orange-background: var(--xi-orange-0);
+  --xi-tag-orange-border: var(--xi-orange-20);
+  --xi-tag-orange-accent: var(--xi-orange-60);
+  --xi-tag-violet-background: var(--xi-violet-20);
+  --xi-tag-violet-border: var(--xi-violet-40);
+  --xi-tag-violet-accent: var(--xi-violet-60);
+  --xi-tag-pink-background: var(--xi-pink-20);
+  --xi-tag-pink-border: var(--xi-pink-40);
+  --xi-tag-pink-accent: var(--xi-pink-60);
+  --xi-tag-cyan-background: var(--xi-cyan-20);
+  --xi-tag-cyan-border: var(--xi-cyan-40);
+  --xi-tag-cyan-accent: var(--xi-cyan-60);
+  --xi-tag-text: var(--xi-gray-90);
+
+  /* legacy aliases */
+  --xi-bkgd-main: var(--xi-background-page);
+  --xi-bkgd-block: var(--xi-background-surface);
 }
 
+/* Semantic — Dark (primitives stay fixed) */
+
 [data-theme='dark'] {
-  /* gray */
-  --xi-gray-0: #151515;
-  --xi-gray-5: #1F1F1F;
-  --xi-gray-10: #2A2A2A;
-  --xi-gray-20: #3F3F3F;
-  --xi-gray-30: #545454;
-  --xi-gray-40:#696969;
-  --xi-gray-50: #7E7E7E;
-  --xi-gray-60: #929292;
-  --xi-gray-70: #A7A7A7;
-  --xi-gray-80: #BCBCBC;
-  --xi-gray-90: #D1D1D1;
-  --xi-gray-100: #E6E6E6;
-
-  /* brand */
-  --xi-brand-0: #21222C;
-  --xi-brand-20: #393D5A;
-  --xi-brand-40: #5B639D;
-  --xi-brand-60: #737ECB;
-  --xi-brand-80: #8B98F9;
-  --xi-brand-100: #B1BAFB;
-
-  /* moscow */
-  --xi-red-0: #201517;
-  --xi-red-20: #3A1F21;
-  --xi-red-40: #652F30;
-  --xi-red-60: #904040;
-  --xi-red-80: #BB504F;
-  --xi-red-100: #E6605F;
-
-  /* ekaterinburg */
-  --xi-green-0: #111E16;
-  --xi-green-20: #14341E;
-  --xi-green-40: #19592B;
-  --xi-green-60: #1E7E38;
-  --xi-green-80: #23A345;
-  --xi-green-100: #28C852;
-
-  /* kungur */
-  --xi-orange-0: #271E1A;
-  --xi-orange-20: #462515;
-  --xi-orange-40: #7F4A30;
-  --xi-orange-60: #A25C3A;
-  --xi-orange-80: #C66E43;
-  --xi-orange-100: #EA7D47;
-
-  /* arkhangelsk */
-  --xi-yellow-20: #262214;
-  --xi-yellow-40: #5A4811;
-  --xi-yellow-60: #7D610F;
-  --xi-yellow-100: #C2940A;
-
-  /* vladivostok */
-  --xi-violet-20: #211827;
-  --xi-violet-40: #44215F;
-  --xi-violet-60: #5A2782;
-  --xi-violet-100: #8933CC;
-
-  /* volgograd */
-  --xi-pink-20: #271826;
-  --xi-pink-40: #5F2158;
-  --xi-pink-60: #822779;
-  --xi-pink-100: #CC33BD;
-
-  /* saratov */
-  --xi-cyan-20: #182327;
-  --xi-cyan-40: #214F5F;
-  --xi-cyan-60: #276B82;
-  --xi-cyan-100: #33A4CC;
-
   /* background */
-  --xi-bkgd-main: #21222C;
-  --xi-bkgd-block: #1F1F1F;
+  --xi-background-page: var(--xi-gray-100);
+  --xi-background-surface: var(--xi-gray-90);
+  --xi-background-subtle: var(--xi-gray-80);
+  --xi-background-elevated: var(--xi-gray-80);
+  --xi-background-canvas: var(--xi-gray-100);
+  --xi-background-overlay: rgb(0 0 0 / 0.64);
+
+  /* text */
+  --xi-text-primary: var(--xi-gray-0);
+  --xi-text-secondary: var(--xi-gray-40);
+  --xi-text-muted: var(--xi-gray-50);
+  --xi-text-disabled: var(--xi-gray-60);
+  --xi-text-on-accent: var(--xi-gray-100);
+  --xi-text-link: var(--xi-brand-40);
+  --xi-text-danger: var(--xi-red-40);
+
+  /* icon */
+  --xi-icon-primary: var(--xi-gray-20);
+  --xi-icon-secondary: var(--xi-gray-40);
+  --xi-icon-disabled: var(--xi-gray-60);
+  --xi-icon-brand: var(--xi-brand-40);
+  --xi-icon-danger: var(--xi-red-40);
+
+  /* border */
+  --xi-border-default: var(--xi-gray-70);
+  --xi-border-control: var(--xi-gray-50);
+  --xi-border-strong: var(--xi-gray-40);
+  --xi-border-focus: var(--xi-brand-60);
+  --xi-border-selected: var(--xi-brand-60);
+  --xi-border-error: var(--xi-red-40);
+
+  /* action / primary */
+  --xi-action-primary-background-default: var(--xi-brand-60);
+  --xi-action-primary-background-hover: var(--xi-brand-40);
+  --xi-action-primary-background-pressed: var(--xi-brand-20);
+  --xi-action-primary-background-disabled: var(--xi-gray-80);
+  --xi-action-primary-text: var(--xi-gray-100);
+  --xi-action-primary-text-disabled: var(--xi-gray-50);
+
+  /* action / secondary */
+  --xi-action-secondary-background-default: var(--xi-gray-90);
+  --xi-action-secondary-background-hover: var(--xi-gray-80);
+  --xi-action-secondary-background-pressed: var(--xi-gray-70);
+  --xi-action-secondary-text: var(--xi-gray-0);
+  --xi-action-secondary-border: var(--xi-gray-70);
+
+  /* selection */
+  --xi-selection-background: var(--xi-brand-100-a30);
+  --xi-selection-border: var(--xi-brand-60);
+  --xi-selection-icon: var(--xi-brand-40);
+
+  /* status / error */
+  --xi-status-error-background: var(--xi-red-100-a20);
+  --xi-status-error-accent: var(--xi-red-40);
+  --xi-status-error-text: var(--xi-red-40);
+
+  /* status / success */
+  --xi-status-success-background: var(--xi-green-100-a20);
+  --xi-status-success-accent: var(--xi-green-40);
+  --xi-status-success-text: var(--xi-green-40);
+
+  /* status / warning */
+  --xi-status-warning-background: var(--xi-yellow-100-a20);
+  --xi-status-warning-accent: var(--xi-yellow-40);
+  --xi-status-warning-text: var(--xi-gray-0);
+
+  /* status / info */
+  --xi-status-info-background: var(--xi-brand-100-a20);
+  --xi-status-info-accent: var(--xi-brand-40);
+  --xi-status-info-text: var(--xi-brand-40);
+
+  /* tags */
+  --xi-tag-orange-background: var(--xi-orange-100-a20);
+  --xi-tag-orange-border: var(--xi-orange-60);
+  --xi-tag-orange-accent: var(--xi-orange-40);
+  --xi-tag-violet-background: var(--xi-violet-100-a20);
+  --xi-tag-violet-border: var(--xi-violet-60);
+  --xi-tag-violet-accent: var(--xi-violet-40);
+  --xi-tag-pink-background: var(--xi-pink-100-a20);
+  --xi-tag-pink-border: var(--xi-pink-60);
+  --xi-tag-pink-accent: var(--xi-pink-40);
+  --xi-tag-cyan-background: var(--xi-cyan-100-a20);
+  --xi-tag-cyan-border: var(--xi-cyan-60);
+  --xi-tag-cyan-accent: var(--xi-cyan-40);
+  --xi-tag-text: var(--xi-gray-0);
+
+  /* legacy aliases */
+  --xi-bkgd-main: var(--xi-background-page);
+  --xi-bkgd-block: var(--xi-background-surface);
 }
 
 @theme {
@@ -238,7 +358,7 @@ svg {
   --breakpoint-2xl: 1680px;
   --breakpoint-3xl: 1920px;
 
-  /* Цвета */
+  /* Цвета — Primitives */
   /* gray */
   --color-gray-0: var(--xi-gray-0);
   --color-gray-5: var(--xi-gray-5);
@@ -255,19 +375,15 @@ svg {
 
   /* brand */
   --color-brand-0: var(--xi-brand-0);
+  --color-brand-10: var(--xi-brand-10);
   --color-brand-20: var(--xi-brand-20);
   --color-brand-40: var(--xi-brand-40);
   --color-brand-60: var(--xi-brand-60);
   --color-brand-80: var(--xi-brand-80);
+  --color-brand-90: var(--xi-brand-90);
   --color-brand-100: var(--xi-brand-100);
 
-  /* background */
-  --color-bkgd-main: var(--xi-bkgd-main);
-  --color-bkgd-block: var(--xi-bkgd-block);
-  --color-background: var(--xi-bkgd-main);
-  --color-ring: var(--xi-brand-80);
-
-  /* moscow */
+  /* red */
   --color-red-0: var(--xi-red-0);
   --color-red-20: var(--xi-red-20);
   --color-red-40: var(--xi-red-40);
@@ -275,7 +391,7 @@ svg {
   --color-red-80: var(--xi-red-80);
   --color-red-100: var(--xi-red-100);
 
-  /* ekaterinburg */
+  /* green */
   --color-green-0: var(--xi-green-0);
   --color-green-20: var(--xi-green-20);
   --color-green-40: var(--xi-green-40);
@@ -283,7 +399,13 @@ svg {
   --color-green-80: var(--xi-green-80);
   --color-green-100: var(--xi-green-100);
 
-  /* kungur */
+  /* yellow */
+  --color-yellow-20: var(--xi-yellow-20);
+  --color-yellow-40: var(--xi-yellow-40);
+  --color-yellow-60: var(--xi-yellow-60);
+  --color-yellow-100: var(--xi-yellow-100);
+
+  /* orange */
   --color-orange-0: var(--xi-orange-0);
   --color-orange-20: var(--xi-orange-20);
   --color-orange-40: var(--xi-orange-40);
@@ -291,29 +413,120 @@ svg {
   --color-orange-80: var(--xi-orange-80);
   --color-orange-100: var(--xi-orange-100);
 
-  /* arkhangelsk */
-  --color-yellow-20: var(--xi-yellow-20);
-  --color-yellow-40: var(--xi-yellow-40);
-  --color-yellow-60: var(--xi-yellow-60);
-  --color-yellow-100: var(--xi-yellow-100);
-
-  /* vladivostok */
+  /* violet */
   --color-violet-20: var(--xi-violet-20);
   --color-violet-40: var(--xi-violet-40);
   --color-violet-60: var(--xi-violet-60);
   --color-violet-100: var(--xi-violet-100);
 
-  /* volgograd */
+  /* pink */
   --color-pink-20: var(--xi-pink-20);
   --color-pink-40: var(--xi-pink-40);
   --color-pink-60: var(--xi-pink-60);
   --color-pink-100: var(--xi-pink-100);
 
-  /* saratov */
+  /* cyan */
   --color-cyan-20: var(--xi-cyan-20);
   --color-cyan-40: var(--xi-cyan-40);
   --color-cyan-60: var(--xi-cyan-60);
   --color-cyan-100: var(--xi-cyan-100);
+
+  /* alpha */
+  --color-red-100-a20: var(--xi-red-100-a20);
+  --color-green-100-a20: var(--xi-green-100-a20);
+  --color-yellow-100-a20: var(--xi-yellow-100-a20);
+  --color-brand-100-a20: var(--xi-brand-100-a20);
+  --color-brand-100-a30: var(--xi-brand-100-a30);
+  --color-orange-100-a20: var(--xi-orange-100-a20);
+  --color-violet-100-a20: var(--xi-violet-100-a20);
+  --color-pink-100-a20: var(--xi-pink-100-a20);
+  --color-cyan-100-a20: var(--xi-cyan-100-a20);
+
+  /* Цвета — Semantic */
+  /* background */
+  --color-background-page: var(--xi-background-page);
+  --color-background-surface: var(--xi-background-surface);
+  --color-background-subtle: var(--xi-background-subtle);
+  --color-background-elevated: var(--xi-background-elevated);
+  --color-background-canvas: var(--xi-background-canvas);
+  --color-background-overlay: var(--xi-background-overlay);
+  --color-background: var(--xi-background-page);
+
+  /* text */
+  --color-text-primary: var(--xi-text-primary);
+  --color-text-secondary: var(--xi-text-secondary);
+  --color-text-muted: var(--xi-text-muted);
+  --color-text-disabled: var(--xi-text-disabled);
+  --color-text-on-accent: var(--xi-text-on-accent);
+  --color-text-link: var(--xi-text-link);
+  --color-text-danger: var(--xi-text-danger);
+
+  /* icon */
+  --color-icon-primary: var(--xi-icon-primary);
+  --color-icon-secondary: var(--xi-icon-secondary);
+  --color-icon-disabled: var(--xi-icon-disabled);
+  --color-icon-brand: var(--xi-icon-brand);
+  --color-icon-danger: var(--xi-icon-danger);
+
+  /* border */
+  --color-border-default: var(--xi-border-default);
+  --color-border-control: var(--xi-border-control);
+  --color-border-strong: var(--xi-border-strong);
+  --color-border-focus: var(--xi-border-focus);
+  --color-border-selected: var(--xi-border-selected);
+  --color-border-error: var(--xi-border-error);
+
+  /* action */
+  --color-action-primary-background-default: var(--xi-action-primary-background-default);
+  --color-action-primary-background-hover: var(--xi-action-primary-background-hover);
+  --color-action-primary-background-pressed: var(--xi-action-primary-background-pressed);
+  --color-action-primary-background-disabled: var(--xi-action-primary-background-disabled);
+  --color-action-primary-text: var(--xi-action-primary-text);
+  --color-action-primary-text-disabled: var(--xi-action-primary-text-disabled);
+  --color-action-secondary-background-default: var(--xi-action-secondary-background-default);
+  --color-action-secondary-background-hover: var(--xi-action-secondary-background-hover);
+  --color-action-secondary-background-pressed: var(--xi-action-secondary-background-pressed);
+  --color-action-secondary-text: var(--xi-action-secondary-text);
+  --color-action-secondary-border: var(--xi-action-secondary-border);
+
+  /* selection */
+  --color-selection-background: var(--xi-selection-background);
+  --color-selection-border: var(--xi-selection-border);
+  --color-selection-icon: var(--xi-selection-icon);
+
+  /* status */
+  --color-status-error-background: var(--xi-status-error-background);
+  --color-status-error-accent: var(--xi-status-error-accent);
+  --color-status-error-text: var(--xi-status-error-text);
+  --color-status-success-background: var(--xi-status-success-background);
+  --color-status-success-accent: var(--xi-status-success-accent);
+  --color-status-success-text: var(--xi-status-success-text);
+  --color-status-warning-background: var(--xi-status-warning-background);
+  --color-status-warning-accent: var(--xi-status-warning-accent);
+  --color-status-warning-text: var(--xi-status-warning-text);
+  --color-status-info-background: var(--xi-status-info-background);
+  --color-status-info-accent: var(--xi-status-info-accent);
+  --color-status-info-text: var(--xi-status-info-text);
+
+  /* tags */
+  --color-tag-orange-background: var(--xi-tag-orange-background);
+  --color-tag-orange-border: var(--xi-tag-orange-border);
+  --color-tag-orange-accent: var(--xi-tag-orange-accent);
+  --color-tag-violet-background: var(--xi-tag-violet-background);
+  --color-tag-violet-border: var(--xi-tag-violet-border);
+  --color-tag-violet-accent: var(--xi-tag-violet-accent);
+  --color-tag-pink-background: var(--xi-tag-pink-background);
+  --color-tag-pink-border: var(--xi-tag-pink-border);
+  --color-tag-pink-accent: var(--xi-tag-pink-accent);
+  --color-tag-cyan-background: var(--xi-tag-cyan-background);
+  --color-tag-cyan-border: var(--xi-tag-cyan-border);
+  --color-tag-cyan-accent: var(--xi-tag-cyan-accent);
+  --color-tag-text: var(--xi-tag-text);
+
+  /* legacy aliases */
+  --color-bkgd-main: var(--xi-bkgd-main);
+  --color-bkgd-block: var(--xi-bkgd-block);
+  --color-ring: var(--xi-border-focus);
 
   /* Анимации */
   --animate-shake: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;

@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/tailwind",
-  "version": "0.8.6",
+  "version": "1.0.0",
   "description": "Tailwind config",
   "main": "./design-system-preset.js",
   "scripts": {
