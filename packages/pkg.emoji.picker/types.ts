@@ -4,9 +4,15 @@ export type EmojiT = {
   name: string;
 };
 
+export type StickerT = {
+  id: string;
+  name: string;
+  src: string;
+};
+
 export type CategoryT = {
   name: string;
-  name_rus?: string;
+  nameRus?: string;
   emojis: EmojiT[];
 };
 
@@ -15,7 +21,9 @@ export type FormattedEmojiDataT = {
   emojis: EmojiT[];
 };
 
-export type TEmojiPickerProps = {
+export type TEmojiPickerPropsT = {
   recentEmojis?: string[];
+  stickers?: StickerT[];
   onEmojiSelect: (emoji: string) => void;
+  onStickerSelect?: (sticker: StickerT) => void;
 };

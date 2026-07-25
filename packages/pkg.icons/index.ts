@@ -60,6 +60,7 @@ import { Eyeon } from './icons/Eyeon';
 import { FAQ } from './icons/FAQ';
 import { Figures } from './icons/Figures';
 import { File } from './icons/File';
+import { FilePlus } from './icons/FilePlus';
 import { FileSmall } from './icons/FileSmall';
 import { Filter } from './icons/Filter';
 import { Flag } from './icons/Flag';
@@ -177,6 +178,8 @@ import { ShieldOff } from './icons/ShieldOff';
 import { Edit05 } from './icons/Edit05';
 import { icons } from './config';
 import { Transform } from './icons/Transform';
+import { Pinned } from './icons/Pinned';
+import { Inbox } from './icons/Inbox';
 
 export {
   Account,
@@ -241,6 +244,7 @@ export {
   FAQ,
   Figures,
   File,
+  FilePlus,
   FileSmall,
   Filter,
   Flag,
@@ -357,6 +361,8 @@ export {
   Shield,
   ShieldOff,
   Edit05,
+  Pinned,
+  Inbox,
   icons,
 };
 

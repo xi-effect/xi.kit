@@ -1,7 +1,7 @@
 [
   {
     "name": "emotions",
-    "name_rus": "лица и эмоции",
+    "nameRus": "лица и эмоции",
     "emojis": [
       {
         "name": "grinning face",
@@ -1042,7 +1042,7 @@
   },
   {
     "name": "nature",
-    "name_rus": "природа",
+    "nameRus": "природа",
     "emojis": [
       {
         "name": "see-no-evil monkey",
@@ -1848,7 +1848,7 @@
   },
   {
     "name": "food",
-    "name_rus": "еда и напитки",
+    "nameRus": "еда и напитки",
     "emojis": [
       {
         "name": "grapes",
@@ -2279,7 +2279,7 @@
   },
   {
     "name": "activity",
-    "name_rus": "активности",
+    "nameRus": "активности",
     "emojis": [
       {
         "name": "alien monster",
@@ -2630,7 +2630,7 @@
   },
   {
     "name": "places",
-    "name_rus": "путешествия и места",
+    "nameRus": "путешествия и места",
     "emojis": [
       {
         "name": "racing car",
@@ -3226,7 +3226,7 @@
   },
   {
     "name": "objects",
-    "name_rus": "объекты",
+    "nameRus": "объекты",
     "emojis": [
       {
         "name": "skull and crossbones",
@@ -4127,7 +4127,7 @@
   },
   {
     "name": "symbols",
-    "name_rus": "символы",
+    "nameRus": "символы",
     "unicode": "2764",
     "emojis": [
       {
@@ -5576,7 +5576,7 @@
   },
   {
     "name": "flags",
-    "name_rus": "флаги",
+    "nameRus": "флаги",
     "emojis": [
       {
         "name": "ascension",

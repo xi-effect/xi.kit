@@ -1,6 +1,6 @@
 {
-  "name": "@xipkg/emojipicker",
-  "version": "1.2.2",
+  "name": "@xipkg/gridvirtualizer",
+  "version": "1.0.2",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -26,16 +26,7 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "@xipkg/button": "^4.1.0",
-    "@xipkg/dropdown": "^3.0.11",
-    "@xipkg/icons": "^2.5.2",
-    "@xipkg/input": "^2.2.8",
-    "@xipkg/tooltip": "^2.0.10",
-    "@xipkg/utils": "^1.8.0",
-    "@xipkg/tabs": "^2.1.0",
-    "@xipkg/switcher-animate": "^1.0.6",
-    "class-variance-authority": "^0.7.1",
-    "emoji-mart": "^5.6.0"
+    "@tanstack/react-virtual": "3.13.9"
   },
   "devDependencies": {
     "@types/node": "^22.13.14",
@@ -54,6 +45,6 @@
     "access": "public"
   },
   "author": "xi.effect",
-  "description": "Emoji Picker component for xi.effect design system",
+  "description": "Grid Virtualizer for xi.effect design system",
   "gitHead": ""
 }
