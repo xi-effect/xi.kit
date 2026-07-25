@@ -70,9 +70,16 @@ const meta = {
       control: 'text',
       description: 'Дополнительные классы для стилизации',
     },
+    theme: {
+      control: 'select',
+      options: ['dark', 'light', undefined],
+      description:
+        'Независимая тема сайдбара. dark — тёмный chrome при светлой странице (паттерн продукта)',
+    },
   },
   args: {
     className: 'w-full md:w-[350px] absolute',
+    theme: 'dark',
   },
 } satisfies Meta<typeof Sidebar>;
 
@@ -90,28 +97,28 @@ function CustomTrigger() {
 
 const ContentArea = () => {
   return (
-    <div className="flex min-h-0 flex-1 overflow-auto bg-gray-50 p-6 dark:bg-gray-900">
+    <div className="bg-background-page text-text-primary flex min-h-0 flex-1 overflow-auto p-6">
       <div className="mx-auto max-w-4xl">
         <h1 className="mb-6 text-2xl font-bold">Область контента</h1>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="rounded-lg bg-white p-6 shadow-sm dark:bg-gray-800">
+          <div className="bg-background-surface rounded-lg p-6 shadow-sm">
             <h2 className="mb-4 text-lg font-medium">Раздел A</h2>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-text-secondary">
               Это пример области контента, которая находится рядом с сайдбаром. Здесь может быть
               размещена основная информация вашего приложения, например, статистика, графики или
               таблицы данных.
             </p>
           </div>
-          <div className="rounded-lg bg-white p-6 shadow-sm dark:bg-gray-800">
+          <div className="bg-background-surface rounded-lg p-6 shadow-sm">
             <h2 className="mb-4 text-lg font-medium">Раздел Б</h2>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-text-secondary">
               Используйте сайдбар для быстрой навигации между различными разделами приложения.
               Дизайн может быть адаптирован к вашим потребностям.
             </p>
           </div>
-          <div className="rounded-lg bg-white p-6 shadow-sm md:col-span-2 dark:bg-gray-800">
+          <div className="bg-background-surface rounded-lg p-6 shadow-sm md:col-span-2">
             <h2 className="mb-4 text-lg font-medium">Раздел В</h2>
-            <p className="mb-4 text-gray-600 dark:text-gray-300">
+            <p className="text-text-secondary mb-4">
               Сайдбар может быть скрыт на мобильных устройствах для экономии места и показан при
               необходимости. В режиме для настольных компьютеров он может быть свернут до значков
               для более компактного вида.
@@ -163,7 +170,7 @@ const DefaultTemplate = (args: React.ComponentProps<typeof Sidebar>) => {
           </SidebarMenu>
         </SidebarFooter>
       </Sidebar>
-      <SidebarInset className="bg-gray-50 dark:bg-gray-900">
+      <SidebarInset className="bg-background-page">
         <ContentArea />
       </SidebarInset>
     </SidebarProvider>

@@ -30,7 +30,7 @@ export const ModalHeader = ({
     <div
       {...props}
       className={cn(
-        'border-gray-5 bg-gray-0 flex flex-col space-y-2 rounded-t-[16px] border-b p-6 text-left',
+        'border-border-default bg-background-surface flex flex-col space-y-2 rounded-t-[16px] border-b p-6 text-left',
         innerClassName,
       )}
     />

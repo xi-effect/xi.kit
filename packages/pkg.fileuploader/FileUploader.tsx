@@ -6,25 +6,25 @@ import { FileUploaderProps, DefaultInputPropsT } from './types';
 import { stopDefaultEvents } from './utils';
 
 const containerStyles = cva(
-  'flex group items-center rounded-lg border border-dashed border-gray-40 bg-gray-0 dark:border-gray-60 dark:bg-gray-100 transition-[outline_shadow] px-2 max-w-[500px] gap-3 focus-within:border-solid focus-within:border-gray-80 dark:focus-within:border-gray-40',
+  'flex group items-center rounded-lg border border-dashed border-border-control bg-background-surface transition-[outline_shadow] px-2 max-w-[500px] gap-3 focus-within:border-solid focus-within:border-border-strong',
   {
     variants: {
       size: {
         large:
-          'h-[92px] p-6 justify-center flex-col gap-2 border-brand-60 bg-brand-0 hover:border-brand-80 dark:border-brand-40 dark:bg-brand-20 dark:hover:border-brand-60',
+          'h-[92px] p-6 justify-center flex-col gap-2 border-brand-60 bg-brand-0 hover:border-border-focus dark:border-brand-40 dark:bg-brand-20',
         medium:
-          'min-h-[48px] pt-3 pb-[14px] [&_svg]:w-6 [&_svg]:h-6 px-3 hover:bg-gray-5 dark:hover:bg-gray-90 hover:border-transparent',
+          'min-h-[48px] pt-3 pb-[14px] [&_svg]:w-6 [&_svg]:h-6 px-3 hover:bg-background-subtle hover:border-transparent',
         small:
-          'min-h-[32px] pt-[5px] pb-[7px] [&_svg]:w-4 [&_svg]:h-4 px-2 rounded-md hover:bg-gray-5 dark:hover:bg-gray-90 hover:border-transparent',
+          'min-h-[32px] pt-[5px] pb-[7px] [&_svg]:w-4 [&_svg]:h-4 px-2 rounded-md hover:bg-background-subtle hover:border-transparent',
       },
       isDragOver: {
         true: 'shadow-[0px_0px_0px_4px_var(--xi-brand-80)] outline-offset-4 outline-4 outline-brand-20 outline border-transparent dark:shadow-[0px_0px_0px_4px_var(--xi-brand-60)] dark:outline-brand-40',
       },
       isWarning: {
-        true: 'ring-2 ring-orange-80 dark:ring-orange-40 !border-transparent',
+        true: 'ring-2 ring-status-warning-accent !border-transparent',
       },
       isDisabled: {
-        true: 'bg-gray-10 dark:bg-gray-90 pointer-events-none border-gray-30 dark:border-gray-70',
+        true: 'bg-background-subtle pointer-events-none border-border-default',
       },
     },
   },
@@ -36,15 +36,12 @@ const titleStyles = cva('text-sm text-center', {
       true: 'pointer-events-none',
     },
     isDisabled: {
-      true: '!text-gray-30 dark:!text-gray-60 [&_span]:text-gray-30 dark:[&_span]:text-gray-60',
+      true: '!text-text-disabled [&_span]:text-text-disabled',
     },
     size: {
-      large:
-        'text-brand-60 group-hover:text-brand-80 dark:text-brand-40 dark:group-hover:text-brand-60 font-medium',
-      medium:
-        'text-base text-gray-80 group-hover:text-gray-100 dark:text-gray-40 dark:group-hover:text-gray-20',
-      small:
-        'text-gray-80 group-hover:text-gray-100 dark:text-gray-40 dark:group-hover:text-gray-20',
+      large: 'text-brand-60 group-hover:text-icon-brand font-medium',
+      medium: 'text-base text-text-secondary group-hover:text-text-primary',
+      small: 'text-text-secondary group-hover:text-text-primary',
     },
   },
 });
@@ -219,9 +216,7 @@ export const FileUploader = ({
                 'Перетащите сюда или выберите файл'
               ) : (
                 <>
-                  <span className="text-gray-90 dark:text-gray-20 dark:group-hover:text-gray-0 group-hover:text-gray-100">
-                    Выберите файл
-                  </span>{' '}
+                  <span className="text-text-primary">Выберите файл</span>{' '}
                   или перетащите сюда
                 </>
               )}
@@ -234,7 +229,7 @@ export const FileUploader = ({
               </p>
             )}
 
-            {!isLarge && <Upload className="text-gray-60 dark:text-gray-40 ml-auto" />}
+            {!isLarge && <Upload className="text-text-secondary ml-auto" />}
           </div>
         )}
       </label>

@@ -120,34 +120,34 @@ export function SwitcherAnimate({
     orientation === 'horizontal' && 'h-10 flex-row gap-0',
     orientation === 'vertical' && 'h-fit flex-col gap-1',
     variant === 'default' &&
-      'rounded-xl bg-gray-0 p-[3px] data-slot:switcher-animate',
+      'rounded-xl bg-background-surface p-[3px] data-slot:switcher-animate',
     variant === 'line' && 'gap-1 rounded-none bg-transparent',
   );
 
   const getTabStyles = (isActive: boolean) =>
     cn(
       'relative z-10 inline-flex flex-1 items-center justify-center gap-2 rounded-[10px] border-none border-transparent px-4 py-1 text-[16px] font-medium whitespace-nowrap transition-colors',
-      'bg-transparent text-gray-80',
-      'hover:text-gray-90',
+      'bg-transparent text-text-secondary',
+      'hover:text-text-primary',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-80/50 focus-visible:ring-offset-2',
       'disabled:pointer-events-none disabled:opacity-50',
       '[&_svg]:pointer-events-none [&_svg]:shrink-0',
       orientation === 'vertical' && 'w-full justify-start',
-      variant === 'default' && isActive && 'text-gray-0 hover:text-gray-10',
-      variant === 'line' && isActive && 'text-gray-100 hover:text-gray-100',
+      variant === 'default' && isActive && 'text-action-primary-text hover:text-action-primary-text',
+      variant === 'line' && isActive && 'text-text-primary hover:text-text-primary',
     );
 
   const getIndicatorStyles = () =>
     cn(
       'absolute',
       variant === 'default' &&
-        'inset-0 rounded-[10px] border border-transparent bg-brand-80',
+        'inset-0 rounded-[10px] border border-transparent bg-action-primary-background-default',
       variant === 'line' &&
         orientation === 'horizontal' &&
-        'right-0 left-0 -bottom-[5px] h-0.5 bg-gray-100',
+        'right-0 left-0 -bottom-[5px] h-0.5 bg-text-primary',
       variant === 'line' &&
         orientation === 'vertical' &&
-        'inset-y-0 -right-1 top-0 bottom-0 w-0.5 bg-gray-100',
+        'inset-y-0 -right-1 top-0 bottom-0 w-0.5 bg-text-primary',
     );
 
   return (

@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/form",
-  "version": "4.2.2",
+  "version": "4.3.0",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",

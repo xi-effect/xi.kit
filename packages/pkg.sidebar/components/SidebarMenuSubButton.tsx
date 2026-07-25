@@ -24,10 +24,10 @@ export const SidebarMenuSubButton = ({
       data-size={size}
       data-active={isActive}
       className={cn(
-        'text-gray-80 [&>svg]:fill-gray-80 flex h-8 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md bg-transparent px-2 outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0',
-        'hover:bg-gray-5 hover:text-gray-100 hover:[&>svg]:fill-gray-100',
-        'data-[active=true]:bg-brand-0 data-[active=true]:text-brand-80 data-[active=true]:[&>svg]:fill-brand-80',
-        'data-[active=true]:hover:text-brand-100 data-[active=true]:hover:[&>svg]:fill-brand-100',
+        'text-text-secondary [&>svg]:fill-icon-secondary flex h-8 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md bg-transparent px-2 outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0',
+        'hover:bg-background-subtle hover:text-text-primary hover:[&>svg]:fill-icon-primary',
+        'data-[active=true]:bg-selection-background data-[active=true]:text-icon-brand data-[active=true]:[&>svg]:fill-icon-brand',
+        'data-[active=true]:hover:text-text-link data-[active=true]:hover:[&>svg]:fill-text-link',
         size === 'sm' && 'text-xs',
         size === 'md' && 'text-sm',
         'group-data-[collapsible=icon]:hidden',

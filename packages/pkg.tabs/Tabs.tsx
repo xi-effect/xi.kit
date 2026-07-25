@@ -73,14 +73,14 @@ const List = ({ className, classNameShadow = '', children, onClick, ...props }: 
   return (
     <TabsPrimitive.List
       onClick={handleOnClick}
-      className={cn('border-gray-10 relative flex items-center border-b-2', className)}
+      className={cn('border-border-default relative flex items-center border-b-2', className)}
       {...props}
     >
       <div
         key={shadowKey}
         ref={shadowRef}
         id="shadow"
-        className={`bg-brand-80 absolute -bottom-0.5 h-0.5 rounded-md transition-[left,width] duration-300 ${classNameShadow}`}
+        className={`bg-action-primary-background-default absolute -bottom-0.5 h-0.5 rounded-md transition-[left,width] duration-300 ${classNameShadow}`}
       ></div>
       {children}
     </TabsPrimitive.List>
@@ -94,7 +94,7 @@ interface TriggerProps extends React.ComponentPropsWithoutRef<typeof TabsPrimiti
 const Trigger = ({ className, ...props }: TriggerProps) => (
   <TabsPrimitive.Trigger
     className={cn(
-      'text-gray-80 flex grow cursor-pointer items-center justify-center bg-transparent pb-1 text-center whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-100 data-[state=active]:hover:cursor-default',
+      'text-text-secondary flex grow cursor-pointer items-center justify-center bg-transparent pb-1 text-center whitespace-nowrap disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-text-primary data-[state=active]:hover:cursor-default',
       className,
     )}
     {...props}

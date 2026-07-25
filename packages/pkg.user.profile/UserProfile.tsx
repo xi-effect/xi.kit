@@ -18,7 +18,7 @@ export const userProfileVariants = cva('flex flex-row items-center', {
   },
 });
 
-export const userProfileTextVariants = cva('text-gray-100', {
+export const userProfileTextVariants = cva('text-text-primary', {
   variants: {
     size: {
       l: 'text-[16px]',
@@ -34,22 +34,22 @@ export const userProfileTextVariants = cva('text-gray-100', {
     {
       loading: true,
       size: 'l',
-      class: 'bg-gray-10 h-[16px] w-[96px] animate-pulse rounded-[2px]',
+      class: 'bg-background-subtle h-[16px] w-[96px] animate-pulse rounded-[2px]',
     },
     {
       loading: true,
       size: '40',
-      class: 'bg-gray-10 h-[14px] w-[96px] animate-pulse rounded-[2px]',
+      class: 'bg-background-subtle h-[14px] w-[96px] animate-pulse rounded-[2px]',
     },
     {
       loading: true,
       size: 'm',
-      class: 'bg-gray-10 h-[14px] w-[96px] animate-pulse rounded-[2px]',
+      class: 'bg-background-subtle h-[14px] w-[96px] animate-pulse rounded-[2px]',
     },
     {
       loading: true,
       size: 's',
-      class: 'bg-gray-10 h-[12px] w-[64px] animate-pulse rounded-[2px]',
+      class: 'bg-background-subtle h-[12px] w-[64px] animate-pulse rounded-[2px]',
     },
   ],
   defaultVariants: {
@@ -58,7 +58,7 @@ export const userProfileTextVariants = cva('text-gray-100', {
   },
 });
 
-export const userProfileLabelVariants = cva('font-normal text-gray-60 mt-[-2px]', {
+export const userProfileLabelVariants = cva('font-normal text-text-secondary mt-[-2px]', {
   variants: {
     size: {
       l: 'text-[12px]',
@@ -74,17 +74,17 @@ export const userProfileLabelVariants = cva('font-normal text-gray-60 mt-[-2px]'
     {
       loading: true,
       size: 'l',
-      class: 'bg-gray-10 h-[12px] w-[64px] animate-pulse rounded-[2px]',
+      class: 'bg-background-subtle h-[12px] w-[64px] animate-pulse rounded-[2px]',
     },
     {
       loading: true,
       size: '40',
-      class: 'bg-gray-10 h-[11px] w-[64px] animate-pulse rounded-[2px]',
+      class: 'bg-background-subtle h-[11px] w-[64px] animate-pulse rounded-[2px]',
     },
     {
       loading: true,
       size: 'm',
-      class: 'bg-gray-10 h-[10px] w-[64px] animate-pulse rounded-[2px]',
+      class: 'bg-background-subtle h-[10px] w-[64px] animate-pulse rounded-[2px]',
     },
   ],
   defaultVariants: {

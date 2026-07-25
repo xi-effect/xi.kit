@@ -22,7 +22,7 @@
   .sb-main-fullscreen,
   .docs-story,
   .innerZoomElementWrapper {
-    background-color: var(--xi-bkgd-main);
-    color: var(--xi-gray-100);
+    background-color: var(--xi-background-page);
+    color: var(--xi-text-primary);
   }
 }

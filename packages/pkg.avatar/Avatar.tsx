@@ -91,7 +91,7 @@ const AvatarFallback = ({ className, size = 'l', loading, ...props }: AvatarFall
     data-slot="avatar-fallback"
     className={cn(
       loading
-        ? 'animate-pulse bg-gray-10 dark:bg-gray-80'
+        ? 'animate-pulse bg-background-subtle'
         : 'bg-brand-80 text-gray-0 dark:bg-brand-20 dark:text-gray-100',
       'flex h-full w-full items-center justify-center overflow-hidden rounded-full',
       fallbackTextBySize[size],
@@ -124,7 +124,7 @@ const AvatarBadge = ({ className, align = 'end', ...props }: AvatarBadgeProps) =
     data-slot="avatar-badge"
     data-align={align}
     className={cn(
-      'absolute bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-brand-80 text-gray-0 ring-2 ring-gray-0 select-none dark:bg-brand-60 dark:text-gray-0 dark:ring-gray-100',
+      'absolute bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-action-primary-background-default text-action-primary-text ring-2 ring-gray-0 select-none dark:ring-gray-100',
       align === 'end' ? 'right-0' : 'left-0',
       Object.values(avatarBadgeSizeClasses),
       className,
@@ -152,7 +152,7 @@ const AvatarGroupCount = ({ className, ...props }: AvatarGroupCountProps) => (
   <div
     data-slot="avatar-group-count"
     className={cn(
-      'relative flex shrink-0 items-center justify-center rounded-full bg-gray-10 text-gray-80 ring-2 ring-gray-0 select-none dark:bg-gray-80 dark:text-gray-100 dark:ring-gray-100',
+      'relative flex shrink-0 items-center justify-center rounded-full bg-background-subtle text-gray-80 ring-2 ring-gray-0 select-none dark:text-gray-100 dark:ring-gray-100',
       'h-[48px] w-[48px] text-base [&>svg]:h-6 [&>svg]:w-6',
       ...Object.values(avatarGroupCountSizeClasses),
       className,

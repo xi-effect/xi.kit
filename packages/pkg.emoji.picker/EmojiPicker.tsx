@@ -16,9 +16,9 @@ export const EmojiPicker = ({
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="hover:bg-gray-5 focus:bg-gray-5 h-auto rounded-sm border-transparent bg-transparent p-1 hover:border-transparent focus:border-transparent"
+          className="hover:bg-background-subtle focus:bg-background-subtle h-auto rounded-sm border-transparent bg-transparent p-1 hover:border-transparent focus:border-transparent"
         >
-          <Emotions className="text-gray-80" />
+          <Emotions className="text-icon-primary" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="p-0" align="end" sideOffset={8}>

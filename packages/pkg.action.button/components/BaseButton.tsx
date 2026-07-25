@@ -15,6 +15,10 @@ export const BaseButton = ({ isOpen, onClick, className, ...rest }: BaseButtonPr
     onClick={onClick}
     className={cn(`fixed right-4 bottom-4 rounded-xl px-3`, className)}
   >
-    {isOpen ? <Close className="fill-gray-0" /> : <Plus className="fill-gray-0" />}
+    {isOpen ? (
+      <Close className="fill-action-primary-text" />
+    ) : (
+      <Plus className="fill-action-primary-text" />
+    )}
   </Button>
 );

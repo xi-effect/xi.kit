@@ -173,7 +173,7 @@ export const TooltipContent = React.forwardRef<HTMLDivElement, React.HTMLProps<H
       <FloatingPortal>
         <div
           ref={ref}
-          className="bg-gray-0 rounded-md px-3 py-1.5 text-sm font-semibold text-gray-100 shadow-[rgba(100,100,111,0.3)_0px_7px_29px_0px]"
+          className="bg-background-elevated rounded-md px-3 py-1.5 text-sm font-semibold text-text-primary shadow-[rgba(100,100,111,0.3)_0px_7px_29px_0px]"
           style={{
             ...state.floatingStyles,
             // eslint-disable-next-line react/prop-types
@@ -188,7 +188,7 @@ export const TooltipContent = React.forwardRef<HTMLDivElement, React.HTMLProps<H
             ref={state.arrowRef}
             context={state.context}
             width={12}
-            className="fill-gray-0"
+            className="fill-background-elevated"
           />
         </div>
       </FloatingPortal>

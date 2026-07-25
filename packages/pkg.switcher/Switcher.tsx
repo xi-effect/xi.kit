@@ -33,7 +33,7 @@ const switcherListVariants = cva(
     variants: {
       variant: {
         default:
-          'rounded-xl bg-gray-0 p-[3px]',
+          'rounded-xl bg-background-surface p-[3px]',
         line: 'bg-transparent',
       },
     },
@@ -72,14 +72,14 @@ const SwitcherTrigger = ({ className, ...props }: SwitcherTriggerProps) => (
     data-slot="switcher-trigger"
     className={cn(
       'relative inline-flex flex-1 items-center justify-center rounded-[10px] border-none border-transparent px-4 py-1 text-[16px] font-medium whitespace-nowrap transition-all',
-      'bg-transparent text-gray-80',
-      'hover:text-gray-90',
+      'bg-transparent text-text-secondary',
+      'hover:text-text-primary',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-80/50 focus-visible:ring-offset-2',
       'disabled:pointer-events-none disabled:opacity-50',
-      'group-data-[variant=default]/switcher-list:data-[state=active]:bg-brand-80 group-data-[variant=default]/switcher-list:data-[state=active]:text-gray-0 group-data-[variant=default]/switcher-list:data-[state=active]:border-gray-0',
+      'group-data-[variant=default]/switcher-list:data-[state=active]:bg-action-primary-background-default group-data-[variant=default]/switcher-list:data-[state=active]:text-action-primary-text group-data-[variant=default]/switcher-list:data-[state=active]:border-gray-0',
       'group-data-[variant=line]/switcher-list:bg-transparent group-data-[variant=line]/switcher-list:data-[state=active]:bg-transparent group-data-[variant=line]/switcher-list:data-[state=active]:shadow-none',
-      'group-data-[variant=line]/switcher-list:data-[state=active]:text-gray-100',
-      'after:absolute after:bg-gray-100 after:opacity-0 after:transition-opacity',
+      'group-data-[variant=line]/switcher-list:data-[state=active]:text-text-primary',
+      'after:absolute after:bg-text-primary after:opacity-0 after:transition-opacity',
       'group-data-[orientation=horizontal]/switcher:after:inset-x-0 group-data-[orientation=horizontal]/switcher:after:bottom-[-5px] group-data-[orientation=horizontal]/switcher:after:h-0.5',
       'group-data-[orientation=vertical]/switcher:after:inset-y-0 group-data-[orientation=vertical]/switcher:after:-right-1 group-data-[orientation=vertical]/switcher:after:w-0.5',
       'group-data-[variant=line]/switcher-list:data-[state=active]:after:opacity-100',

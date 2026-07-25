@@ -125,7 +125,7 @@ export const EmojiView = ({ recentEmojis, onEmojiSelect }: Props) => {
       <div
         tabIndex={0}
         aria-label="Категории эмодзи"
-        className="bg-gray-5 flex flex-col gap-2 rounded-bl-lg p-2"
+        className="bg-background-subtle flex flex-col gap-2 rounded-bl-lg p-2"
       >
         <TooltipProvider>
           {emojiCategoriesIcons.map(({ icon: Icon, name }, index) => {
@@ -137,8 +137,8 @@ export const EmojiView = ({ recentEmojis, onEmojiSelect }: Props) => {
                     className={cn(
                       'h-6.5 w-6.5 rounded-sm border-transparent p-1',
                       index === activeCategoryIndex
-                        ? 'bg-gray-0 text-brand-100 focus:bg-gray-0'
-                        : 'bg-brand-0 text-brand-60 focus:bg-brand-0',
+                        ? 'bg-background-surface text-text-link focus:bg-background-surface'
+                        : 'bg-status-info-background text-brand-60 focus:bg-status-info-background',
                     )}
                     onClick={() => selectCategory(index)}
                   >
@@ -155,10 +155,10 @@ export const EmojiView = ({ recentEmojis, onEmojiSelect }: Props) => {
         </TooltipProvider>
       </div>
 
-      <div className="bg-gray-0 absolute right-0 flex h-full min-h-0 flex-1 flex-col gap-2 rounded-r-lg p-2">
+      <div className="bg-background-surface absolute right-0 flex h-full min-h-0 flex-1 flex-col gap-2 rounded-r-lg p-2">
         <Input
           variant="s"
-          before={<Search size="sm" className="text-gray-60" />}
+          before={<Search size="sm" className="text-icon-secondary" />}
           placeholder="Поиск"
           className="border"
           value={searchQuery}

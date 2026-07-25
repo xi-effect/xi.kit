@@ -15,7 +15,7 @@ export const StickerView = ({ stickers, onStickerClick }: Props) => {
             key={sticker.id}
             variant="ghost"
             onClick={() => onStickerClick(sticker)}
-            className="hover:bg-gray-5 flex aspect-square size-full items-center justify-center rounded p-1 transition-colors"
+            className="hover:bg-background-subtle flex aspect-square size-full items-center justify-center rounded p-1 transition-colors"
           >
             <img
               src={sticker.src}
