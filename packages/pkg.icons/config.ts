@@ -82,6 +82,7 @@ export const icons = [
   'Key',
   'Laptop',
   'Link',
+  'Loader',
   'Locked',
   'LongAnswer',
   'Mail',

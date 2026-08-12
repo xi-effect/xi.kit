@@ -81,6 +81,7 @@ import { Italic } from './icons/Italic';
 import { Key } from './icons/Key';
 import { Laptop } from './icons/Laptop';
 import { Link } from './icons/Link';
+import { Loader } from './icons/Loader';
 import { Locked } from './icons/Locked';
 import { LongAnswer } from './icons/LongAnswer';
 import { Mail } from './icons/Mail';
@@ -265,6 +266,7 @@ export {
   Key,
   Laptop,
   Link,
+  Loader,
   Locked,
   LongAnswer,
   Mail,
