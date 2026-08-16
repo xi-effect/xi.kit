@@ -75,6 +75,7 @@ const stickers = [
 export const Default: Story = {
   render: () => {
     const [selectedEmoji, setSelectedEmoji] = useState<string>('');
+    const [selectedSticker, setSelectedSticker] = useState('');
 
     return (
       <div className="flex flex-col items-center gap-4">
@@ -84,6 +85,16 @@ export const Default: Story = {
           onStickerSelect={(sticker) => setSelectedSticker(sticker.src)}
         />
         {selectedEmoji && <div className="text-2xl">Выбранный эмодзи: {selectedEmoji}</div>}
+        {selectedSticker && (
+          <div className="flex items-center gap-2 text-2xl">
+            Выбранный стикер:
+            <img
+              src={selectedSticker}
+              alt="Selected Sticker"
+              className="max-h-20 max-w-20 object-contain"
+            />
+          </div>
+        )}
       </div>
     );
   },
@@ -138,7 +149,6 @@ export const WithStickers: Story = {
           stickers={stickers}
           onEmojiSelect={() => {}}
           onStickerSelect={(sticker) => setSelectedSticker(sticker.src)}
-          recentEmojis={recentEmojis}
         />
         {selectedSticker && (
           <div className="flex items-center gap-2 text-2xl">

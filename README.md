@@ -46,6 +46,12 @@ npm run dev
 
 Все компоненты иконок имеют единый интерфейс и поддерживают настройку размера и темы через пропсы.
 
+## Атрибуция сторонней графики
+
+Иконки эмодзи в `packages/pkg.emoji.picker` (изображения, отдаваемые из `/emoji/svg`) — графика [Twemoji](https://github.com/jdecked/twemoji), поставляемая через пакет [`@astronautlabs/emoji`](https://github.com/astronautlabs/emoji). Графика распространяется по лицензии [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/):
+
+> Copyright 2019 Twitter, Inc and other contributors.
+
 ## Публикация пакетов
 
 Пакеты публикуются автоматически с помощью GitHub Actions. Перед публикацией убедитесь, что версия пакета в файле package.json обновлена в соответствии с внесёнными изменениями (соблюдая SemVer). Перед отправкой изменений не забудьте выполнить npm i в корне репозитория.

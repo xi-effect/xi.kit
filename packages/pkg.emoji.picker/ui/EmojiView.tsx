@@ -38,9 +38,10 @@ const categoryIcons = [
 type Props = {
   recentEmojis?: string[];
   onEmojiSelect: (emoji: string) => void;
+  emojiBaseUrl?: string;
 };
 
-export const EmojiView = ({ recentEmojis, onEmojiSelect }: Props) => {
+export const EmojiView = ({ recentEmojis, onEmojiSelect, emojiBaseUrl }: Props) => {
   const categories = emojisData;
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -84,12 +85,19 @@ export const EmojiView = ({ recentEmojis, onEmojiSelect }: Props) => {
   const filteredCategories = useMemo(() => {
     if (!categories) return { name: 'empty', emojis: [] };
 
+    const query = searchQuery.toLowerCase();
+
     return {
       name: 'search',
       emojis: categories
         .map((category) => category.emojis)
         .flat()
-        .filter((emoji: EmojiT) => emoji.name.toLowerCase().includes(searchQuery.toLowerCase())),
+        .filter(
+          (emoji: EmojiT) =>
+            emoji.name.toLowerCase().includes(query) ||
+            emoji.nameRus?.toLowerCase().includes(query) ||
+            emoji.keywordsRus?.some((keyword) => keyword.toLowerCase().includes(query)),
+        ),
     };
   }, [categories, searchQuery]);
 
@@ -155,7 +163,7 @@ export const EmojiView = ({ recentEmojis, onEmojiSelect }: Props) => {
         </TooltipProvider>
       </div>
 
-      <div className="bg-background-surface absolute right-0 flex h-full min-h-0 flex-1 flex-col gap-2 rounded-r-lg p-2">
+      <div className="bg-background-surface absolute right-0 flex h-full min-w-80 flex-1 flex-col gap-2 rounded-r-lg p-2">
         <Input
           variant="s"
           before={<Search size="sm" className="text-icon-secondary" />}
@@ -165,7 +173,7 @@ export const EmojiView = ({ recentEmojis, onEmojiSelect }: Props) => {
           onChange={handleSearchEmoji}
         />
 
-        <div ref={scrollContainerRef} className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto">
+        <div ref={scrollContainerRef} className="min-w-80 flex-1 overflow-x-hidden overflow-y-auto">
           {searchQuery ? (
             <EmojiCategory
               setActiveCategory={setActiveCategoryIndex}
@@ -174,6 +182,7 @@ export const EmojiView = ({ recentEmojis, onEmojiSelect }: Props) => {
               handleEmojiClick={handleEmojiClick}
               containerRef={scrollContainerRef}
               isIntersectionEnabled={false}
+              emojiBaseUrl={emojiBaseUrl}
             />
           ) : (
             emojiCategories.map((category, index) => (
@@ -184,6 +193,7 @@ export const EmojiView = ({ recentEmojis, onEmojiSelect }: Props) => {
                 currentIndex={index}
                 handleEmojiClick={handleEmojiClick}
                 containerRef={scrollContainerRef}
+                emojiBaseUrl={emojiBaseUrl}
               />
             ))
           )}

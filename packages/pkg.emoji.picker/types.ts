@@ -2,6 +2,10 @@ export type EmojiT = {
   unicode: string;
   char: string;
   name: string;
+  nameRus?: string;
+  keywordsRus?: string[];
+  /** Precomputed @astronautlabs/emoji asset id (see utils/emojiIcon.ts's getEmojiIconId). */
+  iconId: string;
 };
 
 export type StickerT = {
@@ -26,4 +30,6 @@ export type TEmojiPickerPropsT = {
   stickers?: StickerT[];
   onEmojiSelect: (emoji: string) => void;
   onStickerSelect?: (sticker: StickerT) => void;
+  /** Where emoji SVG assets are served from. Defaults to DEFAULT_EMOJI_IMAGE_BASE_URL. */
+  emojiBaseUrl?: string;
 };
