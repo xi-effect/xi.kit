@@ -1,11 +1,19 @@
 import { Svg, type IconProps } from '../Svg';
 
-/** Сетка 2×2: круг, треугольник, квадрат и ромб. */
+const outline = {
+  fill: 'none',
+  stroke: 'currentColor',
+  strokeWidth: 2,
+  strokeLinecap: 'round',
+  strokeLinejoin: 'round',
+} as const;
+
+/** Сетка 2×2, каждая фигура в клетке 8×8. */
 export const Activity = ({ ...props }: IconProps) => (
   <Svg {...props}>
-    <path d="M7 3.15a3.85 3.85 0 1 1 0 7.7 3.85 3.85 0 0 1 0-7.7Z" />
-    <path d="M17 3.15 21.35 11H12.65L17 3.15Z" />
-    <path d="M3.4 13.15h5.4a1.7 1.7 0 0 1 1.7 1.7v5.4a1.7 1.7 0 0 1-1.7 1.7H3.4a1.7 1.7 0 0 1-1.7-1.7v-5.4a1.7 1.7 0 0 1 1.7-1.7Z" />
-    <path d="M17 13.15 21.35 17.5 17 21.85 12.65 17.5 17 13.15Z" />
+    <circle cx="7" cy="7" r="3" style={{ fill: 'none' }} {...outline} />
+    <path d="M17 4 20 10H14Z" style={{ fill: 'none' }} {...outline} />
+    <rect x="3" y="13" width="8" height="8" rx="2" fill="currentColor" stroke="none" />
+    <path d="M17 14 20 17 17 20 14 17Z" style={{ fill: 'none' }} {...outline} />
   </Svg>
 );
