@@ -1,6 +1,14 @@
 import { Account } from './icons/Account';
 import { Activity } from './icons/Activity';
+import { ActivityGapText } from './icons/ActivityGapText';
+import { ActivityLabelImage } from './icons/ActivityLabelImage';
 import { ActivityLine } from './icons/ActivityLine';
+import { ActivityMatching } from './icons/ActivityMatching';
+import { ActivityMultipleChoice } from './icons/ActivityMultipleChoice';
+import { ActivityMysteryTiles } from './icons/ActivityMysteryTiles';
+import { ActivityOrdering } from './icons/ActivityOrdering';
+import { ActivityRandomCard } from './icons/ActivityRandomCard';
+import { ActivitySorting } from './icons/ActivitySorting';
 import { Add } from './icons/Add';
 import { Announce } from './icons/Announce';
 import { Arrow } from './icons/Arrow';
@@ -185,7 +193,15 @@ import { Inbox } from './icons/Inbox';
 export {
   Account,
   Activity,
+  ActivityGapText,
+  ActivityLabelImage,
   ActivityLine,
+  ActivityMatching,
+  ActivityMultipleChoice,
+  ActivityMysteryTiles,
+  ActivityOrdering,
+  ActivityRandomCard,
+  ActivitySorting,
   Add,
   Announce,
   Arrow,
