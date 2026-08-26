@@ -93,6 +93,7 @@ export const icons = [
   'Loader',
   'Locked',
   'LongAnswer',
+  'FlipCard',
   'Mail',
   'MailRounded',
   'Materials',

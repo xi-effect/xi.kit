@@ -72,6 +72,7 @@ import { FilePlus } from './icons/FilePlus';
 import { FileSmall } from './icons/FileSmall';
 import { Filter } from './icons/Filter';
 import { Flag } from './icons/Flag';
+import { FlipCard } from './icons/FlipCard';
 import { Folder } from './icons/Folder';
 import { Food } from './icons/Food';
 import { Grid } from './icons/Grid';
@@ -265,6 +266,7 @@ export {
   FileSmall,
   Filter,
   Flag,
+  FlipCard,
   Folder,
   Food,
   Grid,
