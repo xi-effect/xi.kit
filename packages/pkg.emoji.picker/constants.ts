@@ -3,3 +3,5 @@ export const ROW_HEIGHT = 28;
 export const BUFFER_ROWS = 4;
 
 export const categoryIntersections: boolean[] = [];
+
+export const DEFAULT_EMOJI_IMAGE_BASE_URL = '/emoji/svg';

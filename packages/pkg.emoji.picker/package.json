@@ -1,6 +1,6 @@
 {
   "name": "@xipkg/emojipicker",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
@@ -19,7 +19,9 @@
     "url": "https://github.com/xi-effect/xi.kit"
   },
   "scripts": {
-    "build": "tsup index.ts --format esm --dts",
+    "build": "tsup",
+    "build:emojis": "tsx ./scripts/build-emojis.ts",
+    "codegen": "npm run build:emojis",
     "prepare": "npm run build",
     "start": "npm run build -- --watch",
     "dev": "npm run build -- --watch",
@@ -30,21 +32,24 @@
     "@xipkg/dropdown": "^3.0.11",
     "@xipkg/icons": "^2.5.2",
     "@xipkg/input": "^2.2.8",
+    "@xipkg/switcher-animate": "^1.0.6",
+    "@xipkg/tabs": "^2.1.0",
     "@xipkg/tooltip": "^2.0.10",
     "@xipkg/utils": "^1.8.0",
-    "@xipkg/tabs": "^2.1.0",
-    "@xipkg/switcher-animate": "^1.0.6",
     "class-variance-authority": "^0.7.1",
     "emoji-mart": "^5.6.0"
   },
   "devDependencies": {
-    "@types/node": "^22.13.14",
+    "@astronautlabs/emoji": "^17.1.0",
+    "@types/node": "^22.20.1",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "@xipkg/eslint": "^3.2.0",
     "@xipkg/typescript": "^0.1.0",
+    "emojibase-data": "^17.0.0",
     "eslint": "^9.23.0",
     "tsup": "^8.4.0",
+    "tsx": "^4.19.0",
     "typescript": "^5.8.2"
   },
   "peerDependencies": {

@@ -24,6 +24,7 @@ export const EmojiPickerPopup = ({
   stickers = [],
   onEmojiSelect,
   onStickerSelect,
+  emojiBaseUrl,
   className,
 }: TEmojiPopupT) => {
   const [activeTab, setActiveTab] = useState<PickerTabT>('emojis');
@@ -36,18 +37,22 @@ export const EmojiPickerPopup = ({
   );
 
   return (
-    <div className={cn('bg-background-surface w-69 rounded-lg', className)}>
+    <div className={cn('bg-background-surface min-w-[380px] rounded-lg', className)}>
       <SwitcherAnimate
         tabs={switcherTabs}
         activeTab={activeTab}
         onChange={(tab) => setActiveTab(tab as PickerTabT)}
-        className="bg-background-subtle flex w-full gap-2 rounded-t-lg rounded-b-none p-1.5"
+        className="bg-background-subtle flex w-full rounded-t-lg rounded-b-none p-1.5"
         tabClassName="text-m-base h-7 flex-1 font-medium data-[state=inactive]:text-text-primary data-[state=inactive]:hover:text-text-secondary data-[state=active]:text-action-primary-text data-[state=active]:hover:text-gray-10"
         indicatorClassName="rounded-md"
       />
 
       {activeTab === 'emojis' ? (
-        <EmojiView recentEmojis={recentEmojis} onEmojiSelect={onEmojiSelect} />
+        <EmojiView
+          recentEmojis={recentEmojis}
+          onEmojiSelect={onEmojiSelect}
+          emojiBaseUrl={emojiBaseUrl}
+        />
       ) : (
         <StickerView stickers={stickers} onStickerClick={handleStickerClick} />
       )}

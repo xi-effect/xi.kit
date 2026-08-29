@@ -3,6 +3,7 @@ import { Button } from '@xipkg/button';
 import { useVisibleRows, useIntersectionObserver } from '../hooks';
 import { BUFFER_ROWS, ROW_HEIGHT, ROW_SIZE, categoryIntersections } from '../constants';
 import { CategoryT } from '../types';
+import { Emoji } from './Emoji';
 
 type EmojiCategoryPropsT = {
   isIntersectionEnabled?: boolean;
@@ -11,6 +12,7 @@ type EmojiCategoryPropsT = {
   setActiveCategory: React.Dispatch<React.SetStateAction<number>>;
   handleEmojiClick: (emoji: string) => void;
   containerRef: React.RefObject<HTMLDivElement | null>;
+  emojiBaseUrl?: string;
 };
 
 export const EmojiCategory = memo(
@@ -21,6 +23,7 @@ export const EmojiCategory = memo(
     handleEmojiClick,
     containerRef,
     setActiveCategory,
+    emojiBaseUrl,
   }: EmojiCategoryPropsT) => {
     const categoryRef = useRef<HTMLDivElement>(null);
     const totalRows = Math.ceil(category.emojis.length / ROW_SIZE);
@@ -83,15 +86,12 @@ export const EmojiCategory = memo(
             {visibleEmojis.map((emoji) => (
               <Button
                 key={emoji.name + emoji.unicode}
-                title={`:${emoji.name}:`}
+                title={`:${emoji.nameRus ?? emoji.name}:`}
                 variant="ghost"
-                className="hover:bg-background-subtle h-6 w-6 rounded-sm border-transparent bg-transparent p-1 text-base leading-none hover:border-transparent focus:border-transparent"
+                className="hover:bg-background-subtle h-8 w-8 rounded-sm border-transparent bg-transparent p-1 leading-none hover:border-transparent focus:border-transparent"
                 onClick={() => handleEmojiClick(emoji.char)}
-                style={{
-                  fontFamily: 'Apple Color Emoji, Twemoji Mozilla, Noto Color Emoji, Android Emoji',
-                }}
               >
-                {emoji.char}
+                <Emoji char={emoji.char} iconId={emoji.iconId} size={24} baseUrl={emojiBaseUrl} />
               </Button>
             ))}
           </div>

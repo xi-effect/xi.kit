@@ -10,6 +10,7 @@ export const EmojiPicker = ({
   onEmojiSelect,
   stickers,
   onStickerSelect,
+  emojiBaseUrl,
 }: TEmojiPickerPropsT) => {
   return (
     <DropdownMenu>
@@ -27,6 +28,7 @@ export const EmojiPicker = ({
           onEmojiSelect={onEmojiSelect}
           stickers={stickers}
           onStickerSelect={onStickerSelect}
+          emojiBaseUrl={emojiBaseUrl}
         />
       </DropdownMenuContent>
     </DropdownMenu>
