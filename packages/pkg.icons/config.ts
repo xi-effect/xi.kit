@@ -190,4 +190,9 @@ export const icons = [
   'Transform',
   'Pinned',
   'Inbox',
+  'Superscript',
+  'Subscript',
+  'Fraction',
+  'Formula',
+  'Latex',
 ] as const;

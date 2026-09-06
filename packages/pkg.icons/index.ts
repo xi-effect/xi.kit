@@ -190,6 +190,11 @@ import { icons } from './config';
 import { Transform } from './icons/Transform';
 import { Pinned } from './icons/Pinned';
 import { Inbox } from './icons/Inbox';
+import { Superscript } from './icons/Superscript';
+import { Subscript } from './icons/Subscript';
+import { Fraction } from './icons/Fraction';
+import { Formula } from './icons/Formula';
+import { Latex } from './icons/Latex';
 
 export {
   Account,
@@ -383,6 +388,11 @@ export {
   Edit05,
   Pinned,
   Inbox,
+  Superscript,
+  Subscript,
+  Fraction,
+  Formula,
+  Latex,
   icons,
 };
 
