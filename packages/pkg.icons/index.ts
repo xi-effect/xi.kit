@@ -195,6 +195,10 @@ import { Subscript } from './icons/Subscript';
 import { Fraction } from './icons/Fraction';
 import { Formula } from './icons/Formula';
 import { Latex } from './icons/Latex';
+import { AlignCentre } from './icons/AlignCentre';
+import { AlignJustify } from './icons/AlignJustify';
+import { AlignLeft } from './icons/AlignLeft';
+import { AlignRight } from './icons/AlignRight';
 
 export {
   Account,
@@ -393,6 +397,10 @@ export {
   Fraction,
   Formula,
   Latex,
+  AlignCentre,
+  AlignJustify,
+  AlignLeft,
+  AlignRight,
   icons,
 };
 

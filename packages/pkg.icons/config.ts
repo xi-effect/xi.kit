@@ -195,4 +195,8 @@ export const icons = [
   'Fraction',
   'Formula',
   'Latex',
+  'AlignCentre',
+  'AlignJustify',
+  'AlignLeft',
+  'AlignRight',
 ] as const;
