@@ -199,6 +199,7 @@ import { AlignCentre } from './icons/AlignCentre';
 import { AlignJustify } from './icons/AlignJustify';
 import { AlignLeft } from './icons/AlignLeft';
 import { AlignRight } from './icons/AlignRight';
+import { Recording3 } from './icons/Recording3';
 
 export {
   Account,
@@ -401,6 +402,7 @@ export {
   AlignJustify,
   AlignLeft,
   AlignRight,
+  Recording3,
   icons,
 };
 
