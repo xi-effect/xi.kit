@@ -24,7 +24,7 @@ const monthClasses = {
   months: 'flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:gap-6 relative',
   month: 'space-y-4',
   month_caption: 'flex justify-center pt-1 relative items-center',
-  caption_label: 'text-sm font-medium',
+  caption_label: 'text-sm font-medium text-text-primary',
   nav: 'flex items-center justify-between absolute px-1 inset-x-0',
   button_previous: navigationButtonStyles,
   button_next: navigationButtonStyles,
@@ -114,7 +114,7 @@ const Calendar = ({
       pagedNavigation ??
       (DEFAULT_PAGED_NAVIGATION_WHEN_TWO_MONTHS && numberOfMonths > 1)
     }
-    className={cn('p-3', className)}
+    className={cn('text-text-primary p-3', className)}
     classNames={{
       ...monthClasses,
       ...weekClasses,

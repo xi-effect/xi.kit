@@ -32,7 +32,10 @@ const DatePicker = ({
         {children}
       </PopoverTrigger>
       <PopoverContent
-        className={cn('bg-background-elevated w-auto p-0', classNamePopoverContent)}
+        className={cn(
+          'bg-background-elevated text-text-primary border-border-default dark:border-gray-70 w-auto border p-0',
+          classNamePopoverContent,
+        )}
         {...popoverContentProps}
       >
         <Calendar {...calendarProps} locale={ru} />
