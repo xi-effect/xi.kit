@@ -200,6 +200,7 @@ import { AlignJustify } from './icons/AlignJustify';
 import { AlignLeft } from './icons/AlignLeft';
 import { AlignRight } from './icons/AlignRight';
 import { Recording3 } from './icons/Recording3';
+import { Pointer } from './icons/Pointer';
 
 export {
   Account,
@@ -403,6 +404,7 @@ export {
   AlignLeft,
   AlignRight,
   Recording3,
+  Pointer,
   icons,
 };
 

@@ -200,4 +200,5 @@ export const icons = [
   'AlignLeft',
   'AlignRight',
   'Recording3',
+  'Pointer',
 ] as const;
