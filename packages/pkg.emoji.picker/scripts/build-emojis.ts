@@ -93,6 +93,62 @@ const readCommittedEmojis = (): CategoryData[] => {
   }
 };
 
+/**
+ * Не попадают в пикер. Сверяем и по iconId, и по нормализованному имени:
+ * у составных эмодзи char может отличаться вариационным селектором FE0F,
+ * а имя стабильно после formatEmojiName.
+ *
+ * Здесь символы идентичности и однополых пар, гендерно-инвертированные роли
+ * и то, что не подходит детской аудитории: мат, алкоголь, курение, азартные
+ * игры, оружие и взрывчатка.
+ */
+const EXCLUDED_EMOJIS: { iconId: string; name: string }[] = [
+  { iconId: '1f3f3-fe0f-200d-1f308', name: 'rainbow flag' },
+  { iconId: '1f3f3-fe0f-200d-26a7-fe0f', name: 'transgender flag' },
+  { iconId: '26a7', name: 'transgender sign' },
+  { iconId: '1f469-200d-2764-fe0f-200d-1f469', name: 'couple with heart woman woman' },
+  { iconId: '1f468-200d-2764-fe0f-200d-1f468', name: 'couple with heart man man' },
+  { iconId: '1f491', name: 'couple with heart' },
+  { iconId: '1f469-200d-2764-fe0f-200d-1f48b-200d-1f469', name: 'kiss woman woman' },
+  { iconId: '1f468-200d-2764-fe0f-200d-1f48b-200d-1f468', name: 'kiss man man' },
+  { iconId: '1f48f', name: 'kiss' },
+  { iconId: '1f46d', name: 'women holding hands' },
+  { iconId: '1f46c', name: 'men holding hands' },
+  { iconId: '1fac3', name: 'pregnant man' },
+  { iconId: '1fac4', name: 'pregnant person' },
+  { iconId: '1f470-200d-2642-fe0f', name: 'man with veil' },
+  { iconId: '1f9d1-200d-1f384', name: 'mx claus' },
+  { iconId: '1f595', name: 'reversed hand with middle finger extended' },
+  { iconId: '1f92c', name: 'face with symbols over mouth' },
+  { iconId: '1fae6', name: 'biting lip' },
+  { iconId: '1f51e', name: 'no one under eighteen symbol' },
+  { iconId: '1f3e9', name: 'love hotel' },
+  { iconId: '1f6ac', name: 'smoking symbol' },
+  { iconId: '1f37a', name: 'beer mug' },
+  { iconId: '1f37b', name: 'clinking beer mugs' },
+  { iconId: '1f377', name: 'wine glass' },
+  { iconId: '1f942', name: 'clinking glasses' },
+  { iconId: '1f943', name: 'tumbler glass' },
+  { iconId: '1f378', name: 'cocktail glass' },
+  { iconId: '1f379', name: 'tropical drink' },
+  { iconId: '1f37e', name: 'bottle with popping cork' },
+  { iconId: '1f376', name: 'sake bottle and cup' },
+  { iconId: '1f3b0', name: 'slot machine' },
+  { iconId: '1f52b', name: 'water pistol' },
+  { iconId: '1f9e8', name: 'firecracker' },
+  { iconId: '1f4a3', name: 'bomb' },
+  { iconId: '1f52a', name: 'hocho' },
+  { iconId: '1f5e1', name: 'dagger knife' },
+  { iconId: '2694', name: 'crossed swords' },
+  { iconId: '1fa93', name: 'axe' },
+];
+
+const EXCLUDED_ICON_IDS = new Set(EXCLUDED_EMOJIS.map((emoji) => emoji.iconId));
+const EXCLUDED_NAMES = new Set(EXCLUDED_EMOJIS.map((emoji) => emoji.name));
+
+const isExcludedEmoji = (emoji: { iconId: string; name: string }): boolean =>
+  EXCLUDED_ICON_IDS.has(emoji.iconId) || EXCLUDED_NAMES.has(emoji.name);
+
 const categoryOrder: CategoryOrder[] = [
   { id: 'people', name: 'emotions', nameRus: 'лица и эмоции' },
   { id: 'nature', name: 'nature', nameRus: 'природа' },
@@ -220,7 +276,8 @@ const generated: CategoryData[] = categoryOrder.map(({ id, name, nameRus }) => {
         char,
         iconId,
       });
-    });
+    })
+    .filter((emoji) => !isExcludedEmoji(emoji));
 
   return { name, nameRus, emojis };
 });
@@ -228,7 +285,15 @@ const generated: CategoryData[] = categoryOrder.map(({ id, name, nameRus }) => {
 const generatedChars = new Set(
   generated.flatMap((category) => category.emojis.map((emoji) => emoji.char)),
 );
-const missingFromNew = [...legacyChars].filter((char) => !generatedChars.has(char));
+const excludedChars = new Set(
+  legacyData
+    .flatMap((category) => category.emojis)
+    .filter((emoji) => isExcludedEmoji(emoji))
+    .map((emoji) => emoji.char),
+);
+const missingFromNew = [...legacyChars].filter(
+  (char) => !generatedChars.has(char) && !excludedChars.has(char),
+);
 
 if (missingFromNew.length > 0) {
   console.error(
@@ -244,6 +309,7 @@ const localizedCount = allEmojis.filter((emoji) => (emoji as any).nameRus).lengt
 writeFileSync(outputPath, `${JSON.stringify(generated, null, 2)}\n`, 'utf8');
 
 console.log(`Generated ${generated.length} categories with ${totalEmojis} emoji entries.`);
+console.log(`Excluded from picker: ${excludedChars.size} legacy entries.`);
 console.log(
   `Backward compatibility check passed: ${legacyChars.size} legacy chars remain available.`,
 );
